@@ -1,0 +1,62 @@
+{
+  "schema_version": "evidence_index_v1",
+  "updated_at": "2026-10-09",
+  "evidence": [
+    {
+      "id": "EV-LS-001",
+      "topic": "灵生合作核心口头条件",
+      "source_type": "user-provided WeChat screenshots / conversations",
+      "date": "2026-10-09",
+      "status": "conversation_confirmed",
+      "proves": [
+        "40元/有效小时",
+        "20元/台/天租金",
+        "1000元/台押金无损退",
+        "任务前明确任务量",
+        "未完成无额外违约",
+        "可先试采再定产量"
+      ],
+      "does_not_prove": [
+        "正式合同已签",
+        "40元一定长期不变",
+        "结算周期",
+        "审核标准",
+        "对公收款主体"
+      ]
+    },
+    {
+      "id": "EV-LS-002",
+      "topic": "培训安排",
+      "source_type": "user-provided WeChat screenshot",
+      "date": "2026-10-09",
+      "status": "conversation_confirmed",
+      "proves": [
+        "对方建议13号左右前往学习",
+        "携带电脑",
+        "可开租户管理员",
+        "回去后二次培训采集员"
+      ],
+      "does_not_prove": [
+        "最终培训地址和时间",
+        "正式开工日"
+      ]
+    },
+    {
+      "id": "EV-TD-001",
+      "topic": "淘丁供应商通道",
+      "source_type": "user-provided WeChat / supplier platform",
+      "date": "2026-10-08",
+      "status": "conversation_confirmed",
+      "proves": [
+        "问卷已提交",
+        "可先入驻供应商平台",
+        "后续由采集经理联系"
+      ],
+      "does_not_prove": [
+        "已获得项目",
+        "结算价格",
+        "设备政策"
+      ]
+    }
+  ]
+}
