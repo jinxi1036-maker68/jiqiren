@@ -1,0 +1,32 @@
+{
+  "schema_version": "robot_data_project_index_v1",
+  "project_id": "robot-data-pingdingshan",
+  "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
+  "authority_branch": "main",
+  "current": {
+    "date": "2026-10-09",
+    "phase": "PRE_TRIAL_PREPARATION",
+    "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
+    "primary_upstream": "北京灵生科技有限公司（LivSyn）",
+    "target_city": "河南平顶山",
+    "target_training_date": "2026-10-13（左右，待最终时间地点确认）",
+    "target_trial_start": "2026-10-15（目标日期，待任务单/设备/协议确认）"
+  },
+  "long_term_goal": "从本地人员组织者升级为拥有场景、人员、质控、交付能力和多上游关系的区域具身智能数据供应团队。",
+  "strategic_sequence": [
+    "10台小规模试采",
+    "验证有效时长/通过率/成本/结算",
+    "稳定20台",
+    "建立场景资源库和质控SOP",
+    "发展2-3个稳定上游",
+    "再评估30-50台及区域供应商/城市运营能力"
+  ],
+  "current_machine_facts": [
+    "knowledge/CURRENT_WORK.json",
+    "knowledge/PARTNER_LEDGER.json",
+    "knowledge/SCENE_PIPELINE.json",
+    "knowledge/PEOPLE_PIPELINE.json",
+    "knowledge/ECONOMICS_MODEL.json",
+    "knowledge/EVIDENCE_INDEX.json"
+  ]
+}
