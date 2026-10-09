@@ -1,0 +1,56 @@
+{
+  "schema_version": "risk_register_v1",
+  "updated_at": "2026-10-09",
+  "risks": [
+    {
+      "id": "R-001",
+      "category": "commercial",
+      "title": "口头条件与正式合同不一致",
+      "probability": "medium",
+      "impact": "high",
+      "trigger": "收到合同/任务单后发现价格、押金、租金、结算或违约规则不同",
+      "mitigation": "付款前逐项对照合作条款核对表；正式文件优先于微信沟通",
+      "status": "open"
+    },
+    {
+      "id": "R-002",
+      "category": "operations",
+      "title": "4有效小时需要远超4小时实际作业",
+      "probability": "unknown",
+      "impact": "high",
+      "trigger": "试采后原始时长/有效时长比明显偏低",
+      "mitigation": "10台试采阶段记录原始小时、有效小时、返工率，不提前扩50台",
+      "status": "open"
+    },
+    {
+      "id": "R-003",
+      "category": "scene",
+      "title": "场景授权不足或容量不够",
+      "probability": "medium",
+      "impact": "high",
+      "trigger": "可用场景少于2个或场景不允许持续采集",
+      "mitigation": "13号前建立15-20条线索、2-3家意向，并优先可重复进入场景",
+      "status": "open"
+    },
+    {
+      "id": "R-004",
+      "category": "people",
+      "title": "人员稳定性和培训通过率不足",
+      "probability": "medium",
+      "impact": "medium",
+      "trigger": "候选人到岗率低、返工高、无法稳定排班",
+      "mitigation": "首批储备12-15人，正式上岗约10人并设置备用",
+      "status": "open"
+    },
+    {
+      "id": "R-005",
+      "category": "cashflow",
+      "title": "押金+租金+工资先支出、结算后到账造成现金压力",
+      "probability": "medium",
+      "impact": "high",
+      "trigger": "结算周期长于预期或扩设备过快",
+      "mitigation": "首轮只做10台；确认结算周期；扩张前做现金流测算",
+      "status": "open"
+    }
+  ]
+}
