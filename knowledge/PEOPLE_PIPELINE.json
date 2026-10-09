@@ -1,0 +1,22 @@
+{
+  "schema_version": "people_pipeline_v1",
+  "updated_at": "2026-10-09",
+  "target_before_training": {
+    "adult_candidates": 15,
+    "first_trial_collectors": 10,
+    "site_lead": 1
+  },
+  "current_confirmed_counts": {
+    "adult_candidates": null,
+    "trained_collectors": 0,
+    "site_leads": 0
+  },
+  "hiring_principles": [
+    "仅成年人",
+    "稳定优先",
+    "执行SOP能力优先",
+    "前期不提前承诺50人规模",
+    "正式任务确认后再锁定排班和薪酬"
+  ],
+  "note": "仓库只存人数与角色，不保存候选人的手机号、身份证等个人信息。"
+}
