@@ -1,0 +1,75 @@
+{
+  "schema_version": "economics_model_v1",
+  "updated_at": "2026-10-09",
+  "partner": "北京灵生科技有限公司 / LivSyn",
+  "terms": [
+    {
+      "key": "data_buyback_per_effective_hour",
+      "value": 40,
+      "unit": "CNY/hour",
+      "status": "conversation_confirmed"
+    },
+    {
+      "key": "device_rent_per_day",
+      "value": 20,
+      "unit": "CNY/device/day",
+      "status": "conversation_confirmed"
+    },
+    {
+      "key": "device_deposit",
+      "value": 1000,
+      "unit": "CNY/device",
+      "status": "conversation_confirmed",
+      "note": "设备无损坏时全额退"
+    },
+    {
+      "key": "daily_effective_hour_target",
+      "value": 4,
+      "unit": "hour/device/day",
+      "status": "conversation_confirmed",
+      "note": "属于交付能力目标；租金与是否完成4小时无直接关系"
+    },
+    {
+      "key": "initial_trial_devices",
+      "value": 10,
+      "unit": "device",
+      "status": "conversation_confirmed"
+    },
+    {
+      "key": "large_batch_example",
+      "value": 50,
+      "unit": "device",
+      "status": "conversation_confirmed",
+      "note": "对方曾提出第一批50台；后续已同意先试采再定产量"
+    },
+    {
+      "key": "breach_penalty_for_under_delivery",
+      "value": 0,
+      "unit": "CNY",
+      "status": "conversation_confirmed",
+      "note": "未达交付可能淘汰供应商并收回设备，不额外违约；以合同为准"
+    },
+    {
+      "key": "rent_start",
+      "value": "双方明确交付起始日后开始计租",
+      "status": "conversation_confirmed"
+    },
+    {
+      "key": "task_dispatch",
+      "value": "任务开始时明确场景、周期和总任务量",
+      "status": "conversation_confirmed"
+    },
+    {
+      "key": "local_labor_cost_assumption",
+      "value": [
+        10,
+        15
+      ],
+      "unit": "CNY/effective_hour",
+      "status": "assumption",
+      "note": "用户本地观察，不是平台规则"
+    }
+  ],
+  "trial_formula": "贡献毛利 = 有效小时×40 - 设备数×计租天数×20 - 人工 - 场景 - 管理质检 - 交通网络 - 税费 - 返工损耗",
+  "cash_flow_note": "押金可退但占用现金；10台押金=10000元。首轮真实回款前不把押金视为无风险资金。"
+}
