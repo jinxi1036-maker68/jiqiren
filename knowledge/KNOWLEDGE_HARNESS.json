@@ -1,0 +1,87 @@
+{
+  "schema_version": "robot_data_knowledge_harness_v1",
+  "harness_id": "RDKH-001",
+  "purpose": "让机器人数据采集项目跨聊天、跨阶段长期推进，同时保持事实新鲜、经营决策可追溯、当前任务轻量。",
+  "principles": {
+    "minimal_bootstrap": true,
+    "progressive_disclosure": true,
+    "current_is_not_history": true,
+    "evidence_before_scale": true,
+    "confirmed_vs_assumption_separated": true,
+    "owner_decision_is_highest_internal_authority": true
+  },
+  "bootstrap": {
+    "human_entry": "knowledge/00_START_HERE.md",
+    "machine_read_order": [
+      "knowledge/PROJECT_INDEX.json",
+      "knowledge/CURRENT_WORK.json"
+    ],
+    "freshness_protocol": "knowledge/FRESHNESS_PROTOCOL.md",
+    "rule": "先定位当前阶段和当前唯一工作项，再加载对应 profile；历史和证据按需读取。"
+  },
+  "profiles": {
+    "orientation": {
+      "required": [
+        "knowledge/01_NORTH_STAR.md"
+      ],
+      "purpose": "快速理解项目目标和当前阶段。"
+    },
+    "pre_trial_preparation": {
+      "required": [
+        "knowledge/04_SCENE_STRATEGY.md",
+        "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+        "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+        "knowledge/PARTNER_LEDGER.json"
+      ],
+      "purpose": "培训前、设备到场前、首轮试采前准备。"
+    },
+    "contract_review": {
+      "required": [
+        "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+        "knowledge/ECONOMICS_MODEL.json",
+        "knowledge/EVIDENCE_INDEX.json"
+      ],
+      "purpose": "审查合同、押金、租金、验收、结算和退出机制。"
+    },
+    "trial_operations": {
+      "required": [
+        "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+        "knowledge/06_ECONOMICS_AND_SCALE.md",
+        "knowledge/ECONOMICS_MODEL.json",
+        "knowledge/SCENE_PIPELINE.json",
+        "knowledge/PEOPLE_PIPELINE.json"
+      ],
+      "purpose": "执行10台试采并记录真实产能、通过率和成本。"
+    },
+    "scale_decision": {
+      "required": [
+        "knowledge/06_ECONOMICS_AND_SCALE.md",
+        "knowledge/ECONOMICS_MODEL.json",
+        "knowledge/EVIDENCE_INDEX.json",
+        "knowledge/08_ROADMAP.md"
+      ],
+      "purpose": "决定是否从10台扩到20/30/50台。"
+    },
+    "partner_development": {
+      "required": [
+        "knowledge/03_PARTNER_STRATEGY.md",
+        "knowledge/PARTNER_LEDGER.json",
+        "knowledge/04_SCENE_STRATEGY.md"
+      ],
+      "purpose": "发展第二、第三上游，降低单一平台依赖。"
+    },
+    "knowledge_maintenance": {
+      "required": [
+        "knowledge/10_UPDATE_PROTOCOL.md",
+        "knowledge/FRESHNESS_PROTOCOL.md"
+      ],
+      "purpose": "维护知识库本身。"
+    }
+  },
+  "lifecycle": {
+    "current_work_rule": "始终只有一个 CURRENT_WORK.json 作为当前唯一工作项。",
+    "close_rule": "阶段完成后，把结论写入 HISTORY_AND_MILESTONES.md / EVIDENCE_INDEX.json / decisions，再替换 CURRENT_WORK。",
+    "evidence_rule": "扩张、付款、采购、长期承诺必须由对应证据支持。",
+    "privacy_rule": "知识库不保存身份证、手机号、私人微信、银行卡、个人住址等敏感个人信息。"
+  }
+}
