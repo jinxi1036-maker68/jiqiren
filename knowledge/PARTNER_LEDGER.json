@@ -1,0 +1,43 @@
+{
+  "schema_version": "partner_ledger_v1",
+  "updated_at": "2026-10-09",
+  "partners": [
+    {
+      "id": "livsyn",
+      "name": "北京灵生科技有限公司 / LivSyn",
+      "status": "active_trial_negotiation",
+      "priority": "P0",
+      "current_path": "10台试采 → 真实产能后定后续规模",
+      "evidence_level": "conversation_confirmed",
+      "known_terms_ref": "knowledge/ECONOMICS_MODEL.json",
+      "next_gate": "正式合同/任务单/SOP + 培训 + 首轮试采"
+    },
+    {
+      "id": "taoding",
+      "name": "淘丁数科",
+      "status": "supplier_onboarding",
+      "priority": "P1",
+      "current_path": "已填写EGO供应商调研并进入供应商平台沟通",
+      "evidence_level": "conversation_confirmed",
+      "next_gate": "采集经理联系 / 真实项目规则"
+    },
+    {
+      "id": "maniformer",
+      "name": "觅蜂科技 / 觅蜂派",
+      "status": "application_submitted_waiting",
+      "priority": "P2",
+      "current_path": "已提交合作伙伴信息，尚无实质项目推进",
+      "evidence_level": "conversation_confirmed",
+      "next_gate": "正式商务政策和可执行项目"
+    },
+    {
+      "id": "jinglianwen",
+      "name": "景联文",
+      "status": "candidate",
+      "priority": "P2",
+      "current_path": "作为未来第二/第三上游候选",
+      "evidence_level": "public_research",
+      "next_gate": "第一轮交付后重新对接供应商合作"
+    }
+  ]
+}
