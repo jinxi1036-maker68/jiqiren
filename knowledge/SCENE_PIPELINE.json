@@ -1,0 +1,27 @@
+{
+  "schema_version": "scene_pipeline_v1",
+  "updated_at": "2026-10-09",
+  "target_before_training": {
+    "leads": 20,
+    "visits": 8,
+    "willing_to_continue": 3
+  },
+  "priority_categories": [
+    "汽修",
+    "仓储",
+    "商超",
+    "餐饮后厨",
+    "办公室",
+    "咖啡/饮品",
+    "健身房"
+  ],
+  "avoid_for_now": [
+    "学校/学生",
+    "医院",
+    "养老",
+    "私人住宅",
+    "涉密/高敏工厂"
+  ],
+  "scenes": [],
+  "note": "每发现一个真实场景就新增记录；不要把尚未沟通的行业类型当成已拥有场景。"
+}
