@@ -12,6 +12,15 @@
     "first_batch_devices": 10,
     "scale_after_trial": true
   },
+  "project_lead_mode": {
+    "enabled": true,
+    "rule": "ChatGPT主动做项目规划、提醒、表格、风险门禁、情报研究和知识库更新；Owner负责线下执行、关系沟通、最终批准和资金动作。",
+    "next_24h_focus": [
+      "建立15-20条场景线索并开始预约/拜访",
+      "建立12-15名成年候选采集员池",
+      "确定1名现场负责人并准备13号培训"
+    ]
+  },
   "confirmed_by_conversation": [
     "设备类型：EGO双目，用于真实场景，平台派发任务单并提供SOP。",
     "平台可先给10台试采，试采后再根据真实产能确定后续产量。",
@@ -66,8 +75,10 @@
     "不把口头40元/小时当作合同已确认。",
     "第一笔真实结算未验证前不贷款、重租场地或采购大批设备。"
   ],
-  "next_action": "从现在到13号，优先完成场景线索表、成人候选人员池和培训问题清单；拿到合同/任务单/SOP后立即做合同与利润复核。",
+  "next_action": "明天先用 SCENE_LEADS.csv 建场景清单并开始约访，同时建立 PEOPLE_CANDIDATES.csv；Owner只需回传原始沟通结果，ChatGPT负责结构化、更新和下一步规划。",
   "must_read": [
+    "knowledge/09_PROJECT_LEAD_OPERATING_SYSTEM.md",
+    "knowledge/PRE_TRAINING_ACTION_PLAN_2026-10-13.md",
     "knowledge/04_SCENE_STRATEGY.md",
     "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
     "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md"
@@ -75,6 +86,7 @@
   "on_demand": [
     "knowledge/ECONOMICS_MODEL.json",
     "knowledge/PARTNER_LEDGER.json",
-    "knowledge/EVIDENCE_INDEX.json"
+    "knowledge/EVIDENCE_INDEX.json",
+    "knowledge/12_INFORMATION_RADAR.md"
   ]
 }
