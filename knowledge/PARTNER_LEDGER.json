@@ -33,11 +33,25 @@
     {
       "id": "jinglianwen",
       "name": "景联文科技",
-      "status": "wechat_contact_added",
+      "status": "wechat_contact_added_due_diligence_publicly_supported",
       "priority": "P1",
-      "current_path": "已添加标注为「景联文科技」的微信联系人；对方发送「我是景联文科技」；尚未确认项目或供应商资格。",
+      "current_path": "公司主体、融资、全国供应商招募公开信息已有公开报道支持；用户已添加自称景联文的微信联系人，但合作方授权身份、具体订单、设备、价格、审核和结算尚未核实。",
       "evidence_level": "conversation_confirmed",
-      "next_gate": "询问当前对外EGO/具身采集供应商合作项目、场景要求、设备、试采、验收和结算规则；独立核实对接人公司身份。"
+      "next_gate": "从官方渠道核验微信对接人；明确当前河南平顶山供应商准入/实际任务、B级流程、试采设备及押金租金、有效小时审核、结算周期。",
+      "research_verified": {
+        "legal_entity": "杭州景联文科技有限公司",
+        "established": "2012-04-24",
+        "financing": "2026-07报道近亿元A轮融资",
+        "published_supplier_program": "2026-06起全国招募真实场景具身数据采集供应商；2026-07举办贵阳供应商大会；分S/A/B培养梯队",
+        "independently_observed": "新华财经报道大会数十家企业参加和超过300家供应商申请",
+        "official_planned_demand": "企业公开宣称首期超亿元采购计划和20万小时采集需求；不是我方已取得订单或独立核实回款",
+        "sources": [
+          "https://www.jinglianwen.com/newsInfo/1568.html",
+          "https://www.jinglianwen.com/newsInfo/1575.html",
+          "https://thinktank.cnfin.com/zfgl-lb/detail/20260712/4439069_1.html",
+          "https://app.xinhuanet.com/news/article.html?articleId=20260724f586361ab51f4c65a6e04dd93177b4f8"
+        ]
+      }
     }
   ]
 }
