@@ -12,7 +12,7 @@
     "target_training_date": "2026-10-13（左右；办公地点已明确，具体到访时间待确认）",
     "target_trial_start": "2026-10-15（目标日期，待任务单/设备/协议确认）"
   },
-  "long_term_goal": "从本地人员组织者升级为拥有场景、人员、质控、交付能力和多上游关系的区域具身智能数据供应团队。",
+  "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
     "10台小规模试采",
     "验证有效时长/通过率/成本/结算",
@@ -28,5 +28,12 @@
     "knowledge/PEOPLE_PIPELINE.json",
     "knowledge/ECONOMICS_MODEL.json",
     "knowledge/EVIDENCE_INDEX.json"
-  ]
+  ],
+  "owner_approved_strategic_choice": {
+    "decision_date": "2026-10-10",
+    "choice": "多场景资源 + 成熟管理与质控体系 + 多上游真实服务能力",
+    "rejected_as_north_star": "单纯扩至50人采集队伍、依赖一个上游按小时赚差价",
+    "priority": "战略方向确认；执行上仍先进行10台试采和首笔结算验证",
+    "adr_ref": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md"
+  }
 }
