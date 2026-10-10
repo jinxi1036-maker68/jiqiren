@@ -1,6 +1,6 @@
 {
   "schema_version": "evidence_index_v1",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-10",
   "evidence": [
     {
       "id": "EV-LS-001",
@@ -57,6 +57,23 @@
         "结算价格",
         "设备政策"
       ]
+    },
+    {
+      "id": "EV-LS-003",
+      "topic": "灵生现场培训地点",
+      "source_type": "user-provided WeChat group screenshot",
+      "date": "2026-10-10",
+      "status": "conversation_confirmed",
+      "proves": [
+        "对方已在群内发送北京办公地点：北京市海淀区锦秋大厦B座6层601",
+        "现场学习安排已进入落地准备阶段"
+      ],
+      "does_not_prove": [
+        "13号具体到访时间已最终确定",
+        "正式合同已签署",
+        "正式开工日已确定"
+      ],
+      "privacy_note": "知识库未保存联系人私人联系电话"
     }
   ]
 }
