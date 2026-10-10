@@ -33,11 +33,11 @@
     {
       "id": "jinglianwen",
       "name": "景联文科技",
-      "status": "supplier_registration_form_opened_not_submitted",
+      "status": "supplier_registration_form_in_progress_not_submitted",
       "priority": "P1",
-      "current_path": "用户已通过微信对接景联文并打开「供应商报名表」，截图显示供应商全称、所在地区、省市区、联系人、联系人职位等必填项；截至截图尚未完成提交或审核。",
+      "current_path": "用户正在填写景联文供应商报名表（截至此轮未有提交回执）。现阶段无用户提供的EGO正式交付案例；可据实说明线下招聘培训和场景开发能力，区分未来10人试采计划与当前已雇佣的全职采集/标注人数，后者待Owner确认。",
       "evidence_level": "conversation_confirmed",
-      "next_gate": "按营业执照填写项城市优益托育服务有限责任公司；核对地区字段要求（注册地址河南省周口市项城市 vs 采集运营地河南省平顶山市具体区）；联系人/职位如实填；查看后续能力、场景、设备、历史案例选项；提交后留存回执。",
+      "next_gate": "继续查看后续字段；如实填报实际业务和全职人数；提交后索取成功回执、供应商审核及试采标准。",
       "research_verified": {
         "legal_entity": "杭州景联文科技有限公司",
         "established": "2012-04-24",
@@ -51,7 +51,14 @@
           "https://thinktank.cnfin.com/zfgl-lb/detail/20260712/4439069_1.html",
           "https://app.xinhuanet.com/news/article.html?articleId=20260724f586361ab51f4c65a6e04dd93177b4f8"
         ]
-      }
+      },
+      "form_sections_seen": [
+        "公司/地区/联系人/职位",
+        "具身智能标注客户案例人数",
+        "常规标注/智驾/垂类客户案例人数",
+        "采集类客户案例人数",
+        "现有全职采集/标注人数"
+      ]
     }
   ]
 }
