@@ -33,11 +33,11 @@
     {
       "id": "jinglianwen",
       "name": "景联文科技",
-      "status": "supplier_registration_form_in_progress_not_submitted",
+      "status": "supplier_form_completed_submission_unverified",
       "priority": "P1",
-      "current_path": "用户正在填写景联文供应商报名表（截至此轮未有提交回执）。现阶段无用户提供的EGO正式交付案例；可据实说明线下招聘培训和场景开发能力，区分未来10人试采计划与当前已雇佣的全职采集/标注人数，后者待Owner确认。",
+      "current_path": "用户表示已将景联文供应商报名表全部填写完毕；截至当前没有单独的表单提交成功回执截图，尚不能断言系统已收到。景联文对接人要求先填表，后续有负责人联系。",
       "evidence_level": "conversation_confirmed",
-      "next_gate": "继续查看供应商报名表剩余选项；按实填报已有能力与计划能力，不能把计划试采说成已完成项目；提交后留成功回执。",
+      "next_gate": "核实表单是否成功提交；发微信告知已填写/已提交（按真实状态）；保留提交回执；等负责人联系后核实准入、首单、设备、审核及结算。",
       "research_verified": {
         "legal_entity": "杭州景联文科技有限公司",
         "established": "2012-04-24",
