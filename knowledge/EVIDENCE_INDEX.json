@@ -74,6 +74,23 @@
         "正式开工日已确定"
       ],
       "privacy_note": "知识库未保存联系人私人联系电话"
+    },
+    {
+      "id": "EV-JLW-001",
+      "topic": "景联文科技微信联系人已添加",
+      "source_type": "user-provided WeChat screenshot",
+      "date": "2026-10-10",
+      "status": "conversation_confirmed",
+      "proves": [
+        "已添加名为「景联文科技」的微信联系人",
+        "对方发送「我是景联文科技」自我介绍"
+      ],
+      "does_not_prove": [
+        "该联系人身份已通过公司官方渠道核实",
+        "已获正式供应商准入",
+        "已有具体任务",
+        "已确认价格、结算或设备条件"
+      ]
     }
   ]
 }
