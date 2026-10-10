@@ -1,6 +1,6 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-10",
   "partners": [
     {
       "id": "livsyn",
@@ -32,12 +32,12 @@
     },
     {
       "id": "jinglianwen",
-      "name": "景联文",
-      "status": "candidate",
-      "priority": "P2",
-      "current_path": "作为未来第二/第三上游候选",
-      "evidence_level": "public_research",
-      "next_gate": "第一轮交付后重新对接供应商合作"
+      "name": "景联文科技",
+      "status": "wechat_contact_added",
+      "priority": "P1",
+      "current_path": "已添加标注为「景联文科技」的微信联系人；对方发送「我是景联文科技」；尚未确认项目或供应商资格。",
+      "evidence_level": "conversation_confirmed",
+      "next_gate": "询问当前对外EGO/具身采集供应商合作项目、场景要求、设备、试采、验收和结算规则；独立核实对接人公司身份。"
     }
   ]
 }
