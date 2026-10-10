@@ -33,11 +33,11 @@
     {
       "id": "jinglianwen",
       "name": "景联文科技",
-      "status": "wechat_contact_added_due_diligence_publicly_supported",
+      "status": "supplier_registration_form_opened_not_submitted",
       "priority": "P1",
-      "current_path": "公司主体、融资、全国供应商招募公开信息已有公开报道支持；用户已添加自称景联文的微信联系人，但合作方授权身份、具体订单、设备、价格、审核和结算尚未核实。",
+      "current_path": "用户已通过微信对接景联文并打开「供应商报名表」，截图显示供应商全称、所在地区、省市区、联系人、联系人职位等必填项；截至截图尚未完成提交或审核。",
       "evidence_level": "conversation_confirmed",
-      "next_gate": "从官方渠道核验微信对接人；明确当前河南平顶山供应商准入/实际任务、B级流程、试采设备及押金租金、有效小时审核、结算周期。",
+      "next_gate": "按营业执照填写项城市优益托育服务有限责任公司；核对地区字段要求（注册地址河南省周口市项城市 vs 采集运营地河南省平顶山市具体区）；联系人/职位如实填；查看后续能力、场景、设备、历史案例选项；提交后留存回执。",
       "research_verified": {
         "legal_entity": "杭州景联文科技有限公司",
         "established": "2012-04-24",
