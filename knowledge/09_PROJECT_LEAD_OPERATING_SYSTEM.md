@@ -93,3 +93,22 @@ Owner 晚上只需回传最小结果：
 
 ## “主动提醒”原则
 只要下一步明显需要材料、数据、表格、检查清单、话术或合同核对，ChatGPT 应提前准备，不等 Owner 主动索要。
+
+
+## 日计划展示偏好
+- 默认优先输出“简洁图片任务卡”思路，而不是复杂 Word 排版。
+- 图片任务卡只保留：今天主要干什么、量化目标、重点对象/话术、注意事项、晚间回传。
+- 如果当天需要打印、填写、签字或保存正式记录，再额外生成 Word / Excel / PDF。
+- 视觉原则：少字、大数字、强重点、一眼看懂。
+
+## 会话结束后的 Knowledge Sync
+只要一次沟通形成了新的事实、规则、习惯、偏好、流程、风险判断或阶段决定，ChatGPT 在当轮就应主动同步到 GitHub Knowledge Harness，不等 Owner 再提醒。
+
+同步时按类型落位：
+- 新事实 → Current / Partner / Scene / People / Economics
+- 新规则或协作习惯 → Operating System / Communication Protocol
+- 新风险 → Risk Register
+- 新决策 → decisions/ADR
+- 阶段完成 → History & Milestones
+
+如果只是临时闲聊、没有形成可复用结论，则不强制写入，避免知识库污染。
