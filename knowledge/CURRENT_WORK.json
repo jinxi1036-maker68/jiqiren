@@ -6,7 +6,7 @@
   "context_profile": "pre_trial_preparation",
   "objective": "在不重投入、不虚报能力的前提下，为北京灵生科技首轮10台EGO双目设备试采做好人员、场景、培训、合同和数据记录准备，并用首轮真实数据决定后续产量。",
   "now": {
-    "date": "2026-10-10",
+    "date": "2026-10-11",
     "target_training": "2026-10-13左右",
     "target_trial_start": "2026-10-15左右",
     "first_batch_devices": 10,
@@ -41,7 +41,8 @@
     "设备损坏定义、正常磨损边界、运输责任。",
     "首个任务单具体场景、总小时、任务周期。",
     "15号是否为正式交付起始日。",
-    "13号培训具体到访时间仍待最终确认。"
+    "13号培训具体到访时间仍待最终确认。",
+    "核对任务数据成果、原始视频、标注、元数据和派生数据的权利归属及留存/转售限制；另核对是否允许保留内部合法的汇总产能和质检统计。"
   ],
   "work_before_training": [
     "建立15-20个场景线索，实际拜访5-8家，争取2-3家明确愿意配合。",
@@ -89,5 +90,11 @@
     "knowledge/PARTNER_LEDGER.json",
     "knowledge/EVIDENCE_INDEX.json",
     "knowledge/12_INFORMATION_RADAR.md"
-  ]
+  ],
+  "future_opportunity_proposed": {
+    "name": "自主授权训练数据资产与未来数据产品",
+    "status": "proposal_only_not_started",
+    "reference": "knowledge/20_OWN_DATA_ASSET_STRATEGY_PROPOSAL_2026-10-11.md",
+    "near_term_rule": "先积累合法内部运营数据，不自行复制客户委托视频或将客户数据私自二次销售；自采数据业务在首轮实际交付和授权方案验证后独立决策。"
+  }
 }
