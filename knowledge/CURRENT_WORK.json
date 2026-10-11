@@ -7,7 +7,7 @@
   "objective": "在不重投入、不虚报能力的前提下，为北京灵生科技首轮10台EGO双目设备试采做好人员、场景、培训、合同和数据记录准备，并用首轮真实数据决定后续产量。",
   "now": {
     "date": "2026-10-11",
-    "target_training": "2026-10-13左右",
+    "target_training": "2026-10-13（Owner本次计划日期，具体到访时间仍待最终确认）",
     "target_trial_start": "2026-10-15左右",
     "first_batch_devices": 10,
     "scale_after_trial": true
@@ -16,9 +16,9 @@
     "enabled": true,
     "rule": "ChatGPT主动做项目规划、提醒、表格、风险门禁、情报研究和知识库更新；Owner负责线下执行、关系沟通、最终批准和资金动作。",
     "next_24h_focus": [
-      "建立15-20条场景线索并开始预约/拜访",
-      "建立12-15名成年候选采集员池",
-      "确定1名现场负责人并准备13号培训"
+      "锁定13号具体到访时间与参训人员，复核既有地址，取得首单任务和正式条款资料",
+      "逐一核实10名成年候选的排班、薪酬和培训安排，补齐5人的联系渠道并补充候补",
+      "从9条场景线索中按首单任务争取落实2处主用、1处备用的授权、费用和容量，指定现场负责人"
     ]
   },
   "confirmed_by_conversation": [
@@ -45,11 +45,11 @@
     "核对任务数据成果、原始视频、标注、元数据和派生数据的权利归属及留存/转售限制；另核对是否允许保留内部合法的汇总产能和质检统计。"
   ],
   "work_before_training": [
-    "建立15-20个场景线索，实际拜访5-8家，争取2-3家明确愿意配合。",
-    "优先场景：汽修、仓储、商超、餐饮后厨、办公室、咖啡/饮品、健身房；学校和未成年人场景暂不做。",
-    "储备12-15名成年候选采集员，不提前承诺长期工资或开工规模。",
-    "确定1名现场负责人随Owner参加培训，后续负责二次培训和日常盯场。",
-    "准备电脑、场景清单、人员储备表、待确认问题清单。"
+    "继续完善9条场景线索，优先落实与首单匹配的场景授权、收费和同时采集容量；争取2处主用、1处备用（目标，尚未落实）。",
+    "逐一复核10名成年候选的上岗时段、工资口径和培训安排；补齐原表5人联系渠道，继续补充候补人员。",
+    "指定1名现场负责人，确认是否随Owner参加平台培训，区分平台培训和返程后的本地培训。",
+    "取得首单任务、SOP、协议资料和设备交付安排；按既有证据复核培训地址，并确认13号具体时刻。",
+    "准备电脑、充电器、脱敏场景资源概览、人员储备概览、待确认问题和10台试采安排；检查日报公式及缺失数据口径。"
   ],
   "training_acceptance": [
     "会正确佩戴、启动、充电、存储和维护设备。",
@@ -77,13 +77,14 @@
     "不把口头40元/小时当作合同已确认。",
     "第一笔真实结算未验证前不贷款、重租场地或采购大批设备。"
   ],
-  "next_action": "今天继续推进平顶山场景和成年候选人员储备；同时在出发前确认13号具体到访时间、培训安排和需要携带的设备/资料。",
+  "next_action": "优先确认13号具体到访时间、参训人员及首单资料；随后逐人核实10名候选并落实场景费用、授权和容量，不承诺尚未验证的10台产能。",
   "must_read": [
     "knowledge/09_PROJECT_LEAD_OPERATING_SYSTEM.md",
     "knowledge/PRE_TRAINING_ACTION_PLAN_2026-10-13.md",
     "knowledge/04_SCENE_STRATEGY.md",
     "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
-    "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md"
+    "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+    "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md"
   ],
   "on_demand": [
     "knowledge/ECONOMICS_MODEL.json",
@@ -104,5 +105,26 @@
       "已有数据买家或可行商业规格与成本"
     ],
     "near_term_rule": "现阶段不在灵生真实订单上自行增加第二台录像设备；保持10台试采、培训、合同、结算验证主线；可在完全独立授权的自有演示场地小规模研究技术可行性。"
+  },
+  "latest_workbook_review": {
+    "date": "2026-10-11",
+    "evidence_id": "EV-PDS-XLSX-20261011",
+    "report": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
+    "source": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx",
+    "reported_scene_leads": 9,
+    "reported_adult_candidates": 10,
+    "actual_trial_rows_recorded": 0,
+    "training_completion_records_present": 0,
+    "formal_terms_verification_records_present": 0,
+    "ten_device_readiness": "not_demonstrated_by_available_workbook",
+    "note": "缺记录不等于实际未完成；候选与意愿不能当作合格人员或正式授权，预填10台不能当作实际到位。"
+  },
+  "trial_validation_proposal": {
+    "status": "proposal_only_not_started",
+    "suggested_initial_devices": "2—3台",
+    "action": "与灵生协商小批样本完成采集、上传、审核反馈验证，再判断扩至10台；审核未返回时等待结果，不以预估代替实绩。",
+    "approved_by_partner": null,
+    "does_not_replace_first_batch_target": 10,
+    "note": "平台是否同意该验证数量尚未记录，null表示未知。"
   }
 }

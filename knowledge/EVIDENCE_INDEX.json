@@ -1,6 +1,6 @@
 {
   "schema_version": "evidence_index_v1",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-11",
   "evidence": [
     {
       "id": "EV-LS-001",
@@ -91,6 +91,44 @@
         "已有具体任务",
         "已确认价格、结算或设备条件"
       ]
+    },
+    {
+      "id": "EV-PDS-XLSX-20261011",
+      "topic": "平顶山场景、人员及试采准备Excel源数据",
+      "source_type": "owner_provided_xlsx",
+      "date": "2026-10-11",
+      "status": "pending",
+      "source_record_status": "user_recorded_unverified",
+      "source_file": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx",
+      "review_report": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
+      "file_integrity": {
+        "size_bytes": 21458,
+        "sha256": "92bdbaa694d5aafdd83f329006f0ce615c42204d58cf0fe5c759e6c16e0a2cf2",
+        "git_blob_sha": "9c04f6b6655615b27fb950e59266d2569b6fd30e"
+      },
+      "sheet_count": 5,
+      "sheets": [
+        "场景摸排",
+        "人员候选",
+        "13号培训清单",
+        "试采日报",
+        "合作条款核对"
+      ],
+      "proves": [
+        "用户原表列出9条场景线索和10名成年候选",
+        "9条场景均填写愿意沟通、允许采集和收费为是",
+        "培训清单的完成记录和正式条款核验记录为空",
+        "日报没有实际日期、采集小时或成本记录，只有10台预填值及公式"
+      ],
+      "does_not_prove": [
+        "9处全部实地走访或具体走访日期",
+        "正式场景授权、可同时采集人数、确定场景价格",
+        "10人已经参训、稳定上岗或通过试采",
+        "10台设备已经交付或已开始采集",
+        "正式合同已签、口头价格已写入合同",
+        "真实产能、通过率、盈利或结算到账"
+      ],
+      "privacy_note": "Owner本次明确要求上传该表格，原始附件完整保存于既有私有仓库；摘要和结构化台账不重复手机号、私人微信或住宅详细地址。本次原始附件保存不改变其他知识记录的隐私约定。"
     }
   ]
 }

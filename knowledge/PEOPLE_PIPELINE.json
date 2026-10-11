@@ -1,15 +1,15 @@
 {
   "schema_version": "people_pipeline_v1",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-11",
   "target_before_training": {
     "adult_candidates": 15,
     "first_trial_collectors": 10,
     "site_lead": 1
   },
   "current_confirmed_counts": {
-    "adult_candidates": null,
-    "trained_collectors": 0,
-    "site_leads": 0
+    "adult_candidates": 10,
+    "trained_collectors": null,
+    "site_leads": null
   },
   "hiring_principles": [
     "仅成年人",
@@ -18,5 +18,186 @@
     "前期不提前承诺50人规模",
     "正式任务确认后再锁定排班和薪酬"
   ],
-  "note": "仓库只存人数与角色，不保存候选人的手机号、身份证等个人信息。"
+  "note": "结构化台账只存内部编号、人数、角色及来源行号，不重复手机号或私人微信。原始Excel按Owner本次要求单独保存。随时可上岗不代表已确定排班、完成培训或通过试采。",
+  "counts_basis": "adult_candidates为用户原表明确填写的10名成年候选，尚未逐人复核；trained_collectors和site_leads原先0值缺乏本次填表证据，改为null表示无法确认，并非人数减少。",
+  "source_snapshot": {
+    "evidence_id": "EV-PDS-XLSX-20261011",
+    "source_file": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx",
+    "source_sheet": "人员候选",
+    "record_status": "user_recorded_unverified",
+    "review_report": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md"
+  },
+  "source_recorded_counts": {
+    "named_candidates": 10,
+    "adult_yes": 10,
+    "available_anytime": 10,
+    "contact_channels_present": 5,
+    "blank_template_slots": 5,
+    "training_attendance_answered": 0,
+    "assessment_or_trial_results_present": 0
+  },
+  "candidates": [
+    {
+      "id": "PDS-P01",
+      "source_row": 3,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": true,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P02",
+      "source_row": 4,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": true,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P03",
+      "source_row": 5,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": true,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P04",
+      "source_row": 6,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": true,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P05",
+      "source_row": 7,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": true,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P06",
+      "source_row": 8,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": false,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P07",
+      "source_row": 9,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": false,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P08",
+      "source_row": 10,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": false,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P09",
+      "source_row": 11,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": false,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    },
+    {
+      "id": "PDS-P10",
+      "source_row": 12,
+      "role": "candidate_collector",
+      "reported_adult": true,
+      "reported_availability": "随时",
+      "contact_channel_recorded": false,
+      "training_attendance": null,
+      "stable_availability": null,
+      "compensation_terms": null,
+      "trial_result": null,
+      "review_pass_rate": null,
+      "current_status": "pending",
+      "private_details_location": "knowledge/sources/2026-10-11/机器人数据采集_13号前准备工具包(1).xlsx"
+    }
+  ],
+  "cross_role_dependencies": [
+    {
+      "candidate_id": "PDS-P04",
+      "scene_id": "PDS-S02",
+      "source_rows": {
+        "people": 6,
+        "scene": 4
+      },
+      "basis": "两个工作表姓名及电话一致",
+      "action": "核实场景联络与采集排班的时间兼容性"
+    }
+  ]
 }

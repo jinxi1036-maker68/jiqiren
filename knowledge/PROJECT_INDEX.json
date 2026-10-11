@@ -4,13 +4,16 @@
   "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
   "authority_branch": "main",
   "current": {
-    "date": "2026-10-10",
+    "date": "2026-10-11",
     "phase": "PRE_TRIAL_PREPARATION",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
     "target_city": "河南平顶山",
-    "target_training_date": "2026-10-13（左右；办公地点已明确，具体到访时间待确认）",
-    "target_trial_start": "2026-10-15（目标日期，待任务单/设备/协议确认）"
+    "target_training_date": "2026-10-13（Owner本次计划；办公地点已有既有记录，具体到访时间待确认）",
+    "target_trial_start": "2026-10-15（目标日期，待任务单/设备/协议确认）",
+    "latest_readiness_review": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
+    "latest_evidence_id": "EV-PDS-XLSX-20261011",
+    "readiness": "已记录9条场景线索、10名成年候选；尚无足以确认10台全面试采条件的完整证据，阶段仍为试采准备。"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
