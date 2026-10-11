@@ -92,9 +92,17 @@
     "knowledge/12_INFORMATION_RADAR.md"
   ],
   "future_opportunity_proposed": {
-    "name": "自主授权训练数据资产与未来数据产品",
+    "name": "同一员工执行客户任务时，两套独立设备同步采两路数据（双机同场共采）",
     "status": "proposal_only_not_started",
+    "clarified_at": "2026-10-11",
     "reference": "knowledge/20_OWN_DATA_ASSET_STRATEGY_PROPOSAL_2026-10-11.md",
-    "near_term_rule": "先积累合法内部运营数据，不自行复制客户委托视频或将客户数据私自二次销售；自采数据业务在首轮实际交付和授权方案验证后独立决策。"
+    "operational_description": "客户设备A独立录制后按客户SOP交付；我方设备B独立同步录制，拟在合同允许、场景授权、个人信息合法处理及商业规格满足情况下建立我方可经营数据；不是复制留存客户设备A的采集文件。",
+    "critical_gates": [
+      "客户书面许可双设备同场及B路数据商业权利",
+      "场景方和相关人员合法授权及隐私保护",
+      "技术兼容客户SOP、无质量损害",
+      "已有数据买家或可行商业规格与成本"
+    ],
+    "near_term_rule": "现阶段不在灵生真实订单上自行增加第二台录像设备；保持10台试采、培训、合同、结算验证主线；可在完全独立授权的自有演示场地小规模研究技术可行性。"
   }
 }
