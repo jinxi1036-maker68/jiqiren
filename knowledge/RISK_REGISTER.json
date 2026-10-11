@@ -1,6 +1,6 @@
 {
   "schema_version": "risk_register_v1",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-11",
   "risks": [
     {
       "id": "R-001",
@@ -50,6 +50,16 @@
       "impact": "high",
       "trigger": "结算周期长于预期或扩设备过快",
       "mitigation": "首轮只做10台；确认结算周期；扩张前做现金流测算",
+      "status": "open"
+    },
+    {
+      "id": "R-006",
+      "category": "data_rights",
+      "title": "误以为代客户采集的训练数据可自行复制留存和二次销售",
+      "probability": "medium",
+      "impact": "critical",
+      "trigger": "合同未明确复用/转售权就想额外保留上游采集视频、动作数据或衍生信息",
+      "mitigation": "按合同/场地及个人信息授权区分自有运营数据、客户委托交付、独立自主采集；未经书面许可不留样不转售；后期考虑律师审阅许可",
       "status": "open"
     }
   ]
