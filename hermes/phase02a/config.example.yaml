@@ -1,0 +1,24 @@
+# Documentation template only. setup_profile.py writes local resolved values.
+# Never place credentials here or select this profile globally.
+model:
+  default: agnes-3.0-flash
+  provider: custom:Agnes.ai
+  base_url: <LOCAL_AUTHORIZED_MODEL_ENDPOINT>
+custom_providers:
+  - name: Agnes.ai
+    base_url: <LOCAL_AUTHORIZED_MODEL_ENDPOINT>
+    key_env: PHASE02_MODEL_KEY
+platform_toolsets:
+  cli: [demo_browser]
+mcp_servers:
+  demo_browser:
+    command: <EXISTING_NODE_EXECUTABLE>
+    args: [<BROWSER_BRIDGE_SCRIPT>, <PRIVATE_RUNTIME_JSON>]
+    enabled: true
+    trust: trusted
+cron:
+  enabled: false
+scheduler:
+  enabled: false
+voice:
+  auto_tts: false

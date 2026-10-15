@@ -1,0 +1,35 @@
+// Bounded MCP bridge. Hermes decides all navigation/snapshot/click calls.
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+const runtime=JSON.parse(await fs.readFile(process.argv[2],'utf8'));
+const req=createRequire(runtime.sdkPackage);
+const {Client}=req('@modelcontextprotocol/sdk/client/index.js');
+const {StdioClientTransport}=req('@modelcontextprotocol/sdk/client/stdio.js');
+const {Server}=req('@modelcontextprotocol/sdk/server/index.js');
+const {StdioServerTransport}=req('@modelcontextprotocol/sdk/server/stdio.js');
+const {ListToolsRequestSchema,CallToolRequestSchema}=req('@modelcontextprotocol/sdk/types.js');
+const allow=new Set(['browser_navigate','browser_snapshot','browser_click','browser_close']);
+const env={};
+for(const key of ['PATH','PATHEXT','SYSTEMROOT','WINDIR','COMSPEC','USERPROFILE','APPDATA','LOCALAPPDATA','TEMP','TMP'])if(process.env[key])env[key]=process.env[key];
+env.HERMES_HOME=runtime.profile;
+env.PHASE_DEMO_ORIGIN=runtime.origin;
+const transport=new StdioClientTransport({command:runtime.node,args:[runtime.mcpCli,'--isolated','--headless','--executable-path',runtime.browser,'--block-service-workers','--allowed-origins',runtime.origin,'--init-page',runtime.guard,'--output-dir',runtime.browserOutput,'--timeout-action','5000','--timeout-navigation','10000'],env,cwd:runtime.workspace,stderr:'pipe'});
+const client=new Client({name:'hermes-phase02a-bounded-browser',version:'1.0.0'});
+await client.connect(transport);
+transport.stderr?.on('data',()=>{});
+const tools=(await client.listTools()).tools.filter(t=>allow.has(t.name));
+const server=new Server({name:'phase02a-demo-browser',version:'1.0.0'},{capabilities:{tools:{}}});
+server.setRequestHandler(ListToolsRequestSchema,async()=>({tools}));
+server.setRequestHandler(CallToolRequestSchema,async request=>{
+ const {name,arguments:args={}}=request.params;
+ let result;
+ if(!allow.has(name))result={isError:true,content:[{type:'text',text:'Tool denied by local demo policy'}]};
+ else if(name==='browser_navigate'&&new URL(args.url).origin!==runtime.origin)result={isError:true,content:[{type:'text',text:'Only the exact loopback demo origin is allowed'}]};
+ else result=await client.callTool({name,arguments:args},undefined,{timeout:25000});
+ await fs.appendFile(runtime.trace,JSON.stringify({at:new Date().toISOString(),name,arguments:args,result})+'\n');
+ return result;
+});
+await server.connect(new StdioServerTransport());
+const close=async()=>{try{await client.close();await transport.close();}finally{process.exit(0);}};
+process.on('SIGTERM',close);process.on('SIGINT',close);process.stdin.on('end',close);
