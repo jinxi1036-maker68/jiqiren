@@ -330,7 +330,27 @@
       "平顶山首批试采场景及任务SOP方案_提交灵生审核_2026-10-15.xlsx",
       "平顶山首批三场景_今日采购搭建及明日试采执行表_2026-10-15.xlsx"
     ],
-    "attachment_note": "文件名是当前聊天生成材料的描述；未声称这些二进制文件已上传GitHub或已获甲方认可"
+    "attachment_note": "文件名是当前聊天生成材料的描述；未声称这些二进制文件已上传GitHub或已获甲方认可",
+    "partner_scene_approval_update": {
+      "date": "2026-10-15",
+      "source": "Owner最新对话明确称‘他那边已经确认咱们这个三个场景的采集’",
+      "evidence_level": "owner_reported_partner_confirmation",
+      "status": "three_scene_directions_confirmed_as_reported",
+      "task_specific_sop_validation": "not_independently_verified",
+      "note": "三个方向可推进采购搭建，不等于所有分区操作步骤与正式视频审核通过"
+    },
+    "offline_procurement_plan": {
+      "date": "2026-10-15",
+      "plan": "当天在平顶山线下采购，优先贸易广场、物资批发大市场、吴寨旧货批发市场；库存未实地核验",
+      "estimated_items": 21,
+      "estimated_material_budget_low_cny": 502,
+      "estimated_material_budget_high_cny": 1899,
+      "suggested_cash_cny": 1400,
+      "assumptions": "两张桌、稳定照明和部分用品可借则低成本；不含租金/人工/设备费及额外物流",
+      "chat_generated_file": "平顶山三场景_今日线下采购清单_2026-10-15.xlsx",
+      "file_in_github": false,
+      "materials_already_purchased": false
+    }
   },
   "mid_term_proposal": {
     "status": "owner_plan_not_partner_commitment",
