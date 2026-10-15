@@ -1,16 +1,53 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-10",
+  "updated_at": "2026-10-15",
   "partners": [
     {
       "id": "livsyn",
       "name": "北京灵生科技有限公司 / LivSyn",
-      "status": "active_trial_negotiation",
+      "status": "active_trial_preparation_sop_review",
       "priority": "P0",
-      "current_path": "10台试采 → 真实产能后定后续规模",
+      "current_path": "自建真实操作工位组织方式已获对接人认可 → 三个分区任务SOP提交审核 → 少量上传正式质检 → 依据实际有效产出再扩10台和更多人员",
       "evidence_level": "conversation_confirmed",
       "known_terms_ref": "knowledge/ECONOMICS_MODEL.json",
-      "next_gate": "正式合同/任务单/SOP + 培训 + 首轮试采"
+      "next_gate": "确认三项任务的具体SOP可验收、场景及操作流程报备、平台数据上传与审核反馈；书面确认试采租金和有效数据结算",
+      "scene_model_confirmation": {
+        "date": "2026-10-15",
+        "evidence_level": "conversation_confirmed",
+        "partner_contact": "吴启蒙（对接人）",
+        "explicitly_supported": [
+          "自建小型真实作业车间、使用真实工具与物料、按实际工序操作可以作为试采场景",
+          "不要求必须在正在经营的第三方工厂证明真实性",
+          "采集员不必是原厂员工；自行招聘并经师傅培训、真正在操作也可",
+          "可考虑租用闲置或停产但保留设备道具的工厂场地，邀请原熟练师傅教授操作",
+          "高频弯腰、低头、动作幅度大的作业通常不适合采集，容易双手出画"
+        ],
+        "qualification": "对方认可组织方式，具体场景分类、每条任务SOP、样本视频、审核有效小时尚未批准或验证"
+      },
+      "current_task_design_request": {
+        "source": "吴启蒙工作群消息",
+        "evidence_level": "conversation_confirmed",
+        "format": [
+          "所有场景分区",
+          "每个分区能做哪些具体任务",
+          "每项任务的任务目标",
+          "关键动作",
+          "任务SOP"
+        ],
+        "deadline": "开拍前提交具体任务方案",
+        "status": "我方已准备三分区拟议方案；对方是否收到及审批结果未核实"
+      },
+      "economics_negotiation_status": {
+        "rent_deposit_comment": "吴启蒙表示“押金租金都不是我们想要的”，强调更看重数据；不是明确免租承诺",
+        "trial_rent_waiver": "pending_written_confirmation",
+        "trial_accepted_data_payment": "pending_contract_or_written_confirmation",
+        "earlier_owner_report": "李总此前曾口头表示试采期间无设备租金且有效数据付费；应以签署合同/本次书面具体确认核实"
+      },
+      "scale_message": {
+        "partner_group_message": "杜振成提出“月底前增加到一百人”",
+        "nature": "上游提出的激励/目标，尚不能判断玩笑或正式要求",
+        "owner_commitment": "无100人承诺；初期集中试采质量与现金回款"
+      }
     },
     {
       "id": "taoding",
