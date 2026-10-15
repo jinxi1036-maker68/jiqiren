@@ -4,16 +4,19 @@
   "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
   "authority_branch": "main",
   "current": {
-    "date": "2026-10-11",
+    "date": "2026-10-15",
     "phase": "PRE_TRIAL_PREPARATION",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
     "target_city": "河南平顶山",
-    "target_training_date": "2026-10-13（Owner本次计划；办公地点已有既有记录，具体到访时间待确认）",
-    "target_trial_start": "2026-10-15（目标日期，待任务单/设备/协议确认）",
+    "target_training_date": "2026-10-13赴北京的培训与沟通已发生（Owner转述）；具体签到/证件仍以现场记录为准",
+    "target_trial_start": "2026-10-16（Owner目标：首轮样本；正式可结算采集尚待具体任务SOP与上传质检路径确认）",
     "latest_readiness_review": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
     "latest_evidence_id": "EV-PDS-XLSX-20261011",
-    "readiness": "已记录9条场景线索、10名成年候选；尚无足以确认10台全面试采条件的完整证据，阶段仍为试采准备。"
+    "readiness": "已取得灵生对自建小型真实作业车间及自有受训采集员的微信/飞书沟通认可；选定线边仓补货、空容器回收、外观质检三项拟议任务，正按场景分区+任务目标+关键动作+任务SOP提交审核。尚无样本验收、有效小时及首笔结算证据；设备到位数未核实。",
+    "latest_operational_update": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+    "latest_partner_decision": "对方业务联系人认可自建真实工位组织方式；不等于具体SOP、所有场景或正式验收一概批准",
+    "expansion_boundary": "杜振成在群中建议月底达100人；Owner明确不承诺，先验证有效数据与结算；20-30人仅为交流中的争取方向，不是达成产能或签约计划"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
