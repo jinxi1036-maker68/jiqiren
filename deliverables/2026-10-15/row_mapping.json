@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "mainRow": 8,
+    "mainCol": 5,
+    "shopRow": 6,
+    "shopCol": 2
+  },
+  {
+    "id": 2,
+    "mainRow": 9,
+    "mainCol": 5,
+    "shopRow": 7,
+    "shopCol": 2
+  },
+  {
+    "id": 3,
+    "mainRow": 10,
+    "mainCol": 5,
+    "shopRow": 8,
+    "shopCol": 2
+  },
+  {
+    "id": 4,
+    "mainRow": 11,
+    "mainCol": 5,
+    "shopRow": 9,
+    "shopCol": 2
+  },
+  {
+    "id": 5,
+    "mainRow": 12,
+    "mainCol": 5,
+    "shopRow": 10,
+    "shopCol": 2
+  },
+  {
+    "id": 6,
+    "mainRow": 13,
+    "mainCol": 5,
+    "shopRow": 12,
+    "shopCol": 2
+  },
+  {
+    "id": 7,
+    "mainRow": 14,
+    "mainCol": 5,
+    "shopRow": 13,
+    "shopCol": 2
+  },
+  {
+    "id": 8,
+    "mainRow": 15,
+    "mainCol": 5,
+    "shopRow": 14,
+    "shopCol": 2
+  },
+  {
+    "id": 9,
+    "mainRow": 16,
+    "mainCol": 5,
+    "shopRow": 16,
+    "shopCol": 2
+  },
+  {
+    "id": 10,
+    "mainRow": 17,
+    "mainCol": 5,
+    "shopRow": 17,
+    "shopCol": 2
+  },
+  {
+    "id": 11,
+    "mainRow": 18,
+    "mainCol": 5,
+    "shopRow": 18,
+    "shopCol": 2
+  },
+  {
+    "id": 12,
+    "mainRow": 19,
+    "mainCol": 5,
+    "shopRow": 20,
+    "shopCol": 2
+  },
+  {
+    "id": 13,
+    "mainRow": 20,
+    "mainCol": 5,
+    "shopRow": 21,
+    "shopCol": 2
+  },
+  {
+    "id": 14,
+    "mainRow": 21,
+    "mainCol": 5,
+    "shopRow": 22,
+    "shopCol": 2
+  },
+  {
+    "id": 15,
+    "mainRow": 22,
+    "mainCol": 5,
+    "shopRow": 23,
+    "shopCol": 2
+  },
+  {
+    "id": 16,
+    "mainRow": 23,
+    "mainCol": 5,
+    "shopRow": 24,
+    "shopCol": 2
+  },
+  {
+    "id": 17,
+    "mainRow": 24,
+    "mainCol": 5,
+    "shopRow": 25,
+    "shopCol": 2
+  },
+  {
+    "id": 18,
+    "mainRow": 25,
+    "mainCol": 5,
+    "shopRow": 26,
+    "shopCol": 2
+  },
+  {
+    "id": 19,
+    "mainRow": 26,
+    "mainCol": 5,
+    "shopRow": 27,
+    "shopCol": 2
+  },
+  {
+    "id": 20,
+    "mainRow": 27,
+    "mainCol": 5,
+    "shopRow": 28,
+    "shopCol": 2
+  },
+  {
+    "id": 21,
+    "mainRow": 28,
+    "mainCol": 5,
+    "shopRow": 29,
+    "shopCol": 2
+  }
+]

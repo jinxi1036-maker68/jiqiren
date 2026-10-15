@@ -1,0 +1,867 @@
+{
+  "status": "PASS",
+  "data_rows": 21,
+  "fields_compared_per_row": 11,
+  "budget_cny": {
+    "low": 502,
+    "high": 1899
+  },
+  "media_files": 42,
+  "unique_images": 21,
+  "zero_byte_images": 0,
+  "min_media_bytes": 39053,
+  "max_media_bytes": 226302,
+  "all_images_decode": true,
+  "main_sheet_pictures": 21,
+  "shop_sheet_pictures": 21,
+  "anchors_checked": 42,
+  "external_relationships": 0,
+  "isolated_directory_decode": "PASS",
+  "workbook_sha256": "34775dd8d9f0f4a8c9284ea69158181de4dd4185aae96a16c0f8c7350b17a14e",
+  "data_checks": [
+    {
+      "id": 1,
+      "name": "轻型金属货架",
+      "source_fields_checked": 11,
+      "main_row": 8,
+      "shop_row": 6,
+      "result": "PASS"
+    },
+    {
+      "id": 2,
+      "name": "浅口塑料周转筐",
+      "source_fields_checked": 11,
+      "main_row": 9,
+      "shop_row": 7,
+      "result": "PASS"
+    },
+    {
+      "id": 3,
+      "name": "浅口分格托盘",
+      "source_fields_checked": 11,
+      "main_row": 10,
+      "shop_row": 8,
+      "result": "PASS"
+    },
+    {
+      "id": 4,
+      "name": "无品牌同类小件（三种）",
+      "source_fields_checked": 11,
+      "main_row": 11,
+      "shop_row": 9,
+      "result": "PASS"
+    },
+    {
+      "id": 5,
+      "name": "货架小挡条或防滑片",
+      "source_fields_checked": 11,
+      "main_row": 12,
+      "shop_row": 10,
+      "result": "PASS"
+    },
+    {
+      "id": 6,
+      "name": "同规格可稳叠的空周转箱",
+      "source_fields_checked": 11,
+      "main_row": 13,
+      "shop_row": 12,
+      "result": "PASS"
+    },
+    {
+      "id": 7,
+      "name": "小型托盘或周转底板",
+      "source_fields_checked": 11,
+      "main_row": 14,
+      "shop_row": 13,
+      "result": "PASS"
+    },
+    {
+      "id": 8,
+      "name": "稳固抬高平台",
+      "source_fields_checked": 11,
+      "main_row": 15,
+      "shop_row": 14,
+      "result": "PASS"
+    },
+    {
+      "id": 9,
+      "name": "可目视质检的无标识实物样件",
+      "source_fields_checked": 11,
+      "main_row": 16,
+      "shop_row": 16,
+      "result": "PASS"
+    },
+    {
+      "id": 10,
+      "name": "浅口检验盘",
+      "source_fields_checked": 11,
+      "main_row": 17,
+      "shop_row": 17,
+      "result": "PASS"
+    },
+    {
+      "id": 11,
+      "name": "纯色小圆点标记贴",
+      "source_fields_checked": 11,
+      "main_row": 18,
+      "shop_row": 18,
+      "result": "PASS"
+    },
+    {
+      "id": 12,
+      "name": "稳固操作桌",
+      "source_fields_checked": 11,
+      "main_row": 19,
+      "shop_row": 20,
+      "result": "PASS"
+    },
+    {
+      "id": 13,
+      "name": "不反光防滑桌面垫",
+      "source_fields_checked": 11,
+      "main_row": 20,
+      "shop_row": 21,
+      "result": "PASS"
+    },
+    {
+      "id": 14,
+      "name": "纯色地面定位胶带",
+      "source_fields_checked": 11,
+      "main_row": 21,
+      "shop_row": 22,
+      "result": "PASS"
+    },
+    {
+      "id": 15,
+      "name": "无明显频闪的稳定照明灯",
+      "source_fields_checked": 11,
+      "main_row": 22,
+      "shop_row": 23,
+      "result": "PASS"
+    },
+    {
+      "id": 16,
+      "name": "正规插排",
+      "source_fields_checked": 11,
+      "main_row": 23,
+      "shop_row": 24,
+      "result": "PASS"
+    },
+    {
+      "id": 17,
+      "name": "哑光纯色背景布",
+      "source_fields_checked": 11,
+      "main_row": 24,
+      "shop_row": 25,
+      "result": "PASS"
+    },
+    {
+      "id": 18,
+      "name": "镜头布和清洁布",
+      "source_fields_checked": 11,
+      "main_row": 25,
+      "shop_row": 26,
+      "result": "PASS"
+    },
+    {
+      "id": 19,
+      "name": "场外登记本和笔",
+      "source_fields_checked": 11,
+      "main_row": 26,
+      "shop_row": 27,
+      "result": "PASS"
+    },
+    {
+      "id": 20,
+      "name": "备用收纳小筐",
+      "source_fields_checked": 11,
+      "main_row": 27,
+      "shop_row": 28,
+      "result": "PASS"
+    },
+    {
+      "id": 21,
+      "name": "扎带和理线用品",
+      "source_fields_checked": 11,
+      "main_row": 28,
+      "shop_row": 29,
+      "result": "PASS"
+    }
+  ],
+  "media": [
+    {
+      "path": "xl/media/image.png",
+      "bytes": 226302,
+      "width": 620,
+      "height": 430,
+      "sha256": "918f47359d29be2f1de3c86fee410f277c153586b23cfa33967fe2c56c206c7c",
+      "id": 1
+    },
+    {
+      "path": "xl/media/image2.png",
+      "bytes": 160769,
+      "width": 620,
+      "height": 430,
+      "sha256": "2beebcb27c720a811991388e781c39242bc543e34c837992c74c72f9b1d5da8f",
+      "id": 2
+    },
+    {
+      "path": "xl/media/image3.png",
+      "bytes": 70159,
+      "width": 620,
+      "height": 430,
+      "sha256": "0c2361466f9634493d45be70792f5f323db9624f1999abd382eae58291c496e9",
+      "id": 3
+    },
+    {
+      "path": "xl/media/image4.png",
+      "bytes": 121388,
+      "width": 620,
+      "height": 430,
+      "sha256": "43577d3928449bad21160bb2f740a9391c156c8520ea98be4e54374239aaf913",
+      "id": 4
+    },
+    {
+      "path": "xl/media/image5.png",
+      "bytes": 69503,
+      "width": 620,
+      "height": 430,
+      "sha256": "e72735a1dfb03d66ba018137752fad52372cc8a02e29b7393412d9bff59b31fd",
+      "id": 5
+    },
+    {
+      "path": "xl/media/image6.png",
+      "bytes": 121499,
+      "width": 620,
+      "height": 430,
+      "sha256": "fe7e0c12f1a127354ae01b6055caf92d70859211fe810f57746c28dc6ce1c6e2",
+      "id": 6
+    },
+    {
+      "path": "xl/media/image7.png",
+      "bytes": 162836,
+      "width": 620,
+      "height": 430,
+      "sha256": "92052a05ec50777794887cc50c4b0edf25c0ed66af3d4228499d364aaca17a0f",
+      "id": 7
+    },
+    {
+      "path": "xl/media/image8.png",
+      "bytes": 72756,
+      "width": 620,
+      "height": 430,
+      "sha256": "4e151e75e9c8f87bd7abb95f247a1bc2cba4c35b46ba5b74cd9200001893b32c",
+      "id": 8
+    },
+    {
+      "path": "xl/media/image9.png",
+      "bytes": 116503,
+      "width": 620,
+      "height": 430,
+      "sha256": "e3fd28098cb4be52a635fc326aec222fec0c0c0e0d3d1b84d9993ca05560227b",
+      "id": 9
+    },
+    {
+      "path": "xl/media/image10.png",
+      "bytes": 39053,
+      "width": 620,
+      "height": 430,
+      "sha256": "cc6310a5e44fade6de8c5ac9d6d33d9840e68c749babbb82ac8cc62b60b1f61d",
+      "id": 10
+    },
+    {
+      "path": "xl/media/image11.png",
+      "bytes": 199391,
+      "width": 620,
+      "height": 430,
+      "sha256": "afc8a344ae0bbe976ba9e4d8350f9b041837a8e1d7172a9cdfd6cc18d2faca48",
+      "id": 11
+    },
+    {
+      "path": "xl/media/image12.png",
+      "bytes": 83746,
+      "width": 620,
+      "height": 430,
+      "sha256": "322d43af7a77fdf8f3abf78f882d8d6f9e98b2c67f17c1a3a3912e8094bc0e7b",
+      "id": 12
+    },
+    {
+      "path": "xl/media/image13.png",
+      "bytes": 127198,
+      "width": 620,
+      "height": 430,
+      "sha256": "207488c0d06b6faa943cb64dde1784ea8a98416c551417baf676037823bfd00c",
+      "id": 13
+    },
+    {
+      "path": "xl/media/image14.png",
+      "bytes": 103186,
+      "width": 620,
+      "height": 430,
+      "sha256": "153e934aa0d48d8875cd058fc4aa6923ed4abaa4c363c80da9e9ad2f043c3e85",
+      "id": 14
+    },
+    {
+      "path": "xl/media/image15.png",
+      "bytes": 111762,
+      "width": 620,
+      "height": 430,
+      "sha256": "c4949d7fa6d84cd194980e0e0d9d9686249385ad119270e493c5118ac8560618",
+      "id": 15
+    },
+    {
+      "path": "xl/media/image16.png",
+      "bytes": 133079,
+      "width": 620,
+      "height": 430,
+      "sha256": "6e27b242cbe95fd78d9c5db8d6d674981a0d96bce250b8fbc211fa3fc85700e2",
+      "id": 16
+    },
+    {
+      "path": "xl/media/image17.png",
+      "bytes": 140091,
+      "width": 620,
+      "height": 430,
+      "sha256": "feac0ac994af25631f21a3559c3f37f1b8f305b7edf7cc87bdf5a691b50d36fa",
+      "id": 17
+    },
+    {
+      "path": "xl/media/image18.png",
+      "bytes": 192552,
+      "width": 620,
+      "height": 430,
+      "sha256": "aac46fc7b6e3fb67e1ce0c8f9c8729a3cad7414d32a3b082a2c758cafd3286c4",
+      "id": 18
+    },
+    {
+      "path": "xl/media/image19.png",
+      "bytes": 102473,
+      "width": 620,
+      "height": 430,
+      "sha256": "12baf07e22200687b9e779af3332d0f12a14bcc5571d29c7c343be02c882f04d",
+      "id": 19
+    },
+    {
+      "path": "xl/media/image20.png",
+      "bytes": 161491,
+      "width": 620,
+      "height": 430,
+      "sha256": "7f870a91e0c152e133b44b3e1b7b654a376800cf0f9836e811989981ba716a7d",
+      "id": 20
+    },
+    {
+      "path": "xl/media/image21.png",
+      "bytes": 115771,
+      "width": 620,
+      "height": 430,
+      "sha256": "5ecf8869efe89de1bb942cbb6df48f24cc4cc940ba72472483bb4a20b8e61241",
+      "id": 21
+    },
+    {
+      "path": "xl/media/image22.png",
+      "bytes": 226302,
+      "width": 620,
+      "height": 430,
+      "sha256": "918f47359d29be2f1de3c86fee410f277c153586b23cfa33967fe2c56c206c7c",
+      "id": 1
+    },
+    {
+      "path": "xl/media/image23.png",
+      "bytes": 160769,
+      "width": 620,
+      "height": 430,
+      "sha256": "2beebcb27c720a811991388e781c39242bc543e34c837992c74c72f9b1d5da8f",
+      "id": 2
+    },
+    {
+      "path": "xl/media/image24.png",
+      "bytes": 70159,
+      "width": 620,
+      "height": 430,
+      "sha256": "0c2361466f9634493d45be70792f5f323db9624f1999abd382eae58291c496e9",
+      "id": 3
+    },
+    {
+      "path": "xl/media/image25.png",
+      "bytes": 121388,
+      "width": 620,
+      "height": 430,
+      "sha256": "43577d3928449bad21160bb2f740a9391c156c8520ea98be4e54374239aaf913",
+      "id": 4
+    },
+    {
+      "path": "xl/media/image26.png",
+      "bytes": 69503,
+      "width": 620,
+      "height": 430,
+      "sha256": "e72735a1dfb03d66ba018137752fad52372cc8a02e29b7393412d9bff59b31fd",
+      "id": 5
+    },
+    {
+      "path": "xl/media/image27.png",
+      "bytes": 121499,
+      "width": 620,
+      "height": 430,
+      "sha256": "fe7e0c12f1a127354ae01b6055caf92d70859211fe810f57746c28dc6ce1c6e2",
+      "id": 6
+    },
+    {
+      "path": "xl/media/image28.png",
+      "bytes": 162836,
+      "width": 620,
+      "height": 430,
+      "sha256": "92052a05ec50777794887cc50c4b0edf25c0ed66af3d4228499d364aaca17a0f",
+      "id": 7
+    },
+    {
+      "path": "xl/media/image29.png",
+      "bytes": 72756,
+      "width": 620,
+      "height": 430,
+      "sha256": "4e151e75e9c8f87bd7abb95f247a1bc2cba4c35b46ba5b74cd9200001893b32c",
+      "id": 8
+    },
+    {
+      "path": "xl/media/image30.png",
+      "bytes": 116503,
+      "width": 620,
+      "height": 430,
+      "sha256": "e3fd28098cb4be52a635fc326aec222fec0c0c0e0d3d1b84d9993ca05560227b",
+      "id": 9
+    },
+    {
+      "path": "xl/media/image31.png",
+      "bytes": 39053,
+      "width": 620,
+      "height": 430,
+      "sha256": "cc6310a5e44fade6de8c5ac9d6d33d9840e68c749babbb82ac8cc62b60b1f61d",
+      "id": 10
+    },
+    {
+      "path": "xl/media/image32.png",
+      "bytes": 199391,
+      "width": 620,
+      "height": 430,
+      "sha256": "afc8a344ae0bbe976ba9e4d8350f9b041837a8e1d7172a9cdfd6cc18d2faca48",
+      "id": 11
+    },
+    {
+      "path": "xl/media/image33.png",
+      "bytes": 83746,
+      "width": 620,
+      "height": 430,
+      "sha256": "322d43af7a77fdf8f3abf78f882d8d6f9e98b2c67f17c1a3a3912e8094bc0e7b",
+      "id": 12
+    },
+    {
+      "path": "xl/media/image34.png",
+      "bytes": 127198,
+      "width": 620,
+      "height": 430,
+      "sha256": "207488c0d06b6faa943cb64dde1784ea8a98416c551417baf676037823bfd00c",
+      "id": 13
+    },
+    {
+      "path": "xl/media/image35.png",
+      "bytes": 103186,
+      "width": 620,
+      "height": 430,
+      "sha256": "153e934aa0d48d8875cd058fc4aa6923ed4abaa4c363c80da9e9ad2f043c3e85",
+      "id": 14
+    },
+    {
+      "path": "xl/media/image36.png",
+      "bytes": 111762,
+      "width": 620,
+      "height": 430,
+      "sha256": "c4949d7fa6d84cd194980e0e0d9d9686249385ad119270e493c5118ac8560618",
+      "id": 15
+    },
+    {
+      "path": "xl/media/image37.png",
+      "bytes": 133079,
+      "width": 620,
+      "height": 430,
+      "sha256": "6e27b242cbe95fd78d9c5db8d6d674981a0d96bce250b8fbc211fa3fc85700e2",
+      "id": 16
+    },
+    {
+      "path": "xl/media/image38.png",
+      "bytes": 140091,
+      "width": 620,
+      "height": 430,
+      "sha256": "feac0ac994af25631f21a3559c3f37f1b8f305b7edf7cc87bdf5a691b50d36fa",
+      "id": 17
+    },
+    {
+      "path": "xl/media/image39.png",
+      "bytes": 192552,
+      "width": 620,
+      "height": 430,
+      "sha256": "aac46fc7b6e3fb67e1ce0c8f9c8729a3cad7414d32a3b082a2c758cafd3286c4",
+      "id": 18
+    },
+    {
+      "path": "xl/media/image40.png",
+      "bytes": 102473,
+      "width": 620,
+      "height": 430,
+      "sha256": "12baf07e22200687b9e779af3332d0f12a14bcc5571d29c7c343be02c882f04d",
+      "id": 19
+    },
+    {
+      "path": "xl/media/image41.png",
+      "bytes": 161491,
+      "width": 620,
+      "height": 430,
+      "sha256": "7f870a91e0c152e133b44b3e1b7b654a376800cf0f9836e811989981ba716a7d",
+      "id": 20
+    },
+    {
+      "path": "xl/media/image42.png",
+      "bytes": 115771,
+      "width": 620,
+      "height": 430,
+      "sha256": "5ecf8869efe89de1bb942cbb6df48f24cc4cc940ba72472483bb4a20b8e61241",
+      "id": 21
+    }
+  ],
+  "anchors": [
+    {
+      "sheet": "完整采购表",
+      "id": 1,
+      "row": 8,
+      "column": 5,
+      "media": "xl/media/image.png",
+      "sha256": "918f47359d29be2f1de3c86fee410f277c153586b23cfa33967fe2c56c206c7c"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 2,
+      "row": 9,
+      "column": 5,
+      "media": "xl/media/image2.png",
+      "sha256": "2beebcb27c720a811991388e781c39242bc543e34c837992c74c72f9b1d5da8f"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 3,
+      "row": 10,
+      "column": 5,
+      "media": "xl/media/image3.png",
+      "sha256": "0c2361466f9634493d45be70792f5f323db9624f1999abd382eae58291c496e9"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 4,
+      "row": 11,
+      "column": 5,
+      "media": "xl/media/image4.png",
+      "sha256": "43577d3928449bad21160bb2f740a9391c156c8520ea98be4e54374239aaf913"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 5,
+      "row": 12,
+      "column": 5,
+      "media": "xl/media/image5.png",
+      "sha256": "e72735a1dfb03d66ba018137752fad52372cc8a02e29b7393412d9bff59b31fd"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 6,
+      "row": 13,
+      "column": 5,
+      "media": "xl/media/image6.png",
+      "sha256": "fe7e0c12f1a127354ae01b6055caf92d70859211fe810f57746c28dc6ce1c6e2"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 7,
+      "row": 14,
+      "column": 5,
+      "media": "xl/media/image7.png",
+      "sha256": "92052a05ec50777794887cc50c4b0edf25c0ed66af3d4228499d364aaca17a0f"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 8,
+      "row": 15,
+      "column": 5,
+      "media": "xl/media/image8.png",
+      "sha256": "4e151e75e9c8f87bd7abb95f247a1bc2cba4c35b46ba5b74cd9200001893b32c"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 9,
+      "row": 16,
+      "column": 5,
+      "media": "xl/media/image9.png",
+      "sha256": "e3fd28098cb4be52a635fc326aec222fec0c0c0e0d3d1b84d9993ca05560227b"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 10,
+      "row": 17,
+      "column": 5,
+      "media": "xl/media/image10.png",
+      "sha256": "cc6310a5e44fade6de8c5ac9d6d33d9840e68c749babbb82ac8cc62b60b1f61d"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 11,
+      "row": 18,
+      "column": 5,
+      "media": "xl/media/image11.png",
+      "sha256": "afc8a344ae0bbe976ba9e4d8350f9b041837a8e1d7172a9cdfd6cc18d2faca48"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 12,
+      "row": 19,
+      "column": 5,
+      "media": "xl/media/image12.png",
+      "sha256": "322d43af7a77fdf8f3abf78f882d8d6f9e98b2c67f17c1a3a3912e8094bc0e7b"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 13,
+      "row": 20,
+      "column": 5,
+      "media": "xl/media/image13.png",
+      "sha256": "207488c0d06b6faa943cb64dde1784ea8a98416c551417baf676037823bfd00c"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 14,
+      "row": 21,
+      "column": 5,
+      "media": "xl/media/image14.png",
+      "sha256": "153e934aa0d48d8875cd058fc4aa6923ed4abaa4c363c80da9e9ad2f043c3e85"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 15,
+      "row": 22,
+      "column": 5,
+      "media": "xl/media/image15.png",
+      "sha256": "c4949d7fa6d84cd194980e0e0d9d9686249385ad119270e493c5118ac8560618"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 16,
+      "row": 23,
+      "column": 5,
+      "media": "xl/media/image16.png",
+      "sha256": "6e27b242cbe95fd78d9c5db8d6d674981a0d96bce250b8fbc211fa3fc85700e2"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 17,
+      "row": 24,
+      "column": 5,
+      "media": "xl/media/image17.png",
+      "sha256": "feac0ac994af25631f21a3559c3f37f1b8f305b7edf7cc87bdf5a691b50d36fa"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 18,
+      "row": 25,
+      "column": 5,
+      "media": "xl/media/image18.png",
+      "sha256": "aac46fc7b6e3fb67e1ce0c8f9c8729a3cad7414d32a3b082a2c758cafd3286c4"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 19,
+      "row": 26,
+      "column": 5,
+      "media": "xl/media/image19.png",
+      "sha256": "12baf07e22200687b9e779af3332d0f12a14bcc5571d29c7c343be02c882f04d"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 20,
+      "row": 27,
+      "column": 5,
+      "media": "xl/media/image20.png",
+      "sha256": "7f870a91e0c152e133b44b3e1b7b654a376800cf0f9836e811989981ba716a7d"
+    },
+    {
+      "sheet": "完整采购表",
+      "id": 21,
+      "row": 28,
+      "column": 5,
+      "media": "xl/media/image21.png",
+      "sha256": "5ecf8869efe89de1bb942cbb6df48f24cc4cc940ba72472483bb4a20b8e61241"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 1,
+      "row": 6,
+      "column": 2,
+      "media": "xl/media/image22.png",
+      "sha256": "918f47359d29be2f1de3c86fee410f277c153586b23cfa33967fe2c56c206c7c"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 2,
+      "row": 7,
+      "column": 2,
+      "media": "xl/media/image23.png",
+      "sha256": "2beebcb27c720a811991388e781c39242bc543e34c837992c74c72f9b1d5da8f"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 3,
+      "row": 8,
+      "column": 2,
+      "media": "xl/media/image24.png",
+      "sha256": "0c2361466f9634493d45be70792f5f323db9624f1999abd382eae58291c496e9"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 4,
+      "row": 9,
+      "column": 2,
+      "media": "xl/media/image25.png",
+      "sha256": "43577d3928449bad21160bb2f740a9391c156c8520ea98be4e54374239aaf913"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 5,
+      "row": 10,
+      "column": 2,
+      "media": "xl/media/image26.png",
+      "sha256": "e72735a1dfb03d66ba018137752fad52372cc8a02e29b7393412d9bff59b31fd"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 6,
+      "row": 12,
+      "column": 2,
+      "media": "xl/media/image27.png",
+      "sha256": "fe7e0c12f1a127354ae01b6055caf92d70859211fe810f57746c28dc6ce1c6e2"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 7,
+      "row": 13,
+      "column": 2,
+      "media": "xl/media/image28.png",
+      "sha256": "92052a05ec50777794887cc50c4b0edf25c0ed66af3d4228499d364aaca17a0f"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 8,
+      "row": 14,
+      "column": 2,
+      "media": "xl/media/image29.png",
+      "sha256": "4e151e75e9c8f87bd7abb95f247a1bc2cba4c35b46ba5b74cd9200001893b32c"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 9,
+      "row": 16,
+      "column": 2,
+      "media": "xl/media/image30.png",
+      "sha256": "e3fd28098cb4be52a635fc326aec222fec0c0c0e0d3d1b84d9993ca05560227b"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 10,
+      "row": 17,
+      "column": 2,
+      "media": "xl/media/image31.png",
+      "sha256": "cc6310a5e44fade6de8c5ac9d6d33d9840e68c749babbb82ac8cc62b60b1f61d"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 11,
+      "row": 18,
+      "column": 2,
+      "media": "xl/media/image32.png",
+      "sha256": "afc8a344ae0bbe976ba9e4d8350f9b041837a8e1d7172a9cdfd6cc18d2faca48"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 12,
+      "row": 20,
+      "column": 2,
+      "media": "xl/media/image33.png",
+      "sha256": "322d43af7a77fdf8f3abf78f882d8d6f9e98b2c67f17c1a3a3912e8094bc0e7b"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 13,
+      "row": 21,
+      "column": 2,
+      "media": "xl/media/image34.png",
+      "sha256": "207488c0d06b6faa943cb64dde1784ea8a98416c551417baf676037823bfd00c"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 14,
+      "row": 22,
+      "column": 2,
+      "media": "xl/media/image35.png",
+      "sha256": "153e934aa0d48d8875cd058fc4aa6923ed4abaa4c363c80da9e9ad2f043c3e85"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 15,
+      "row": 23,
+      "column": 2,
+      "media": "xl/media/image36.png",
+      "sha256": "c4949d7fa6d84cd194980e0e0d9d9686249385ad119270e493c5118ac8560618"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 16,
+      "row": 24,
+      "column": 2,
+      "media": "xl/media/image37.png",
+      "sha256": "6e27b242cbe95fd78d9c5db8d6d674981a0d96bce250b8fbc211fa3fc85700e2"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 17,
+      "row": 25,
+      "column": 2,
+      "media": "xl/media/image38.png",
+      "sha256": "feac0ac994af25631f21a3559c3f37f1b8f305b7edf7cc87bdf5a691b50d36fa"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 18,
+      "row": 26,
+      "column": 2,
+      "media": "xl/media/image39.png",
+      "sha256": "aac46fc7b6e3fb67e1ce0c8f9c8729a3cad7414d32a3b082a2c758cafd3286c4"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 19,
+      "row": 27,
+      "column": 2,
+      "media": "xl/media/image40.png",
+      "sha256": "12baf07e22200687b9e779af3332d0f12a14bcc5571d29c7c343be02c882f04d"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 20,
+      "row": 28,
+      "column": 2,
+      "media": "xl/media/image41.png",
+      "sha256": "7f870a91e0c152e133b44b3e1b7b654a376800cf0f9836e811989981ba716a7d"
+    },
+    {
+      "sheet": "看图采购",
+      "id": 21,
+      "row": 29,
+      "column": 2,
+      "media": "xl/media/image42.png",
+      "sha256": "5ecf8869efe89de1bb942cbb6df48f24cc4cc940ba72472483bb4a20b8e61241"
+    }
+  ]
+}
