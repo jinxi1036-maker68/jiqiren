@@ -35,7 +35,9 @@ def run(runtime_path,case):
     from hermes_cli.runtime_provider import resolve_runtime_provider
     from hermes_cli.mcp_startup import ensure_mcp_discovery_before_agent_build
     from hermes_state import SessionDB
+    from hermes_constants import get_hermes_home
     from run_agent import AIAgent
+    if get_hermes_home().resolve()!=profile:raise RuntimeError('Installed Hermes resolved an unexpected home; refusing model call')
     cfg=load_config();model=cfg['model']['default']
     provider=resolve_runtime_provider(requested=cfg['model']['provider'],target_model=model)
     ensure_mcp_discovery_before_agent_build(logger=logging.getLogger(__name__),single_query=True)
@@ -44,9 +46,13 @@ def run(runtime_path,case):
         agent=AIAgent(api_key=provider.get('api_key'),base_url=provider.get('base_url'),provider=provider.get('provider'),requested_provider=provider.get('requested_provider'),api_mode=provider.get('api_mode'),model=model,enabled_toolsets=['demo_browser'],max_iterations=16,run_budget_seconds=240,quiet_mode=True,platform='cli',session_db=db,skip_background_review=True)
         names=[t['function']['name'] for t in agent.tools]
         if not names or any(not n.startswith('mcp_demo_browser_') for n in names):raise RuntimeError('Unexpected tool access; refusing model call: '+str(names))
+        built_prompt=agent._build_system_prompt()
+        identity_loaded='你是 Hermes，Owner 的专职数采运营助手' in built_prompt
+        baseline_loaded='DEMO-001 待审' in built_prompt
+        if not identity_loaded or not baseline_loaded:raise RuntimeError('New profile identity/memory did not load; refusing model call')
         prompt=(Path(runtime['prompt_dir'])/(case+'.txt')).read_text(encoding='utf-8')
         result=agent.run_conversation(prompt)
-        payload={'case':case,'home_is_isolated':os.environ['HERMES_HOME']==str(profile),'tool_names':names,'final_response':result.get('final_response'),'failed':result.get('failed',False),'session_id':agent.session_id,'messages':getattr(agent,'_session_messages',[]),'api_calls':result.get('api_calls')}
+        payload={'case':case,'home_is_isolated':os.environ['HERMES_HOME']==str(profile),'identity_loaded_before_model_call':identity_loaded,'synthetic_memory_loaded_before_model_call':baseline_loaded,'tool_names':names,'final_response':result.get('final_response'),'failed':result.get('failed',False),'session_id':agent.session_id,'messages':getattr(agent,'_session_messages',[]),'api_calls':result.get('api_calls')}
         (Path(runtime['results'])/(case+'.json')).write_text(json.dumps(payload,ensure_ascii=False,indent=2,default=str),encoding='utf-8')
         print(json.dumps({'case':case,'failed':payload['failed'],'response_present':bool(payload['final_response']),'api_calls':payload['api_calls']},ensure_ascii=False))
     finally:

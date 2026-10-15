@@ -11,6 +11,8 @@ from dotenv import dotenv_values
 def setup(private):
     summary=json.loads((private/'backup_summary.json').read_text())
     if not summary.get('restore_verified'):raise RuntimeError('Gate 0 restore must pass first')
+    supplement=json.loads((private/'source-supplement/backup_summary.json').read_text())
+    if not supplement.get('restore_verified'):raise RuntimeError('Source supplement restore must pass first')
     code=Path(__file__).resolve().parent;private=private.resolve()
     source=Path.home()/'AppData/Local/hermes/hermes-agent'
     root=private/'runtime-local';workspace=root/'workspace';workspace.mkdir(parents=True,exist_ok=False)

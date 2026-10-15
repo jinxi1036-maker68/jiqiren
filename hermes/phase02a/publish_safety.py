@@ -6,8 +6,8 @@ from dotenv import dotenv_values
 
 def secret_values():
     root=Path.home()/'.hermes';found=set()
-    for v in dotenv_values(root/'.env').values():
-        if isinstance(v,str) and len(v)>=8:found.add(v)
+    for k,v in dotenv_values(root/'.env').items():
+        if re.search(r'(?i)key|token|secret|password|credential|cookie|auth',k) and isinstance(v,str) and len(v)>=8:found.add(v)
     def walk(v):
         if isinstance(v,dict):
             for k,x in v.items():
@@ -28,7 +28,7 @@ def scan(folder):
             findings.append({'file':f.relative_to(folder).as_posix(),'reason':'prohibited artifact type/path'});continue
         value=f.read_text(encoding='utf-8')
         if any(s in value for s in known) or forbidden.search(value):findings.append({'file':f.relative_to(folder).as_posix(),'reason':'known local secret, token pattern, or full local user path'})
-    return {'passed':not findings,'files_scanned':count,'known_secret_values_checked_without_disclosure':len(known),'findings':findings,'limits':'Known local .env/config values and token/path patterns; not a proof against every possible sensitive string. Publication is additionally an explicit allowlist of synthetic evidence, code and redacted docs.'}
+    return {'passed':not findings,'files_scanned':count,'known_secret_values_checked_without_disclosure':len(known),'findings':findings,'limits':'Credential-like fields from local .env/config and token/path patterns; non-secret policy enums are not treated as keys. Not a proof against every possible sensitive string. Publication is additionally an explicit allowlist of synthetic evidence, code and redacted docs.'}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('folder',type=Path);a=p.parse_args();r=scan(a.folder);print(json.dumps(r,ensure_ascii=False));raise SystemExit(0 if r['passed'] else 1)

@@ -5,6 +5,7 @@ The encryption key is wrapped for the current Windows account, not portable DR.
 """
 from pathlib import Path
 import argparse, base64, ctypes, datetime, gzip, hashlib, io, json, os, shutil, sqlite3, struct, tarfile, time
+from concurrent.futures import ThreadPoolExecutor,as_completed
 from ctypes import wintypes
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
@@ -104,10 +105,11 @@ def build(plan_path, private):
     (private/'backup_summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
     print(json.dumps({'event':'backup_completed',**summary}),flush=True)
 
-def verify(private):
+def verify(private,resume_extracted=False):
     archive=private/'hermes-state.hbak.enc';restore=private/'restore_verification'
-    if restore.exists():raise FileExistsError('Refusing to reuse restoration directory')
-    restore.mkdir();start=time.monotonic();expected=None;count=0
+    if restore.exists() and not resume_extracted:raise FileExistsError('Refusing to reuse restoration directory without explicit verification-only resume')
+    if resume_extracted and not restore.exists():raise FileNotFoundError('No existing extraction to verify')
+    restore.mkdir(exist_ok=resume_extracted);start=time.monotonic();expected=None;count=0
     with archive.open('rb') as source:
         if source.read(len(MAGIC))!=MAGIC:raise ValueError('Wrong archive format')
         length=struct.unpack('>I',source.read(4))[0];header_bytes=source.read(length);header=json.loads(header_bytes)
@@ -120,22 +122,31 @@ def verify(private):
                 if not entry.isfile():continue
                 data=tar.extractfile(entry)
                 if entry.name=='__backup_manifest__.json':expected=json.load(data);continue
-                dest=safe_destination(restore,entry.name);dest.parent.mkdir(parents=True,exist_ok=True)
-                with dest.open('xb') as f:shutil.copyfileobj(data,f,4*1024*1024)
+                dest=safe_destination(restore,entry.name)
+                if not resume_extracted:
+                    dest.parent.mkdir(parents=True,exist_ok=True)
+                    with dest.open('xb') as f:shutil.copyfileobj(data,f,4*1024*1024)
                 count+=1
-                if count%500==0:print(json.dumps({'event':'restore_progress','files_restored':count}),flush=True)
+                if count%500==0:print(json.dumps({'event':'archive_verification_progress' if resume_extracted else 'restore_progress','archive_entries_checked' if resume_extracted else 'files_restored':count}),flush=True)
         reader.authenticate()
     if not expected or count!=len(expected['files']):raise ValueError('Restoration manifest/count mismatch')
     databases=[]
-    for i,row in enumerate(expected['files']):
+    def check_file(row):
         f=safe_destination(restore,row['path'])
         if f.stat().st_size!=row['bytes'] or sha(f)!=row['sha256']:raise ValueError('Restored file hash mismatch')
         if row['sqlite_consistent_snapshot']:
             conn=sqlite3.connect(f.as_uri()+'?mode=ro&immutable=1',uri=True)
+            conn.execute('PRAGMA cache_size=-131072')
+            conn.execute('PRAGMA mmap_size=268435456')
             result=[x[0] for x in conn.execute('PRAGMA integrity_check')]
             if result!=['ok']:raise ValueError('Restored SQLite integrity check failed')
-            conn.close();databases.append({'scope':row['path'].split('/')[0],'integrity':'ok'})
-        if (i+1)%1000==0:print(json.dumps({'event':'verify_progress','files_verified':i+1}),flush=True)
+            conn.close();return True
+        return False
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures=[pool.submit(check_file,row) for row in expected['files']]
+        for i,future in enumerate(as_completed(futures),1):
+            if future.result():databases.append({'integrity':'ok'})
+            if i%1000==0:print(json.dumps({'event':'verify_progress','files_verified':i}),flush=True)
     # Verify an altered tag on this actual archive, without changing its bytes.
     bad_tag=tag[:-1]+bytes([tag[-1]^1]);bad=Cipher(algorithms.AES(key),modes.GCM(nonce,bad_tag)).decryptor()
     bad.authenticate_additional_data(header_bytes)
@@ -147,12 +158,12 @@ def verify(private):
     except InvalidTag:tamper_rejected=True
     else:raise ValueError('Actual archive tag corruption was not rejected')
     summary=json.loads((private/'backup_summary.json').read_text())
-    summary.update({'restore_verified':True,'restored_files_hash_verified':count,'restored_sqlite_integrity_ok':len(databases),'authenticated_decryption_verified':True,'tamper_negative_test_rejected':tamper_rejected,'restored_agent_started':False,'restored_jobs_executed':False,'restore_elapsed_seconds':round(time.monotonic()-start),'recovery_limit':'Requires same Windows DPAPI user context; not an independently portable disaster recovery archive.'})
+    summary.update({'restore_verified':True,'restored_files_hash_verified':count,'restored_sqlite_integrity_ok':len(databases),'authenticated_decryption_verified':True,'tamper_negative_test_rejected':tamper_rejected,'restored_agent_started':False,'restored_jobs_executed':False,'verification_workers':8,'resume_extracted_verification_only':resume_extracted,'restore_elapsed_seconds':round(time.monotonic()-start),'recovery_limit':'Requires same Windows DPAPI user context; not an independently portable disaster recovery archive.'})
     (private/'backup_summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
     print(json.dumps({'event':'restore_verified',**summary}),flush=True)
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['build','verify']);ap.add_argument('--private',type=Path,required=True);ap.add_argument('--plan',type=Path);a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['build','verify']);ap.add_argument('--private',type=Path,required=True);ap.add_argument('--plan',type=Path);ap.add_argument('--resume-extracted',action='store_true');a=ap.parse_args()
     a.private.mkdir(parents=True,exist_ok=True)
     if a.action=='build':build(a.plan,a.private)
-    else:verify(a.private)
+    else:verify(a.private,a.resume_extracted)

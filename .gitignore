@@ -2,6 +2,9 @@
 .env*
 !*.env.example
 **/auth.json
+**/auth.*
+**/auth/**
+**/token*
 **/*token*.json
 **/*cookie*
 **/credentials*
@@ -17,6 +20,11 @@
 **/user-data-dir/**
 **/private/**
 **/runtime-local/**
+**/.hermes/**
+**/browser-output/**
+**/mcp-trace.jsonl
+**/*_stdout.txt
+**/*_stderr.txt
 **/restore_verification/**
 **/sqlite_snapshots/**
 *.hbak.enc
