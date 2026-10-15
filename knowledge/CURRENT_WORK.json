@@ -120,5 +120,16 @@
     "按照吴启蒙要求提交三分区SOP；确认文件对外文风正式、通俗易懂，不掺内部问题/采购计划。",
     "优先完成空容器回收低风险场景样本；线边仓补货和外观质检待原任务全部环节确认。",
     "所有任务以首批质检实际结果为证据，不以‘可以搭建’代替‘会通过验收’。"
-  ]
+  ],
+  "codex_procurement_photo_task": {
+    "date": "2026-10-15",
+    "status": "task_written_in_repo_issue_created_codex_not_launched",
+    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/1",
+    "instruction_path": "knowledge/tasks/CODEX_2026-10-15_21项线下采购表_插入真实图片.md",
+    "authoritative_source": "knowledge/tasks/data/2026-10-15_平顶山三场景线下采购_21项原始数据.csv",
+    "target": "Excel 21种物品逐项内嵌可离线显示的真实照片、手机看图线下采购",
+    "previous_defect": "2026-10-15聊天生成的图片版Excel被检查出42个xl/media图片对象全为0字节，用户实际看不到图片",
+    "completion_gate": "Codex实际交付并通过21项一一对应、非空图片资源、图片位置、离线显示和预览验证",
+    "blocked_by": "需用户在Codex端选取该GitHub仓库并启动Issue任务；目前没有连接的Codex运行调用工具"
+  }
 }
