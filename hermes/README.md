@@ -30,7 +30,11 @@
 
 ## 当前阶段
 
-**PHASE 01：已完成本机盘点和隔离浏览器演示测试，等待Owner与ChatGPT复核。** 已提交脱敏报告和待批准变更建议；未进入第二阶段、未清理记忆、未登录灵生后台、未新增自动运行任务。审计发现原配置存在1字节未归因变化，详见报告的完整性限制。
+**PHASE 02A：独立数采身份及Hermes本人模拟浏览器能力基线已完成，等待Owner与ChatGPT验收。** Phase 01 PR #4已合并；配置内容变化已定位为自动朗读开→关，历史写入者仍未知。本轮已完成本地加密恢复校验，最终3次独立Hermes会话正确识别虚拟QA变化、无新增与503失败。临时模型凭据已撤下；尚未登录灵生或开启正式任务/自动派单。故障归因措辞仍需约束，详见报告。
+
+- [Phase 02A实测报告](reports/PHASE_02A_SPECIALIZED_AGENT_BASELINE.md)
+- [Phase 02A代码与运行说明](phase02a/RUNBOOK.md)
+- [最终Hermes对话与工具证据](evidence/phase02a/AGENT_RUNS.json)
 
 - [第一阶段执行任务](tasks/PHASE_01_LOCAL_AUDIT.md)
 - [第一阶段实测报告](reports/PHASE_01_LOCAL_AUDIT_REPORT.md)

@@ -1,0 +1,94 @@
+{
+  "checked_at_utc": "2026-10-15T16:56:09.884248+00:00",
+  "phase01_pr_merged_commit": "f0de11e3f26f141600d651f315253d7d9969cab0",
+  "main_backup": {
+    "archive_created": true,
+    "file_count": 14349,
+    "plaintext_bytes": 2895452448,
+    "sqlite_snapshots": 129,
+    "scope_counts": {
+      "active_home": 11401,
+      "platform_home": 577,
+      "legacy_browser_debug": 886,
+      "legacy_browser_check": 1418,
+      "desktop_preferences": 67
+    },
+    "encrypted_bytes": 1251855668,
+    "key_wrap": "Windows DPAPI current user",
+    "original_data_overwritten": false,
+    "restore_verified": true,
+    "elapsed_seconds": 286,
+    "restored_files_hash_verified": 14349,
+    "restored_sqlite_integrity_ok": 129,
+    "authenticated_decryption_verified": true,
+    "tamper_negative_test_rejected": true,
+    "restored_agent_started": false,
+    "restored_jobs_executed": false,
+    "verification_workers": 8,
+    "resume_extracted_verification_only": true,
+    "restore_elapsed_seconds": 138,
+    "recovery_limit": "Requires same Windows DPAPI user context; not an independently portable disaster recovery archive."
+  },
+  "source_supplement": {
+    "archive_created": true,
+    "file_count": 32,
+    "plaintext_bytes": 145137,
+    "sqlite_snapshots": 0,
+    "scope_counts": {
+      "installation_custom": 31,
+      "installation_metadata": 1
+    },
+    "encrypted_bytes": 43275,
+    "key_wrap": "Windows DPAPI current user",
+    "original_data_overwritten": false,
+    "restore_verified": true,
+    "elapsed_seconds": 1,
+    "restored_files_hash_verified": 32,
+    "restored_sqlite_integrity_ok": 0,
+    "authenticated_decryption_verified": true,
+    "tamper_negative_test_rejected": true,
+    "restored_agent_started": false,
+    "restored_jobs_executed": false,
+    "restore_elapsed_seconds": 0,
+    "recovery_limit": "Requires same Windows DPAPI user context; not an independently portable disaster recovery archive.",
+    "verification_workers": 8,
+    "resume_extracted_verification_only": true
+  },
+  "drift": {
+    "baseline_sha256": "a22351cd8b964eaac8db75d220c9f8a01b9af1ea0ea9802d4e8a99bc44b8423b",
+    "baseline_bytes": 49709,
+    "current_sha256": "d9a6fd4cf0c87cf6cd6d4c118138e19fad2af7d6c668c510acdfeafb0979c0f9",
+    "current_bytes": 49710,
+    "current_mtime_utc": "2026-10-15T15:27:51.842468+00:00",
+    "exact_baseline_backup_found": true,
+    "yaml_valid": true,
+    "parsed_differences": [
+      {
+        "path": "/voice/auto_tts",
+        "before": true,
+        "after": false
+      }
+    ],
+    "net_byte_delta": 1,
+    "writer_attribution": "Unknown: no historical per-process write event trace. Desktop voice preferences source can write this field, which is not proof of who wrote it.",
+    "original_config_restored_or_rewritten": false
+  },
+  "original_files": {
+    "files_compared": 1433,
+    "unchanged": true,
+    "changed_count": 0,
+    "changed_categories": []
+  },
+  "private_acl": {
+    "inheritance_disabled": true,
+    "full_control_current_user_and_system_only": true
+  },
+  "original_roots": [
+    "<USER_HOME>/.hermes",
+    "<LOCALAPPDATA>/hermes",
+    "<USER_HOME>/.hermes-chrome-debug",
+    "<USER_HOME>/.HermesBrowserCheck",
+    "<APPDATA>/Hermes"
+  ],
+  "boundary": "per-file/per-SQLite restoration verification; no restored Agent/jobs/login run; no cross-machine DPAPI or LevelDB runtime guarantee"
+}

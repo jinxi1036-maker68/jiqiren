@@ -135,18 +135,24 @@
   "parallel_development_track": {
     "id": "HERMES-DIGITAL-EMPLOYEE-PHASE-01",
     "created_at": "2026-10-15",
-    "status": "phase_01_audit_completed_reviewed_phase_02a_issue_prepared",
+    "status": "phase_02a_baseline_completed_pending_owner_chatgpt_review",
     "purpose": "在既有业务知识库旁同步建设Hermes数字员工开发档案；由Codex在本地盘点并训练Hermes，不预设灵生后台菜单及用户操作习惯",
     "entry": "hermes/README.md",
     "phase_one_task": "hermes/tasks/PHASE_01_LOCAL_AUDIT.md",
-    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/3",
-    "current_limits": "只建立仓库文档与Issue；尚未扫描本地Hermes、未删除记忆、未登录灵生后台，未开发自动派单",
-    "next_gate": "Owner merges PR #4 after review; Codex starts issue #5 only within safe gates; Owner authorizes any local profile/config changes and future backend read-only login",
+    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/5",
+    "phase_01_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/3",
+    "current_phase": "PHASE_02A",
+    "current_limits": "已完成本地备份恢复验证、独立data-ops身份和Hermes本人模拟浏览器实测；未登录灵生真实后台，未创建正式任务或自动派单。临时模型凭据已撤下。",
+    "next_gate": "Owner与ChatGPT审查Phase 02A报告及PR；通过后Owner在本机登录并明确授权只读后台学习。",
     "scope_note": "该并行技术工作不替换原有唯一业务主工作项WI-2026-10-livsyn-first-trial-prep",
     "phase_01_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
-    "phase_01_review": "2026-10-15 ChatGPT reviewed report, code and demo results; accepted the audit scope with open config drift; PR not merged",
-    "phase_01_verified_basis": "Hermes 0.20.4 Windows; existing Playwright MCP independent synthetic demo 9/9; original CDP failed; config.yaml 1-byte unexplained concurrent change; no actual LingSyn access",
+    "phase_01_review": "2026-10-15审查通过；PR #4已于本轮合并，main合并提交f0de11e3f26f141600d651f315253d7d9969cab0",
+    "phase_01_verified_basis": "原生Windows Hermes 0.20.4；配置净增1字节已定位仅voice.auto_tts true→false，历史写入者仍未知；原CDP未修复；没有访问真实灵生。",
     "phase_02a_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/5",
-    "phase_02a_scope": "review config drift, backup/restore, build isolated job profile, verify Hermes Agent autonomously operates synthetic browser page; no production login or operations"
+    "phase_02a_scope": "review config drift, backup/restore, build isolated job profile, verify Hermes Agent autonomously operates synthetic browser page; no production login or operations",
+    "phase_02a_report": "hermes/reports/PHASE_02A_SPECIALIZED_AGENT_BASELINE.md",
+    "phase_02a_verified_at": "2026-10-16",
+    "phase_02a_verified_basis": "主包14,349文件/129 SQLite一致快照恢复校验通过；补充包32项通过；最终3次独立Hermes会话正确识别QA变化、无新增和503失败；原选定1,433项文件一致。",
+    "phase_02a_remaining": "需约束503故障归因措辞；桌面身份入口、真实页面/字段地图、跨日基线、去重及可靠汇报尚未验收。"
   }
 }
