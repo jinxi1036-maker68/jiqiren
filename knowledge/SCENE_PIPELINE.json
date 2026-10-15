@@ -1,6 +1,6 @@
 {
   "schema_version": "scene_pipeline_v1",
-  "updated_at": "2026-10-11",
+  "updated_at": "2026-10-15",
   "target_before_training": {
     "leads": 20,
     "visits": 8,
@@ -271,5 +271,69 @@
     "backup_scene_target": 1,
     "status": "assumption",
     "selection_rule": "按灵生实际首单任务选择；若覆盖整理、收纳、清洁，可优先核实办公室、健身房、酒店公共区。目标尚未落实。"
+  },
+  "current_strategy": "优先自建受控的真实物料操作场景以统一管理员工和EGO设备；以后规模化再考虑通过当地政府、园区、企业对接闲置工厂。原9条第三方场景只是线索，不代表授权或近期主线。",
+  "controlled_workspace_trial": {
+    "id": "PDS-CONTROLLED-TRIAL-20261015",
+    "status": "proposal_sop_prepared_pending_partner_approval",
+    "proposed_space": "一个小型真实物料作业区，划分三处操作工位，按真实流程用真实道具操作；不冒称正在正常营业的工厂",
+    "space_ready": null,
+    "materials_purchased": null,
+    "devices_on_hand": null,
+    "workers_trained": null,
+    "first_upload": null,
+    "first_qa_result": null,
+    "sections": [
+      {
+        "zone": "A",
+        "name": "线边物料货架区",
+        "proposed_task": "线边仓补货",
+        "source": "平顶山可承接场景清单.xlsx，第17行",
+        "task_goal": "依据对方任务方向，核对物料、货架补货与排面整理；包括台账更新",
+        "draft_actions": "从浅筐取物料→按外形/颜色放入固定货位→整理摆放→按对方确认方法更新台账",
+        "pending": "台账更新涉及读文字/电子设备限制，须明确合格流程"
+      },
+      {
+        "zone": "B",
+        "name": "空箱及周转器具回收区",
+        "proposed_task": "空容器回收",
+        "source": "平顶山可承接场景清单.xlsx，第18行",
+        "task_goal": "空箱抓取、托盘堆叠、周转回收、区域归位",
+        "draft_actions": "取空箱→调整朝向→堆叠至固定托盘/平台→回收归位",
+        "pending": "‘托盘堆叠’的实际对象和动作及合适高度需甲方认可"
+      },
+      {
+        "zone": "C",
+        "name": "产品外观检查区",
+        "proposed_task": "外观质检",
+        "source": "平顶山可承接场景清单.xlsx，第12行",
+        "task_goal": "外观扫描检查、缺陷识别、瑕疵标注、结果上报",
+        "draft_actions": "取检验样件→查看多个表面→区分已有真实可见缺陷→按对方认可的方法标记并上报→归类",
+        "pending": "产品扫描/缺陷标注/结果上报具体定义和样本的真实性边界待确认"
+      }
+    ],
+    "vendor_required_submission": [
+      "场景所有分区",
+      "分区对应全部任务",
+      "每个任务的任务目标",
+      "关键动作",
+      "任务SOP"
+    ],
+    "vendor_received_approved": null,
+    "submission_style": "给吴启蒙正式审核的表格：简洁自然中文，不夹杂内部采购讨论与‘我们问吴总’口气",
+    "first_trial_intent": "先按认可的具体SOP用1-2台录制少量0.5-5分钟的完整样本，平台质检认可再扩；该数量是我方建议，尚未得到订单批准",
+    "source_files": [
+      "平顶山可承接场景清单.xlsx",
+      "灵生Ego数据采集规范与验收标准-2026年10月.docx"
+    ],
+    "generated_chat_attachment_names": [
+      "平顶山首批试采场景及任务SOP方案_提交灵生审核_2026-10-15.xlsx",
+      "平顶山首批三场景_今日采购搭建及明日试采执行表_2026-10-15.xlsx"
+    ],
+    "attachment_note": "文件名是当前聊天生成材料的描述；未声称这些二进制文件已上传GitHub或已获甲方认可"
+  },
+  "mid_term_proposal": {
+    "status": "owner_plan_not_partner_commitment",
+    "approach": "试采规模化、产能与结算跑通后，再找当地政府、园区、企业对接闲置厂房/现成工位；政府支持未取得"
   }
 }
