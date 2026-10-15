@@ -1,6 +1,6 @@
 {
   "schema_version": "economics_model_v1",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-15",
   "partner": "北京灵生科技有限公司 / LivSyn",
   "terms": [
     {
@@ -71,5 +71,24 @@
     }
   ],
   "trial_formula": "贡献毛利 = 有效小时×40 - 设备数×计租天数×20 - 人工 - 场景 - 管理质检 - 交通网络 - 税费 - 返工损耗",
-  "cash_flow_note": "押金可退但占用现金；10台押金=10000元。首轮真实回款前不把押金视为无风险资金。"
+  "cash_flow_note": "押金可退但占用现金；10台押金=10000元。首轮真实回款前不把押金视为无风险资金。",
+  "trial_fee_open_items": {
+    "previous_owner_report": "Owner转述李总先前口头承诺试采期不收设备租金，审核有效数据正常结算；仍需核合同与具体生效起止。",
+    "latest_partner_wording": "吴启蒙表示押金租金并不是平台最想要的，首要目标是多产数据。",
+    "trial_rent_waived": "pending_explicit_yes_no_and_dates",
+    "trial_approved_data_payable": "pending_explicit_confirmation",
+    "normal_rent_reference": "此前沟通为20元/台/天，具体起租以双方最终正式书面条款为准",
+    "required_confirmation": [
+      "免租是否明确",
+      "免租从何时至何时及审核返工期",
+      "合格试采数据按什么标准正常结算",
+      "设备损坏与维修责任"
+    ]
+  },
+  "large_scale_target_boundary": {
+    "date": "2026-10-15",
+    "request_from_partner_group": "月底前100人",
+    "binding_to_owner": false,
+    "decision": "先有小批有效数据、审核反馈、第一笔实际结算与资金测算，再决定设备、人力扩张"
+  }
 }
