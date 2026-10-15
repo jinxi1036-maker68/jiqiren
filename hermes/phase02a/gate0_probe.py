@@ -1,4 +1,9 @@
-"""Read-only Phase 02A Gate 0 probe; no Hermes module import or secret output."""
+"""Exploratory Phase 02A metadata probe; no Hermes import or secret output.
+
+Historical insertion-only search below is not the authoritative drift result.
+A negative insertion search does not identify the change or its writer.
+Use protected_state.py drift and GATE_0.json for the exact backup comparison.
+"""
 from pathlib import Path
 import hashlib, json, os, datetime, importlib.metadata, collections
 import psutil, yaml

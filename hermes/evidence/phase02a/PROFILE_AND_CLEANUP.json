@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-15T17:07:32.619366+00:00",
+  "creation_api": "installed hermes_cli.profiles.create_profile",
+  "profile": "data-ops",
+  "new_root_outside_original_homes": true,
+  "clone_from": null,
+  "clone_all": false,
+  "no_alias": true,
+  "no_skills": true,
+  "bundled_skills_opt_out": true,
+  "installed_skills_files": 0,
+  "mcp_servers": [
+    "demo_browser"
+  ],
+  "configured_custom_providers": 1,
+  "cron_files": 0,
+  "gateway_or_cron_started": false,
+  "global_profile_selection_changed": false,
+  "credential_cleanup": {
+    "temporary_model_key_withdrawn": true,
+    "files_checked_for_authorized_key": 65,
+    "remaining_exact_key_matches": 0,
+    "matched_relative_files": [],
+    "new_profile_has_model_credentials": false
+  },
+  "original_files_after_tests": {
+    "files_compared": 1433,
+    "unchanged": true,
+    "changed_count": 0,
+    "changed_categories": []
+  },
+  "remaining_test_processes_with_runtime_arg": 0
+}

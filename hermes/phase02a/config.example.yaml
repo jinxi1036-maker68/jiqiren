@@ -10,12 +10,15 @@ custom_providers:
     key_env: PHASE02_MODEL_KEY
 platform_toolsets:
   cli: [demo_browser]
+tools:
+  tool_search:
+    enabled: 'off'
 mcp_servers:
   demo_browser:
     command: <EXISTING_NODE_EXECUTABLE>
     args: [<BROWSER_BRIDGE_SCRIPT>, <PRIVATE_RUNTIME_JSON>]
     enabled: true
-    trust: trusted
+    trust: full
 cron:
   enabled: false
 scheduler:

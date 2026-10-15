@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "files_scanned": 30,
+  "known_secret_values_checked_without_disclosure": 19,
+  "findings": [],
+  "limits": "Credential-like fields from local .env/config and token/path patterns; non-secret policy enums are not treated as keys. Not a proof against every possible sensitive string. Publication is additionally an explicit allowlist of synthetic evidence, code and redacted docs."
+}

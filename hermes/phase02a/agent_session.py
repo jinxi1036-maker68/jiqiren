@@ -45,7 +45,8 @@ def run(runtime_path,case):
     try:
         agent=AIAgent(api_key=provider.get('api_key'),base_url=provider.get('base_url'),provider=provider.get('provider'),requested_provider=provider.get('requested_provider'),api_mode=provider.get('api_mode'),model=model,enabled_toolsets=['demo_browser'],max_iterations=16,run_budget_seconds=240,quiet_mode=True,platform='cli',session_db=db,skip_background_review=True)
         names=[t['function']['name'] for t in agent.tools]
-        if not names or any(not n.startswith('mcp_demo_browser_') for n in names):raise RuntimeError('Unexpected tool access; refusing model call: '+str(names))
+        expected={'mcp__demo_browser__browser_'+x for x in ['click','close','navigate','snapshot']}
+        if set(names)!=expected:raise RuntimeError('Unexpected tool access; refusing model call: '+str(names))
         built_prompt=agent._build_system_prompt()
         identity_loaded='你是 Hermes，Owner 的专职数采运营助手' in built_prompt
         baseline_loaded='DEMO-001 待审' in built_prompt
