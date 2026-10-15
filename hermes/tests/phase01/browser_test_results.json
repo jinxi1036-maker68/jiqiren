@@ -1,0 +1,110 @@
+{
+  "started_at": "2026-10-15T15:32:55.388Z",
+  "scope": "isolated existing Playwright MCP component; not an autonomous Hermes agent or business-system test",
+  "no_business_site_access": true,
+  "no_original_config_edit": true,
+  "tests": [
+    {
+      "name": "MCP initialization and tool discovery",
+      "passed": true
+    },
+    {
+      "name": "Navigate and read DOM/text",
+      "passed": true
+    },
+    {
+      "name": "Input and click with current DOM references",
+      "passed": true
+    },
+    {
+      "name": "Observe pending-to-reviewed transition",
+      "passed": true,
+      "note": "Synthetic transition only; not production polling, persistence or notification"
+    },
+    {
+      "name": "Parse synthetic HTML table",
+      "passed": true,
+      "rows": 2
+    },
+    {
+      "name": "Upload dummy CSV to loopback server",
+      "passed": true,
+      "bytes": 50,
+      "sha256": "1b2841b4d1666eea7b149508b7d5c2728afbb58d98b9b7097fe9b587f548ae7a"
+    },
+    {
+      "name": "Screenshot",
+      "passed": true,
+      "bytes": 41445,
+      "artifact": "audit-demo.png"
+    },
+    {
+      "name": "Download dummy CSV and verify bytes",
+      "passed": true,
+      "bytes": 50,
+      "sha256": "1b2841b4d1666eea7b149508b7d5c2728afbb58d98b9b7097fe9b587f548ae7a"
+    },
+    {
+      "name": "Navigate back",
+      "passed": true
+    }
+  ],
+  "mcp_tool_count": 30,
+  "mcp_tool_names": [
+    "browser_close",
+    "browser_resize",
+    "browser_console_messages",
+    "browser_handle_dialog",
+    "browser_evaluate",
+    "browser_file_upload",
+    "browser_drop",
+    "browser_find",
+    "browser_fill_form",
+    "browser_press_key",
+    "browser_type",
+    "browser_mouse_move_xy",
+    "browser_mouse_click_xy",
+    "browser_mouse_drag_xy",
+    "browser_mouse_down",
+    "browser_mouse_up",
+    "browser_mouse_wheel",
+    "browser_navigate",
+    "browser_navigate_back",
+    "browser_network_requests",
+    "browser_network_request",
+    "browser_run_code_unsafe",
+    "browser_take_screenshot",
+    "browser_snapshot",
+    "browser_click",
+    "browser_drag",
+    "browser_hover",
+    "browser_select_option",
+    "browser_tabs",
+    "browser_wait_for"
+  ],
+  "mcp_server_version": "0.0.78",
+  "completed": true,
+  "loopback_request_log": [
+    {
+      "method": "GET",
+      "path": "/"
+    },
+    {
+      "method": "POST",
+      "path": "/upload"
+    },
+    {
+      "method": "GET",
+      "path": "/download"
+    },
+    {
+      "method": "GET",
+      "path": "/second"
+    },
+    {
+      "method": "GET",
+      "path": "/"
+    }
+  ],
+  "finished_at": "2026-10-15T15:33:01.817Z"
+}

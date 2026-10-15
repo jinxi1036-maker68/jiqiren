@@ -30,9 +30,12 @@
 
 ## 当前阶段
 
-**PHASE 01：本地Hermes能力只读盘点**，未开始本机检查、未清理记忆、未登录灵生后台、未配置自动运行。
+**PHASE 01：已完成本机盘点和隔离浏览器演示测试，等待Owner与ChatGPT复核。** 已提交脱敏报告和待批准变更建议；未进入第二阶段、未清理记忆、未登录灵生后台、未新增自动运行任务。审计发现原配置存在1字节未归因变化，详见报告的完整性限制。
 
 - [第一阶段执行任务](tasks/PHASE_01_LOCAL_AUDIT.md)
+- [第一阶段实测报告](reports/PHASE_01_LOCAL_AUDIT_REPORT.md)
+- [第一阶段后续变更建议（待批准）](reports/PHASE_01_CHANGE_PROPOSAL.md)
+- [审计复现说明](audit/README.md)
 - [迭代变更记录](CHANGELOG.md)
 
 ## 读取业务上下文

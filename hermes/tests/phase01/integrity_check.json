@@ -1,0 +1,11 @@
+{
+  "baseline_files": 1469,
+  "current_files": 1469,
+  "changed_or_missing": [
+    "legacy_home/config.yaml",
+    "legacy_home/cron/ticker_heartbeat",
+    "legacy_home/cron/ticker_last_success"
+  ],
+  "added": [],
+  "python_write_guard_self_test_passed": true
+}
