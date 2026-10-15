@@ -135,13 +135,18 @@
   "parallel_development_track": {
     "id": "HERMES-DIGITAL-EMPLOYEE-PHASE-01",
     "created_at": "2026-10-15",
-    "status": "github_plan_and_issue_created_pending_local_codex_execution",
+    "status": "phase_01_audit_completed_reviewed_phase_02a_issue_prepared",
     "purpose": "在既有业务知识库旁同步建设Hermes数字员工开发档案；由Codex在本地盘点并训练Hermes，不预设灵生后台菜单及用户操作习惯",
     "entry": "hermes/README.md",
     "phase_one_task": "hermes/tasks/PHASE_01_LOCAL_AUDIT.md",
     "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/3",
     "current_limits": "只建立仓库文档与Issue；尚未扫描本地Hermes、未删除记忆、未登录灵生后台，未开发自动派单",
-    "next_gate": "Owner从本机Codex启动Issue #3只读盘点；提交脱敏报告后再设计第二阶段",
-    "scope_note": "该并行技术工作不替换原有唯一业务主工作项WI-2026-10-livsyn-first-trial-prep"
+    "next_gate": "Owner merges PR #4 after review; Codex starts issue #5 only within safe gates; Owner authorizes any local profile/config changes and future backend read-only login",
+    "scope_note": "该并行技术工作不替换原有唯一业务主工作项WI-2026-10-livsyn-first-trial-prep",
+    "phase_01_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
+    "phase_01_review": "2026-10-15 ChatGPT reviewed report, code and demo results; accepted the audit scope with open config drift; PR not merged",
+    "phase_01_verified_basis": "Hermes 0.20.4 Windows; existing Playwright MCP independent synthetic demo 9/9; original CDP failed; config.yaml 1-byte unexplained concurrent change; no actual LingSyn access",
+    "phase_02a_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/5",
+    "phase_02a_scope": "review config drift, backup/restore, build isolated job profile, verify Hermes Agent autonomously operates synthetic browser page; no production login or operations"
   }
 }
