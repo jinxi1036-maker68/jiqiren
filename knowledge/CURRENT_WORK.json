@@ -131,5 +131,17 @@
     "previous_defect": "2026-10-15聊天生成的图片版Excel被检查出42个xl/media图片对象全为0字节，用户实际看不到图片",
     "completion_gate": "Codex实际交付并通过21项一一对应、非空图片资源、图片位置、离线显示和预览验证",
     "blocked_by": "需用户在Codex端选取该GitHub仓库并启动Issue任务；目前没有连接的Codex运行调用工具"
+  },
+  "parallel_development_track": {
+    "id": "HERMES-DIGITAL-EMPLOYEE-PHASE-01",
+    "created_at": "2026-10-15",
+    "status": "github_plan_and_issue_created_pending_local_codex_execution",
+    "purpose": "在既有业务知识库旁同步建设Hermes数字员工开发档案；由Codex在本地盘点并训练Hermes，不预设灵生后台菜单及用户操作习惯",
+    "entry": "hermes/README.md",
+    "phase_one_task": "hermes/tasks/PHASE_01_LOCAL_AUDIT.md",
+    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/3",
+    "current_limits": "只建立仓库文档与Issue；尚未扫描本地Hermes、未删除记忆、未登录灵生后台，未开发自动派单",
+    "next_gate": "Owner从本机Codex启动Issue #3只读盘点；提交脱敏报告后再设计第二阶段",
+    "scope_note": "该并行技术工作不替换原有唯一业务主工作项WI-2026-10-livsyn-first-trial-prep"
   }
 }
