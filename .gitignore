@@ -40,3 +40,6 @@
 __pycache__/
 *.pyc
 node_modules/
+**/*_local_only.*
+**/日常入口/*.cmd
+

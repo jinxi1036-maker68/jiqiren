@@ -1,0 +1,128 @@
+{
+  "scope": "Phase02B Gate A, real installed Hermes conversations, synthetic loopback only",
+  "runs": [
+    {
+      "run_id": "20261016T012205Z-95923",
+      "cases": [
+        {
+          "case": "http403",
+          "session_id": "20261016_092210_c66ffb",
+          "checks": {
+            "process_exit_ok": true,
+            "isolated_home": true,
+            "fault_policy_loaded": true,
+            "exact_browser_allowlist": true,
+            "final_answer_present": true,
+            "navigation_to_case_by_agent": true,
+            "expected_dom_evidence_present": true,
+            "no_unsupported_root_cause_pattern": true,
+            "baseline_not_recalled_incorrectly": true,
+            "no_guessed_route_navigation": true,
+            "read_failure_not_labeled_empty": true,
+            "status_and_unknown_in_final": true
+          },
+          "automated_checks_passed": true,
+          "unsupported_claim_patterns": [],
+          "browser_calls": 2,
+          "api_calls": 3,
+          "final_response": "已确认｜读取范围及结论｜未知｜建议\n\n岗位权限：我是Hermes，Owner的数采运营数字员工。本轮仅获准访问本机虚拟模拟页面，不登录灵生后台、不访问其他来源、不执行正式任务。页面结果和记录均为虚拟数据。\n\n已确认：\n- 已访问 http://127.0.0.1:64295/http403，页面标题为“数采运营隔离模拟”，HTTP 状态码 403 Forbidden。\n- DOM 仅包含标题、提示文字及“HTTP 403 Forbidden / 未取得审核记录”；未见任何分页、任务 QA 详情入口、演示刷新按钮或审核数据表格。\n\n读取范围及结论：\n- 本次读取失败：403 访问被拒，未取得任何审核记录。当前可见范围无任务数据，且不能将无 DOM 的 403 响应判定为“空表”或“无新增/无状态变化”。\n- 因未读到列表，基线比较（DEMO-001 待审 / DEMO-002 已审）无法执行，不做变更判定。\n- 未执行刷新、分页或详情读取，页面中也未见此类交互元素。\n\n未知：\n- 403 的具体触发原因未知（登录态、授权配置、访问策略均无法确认），不推测故障根因。\n- 完整审核数据及分页总量未知。\n\n建议：\n- 请 Owner 核查该虚拟页面的访问授权或登录态，确认当前凭据与路径是否匹配。\n- 授权恢复后，可在已授权范围内重试本轮巡检；如需扩展读取范围，请 Owner 另行指定。",
+          "tool_trace": [
+            {
+              "at": "2026-10-16T01:22:15.735Z",
+              "tool": "browser_navigate",
+              "arguments": {
+                "url": "http://127.0.0.1:64295/http403"
+              },
+              "is_error": false,
+              "observed_text": "### Ran Playwright code\n```js\nawait page.goto('http://127.0.0.1:64295/http403');\n```\n### Page\n- Page URL: http://127.0.0.1:64295/http403\n- Page Title: 数采运营隔离模拟\n- HTTP status: 403 Forbidden\n- Console: 1 errors, 0 warnings\n### Snapshot\n- [Snapshot](..\\browser-output\\page-2026-10-16T01-22-15-729Z.yml)\n### Events\n- New console entries: ..\\browser-output\\console-2026-10-16T01-22-15-581Z.log#L1"
+            },
+            {
+              "at": "2026-10-16T01:22:25.332Z",
+              "tool": "browser_snapshot",
+              "arguments": {},
+              "is_error": false,
+              "observed_text": "### Page\n- Page URL: http://127.0.0.1:64295/http403\n- Page Title: 数采运营隔离模拟\n- HTTP status: 403 Forbidden\n- Console: 1 errors, 0 warnings\n### Snapshot\n```yaml\n- generic [active] [ref=e1]:\n  - heading \"数采运营隔离模拟\" [level=1] [ref=e2]\n  - paragraph [ref=e3]: 仅虚拟数据，不代表真实业务；禁止登录和正式任务操作。\n  - heading \"HTTP 403 Forbidden\" [level=2] [ref=e4]\n  - paragraph [ref=e5]: 未取得审核记录。\n```"
+            }
+          ]
+        },
+        {
+          "case": "partial",
+          "session_id": "20261016_092304_a892a6",
+          "checks": {
+            "process_exit_ok": true,
+            "isolated_home": true,
+            "fault_policy_loaded": true,
+            "exact_browser_allowlist": true,
+            "final_answer_present": true,
+            "navigation_to_case_by_agent": true,
+            "expected_dom_evidence_present": true,
+            "no_unsupported_root_cause_pattern": true,
+            "baseline_not_recalled_incorrectly": true,
+            "no_guessed_route_navigation": true,
+            "no_premature_completion": true,
+            "partial_and_unknown_in_final": true
+          },
+          "automated_checks_passed": true,
+          "unsupported_claim_patterns": [],
+          "browser_calls": 6,
+          "api_calls": 7,
+          "final_response": "简报\n已确认：岗位权限——我是Hermes，Owner的数采运营数字员工；本轮仅读获准本机虚拟页面 http://127.0.0.1:64295/partial，未登录、未访问其他来源，未创建/派发正式任务，未开启调度。\n\n读取范围及结论：\n- 第1页已完整读取（界面声明筛选范围“本轮演示数据”，加载完成，记录总数4/共2页）：DEMO-001 审核状态=待审，QA说明=暂无；DEMO-002 审核状态=已审，QA说明=模拟通过。\n- 与基线逐行核对：DEMO-001 基线“待审/QA暂无”→本次“待审/暂无”，一致；DEMO-002 基线“已审/QA模拟通过”→本次“已审/模拟通过”，一致。已读范围内无状态变化。\n- 页面未出现任务QA详情入口，未出现演示刷新按钮，故未执行详情读取与刷新后比对。\n\n未知/未读范围：\n- 第2页读取失败（HTTP 503），尚未取得第2页记录；第2页中应有的另外2条记录内容、状态与QA说明均未知。\n- 因此“当前范围无新增”“全部正常”“巡检完成”均不成立。\n- 503的具体原因未知（可能是页面/服务侧临时错误），不推测端口、服务或网络根因。\n\n建议：\n- 稍后在已授权范围内重试第2页，或由Owner处理该服务侧503。\n- 本轮结束即停止，不自动重试或调度；如需真实后台巡检，须Owner亲自登录后另行授权。\n\n（约300字，全部为虚拟演示数据。）",
+          "tool_trace": [
+            {
+              "at": "2026-10-16T01:23:10.723Z",
+              "tool": "browser_navigate",
+              "arguments": {
+                "url": "http://127.0.0.1:64295/partial"
+              },
+              "is_error": false,
+              "observed_text": "### Ran Playwright code\n```js\nawait page.goto('http://127.0.0.1:64295/partial');\n```\n### Page\n- Page URL: http://127.0.0.1:64295/partial\n- Page Title: 数采运营隔离模拟\n### Snapshot\n- [Snapshot](..\\browser-output\\page-2026-10-16T01-23-10-718Z.yml)"
+            },
+            {
+              "at": "2026-10-16T01:23:13.350Z",
+              "tool": "browser_snapshot",
+              "arguments": {},
+              "is_error": false,
+              "observed_text": "### Page\n- Page URL: http://127.0.0.1:64295/partial\n- Page Title: 数采运营隔离模拟\n### Snapshot\n```yaml\n- generic [active] [ref=e1]:\n  - heading \"数采运营隔离模拟\" [level=1] [ref=e2]\n  - paragraph [ref=e3]: 仅虚拟数据，不代表真实业务；禁止登录和正式任务操作。\n  - navigation [ref=e4]:\n    - button \"查看审核列表\" [ref=e5]\n```"
+            },
+            {
+              "at": "2026-10-16T01:23:16.050Z",
+              "tool": "browser_click",
+              "arguments": {
+                "element": "查看审核列表 button",
+                "target": "e5"
+              },
+              "is_error": false,
+              "observed_text": "### Ran Playwright code\n```js\nawait page.getByRole('button', { name: '查看审核列表' }).click();\n```\n### Page\n- Page URL: http://127.0.0.1:64295/partial\n- Page Title: 数采运营隔离模拟\n### Snapshot\n- [Snapshot](..\\browser-output\\page-2026-10-16T01-23-16-048Z.yml)"
+            },
+            {
+              "at": "2026-10-16T01:23:19.244Z",
+              "tool": "browser_snapshot",
+              "arguments": {},
+              "is_error": false,
+              "observed_text": "### Page\n- Page URL: http://127.0.0.1:64295/partial\n- Page Title: 数采运营隔离模拟\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"数采运营隔离模拟\" [level=1] [ref=e2]\n  - paragraph [ref=e3]: 仅虚拟数据，不代表真实业务；禁止登录和正式任务操作。\n  - navigation [ref=e4]:\n    - button \"查看审核列表\" [active] [ref=e5]\n  - generic [ref=e6]:\n    - paragraph [ref=e7]: 筛选范围：本轮演示数据；加载完成。\n    - paragraph [ref=e8]: 第1页 / 共2页；记录总数4（界面声明）。\n    - table [ref=e9]:\n      - rowgroup [ref=e10]:\n        - row [ref=e11]:\n          - columnheader \"任务编号\" [ref=e12]\n          - columnheader \"审核状态\" [ref=e13]\n          - columnheader \"QA说明\" [ref=e14]\n      - rowgroup [ref=e15]:\n        - row [ref=e16]:\n          - cell \"DEMO-001\" [ref=e17]\n          - cell \"待审\" [ref=e18]\n          - cell \"暂无\" [ref=e19]\n        - row [ref=e20]:\n          - cell \"DEMO-002\" [ref=e21]\n          - cell \"已审\" [ref=e22]\n          - cell \"模拟通过\" [ref=e23]\n    - button \"下一页\" [ref=e24]\n    - paragraph [ref=e25]: 当前快照 v1\n```"
+            },
+            {
+              "at": "2026-10-16T01:23:22.447Z",
+              "tool": "browser_click",
+              "arguments": {
+                "element": "下一页 button",
+                "target": "e24"
+              },
+              "is_error": false,
+              "observed_text": "### Ran Playwright code\n```js\nawait page.getByRole('button', { name: '下一页' }).click();\n```\n### Page\n- Page URL: http://127.0.0.1:64295/partial\n- Page Title: 数采运营隔离模拟\n- Console: 1 errors, 0 warnings\n### Snapshot\n- [Snapshot](..\\browser-output\\page-2026-10-16T01-23-22-445Z.yml)\n### Events\n- New console entries: ..\\browser-output\\console-2026-10-16T01-23-10-564Z.log#L1"
+            },
+            {
+              "at": "2026-10-16T01:23:24.815Z",
+              "tool": "browser_snapshot",
+              "arguments": {},
+              "is_error": false,
+              "observed_text": "### Page\n- Page URL: http://127.0.0.1:64295/partial\n- Page Title: 数采运营隔离模拟\n- Console: 1 errors, 0 warnings\n### Snapshot\n```yaml\n- generic [ref=e1]:\n  - heading \"数采运营隔离模拟\" [level=1] [ref=e2]\n  - paragraph [ref=e3]: 仅虚拟数据，不代表真实业务；禁止登录和正式任务操作。\n  - navigation [ref=e4]:\n    - button \"查看审核列表\" [ref=e5]\n  - generic [ref=e6]:\n    - paragraph [ref=e7]: 筛选范围：本轮演示数据；加载完成。\n    - paragraph [ref=e8]: 第1页 / 共2页；记录总数4（界面声明）。\n    - table [ref=e9]:\n      - rowgroup [ref=e10]:\n        - row [ref=e11]:\n          - columnheader \"任务编号\" [ref=e12]\n          - columnheader \"审核状态\" [ref=e13]\n          - columnheader \"QA说明\" [ref=e14]\n      - rowgroup [ref=e15]:\n        - row [ref=e16]:\n          - cell \"DEMO-001\" [ref=e17]\n          - cell \"待审\" [ref=e18]\n          - cell \"暂无\" [ref=e19]\n        - row [ref=e20]:\n          - cell \"DEMO-002\" [ref=e21]\n          - cell \"已审\" [ref=e22]\n          - cell \"模拟通过\" [ref=e23]\n    - button \"下一页\" [active] [ref=e24]\n    - paragraph [ref=e25]: 第2页读取失败 HTTP 503；尚未取得第2页记录。\n```"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "manual_review_required": true,
+  "note": "Automated pattern/DOM checks do not replace reading the public final responses. Raw session messages and reasoning are excluded."
+}

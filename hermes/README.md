@@ -30,7 +30,12 @@
 
 ## 当前阶段
 
-**PHASE 02A：独立数采身份及Hermes本人模拟浏览器能力基线已完成，等待Owner与ChatGPT验收。** Phase 01 PR #4已合并；配置内容变化已定位为自动朗读开→关，历史写入者仍未知。本轮已完成本地加密恢复校验，最终3次独立Hermes会话正确识别虚拟QA变化、无新增与503失败。临时模型凭据已撤下；尚未登录灵生或开启正式任务/自动派单。故障归因措辞仍需约束，详见报告。
+**PHASE 02B Gate A：模拟异常整改与独立classic CLI入口已完成，等待Owner与ChatGPT验收。** Phase02A模拟基线获审阅范围内认可，PR #6仍由Owner决定是否合并。本轮完成21次矩阵与2次原生CLI真实模型对话，九类最新模拟样本通过公开答复/DOM核对；失败记录保留。临时模型凭据已撤下，独立入口自检可用，长期聊天尚未授权。原Hermes及Phase02A选定文件一致。**Gate B未授权、未开始，未登录灵生，未启动正式巡检/任务/派单。**
+
+- [Phase 02B Gate A报告](reports/PHASE_02B_REAL_BACKEND_READONLY_ONBOARDING.md)
+- [独立入口使用说明](phase02b/使用说明.md)
+- [Phase 02B运行与回退](phase02b/RUNBOOK.md)
+- [九类最新样本索引及完整失败历史](evidence/phase02b/FINAL_CASE_INDEX.json)
 
 - [Phase 02A实测报告](reports/PHASE_02A_SPECIALIZED_AGENT_BASELINE.md)
 - [Phase 02A代码与运行说明](phase02a/RUNBOOK.md)
@@ -49,3 +54,4 @@
 ## 验收哲学
 
 真正的完成不是“代码能启动”，而是 Hermes 在获授权场景下**独立完成真实工作并经人工对照验收**。例如：检测1—2天前新返回的质检标注，准确指明员工/任务/错误标注，区分已审与待审，提示Owner而不自行推断为定论。
+
