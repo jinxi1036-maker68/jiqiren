@@ -28,13 +28,22 @@
 - **可追溯但不泄密**：GitHub保留可复现代码、角色规则、流程知识、脱敏测试和迭代记录；本地存有登录凭据、Cookie、员工身份信息、工资明细、视频源文件，不应提交仓库。
 - **可回退、可复核**：升级前备份；经Codex真实验证后才记录“已具备”，不可把计划误写成成果。
 
+## 当前权威
+
+以[岗位宪章](../knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md)、[ADR](../knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md)和[演进历史](../knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)为准：原Hermes唯一正式身份、原入口，公司给目标/底线、员工自主决定方法。旧隔离profile只是历史测试。
+
 ## 当前阶段
 
-**PHASE 01：已完成本机盘点和隔离浏览器演示测试，等待Owner与ChatGPT复核。** 已提交脱敏报告和待批准变更建议；未进入第二阶段、未清理记忆、未登录灵生后台、未新增自动运行任务。审计发现原配置存在1字节未归因变化，详见报告的完整性限制。
+**Issue #9：Gate1前置无损准备完成，等待第二轮审查；正式迁移未授权、未执行。** 继承PR #4/#6/#8及已审阅PR #10基线。本轮仅开发区草案、精确差异、定点只读核实和中性SDK假MCP组件验证；0模型调用、0真实浏览器/业务访问。原记忆/配置/任务未改，PR #6/#8/#10未自动合并。
+
+- [本轮准备报告](reports/ISSUE_09_GATE_1_NONDESTRUCTIVE_PREPARATION.md)
+- [身份条目差异](preparation/issue09/IDENTITY_ITEM_DIFF.json) · [配置字段差异](preparation/issue09/CONFIG_FIELD_DIFF.json)
+- [精确候选文件](preparation/issue09/EXACT_CANDIDATE_OBJECTS.json) · [下一轮决定](preparation/issue09/NEXT_DECISIONS.md)
+- [SDK解耦范围](preparation/issue09/SDK_DECOUPLING.md)
 
 - [第一阶段执行任务](tasks/PHASE_01_LOCAL_AUDIT.md)
 - [第一阶段实测报告](reports/PHASE_01_LOCAL_AUDIT_REPORT.md)
-- [第一阶段后续变更建议（待批准）](reports/PHASE_01_CHANGE_PROPOSAL.md)
+- [第一阶段变更建议（历史方案，长期双profile方向已被取代）](reports/PHASE_01_CHANGE_PROPOSAL.md)
 - [审计复现说明](audit/README.md)
 - [迭代变更记录](CHANGELOG.md)
 
@@ -45,3 +54,4 @@
 ## 验收哲学
 
 真正的完成不是“代码能启动”，而是 Hermes 在获授权场景下**独立完成真实工作并经人工对照验收**。例如：检测1—2天前新返回的质检标注，准确指明员工/任务/错误标注，区分已审与待审，提示Owner而不自行推断为定论。
+

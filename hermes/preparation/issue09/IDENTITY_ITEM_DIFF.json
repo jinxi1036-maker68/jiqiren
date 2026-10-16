@@ -1,0 +1,1455 @@
+{
+  "status": "draft_only_not_approved_for_deployment",
+  "source_files": [
+    {
+      "target": "H/SOUL.md",
+      "before_sha256": "dfaee81231795d373413601f104b7d05e74e9a44200fa621ffac261cd01f6f6f",
+      "before_characters": 1847,
+      "native_memory_entries_before": null,
+      "review_segments_before": 21,
+      "proposed_draft": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "draft_characters": 896,
+      "draft_sha256": "6cde9e101908e83578a666380a0dab0aa9fba00cbb5bdfa480cb0a748c7032eb",
+      "native_memory_entries_proposed": null,
+      "owner_approval": "pending",
+      "deployment": "not_executed"
+    },
+    {
+      "target": "H/memories/MEMORY.md",
+      "before_sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0",
+      "before_characters": 9520,
+      "native_memory_entries_before": 40,
+      "review_segments_before": 40,
+      "proposed_draft": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "draft_characters": 670,
+      "draft_sha256": "9625d33ef1c4244c9ba23d660d12c4d3a18653b99f53d53d13e2b5da34b920fd",
+      "native_memory_entries_proposed": 8,
+      "owner_approval": "pending",
+      "deployment": "not_executed"
+    },
+    {
+      "target": "H/memories/USER.md",
+      "before_sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6",
+      "before_characters": 4958,
+      "native_memory_entries_before": 27,
+      "review_segments_before": 39,
+      "proposed_draft": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "draft_characters": 248,
+      "draft_sha256": "71a3cc825cfb6a93f0c1b76a1a49e122517d640d7ae0678b4261457d2227c979",
+      "native_memory_entries_proposed": 5,
+      "owner_approval": "pending",
+      "deployment": "not_executed"
+    }
+  ],
+  "review_segmentation": "Blank lines and native § delimiter; review segments are not necessarily native memory entries. Topic cues are not semantic ownership decisions.",
+  "before_raw_text_published": false,
+  "replacement_requires_all_affected_segments_and_new_content_approved": true,
+  "segments": [
+    {
+      "id": "SOUL-001",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        1,
+        1
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-002",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        3,
+        3
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-003",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        5,
+        5
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-004",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        7,
+        7
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-005",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        9,
+        9
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-006",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        11,
+        16
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-007",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        18,
+        18
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-008",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        20,
+        20
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-009",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        22,
+        30
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-010",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        32,
+        32
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-011",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        34,
+        40
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-012",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        42,
+        42
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-013",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        44,
+        48
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-014",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        50,
+        50
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-015",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        52,
+        59
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-016",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        61,
+        61
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-017",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        63,
+        68
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-018",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        70,
+        70
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-019",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        72,
+        75
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-020",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        77,
+        77
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "SOUL-021",
+      "target": "H/SOUL.md",
+      "before_line_range": [
+        79,
+        81
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-001",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        1,
+        1
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-002",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        3,
+        3
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-003",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        5,
+        5
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-004",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        7,
+        7
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-005",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        9,
+        9
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-006",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        11,
+        11
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-007",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        13,
+        13
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-008",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        15,
+        15
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-009",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        17,
+        17
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-010",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        19,
+        19
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-011",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        21,
+        21
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-012",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        23,
+        23
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-013",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        25,
+        25
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-014",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        27,
+        27
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-015",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        29,
+        29
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-016",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        31,
+        31
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-017",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        33,
+        33
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-018",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        35,
+        35
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-019",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        37,
+        37
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-020",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        39,
+        39
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-021",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        41,
+        41
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-022",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        43,
+        43
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-023",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        45,
+        45
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-024",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        47,
+        47
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-025",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        49,
+        49
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-026",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        51,
+        51
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-027",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        53,
+        53
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-028",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        55,
+        55
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-029",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        57,
+        57
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-030",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        59,
+        59
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-031",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        61,
+        61
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-032",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        63,
+        63
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-033",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        65,
+        65
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-034",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        67,
+        67
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-035",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        69,
+        69
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-036",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        71,
+        71
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-037",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        73,
+        73
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-038",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        75,
+        75
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-039",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        77,
+        77
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "MEMORY-040",
+      "target": "H/memories/MEMORY.md",
+      "before_line_range": [
+        79,
+        79
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/MEMORY.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-001",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        1,
+        1
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-002",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        3,
+        3
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-003",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        5,
+        9
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-004",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        11,
+        11
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-005",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        13,
+        19
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-006",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        21,
+        21
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-007",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        23,
+        27
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-008",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        29,
+        29
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-009",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        31,
+        38
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-010",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        40,
+        40
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-011",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        42,
+        44
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-012",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        46,
+        46
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-013",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        48,
+        50
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-014",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        52,
+        52
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-015",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        54,
+        54
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-016",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        56,
+        56
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-017",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        58,
+        63
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-018",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        65,
+        65
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-019",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        67,
+        67
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-020",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        69,
+        69
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-021",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        71,
+        71
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-022",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        73,
+        73
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-023",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        75,
+        75
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-024",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        77,
+        77
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-025",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        79,
+        79
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-026",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        81,
+        85
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-027",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        87,
+        94
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_marketplace,general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-028",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        96,
+        96
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-029",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        98,
+        98
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-030",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        100,
+        111
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-031",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        113,
+        113
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-032",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        115,
+        115
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-033",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        117,
+        117
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-034",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        119,
+        119
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-035",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        121,
+        121
+      ],
+      "before_summary": "旧正文不公开；主题线索：未分类/结构片段",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-036",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        123,
+        123
+      ],
+      "before_summary": "旧正文不公开；主题线索：old_tuoguan",
+      "before_is_semantically_verified": false,
+      "proposed_change": "拟退出当前公司岗位事实；混合的通用方法须Owner核对后单独保留",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-037",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        125,
+        125
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-038",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        127,
+        127
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    },
+    {
+      "id": "USER-039",
+      "target": "H/memories/USER.md",
+      "before_line_range": [
+        129,
+        129
+      ],
+      "before_summary": "旧正文不公开；主题线索：general_method_or_preference",
+      "before_is_semantically_verified": false,
+      "proposed_change": "待Owner核对：可能是结构、通用偏好或未分类内容；不得自动删除",
+      "after_reference": "hermes/preparation/issue09/drafts/USER.draft.md",
+      "owner_decision": "pending",
+      "whole_file_replacement_allowed_now": false
+    }
+  ],
+  "new_workspace_file": {
+    "target": "H/company-workspace/HERMES.md",
+    "currently_exists": false,
+    "draft": "hermes/preparation/issue09/drafts/HERMES.draft.md",
+    "owner_approval": "pending"
+  }
+}

@@ -1,0 +1,343 @@
+{
+  "checked_at_utc": "2026-10-16T09:22:59.261177+00:00",
+  "original_home_environment": {
+    "user_hermes_home": "H",
+    "process_hermes_home": "H",
+    "machine_hermes_home": null
+  },
+  "shortcut_targets": [
+    {
+      "Path": "<USER_HOME>/Desktop/Hermes.lnk",
+      "TargetPath": "P/hermes-agent/apps/desktop/release/win-unpacked/Hermes.exe",
+      "Arguments": "",
+      "WorkingDirectory": "P/hermes-agent/apps/desktop/release/win-unpacked"
+    },
+    {
+      "Path": "<USER_HOME>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Hermes.lnk",
+      "TargetPath": "P/hermes-agent/apps/desktop/release/win-unpacked/Hermes.exe",
+      "Arguments": "",
+      "WorkingDirectory": "P/hermes-agent/apps/desktop/release/win-unpacked"
+    }
+  ],
+  "matching_original_hermes_processes": 0,
+  "desktop_project_dir_file_exists": false,
+  "config_selected_fields": {
+    "terminal.cwd": ".",
+    "terminal.backend": "local",
+    "terminal.persistent_shell": true,
+    "memory.memory_enabled": true,
+    "memory.user_profile_enabled": true,
+    "memory.memory_char_limit": 10000,
+    "memory.user_char_limit": 5000,
+    "tools.tool_search.enabled": "auto",
+    "display.interface": "cli",
+    "security.redact_secrets": true,
+    "security.allow_lazy_installs": true,
+    "auxiliary.background_review.enabled": null,
+    "context_file_max_chars": null,
+    "model.context_length": null
+  },
+  "live_new_session_injection_verified": false,
+  "live_home_and_cwd_unavailable_reason": "No matching original Hermes process at the point check; no launch or new conversation authorized this round.",
+  "historical_session_metadata_view": "SQLite immutable base only; WAL excluded; not a current conversation snapshot",
+  "last_desktop_session_cwd": "<USER_HOME>",
+  "last_desktop_session_id": "20261015_224929_5bf37b",
+  "cron_current": {
+    "jobs": 0,
+    "updated_at_recorded": "2026-10-15T23:54:23.622437+08:00",
+    "matches_verified_phase02a_jobs_file_hash": true,
+    "reason_or_writer_of_prior_removal": "unknown",
+    "changed_by_this_preparation": false
+  },
+  "cron_historical": {
+    "job_id": "44e3730eedc5",
+    "provenance": [
+      "selected cron/executions.db metadata",
+      "exact cron_44e3730eedc5_20261015_224758 first user message only",
+      "inherited Phase01 weekday08:00 schedule"
+    ],
+    "purpose_summary": "旧托管业务朋友圈素材草稿：选题、取天气、渲染卡片、质检、生成三版文案，交Owner选用；并非灵生数采巡检。",
+    "prompt_raw_published": false,
+    "dependencies": [
+      "H/moments_daily/theme_state.json",
+      "H/moments_daily/",
+      "<USER_HOME>/AppData/Local/Programs/Python/Python313/python.exe",
+      "临时卡片模板及人工选择后的发布环节"
+    ],
+    "delivery_known": "历史提示说明自动投递给Owner的QQ；不等于自动发朋友圈",
+    "exact_delivery_route_or_recipient": "当前任务定义已无，未从账号配置重建；未知",
+    "historical_session_ids": [
+      "cron_44e3730eedc5_20261015_224758",
+      "cron_44e3730eedc5_20261012_110743"
+    ],
+    "action_this_round": "none; do not recreate, stop or repurpose"
+  },
+  "windows_tasks": [
+    {
+      "TaskPath": "\\",
+      "TaskName": "OpenClaw Gateway",
+      "State": "Ready",
+      "Actions": [
+        {
+          "Execute": "powershell.exe",
+          "Arguments": "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File \"<USER_HOME>/.openclaw/gateway-launcher.ps1\"",
+          "WorkingDirectory": null
+        }
+      ],
+      "Triggers": [
+        {
+          "Type": "MSFT_TaskLogonTrigger",
+          "Enabled": true,
+          "StartBoundary": null
+        }
+      ],
+      "Enabled": true
+    }
+  ],
+  "windows_task_dependency_summary": {
+    "task_path": "\\",
+    "task_name": "OpenClaw Gateway",
+    "chain": [
+      "powershell.exe",
+      "<USER_HOME>/.openclaw/gateway-launcher.ps1",
+      "<USER_HOME>/.openclaw/gateway.cmd",
+      "existing node.exe",
+      "<APPDATA>/npm/node_modules/openclaw/dist/index.js gateway --port 18790 --task-supervisor"
+    ],
+    "script_may_start_or_kill_gateway_processes": true,
+    "script_executed_this_round": false,
+    "shared_use_or_hierarchy_with_Hermes": "No direct link established in the selected task/config sources; other applications and channel use remain unverified; Owner decision required."
+  },
+  "mcp_bindings": {
+    "playwright-xianyu-lab": {
+      "command": "node",
+      "args": [
+        "H/tools/playwright-mcp/node_modules/@playwright/mcp/cli.js",
+        "--cdp-endpoint",
+        "http://127.0.0.1:9222",
+        "--caps",
+        "devtools,vision",
+        "--console-level",
+        "info",
+        "--output-mode",
+        "file",
+        "--output-dir",
+        "H/xianyu/browser_lab/playwright_mcp",
+        "--timeout-action",
+        "10000",
+        "--timeout-navigation",
+        "60000"
+      ],
+      "env_key_names": [],
+      "trust": null,
+      "enabled": null
+    },
+    "xianyu-browser-tools": {
+      "command": "node",
+      "args": [
+        "H/tools/xianyu-browser-tools/server.js"
+      ],
+      "env_key_names": [],
+      "trust": null,
+      "enabled": true
+    }
+  },
+  "selected_script_reference_graph": [
+    {
+      "target": "H/scripts/start-xianyu-browser.ps1",
+      "exists": true,
+      "sha256": "0a3b462497a1905cb0776e19ef00f85fe123b46e1fa215701fd9c02dddddb95c",
+      "topics": [
+        "old_marketplace"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/xianyu-browser-watchdog.ps1",
+      "exists": true,
+      "sha256": "b6baf5cc53c475a51ff697b5b6dde78c4439eed54561dc88341f6bab0c9b4845",
+      "topics": [
+        "old_marketplace"
+      ],
+      "referenced_selected_script_names": [
+        "start-xianyu-browser.ps1"
+      ]
+    },
+    {
+      "target": "H/scripts/check-xianyu-watchdog.ps1",
+      "exists": true,
+      "sha256": "a95d9e5827ef6542021645ed4601c4fb8e5c76c1c08d445c095ba208105b240b",
+      "topics": [
+        "old_marketplace"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/close-xianyu-edge.ps1",
+      "exists": true,
+      "sha256": "1368dff57580bfda8391b4dcec028c721b11e06f18ae17a60f087398c587a545",
+      "topics": [
+        "old_marketplace"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/inspect-xianyu-edge.ps1",
+      "exists": true,
+      "sha256": "ce2586d3e5f770e038371cbd97db0e3766db45bdd84d765816aa18ff9eb86d7f",
+      "topics": [
+        "old_marketplace"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/verify-xianyu-closed.ps1",
+      "exists": true,
+      "sha256": "6e8348d02d99fe48aa06c3f02b787f235aa5774c1fbe64160df5cee914b41de3",
+      "topics": [
+        "old_marketplace"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_backup.py",
+      "exists": true,
+      "sha256": "f1376438c4bb3b98271105e9bdc64cefccb3eb7c9e4931f12e0d6c497ef9009f",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_boss_report.py",
+      "exists": true,
+      "sha256": "a0c9a66485c420b385b843ff60f72766b8959e38260a792fed24d6de14a1c1de",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_competitor_research.py",
+      "exists": true,
+      "sha256": "6decdee6d8d594265d239bd3d476a1bb24afed51609dbd4d8cab3b3e5ac690ce",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_dashboard_refresh.py",
+      "exists": true,
+      "sha256": "5d74fb71885909d661788c6ebd9ec53a9ba7da596f8701e3bb521835bfabe584",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_escalation.py",
+      "exists": true,
+      "sha256": "d88124d37206892c29a4f771642dba206098ad3c2f578c863acc47d64c14215c",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_growth_review.py",
+      "exists": true,
+      "sha256": "bfdb4b665a0bbd3773d419cbfbcf53f02d2c5cf1caabfe6e5d1f33d35414d433",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_knowledge_research.py",
+      "exists": true,
+      "sha256": "afaf0b969df9817fc3db467ab924cffc3197415fa1c5dce6130484c23ed8c0a3",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_manager_report.py",
+      "exists": true,
+      "sha256": "d34d08b441ac53680353d6b3142353af1abbc9af3284dd90c8c7255cb9317fe7",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_summer_closing.py",
+      "exists": true,
+      "sha256": "5fd927070aa78f198a66f5104de4b242db8c779fcda86e7e4897e260fed06c1d",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/tuoguan_summer_opening.py",
+      "exists": true,
+      "sha256": "326d06027eeff20ab37fd301a62630a700c74a08c5d1913b688d82f23f3ee12d",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    },
+    {
+      "target": "H/scripts/_tuoguan_bootstrap.py",
+      "exists": true,
+      "sha256": "0cb2215540bc58306fad79c1ac33bf8776ad7821b1c2a6acea2125cf68a880c4",
+      "topics": [
+        "old_tuoguan"
+      ],
+      "referenced_selected_script_names": []
+    }
+  ],
+  "unknown_old_memory_body_uploaded": false,
+  "original_env_auth_or_browser_storage_read": false,
+  "full_audit_or_bulk_memory_scan": false,
+  "task_protection": {
+    "task_still_enabled": true,
+    "action_execute_matches": true,
+    "action_arguments_match": true,
+    "no_task_change_performed": true
+  },
+  "ancestor_context_metadata": {
+    "launch_cwd_ancestor_context_metadata": [
+      {
+        "path": "H.md",
+        "exists": false,
+        "bytes": null,
+        "sha256": null
+      },
+      {
+        "path": "<USER_HOME>/HERMES.md",
+        "exists": false,
+        "bytes": null,
+        "sha256": null
+      },
+      {
+        "path": "<USER_HOME>/AGENTS.md",
+        "exists": false,
+        "bytes": null,
+        "sha256": null
+      }
+    ],
+    "active_profile_file_exists": false,
+    "active_profile_value": null,
+    "only_three_known_ancestor_contexts_checked": true
+  },
+  "desktop_environment_hints": {
+    "user_desktop_cwd": null,
+    "user_data_override": null,
+    "process_desktop_cwd": null,
+    "process_user_data_override": null
+  },
+  "public_paths_are_redacted_normalized_aliases_not_executable_arguments": true
+}

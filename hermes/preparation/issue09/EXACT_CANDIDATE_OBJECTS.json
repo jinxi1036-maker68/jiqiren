@@ -1,0 +1,1231 @@
+{
+  "status": "exact_metadata_not_delete_allowlist",
+  "skill_directory_count": 12,
+  "skill_file_count": 116,
+  "script_count": 17,
+  "objects": [
+    {
+      "id": "F001",
+      "kind": "selected_skill_file",
+      "target": "H/skills/1688-direction-audit/SKILL.md",
+      "bytes": 5916,
+      "parent_scope": "H/skills/1688-direction-audit/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F002",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/SKILL.md",
+      "bytes": 119811,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F003",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/agnes-api.md",
+      "bytes": 3816,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F004",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/answer-self-check.md",
+      "bytes": 2969,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F005",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/configure-openclaw-auth.md",
+      "bytes": 2159,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F006",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/curriculum-map-structure.md",
+      "bytes": 2675,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F007",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/diagnosis-generation-patterns.md",
+      "bytes": 8481,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F008",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/diagnosis-json-format.md",
+      "bytes": 5273,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F009",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/english-operations.md",
+      "bytes": 1488,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F010",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/grade-scoring-reference.md",
+      "bytes": 2058,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F011",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/key-format-migration.md",
+      "bytes": 1331,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F012",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/knowledge-source-survey.md",
+      "bytes": 3149,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F013",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/platform-content-format.md",
+      "bytes": 3634,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F014",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/platform-content-reader-usage.md",
+      "bytes": 2060,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F015",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/platform-radio-refs.md",
+      "bytes": 3123,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F016",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/platform-textbook-content-summary.md",
+      "bytes": 4273,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F017",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/platform-textbook-crawl-techniques.md",
+      "bytes": 4176,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F018",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/platform_content_record.md",
+      "bytes": 3805,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F019",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/project-scan-methodology.md",
+      "bytes": 2347,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F020",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/search-platform-findings.md",
+      "bytes": 1846,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F021",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/summer-dashboard-sync-fix.py",
+      "bytes": 4599,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F022",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/summer-manager-permission.md",
+      "bytes": 695,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F023",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/summer-teacher-onboarding.md",
+      "bytes": 2194,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F024",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/textbook-master-list.md",
+      "bytes": 1974,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F025",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/word-output-verification.md",
+      "bytes": 1826,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F026",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/references/workbook-known-bugs.md",
+      "bytes": 5573,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F027",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/scripts/diagnosis_quality_check.py",
+      "bytes": 7569,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F028",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/scripts/generate_diagnosis_grade1_word.py",
+      "bytes": 12864,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F029",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan/summer-program-ai-tutor/scripts/platform_progress.py",
+      "bytes": 2496,
+      "parent_scope": "H/skills/tuoguan/summer-program-ai-tutor/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F030",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan-operations/SKILL.md",
+      "bytes": 13849,
+      "parent_scope": "H/skills/tuoguan-operations/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F031",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan-operations/xianyu-browser-domain-models/SKILL.md",
+      "bytes": 6290,
+      "parent_scope": "H/skills/tuoguan-operations/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F032",
+      "kind": "selected_skill_file",
+      "target": "H/skills/tuoguan-operations/xianyu-browser-domain-models/references/verification-records.md",
+      "bytes": 3644,
+      "parent_scope": "H/skills/tuoguan-operations/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F033",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/SKILL.md",
+      "bytes": 21924,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F034",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/cdp-clip-viewport-diagnostic.md",
+      "bytes": 4113,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F035",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/evidence-store-dual-verification.md",
+      "bytes": 13699,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F036",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/goofish-file-upload-capability-gap.md",
+      "bytes": 2827,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F037",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/phase23-completion-summary.md",
+      "bytes": 2925,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F038",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/phase23-step27-28-summary.md",
+      "bytes": 1858,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F039",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/preview-evidence-adapter-v1.2.md",
+      "bytes": 1767,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F040",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/preview-evidence-adapter.md",
+      "bytes": 3596,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F041",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/preview-generation-requirements.md",
+      "bytes": 7055,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F042",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/project-root-reconciliation.md",
+      "bytes": 1747,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F043",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/step25-verified-preview-builder.md",
+      "bytes": 4073,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F044",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/step28-confirmation-provenance.md",
+      "bytes": 2778,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F045",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/step30-31-data-chain-audit.md",
+      "bytes": 2877,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F046",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/v2-evidence-fabrication-incident-20260724.md",
+      "bytes": 1453,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F047",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/v2_evidence_fabrication_incident.md",
+      "bytes": 3595,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F048",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/browser-evidence-closure/references/xianyu-project-status-20260814.md",
+      "bytes": 2655,
+      "parent_scope": "H/skills/xianyu/browser-evidence-closure/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F049",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/xianyu-source-lifecycle/SKILL.md",
+      "bytes": 9666,
+      "parent_scope": "H/skills/xianyu/xianyu-source-lifecycle/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F050",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/xianyu-source-lifecycle/references/2026-07-23-source-migration-audit.md",
+      "bytes": 4367,
+      "parent_scope": "H/skills/xianyu/xianyu-source-lifecycle/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F051",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/xianyu-supplier-research/SKILL.md",
+      "bytes": 3585,
+      "parent_scope": "H/skills/xianyu/xianyu-supplier-research/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F052",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/xianyu-supplier-research/references/profit-audit-identity-binding.md",
+      "bytes": 6929,
+      "parent_scope": "H/skills/xianyu/xianyu-supplier-research/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F053",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/xianyu-supplier-research/references/supplier-provenance-spec.md",
+      "bytes": 3997,
+      "parent_scope": "H/skills/xianyu/xianyu-supplier-research/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F054",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu/xianyu-supplier-research/references/supplier-risk-control-design.md",
+      "bytes": 1937,
+      "parent_scope": "H/skills/xianyu/xianyu-supplier-research/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F055",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-browser-operator/SKILL.md",
+      "bytes": 3396,
+      "parent_scope": "H/skills/xianyu-browser-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F056",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-browser-operator/references/file-upload-troubleshooting.md",
+      "bytes": 2665,
+      "parent_scope": "H/skills/xianyu-browser-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F057",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-browser-operator/references/goofish-file-upload-capability-gap.md",
+      "bytes": 4559,
+      "parent_scope": "H/skills/xianyu-browser-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F058",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-browser-operator/scripts/upload_test.py",
+      "bytes": 1553,
+      "parent_scope": "H/skills/xianyu-browser-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F059",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/SKILL.md",
+      "bytes": 22345,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F060",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/browser-capability-audit.md",
+      "bytes": 2184,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F061",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/cdp-screenshot-implementation.md",
+      "bytes": 1024,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F062",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/evidence-store-closure-20260723.md",
+      "bytes": 3133,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F063",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/file-upload-capability-20260814.md",
+      "bytes": 2505,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F064",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/freshness-gate-implementation.md",
+      "bytes": 2750,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F065",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/freshness-gate-step63c.md",
+      "bytes": 2458,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F066",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/git-baseline-submit-20260723.md",
+      "bytes": 3373,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F067",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/goofish-publish-page-dom.md",
+      "bytes": 2893,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F068",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/location-semantics-audit-20260723.md",
+      "bytes": 3266,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F069",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/match-engine-field-audit.md",
+      "bytes": 1703,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F070",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/match-result-identity-design-20260814.md",
+      "bytes": 2626,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F071",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase1-completion.md",
+      "bytes": 1088,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F072",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase1-final-acceptance.md",
+      "bytes": 2543,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F073",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase1-summary.md",
+      "bytes": 1950,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F074",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-preview-pipeline.md",
+      "bytes": 2976,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F075",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps36-38-audit.md",
+      "bytes": 7213,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F076",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps37b-opportunity-identity.md",
+      "bytes": 2260,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F077",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps39-42-cand1-audit.md",
+      "bytes": 6414,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F078",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps39-44-provenance.md",
+      "bytes": 3140,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F079",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps46-46b-screenshot-provenance.md",
+      "bytes": 4331,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F080",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps49-49b-provenance-gate-audit.md",
+      "bytes": 3884,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F081",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps49-50-provenance-gate.md",
+      "bytes": 4613,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F082",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps50-54-provenance-contract.md",
+      "bytes": 9233,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F083",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps50-56-provenance-implementation.md",
+      "bytes": 7515,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F084",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps56b-production-wiring.md",
+      "bytes": 7449,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F085",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase23-steps56c-wiring-verification.md",
+      "bytes": 2764,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F086",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/phase2_3c-fixture-safety.md",
+      "bytes": 4979,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F087",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/playwright-mcp-step2-experiment.md",
+      "bytes": 3284,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F088",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/profit-audit-result-identity-audit-20260816.md",
+      "bytes": 3263,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F089",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/profit-audit-result-identity-implementation.md",
+      "bytes": 6187,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F090",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/project-root-reconciliation-20260723.md",
+      "bytes": 4105,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F091",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/project-root-reconciliation-step2-migration-20260723.md",
+      "bytes": 3864,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F092",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/project-state-audit-workflow.md",
+      "bytes": 4150,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F093",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/publish-readiness-phase21.md",
+      "bytes": 1292,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F094",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/real-market-evidence-canary-workflow.md",
+      "bytes": 4235,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F095",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/source-restoration-workflow.md",
+      "bytes": 2011,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F096",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step35-product-proposal-identity.md",
+      "bytes": 4586,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F097",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step3a-step4-findings.md",
+      "bytes": 3873,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F098",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step4-regression-finding-20260722.md",
+      "bytes": 1992,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F099",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step60-full-report.md",
+      "bytes": 6360,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F100",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step60-opportunity-mapper-binding.md",
+      "bytes": 3280,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F101",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step65-screenshot-production-wiring.md",
+      "bytes": 5200,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F102",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step65g-provenance-compensation.md",
+      "bytes": 4479,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F103",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/step66-1688-captcha-blocked.md",
+      "bytes": 2100,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F104",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/three-layer-model-acceptance.md",
+      "bytes": 2259,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F105",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-data-integrity/references/xianyu-project-status-20260814.md",
+      "bytes": 2655,
+      "parent_scope": "H/skills/xianyu-data-integrity/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F106",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-open-source-audit/SKILL.md",
+      "bytes": 15266,
+      "parent_scope": "H/skills/xianyu-open-source-audit/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F107",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-open-source-audit/references/architecture-doc-structure.md",
+      "bytes": 2450,
+      "parent_scope": "H/skills/xianyu-open-source-audit/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F108",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-open-source-audit/references/three_projects_comparison.md",
+      "bytes": 3835,
+      "parent_scope": "H/skills/xianyu-open-source-audit/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F109",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-product-research/SKILL.md",
+      "bytes": 5314,
+      "parent_scope": "H/skills/xianyu-product-research/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F110",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-supplier-research-operator/SKILL.md",
+      "bytes": 4368,
+      "parent_scope": "H/skills/xianyu-supplier-research-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F111",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-supplier-research-operator/references/step65g-provenance-compensation.md",
+      "bytes": 4651,
+      "parent_scope": "H/skills/xianyu-supplier-research-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F112",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-supplier-research-operator/references/step66-1688-captcha-blocked.md",
+      "bytes": 1870,
+      "parent_scope": "H/skills/xianyu-supplier-research-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F113",
+      "kind": "selected_skill_file",
+      "target": "H/skills/xianyu-supplier-research-operator/references/test-isolation-fix.md",
+      "bytes": 1007,
+      "parent_scope": "H/skills/xianyu-supplier-research-operator/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F114",
+      "kind": "selected_skill_file",
+      "target": "H/skills/.archive/xianyu-file-upload/SKILL.md",
+      "bytes": 5805,
+      "parent_scope": "H/skills/.archive/xianyu-file-upload/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F115",
+      "kind": "selected_skill_file",
+      "target": "H/skills/.archive/xianyu-file-upload/references/custom-mcp-tool-wrapper.md",
+      "bytes": 4837,
+      "parent_scope": "H/skills/.archive/xianyu-file-upload/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F116",
+      "kind": "selected_skill_file",
+      "target": "H/skills/.archive/xianyu-file-upload/references/mcp-server-verification.md",
+      "bytes": 6197,
+      "parent_scope": "H/skills/.archive/xianyu-file-upload/",
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F117",
+      "kind": "selected_script",
+      "target": "H/scripts/start-xianyu-browser.ps1",
+      "exists": true,
+      "sha256": "0a3b462497a1905cb0776e19ef00f85fe123b46e1fa215701fd9c02dddddb95c",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F118",
+      "kind": "selected_script",
+      "target": "H/scripts/xianyu-browser-watchdog.ps1",
+      "exists": true,
+      "sha256": "b6baf5cc53c475a51ff697b5b6dde78c4439eed54561dc88341f6bab0c9b4845",
+      "references_to_selected_scripts": [
+        "start-xianyu-browser.ps1"
+      ],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F119",
+      "kind": "selected_script",
+      "target": "H/scripts/check-xianyu-watchdog.ps1",
+      "exists": true,
+      "sha256": "a95d9e5827ef6542021645ed4601c4fb8e5c76c1c08d445c095ba208105b240b",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F120",
+      "kind": "selected_script",
+      "target": "H/scripts/close-xianyu-edge.ps1",
+      "exists": true,
+      "sha256": "1368dff57580bfda8391b4dcec028c721b11e06f18ae17a60f087398c587a545",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F121",
+      "kind": "selected_script",
+      "target": "H/scripts/inspect-xianyu-edge.ps1",
+      "exists": true,
+      "sha256": "ce2586d3e5f770e038371cbd97db0e3766db45bdd84d765816aa18ff9eb86d7f",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F122",
+      "kind": "selected_script",
+      "target": "H/scripts/verify-xianyu-closed.ps1",
+      "exists": true,
+      "sha256": "6e8348d02d99fe48aa06c3f02b787f235aa5774c1fbe64160df5cee914b41de3",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F123",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_backup.py",
+      "exists": true,
+      "sha256": "f1376438c4bb3b98271105e9bdc64cefccb3eb7c9e4931f12e0d6c497ef9009f",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F124",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_boss_report.py",
+      "exists": true,
+      "sha256": "a0c9a66485c420b385b843ff60f72766b8959e38260a792fed24d6de14a1c1de",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F125",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_competitor_research.py",
+      "exists": true,
+      "sha256": "6decdee6d8d594265d239bd3d476a1bb24afed51609dbd4d8cab3b3e5ac690ce",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F126",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_dashboard_refresh.py",
+      "exists": true,
+      "sha256": "5d74fb71885909d661788c6ebd9ec53a9ba7da596f8701e3bb521835bfabe584",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F127",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_escalation.py",
+      "exists": true,
+      "sha256": "d88124d37206892c29a4f771642dba206098ad3c2f578c863acc47d64c14215c",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F128",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_growth_review.py",
+      "exists": true,
+      "sha256": "bfdb4b665a0bbd3773d419cbfbcf53f02d2c5cf1caabfe6e5d1f33d35414d433",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F129",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_knowledge_research.py",
+      "exists": true,
+      "sha256": "afaf0b969df9817fc3db467ab924cffc3197415fa1c5dce6130484c23ed8c0a3",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F130",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_manager_report.py",
+      "exists": true,
+      "sha256": "d34d08b441ac53680353d6b3142353af1abbc9af3284dd90c8c7255cb9317fe7",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F131",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_summer_closing.py",
+      "exists": true,
+      "sha256": "5fd927070aa78f198a66f5104de4b242db8c779fcda86e7e4897e260fed06c1d",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F132",
+      "kind": "selected_script",
+      "target": "H/scripts/tuoguan_summer_opening.py",
+      "exists": true,
+      "sha256": "326d06027eeff20ab37fd301a62630a700c74a08c5d1913b688d82f23f3ee12d",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    },
+    {
+      "id": "F133",
+      "kind": "selected_script",
+      "target": "H/scripts/_tuoguan_bootstrap.py",
+      "exists": true,
+      "sha256": "0cb2215540bc58306fad79c1ac33bf8776ad7821b1c2a6acea2125cf68a880c4",
+      "references_to_selected_scripts": [],
+      "disposition": "candidate_only_owner_scope_and_dependencies_pending",
+      "delete_authorized": false
+    }
+  ],
+  "all_delete_authorizations": false,
+  "other_globs_and_bulk_sessions_expanded": false,
+  "holds": [
+    "M09: only two old cron session IDs identified; no bulk session scan or DB deletion proposal",
+    "M13/M18/M23-M28: unrelated categories, data/browser storage, second root and credentials remain unclassified; no broad scan",
+    "M29-M32: test profiles/CMDs and recovery artifacts must remain until future acceptance and explicit disposal approval"
+  ]
+}

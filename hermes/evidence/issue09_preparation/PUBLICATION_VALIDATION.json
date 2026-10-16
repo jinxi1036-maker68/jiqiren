@@ -1,0 +1,19 @@
+{
+  "document_and_source_checks_only": true,
+  "checks": {
+    "json_and_utf8_parsed": true,
+    "token_full_path_and_relative_link_checks_passed": true,
+    "review_segments_100": true,
+    "candidate_objects_133": true,
+    "all_deletions_unapproved": true,
+    "matrix_34_not_executed": true,
+    "tested_sdk_sources_match_delivery": true,
+    "python_ast_files": 3,
+    "node_syntax_files": 7
+  },
+  "findings": [],
+  "files_scanned_before_this_record": 30,
+  "publication_files_including_this_record": 31,
+  "private_vendor_runtime_original_memory_and_credentials_excluded": true,
+  "scan_limit": "Pattern and explicit allowlist check; no original secret stores read; not proof against all possible sensitive content."
+}
