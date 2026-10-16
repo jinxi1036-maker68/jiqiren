@@ -1,0 +1,842 @@
+{
+  "schema_version": "hermes_issue09_gate0_change_matrix_v1",
+  "status": "proposal_only_pending_owner_approval",
+  "gate": "0",
+  "all_targets_advisory_not_executable": true,
+  "aliases": {
+    "H": "<USER_HOME>/.hermes（既有活动根）",
+    "P": "<LOCALAPPDATA>/hermes（第二数据根且含安装）",
+    "I": "P/hermes-agent（既有安装）",
+    "D": "<APPDATA>/Hermes（既有Desktop资料）",
+    "W": "拟建的公司工作目录，非HERMES_HOME/profile",
+    "T_A": "<CODEX_WORKSPACE>/work/hermes_phase02a",
+    "T_B": "<CODEX_WORKSPACE>/work/hermes_phase02b"
+  },
+  "evidence_note": "S1公开审计及本机既有enriched/inventory_sanitized.json路径元数据；未重读原记忆或重扫Skills。历史记录不证明此刻未变化。",
+  "sources": {
+    "S0": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md"
+    },
+    "S1": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "hermes/reports/PHASE_01_LOCAL_AUDIT_REPORT.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/hermes/reports/PHASE_01_LOCAL_AUDIT_REPORT.md"
+    },
+    "S2": {
+      "ref": "6a5b500c915a0a9b14e089752785937c67ce3bfa",
+      "path": "hermes/reports/PHASE_02A_SPECIALIZED_AGENT_BASELINE.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/6a5b500c915a0a9b14e089752785937c67ce3bfa/hermes/reports/PHASE_02A_SPECIALIZED_AGENT_BASELINE.md"
+    },
+    "S3": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/reports/PHASE_02B_REAL_BACKEND_READONLY_ONBOARDING.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/reports/PHASE_02B_REAL_BACKEND_READONLY_ONBOARDING.md"
+    },
+    "S4": {
+      "ref": "6a5b500c915a0a9b14e089752785937c67ce3bfa",
+      "path": "hermes/evidence/phase02a/GATE_0.json",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/6a5b500c915a0a9b14e089752785937c67ce3bfa/hermes/evidence/phase02a/GATE_0.json"
+    },
+    "S5": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/evidence/phase02b/CLEANUP.json",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/evidence/phase02b/CLEANUP.json"
+    },
+    "S6": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/phase02b/setup_profile.py",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/phase02b/setup_profile.py"
+    },
+    "S7": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/phase02b/browser_bridge.mjs",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/phase02b/browser_bridge.mjs"
+    },
+    "S8": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "hermes/identity/ROLE_BRIEF.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/hermes/identity/ROLE_BRIEF.md"
+    },
+    "S9": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md"
+    }
+  },
+  "rows": [
+    {
+      "id": "M01",
+      "category": "保留核心",
+      "targets": [
+        "I/",
+        "I/venv/",
+        "I/venv/Scripts/hermes.exe"
+      ],
+      "business_ownership": "Hermes程序/运行时",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "安装源、解释器与原Desktop后端引用一致；本轮不重做审计",
+      "proposed_action": "保留；不重装，不清理安装目录",
+      "impact": "误删会使原入口失效",
+      "rollback_condition_and_method": "不修改；意外损坏时依据固定HEAD及本地增补恢复，另获批准",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": false,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M02",
+      "category": "保留核心",
+      "targets": [
+        "I/apps/desktop/release/win-unpacked/Hermes.exe",
+        "D/",
+        "原日常快捷方式（完整.lnk目标待Gate1定点确认）"
+      ],
+      "business_ownership": "唯一正式入口",
+      "evidence": [
+        "S1",
+        "S8"
+      ],
+      "dependency_check": "快捷方式/启动参数、Desktop持久状态、会话选择与有效HERMES_HOME",
+      "proposed_action": "保留原入口；仅经批准调整其岗位工作区/默认新会话，不新增长期数采入口",
+      "impact": "旧会话/旧项目可能使岗位上下文回流",
+      "rollback_condition_and_method": "在同一入口恢复设置；暂停对外任务，不启动第二员工",
+      "target_resolution": "可执行文件已记录；快捷方式及持久设置键名待核实",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M03",
+      "category": "需Owner判断",
+      "targets": [
+        "H/config.yaml"
+      ],
+      "business_ownership": "正式配置",
+      "evidence": [
+        "S1",
+        "S2",
+        "S6"
+      ],
+      "dependency_check": "model/provider、MCP、toolsets、skills禁用清单、安全审批、terminal.cwd与Desktop项目cwd影响",
+      "proposed_action": "仅提交字段级差异：退出旧业务MCP/自动任务引用，接入经适配浏览器及岗位工作区；保留模型/安全基线；不照抄测试yaml",
+      "impact": "整文件替换会丢失模型、安全及Desktop设置",
+      "rollback_condition_and_method": "用批准的变更前文件/字段恢复；调度与外发保持暂停待Owner确认",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M04",
+      "category": "保留核心",
+      "targets": [
+        "H/.env",
+        "H/auth.json",
+        "H/providers/"
+      ],
+      "business_ownership": "现有模型连接及认证",
+      "evidence": [
+        "S1",
+        "S2",
+        "S5"
+      ],
+      "dependency_check": "实际provider引用与哪些凭据仍为公司所需；不输出值",
+      "proposed_action": "保留有效模型/运行认证；不注入PHASE02_MODEL_KEY，不沿用临时测试授权；无关账号条目另列批准",
+      "impact": "误删会失去模型连接或登录；保留过多旧账号也有越权风险",
+      "rollback_condition_and_method": "批准窗口内本地恢复对应凭据；必要时Owner重新授权；不从GitHub取密钥",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": false,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M05",
+      "category": "拟清理无关",
+      "targets": [
+        "H/SOUL.md"
+      ],
+      "business_ownership": "混合旧身份→公司唯一岗位",
+      "evidence": [
+        "S1",
+        "S8",
+        "S0"
+      ],
+      "dependency_check": "load_soul_md、session home_override、上下文截断；保留通用表达偏好须Owner选择",
+      "proposed_action": "经批准重写为ROLE_BRIEF语义、事实和权限边界；移除无关角色，不复制模拟SOUL",
+      "impact": "新会话应知道岗位；旧会话仍可能保留旧提示",
+      "rollback_condition_and_method": "停止新会话写入，恢复变更前SOUL；岗位未加载不继续清理",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M06",
+      "category": "拟清理无关",
+      "targets": [
+        "H/memories/MEMORY.md"
+      ],
+      "business_ownership": "旧电商/托管等混合长期记忆",
+      "evidence": [
+        "S1",
+        "S8"
+      ],
+      "dependency_check": "按条目归属核对，检验记忆快照/回写缓存与历史恢复来源",
+      "proposed_action": "批准后保留公司事实/经验与待办入口，移除无关旧条目；不携带DEMO基线；禁止关键词批量删除",
+      "impact": "仅改文件不能清除旧会话快照；错误回写可复活旧内容",
+      "rollback_condition_and_method": "短期加密变更集恢复该文件并新开会话；不把旧业务重新自动运行",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M07",
+      "category": "拟清理无关",
+      "targets": [
+        "H/memories/USER.md"
+      ],
+      "business_ownership": "通用Owner偏好与旧业务混合",
+      "evidence": [
+        "S1",
+        "S8"
+      ],
+      "dependency_check": "区分沟通偏好/审批习惯与无关业务；原文件接近字符上限",
+      "proposed_action": "Owner确认最小通用偏好后重写，删除旧岗位内容；权限放政策文件，不由偏好覆盖",
+      "impact": "全清会丢失有用偏好；全留会污染岗位",
+      "rollback_condition_and_method": "恢复对应变更前文件并重建新会话",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M08",
+      "category": "需Owner判断",
+      "targets": [
+        "W（拟定：H/company-workspace）/HERMES.md",
+        "W/knowledge/",
+        "原Desktop项目cwd及H/config.yaml:terminal.cwd"
+      ],
+      "business_ownership": "公司知识与项目上下文",
+      "evidence": [
+        "S1",
+        "S8"
+      ],
+      "dependency_check": "HERMES.md优先于AGENTS.md；Desktop会话cwd可能优先terminal.cwd；GitHub开发AGENTS不是员工岗位全文",
+      "proposed_action": "经批准建立公司工作区并让原入口新会话实际使用；按Harness渐进加载公司知识；不改I内贡献者AGENTS",
+      "impact": "仅放文件不等于实际装载；旧cwd可继续注入旧业务",
+      "rollback_condition_and_method": "恢复原cwd设置并停在技术恢复状态；W是目录不是新Hermes身份",
+      "target_resolution": "W为拟建目标，具体位置及Desktop字段待批准确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M09",
+      "category": "需Owner判断",
+      "targets": [
+        "H/sessions/<逐项批准的旧会话文件>",
+        "H/state.db中逐项批准的旧sessions/messages记录",
+        "H/.hermes_history"
+      ],
+      "business_ownership": "旧业务会话/检索/恢复入口",
+      "evidence": [
+        "S1",
+        "S9"
+      ],
+      "dependency_check": "旧会话引用、父子session、FTS索引、附件及UI会话恢复；原生删除机制与一致事务",
+      "proposed_action": "先让原入口默认新公司会话；提出具体旧session ID清单后再清理对应历史和检索，不删除整个state.db",
+      "impact": "整库删除可能损坏正式运行/索引；未清历史可能再次回灌旧业务",
+      "rollback_condition_and_method": "只使用批准的一致SQLite备份/API恢复，不拼接异时WAL；恢复前停写且禁外发",
+      "target_resolution": "具体会话ID、关联表/文件尚未获批准；不得按此模板删除",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M10",
+      "category": "需Owner判断",
+      "targets": [
+        "H/checkpoints/",
+        "H/backups/中的记忆/会话副本",
+        "H/.curator_backups/"
+      ],
+      "business_ownership": "可能回灌旧记忆的快照",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "逐文件确认是否含旧业务、恢复命令/钩子是否引用、是否必要记录",
+      "proposed_action": "逐项退出自动恢复来源；获批后清理选定旧副本，不将整个目录视为无用",
+      "impact": "只删MEMORY而留下自动恢复副本可能复活旧角色",
+      "rollback_condition_and_method": "在短期保留期内按单个对象恢复；超期删除后无保证",
+      "target_resolution": "目录存在为历史记录；实际文件清单待定点核对",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M11",
+      "category": "拟清理无关",
+      "targets": [
+        "H/skills/1688-direction-audit/",
+        "H/skills/tuoguan/summer-program-ai-tutor/",
+        "H/skills/tuoguan-operations/",
+        "H/skills/xianyu/browser-evidence-closure/",
+        "H/skills/xianyu/xianyu-source-lifecycle/",
+        "H/skills/xianyu/xianyu-supplier-research/",
+        "H/skills/xianyu-browser-operator/",
+        "H/skills/xianyu-data-integrity/",
+        "H/skills/xianyu-open-source-audit/",
+        "H/skills/xianyu-product-research/",
+        "H/skills/xianyu-supplier-research-operator/",
+        "H/skills/.archive/xianyu-file-upload/"
+      ],
+      "business_ownership": "旧电商/托管候选Skills",
+      "evidence": [
+        "S1"
+      ],
+      "dependency_check": "依据已保存161份Skill路径清单；目录内容/脚本引用和通用经验需逐项核实，不能只看名字",
+      "proposed_action": "审批后退出装载并清理确属无关的目录；可用通用方法去业务化后留一份；不全删skills",
+      "impact": "目录可能含可复用浏览器经验或嵌套Skills；须先拆出依赖",
+      "rollback_condition_and_method": "短期加密变更集恢复选定目录和索引；不启用旧业务工具",
+      "target_resolution": "12个具体目录来自既有路径记录；归属为候选，非已批准删除",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M12",
+      "category": "保留核心",
+      "targets": [
+        "H/skills/ai-providers/agnes-ai-provider/",
+        "H/skills/mcp/native-mcp/",
+        "H/skills/hermes-troubleshooting/",
+        "H/skills/architecture-boundary-check/",
+        "H/skills/regression-verification/",
+        "H/skills/research/grounded-citations/",
+        "H/skills/productivity/document-to-action-items/",
+        "H/skills/productivity/{pdf,docx,xlsx,ocr-and-documents}/"
+      ],
+      "business_ownership": "模型/维护/事实核验/通用文档候选能力",
+      "evidence": [
+        "S1"
+      ],
+      "dependency_check": "Skill文本与实际依赖/平台/启用条件；文档解析库审计时尚缺，不能冒称可用",
+      "proposed_action": "保留必需核心和有用通用方法；文档依赖按当前需求另测；不全局打开所有Skills",
+      "impact": "文件存在不等于能力已验收；缺依赖不删除核心程序",
+      "rollback_condition_and_method": "维持原启用状态直到批准具体调整",
+      "target_resolution": "花括号为便于阅读的候选集合，实施时必须展开精确清单",
+      "owner_approval_required": false,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M13",
+      "category": "需Owner判断",
+      "targets": [
+        "H/skills/{apple,creative,gaming,media,mlops,smart-home}/",
+        "H/skills/red-teaming/godmode/",
+        "H/skills/qq-bot-setup/"
+      ],
+      "business_ownership": "非当前岗位/通用或不适用能力候选",
+      "evidence": [
+        "S1",
+        "S0"
+      ],
+      "dependency_check": "原有禁用351项/缓存/平台条件，不能把154或76视为当前启用数；核对每个子Skill",
+      "proposed_action": "仅经Owner确认逐项退出无关装载；通用维护/安全方法酌留，不按大类目录批删",
+      "impact": "可能混有跨业务通用能力；解除禁用可能扩大权限",
+      "rollback_condition_and_method": "保留期内恢复精确条目及原禁用状态",
+      "target_resolution": "集合/目录仅为待判断范围，不是递归删除授权",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M14",
+      "category": "需Owner判断",
+      "targets": [
+        "H/.skills_prompt_snapshot.json",
+        "H/config.yaml中skills启停配置"
+      ],
+      "business_ownership": "Skills索引/装载状态",
+      "evidence": [
+        "S1"
+      ],
+      "dependency_check": "原生缓存重建方式与bundled skills自动补种条件",
+      "proposed_action": "清理Skills后通过经核实原生机制重建索引，防止缓存继续呈现旧业务；不照搬测试profile的全Skills禁用",
+      "impact": "只删目录或只改缓存均可能不生效；重新补种可回流",
+      "rollback_condition_and_method": "恢复缓存及启停配置，开启新会话验证",
+      "target_resolution": "具体配置键与重建入口需Gate1定点核实",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M15",
+      "category": "拟清理无关",
+      "targets": [
+        "H/config.yaml:mcp_servers.playwright-xianyu-lab"
+      ],
+      "business_ownership": "旧业务CDP绑定，底层浏览器通用",
+      "evidence": [
+        "S1",
+        "S7"
+      ],
+      "dependency_check": "现有CDP曾失败；原后台/浏览器进程引用与新通用桥接方式",
+      "proposed_action": "批准后移除旧业务绑定，保留Playwright包；以适配后的中性浏览器工具服务原Hermes",
+      "impact": "不能把历史隔离成功当原CDP修好；直接换URL不足以只读",
+      "rollback_condition_and_method": "恢复字段级配置但默认不启动旧业务浏览器/写工具",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M16",
+      "category": "拟清理无关",
+      "targets": [
+        "H/config.yaml:mcp_servers.xianyu-browser-tools",
+        "H/tools/xianyu-browser-tools/中的旧业务server代码"
+      ],
+      "business_ownership": "硬编码旧业务上传/发布",
+      "evidence": [
+        "S1",
+        "S6",
+        "S7"
+      ],
+      "dependency_check": "模拟bridge通过此目录package.json定位MCP SDK；先搬到批准的中性依赖位置并验证导入",
+      "proposed_action": "先退出旧上传MCP；依赖迁出并验证后，才批准删除具体旧server/目录",
+      "impact": "整目录先删会损坏已验证浏览器桥；旧上传方法不能移植灵生",
+      "rollback_condition_and_method": "恢复对应依赖/配置；不执行旧业务server业务方法",
+      "target_resolution": "server入口需按旧MCP定义定位；整个目录必须等SDK依赖解除",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M17",
+      "category": "保留核心",
+      "targets": [
+        "H/tools/playwright-mcp/",
+        "现有Node.js运行时",
+        "现有Microsoft Edge程序"
+      ],
+      "business_ownership": "浏览器基础依赖",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "已装Playwright MCP0.0.78与SDK兼容，不能误删Node/Edge全局资料",
+      "proposed_action": "保留包和运行时；迁移只调整受控接入，不升级重装",
+      "impact": "包可用不等于真实账号/后台可用",
+      "rollback_condition_and_method": "保持版本锁定；失败回到已记录组件组合",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": false,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M18",
+      "category": "需Owner判断",
+      "targets": [
+        "H/tools/rvcmd/",
+        "H/bin/",
+        "H/runtime/"
+      ],
+      "business_ownership": "其他工具与运行支持混合",
+      "evidence": [
+        "S1"
+      ],
+      "dependency_check": "具体调用者、启动服务及安全功能未由现有报告完整分类",
+      "proposed_action": "不因非数采名字删除；先核对具体被引用项，仅提必要变更",
+      "impact": "误删可能损坏Hermes或其他应用",
+      "rollback_condition_and_method": "不改则无回退；批准后按逐项变更集恢复",
+      "target_resolution": "不能授权整目录删除",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M19",
+      "category": "需Owner判断",
+      "targets": [
+        "H/cron/jobs.json中audit_alias=job-1的工作日08:00任务",
+        "该job关联投递/脚本/运行状态"
+      ],
+      "business_ownership": "归属未确定；记录有数采主题线索",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "真实job ID、prompt/skills/workdir/provider_snapshot/deliver、是否仍有公司用途；先提供本地脱敏摘要",
+      "proposed_action": "Owner选择停用/改造/保留；不得假定旧业务，不沿用为正式数采值班；停用获批前不修改",
+      "impact": "一旦停止会失去现有提醒；原样保留可继续注入旧角色/外发",
+      "rollback_condition_and_method": "恢复已批准任务定义与状态须Owner确认，不在技术回滚中自动投递",
+      "target_resolution": "完整job ID未公开；需定点映射alias并获批准",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M20",
+      "category": "需Owner判断",
+      "targets": [
+        "Windows计划任务：Phase01记录的旧运行栈任务（路径/名称待确定）"
+      ],
+      "business_ownership": "可能旧OpenClaw/浏览器守护，归属待证",
+      "evidence": [
+        "S1"
+      ],
+      "dependency_check": "完整TaskPath/TaskName、Action、触发器、服务依赖与其他应用共用情况",
+      "proposed_action": "拿到具体任务摘要后单独批准；不运行disable/remove脚本，也不提前停任务",
+      "impact": "误停可影响原入口/其他应用",
+      "rollback_condition_and_method": "保留本地任务XML及原enabled状态；按批准恢复",
+      "target_resolution": "现有公开证据无精确任务名；该项当前不得执行删除",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M21",
+      "category": "拟清理无关",
+      "targets": [
+        "H/scripts/start-xianyu-browser.ps1",
+        "H/scripts/xianyu-browser-watchdog.ps1",
+        "H/scripts/check-xianyu-watchdog.ps1",
+        "H/scripts/close-xianyu-edge.ps1",
+        "H/scripts/inspect-xianyu-edge.ps1",
+        "H/scripts/verify-xianyu-closed.ps1",
+        "H/scripts/tuoguan_backup.py",
+        "H/scripts/tuoguan_boss_report.py",
+        "H/scripts/tuoguan_competitor_research.py",
+        "H/scripts/tuoguan_dashboard_refresh.py",
+        "H/scripts/tuoguan_escalation.py",
+        "H/scripts/tuoguan_growth_review.py",
+        "H/scripts/tuoguan_knowledge_research.py",
+        "H/scripts/tuoguan_manager_report.py",
+        "H/scripts/tuoguan_summer_closing.py",
+        "H/scripts/tuoguan_summer_opening.py",
+        "H/scripts/_tuoguan_bootstrap.py"
+      ],
+      "business_ownership": "旧电商/托管脚本候选",
+      "evidence": [
+        "S1"
+      ],
+      "dependency_check": "计划任务、cron、启动快捷方式、网关/其他脚本引用；先批准退出启动链，再删具体文件",
+      "proposed_action": "经批准清理无关文件；不运行其中的停止/上传/删除命令，不删除整个scripts",
+      "impact": "仍被调度引用会报错；守护可能重建浏览器/旧上下文",
+      "rollback_condition_and_method": "恢复对应脚本及引用前先确认不会自动启动旧业务",
+      "target_resolution": "17个具体文件来自既有脚本清单；归属/引用还需核实",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M22",
+      "category": "需Owner判断",
+      "targets": [
+        "H/scripts/channel_autoheal.py",
+        "H/scripts/_write_heal_log.py",
+        "H/scripts/*openclaw*.ps1",
+        "H/scripts/*tunnel*.ps1",
+        "H/_del360*.py",
+        "H/_find360*.py",
+        "H/remove360.bat"
+      ],
+      "business_ownership": "维护/渠道/系统修改，归属不清",
+      "evidence": [
+        "S1"
+      ],
+      "dependency_check": "服务渠道及原Hermes安全/维护是否共用；系统修改脚本不执行",
+      "proposed_action": "逐项判断；只提出候选，无通配符执行授权",
+      "impact": "误删通用维护可影响稳定，运行旧脚本可能改系统",
+      "rollback_condition_and_method": "具体批准前维持不动",
+      "target_resolution": "通配符仅检索候选范围，后续须展开且拒绝目录外目标",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M23",
+      "category": "拟清理无关",
+      "targets": [
+        "H/xianyu/",
+        "H/xianyu-output/",
+        "H/tuoguan-data/",
+        "H/tuoguan-data-staging/"
+      ],
+      "business_ownership": "历史业务数据候选",
+      "evidence": [
+        "S1",
+        "S9"
+      ],
+      "dependency_check": "所有权、仍需保留的合同/财务/个人资料、共享引用及目录链接；不按名字假定全无价值",
+      "proposed_action": "Owner确认范围/保留例外后从正式工作与检索退出，逐项清理无关数据",
+      "impact": "不可逆丢失旧业务记录；可能含私密材料",
+      "rollback_condition_and_method": "仅在批准的短期保护期内恢复；到期处置后不能保证恢复",
+      "target_resolution": "目录来自既有记录；内部文件与例外清单待Owner核对",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M24",
+      "category": "需Owner判断",
+      "targets": [
+        "H/browser-profiles/",
+        "<USER_HOME>/.hermes-chrome-debug/",
+        "<USER_HOME>/.HermesBrowserCheck/"
+      ],
+      "business_ownership": "旧业务浏览器资料与登录态",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "谁启动/谁连接、是否共用个人Edge资料；旧Cookie不迁移到灵生",
+      "proposed_action": "批准断开旧业务启动链后清理确定无关的资料；未来业务浏览器授权在Gate2由Owner亲自办理",
+      "impact": "Cookie/LevelDB恢复未验证；删错会丢登录态",
+      "rollback_condition_and_method": "现有备份仅文件/DB级，不保证恢复登录；需Owner能接受重新登录",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M25",
+      "category": "需Owner判断",
+      "targets": [
+        "P/config.yaml",
+        "P/.env",
+        "P/auth.json",
+        "P/SOUL.md",
+        "P/memories/",
+        "P/skills/"
+      ],
+      "business_ownership": "第二数据根的旧资料；当前用途需确认",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "P同时包含I安装程序；Desktop平台回退、环境变量/注册表和其他入口是否使用",
+      "proposed_action": "只针对确认不用的具体数据项清理；不删除P整个目录，不误删P/hermes-agent",
+      "impact": "误删P会同时删正式安装；回退默认数据根可能使清理对象重新活跃",
+      "rollback_condition_and_method": "按批准变更集恢复数据项；发现根解析漂移立即停止",
+      "target_resolution": "具体数据文件可定位；是否仍被其他入口使用待Gate1确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M26",
+      "category": "需Owner判断",
+      "targets": [
+        "<USER_HOME>/hermes-agent-v*（历史3个目录）",
+        "I内本地未跟踪/自定义文件"
+      ],
+      "business_ownership": "旧版本/自定义源码",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "原入口、更新器、回滚链和增补包；11个未跟踪条目不等于11文件",
+      "proposed_action": "不作为Gate1必要清理项；只有逐一定位且无依赖才再批准，不能按版本名认废",
+      "impact": "可能删掉唯一可回滚版本或本地修复",
+      "rollback_condition_and_method": "32项增补仅覆盖已记录本地文件，不是venv/完整安装镜像",
+      "target_resolution": "版本目录全名与本地自定义文件需精确清单；当前无删除授权",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M27",
+      "category": "需Owner判断",
+      "targets": [
+        "H/config.yaml中的plugins/channels/permissions",
+        "H/hooks/",
+        "H/gateway-service/",
+        "H/channel_directory.json"
+      ],
+      "business_ownership": "通用渠道/插件/安全/守护混合",
+      "evidence": [
+        "S1",
+        "S0"
+      ],
+      "dependency_check": "配置3个插件但用户插件目录空，不等于无插件；消息渠道、服务启动、权限与旧业务依赖",
+      "proposed_action": "保留安全/审计核心；退出确认无关自动外发和旧业务钩子；不新增值班渠道",
+      "impact": "可能断掉核心服务或继续外发旧业务；空目录不能证明无内置插件",
+      "rollback_condition_and_method": "恢复具体字段/文件；是否恢复外发或服务另由Owner确认",
+      "target_resolution": "字段级名单及引用待Gate1定点核实",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M28",
+      "category": "需Owner判断",
+      "targets": [
+        "H/.env.bak",
+        "H/.env.bak-20260806_220806",
+        "H/config.yaml.bak",
+        "H/backups/",
+        "H/config/"
+      ],
+      "business_ownership": "旧配置/凭据/记忆备份混合",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "dependency_check": "当前provider/配置自动恢复依赖；需保留审计摘要及适用版本",
+      "proposed_action": "Owner批准具体副本后清理无关影子；现有1字节差异证据留GitHub，实际凭据副本不入库",
+      "impact": "删掉当前配置可恢复点；保留不必要明文秘密",
+      "rollback_condition_and_method": "有效加密包/批准变更集在留存期内恢复；不恢复失效授权",
+      "target_resolution": "目录不是整体删除目标，逐文件清单待确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M29",
+      "category": "仅历史模拟",
+      "targets": [
+        "T_A/private/runtime-local/profiles/data-ops/",
+        "T_A/private/runtime-local/workspace/",
+        "T_B/private/runtime-local/profiles/data-ops/",
+        "T_B/private/runtime-local/workspace/",
+        "T_B/日常入口/启动数采Hermes.cmd",
+        "T_B/日常入口/自检数采身份.cmd"
+      ],
+      "business_ownership": "Phase02A/B测试身份与第二入口",
+      "evidence": [
+        "S2",
+        "S3",
+        "S5"
+      ],
+      "dependency_check": "正式原入口验收通过、证据已固定、无运行实例/快捷方式引用；T_B的cmd位于private外兄弟目录，需按别名定义解析",
+      "proposed_action": "Gate1原入口验收后，Owner批准撤下两个测试身份与专用cmd；不迁移测试DB、DEMO记忆或临时key",
+      "impact": "继续保留会造成双员工误用；先删可能丢调查证据",
+      "rollback_condition_and_method": "保留期内可恢复技术测试材料但不作为第二正式员工；GitHub测试代码/证据永久保留",
+      "target_resolution": "T_A/T_B为既有工作区阶段根，private差异见别名；不得删除整个阶段根",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M30",
+      "category": "仅历史模拟",
+      "targets": [
+        "T_A/private/runtime-local/其余测试记录",
+        "T_B/private/runtime-local/其余测试记录"
+      ],
+      "business_ownership": "模拟DB/工具轨迹/浏览器输出",
+      "evidence": [
+        "S2",
+        "S3",
+        "S5"
+      ],
+      "dependency_check": "公开脱敏证据与关键失败记录已固定；无原始员工业务资料应进入GitHub",
+      "proposed_action": "批准后清理不再需要的本机运行残留；保留仓库历史/源码和脱敏失败证据",
+      "impact": "整阶段目录删除会波及备份；残留DB不能当岗位经验自动导入",
+      "rollback_condition_and_method": "在短期保护期内恢复选定测试材料；超期只保留公开复现代码",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M31",
+      "category": "仅历史模拟",
+      "targets": [
+        "T_A/private/hermes-state.hbak.enc",
+        "T_A/private/source-supplement/hermes-state.hbak.enc"
+      ],
+      "business_ownership": "已验证的一次性原环境恢复保护",
+      "evidence": [
+        "S2",
+        "S4"
+      ],
+      "dependency_check": "同Windows用户DPAPI、完整包/认证头/一致SQLite；不是跨机/登录态恢复证明",
+      "proposed_action": "建议仅作Gate1迁移保护：验收后7日处置复核、最长14日须Owner重新决定；无默认自动删除/永久影子",
+      "impact": "过早删除失去恢复点；长期保留背离Owner单员工目标且存旧私密资料",
+      "rollback_condition_and_method": "处置前可按批准范围恢复；处置后无可恢复保证，Owner须明确接受",
+      "target_resolution": "记录中的具体路径；实施前须重解析并确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M32",
+      "category": "仅历史模拟",
+      "targets": [
+        "T_A/private/hermes-state.failed-attempt-01.hbak.enc",
+        "T_A/private/hermes-state.failed-attempt-02.hbak.enc",
+        "T_A/private/restore_verification/",
+        "T_A/private/source-supplement/restore_verification/"
+      ],
+      "business_ownership": "失败包和恢复演练副本",
+      "evidence": [
+        "S2",
+        "S4"
+      ],
+      "dependency_check": "有效包/摘要已登记，确认演练目录位置与无运行引用；恢复副本可能含旧明文资料",
+      "proposed_action": "优先列入获批处置范围；失败包不能当恢复点；不重做全量恢复",
+      "impact": "误把唯一有效包删掉或公开旧资料",
+      "rollback_condition_and_method": "只以M31有效包恢复；失败包本就没有恢复保证",
+      "target_resolution": "源补充演练目录按交接记录待Gate1精确确认",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M33",
+      "category": "需Owner判断",
+      "targets": [
+        "Gate1变更前拟建的本地加密增量恢复集"
+      ],
+      "business_ownership": "必要短期迁移保护，非第二员工",
+      "evidence": [
+        "S2",
+        "S4",
+        "S0"
+      ],
+      "dependency_check": "只纳入批准修改且较旧备份已变化的文件/选定SQLite一致快照；列明目的、截止和访问者",
+      "proposed_action": "Owner批准停写窗口、变更集及7日/14日留存方案后才创建；不重复14,349文件/129库全量演练",
+      "impact": "旧恢复点不覆盖后来变化；不必要复制扩大旧资料留存",
+      "rollback_condition_and_method": "验收失败在批准窗口内恢复本次一致变更集；定期处置须Owner确认",
+      "target_resolution": "新建内容/位置/有效期均未批准",
+      "owner_approval_required": true,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "M34",
+      "category": "保留核心",
+      "targets": [
+        "Hermes记忆/历史/Skills工具及自主规划循环",
+        "正式岗位中的工作方法复盘机制"
+      ],
+      "business_ownership": "公司员工自主性",
+      "evidence": [
+        "S0",
+        "S8",
+        "S3"
+      ],
+      "dependency_check": "测试身份禁用background_review和全部Skills只是当时测试边界；正式机制须保护Owner政策不被自改",
+      "proposed_action": "保留/按需培养自主规划与方法复盘；不把四个浏览器工具当终局全部能力；正式唤醒/通知仍not_implemented",
+      "impact": "全关记忆和Skills会削弱员工；全开放自改可破坏底线",
+      "rollback_condition_and_method": "批准后按具体机制回退，不恢复旧业务自动化",
+      "target_resolution": "具体启用范围在Gate1批准；持续值班属于以后阶段",
+      "owner_approval_required": false,
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    }
+  ]
+}
+

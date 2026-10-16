@@ -1,0 +1,27 @@
+{
+  "gate": "0",
+  "document_checks_only": true,
+  "validated_at_utc": "2026-10-16 06:07:35 UTC",
+  "checks": {
+    "unique_publication_paths": true,
+    "json_parsed": true,
+    "all_local_markdown_links_resolve": true,
+    "matrix_34_unique_ids": true,
+    "all_matrix_items_not_executed": true,
+    "all_matrix_rows_complete": true,
+    "sources_resolve": true,
+    "matrix_not_an_executable_allowlist": true,
+    "business_work_item_deep_equal": true,
+    "latest_owner_governance_fields_preserved": true,
+    "history_append_only": true,
+    "gate1_and_gate2_not_started": true,
+    "no_runtime_or_secret_artifacts": true,
+    "no_token_or_full_user_path_patterns": true
+  },
+  "passed": true,
+  "runtime_audit_or_model_tests_performed_this_gate": false,
+  "publication_files_including_this_record": 9,
+  "privacy_scan": "Explicit text allowlist plus token/full-local-user-path patterns; no current credential files or original memories read for this validation. Not a proof against every possible sensitive string.",
+  "inherited_runtime_results_are_historical_not_reexecuted": true
+}
+

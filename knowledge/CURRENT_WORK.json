@@ -135,20 +135,20 @@
   "parallel_development_track": {
     "id": "HERMES-DIGITAL-EMPLOYEE",
     "created_at": "2026-10-15",
-    "status": "phase02b_gate_a_simulation_reviewed_new_owner_single_employee_direction_pending_original_install_migration",
+    "status": "issue09_gate0_plan_completed_pending_owner_chatgpt_review_no_local_migration",
     "purpose": "在既有业务知识库旁同步建设Hermes数字员工开发档案；由Codex在本地盘点并训练Hermes，不预设灵生后台菜单及用户操作习惯",
     "entry": "hermes/README.md",
     "phase_one_task": "hermes/tasks/PHASE_01_LOCAL_AUDIT.md",
-    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/7",
-    "current_limits": "原安装Hermes旧记忆尚未清理、正式主身份尚未按新理念重建；独立测试profile仅为阶段实验；临时模型授权已结束；未登录灵生真实后台，未实现自动值班/正式派单。",
-    "next_gate": "Codex先依据最新Owner宪章重新评估现有本地原Hermes和PR#6/#8，拟定具体可复核的单身份岗位迁移、旧业务清理及能力接入方案；Owner核对永久删除范围/实际操作授权，之后再执行。",
+    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "current_limits": "原Hermes旧业务清理/岗位植入未实施；继承Phase01/02A/02B证据，本轮未重复全量审计、备份或模型测试；未改原配置、停任务、注入凭据或登录灵生。",
+    "next_gate": "Owner/ChatGPT审查Gate0报告和34项矩阵；逐项批准具体改写/清理目标、任务处置、维护窗口、短期保护与模型使用后，才进入Issue9 Gate1。未知ID/目录归属继续待决。",
     "scope_note": "该并行技术工作不替换原有唯一业务主工作项WI-2026-10-livsyn-first-trial-prep",
     "phase_01_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
     "phase_01_review": "已审查并合并；阶段模拟组件测试不代表生产运营",
     "phase_01_verified_basis": "Hermes Agent 0.20.4 Windows; Playwright MCP独立虚拟浏览器9项测试通过；原CDP连接失败；配置净增1字节后来核实为voice.auto_tts true→false但历史写入者未知",
     "phase_02a_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/5",
     "phase_02a_scope": "review config drift, backup/restore, build isolated job profile, verify Hermes Agent autonomously operates synthetic browser page; no production login or operations",
-    "current_phase": "Owner单员工理念已定稿；Phase02B Gate A模拟训练已审，正在准备实施方案改线",
+    "current_phase": "Issue #9 Gate 0：单员工迁移与清理方案已提交审阅；Gate1未授权",
     "owner_charter": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
     "owner_adr": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
     "evolution_history": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
@@ -160,6 +160,21 @@
     "phase_02b_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/8",
     "phase_02b_status": "2026-10-16 Gate A范围内审查通过，PR当时未合并且基于PR#6分支；23次模型对话/97次浏览器调用；九类最新模拟样本通过，Windows CMD双击视觉验收待完成",
     "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆",
-    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "gate_0_report": "hermes/reports/ISSUE_09_GATE_0_SINGLE_EMPLOYEE_MIGRATION_PLAN.md",
+    "gate_0_change_matrix": "hermes/plans/issue09_gate0/CHANGE_CLEANUP_MATRIX.json",
+    "gate_0_owner_checklist": "hermes/plans/issue09_gate0/OWNER_APPROVAL_CHECKLIST.md",
+    "gate_0_review_basis": {
+      "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "pr4": "merged",
+      "pr6_head": "6a5b500c915a0a9b14e089752785937c67ce3bfa",
+      "pr6_status": "open_unmerged",
+      "pr8_head": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "pr8_status": "open_unmerged_base_pr6",
+      "reviewed_at_utc": "2026-10-16 06:07:35 UTC"
+    },
+    "gate_1_status": "not_authorized_not_started",
+    "gate_2_status": "not_authorized_not_started"
   }
 }
+

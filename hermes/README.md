@@ -28,13 +28,22 @@
 - **可追溯但不泄密**：GitHub保留可复现代码、角色规则、流程知识、脱敏测试和迭代记录；本地存有登录凭据、Cookie、员工身份信息、工资明细、视频源文件，不应提交仓库。
 - **可回退、可复核**：升级前备份；经Codex真实验证后才记录“已具备”，不可把计划误写成成果。
 
+## 当前权威
+
+先读[岗位宪章](../knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md)、[正式ADR](../knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md)、[演进历史](../knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)及[开发约束](AGENTS.md)。原Hermes是唯一正式员工与日常入口；公司给目标/底线，员工自主选择方法。旧隔离profile仅为历史实验，不是长期部署方案。
+
 ## 当前阶段
 
-**PHASE 01：已完成本机盘点和隔离浏览器演示测试，等待Owner与ChatGPT复核。** 已提交脱敏报告和待批准变更建议；未进入第二阶段、未清理记忆、未登录灵生后台、未新增自动运行任务。审计发现原配置存在1字节未归因变化，详见报告的完整性限制。
+**Issue #9 Gate 0：单身份岗位迁移与旧业务清理方案完成，等待Owner/ChatGPT审阅；Gate1未授权、未实施。** 本轮继承PR #4/#6/#8的既有审计、恢复及模拟结果，不重做全量审计、备份或模型矩阵。原配置/记忆/任务未改，未登录灵生。PR #6/#8仍未合并；正式原入口岗位化、真实后台与自主值班均未验收。
+
+- [Gate 0完整迁移方案](reports/ISSUE_09_GATE_0_SINGLE_EMPLOYEE_MIGRATION_PLAN.md)
+- [34项变更矩阵](plans/issue09_gate0/CHANGE_CLEANUP_MATRIX.json)
+- [Owner逐项批准清单](plans/issue09_gate0/OWNER_APPROVAL_CHECKLIST.md)
+- [继承证据与本轮检查范围](evidence/issue09_gate0/INHERITED_BASELINE_AND_REVIEW.json)
 
 - [第一阶段执行任务](tasks/PHASE_01_LOCAL_AUDIT.md)
 - [第一阶段实测报告](reports/PHASE_01_LOCAL_AUDIT_REPORT.md)
-- [第一阶段后续变更建议（待批准）](reports/PHASE_01_CHANGE_PROPOSAL.md)
+- [第一阶段变更建议（历史方案，长期双profile方向已被取代）](reports/PHASE_01_CHANGE_PROPOSAL.md)
 - [审计复现说明](audit/README.md)
 - [迭代变更记录](CHANGELOG.md)
 
@@ -45,3 +54,4 @@
 ## 验收哲学
 
 真正的完成不是“代码能启动”，而是 Hermes 在获授权场景下**独立完成真实工作并经人工对照验收**。例如：检测1—2天前新返回的质检标注，准确指明员工/任务/错误标注，区分已审与待审，提示Owner而不自行推断为定论。
+
