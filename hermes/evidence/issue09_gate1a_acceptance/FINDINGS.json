@@ -1,0 +1,182 @@
+{
+  "checked_at_utc": "2026-10-16T12:13:12.758654+00:00",
+  "authorization": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6213175793",
+  "latest_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/12#pullrequestreview-5547274086",
+  "status": "applied_pending_desktop_acceptance_tool_still_blocked",
+  "inherited_pr12_head": "2b7c8f6b74fd1324d547b89decb830db85294120",
+  "selected_file_hashes": [
+    {
+      "path": "H\\SOUL.md",
+      "expected_pr12_or_inherited_sha256": "6cde9e101908e83578a666380a0dab0aa9fba00cbb5bdfa480cb0a748c7032eb",
+      "round_before_sha256": "6cde9e101908e83578a666380a0dab0aa9fba00cbb5bdfa480cb0a748c7032eb",
+      "round_after_sha256": "6cde9e101908e83578a666380a0dab0aa9fba00cbb5bdfa480cb0a748c7032eb",
+      "matches": true
+    },
+    {
+      "path": "H\\config.yaml",
+      "expected_pr12_or_inherited_sha256": "a6886244db5baab40566fd717c5503d835a70243594a0fb0adcc527bae4ce5af",
+      "round_before_sha256": "a6886244db5baab40566fd717c5503d835a70243594a0fb0adcc527bae4ce5af",
+      "round_after_sha256": "a6886244db5baab40566fd717c5503d835a70243594a0fb0adcc527bae4ce5af",
+      "matches": true
+    },
+    {
+      "path": "D\\project-dir.json",
+      "expected_pr12_or_inherited_sha256": "d8edd6427eaefaebfa31da376e225b18b712a267f227d11863c335e75f518c63",
+      "round_before_sha256": "d8edd6427eaefaebfa31da376e225b18b712a267f227d11863c335e75f518c63",
+      "round_after_sha256": "d8edd6427eaefaebfa31da376e225b18b712a267f227d11863c335e75f518c63",
+      "matches": true
+    },
+    {
+      "path": "H\\memories\\MEMORY.md",
+      "expected_pr12_or_inherited_sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0",
+      "round_before_sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0",
+      "round_after_sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0",
+      "matches": true
+    },
+    {
+      "path": "H\\memories\\USER.md",
+      "expected_pr12_or_inherited_sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6",
+      "round_before_sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6",
+      "round_after_sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6",
+      "matches": true
+    },
+    {
+      "path": "H\\cron\\jobs.json",
+      "expected_pr12_or_inherited_sha256": "877a6efca16b7b9435b4c996a8d6c5756411563e0017c4f0980e97994cd54f59",
+      "round_before_sha256": "877a6efca16b7b9435b4c996a8d6c5756411563e0017c4f0980e97994cd54f59",
+      "round_after_sha256": "877a6efca16b7b9435b4c996a8d6c5756411563e0017c4f0980e97994cd54f59",
+      "matches": true
+    }
+  ],
+  "original_running_metadata": [
+    {
+      "ProcessId": 3380,
+      "ParentProcessId": 9424,
+      "Name": "Hermes.exe",
+      "CreationDate": "2026-10-16T19:53:22.388677+08:00",
+      "ExecutablePath": "I\\apps\\desktop\\release\\win-unpacked\\Hermes.exe"
+    },
+    {
+      "ProcessId": 25512,
+      "ParentProcessId": 3380,
+      "Name": "Hermes.exe",
+      "CreationDate": "2026-10-16T19:53:23.87175+08:00",
+      "ExecutablePath": "I\\apps\\desktop\\release\\win-unpacked\\Hermes.exe"
+    },
+    {
+      "ProcessId": 25768,
+      "ParentProcessId": 3380,
+      "Name": "Hermes.exe",
+      "CreationDate": "2026-10-16T19:53:23.926585+08:00",
+      "ExecutablePath": "I\\apps\\desktop\\release\\win-unpacked\\Hermes.exe"
+    },
+    {
+      "ProcessId": 27436,
+      "ParentProcessId": 3380,
+      "Name": "Hermes.exe",
+      "CreationDate": "2026-10-16T19:53:24.044587+08:00",
+      "ExecutablePath": "I\\apps\\desktop\\release\\win-unpacked\\Hermes.exe"
+    },
+    {
+      "ProcessId": 14508,
+      "ParentProcessId": 3380,
+      "Name": "python.exe",
+      "CreationDate": "2026-10-16T19:53:25.079671+08:00",
+      "ExecutablePath": "I\\venv\\Scripts\\python.exe"
+    },
+    {
+      "ProcessId": 23728,
+      "ParentProcessId": 3380,
+      "Name": "Hermes.exe",
+      "CreationDate": "2026-10-16T19:53:27.137508+08:00",
+      "ExecutablePath": "I\\apps\\desktop\\release\\win-unpacked\\Hermes.exe"
+    },
+    {
+      "ProcessId": 20088,
+      "ParentProcessId": 27412,
+      "Name": "python.exe",
+      "CreationDate": "2026-10-16T19:53:42.015606+08:00",
+      "ExecutablePath": "I\\venv\\Scripts\\python.exe"
+    }
+  ],
+  "owner_observations": [
+    {
+      "source": "human reply in this Codex conversation",
+      "observation": "original Desktop is open but idle"
+    },
+    {
+      "source": "human reply in this Codex conversation",
+      "observation": "UI normal and chat input available",
+      "acceptance_limit": "Owner visual confirmation, not Codex independent UI inspection, model success or company context proof"
+    }
+  ],
+  "session_metadata": {
+    "checked_at_utc": "2026-10-16T12:06:49.033332+00:00",
+    "kind": "two_bounded_readonly_metadata_views_not_ui_acceptance",
+    "readable_original_db": true,
+    "committed_wal_included": true,
+    "rows": [
+      {
+        "source": "desktop",
+        "cwd": "<USER_HOME>",
+        "started_at": 1789050780.5526683,
+        "last_activity_at": null,
+        "selection": "by_started_at",
+        "id_sha256": "4cc11fe5d51ef42910aabc204c0910c9a1fc3990b7c015fe05a61d81474ff8ab",
+        "id_date_prefix": "20260910_223300"
+      },
+      {
+        "source": "desktop",
+        "cwd": "<USER_HOME>",
+        "started_at": 1789050780.5526683,
+        "last_activity_at": null,
+        "selection": "by_id",
+        "id_sha256": "4cc11fe5d51ef42910aabc204c0910c9a1fc3990b7c015fe05a61d81474ff8ab",
+        "id_date_prefix": "20260910_223300"
+      }
+    ],
+    "message_or_prompt_body_read": false,
+    "model_calls": 0,
+    "limitation": "Different ordering can select different historical records; neither proves which conversation is visible, current OS cwd, effective prompt or tool availability. No broader history scan or repair is attempted.",
+    "selected_id_dates_are_pre_integration": true,
+    "not_current_desktop_cwd_proof": true,
+    "earlier_observations_from_tool_transcript": [
+      {
+        "checked_at_utc": "2026-10-16T12:00:08.005874+00:00",
+        "selection": "by_id",
+        "id_date_prefix": "20261015_224929",
+        "id_sha256": "041974333ef1ce734a7d7f3304719ea691956e8ac2e784033ad0c70b3dc07250",
+        "cwd": "<USER_HOME>"
+      },
+      {
+        "checked_at_utc": "2026-10-16T12:06:02.211217+00:00",
+        "selection": "by_started_at",
+        "id_date_prefix": "20260910_223300",
+        "id_sha256": "4cc11fe5d51ef42910aabc204c0910c9a1fc3990b7c015fe05a61d81474ff8ab",
+        "cwd": "<USER_HOME>"
+      }
+    ],
+    "selection_changed_between_observations": "First by_id read selected October15; final by_id/started_at reads selected September10. Reason unknown. This reader executes SELECT/PRAGMA query_only only; no DML, repair or broader history inspection was performed."
+  },
+  "original_hermes_started_or_restarted_by_codex_this_round": false,
+  "model_dialogues_this_round": 0,
+  "model_dialogues_gate1a_total_recorded": 0,
+  "model_dialogue_limit": 3,
+  "agent_identity_knowledge_qa_partial_failure_acceptance": "not_run",
+  "old_memory_semantic_conflict": "not_observed_no_new_agent_response",
+  "complete_prompt_toolset_truncation_memory_reflow": "not_verified",
+  "native_loader_and_component_tests_rerun": false,
+  "backup_or_full_audit_rerun": false,
+  "original_file_changes_this_round": [],
+  "new_company_knowledge_applied_this_round": false,
+  "openclaw_gateway": {
+    "enabled": true,
+    "state": "Ready",
+    "changed": false
+  },
+  "rollback": "not performed; latest user explicitly requests preserving existing changes if desktop tool remains unusable",
+  "real_backend_login_or_business_operations": false,
+  "pr_merges_or_base_changes": false,
+  "Gate1A_passed": false,
+  "Gate1B_or_Gate2_entered": false
+}

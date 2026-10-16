@@ -1,0 +1,27 @@
+{
+  "files": 13,
+  "explicit_allowlist": [
+    "hermes/acceptance/issue09_gate1a_remaining/README.md",
+    "hermes/acceptance/issue09_gate1a_remaining/collect_findings.py",
+    "hermes/acceptance/issue09_gate1a_remaining/inspect_session_metadata.py",
+    "hermes/evidence/issue09_gate1a_acceptance/BUSINESS_FRESHNESS.json",
+    "hermes/evidence/issue09_gate1a_acceptance/FINDINGS.json",
+    "hermes/evidence/issue09_gate1a_acceptance/PUBLICATION_VALIDATION.json",
+    "hermes/evidence/issue09_gate1a_acceptance/TOOL_FAILURE.json",
+    "hermes/reports/ISSUE_09_GATE_1A_REMAINING_ACCEPTANCE_BLOCKER.md",
+    "hermes/tasks/gate1a_remaining/OWNER_DESKTOP_STEPS.md",
+    "hermes/tasks/gate1a_remaining/PROMPT_1_IDENTITY_KNOWLEDGE.md",
+    "hermes/tasks/gate1a_remaining/PROMPT_2_SYNTHETIC_QA_CHANGE.md",
+    "hermes/tasks/gate1a_remaining/PROMPT_3_SYNTHETIC_PARTIAL_READ.md",
+    "knowledge/history/HERMES_GATE1A_REMAINING_ACCEPTANCE_2026-10-16.md"
+  ],
+  "python_ast_files": 2,
+  "json_files_before_this_summary": 4,
+  "markdown_links_resolve_in_export_or_verified_base": true,
+  "two_actual_script_sources_exact_match": true,
+  "private_root_and_credential_pattern_scan": "passed; heuristic and manual review, not proof of absence of every secret",
+  "original_runtime_files_in_export": false,
+  "vendor_or_private_logs_or_memory_or_credentials_exported": false,
+  "model_or_browser_tests_run_this_round": false,
+  "known_current_business_files_overwritten": false
+}
