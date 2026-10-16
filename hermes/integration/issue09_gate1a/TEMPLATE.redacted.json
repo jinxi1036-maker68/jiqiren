@@ -1,0 +1,9 @@
+{
+  "node": "C:\\Program Files\\nodejs\\node.exe",
+  "mcpCli": "H\\tools\\playwright-mcp\\node_modules\\@playwright\\mcp\\cli.js",
+  "browser": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "guard": "H\\tools\\company-browser-simulation\\loopback_guard.cjs",
+  "profile": "H",
+  "workspace": "H\\company-workspace",
+  "sdkAnchorPackage": "H\\tools\\company-browser-sdk\\package.json"
+}

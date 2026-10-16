@@ -59,13 +59,15 @@
       "未经需要预先堆新业务"
     ],
     "implementation_as_of": "2026-10-16",
-    "implementation_state": "owner_principle_documented_in_github_pending_original_hermes_migration",
+    "implementation_state": "gate1a_original_soul_workspace_synthetic_mcp_applied_pending_desktop_acceptance",
     "evidence_prs": [
       "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/6",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
     ],
     "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
-    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "implementation_report": "hermes/reports/ISSUE_09_GATE_1A_MINIMAL_ORIGINAL_INTEGRATION.md",
+    "implementation_caveat": "仅原生加载函数及真实浏览器组件验证；原Desktop模型对话0/3，旧记忆仍加载，未完成单身份运行验收，未进入Gate1B/Gate2。"
   }
 }

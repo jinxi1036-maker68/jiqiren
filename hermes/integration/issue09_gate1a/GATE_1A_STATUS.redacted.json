@@ -1,0 +1,11 @@
+{
+  "authorization": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6213175793",
+  "only_original_home": "H",
+  "phase": "gate1a_partial_install_pending_original_desktop_acceptance",
+  "memory_user_rewritten": false,
+  "real_backend_authorized": false,
+  "model_dialogues_used": 0,
+  "desktop_acceptance": "blocked: Computer Use kernel asset path does not exist",
+  "repository_main_snapshot_is_not_latest_deployment_state": true,
+  "next_gate": "Owner and ChatGPT review required"
+}

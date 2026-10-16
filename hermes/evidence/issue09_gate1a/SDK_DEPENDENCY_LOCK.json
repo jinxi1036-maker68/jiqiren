@@ -1,0 +1,662 @@
+{
+  "method": "offline copy of resolved runtime vendor dependency closure into new dev directory only",
+  "packages": [
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "version": "1.30.0",
+      "license": "MIT",
+      "copied_files": 693,
+      "content_manifest_sha256": "3966c08829b3b3a0b7233868483e097964c65af556af42b81bfaa01ae6c6e3a7"
+    },
+    {
+      "name": "@hono/node-server",
+      "version": "2.1.1",
+      "license": "MIT",
+      "copied_files": 29,
+      "content_manifest_sha256": "efe911397b9a9287ccd940276d45314b6731ac70dc286549eb2005dae41f8289"
+    },
+    {
+      "name": "hono",
+      "version": "4.13.2",
+      "license": "MIT",
+      "copied_files": 565,
+      "content_manifest_sha256": "2b715dce890482bf870cae2598967d6441f0ce0553a6564524d5aacd2f1da7b6"
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "license": "MIT",
+      "copied_files": 466,
+      "content_manifest_sha256": "42ba73745bafde0f5b7f07cbc91cc10f60c95332af9f008262719cd4c112268b"
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT",
+      "copied_files": 11,
+      "content_manifest_sha256": "dcf5eccbf921d201e6f608c63b93abf91079170fefac8ac608c13ec1ebd95356"
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.5",
+      "license": "BSD-3-Clause",
+      "copied_files": 34,
+      "content_manifest_sha256": "95d9e50fff87cc5779558661497d1f84d8e5162304c1ef7e4e782f4a5389124e"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "license": "MIT",
+      "copied_files": 12,
+      "content_manifest_sha256": "863fe4c99538daa06b4e76d971c5a3cc17cc602a6557385b0dbf01d78b64bfed"
+    },
+    {
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "b49e7d15e5a8500bee8b145a1e08657522604e4030bf243a958556c0ca6f105a"
+    },
+    {
+      "name": "ajv-formats",
+      "version": "3.0.1",
+      "license": "MIT",
+      "copied_files": 15,
+      "content_manifest_sha256": "12034cee0d4eae82d9c984ad012837ce5816116e6d0d0f06fad1ff9e8beac0af"
+    },
+    {
+      "name": "content-type",
+      "version": "1.0.5",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "96ac4b6cbbfc7be3eee8f9cc3321f9d1e32737df3ad216bba8aaa936eda8e719"
+    },
+    {
+      "name": "cors",
+      "version": "2.8.6",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "8105150baf6917919f52320adb101a4177c902a44c17dd65b5c7739a09002032"
+    },
+    {
+      "name": "object-assign",
+      "version": "4.1.1",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "9d67c599ae6dbb97b0a1522e8685ea86548412e106289f434c7bd9dede5cb1ed"
+    },
+    {
+      "name": "vary",
+      "version": "1.1.2",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "2edceb4c92159767d001df263063b589225d119f74e14091e310d5cb55e72d0a"
+    },
+    {
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "license": "MIT",
+      "copied_files": 9,
+      "content_manifest_sha256": "1f18391b31d7bfd99fe30abbd6d875b491b243a470763d902401cc7c82c53282"
+    },
+    {
+      "name": "path-key",
+      "version": "3.1.1",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "22beca4c16a965d71c6e1b624479cafb6170bce18bc57a9ecc077ada41e3882e"
+    },
+    {
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "0fe7e67d885afd3a3e68f315471e36c3ed2a91e0c92d7a8eab9fc3e3bf9a98f8"
+    },
+    {
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "8d39623563636da5e9e6abda7cb7c130d89c53d3764845752a5b68ae94951fb6"
+    },
+    {
+      "name": "which",
+      "version": "2.0.2",
+      "license": "ISC",
+      "copied_files": 6,
+      "content_manifest_sha256": "460eeea243aa3eb4b295b08556afdb8548bf1ff77f395d433e1d946027f32e8f"
+    },
+    {
+      "name": "isexe",
+      "version": "2.0.0",
+      "license": "ISC",
+      "copied_files": 8,
+      "content_manifest_sha256": "2eb7cd037a2aa71e3de8ad6cd2d005db541e03b27b3b139c989d4bec851cfeb1"
+    },
+    {
+      "name": "eventsource",
+      "version": "3.0.7",
+      "license": "MIT",
+      "copied_files": 13,
+      "content_manifest_sha256": "245536af8ff5d19232954aee79fbb67caee931768457facd48ed269b77f120dc"
+    },
+    {
+      "name": "eventsource-parser",
+      "version": "3.1.1",
+      "license": "MIT",
+      "copied_files": 21,
+      "content_manifest_sha256": "5b45967f33227ff05ca7d88be57d6e60b69cf974902302ee0ae3cc43cc022ead"
+    },
+    {
+      "name": "express",
+      "version": "5.2.1",
+      "license": "MIT",
+      "copied_files": 10,
+      "content_manifest_sha256": "ece252c7e65c91d7ad1fcf25a02e2c7a7a28b8402bcc5c191ad465cdf3232188"
+    },
+    {
+      "name": "accepts",
+      "version": "2.0.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "ca62ea6183c2d8556d2d3895eabaddc0e8159e63a3a22a1976ff30b8e9099971"
+    },
+    {
+      "name": "mime-types",
+      "version": "3.0.2",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "54dfce607b9c0b27874b2b37d3e0da795fa32c6ce7ed8f8ddcc4ba31b96e7b23"
+    },
+    {
+      "name": "mime-db",
+      "version": "1.54.0",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "794b8773f21b486e0efd967a215e8f7f8aee806114bff5fd52e2a34db76d0f90"
+    },
+    {
+      "name": "negotiator",
+      "version": "1.0.0",
+      "license": "MIT",
+      "copied_files": 9,
+      "content_manifest_sha256": "1db69be2a6006f5538208c7d8f736d61ab404e9c8b814a8eaf23cd8a62d55a42"
+    },
+    {
+      "name": "body-parser",
+      "version": "2.3.0",
+      "license": "MIT",
+      "copied_files": 10,
+      "content_manifest_sha256": "178c7cc15fe36df79d752aacbc44d27e88f95bf132dd8de0f5a25130aca697f0"
+    },
+    {
+      "name": "bytes",
+      "version": "3.1.2",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "20183cebe00f16ac7eb6936dfa755bf6304a7d78db4576bcde808689005bdc2e"
+    },
+    {
+      "name": "content-type",
+      "version": "2.1.0",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "8edc177e299e2efb70428681b1af175057e2736b652146f7b993f74fa0e9be5a"
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "license": "MIT",
+      "copied_files": 7,
+      "content_manifest_sha256": "96916868205bb3e576bd1f5935ce3028027f29477f0f4773756ec343a88ddfe1"
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "43ec4600f61993ecf77328010aedcc47a095217e91539695c3d90f72d13de2df"
+    },
+    {
+      "name": "http-errors",
+      "version": "2.0.1",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "74f222c3eae168904054f0a1a29b2c3128bbffe4390d1009e01b8fc0db4a5df5"
+    },
+    {
+      "name": "depd",
+      "version": "2.0.0",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "6d89962ccbfcb0d85f5fbc5cc87bcb13301515534ca4b14a016a09623f49467d"
+    },
+    {
+      "name": "inherits",
+      "version": "2.0.4",
+      "license": "ISC",
+      "copied_files": 5,
+      "content_manifest_sha256": "8e217104eeeb11d9e8748e5dccae2bd93488604c4bbc88d73db91fc6f3ad4924"
+    },
+    {
+      "name": "setprototypeof",
+      "version": "1.2.0",
+      "license": "ISC",
+      "copied_files": 6,
+      "content_manifest_sha256": "92e3a92e6100d8da24e62d3a22cbadf469ded71005b1ba5e756806f01c49f1ee"
+    },
+    {
+      "name": "statuses",
+      "version": "2.0.2",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "abf148e8345b1582d39e58ac1700672d7bc232974d9fdb6923f709c4f2daaabb"
+    },
+    {
+      "name": "toidentifier",
+      "version": "1.0.1",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "828421925f3dada0cb3bd12f21e0adf5e5a12f698bef25913158f4ee1e52480d"
+    },
+    {
+      "name": "iconv-lite",
+      "version": "0.7.3",
+      "license": "MIT",
+      "copied_files": 27,
+      "content_manifest_sha256": "9544e78ab13d3df7c19ad9664478dcb3d1640c7a4bef745e6d2adc9a9fd9cfeb"
+    },
+    {
+      "name": "safer-buffer",
+      "version": "2.1.2",
+      "license": "MIT",
+      "copied_files": 7,
+      "content_manifest_sha256": "e8634409acada2d84f3306116a94cdd94dbc8215b0f1cd116cb05770594d254a"
+    },
+    {
+      "name": "on-finished",
+      "version": "2.4.1",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "c5c71beb200385ba7941d99b40c4ca9867aa8961e9a43e13d23cf092629fb3ba"
+    },
+    {
+      "name": "ee-first",
+      "version": "1.1.1",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "a971dc2cbd075ecb7ae9c0418a77a456b2480ab0cb191b5003b6f63c33462d3b"
+    },
+    {
+      "name": "qs",
+      "version": "6.15.3",
+      "license": "BSD-3-Clause",
+      "copied_files": 20,
+      "content_manifest_sha256": "41a075c5294cbd01e1df76778f483f0ed49d0305c25bacd00d0640789ecf66c3"
+    },
+    {
+      "name": "es-define-property",
+      "version": "1.0.1",
+      "license": "MIT",
+      "copied_files": 11,
+      "content_manifest_sha256": "c68e3ed6981d58d322e7917fc2349c99e0b56fce46639e4bf6a87c1c14326125"
+    },
+    {
+      "name": "side-channel",
+      "version": "1.1.1",
+      "license": "MIT",
+      "copied_files": 12,
+      "content_manifest_sha256": "6f8b36525b1a043a2d83193ad456e0839ef8dfe338f68d0b679b8d6b95500ae8"
+    },
+    {
+      "name": "es-errors",
+      "version": "1.3.0",
+      "license": "MIT",
+      "copied_files": 22,
+      "content_manifest_sha256": "c4e87875cfc0feae9e651863fe37b0846b485308afea7d5be224787370798b17"
+    },
+    {
+      "name": "object-inspect",
+      "version": "1.13.4",
+      "license": "MIT",
+      "copied_files": 34,
+      "content_manifest_sha256": "3743836c2a6eea5342b77793634094ff059f2f295f13508404cb1c1d0bb2b4e2"
+    },
+    {
+      "name": "side-channel-list",
+      "version": "1.0.1",
+      "license": "MIT",
+      "copied_files": 13,
+      "content_manifest_sha256": "7e025e4ab221c61ebb302d73d39da022eff67f194f110da44f5d5dcf1efb82d8"
+    },
+    {
+      "name": "side-channel-map",
+      "version": "1.0.1",
+      "license": "MIT",
+      "copied_files": 12,
+      "content_manifest_sha256": "28a3b757a511a9c8f5a2d53bc64118ec8481d8502bf371b237ce7d686f8e8c89"
+    },
+    {
+      "name": "call-bound",
+      "version": "1.0.4",
+      "license": "MIT",
+      "copied_files": 11,
+      "content_manifest_sha256": "d2c1c4d0c843aa16fa6a86755237acde3cbed46b6c903c68adf65a224407bc55"
+    },
+    {
+      "name": "call-bind-apply-helpers",
+      "version": "1.0.2",
+      "license": "MIT",
+      "copied_files": 21,
+      "content_manifest_sha256": "7531296235d577182a510f75ca53e8a8c9aec8ff72e46a99aac8184d931dc23b"
+    },
+    {
+      "name": "function-bind",
+      "version": "1.1.2",
+      "license": "MIT",
+      "copied_files": 12,
+      "content_manifest_sha256": "c7862984d736fb5c713442af7bfbb95414d17dea9d985ab0ee2d2da4bdb21e5c"
+    },
+    {
+      "name": "get-intrinsic",
+      "version": "1.3.0",
+      "license": "MIT",
+      "copied_files": 9,
+      "content_manifest_sha256": "28fd3ea4d5a0c62b444d36908d3ef02eff5aeabc44af71d576db4dbe39dac52c"
+    },
+    {
+      "name": "es-object-atoms",
+      "version": "1.1.2",
+      "license": "MIT",
+      "copied_files": 16,
+      "content_manifest_sha256": "600b50ae6871ce82e7fd291809055e403c075a833486670ab4d06ac07013f78f"
+    },
+    {
+      "name": "get-proto",
+      "version": "1.0.1",
+      "license": "MIT",
+      "copied_files": 15,
+      "content_manifest_sha256": "780b8aa99a739ac2c7e3c906d2faede4244dd4566c74e2ebcf95382eb4fd8415"
+    },
+    {
+      "name": "dunder-proto",
+      "version": "1.0.1",
+      "license": "MIT",
+      "copied_files": 15,
+      "content_manifest_sha256": "2838988b672c412db7bdf2221c33c10da081c957048a7707480eaafa73c17219"
+    },
+    {
+      "name": "gopd",
+      "version": "1.2.0",
+      "license": "MIT",
+      "copied_files": 12,
+      "content_manifest_sha256": "62037ef05197c74010b88e66ea114b56d9baabc5777071d74225d78b5db48826"
+    },
+    {
+      "name": "has-symbols",
+      "version": "1.1.0",
+      "license": "MIT",
+      "copied_files": 16,
+      "content_manifest_sha256": "7fbe9475e183eb12d2776999c4f9043ad66f921d0ec2c7cff7baed34ed55c64e"
+    },
+    {
+      "name": "hasown",
+      "version": "2.0.4",
+      "license": "MIT",
+      "copied_files": 10,
+      "content_manifest_sha256": "e305b5cf309c195008185e8d811d3a5b3a559c5ef2e1b4e932346417e7207bc8"
+    },
+    {
+      "name": "math-intrinsics",
+      "version": "1.1.0",
+      "license": "MIT",
+      "copied_files": 38,
+      "content_manifest_sha256": "71d72f59c9dd9a5d389044f077c2909ee78edb41977debd0e3ea990bfb68bab0"
+    },
+    {
+      "name": "side-channel-weakmap",
+      "version": "1.0.2",
+      "license": "MIT",
+      "copied_files": 12,
+      "content_manifest_sha256": "1265c0f1e1a9501e375e6064a94a4af3c1198e3d330ee2c227790c0d187cb9cf"
+    },
+    {
+      "name": "raw-body",
+      "version": "3.0.2",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "0f57ea41a8513988ff81181fd8357893a4bbe88eef9a39e9190126fdc8ca807b"
+    },
+    {
+      "name": "unpipe",
+      "version": "1.0.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "4d04a3a16cecb9e3691b932726968cd94f277ce45d1118f8498344643a2c1619"
+    },
+    {
+      "name": "type-is",
+      "version": "2.1.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "2e330c0c7091727de7127379372cc5a6044e38c4f818a0cdc889498f902d6839"
+    },
+    {
+      "name": "content-type",
+      "version": "2.1.0",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "8edc177e299e2efb70428681b1af175057e2736b652146f7b993f74fa0e9be5a"
+    },
+    {
+      "name": "media-typer",
+      "version": "1.1.1",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "889c1d620ea35cdbbbbb831b234e13f08f45ec0abd79bf112011b11a60eb2a4c"
+    },
+    {
+      "name": "content-disposition",
+      "version": "1.1.0",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "f4f3e51ffaf04f3f3717550f7cd57731138e5fdde7fe74036a0a2c3e598b6d41"
+    },
+    {
+      "name": "cookie",
+      "version": "0.7.2",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "63d975890740a157caa3f1d14ac21d122683a4aad85be597b04ad64182e16628"
+    },
+    {
+      "name": "cookie-signature",
+      "version": "1.2.2",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "3b1bae538c1f93c4f4258b9c321110cc37290b82bbfca3e6f3a935c791399444"
+    },
+    {
+      "name": "encodeurl",
+      "version": "2.0.0",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "5666704e30107adba2db7c6816ffabc3d7709f7f7d11b5bf95e8ac2bf1825373"
+    },
+    {
+      "name": "escape-html",
+      "version": "1.0.3",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "6242b207cce2287af20d935c55fcf006dc13eb4ac655d61ff81d74c7c16039e3"
+    },
+    {
+      "name": "etag",
+      "version": "1.8.1",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "98fc90167d8cb6aa56551efd49de2234db1227fd279e0a4017fb1ceaa0cc3ea1"
+    },
+    {
+      "name": "finalhandler",
+      "version": "2.1.1",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "68c6891e1b9a65e9cc6241704b121993533767065123f55001d69bdd7d40b296"
+    },
+    {
+      "name": "parseurl",
+      "version": "1.3.3",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "3849fcf87ed189378576f97380e6436c59db1eb6abf5533f45cfbe1283becfb2"
+    },
+    {
+      "name": "fresh",
+      "version": "2.0.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "25ff0154057d818c1de7b04306acf4450cd5b1aa2c17fd9e897e1cfbaebf4bfd"
+    },
+    {
+      "name": "merge-descriptors",
+      "version": "2.0.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "507072e122842115eebe3dd261fb1f496bcf9d7f34c92ede1c2099df83ba692b"
+    },
+    {
+      "name": "once",
+      "version": "1.4.0",
+      "license": "ISC",
+      "copied_files": 4,
+      "content_manifest_sha256": "95ac085ead0fedaced424921f9243b4e1ea71a382573fe0e886c1a40aadcbf33"
+    },
+    {
+      "name": "wrappy",
+      "version": "1.0.2",
+      "license": "ISC",
+      "copied_files": 4,
+      "content_manifest_sha256": "84c9b35fffdcba4d8c23b0cedbe6085f8df78a19756318a18264c8f20d7081cd"
+    },
+    {
+      "name": "proxy-addr",
+      "version": "2.0.7",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "78faff96e1d2e19e869857a8e857a8b0f6819b53bdbc25f49bed71c8cf04b8b5"
+    },
+    {
+      "name": "forwarded",
+      "version": "0.2.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "e14d40f67e20a2ad36e50735bbc64545fc1315a61759309bb5719ca084e60b64"
+    },
+    {
+      "name": "ipaddr.js",
+      "version": "1.9.1",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "e7163a1144cce8de824fca7f2a3cfd00a180bd45e7f9c5adab4dd071fa48c878"
+    },
+    {
+      "name": "range-parser",
+      "version": "1.3.0",
+      "license": "MIT",
+      "copied_files": 5,
+      "content_manifest_sha256": "1f692cc5dde92a16286c035c082fe1a8aac6c20ea819acce79161373698e37d6"
+    },
+    {
+      "name": "router",
+      "version": "2.2.0",
+      "license": "MIT",
+      "copied_files": 7,
+      "content_manifest_sha256": "f5702817273bb9c96d2b3c37ed51c80c5761feef594b8f39eeb235174c9adcc7"
+    },
+    {
+      "name": "is-promise",
+      "version": "4.0.0",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "088d1ed8645a8858b739f1c17f798c1d08c7d13ab3f5b85c20db060cf0059c28"
+    },
+    {
+      "name": "path-to-regexp",
+      "version": "8.4.2",
+      "license": "MIT",
+      "copied_files": 6,
+      "content_manifest_sha256": "0a9f1eb155d9f38653d43c16697bab5ed48a4475f98cd3e3b305a640b85de643"
+    },
+    {
+      "name": "send",
+      "version": "1.2.1",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "e0db51d35fc751da040d3531968bb6778608b97cb05f09f23be65c24579846a8"
+    },
+    {
+      "name": "serve-static",
+      "version": "2.2.1",
+      "license": "MIT",
+      "copied_files": 4,
+      "content_manifest_sha256": "50c84067a2fff44782682a349957bfde99c787b4232b712de2e772d7da7ba47a"
+    },
+    {
+      "name": "express-rate-limit",
+      "version": "8.6.2",
+      "license": "MIT",
+      "copied_files": 9,
+      "content_manifest_sha256": "99be8bbf9302fbce33aa4d3e5995b4620f72d3a0ddf4520296bb196825db5dd3"
+    },
+    {
+      "name": "ip-address",
+      "version": "10.5.0",
+      "license": "MIT",
+      "copied_files": 30,
+      "content_manifest_sha256": "5d8fb10a829c567f675937c4d259eb8bb5945a60370207cc9c877d2d9dbe0ace"
+    },
+    {
+      "name": "jose",
+      "version": "6.2.8",
+      "license": "MIT",
+      "copied_files": 88,
+      "content_manifest_sha256": "cb82e8935ecdb660a0ff216579ce28c11c3f7cba1e1c32e2ea2596e7b4699b26"
+    },
+    {
+      "name": "json-schema-typed",
+      "version": "8.0.2",
+      "license": "BSD-2-Clause",
+      "copied_files": 9,
+      "content_manifest_sha256": "3179fc5824444ebd0ab360b945602d22086925e58a36d837959e7aeb76118194"
+    },
+    {
+      "name": "pkce-challenge",
+      "version": "5.0.1",
+      "license": "MIT",
+      "copied_files": 10,
+      "content_manifest_sha256": "f68c628ad1ab3635694aa42954cac9d7922a671630478dc592b3758f7c995823"
+    },
+    {
+      "name": "zod",
+      "version": "4.4.3",
+      "license": "MIT",
+      "copied_files": 718,
+      "content_manifest_sha256": "798c2e2c64ac73e35afbaafa73ac38440c168c584448371cdc6e320490c51cf2"
+    },
+    {
+      "name": "zod-to-json-schema",
+      "version": "3.25.2",
+      "license": "ISC",
+      "copied_files": 130,
+      "content_manifest_sha256": "64d47da124cba7c04101017da7a3d9aaf01841387dff6b7c83179228e9561744"
+    }
+  ],
+  "package_count": 93,
+  "copied_files": 3496,
+  "old_business_server_copied": false,
+  "original_node_modules_modified": false,
+  "package_install_or_network_used": false,
+  "original_credential_files_read": false
+}

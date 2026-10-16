@@ -1,0 +1,20 @@
+{
+  "authorization_id": 6213175793,
+  "url": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6213175793",
+  "updated_at": "2026-10-16T10:10:06Z",
+  "review_id": 5546195454,
+  "review_url": "https://github.com/jinxi1036-maker68/jiqiren/pull/11#pullrequestreview-5546195454",
+  "reviewed_commit": "728de1b667de73c6c400d82c20d2ad3a9edc2807",
+  "scope": "Gate 1A only; original SOUL, workspace, minimal project directory, additive neutral synthetic MCP, maximum 3 original-Desktop model dialogues",
+  "dialogues_used": 0,
+  "not_authorized": [
+    "MEMORY/USER rewrite or disable",
+    "old files/profiles/backups deletion",
+    "old MCP removal/disable",
+    "task/gateway modification",
+    "new model credentials",
+    "real LingSyn/backend/business/dispatch",
+    "PR merge/close/base change",
+    "Gate1B/Gate2"
+  ]
+}
