@@ -107,6 +107,7 @@
   ],
   "next_action": "按10月17日3台设备试采计划落实安全、人员及设备检查；先准备灵生四部分日报并确认投递渠道/口径，以真实采集上传与QA审核证据记录成果，再评估扩台。",
   "must_read": [
+    "knowledge/COMPANY_PROFILE.json",
     "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
     "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
     "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
@@ -208,5 +209,11 @@
     "phase_02b_status": "2026-10-16 Gate A范围内审查通过，PR当时未合并且基于PR#6分支；23次模型对话/97次浏览器调用；九类最新模拟样本通过，Windows CMD双击视觉验收待完成",
     "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+  },
+  "company_identity": {
+    "name": "平顶山凌矩信息科技有限责任公司",
+    "name_source": "Owner 2026-10-16",
+    "verification": "owner_confirmed_legal_name_registration_details_pending",
+    "profile": "knowledge/COMPANY_PROFILE.json"
   }
 }
