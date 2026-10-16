@@ -1,0 +1,25 @@
+- generic [ref=f1e1]:
+  - heading "数采运营隔离模拟" [level=1] [ref=f1e2]
+  - paragraph [ref=f1e3]: 仅虚拟数据，不代表真实业务；禁止登录和正式任务操作。
+  - navigation [ref=f1e4]:
+    - button "查看审核列表" [active] [ref=f1e5]
+  - generic [ref=f1e6]:
+    - paragraph [ref=f1e7]: 筛选范围：本轮演示数据；加载完成。
+    - paragraph [ref=f1e8]: 第1页 / 共2页；记录总数4（界面声明）。
+    - table [ref=f1e9]:
+      - rowgroup [ref=f1e10]:
+        - row [ref=f1e11]:
+          - columnheader "任务编号" [ref=f1e12]
+          - columnheader "审核状态" [ref=f1e13]
+          - columnheader "QA说明" [ref=f1e14]
+      - rowgroup [ref=f1e15]:
+        - row [ref=f1e16]:
+          - cell "DEMO-001" [ref=f1e17]
+          - cell "待审" [ref=f1e18]
+          - cell "暂无" [ref=f1e19]
+        - row [ref=f1e20]:
+          - cell "DEMO-002" [ref=f1e21]
+          - cell "已审" [ref=f1e22]
+          - cell "模拟通过" [ref=f1e23]
+    - button "下一页" [ref=f1e24]
+    - paragraph [ref=f1e25]: 当前快照 v1

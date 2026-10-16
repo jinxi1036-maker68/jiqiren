@@ -1,0 +1,20 @@
+[
+  {
+    "at": "2026-10-16T12:39:15.248Z",
+    "method": "GET",
+    "path": "/change",
+    "status": 200
+  },
+  {
+    "at": "2026-10-16T12:40:34.264Z",
+    "method": "GET",
+    "path": "/partial",
+    "status": 200
+  },
+  {
+    "at": "2026-10-16T12:41:22.582Z",
+    "method": "GET",
+    "path": "/api/page2",
+    "status": 503
+  }
+]
