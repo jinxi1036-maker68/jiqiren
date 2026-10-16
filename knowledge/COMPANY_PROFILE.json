@@ -1,0 +1,39 @@
+{
+  "schema_version": "robot_data_company_identity_v1",
+  "last_owner_confirmation_date": "2026-10-16",
+  "legal_name_zh": "平顶山凌矩信息科技有限责任公司",
+  "name_evidence": "owner_explicitly_confirmed_in_chat",
+  "name_status": "owner_confirmed_not_independently_registry_verified",
+  "previous_legal_entity_note": "旧供应商申请材料中曾使用其他主体名称；不得当成本项目现公司名称，也不能据此推断工商股权或主体之间法律关系。",
+  "registration_details": {
+    "unified_social_credit_code": null,
+    "exact_registration_date": null,
+    "registered_address": null,
+    "legal_representative": null,
+    "license_document_received": false,
+    "status": "pending_license_or_official_registry_verification"
+  },
+  "brand_work": {
+    "status": "research_before_design",
+    "official_brand_short_name": "凌矩",
+    "english_name": null,
+    "logo_status": "owner_confirmed_icon_only_directions_under_discussion_no_design_approved",
+    "design_research_focus": [
+      "纯图形标识，字形不直接出现",
+      "通过抽象结构暗示「凌」的向上/突破、「矩」的精确/秩序和AI智能数据",
+      "黑白优先，24px可识别，工服刺绣/设备贴纸等使用",
+      "不拼贴摄像头、机械臂、眼睛、芯片/电路线、六边形模板"
+    ],
+    "restriction": "Owner确认最终Logo只要纯图形，完全不加中文字、英文、字母、缩写或口号；『凌矩』仅作为公司对外简称，可独立出现在公司介绍/合同，不属于Logo组合版。继续研究三种纯图形结构草案，未经进一步讨论不得自动生图或认定Logo定稿。",
+    "research_report": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+    "research_status": "first_round_completed_sources_linked_design_not_started",
+    "short_name_status": "owner_approved_2026-10-16",
+    "legal_name_use": "平顶山凌矩信息科技有限责任公司（用于合同、发票、法定文件和需要完整工商名称的场合）",
+    "primary_logo_format": "standalone_symbol_only",
+    "typography_inside_logo": "none",
+    "logo_visual_intent": "以「凌」的上扬、结构感或汉字解构为构思来源，融入「矩」的尺度/秩序以及AI的计算、数据流或智能结构意味；简洁、朴素、克制、科技感；不含任何汉字、字母或口号"
+  },
+  "business_ref": "knowledge/CURRENT_WORK.json",
+  "classification": "conversation_confirmed",
+  "caution": "Owner确认的是公司全称，不等于营业执照已由Agent独立核验；不可编造信用代码、英文名、注册日期、注册资本或工商信息。"
+}

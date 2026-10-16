@@ -1,16 +1,16 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-16",
   "partners": [
     {
       "id": "livsyn",
       "name": "北京灵生科技有限公司 / LivSyn",
-      "status": "active_trial_preparation_sop_review",
+      "status": "three_scenes_ready_three_device_trial_planned_not_yet_qa_verified",
       "priority": "P0",
-      "current_path": "自建真实操作工位组织方式已获对接人认可 → 三个分区任务SOP提交审核 → 少量上传正式质检 → 依据实际有效产出再扩10台和更多人员",
+      "current_path": "Owner报告10月15日三场景已就绪→10月16日内部动作演练→当晚与灵生沟通计划10月17日三台试采（每台6小时采集/4小时目标有效）→按四段式日报记录与确认T+1/T+3有效时长反馈→以真实QA和结算验证后扩张",
       "evidence_level": "conversation_confirmed",
       "known_terms_ref": "knowledge/ECONOMICS_MODEL.json",
-      "next_gate": "确认三项任务的具体SOP可验收、场景及操作流程报备、平台数据上传与审核反馈；书面确认试采租金和有效数据结算",
+      "next_gate": "实际试采后核对设备/人力/上传与QA审核结果；核实日报发送渠道、时限、T+1/T+3起算规则、有效4小时指标是否强制最低；书面核实试采费用",
       "scene_model_confirmation": {
         "date": "2026-10-15",
         "evidence_level": "conversation_confirmed",
@@ -47,6 +47,22 @@
         "partner_group_message": "杜振成提出“月底前增加到一百人”",
         "nature": "上游提出的激励/目标，尚不能判断玩笑或正式要求",
         "owner_commitment": "无100人承诺；初期集中试采质量与现金回款"
+      },
+      "reporting_and_pilot_2026_10_16": {
+        "status": "owner_forwarded_partner_conversation_not_formal_contract",
+        "three_scenes_prepared": "2026-10-15 (Owner reported)",
+        "internal_rehearsal": "2026-10-16",
+        "first_three_device_trial_planned": "2026-10-17",
+        "daily_capture_target_hours_per_device": 6,
+        "daily_effective_target_hours_per_device": 4,
+        "three_device_target_capture_hours": 18,
+        "three_device_target_effective_hours": 12,
+        "partner_daily_report": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "trial_feedback_statement": "试采 T+1 出有效时长；周结束不超过 T+3",
+        "feedback_interpretation": "T起算点/自然或工作日/周结束截止与反馈结果是否最终QA未定；不是结算付款到账日期",
+        "actual_submitted_hours": null,
+        "actual_qa_confirmed_hours": null,
+        "source": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
       }
     },
     {

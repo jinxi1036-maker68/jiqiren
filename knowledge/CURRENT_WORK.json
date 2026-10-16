@@ -6,31 +6,68 @@
   "context_profile": "pre_trial_preparation",
   "objective": "按灵生对接人认可的自建真实作业场景方式，完善平顶山三分区具体任务SOP，先完成小批采集、上传及质检反馈，在真实有效小时和费用条款可核实后再扩大10台及人员规模。",
   "now": {
-    "date": "2026-10-15",
-    "phase": "三分区任务设计/送审准备，正式采集产能尚未验证",
+    "date": "2026-10-16",
+    "phase": "Owner报告三处真实工位均已搭建、10月16日内部路径及动作演练已进行；10月17日拟以3台设备启动试采。尚无真实平台QA、已确认有效小时或结算记录。",
     "first_batch_device_target": 10,
     "actual_devices_received": null,
     "actual_workers_deployed": null,
-    "proposed_trial_date": "2026-10-16（Owner希望启动少量试采；SOP/上传/计费仍待确认）",
+    "proposed_trial_date": "2026-10-17（Owner向灵生沟通的3台设备试采计划；实际开机、上传及审核数据待核实）",
     "accepted_organization_mode": "吴启蒙以书面消息明确认可自建小型真实作业工位、真实物料真实工序、受训采集员操作（conversation_confirmed）",
     "selected_tasks": [
       "线边仓补货",
       "空容器回收",
       "外观质检"
     ],
-    "task_plan": "总场景划分A线边物料货架区、B空箱回收区、C产品外观检查区；向吴启蒙提交任务目标、关键动作、任务SOP；具体方案是否已递交并审批未知",
+    "task_plan": "线边仓补货、空容器回收、产品外观质检三个场景已按Owner报告布置到位并完成内部规划/动作演练；甲方逐任务最终SOP是否正式核准仍未知。",
     "partner_trial_data_accepted_hours": null,
     "settlement_received": null,
-    "reference": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md"
+    "reference": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+    "owner_reported_operational_update": {
+      "reported_on": "2026-10-16",
+      "site_scene_preparation_completed_on": "2026-10-15",
+      "scene_names": [
+        "线边仓补货",
+        "空容器回收",
+        "产品外观质检"
+      ],
+      "internal_rehearsal_on": "2026-10-16",
+      "rehearsal_scope": "场景规划、主要路径、动作测试/演练（不等同灵生正式试采或质检验收）",
+      "partner_communication_on": "2026-10-16晚间",
+      "planned_first_capture_date": "2026-10-17",
+      "planned_active_devices": 3,
+      "per_device_daily_capture_target_hours": 6,
+      "per_device_daily_effective_target_hours": 4,
+      "total_planned_device_capture_hours": 18,
+      "total_planned_effective_target_hours": 12,
+      "classification": "owner_reported_partner_conversation_tentative_operational_target",
+      "actual_equipment_in_hand": null,
+      "actual_staffing": null,
+      "actual_capture_hours": null,
+      "actual_qa_accepted_hours": null,
+      "note": "计划指标非实际产出；原10台阶段目标不变，三台启动实际状态与甲方正式QA/计费口径须核实。"
+    },
+    "partner_daily_reporting": {
+      "status": "owner_forwarded_partner_request",
+      "reported_on": "2026-10-16",
+      "requirements_ref": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+      "sections": [
+        "今日投入及产出",
+        "设备盘点",
+        "时间/人力及场景计划",
+        "上传完成与按采集日期区分的积压"
+      ],
+      "recipient_channel_deadline": "pending",
+      "effectiveness_and_productivity_definition": "pending"
+    }
   },
   "project_lead_mode": {
     "enabled": true,
     "rule": "ChatGPT负责维护事实、准备场景任务与SOP/核算/风险门槛；Owner负责业务沟通、线下决策、合同和资金确认",
     "next_24h_focus": [
-      "提交三分区逐任务SOP供吴启蒙确认，尤其台账更新、托盘堆叠、外观扫描/标注/上报",
-      "确认首批只试采哪些具体任务、录制要求、上传审核路径和审核反馈时点",
-      "确认10台实际交付/使用许可、押金、试采免租的起止条件和试采有效数据是否按约结算",
-      "不重投入先完成安全工位/物料准备与少量试采，保存甲方认可和正式审核记录"
+      "2026-10-17首批3台试采前确认设备实际可用、分场景人力、时间安排与安全。",
+      "确认线边补货台账、空容器回收堆叠和外观质检扫描/上报的完整SOP及实际上传/审核规则是否获灵生确认。",
+      "按灵生四段式日报记录实际投入、人效、可用/异常设备、各场景计划以及按采集日追踪上传积压；区分计划/采集/上传/审核有效，确认日报收件渠道和时限。",
+      "继续书面核实试采计费、押金、结算及设备责任，尚未取得正式QA与真实有效小时不得扩大承诺。"
     ]
   },
   "confirmed_by_conversation": [
@@ -68,8 +105,11 @@
     "不得虚构正在运营工厂订单、真实缺陷样品来源、工作场景授权或已有项目业绩。",
     "不得用影响工人安全的方式满足拍摄要求；不强迫省略必要的专业防护。"
   ],
-  "next_action": "取得灵生对三分区任务SOP及首条任务录制上传规则的确认；按批准版本低成本试采、正式质检，再测算是否扩设备和人数。",
+  "next_action": "按10月17日3台设备试采计划落实安全、人员及设备检查；先准备灵生四部分日报并确认投递渠道/口径，以真实采集上传与QA审核证据记录成果，再评估扩台。",
   "must_read": [
+    "knowledge/COMPANY_PROFILE.json",
+    "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+    "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
     "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "knowledge/SCENE_PIPELINE.json",
     "knowledge/PARTNER_LEDGER.json",
@@ -110,16 +150,24 @@
     "note": "缺记录不等于实际未完成；候选与意愿不能当作合格人员或正式授权，预填10台不能当作实际到位。"
   },
   "trial_validation_proposal": {
-    "status": "partner_scene_type_allowed_task_level_approval_pending",
-    "suggested_initial_devices": "1—2台（我方建议；设备到位与具体试采数量未知）",
+    "status": "historical_1_to_2_device_suggestion_superseded_by_owner_planned_three_device_trial",
+    "suggested_initial_devices": "历史建议1—2台；2026-10-16 Owner报告已与灵生沟通拟10月17日启用3台，此条仅保留原建议的演进轨迹",
     "action": "先送审三分区任务SOP，正式确认后小批录制0.5—5分钟Episode并上传实际质检；核算真实产能、损坏、成本与结算，再扩10台。",
     "approved_by_partner": "仅确认自建真实工位模式可尝试；未确认三任务具体SOP和小批样本通过",
-    "does_not_replace_first_batch_target": 10
+    "does_not_replace_first_batch_target": 10,
+    "latest_owner_plan": {
+      "plan_date": "2026-10-16",
+      "start": "2026-10-17",
+      "devices": 3,
+      "per_device_hours": 6,
+      "effective_target_hours": 4,
+      "status": "planned_not_yet_operated"
+    }
   },
   "next_pre_trial_actions": [
-    "按照吴启蒙要求提交三分区SOP；确认文件对外文风正式、通俗易懂，不掺内部问题/采购计划。",
-    "优先完成空容器回收低风险场景样本；线边仓补货和外观质检待原任务全部环节确认。",
-    "所有任务以首批质检实际结果为证据，不以‘可以搭建’代替‘会通过验收’。"
+    "准备10月17日3台首批试采的设备/人员/场景分配与安全，确认SOP具体动作并留可核实现场记录。",
+    "按灵生要求准备每日四段式日报，实报采集小时、人力人效、设备可用及异常、场景计划、上传积压的采集日期。",
+    "实际首次上传/QA/有效时长与费用均据平台和书面规则记录；不把内部测试、18/12小时计划或未返回QA当已验收成果。"
   ],
   "codex_procurement_photo_task": {
     "date": "2026-10-15",
@@ -161,5 +209,12 @@
     "phase_02b_status": "2026-10-16 Gate A范围内审查通过，PR当时未合并且基于PR#6分支；23次模型对话/97次浏览器调用；九类最新模拟样本通过，Windows CMD双击视觉验收待完成",
     "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
-  }
+  },
+  "company_identity": {
+    "name": "平顶山凌矩信息科技有限责任公司",
+    "name_source": "Owner 2026-10-16",
+    "verification": "owner_confirmed_legal_name_registration_details_pending",
+    "profile": "knowledge/COMPANY_PROFILE.json"
+  },
+  "company_identity_ref": "knowledge/COMPANY_PROFILE.json"
 }
