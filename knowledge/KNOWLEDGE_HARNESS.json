@@ -17,7 +17,15 @@
       "knowledge/CURRENT_WORK.json"
     ],
     "freshness_protocol": "knowledge/FRESHNESS_PROTOCOL.md",
-    "rule": "先定位当前阶段和当前唯一工作项，再加载对应 profile；历史和证据按需读取。"
+    "rule": "先定位当前阶段和当前唯一工作项，再加载对应 profile；历史和证据按需读取。",
+    "hermes_governance_mandatory_on_topic": true,
+    "hermes_governance_read_before_development": [
+      "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+      "AGENTS.md",
+      "hermes/AGENTS.md"
+    ],
+    "hermes_historical_context_on_first_onboarding": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md"
   },
   "profiles": {
     "orientation": {
@@ -76,12 +84,27 @@
         "knowledge/FRESHNESS_PROTOCOL.md"
       ],
       "purpose": "维护知识库本身。"
+    },
+    "hermes_digital_employee": {
+      "required": [
+        "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+        "knowledge/CURRENT_WORK.json",
+        "hermes/AGENTS.md",
+        "hermes/identity/ROLE_BRIEF.md"
+      ],
+      "on_first_onboarding": [
+        "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+        "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md"
+      ],
+      "purpose": "由Owner明确的唯一Hermes正式员工定位和自主成长工作方法；动态业务以项目当前事实核验，历史仅供解释，不能当现行部署方案",
+      "design_rule": "一个原Hermes长期身份；开放自主思考和方法；业务目标/SOP/派单权限等底线不能由员工自改；后续项目按需培训"
     }
   },
   "lifecycle": {
     "current_work_rule": "始终只有一个 CURRENT_WORK.json 作为当前唯一工作项。",
     "close_rule": "阶段完成后，把结论写入 HISTORY_AND_MILESTONES.md / EVIDENCE_INDEX.json / decisions，再替换 CURRENT_WORK。",
     "evidence_rule": "扩张、付款、采购、长期承诺必须由对应证据支持。",
-    "privacy_rule": "知识库不保存身份证、手机号、私人微信、银行卡、个人住址等敏感个人信息。"
+    "privacy_rule": "知识库不保存身份证、手机号、私人微信、银行卡、个人住址等敏感个人信息。",
+    "hermes_owner_decision_rule": "Owner修正数字员工理念时，先更新权威岗位宪章与机器索引、形成ADR、追加History，再同步hermes代码和测试；旧提案标SUPERSEDED，不冒充实施"
   }
 }
