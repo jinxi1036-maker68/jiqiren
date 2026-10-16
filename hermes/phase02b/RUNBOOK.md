@@ -37,3 +37,9 @@
 ## 下一步停止点
 
 只交Gate A结果。Gate B必须由Owner亲自登录并明确只读页面范围后另行启动；当前没有真实页面地图、真实QA样例或正式巡检。页面地图应按实际所见建立，不从本模拟菜单推导。
+
+## 不调用模型的检查
+
+使用现有Python运行`test_claims.py`（13项公开答复回归），在Windows运行`test_owned_job.py`（只创建并终止自身测试子进程）。使用现有Node运行`test_navigation.mjs`（1项正例、7项反例）及`policy_test.mjs <runtime.json>`（实际MCP四工具与3项拒绝）。这些不重新注入模型凭据。`entry.py <runtime.json> --check`应显示自检通过、模型授权false。
+
+`finalize_evidence.py <runtime.json> <公开证据目录>`从已存在的私有运行结果生成历史与最新索引，不运行模型，不改写模型答复。最新索引是逐case取最新，不能冒称最后一次完整矩阵全部通过。原生CLI身份测试仅在SOUL中添加非凭据标识，任务不携带其值；不要以会话DB的NULL system_prompt列作为未加载身份的结论。

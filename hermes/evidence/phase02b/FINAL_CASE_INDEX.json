@@ -1,0 +1,84 @@
+{
+  "scope": "Gate A simulation only, latest evidence per case; not one single all-pass run",
+  "simulated_matrix_dialogues": 21,
+  "simulated_matrix_browser_calls": 93,
+  "latest_case_count": 9,
+  "all_cases_present": true,
+  "latest_automated_checks_passed": true,
+  "latest_cases": [
+    {
+      "case": "http503",
+      "run_id": "20261016T011259Z-66cd8",
+      "evidence_file": "AGENT_RUNS_ROUND2.json",
+      "automated_checks_passed": true,
+      "browser_calls": 2,
+      "session_id": "20261016_091305_53da55"
+    },
+    {
+      "case": "http401",
+      "run_id": "20261016T011259Z-66cd8",
+      "evidence_file": "AGENT_RUNS_ROUND2.json",
+      "automated_checks_passed": true,
+      "browser_calls": 2,
+      "session_id": "20261016_091359_4180cb"
+    },
+    {
+      "case": "http403",
+      "run_id": "20261016T012205Z-95923",
+      "evidence_file": "AGENT_RUNS_TARGETED.json",
+      "automated_checks_passed": true,
+      "browser_calls": 2,
+      "session_id": "20261016_092210_c66ffb"
+    },
+    {
+      "case": "expired",
+      "run_id": "20261016T011259Z-66cd8",
+      "evidence_file": "AGENT_RUNS_ROUND2.json",
+      "automated_checks_passed": true,
+      "browser_calls": 2,
+      "session_id": "20261016_091513_c52ceb"
+    },
+    {
+      "case": "empty",
+      "run_id": "20261016T011259Z-66cd8",
+      "evidence_file": "AGENT_RUNS_ROUND2.json",
+      "automated_checks_passed": true,
+      "browser_calls": 4,
+      "session_id": "20261016_091600_f8b0cc"
+    },
+    {
+      "case": "unchanged",
+      "run_id": "20261016T011259Z-66cd8",
+      "evidence_file": "AGENT_RUNS_ROUND2.json",
+      "automated_checks_passed": true,
+      "browser_calls": 6,
+      "session_id": "20261016_091645_26975f"
+    },
+    {
+      "case": "partial",
+      "run_id": "20261016T013002Z-f1be6",
+      "evidence_file": "AGENT_RUNS_REPEAT.json",
+      "automated_checks_passed": true,
+      "browser_calls": 6,
+      "session_id": "20261016_093007_6e73ea"
+    },
+    {
+      "case": "detail",
+      "run_id": "20261016T011259Z-66cd8",
+      "evidence_file": "AGENT_RUNS_ROUND2.json",
+      "automated_checks_passed": true,
+      "browser_calls": 6,
+      "session_id": "20261016_091816_562b59"
+    },
+    {
+      "case": "change",
+      "run_id": "20261016T011259Z-66cd8",
+      "evidence_file": "AGENT_RUNS_ROUND2.json",
+      "automated_checks_passed": true,
+      "browser_calls": 6,
+      "session_id": "20261016_091918_ae7d26"
+    }
+  ],
+  "manual_public_final_review_required": true,
+  "real_backend_learning_started": false
+}

@@ -10,6 +10,12 @@ def unsupported_claims(text):
 def incorrect_demo_baseline(text):
     return bool(re.search(r'DEMO-002[^\n。]*QA(?:由|从)\s*["“]?暂无',text))
 
+def failure_empty_claim(text):
+    return [s.strip() for s in re.split(r'[\n。；;]',text) if re.search(r'(?:当前|可见|筛选).{0,8}范围为空|当前.{0,5}为空表|无任务记录',s) and not re.search(r'不等于|不能|不应|不是|未知|无法确认|未确认|：否|:否',s)]
+
+def premature_completion(text):
+    return [s.strip() for s in re.split(r'[\n。；;]',text) if re.search(r'已完成本轮|巡检完成|全部正常',s) and not re.search(r'不能|不输出|不应输出|不得|未完成|不成立|不可判定|结论未知',s)]
+
 def collect(runtime_path,output,run_id=None):
     r=json.loads(runtime_path.read_text(encoding='utf-8'));root=runtime_path.parent
     traces=[json.loads(x) for x in Path(r['trace']).read_text(encoding='utf-8').splitlines()]
@@ -31,6 +37,8 @@ def collect(runtime_path,output,run_id=None):
             checks={'process_exit_ok':run['exitcode']==0,'isolated_home':result['home_is_isolated'],'fault_policy_loaded':result['fault_policy_loaded_before_model_call'],'exact_browser_allowlist':set(result['tool_names'])=={'mcp__demo_browser__browser_'+x for x in ['click','close','navigate','snapshot']},'final_answer_present':bool(final),'navigation_to_case_by_agent':any(c['tool']=='browser_navigate' and c['arguments'].get('url')==r['origin']+'/'+case for c in clean),'expected_dom_evidence_present':spec[case]['must_observe'] in observed,'no_unsupported_root_cause_pattern':not unsupported_claims(final)}
             checks['baseline_not_recalled_incorrectly']=not incorrect_demo_baseline(final)
             checks['no_guessed_route_navigation']=all(c['arguments'].get('url')==r['origin']+'/'+case for c in clean if c['tool']=='browser_navigate')
+            if case.startswith('http') or case=='expired':checks['read_failure_not_labeled_empty']=not failure_empty_claim(final)
+            if case in ['partial','detail']:checks['no_premature_completion']=not premature_completion(final)
             if case.startswith('http'):checks['status_and_unknown_in_final']=case[4:] in final and '未知' in final
             elif case=='expired':checks['expired_and_owner_in_final']='过期' in final and 'Owner' in final
             elif case=='empty':checks['scoped_empty_in_final']=any(x in final for x in ['当前','筛选']) and any(x in final for x in ['为空','0条','0 条'])

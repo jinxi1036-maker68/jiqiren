@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "files_scanned": 39,
+  "known_secret_values_checked_without_disclosure": 19,
+  "findings": [],
+  "explicit_allowlist": true,
+  "excluded": [
+    "private runtime and authorization",
+    "credentials and cookies",
+    "old memories and raw session DBs",
+    "backups and real employee data",
+    "local cmd files containing full local paths"
+  ],
+  "limits": "Known local .env/config secrets and token/path patterns; not proof against every possible sensitive string."
+}

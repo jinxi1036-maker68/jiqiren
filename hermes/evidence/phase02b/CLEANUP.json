@@ -1,0 +1,13 @@
+{
+  "credential_withdrawn": true,
+  "authorization_active": false,
+  "files_scanned_for_exact_authorized_key": 185,
+  "unreadable_files": 0,
+  "remaining_exact_key_matches": 0,
+  "new_env_has_model_credentials": false,
+  "phase02a_selected_files_checked": 5,
+  "phase02a_unchanged": true,
+  "new_profile_minimal_memory_preserved": true,
+  "own_active_test_processes": 0,
+  "finished_at_utc": "2026-10-16T01:33:21.992974+00:00"
+}
