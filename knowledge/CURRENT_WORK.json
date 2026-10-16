@@ -159,6 +159,7 @@
     "phase_02a_status": "2026-10-16已审查模拟能力，PR当时未合并；独立profile+主包14,349文件/129 SQLite恢复验证+实际Hermes Agent模拟三种巡查",
     "phase_02b_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/8",
     "phase_02b_status": "2026-10-16 Gate A范围内审查通过，PR当时未合并且基于PR#6分支；23次模型对话/97次浏览器调用；九类最新模拟样本通过，Windows CMD双击视觉验收待完成",
-    "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆"
+    "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆",
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
   }
 }
