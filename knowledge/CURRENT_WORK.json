@@ -215,5 +215,6 @@
     "name_source": "Owner 2026-10-16",
     "verification": "owner_confirmed_legal_name_registration_details_pending",
     "profile": "knowledge/COMPANY_PROFILE.json"
-  }
+  },
+  "company_identity_ref": "knowledge/COMPANY_PROFILE.json"
 }
