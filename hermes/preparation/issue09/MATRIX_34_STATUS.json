@@ -1,0 +1,278 @@
+{
+  "original_matrix_ref": "PR10 e6d581cd4454c60d84750ef769da427cb01b11a8",
+  "labels_are_not_authorizations": true,
+  "items": [
+    {
+      "id": "M01",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "保留核心现状；未提出原机改动",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M02",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M03",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M04",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "保留核心现状；未提出原机改动",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M05",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M06",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M07",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M08",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M09",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M10",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M11",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M12",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "保留核心现状；未提出原机改动",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M13",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M14",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M15",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M16",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M17",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "保留核心现状；未提出原机改动",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M18",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M19",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M20",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M21",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M22",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M23",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M24",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M25",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M26",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M27",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M28",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M29",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M30",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M31",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M32",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M33",
+      "prepared_this_round": true,
+      "current_preparation": "本轮仅准备",
+      "actual_change_authority": "需要Owner单独批准",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    },
+    {
+      "id": "M34",
+      "prepared_this_round": false,
+      "current_preparation": "暂时不得触碰",
+      "actual_change_authority": "保留核心现状；未提出原机改动",
+      "execution_status": "not_executed",
+      "bulk_delete_allowed": false
+    }
+  ]
+}

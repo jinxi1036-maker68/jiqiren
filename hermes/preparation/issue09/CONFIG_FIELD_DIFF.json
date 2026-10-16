@@ -1,0 +1,110 @@
+{
+  "status": "proposal_only_no_config_applied",
+  "before_config_sha256": "d9a6fd4cf0c87cf6cd6d4c118138e19fad2af7d6c668c510acdfeafb0979c0f9",
+  "changes": [
+    {
+      "id": "C01",
+      "target": "H/config.yaml:terminal.cwd",
+      "before": ".",
+      "proposed_after": "H/company-workspace",
+      "condition": "需Owner批准字段改动，并核实Desktop会话cwd优先级",
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "C02",
+      "target": "D/project-dir.json:dir",
+      "before": "文件不存在",
+      "proposed_after": "H/company-workspace",
+      "condition": "需Owner批准原入口默认项目设置；本轮没有创建该文件",
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "C03",
+      "target": "H/config.yaml:mcp_servers.playwright-xianyu-lab",
+      "before": {
+        "command": "node",
+        "args": [
+          "H/tools/playwright-mcp/node_modules/@playwright/mcp/cli.js",
+          "--cdp-endpoint",
+          "http://127.0.0.1:9222",
+          "--caps",
+          "devtools,vision",
+          "--console-level",
+          "info",
+          "--output-mode",
+          "file",
+          "--output-dir",
+          "H/xianyu/browser_lab/playwright_mcp",
+          "--timeout-action",
+          "10000",
+          "--timeout-navigation",
+          "60000"
+        ],
+        "env_key_names": [],
+        "trust": null,
+        "enabled": null
+      },
+      "proposed_after": "拟退出旧CDP业务绑定，包暂保留",
+      "condition": "中性接入及原入口增量验收获批后才可处理",
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "C04",
+      "target": "H/config.yaml:mcp_servers.xianyu-browser-tools",
+      "before": {
+        "command": "node",
+        "args": [
+          "H/tools/xianyu-browser-tools/server.js"
+        ],
+        "env_key_names": [],
+        "trust": null,
+        "enabled": true
+      },
+      "proposed_after": "拟退出旧上传业务server绑定，原目录暂保留",
+      "condition": "本轮只验证开发区解耦，未批准停用原server",
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "C05",
+      "target": "H/config.yaml:mcp_servers.company_browser_simulation",
+      "before": "不存在",
+      "proposed_after": "拟增加受限模拟桥，sdkAnchorPackage指向批准后的中性目录",
+      "condition": "尚需打包/原入口模型测试授权；不能接灵生域名",
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    },
+    {
+      "id": "C06",
+      "target": "拟建 H/tools/company-browser-sdk/ 与 H/tools/company-browser-simulation/",
+      "before": "未部署",
+      "proposed_after": "中性SDK1.30.0及限定loopback桥",
+      "condition": "本轮副本只在开发区；正式落盘位置、启用须Owner另批",
+      "owner_approval": "pending",
+      "execution_status": "not_executed"
+    }
+  ],
+  "explicitly_unchanged_fields": {
+    "terminal.cwd": ".",
+    "terminal.backend": "local",
+    "terminal.persistent_shell": true,
+    "memory.memory_enabled": true,
+    "memory.user_profile_enabled": true,
+    "memory.memory_char_limit": 10000,
+    "memory.user_char_limit": 5000,
+    "tools.tool_search.enabled": "auto",
+    "display.interface": "cli",
+    "security.redact_secrets": true,
+    "security.allow_lazy_installs": true,
+    "auxiliary.background_review.enabled": null,
+    "context_file_max_chars": null,
+    "model.context_length": null
+  },
+  "model_env_auth_change_proposed": false,
+  "whole_config_replacement_proposed": false,
+  "formal_model_approval_currently_granted": false,
+  "old_mcp_physical_directory_change_allowed": false
+}

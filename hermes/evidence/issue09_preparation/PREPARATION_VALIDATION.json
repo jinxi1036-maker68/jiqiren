@@ -1,0 +1,63 @@
+{
+  "kind": "offline preparation only, no Hermes/browser/model acceptance",
+  "draft_lengths": {
+    "HERMES.draft.md": {
+      "characters": 378,
+      "static_limit_used": 20000,
+      "below_limit": true
+    },
+    "MEMORY.draft.md": {
+      "characters": 670,
+      "static_limit_used": 10000,
+      "below_limit": true
+    },
+    "SOUL.draft.md": {
+      "characters": 896,
+      "static_limit_used": 20000,
+      "below_limit": true
+    },
+    "USER.draft.md": {
+      "characters": 248,
+      "static_limit_used": 5000,
+      "below_limit": true
+    }
+  },
+  "all_static_draft_length_checks_passed": true,
+  "actual_prompt_injection_scanning_truncation_or_cache_replay_verified": false,
+  "memory_native_delimiter": "/n§/n",
+  "original_review_segments": 100,
+  "sdk_test_rounds": [
+    {
+      "round": 1,
+      "pass": 3,
+      "fail": 1,
+      "note": "Mock fixture relied on environment removed by bounded bridge; connection closed. No original or real service involved."
+    },
+    {
+      "round": 2,
+      "pass": 4,
+      "fail": 0,
+      "fix": "Fixture entry explicitly supplies its anchor; bridge environment boundary unchanged."
+    }
+  ],
+  "sdk_runtime_old_business_modules_loaded": 0,
+  "sdk_component_tests_use_fake_mcp_no_browser_or_http": true,
+  "model_calls": 0,
+  "actual_browser_sessions": 0,
+  "dependency_network_installation": false,
+  "formal_deployment": false,
+  "real_business_access": false,
+  "original_files_protection": {
+    "selected_files_compared": 36,
+    "unchanged": true,
+    "changed": [],
+    "scope": "selected approved preparation targets, not a full audit"
+  },
+  "limitations": [
+    "Topic cues are not complete semantic ownership review",
+    "Four drafts are not an approved whole-file rewrite",
+    "Immutable history view excludes active WAL",
+    "Desktop is not running; real new-session loading remains blocked pending authorization",
+    "MCP mock checks are not browser or Hermes autonomy tests"
+  ]
+}

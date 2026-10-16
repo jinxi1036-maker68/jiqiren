@@ -1,0 +1,19 @@
+{
+  "stage": "Issue 9 Gate 1 nondestructive preparation only",
+  "owner_authorization": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6210554053",
+  "reviewed_gate0_baseline": "https://github.com/jinxi1036-maker68/jiqiren/pull/10",
+  "chatgpt_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/10#pullrequestreview-5544439274",
+  "main_basis": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+  "gate0_head": "e6d581cd4454c60d84750ef769da427cb01b11a8",
+  "browser_code_inherited_from": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+  "scope": ["four drafts and redacted item/field differences", "known entry/task/dependency read-only checks", "neutral SDK adaptation in isolated development area", "minimal offline/component simulation", "new redacted report and PR"],
+  "formal_original_deployment_authorized": false,
+  "deletion_authorized": false,
+  "task_disabling_authorized": false,
+  "model_credential_injection_or_model_calls_authorized": false,
+  "real_business_access_authorized": false,
+  "merge_or_retarget_prior_prs_authorized": false,
+  "whole_matrix_34_approved": false,
+  "short_term_protection_retention_approved": false,
+  "required_stop": "Submit new review PR and wait for Owner/ChatGPT; do not enter formal deployment."
+}
