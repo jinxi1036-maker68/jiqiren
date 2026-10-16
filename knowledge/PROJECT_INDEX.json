@@ -85,6 +85,8 @@
     "authority_file": "knowledge/COMPANY_PROFILE.json",
     "registration_verification": "pending_official_license_or_registry_review",
     "brand_status": "logo_research_only_not_approved",
-    "brand_research": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md"
+    "brand_research": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+    "brand_short_name": "凌矩",
+    "brand_short_name_evidence": "Owner 2026-10-16确认，仅确定简称，并未确定Logo造型"
   }
 }
