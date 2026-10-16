@@ -13,7 +13,7 @@
 
 **关键结论：Owner电脑里最终只有一名正式Hermes员工；不把它变成新管理系统，也不长期保留旧Hermes+数采Hermes两个身份。公司给目标/底线，员工自主判断/完成/成长；当前先灵生数采，未来按Owner需要扩展。** 之前独立profile仅是模拟测试策略；原Hermes正式清理/迁移尚未做。具体岗位权限仍需单独授权和验收。
 
-## Agent Bootstrap
+**换新对话窗口时可直接复制：**[Hermes跨窗口接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口仍须读取上述宪章/ADR/历史，不仅凭交接语回答。\n\n## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
 
 1. 读 `knowledge/KNOWLEDGE_HARNESS.json`
