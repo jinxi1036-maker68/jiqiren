@@ -41,5 +41,30 @@
     "rejected_as_north_star": "单纯扩至50人采集队伍、依赖一个上游按小时赚差价",
     "priority": "战略方向确认；执行上仍先进行10台试采和首笔结算验证",
     "adr_ref": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md"
+  },
+  "hermes_digital_employee": {
+    "owner_decision_date": "2026-10-16",
+    "decision_status": "owner_approved_active",
+    "governing_charter": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+    "adr": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+    "full_history": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+    "dev_entry": "hermes/AGENTS.md",
+    "deployment_blueprint": "hermes/identity/ROLE_BRIEF.md",
+    "target_architecture": "Owner原Hermes唯一长期正式员工身份与日常入口。当前先灵生数采，未来由Owner按需增加项目。旧业务无关记忆经核对清理。",
+    "work_philosophy": "给岗位目标、底线和成果验收，Hermes自主规划、发现问题、做工作、成长；只对越权或重大例外请示",
+    "rejected_end_states": [
+      "新建数采业务管理系统代替员工",
+      "长期双Hermes profile/双正式员工",
+      "对每一步操作和思考硬编码固定路线",
+      "未经需要预先堆新业务"
+    ],
+    "implementation_as_of": "2026-10-16",
+    "implementation_state": "owner_principle_documented_in_github_pending_original_hermes_migration",
+    "evidence_prs": [
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/6",
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
+    ],
+    "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习"
   }
 }
