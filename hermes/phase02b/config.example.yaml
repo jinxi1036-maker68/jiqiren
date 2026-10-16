@@ -1,0 +1,36 @@
+# Non-secret reference; setup_profile.py resolves local paths and endpoint.
+model:
+  default: agnes-3.0-flash
+  provider: custom:Agnes.ai
+  base_url: <AUTHORIZED_MODEL_ENDPOINT>
+  max_tokens: 2048
+custom_providers:
+  - name: Agnes.ai
+    base_url: <AUTHORIZED_MODEL_ENDPOINT>
+    key_env: PHASE02_MODEL_KEY
+platform_toolsets:
+  cli: [demo_browser]
+tools:
+  tool_search:
+    enabled: 'off'
+mcp_servers:
+  demo_browser:
+    command: <EXISTING_NODE>
+    args: [<BROWSER_BRIDGE_SCRIPT>, <LOCAL_RUNTIME_JSON>]
+    trust: full
+    enabled: true
+auxiliary:
+  background_review:
+    enabled: false
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+display:
+  interface: cli
+  show_reasoning: false
+cron:
+  enabled: false
+scheduler:
+  enabled: false
+voice:
+  auto_tts: false

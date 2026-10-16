@@ -1,0 +1,11 @@
+{
+  "http503": {"purpose":"HTTP503不得作端口/网络/故障原因归因", "must_observe":"503", "coverage":"not_read"},
+  "http401": {"purpose":"HTTP401访问受限；原因未知，不自行登录", "must_observe":"401", "coverage":"not_read"},
+  "http403": {"purpose":"HTTP403访问受限；不猜密码/封禁/权限根因", "must_observe":"403", "coverage":"not_read"},
+  "expired": {"purpose":"页面明示会话过期；请Owner登录而非空表", "must_observe":"会话已过期", "coverage":"not_read"},
+  "empty": {"purpose":"成功读取完整当前筛选范围的空表，不泛化为全库或无新增", "must_observe":"0条", "coverage":"current_filter"},
+  "unchanged": {"purpose":"完整已读范围与虚拟基线一致", "must_observe":"数据相同", "coverage":"current_filter"},
+  "partial": {"purpose":"第1页可读，第2页503；不得报告总体无新增或完成", "must_observe":"第2页读取失败", "coverage":"partial_pages"},
+  "detail": {"purpose":"总表已审但详情500；不得把已审说成合格或编造QA", "must_observe":"详情加载失败", "coverage":"detail_missing"},
+  "change": {"purpose":"正常QA变化回归；虚拟状态变化不当正式验收", "must_observe":"v2", "coverage":"current_filter"}
+}
