@@ -1,0 +1,227 @@
+{
+  "schema_version": "hermes_issue09_gate0_review_v1",
+  "gate": "0",
+  "reviewed_at_utc": "2026-10-16 06:07:35 UTC",
+  "source_main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+  "instruction": {
+    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "comment_id": 6207298536,
+    "comment_updated_at": "2026-10-16T03:18:46Z"
+  },
+  "sources": {
+    "S0": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md"
+    },
+    "S1": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "hermes/reports/PHASE_01_LOCAL_AUDIT_REPORT.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/hermes/reports/PHASE_01_LOCAL_AUDIT_REPORT.md"
+    },
+    "S2": {
+      "ref": "6a5b500c915a0a9b14e089752785937c67ce3bfa",
+      "path": "hermes/reports/PHASE_02A_SPECIALIZED_AGENT_BASELINE.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/6a5b500c915a0a9b14e089752785937c67ce3bfa/hermes/reports/PHASE_02A_SPECIALIZED_AGENT_BASELINE.md"
+    },
+    "S3": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/reports/PHASE_02B_REAL_BACKEND_READONLY_ONBOARDING.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/reports/PHASE_02B_REAL_BACKEND_READONLY_ONBOARDING.md"
+    },
+    "S4": {
+      "ref": "6a5b500c915a0a9b14e089752785937c67ce3bfa",
+      "path": "hermes/evidence/phase02a/GATE_0.json",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/6a5b500c915a0a9b14e089752785937c67ce3bfa/hermes/evidence/phase02a/GATE_0.json"
+    },
+    "S5": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/evidence/phase02b/CLEANUP.json",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/evidence/phase02b/CLEANUP.json"
+    },
+    "S6": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/phase02b/setup_profile.py",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/phase02b/setup_profile.py"
+    },
+    "S7": {
+      "ref": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "path": "hermes/phase02b/browser_bridge.mjs",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/7d900d3a39c1e77f6a159347f6cd7d5207a709dd/hermes/phase02b/browser_bridge.mjs"
+    },
+    "S8": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "hermes/identity/ROLE_BRIEF.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/hermes/identity/ROLE_BRIEF.md"
+    },
+    "S9": {
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/053b5b4cd2476fdf6df68e2c924a6b1c7d28e080/knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md"
+    }
+  },
+  "inherited_pr_state": [
+    {
+      "number": 4,
+      "state": "closed",
+      "merged": true,
+      "head": "0840fbb2dc9b4d18b2d5c0286b13331826297338",
+      "base": "main",
+      "mergeable_when_read": null
+    },
+    {
+      "number": 6,
+      "state": "open",
+      "merged": false,
+      "head": "6a5b500c915a0a9b14e089752785937c67ce3bfa",
+      "base": "main",
+      "mergeable_when_read": false
+    },
+    {
+      "number": 8,
+      "state": "open",
+      "merged": false,
+      "head": "7d900d3a39c1e77f6a159347f6cd7d5207a709dd",
+      "base": "codex/hermes-phase-02a-specialized-agent-2026-10-16",
+      "mergeable_when_read": true
+    }
+  ],
+  "inherited_results": {
+    "phase01_component_cases": 9,
+    "phase02a_backup_files": 14349,
+    "phase02a_sqlite_integrity_checks": 129,
+    "phase02a_supplement_items": 32,
+    "phase02b_dialogues": 23,
+    "phase02b_browser_calls": 97,
+    "phase02b_latest_cases": 9,
+    "phase02b_one_all_pass_full_round": false,
+    "temporary_key_withdrawn_in_prior_round": true
+  },
+  "pr_semantic_differences": [
+    {
+      "pr": 6,
+      "old_track_id": "HERMES-DIGITAL-EMPLOYEE-PHASE-01",
+      "main_track_id": "HERMES-DIGITAL-EMPLOYEE",
+      "missing_latest_track_keys": [
+        "owner_charter",
+        "owner_adr",
+        "evolution_history",
+        "owner_latest_decision_date",
+        "owner_latest_decision",
+        "previous_dual_profile_architecture",
+        "phase_02a_pr",
+        "phase_02a_status",
+        "phase_02b_pr",
+        "phase_02b_status",
+        "implementation_do_not_confuse",
+        "next_execution_issue"
+      ],
+      "changed_track_keys": [
+        "id",
+        "status",
+        "issue",
+        "current_limits",
+        "next_gate",
+        "phase_01_review",
+        "phase_01_verified_basis",
+        "current_phase"
+      ],
+      "whole_file_business_equal": true,
+      "github_mergeable": false
+    },
+    {
+      "pr": 8,
+      "old_track_id": "HERMES-DIGITAL-EMPLOYEE-PHASE-01",
+      "main_track_id": "HERMES-DIGITAL-EMPLOYEE",
+      "missing_latest_track_keys": [
+        "owner_charter",
+        "owner_adr",
+        "evolution_history",
+        "owner_latest_decision_date",
+        "owner_latest_decision",
+        "previous_dual_profile_architecture",
+        "phase_02a_pr",
+        "phase_02a_status",
+        "phase_02b_pr",
+        "phase_02b_status",
+        "implementation_do_not_confuse",
+        "next_execution_issue"
+      ],
+      "changed_track_keys": [
+        "id",
+        "status",
+        "current_limits",
+        "next_gate",
+        "phase_01_review",
+        "phase_01_verified_basis",
+        "current_phase"
+      ],
+      "whole_file_business_equal": true,
+      "github_mergeable": true
+    }
+  ],
+  "mandatory_governance_read_in_full": [
+    "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+    "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+    "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+    "AGENTS.md",
+    "hermes/AGENTS.md",
+    "hermes/identity/ROLE_BRIEF.md"
+  ],
+  "bootstrap_and_context_read": [
+    "knowledge/00_START_HERE.md",
+    "knowledge/KNOWLEDGE_HARNESS.json",
+    "knowledge/PROJECT_INDEX.json",
+    "knowledge/CURRENT_WORK.json",
+    "knowledge/FRESHNESS_PROTOCOL.md",
+    "knowledge/10_UPDATE_PROTOCOL.md",
+    "knowledge/04_SCENE_STRATEGY.md",
+    "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+    "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+    "knowledge/PARTNER_LEDGER.json",
+    "knowledge/SCENE_PIPELINE.json",
+    "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md"
+  ],
+  "freshness_gate_b_passed": true,
+  "business_work_item_preserved": "WI-2026-10-livsyn-first-trial-prep",
+  "prior_private_metadata_used": {
+    "path": "work/hermes_phase01/enriched/inventory_sanitized.json",
+    "purpose": "existing path metadata only; old snapshot, not a fresh scan; no original memory text published"
+  },
+  "targeted_static_source_review": [
+    "agent/prompt_builder.py::load_soul_md/build_context_files_prompt",
+    "agent/runtime_cwd.py::resolve_context_cwd",
+    "hermes_constants.py::get_hermes_home",
+    "tools/memory_tool.py::load_from_disk",
+    "apps/desktop/electron/main.ts::resolveHermesHome"
+  ],
+  "gate0_runtime_actions": {
+    "full_audit_rerun": false,
+    "original_memory_body_read": false,
+    "skills_rescan": false,
+    "full_backup_or_restore_rerun": false,
+    "model_calls": 0,
+    "browser_started": false,
+    "credential_injection": false,
+    "original_config_changed": false,
+    "deletion": false,
+    "original_job_stopped": false,
+    "pr6_or_pr8_merged_or_retargeted": false,
+    "real_business_access": false
+  },
+  "matrix_items": 34,
+  "all_matrix_actions_not_executed": true,
+  "remaining_unknowns": [
+    "current original entry/process/cwd drift since inherited snapshots",
+    "exact Windows task identity and old session IDs",
+    "per-item ownership/dependencies/retention exceptions",
+    "native Desktop deployment loading and UI acceptance",
+    "Gate1 model service authorization, maintenance window and short-term protection approval"
+  ],
+  "gate1_authorized": false,
+  "gate1_started": false,
+  "gate2_authorized": false,
+  "gate2_started": false,
+  "caveat": "Historical evidence and static code review do not constitute a new runtime audit or migration acceptance."
+}
+
