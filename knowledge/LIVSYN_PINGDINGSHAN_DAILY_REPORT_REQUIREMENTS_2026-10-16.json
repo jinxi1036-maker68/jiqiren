@@ -71,8 +71,26 @@
     "有效时长是否须QA返回及何时确认",
     "第三部分计划具体按当天还是次日填写",
     "积压数量统计单位及补传截止要求",
-    "是否有灵生正式的日报表格模板"
+    "是否有灵生正式的日报表格模板",
+    "T+1从采集完成日还是上传完成日起算、T+3对应哪一周结截止时点、自然日或工作日",
+    "周结束T+3是有效时长确认、整周报表还是其他产物，是否最终QA结果"
   ],
   "privacy_boundary": "不得在公开GitHub记录员工实名、QQ/手机号、登录资料、原始视频和工资明细。",
-  "reference": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
+  "reference": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+  "partner_followup_2026_10_16": {
+    "source": "Owner转发的灵生原话；暂无正式补充定义",
+    "exact_wording": [
+      "1. 最低采集目标时长（按6h/天计算） ；",
+      "2. 有效时长（按4h/天计算）",
+      "试采我们T+1出有效时长",
+      "周结束我们不超过T+3"
+    ],
+    "interpretation_status": "provisional_requires_partner_confirmation",
+    "daily_capture_target_hours_per_device": 6,
+    "daily_effective_target_hours_per_device": 4,
+    "trial_effective_hours_feedback": "T+1; exact T origin and calendar/business day rule pending",
+    "weekly_closing_feedback": "no later than T+3; weekly cutoff, T origin, and output meaning pending",
+    "payment_timing_specified": false,
+    "targets_are_not_guaranteed_qa_passed_hours": true
+  }
 }
