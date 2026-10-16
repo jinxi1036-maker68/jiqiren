@@ -65,6 +65,7 @@
       "https://github.com/jinxi1036-maker68/jiqiren/pull/6",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
     ],
-    "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习"
+    "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
   }
 }
