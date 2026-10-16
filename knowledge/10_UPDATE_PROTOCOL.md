@@ -35,3 +35,11 @@ Markdown 负责稳定方法和解释，不和 JSON 建第二套动态事实。
 
 ## 隐私
 不在仓库保存私人手机号、身份证、银行卡、学生信息、个人住址。
+
+## Hermes数字员工：最新Owner理念与历史更新规则（2026-10-16）
+
+Hermes任务必须先读`knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md`；它是岗位发展的当前权威。长期方向为：**唯一原Hermes员工身份、自主目标管理、底线稳定、当前业务优先、未来按Owner需要逐步扩展**。旧的“另建管理系统”“多正式profile并行”“僵化逐步脚本”的提案标记`SUPERSEDED`，不能以较早PR的技术方案覆盖Owner最新决定。
+
+每次Owner调整定位：先更新唯一岗位宪章→`PROJECT_INDEX.json`及`CURRENT_WORK.json`相关并行开发状态→写一条新的ADR（旧ADR不删除）→追加`knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md`（或其续篇）→把对应执行要求/身份模板/Skill/代码写`hermes/`→在PR/Issue记录测试与结果。**讨论决定≠本机已部署，模拟通过≠真实后台已验收。**
+
+清理无关私人记忆不应抹掉本项目合法的GitHub设计历史；GitHub的历史也不应泄漏旧记忆原文、真实员工数据和凭据。对于Owner希望“自主工作”的要求，应验收结果和授权边界，不把正常员工思考限定为唯一操作顺序。
