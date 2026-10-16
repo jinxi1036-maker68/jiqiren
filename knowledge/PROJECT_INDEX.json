@@ -67,5 +67,13 @@
     ],
     "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+  },
+  "company_identity": {
+    "official_zh_name": "平顶山凌矩信息科技有限责任公司",
+    "source": "Owner于2026-10-16明确提供的公司全称",
+    "evidence_level": "conversation_confirmed",
+    "authority_file": "knowledge/COMPANY_PROFILE.json",
+    "registration_verification": "pending_official_license_or_registry_review",
+    "brand_status": "logo_research_only_not_approved"
   }
 }
