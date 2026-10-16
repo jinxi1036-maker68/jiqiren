@@ -1,0 +1,191 @@
+{
+  "schema": "hermes_targeted_mechanism_v1",
+  "date_local": "2026-10-17",
+  "observed_at_utc": "2026-10-16T16:50:43.022307+00:00",
+  "authorization": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6220114050",
+  "scope": {
+    "original_writes": false,
+    "model_calls": 0,
+    "browser_replays": 0,
+    "new_backup": false,
+    "new_session_db_reads": false,
+    "private_memory_body_reads": false,
+    "full_prompt_reads": false
+  },
+  "company": {
+    "legal_name": "平顶山凌矩信息科技有限责任公司",
+    "short_name": "凌矩",
+    "source": "Owner current instruction and PR13 COMPANY_PROFILE.json@0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+    "registry_verification": false
+  },
+  "preserved_owner_choices": {
+    "voice.auto_tts": true,
+    "platforms.qqbot.enabled": true,
+    "intent": "Owner confirmed; no longer an unexplained rollback candidate",
+    "qq_connection_or_sending_verified": false
+  },
+  "settings": {
+    "terminal_cwd": ".",
+    "terminal_backend": "local",
+    "voice_auto_tts": true,
+    "qqbot_enabled": true,
+    "memory_flags": {
+      "memory_enabled": true,
+      "user_profile_enabled": true,
+      "memory_char_limit": 10000,
+      "user_char_limit": 5000,
+      "provider": ""
+    },
+    "context_file_max_chars": null,
+    "project_dir_strict_utf8_json": true,
+    "project_dir_has_bom": false,
+    "project_dir_value": "<USER_HOME>\\.hermes\\company-workspace",
+    "project_dir_exists": true,
+    "project_sha256": "d8edd6427eaefaebfa31da376e225b18b712a267f227d11863c335e75f518c63",
+    "metadata_only_files": [
+      {
+        "path": "<USER_HOME>\\.hermes\\SOUL.md",
+        "bytes": 2436,
+        "mtime": 1792149809.194407
+      },
+      {
+        "path": "<USER_HOME>\\.hermes\\memories\\MEMORY.md",
+        "bytes": 14433,
+        "mtime": 1791030187.571424
+      },
+      {
+        "path": "<USER_HOME>\\.hermes\\memories\\USER.md",
+        "bytes": 10996,
+        "mtime": 1786157800.7227466
+      }
+    ]
+  },
+  "cwd": {
+    "valid_C02": true,
+    "C01_placeholder": ".",
+    "desktop_userData_observed": "D=<APPDATA>/Hermes",
+    "metadata_session_cwd": "I, inherited from PR15; no new database scan",
+    "explicit_command_cwd": "W, inherited from PR15; not persistent session repair",
+    "shipped_renderer_resolution": "explicit project/Home -> active session cwd OR configured default; creation sends currentCwd explicitly when nonempty",
+    "current_typescript_resolution": "explicit project/Home -> configured default (no active-session fallback)",
+    "backend_precedence": "request.cwd -> stored session cwd -> profile config -> launch config -> TERMINAL_CWD -> os.getcwd; selected valid path is then bound to session tools/context",
+    "most_likely_cause": "shipped renderer carries previous installation cwd into new chat, overriding otherwise valid C02/default",
+    "historical_request_payload_and_sidebar_scope": "not_captured; exact historical branch remains inference",
+    "process_os_cwd": "not measured; spawn code != direct process measurement",
+    "fix_first": "Owner-approved explicit W company project selection in original UI; zero code/credential/memory changes; no action performed",
+    "config_only_C01": "not sufficient if renderer still sends explicit I; may affect QQ/other surfaces, not recommended first"
+  },
+  "package": {
+    "desktop_package_version": "0.17.0",
+    "not_agent_version": true,
+    "archive_sha256": "4f3dea712ef4cbd8a32f33dd6520aa260cd801b1f8f2de54bfe779a6773b924a",
+    "main_entry": "dist/electron-main.mjs",
+    "main_sha256": "942065f5039a18a4afc2a68ee6d39371b8a90f45e9957f4868c0aa17dc53e799",
+    "main_unpacked": true,
+    "renderer_entry": "dist/assets/index-DiuSwoFa.js",
+    "renderer_sha256": "fd9aca2e3b87988192727d3820e348f363e5e2594147c891738daf633fd1f787",
+    "modules": [
+      {
+        "entry": "dist/assets/session-CVRybkMm.js",
+        "sha256": "750ab5583b1a5eca180b8025984df56a3c6394a1081c2d2f0f8440518630ecad"
+      },
+      {
+        "entry": "dist/assets/completion-sound-wWQdmEkr.js",
+        "sha256": "b5c89ccadf467c2f8e90288a9cad657880bba399f7e1406c58131a4d61fd7187"
+      }
+    ],
+    "note": "Default-dir read DOES exist in imported session chunk; zero matches in index alone is not proof of absence."
+  },
+  "new_existing_log_evidence": {
+    "file": "H/logs/agent.log",
+    "line_at_prior_capture": 3349,
+    "line_sha256": "6871ef7ab69456f66dd97c77a58fafafe6b6a4856b1dd1ff64ec45ad736448ef",
+    "session_sha256": "dbc30348a14e3410808ae7830be8ad246b0d9856cb4f9d6e037a7ce4770258b6",
+    "local_time": "2026-10-16 20:27:12.805",
+    "event": "Context file AGENTS.md TRUNCATED",
+    "input_chars": 85081,
+    "limit_chars": 61440,
+    "current_install_agents_section_chars": 85081,
+    "current_install_agents_sha256": "7809549b184d4b365aeb996d90e00461d44cc624e0367a1c42a1c52b88290604",
+    "length_exact_match": true,
+    "path_attribution": "high-confidence inference from cwd/priority/exact length; log itself names AGENTS.md only",
+    "full_prompt_and_other_parts": "not proven by this warning"
+  },
+  "loading_mechanism": {
+    "SOUL": "agent home override/session-db home -> H/SOUL.md -> safety scan -> context-file size cap -> stable identity; fallback identity on failure; gated by skip rules",
+    "company_context": "session logical cwd -> HERMES.md first, otherwise AGENTS chain then other formats; one project-context type, not all knowledge JSON auto-loaded",
+    "company_knowledge": "Agent-selected read_file following W/HERMES pointer, actual 10 reads + appended hermes/AGENTS inherited from PR15",
+    "memory": "enabled MemoryStore loads H/memories/MEMORY.md and USER.md, sanitizes prompt snapshot, appends enabled blocks in volatile tier; disk bodies not read in this investigation",
+    "memory_cache": "snapshot/cached prompt remains until rebuild; invalidation reloads disk; file presence or new SOUL does not delete old memory",
+    "caps": "context file cap explicit override or dynamic 20K floor/500K ceiling; head/tail truncation; memory char limits are not a semantic filter or automatic clearing policy"
+  },
+  "session_level_status": {
+    "verified_inherited": "10 file reads + appended context + 13 MCP + QA/partial503",
+    "newly_verified": "AGENTS.md truncation warning tied to target session",
+    "still_unverified": [
+      "exact SOUL bytes sent",
+      "complete effective tool/prompt inventory",
+      "private memory inclusion/semantic influence per request",
+      "cross-restart memory reflow",
+      "historical exact session.create cwd parameter"
+    ]
+  },
+  "proposal_only": {
+    "training_target": "W/HERMES.md, one 503 fact/unknown/retry-authorization paragraph; draft only",
+    "soul_memory_config_mcp_changes": false,
+    "next_model_budget": "0 for first UI/cwd metadata check; if needed request separate max1 narrow identity/503 text task, no browser matrix"
+  },
+  "source_fingerprints": [
+    {
+      "path": "I/apps/desktop/src/store/projects.ts",
+      "sha256": "be3f3d0a4968fe11aa226be74b8d6edc1473009578b78448026e64dc53fa8f46",
+      "relevant_lines": "208-237"
+    },
+    {
+      "path": "I/apps/desktop/src/store/session.ts",
+      "sha256": "6792d39ea9f66d44feb089ade9c3ef0aa9f5b0e13bd780cce8d22c9f0cd582eb",
+      "relevant_lines": "163-237;929-941"
+    },
+    {
+      "path": "I/apps/desktop/src/app/session/hooks/use-session-actions/index.ts",
+      "sha256": "9d092e302425b7ab77be9921f1a305beb83b508d514ddb8aa5ef4922c94276d0",
+      "relevant_lines": "194-219;444-465"
+    },
+    {
+      "path": "I/tui_gateway/methods_session.py",
+      "sha256": "cebdb174267cf139778581aff573580218aea7df4a5270ea5cac260b098cae02",
+      "relevant_lines": "14-35;77-125"
+    },
+    {
+      "path": "I/tui_gateway/server.py",
+      "sha256": "67baa60d9e23e02ad7a7029d0c4e2c515442ae7ba160c917b1c2077bd38649b3",
+      "relevant_lines": "1564-1579;2575-2597;7020-7205"
+    },
+    {
+      "path": "I/agent/runtime_cwd.py",
+      "sha256": "f8166300402cd15b8d6e36db9107ed1a1f1d763a3467710a788ee7223ec093e3",
+      "relevant_lines": "60-100"
+    },
+    {
+      "path": "I/agent/system_prompt.py",
+      "sha256": "1d1c1bfbfc3752576f8523bfc5029b8ab3a005a195b2abd10c85ccc9cd20164d",
+      "relevant_lines": "275-310;377-392;784-829;920-941"
+    },
+    {
+      "path": "I/agent/prompt_builder.py",
+      "sha256": "4bd1f06790e42edc857f78c36e33739f5f65fd733a8d69bc99f270cb688dee05",
+      "relevant_lines": "104-125;1503-1551;2279-2357;2413-2468;2523-2598"
+    },
+    {
+      "path": "I/agent/agent_init.py",
+      "sha256": "4d68ddf051c9f06ddd971da22d5a4039ccbce8954462e23253cc3d15a4d75887",
+      "relevant_lines": "1798-1826"
+    },
+    {
+      "path": "I/tools/memory_tool.py",
+      "sha256": "767322196a25879a4f4f52b24437c20f4c4d19362e0f68d745278c1a1d519dcc",
+      "relevant_lines": "203-240;682-693;731-747"
+    }
+  ],
+  "gate_status": "core capability evidenced; full Gate1A pending; no Gate2"
+}
