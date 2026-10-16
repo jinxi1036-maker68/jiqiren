@@ -23,7 +23,10 @@
       "具身智能/机器人训练数据/现场采集公司品牌风格",
       "适用于合同、设备、工服、数字产品的长期企业形象"
     ],
-    "restriction": "Owner明确要求先调查同行并讨论品牌方向，未确认前不要自动生成图像或将任何早期概念视为正式公司Logo。"
+    "restriction": "Owner明确要求先调查同行并讨论品牌方向，未确认前不要自动生成图像或将任何早期概念视为正式公司Logo。",
+    "research_report": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+    "research_status": "first_round_completed_sources_linked_design_not_started",
+    "short_name_proposal": "凌矩（仅为建议，待Owner确认）"
   },
   "business_ref": "knowledge/CURRENT_WORK.json",
   "classification": "conversation_confirmed",
