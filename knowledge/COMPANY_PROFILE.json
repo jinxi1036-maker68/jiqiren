@@ -1,0 +1,31 @@
+{
+  "schema_version": "robot_data_company_identity_v1",
+  "last_owner_confirmation_date": "2026-10-16",
+  "legal_name_zh": "平顶山凌矩信息科技有限责任公司",
+  "name_evidence": "owner_explicitly_confirmed_in_chat",
+  "name_status": "owner_confirmed_not_independently_registry_verified",
+  "previous_legal_entity_note": "旧供应商申请材料中曾使用其他主体名称；不得当成本项目现公司名称，也不能据此推断工商股权或主体之间法律关系。",
+  "registration_details": {
+    "unified_social_credit_code": null,
+    "exact_registration_date": null,
+    "registered_address": null,
+    "legal_representative": null,
+    "license_document_received": false,
+    "status": "pending_license_or_official_registry_verification"
+  },
+  "brand_work": {
+    "status": "research_before_design",
+    "official_brand_short_name": null,
+    "english_name": null,
+    "logo_status": "not_approved",
+    "design_research_focus": [
+      "公司名称中的凌矩字义与文字识别",
+      "具身智能/机器人训练数据/现场采集公司品牌风格",
+      "适用于合同、设备、工服、数字产品的长期企业形象"
+    ],
+    "restriction": "Owner明确要求先调查同行并讨论品牌方向，未确认前不要自动生成图像或将任何早期概念视为正式公司Logo。"
+  },
+  "business_ref": "knowledge/CURRENT_WORK.json",
+  "classification": "conversation_confirmed",
+  "caution": "Owner确认的是公司全称，不等于营业执照已由Agent独立核验；不可编造信用代码、英文名、注册日期、注册资本或工商信息。"
+}
