@@ -73,15 +73,15 @@
       "key": "worker_pay_per_approved_effective_hour",
       "value": 15,
       "unit": "CNY/approved-effective-hour",
-      "status": "owner_confirmed",
-      "note": "2026-10-17 Owner明确：采集员按平台最终审核有效时长计算绩效；不是按原始录制时长或默认在岗时长计费。仍须符合法定用工报酬及其他规定。"
+      "status": "owner_proposed_policy_not_formally_implemented",
+      "note": "仅指Owner提出的A级基础15元/审核有效小时；A级实际拟按当月个人A级有效率分档至16/18/20，B级拟为12。详细见knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md；制度尚待合同和劳动合规确认。"
     },
     {
       "key": "worker_pay_per_approved_effective_hour_increase_option",
       "value": 16,
       "unit": "CNY/approved-effective-hour",
-      "status": "owner_option_not_yet_finalized",
-      "note": "Owner提出可提高至16元/审核有效小时；与15元方案互斥，不能同时扣除。"
+      "status": "owner_proposed_A_tier_50_to_below_80",
+      "note": "既有2026-10-14 A级月度有效率50%至不足80%档位为16元/审核有效小时，不能只理解为统一涨薪；2026-10-17再次讨论15/16元未明确废止旧A/B分档。"
     }
   ],
   "trial_formula": "贡献毛利 = 有效小时×40 - 设备数×计租天数×20 - 人工 - 场景 - 管理质检 - 交通网络 - 税费 - 返工损耗",
@@ -104,5 +104,45 @@
     "request_from_partner_group": "月底前100人",
     "binding_to_owner": false,
     "decision": "先有小批有效数据、审核反馈、第一笔实际结算与资金测算，再决定设备、人力扩张"
+  },
+  "worker_pay_design": {
+    "source": "knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md",
+    "source_in_main": true,
+    "source_document_date": "2026-10-14",
+    "status": "owner_proposed_not_formally_implemented_pending_labor_compliance_and_written_terms",
+    "pricing_basis": "platform_approved_effective_hours",
+    "A_monthly_yield_tiers": [
+      {
+        "effective_ratio_gte": 0,
+        "effective_ratio_lt": 0.5,
+        "cny_per_approved_effective_hour": 15
+      },
+      {
+        "effective_ratio_gte": 0.5,
+        "effective_ratio_lt": 0.8,
+        "cny_per_approved_effective_hour": 16
+      },
+      {
+        "effective_ratio_gte": 0.8,
+        "effective_ratio_lt": 0.95,
+        "cny_per_approved_effective_hour": 18
+      },
+      {
+        "effective_ratio_gte": 0.95,
+        "effective_ratio_lt": null,
+        "cny_per_approved_effective_hour": 20
+      }
+    ],
+    "B_cny_per_approved_effective_hour": 12,
+    "A_monthly_ratio_rule": "approved_effective_duration_of_A_tasks / submitted_compliant_raw_duration_of_A_tasks; calendar month; exclude B tasks",
+    "B_to_A_eligibility_rule": "five consecutive actual tasked-and-completed collection days; days without assigned tasks do not reset; only future task pricing",
+    "owner_proposed_payment_day_of_month": 10,
+    "payment_day_qualification": "monthly settlement intent only; mandatory legal wage/payment frequency and employment obligations control",
+    "unresolved": [
+      "minimum eligible sample size",
+      "quality audit delay and provisional settlement",
+      "work relationship and legal wage protections",
+      "whether prior A/B proposal has now been finalized for actual recruitment"
+    ]
   }
 }
