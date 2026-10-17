@@ -144,5 +144,30 @@
       "work relationship and legal wage protections",
       "whether prior A/B proposal has now been finalized for actual recruitment"
     ]
+  },
+  "team_leader_staffing_design_2026_10_17": {
+    "status": "owner_decision_on_role_structure_pay_amount_proposal",
+    "date": "2026-10-17",
+    "devices_per_team": 10,
+    "leaders_count_at_50_devices": 5,
+    "headcount_model": "50采集岗位，含5人兼任组长，另45人为普通采集岗位；不是50+5额外独立管理岗位",
+    "leader_is_collector": true,
+    "leader_data_pay": "按本人平台审核有效小时与A级/B级实际等级对应单价计算，已包括在50位采集员总绩效内",
+    "additional_management_stipend_monthly_options_cny": [
+      1500,
+      2000
+    ],
+    "additional_group_hours_commission": "not_authorized_in_latest_owner_decision_do_not_budget",
+    "performance_review": "整组有效小时、审核有效率、任务完成、设备/上传/质量闭环用于管理岗位考核，须查明不可控拒收原因及合规",
+    "primary_scenario": "50台每台6原始h每日30天，75%有效率，全部A级假设16元/有效小时",
+    "estimated_monthly_surplus_before_unmeasured_legal_costs": {
+      "management_1500_extra_expenses_excluding_separate_qa_cny": 121250,
+      "management_2000_extra_expenses_excluding_separate_qa_cny": 118750,
+      "management_1500_including_separate_optional_qa_3000_cny": 118250,
+      "management_2000_including_separate_optional_qa_3000_cny": 115750
+    },
+    "cost_assumptions": "设备20元/台日，宽带250元/月，电费1000元/月，耗材2000元/月均为情景估算；3000独立QA费用只有实际额外发生才扣，避免组长管理费重复计",
+    "labor_and_capacity_caveat": "组长管理工作可能减少个人原始录制；依法保障真实劳动关系下最低工资/保险/休息，50设备岗位30运营日不代表同50人无休",
+    "source": "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md"
   }
 }
