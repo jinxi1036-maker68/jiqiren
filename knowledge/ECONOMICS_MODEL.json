@@ -1,6 +1,6 @@
 {
   "schema_version": "economics_model_v1",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-17",
   "partner": "北京灵生科技有限公司 / LivSyn",
   "terms": [
     {
@@ -68,6 +68,20 @@
       "unit": "CNY/effective_hour",
       "status": "assumption",
       "note": "用户本地观察，不是平台规则"
+    },
+    {
+      "key": "worker_pay_per_approved_effective_hour",
+      "value": 15,
+      "unit": "CNY/approved-effective-hour",
+      "status": "owner_confirmed",
+      "note": "2026-10-17 Owner明确：采集员按平台最终审核有效时长计算绩效；不是按原始录制时长或默认在岗时长计费。仍须符合法定用工报酬及其他规定。"
+    },
+    {
+      "key": "worker_pay_per_approved_effective_hour_increase_option",
+      "value": 16,
+      "unit": "CNY/approved-effective-hour",
+      "status": "owner_option_not_yet_finalized",
+      "note": "Owner提出可提高至16元/审核有效小时；与15元方案互斥，不能同时扣除。"
     }
   ],
   "trial_formula": "贡献毛利 = 有效小时×40 - 设备数×计租天数×20 - 人工 - 场景 - 管理质检 - 交通网络 - 税费 - 返工损耗",
