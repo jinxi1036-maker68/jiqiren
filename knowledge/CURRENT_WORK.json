@@ -44,9 +44,10 @@
       "upstream_40_cny_per_approved_hour_reference": true,
       "equipment_deposit_from_partner": "proposed_amount_pending",
       "current_authorization_to_subcontract": "not_verified",
-      "link": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+      "link": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+      "latest_team_model_clarification": "Owner明确未来10台合作团队属于凌矩业务协作体系，队长可自己采集兼管理，也可由10位其他人员采集而自己管理；约85平方米场地参考月租850元，工位前期建设可复用，凌矩可指定集中上传地点并承担网络。须先核合法用工及第三方分包、转租许可。"
     },
-    "current_owner_operating_priority": "先把10台和10个采集岗位的真实场地、任务录制、日报、上传、审核与收入证据跑通；再向灵生申请合作商转包与设备转租许可；无授权不对外发设备/任务。"
+    "current_owner_operating_priority": "先把自营10台/约10人跑通并复核真实订单、QA/上传与现金回款；准备未来每家10台合作网络的低成本场地和队长经营样板；未核实灵生书面分包、设备转租、集中上传信息安全前不实际给新团队发设备或订单。"
   },
   "project_lead_mode": {
     "enabled": true,
