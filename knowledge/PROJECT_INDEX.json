@@ -17,7 +17,9 @@
     "latest_operational_update": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "latest_partner_decision": "对方业务联系人认可自建真实工位组织方式；不等于具体SOP、所有场景或正式验收一概批准",
     "expansion_boundary": "Owner最新明确：自营场地、设备、采集岗位未来封顶10台/约10人；稳定后不再自己招人扩厂，外部每个独立合作团队原则配置10台，按拟价30元/审核有效小时与25元/台/天收费（押金数额待定）；灵生正式转包和转租书面权限未获，不能直接实施。旧自营50台战略已于2026-10-18废止。",
-    "latest_strategy_decision": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+    "latest_strategy_decision": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+    "latest_stage_cap_proposal_2026_10_18": "Owner proposes approximately 100 total devices operating only locally, provisionally modelled as 10 self-operated + 9 nearby independent 10-device teams; still future target and needs clarification whether 100 includes original 10. No formal partner permission.",
+    "latest_tax_review": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
   },
   "long_term_goal": "以10台/约10人的凌矩自营样板基地，形成可审核的真实场景、设备培训、SOP和结算能力；经上游书面许可后，以每合作团队10台的合规外部交付网络扩展，逐渐服务多个上游。自营50台扩张思路已被最新Owner决定取代。",
   "strategic_sequence": [
