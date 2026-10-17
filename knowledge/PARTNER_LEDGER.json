@@ -1,6 +1,6 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-17",
   "partners": [
     {
       "id": "livsyn",
@@ -47,6 +47,17 @@
         "partner_group_message": "杜振成提出“月底前增加到一百人”",
         "nature": "上游提出的激励/目标，尚不能判断玩笑或正式要求",
         "owner_commitment": "无100人承诺；初期集中试采质量与现金回款"
+      },
+      "daily_reporting_requirement_2026_10_17": {
+        "status": "owner_reported_pending_official_details",
+        "report_frequency": "daily",
+        "reason": "Owner stated LivSyn previously requested daily reports",
+        "template": "not_verified_from_partner",
+        "send_deadline": "not_confirmed",
+        "submit_channel": "not_confirmed",
+        "reference": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+        "internal_template": "templates/TRIAL_DAILY_DASHBOARD.csv",
+        "note": "Internal company daily dashboard is not asserted as official LivSyn reporting template"
       }
     },
     {
