@@ -57,7 +57,14 @@
         "submit_channel": "not_confirmed",
         "reference": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
         "internal_template": "templates/TRIAL_DAILY_DASHBOARD.csv",
-        "note": "Internal company daily dashboard is not asserted as official LivSyn reporting template"
+        "note": "Internal company daily dashboard is not asserted as official LivSyn reporting template",
+        "submission_format": "plain_text_message",
+        "submission_format_evidence": "owner_explicit_confirmation_2026_10_17",
+        "report_details_status": "owner_and_assistant_filling_first_daily_report_collaboratively",
+        "day_one": "2026-10-17",
+        "day_one_plan": "3 devices, 6 raw recording hours per device, total planned 18 raw hours",
+        "day_one_actuals": "pending_owner_report_not_submitted_or_verified",
+        "customer_fixed_template": "unconfirmed"
       }
     },
     {
