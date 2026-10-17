@@ -240,6 +240,30 @@
       "partner contract equipment deposit/damage/refund; quality and payment cycle align",
       "verified one-team real metrics and sustainable partner-level net economic results"
     ],
-    "reference": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+    "reference": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+    "new_clarifications_2026_10_18": {
+      "team_relation": "Owner views external teams as belonging to Lingju's integrated task-delivery and management system; legal contracting, labor allocation and upstream subcontracting permissions need explicit identification",
+      "team_leader_role": "Can capture and manage as one of ten producers or just manage: fully used 10 devices then need ten other producers; else nine producer devices with tenth rented but idle",
+      "goal_leader_monthly_income_cny": "around or above 10000, target only, not guaranteed",
+      "venue_area_square_meters_example": 85,
+      "venue_rent_example_monthly_cny": 850,
+      "utilities_example_monthly_cny": 300,
+      "local_internet_example_monthly_cny": 150,
+      "initial_fit_out_and_workstations": "front-loaded reusable capital; separate cash and amortization records rather than charging full setup costs every month",
+      "company_provided_upload": "Optional designated central upload location/infrastructure paid by Lingju. Partner could avoid separate upstream bandwidth spend, but Lingju retains transmission/storage/transport/QA/security costs.",
+      "scenario_30operating_days_75pct": {
+        "captain_captures_with_9_other_producers_balance_cny": 12260,
+        "captain_only_manages_with_10_producers_balance_cny": 10100,
+        "captain_only_manages_with_9_producers_10devices_rented_balance_cny": 8210
+      },
+      "scenario_26operating_days_75pct": {
+        "captain_captures_with_9_other_producers_balance_cny": 10452,
+        "captain_only_manages_with_10_producers_balance_cny": 8580,
+        "captain_only_manages_with_9_producers_10devices_rented_balance_cny": 6942
+      },
+      "own_internet_waived_delta_for_partner_cny_per_month": 150,
+      "scenario_status": "hypothetical_pending_contract_actual_days_effective_hours_legally_required_labor_costs",
+      "source": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+    }
   }
 }
