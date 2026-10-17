@@ -169,5 +169,36 @@
     "cost_assumptions": "设备20元/台日，宽带250元/月，电费1000元/月，耗材2000元/月均为情景估算；3000独立QA费用只有实际额外发生才扣，避免组长管理费重复计",
     "labor_and_capacity_caveat": "组长管理工作可能减少个人原始录制；依法保障真实劳动关系下最低工资/保险/休息，50设备岗位30运营日不代表同50人无休",
     "source": "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md"
+  },
+  "channel_partner_growth_strategy_2026_10_17": {
+    "date": "2026-10-17",
+    "status": "owner_decision_future_strategy_not_implemented",
+    "direct_operated_device_ceiling": 50,
+    "intended_cap_interpretation": "After establishing a real demonstration base and operating capability, stop self-operated device headcount growth around 50; expand via independent data-delivery partners.",
+    "rationale": "Own-site training/showcase, demonstrable real audit and settlement, standardised operations, reputational trust in partners",
+    "partner_role": "only with explicit upstream authorization, partners fulfil capture tasks using their independently organised lawful people/scenes/equipment and return approved data",
+    "pricing_example_status": "owner_future_pricing_idea_not_offered_or_authorized",
+    "partner_spread_cny_per_approved_hour": 10,
+    "hypothetical_quotes": [
+      {
+        "buyer_cny_per_approved_hour": 40,
+        "partner_cny_per_approved_hour": 30
+      },
+      {
+        "buyer_cny_per_approved_hour": 50,
+        "partner_cny_per_approved_hour": 40
+      }
+    ],
+    "example_ten_device_partner_at_75pct": {
+      "devices": 10,
+      "raw_hours_per_device_daily": 6,
+      "operating_days_monthly": 30,
+      "approved_hours_monthly": 1350,
+      "platform_payment_at_40_cny": 54000,
+      "partner_payment_at_30_cny": 40500,
+      "gross_spread_cny": 13500
+    },
+    "gate": "no redistribution before upstream written subcontracting/third-party data processing/device-account permissions, contract and finance review; no assumption 50 owned devices or franchise compliance already achieved",
+    "source": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md"
   }
 }
