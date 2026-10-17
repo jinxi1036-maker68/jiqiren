@@ -1,6 +1,6 @@
 {
   "schema_version": "economics_model_v1",
-  "updated_at": "2026-10-17",
+  "updated_at": "2026-10-18",
   "partner": "北京灵生科技有限公司 / LivSyn",
   "terms": [
     {
@@ -146,7 +146,7 @@
     ]
   },
   "team_leader_staffing_design_2026_10_17": {
-    "status": "owner_decision_on_role_structure_pay_amount_proposal",
+    "status": "historical_50_device_own_operations_scenario_superseded_2026_10_18",
     "date": "2026-10-17",
     "devices_per_team": 10,
     "leaders_count_at_50_devices": 5,
@@ -172,7 +172,7 @@
   },
   "channel_partner_growth_strategy_2026_10_17": {
     "date": "2026-10-17",
-    "status": "owner_decision_future_strategy_not_implemented",
+    "status": "superseded_by_owner_decision_2026_10_18",
     "direct_operated_device_ceiling": 50,
     "intended_cap_interpretation": "After establishing a real demonstration base and operating capability, stop self-operated device headcount growth around 50; expand via independent data-delivery partners.",
     "rationale": "Own-site training/showcase, demonstrable real audit and settlement, standardised operations, reputational trust in partners",
@@ -199,6 +199,47 @@
       "gross_spread_cny": 13500
     },
     "gate": "no redistribution before upstream written subcontracting/third-party data processing/device-account permissions, contract and finance review; no assumption 50 owned devices or franchise compliance already achieved",
-    "source": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md"
+    "source": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md",
+    "superseded_by": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+  },
+  "current_approved_owner_growth_strategy_2026_10_18": {
+    "decision_status": "owner_decision_future_plan_pending_partner_authorization",
+    "date": "2026-10-18",
+    "self_operated_devices_ceiling": 10,
+    "self_operated_collectors_target": 10,
+    "self_operated_goal": "Fix 10 owned/leased operating stations as production, on-site training and showcase; stop expanding own sites and direct collector headcount after these are stable",
+    "outside_growth": "independent contractor-like B2B collection team per partner with 10 devices maximum per team, requiring partner authorization and compliant real setup",
+    "devices_per_independent_partner": 10,
+    "supplier_to_lingju_device_rent_reference_cny_per_device_day": 20,
+    "lingju_to_partner_proposed_device_rent_cny_per_device_day": 25,
+    "device_rent_gross_spread_per_device_day_cny": 5,
+    "buyer_to_lingju_price_reference_cny_per_approved_hour": 40,
+    "lingju_to_partner_proposed_price_cny_per_approved_hour": 30,
+    "approved_hour_gross_spread_cny": 10,
+    "device_deposit": "Owner intends to collect refundable equipment deposit from each external partner; exact amount and pass-through liability conditions not decided, upstream reference 1000 CNY/device; never record refundable deposits as profit",
+    "one_partner_example_30_operating_days_75pct": {
+      "raw_hours": 1800,
+      "effective_hours": 1350,
+      "buyer_payment_cny": 54000,
+      "partner_data_payment_cny": 40500,
+      "data_gross_spread_cny": 13500,
+      "device_rent_received_cny": 7500,
+      "device_rent_paid_cny": 6000,
+      "device_gross_spread_cny": 1500,
+      "combined_gross_spread_cny": 15000,
+      "hypothetical_partner_wages_all_A_at_16_cny": 21600,
+      "partner_balance_after_device_rent_and_variable_piece_rates_cny": 11400
+    },
+    "supersedes": {
+      "date": "2026-10-17",
+      "prior_self_operated_devices_ceiling": 50,
+      "old_adr": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md"
+    },
+    "gates": [
+      "upstream written approval for subprocessing, subcontracting, device re-rental and new devices",
+      "partner contract equipment deposit/damage/refund; quality and payment cycle align",
+      "verified one-team real metrics and sustainable partner-level net economic results"
+    ],
+    "reference": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
   }
 }
