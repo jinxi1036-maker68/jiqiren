@@ -47,7 +47,16 @@
       "link": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
       "latest_team_model_clarification": "Owner明确未来10台合作团队属于凌矩业务协作体系，队长可自己采集兼管理，也可由10位其他人员采集而自己管理；约85平方米场地参考月租850元，工位前期建设可复用，凌矩可指定集中上传地点并承担网络。须先核合法用工及第三方分包、转租许可。"
     },
-    "current_owner_operating_priority": "先把自营10台/约10人跑通并复核真实订单、QA/上传与现金回款；准备未来每家10台合作网络的低成本场地和队长经营样板；未核实灵生书面分包、设备转租、集中上传信息安全前不实际给新团队发设备或订单。"
+    "current_owner_operating_priority": "先把自营10台/约10人跑通并复核真实订单、QA/上传与现金回款；准备未来每家10台合作网络的低成本场地和队长经营样板；未核实灵生书面分包、设备转租、集中上传信息安全前不实际给新团队发设备或订单。",
+    "future_network_cap_discussion_2026_10_18": {
+      "proposed_devices_total": 100,
+      "provisionally_ten_own_plus_nine_ten_device_teams": true,
+      "location": "near Owner local area",
+      "status": "owner_future_upper_bound_not_installed",
+      "tax_questions": "VAT taxable sales gross vs net and 5m general-payer threshold, small micro CIT 5% eligibility, Henan eligible veteran individual enterprise tax deductions up to 24000 vs LLC hiring veteran up to 9000/person/year",
+      "veteran_identity": "unspecified_do_not_assume",
+      "reference": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    }
   },
   "project_lead_mode": {
     "enabled": true,
