@@ -265,5 +265,32 @@
       "scenario_status": "hypothetical_pending_contract_actual_days_effective_hours_legally_required_labor_costs",
       "source": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
     }
+  },
+  "local_network_100_device_stage_cap_2026_10_18": {
+    "status": "owner_proposed_future_ceiling_not_operationally_achieved",
+    "date": "2026-10-18",
+    "total_equipment_cap_proposal": 100,
+    "count_interpretation": "provisionally total includes ten self-operated and nine nearby 10-device teams; confirm before committing money",
+    "self_operated_devices": 10,
+    "nearby_partner_teams": 9,
+    "partner_team_devices": 10,
+    "captain_role": "may manage + personally record, or exclusively manage while ten other collectors work the ten devices",
+    "case_30days_75pct": {
+      "effective_hours_total": 13500,
+      "platform_data_receipts_cny": 540000,
+      "partner_9_teams_data_gross_spread_cny": 121500,
+      "partner_9_teams_rental_gross_spread_cny": 13500,
+      "partner_9_teams_combined_gross_spread_cny": 135000
+    },
+    "case_26days_75pct": {
+      "effective_hours_total": 11700,
+      "platform_data_receipts_cny": 468000,
+      "partner_equipment_rental_receipts_cny": 58500,
+      "conditional_total_cash_invoice_amount_cny": 526500,
+      "pre_overhead_pretax_simplified_balance_cny": 139430
+    },
+    "tax_note": "2026 VAT small-scale statutory annual sales cap CNY5m, general services often 6%, equipment movable rental 13% when general taxpayer, small low-profit CIT effective 5% if applicable; invoice and agency/principal treatment must be checked",
+    "veteran_policy_note": "Henan qualified self-employed veteran individual household: up to CNY24000/year actual listed tax reductions for 36 months; enterprise hiring qualified veterans with >=1y contract and legal insurance up to CNY9000/person/year; no automatic application to veteran shareholder LLC; user identity unknown",
+    "decision_doc": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
   }
 }
