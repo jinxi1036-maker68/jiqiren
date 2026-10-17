@@ -6,7 +6,7 @@
   "context_profile": "pre_trial_preparation",
   "objective": "按灵生对接人认可的自建真实作业场景方式，完善平顶山三分区具体任务SOP，先完成小批采集、上传及质检反馈，在真实有效小时和费用条款可核实后再扩大10台及人员规模。",
   "now": {
-    "date": "2026-10-15",
+    "date": "2026-10-18",
     "phase": "三分区任务设计/送审准备，正式采集产能尚未验证",
     "first_batch_device_target": 10,
     "actual_devices_received": null,
@@ -32,7 +32,21 @@
       "priority_solution": "先与灵生沟通提前时长提醒、每小时累计原始录制提醒及后续合规自动启停/官方分段能力；工资模型为备选",
       "status_boundary": "讨论与Owner计划而非厂家承诺/灵生批准/已部署，未取得新的质检结算证据",
       "owner_next_step": "电话与吴启蒙确认设备提醒可行性、2秒真实起止规则、五分钟上限原因、是否允许自动分段/后处理；保存回复后再同步知识库"
-    }
+    },
+    "current_owner_self_operated_cap_2026_10_18": {
+      "status": "owner_decision_future_plan",
+      "own_devices_target": 10,
+      "own_people_target": 10,
+      "no_further_direct_site_expansion": true,
+      "external_partner_team_devices": 10,
+      "device_rent_proposal_cny_per_day": 25,
+      "approved_hour_partner_price_cny": 30,
+      "upstream_40_cny_per_approved_hour_reference": true,
+      "equipment_deposit_from_partner": "proposed_amount_pending",
+      "current_authorization_to_subcontract": "not_verified",
+      "link": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+    },
+    "current_owner_operating_priority": "先把10台和10个采集岗位的真实场地、任务录制、日报、上传、审核与收入证据跑通；再向灵生申请合作商转包与设备转租许可；无授权不对外发设备/任务。"
   },
   "project_lead_mode": {
     "enabled": true,
