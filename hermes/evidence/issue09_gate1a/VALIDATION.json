@@ -1,0 +1,251 @@
+{
+  "preflight": {
+    "at_utc": "2026-10-16T11:22:26.021395+00:00",
+    "files": [
+      {
+        "path": "H\\SOUL.md",
+        "sha256": "dfaee81231795d373413601f104b7d05e74e9a44200fa621ffac261cd01f6f6f",
+        "matches_reviewed": true
+      },
+      {
+        "path": "H\\config.yaml",
+        "sha256": "d9a6fd4cf0c87cf6cd6d4c118138e19fad2af7d6c668c510acdfeafb0979c0f9",
+        "matches_reviewed": true
+      },
+      {
+        "path": "H\\memories\\MEMORY.md",
+        "sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0",
+        "matches_reviewed": true
+      },
+      {
+        "path": "H\\memories\\USER.md",
+        "sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6",
+        "matches_reviewed": true
+      },
+      {
+        "path": "H\\cron\\jobs.json",
+        "sha256": "877a6efca16b7b9435b4c996a8d6c5756411563e0017c4f0980e97994cd54f59",
+        "matches_reviewed": true
+      }
+    ],
+    "original_running": [],
+    "source_head": "8794e5a21c980a0f26532cb4883284b786cb3f25",
+    "new_targets_absent": true,
+    "home": "H",
+    "model_calls": 0
+  },
+  "protection": {
+    "at_utc": "2026-10-16T11:17:02.075145+00:00",
+    "archive_sha256": "de0512df54c0f3d1041151bb9ad5baf058d78a903d05b3a4ddf3692643d97055",
+    "encrypted_bytes": 144232,
+    "files_verified": 4,
+    "decryption_and_byte_restore_verified": true,
+    "tamper_rejected": true,
+    "same_windows_user_required": true,
+    "state_db_or_desktop_runtime_backup": false,
+    "reason": "No original Desktop/model conversation has been started; no state database is to be modified by this transaction.",
+    "retention": "Review at acceptance+7d; Owner disposition required at +14d; never auto-destroy.",
+    "rollback_readiness": {
+      "at_utc": "2026-10-16T11:29:38.424007+00:00",
+      "encrypted_payload_authenticated": true,
+      "four_original_payload_hashes_valid": true,
+      "changed_targets_match_expected_after_hash": true,
+      "new_roots_exact_inventory_match": true,
+      "original_running": false,
+      "actual_rollback_executed": false,
+      "limitation": "File-level restore only; no original Desktop/model/session recovery claimed."
+    }
+  },
+  "deployment": {
+    "at_utc": "2026-10-16T11:29:07.771943+00:00",
+    "applied_file_hashes_match_stage": true,
+    "old_memory_user_cron_unchanged": true,
+    "knowledge_readable_and_work_item_consistent": true,
+    "knowledge_files": 18,
+    "sdk": {
+      "packages": 93,
+      "vendor_files": 3496,
+      "all_package_digests_match_reviewed_bundle": true
+    },
+    "real_desktop_model_acceptance": false,
+    "original_desktop_started": false,
+    "model_dialogues_used": 0
+  },
+  "native_loader_probe": {
+    "kind": "installed_native_loader_functions_only_no_desktop_no_agent",
+    "home_matches_original": true,
+    "soul_exact_approved_text_survives_native_scan_and_cap": true,
+    "soul_chars": 894,
+    "workspace_entry_survives_native_context_loader": true,
+    "workspace_entry_prompt_chars": 726,
+    "memory_enabled": true,
+    "user_profile_enabled": true,
+    "old_memory_native_entries": 40,
+    "old_user_native_entries": 27,
+    "snapshot_chars": {
+      "memory": 9670,
+      "user": 5109
+    },
+    "fresh_store_reload_same_snapshot": true,
+    "old_memory_remains_in_loader": true,
+    "old_memory_semantic_or_agent_identity_conflict": "not_tested_in_original_desktop",
+    "actual_session_cwd": "not_observed",
+    "actual_complete_model_prompt_or_context_truncation": "not_observed",
+    "knowledge_files": "18 locally cached files are readable; no Agent read is claimed",
+    "model_calls": 0,
+    "selected_original_files_unchanged_during_probe": true,
+    "guard_denials": [],
+    "guard_limit": "Python probe guard only; not a security sandbox for Hermes"
+  },
+  "development_component_probe": {
+    "kind": "component_only_no_agent_no_model",
+    "started_at_utc": "2026-10-16T11:21:50.307Z",
+    "checks": [
+      "real stdio through Python owned Job, neutral SDK 1.30.0, real Playwright MCP; exactly four browser tools",
+      "real headless browser reads baseline and changed QA from synthetic DOM",
+      "synthetic partial paging exposes HTTP 503 and unread page evidence",
+      "external navigation, guessed same-origin path and evaluate denied",
+      "owned bridge and fixture processes exit; Windows Job closes its child tree"
+    ],
+    "run_id": "20261016T112150Z-c6083a68",
+    "lifecycle": {
+      "run_id": "20261016T112150Z-c6083a68",
+      "wrapper_pid": 27336,
+      "model_calls": 0,
+      "business_data": false,
+      "origin": "http://127.0.0.1:51923",
+      "fixture_pid": 15572,
+      "sdk_anchor": "<DEV>\\private\\stage\\sdk\\package.json",
+      "bridge_pid": 24192,
+      "host_stdin_closed": true,
+      "bridge_exit_code_before_job_close": null,
+      "children_exited": true,
+      "closed_at_utc": "2026-10-16T11:21:56.100304+00:00"
+    },
+    "requests": [
+      {
+        "at": "2026-10-16T11:21:52.429Z",
+        "method": "GET",
+        "path": "/change",
+        "status": 200
+      },
+      {
+        "at": "2026-10-16T11:21:53.860Z",
+        "method": "GET",
+        "path": "/partial",
+        "status": 200
+      },
+      {
+        "at": "2026-10-16T11:21:54.683Z",
+        "method": "GET",
+        "path": "/api/page2",
+        "status": 503
+      }
+    ],
+    "completed_at_utc": "2026-10-16T11:21:56.123Z",
+    "passed": true
+  },
+  "installed_component_probe": {
+    "kind": "component_only_no_agent_no_model",
+    "started_at_utc": "2026-10-16T11:24:03.376Z",
+    "checks": [
+      "real stdio through Python owned Job, neutral SDK 1.30.0, real Playwright MCP; exactly four browser tools",
+      "real headless browser reads baseline and changed QA from synthetic DOM",
+      "synthetic partial paging exposes HTTP 503 and unread page evidence",
+      "external navigation, guessed same-origin path and evaluate denied",
+      "owned bridge and fixture processes exit; Windows Job closes its child tree"
+    ],
+    "run_id": "20261016T112403Z-a746fd81",
+    "lifecycle": {
+      "run_id": "20261016T112403Z-a746fd81",
+      "wrapper_pid": 23864,
+      "model_calls": 0,
+      "business_data": false,
+      "origin": "http://127.0.0.1:55503",
+      "fixture_pid": 24812,
+      "sdk_anchor": "H\\tools\\company-browser-sdk\\package.json",
+      "bridge_pid": 27592,
+      "host_stdin_closed": true,
+      "bridge_exit_code_before_job_close": null,
+      "children_exited": true,
+      "closed_at_utc": "2026-10-16T11:24:08.726953+00:00"
+    },
+    "requests": [
+      {
+        "at": "2026-10-16T11:24:05.345Z",
+        "method": "GET",
+        "path": "/change",
+        "status": 200
+      },
+      {
+        "at": "2026-10-16T11:24:06.678Z",
+        "method": "GET",
+        "path": "/partial",
+        "status": 200
+      },
+      {
+        "at": "2026-10-16T11:24:07.359Z",
+        "method": "GET",
+        "path": "/api/page2",
+        "status": 503
+      }
+    ],
+    "completed_at_utc": "2026-10-16T11:24:08.743Z",
+    "passed": true
+  },
+  "computer_use": {
+    "attempts": 3,
+    "after_kernel_reset_attempted": true,
+    "error": "failed to write kernel assets: 系统找不到指定的路径。 (os error 3)",
+    "before_app_selection": true,
+    "original_desktop_launched": false,
+    "scope": "Codex Computer Use runtime failure, not proof that original Hermes Desktop is broken",
+    "UI_or_CLI_model_substitute_used": false
+  },
+  "acceptance": {
+    "original_desktop_session_home_cwd": "blocked_not_observed",
+    "identity_knowledge_limits_agent_response": "not_run",
+    "QA_change_agent_task": "not_run",
+    "partial_failure_agent_task": "not_run",
+    "reopen_desktop_session": "not_run",
+    "automatic_memory_review_or_reflow": "not_run",
+    "model_service_availability": "not_probed_no_dialogues",
+    "dialogues_used": 0,
+    "limit": 3,
+    "Gate1A_complete": false,
+    "Gate1B_or_Gate2_entered": false
+  },
+  "failures_retained": [
+    {
+      "stage": "preflight probe",
+      "failure": "own Windows venv redirector was initially counted as an unrelated Hermes process",
+      "correction": "exclude only own PID and verified immediate-parent redirector; independent external process check found no original Hermes"
+    },
+    {
+      "stage": "development SDK verifier",
+      "failure": "nested package files counted again in parent package digest",
+      "correction": "match PR11 per-package digest rule and assert 3496 unique vendor files; all 93 package digests match"
+    },
+    {
+      "stage": "component attempt 1 and 2",
+      "failure": "probe expected inline DOM in navigation result; this version returns a snapshot file link",
+      "correction": "explicit browser_snapshot obtains inline DOM; stdout option alone does not change navigation snapshot behavior"
+    },
+    {
+      "stage": "component attempt 3",
+      "failure": "probe used ref argument; installed click schema requires target",
+      "correction": "use actual advertised target schema"
+    },
+    {
+      "stage": "component attempt 4",
+      "failure": "probe expected one-line row; DOM snapshot contains separate cells",
+      "correction": "assert ordered cells for DEMO-001 before DEMO-002"
+    },
+    {
+      "stage": "original Desktop acceptance",
+      "failure": "Computer Use failed before app discovery",
+      "correction": "not resolved; stop and report no real Agent acceptance"
+    }
+  ],
+  "lifecycle_improvement": "Host stdin EOF now closes the invocation Job and writes completion metadata; initial forced-close run had no final lifecycle marker but selected PIDs were absent."
+}

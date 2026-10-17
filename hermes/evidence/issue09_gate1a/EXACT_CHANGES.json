@@ -1,0 +1,339 @@
+{
+  "authorization": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6213175793",
+  "status": "applied_pending_desktop_acceptance",
+  "before_after": [
+    {
+      "path": "H\\SOUL.md",
+      "before_sha256": "dfaee81231795d373413601f104b7d05e74e9a44200fa621ffac261cd01f6f6f",
+      "after_sha256": "6cde9e101908e83578a666380a0dab0aa9fba00cbb5bdfa480cb0a748c7032eb"
+    },
+    {
+      "path": "H\\config.yaml",
+      "before_sha256": "d9a6fd4cf0c87cf6cd6d4c118138e19fad2af7d6c668c510acdfeafb0979c0f9",
+      "after_sha256": "a6886244db5baab40566fd717c5503d835a70243594a0fb0adcc527bae4ce5af"
+    },
+    {
+      "path": "D\\project-dir.json",
+      "before_sha256": null,
+      "after_sha256": "d8edd6427eaefaebfa31da376e225b18b712a267f227d11863c335e75f518c63"
+    }
+  ],
+  "field_changes": [
+    {
+      "id": "M-SOUL",
+      "target": "H/SOUL.md",
+      "before": "old body retained only in encrypted/private local protection",
+      "after_ref": "PR #11@728de1b667de73c6c400d82c20d2ad3a9edc2807 hermes/preparation/issue09/drafts/SOUL.draft.md",
+      "after_sha256": "6cde9e101908e83578a666380a0dab0aa9fba00cbb5bdfa480cb0a748c7032eb"
+    },
+    {
+      "id": "C02",
+      "target": "D/project-dir.json:dir",
+      "before": "file absent",
+      "after": "H/company-workspace",
+      "reason": "Desktop source gives project-dir precedence; actual Desktop new-session cwd remains unobserved"
+    },
+    {
+      "id": "C05",
+      "target": "H/config.yaml:mcp_servers.company_browser_simulation",
+      "before": "absent",
+      "after": {
+        "command": "I\\venv\\Scripts\\python.exe",
+        "args": [
+          "-I",
+          "-B",
+          "H\\tools\\company-browser-simulation\\launch_bridge.py",
+          "H\\tools\\company-browser-simulation\\template.json"
+        ],
+        "enabled": true
+      }
+    },
+    {
+      "id": "C06",
+      "target": [
+        "H/tools/company-browser-sdk",
+        "H/tools/company-browser-simulation"
+      ],
+      "before": "absent",
+      "after": "pinned neutral SDK closure and synthetic-only bridge"
+    }
+  ],
+  "preserved": {
+    "terminal.cwd": ".",
+    "old_MCP_bindings_equal_before": true,
+    "all_other_config_values_equal_before": true,
+    "all_old_config_bytes_preserved_except_single_added_MCP_line": true,
+    "MEMORY_USER_cron_hashes": [
+      {
+        "path": "H\\memories\\MEMORY.md",
+        "sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0",
+        "matches_reviewed": true
+      },
+      {
+        "path": "H\\memories\\USER.md",
+        "sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6",
+        "matches_reviewed": true
+      },
+      {
+        "path": "H\\cron\\jobs.json",
+        "sha256": "877a6efca16b7b9435b4c996a8d6c5756411563e0017c4f0980e97994cd54f59",
+        "matches_reviewed": true
+      }
+    ],
+    "memory_and_user_enabled": true,
+    "old_data_deletion": false,
+    "old_tasks_or_MCP_disabled": false
+  },
+  "new_root_manifests": [
+    {
+      "root": "H\\company-workspace",
+      "files": 21,
+      "bytes": 112449,
+      "manifest_sha256": "49f13d6c7be17be785dede68f0573e5fa1fd898d9b0a20415367d95d318cd54f"
+    },
+    {
+      "root": "H\\tools\\company-browser-sdk",
+      "files": 3497,
+      "bytes": 15344382,
+      "manifest_sha256": "a44fca67042f5abd0d6659071b905cca773a4c4497331f4c8f6d39dae6466df2"
+    },
+    {
+      "root": "H\\tools\\company-browser-simulation",
+      "files": 22,
+      "bytes": 36670,
+      "manifest_sha256": "9c8d4a34b016cb6323faadb6591cb27d791555252fa05ea5cad2302ad4dc2c39"
+    }
+  ],
+  "new_non_vendor_files": [
+    {
+      "path": "H\\company-workspace\\AGENTS.md",
+      "bytes": 2787,
+      "sha256": "be80d544574238b790edbe07c9b0397986f6eeab1ef7da05a4f2594d59b9829f"
+    },
+    {
+      "path": "H\\company-workspace\\GATE_1A_STATUS.json",
+      "bytes": 548,
+      "sha256": "b2a38d9d66ebce7442ff3ce3711d36fcae06f213cc726c34340f0ae911a48609"
+    },
+    {
+      "path": "H\\company-workspace\\hermes\\AGENTS.md",
+      "bytes": 4369,
+      "sha256": "943366142e85aceb4c4d2c11b305ccba3e8b0c0f962523199d8ae169f948aad9"
+    },
+    {
+      "path": "H\\company-workspace\\hermes\\identity\\ROLE_BRIEF.md",
+      "bytes": 4622,
+      "sha256": "9eecd961bd75a398e367721a62eb214b78080dba6acf9418b9da9fa68551b241"
+    },
+    {
+      "path": "H\\company-workspace\\HERMES.md",
+      "bytes": 1336,
+      "sha256": "9bd0027bd94a7f17424b7dae9bd60e466ab7f430e3ab6ec2442cfe4986a8ed39"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\00_START_HERE.md",
+      "bytes": 2881,
+      "sha256": "94eff41af85e0c79239b03822f7d6f70e9a8305c494bf83bc759486124faf7c5"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\01_NORTH_STAR.md",
+      "bytes": 1790,
+      "sha256": "b7f38a645113b6c5cc89c72ed27e1d24f68a992c3e6f62f5e28f09b10ce0b4a8"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\04_SCENE_STRATEGY.md",
+      "bytes": 2834,
+      "sha256": "acbdc3128fd773eba08d689d71bbe3b607367435bc8c4e98c9c65a89f9151cfc"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\05_PEOPLE_TRAINING_AND_QA.md",
+      "bytes": 862,
+      "sha256": "ec535f492f2c95607a1d1bb7509d9948e06b4c2a607497939bef470e62abb3ae"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\07_RISK_COMPLIANCE_AND_CONTRACT.md",
+      "bytes": 1064,
+      "sha256": "47456b3e2708c46a3919a86e75cda7b65269936fd5a5cccaa40812fa89418044"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+      "bytes": 9312,
+      "sha256": "3d6d9204d8b301a3399083603c5266b51deb283bf6b06f88cef7feed29bf438f"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\CURRENT_WORK.json",
+      "bytes": 12591,
+      "sha256": "a12cd29b3c512986e6e00a1ec3fc41d5249bc553ebd7cea767766bf659396ff5"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\decisions\\ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+      "bytes": 5253,
+      "sha256": "117317f8f2abc7aa392d07b2d91e2bf66176956e27726a9dc35969a4d079b79b"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\FRESHNESS_PROTOCOL.md",
+      "bytes": 844,
+      "sha256": "2862d7c4e53ae9b33a2e742907ff0f2901e84207af5fe006c239e3c61684d037"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "bytes": 12513,
+      "sha256": "9b907998b296365f07df8aea646383a74b3e97ae95f3e190c95e3d3f4a0d586d"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\history\\HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "bytes": 10696,
+      "sha256": "a833ece42c192748796704aa80fe8c888ed62ea68c71dd73e13cbf33951751cc"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\KNOWLEDGE_HARNESS.json",
+      "bytes": 4629,
+      "sha256": "4767797b382900068935cc2aa4a6ca525a12361fe0cc066ecdc0ff75f8e27e98"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\PARTNER_LEDGER.json",
+      "bytes": 6335,
+      "sha256": "fd9a5615656cfa18d3a076332cad8b958fa83ee7e3db639a95d8b7ca5f670a48"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\PROJECT_INDEX.json",
+      "bytes": 4589,
+      "sha256": "72cbf0194219b20c1a4fd0373cdeaf7d42c606ac86034989443122d347e50354"
+    },
+    {
+      "path": "H\\company-workspace\\knowledge\\SCENE_PIPELINE.json",
+      "bytes": 15226,
+      "sha256": "2c0f8353b738d2c8b40c3e2b70a4adc435629f528fc6f6a4dd9c27698540bc96"
+    },
+    {
+      "path": "H\\company-workspace\\SNAPSHOT_MANIFEST.json",
+      "bytes": 7368,
+      "sha256": "8b4783d361b71cfe2b61c7b9949b57dbc11deeefa45f43fb31c8397159d7cf6e"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\browser_bridge.mjs",
+      "bytes": 3082,
+      "sha256": "3ddd40f432daf8a426ccdff6a5358596b506a503e1de27a5b5be75159b9f2404"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\demo_server.mjs",
+      "bytes": 3888,
+      "sha256": "fda2d8c964947ea9929b5828ac1ad43ef972b4bb00e4a05b48c51957fe25e58d"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\launch_bridge.py",
+      "bytes": 4989,
+      "sha256": "9b793583b3fc15735411a051abffa84a3c5a64c5e5bc88379f63c1d1598d4f4e"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\loopback_guard.cjs",
+      "bytes": 382,
+      "sha256": "605553bc5d24b998fe3b86797d0db69574d1c8bb5637584d24ad1979d2282f44"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\navigation_policy.mjs",
+      "bytes": 338,
+      "sha256": "59b8a33101a0ba2f465a865a6407d0e440971bac853b40e9eb0ac799a7170d6c"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\owned_job.py",
+      "bytes": 2068,
+      "sha256": "d776d632b47830a2e1e19d6687b54cdf55482b0f8cdeaa3d4e7251f18b4e53f5"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\browser\\console-2026-10-16T11-24-06-664Z.log",
+      "bytes": 147,
+      "sha256": "27b051eaca0375e6da4e883f8179e306e649906ea8b5d2f6587faa126759fc8e"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\browser\\page-2026-10-16T11-24-05-448Z.yml",
+      "bytes": 257,
+      "sha256": "8187b27b97e74fa53b6feb68dbf84f3383add2eb9e71ee38565546477a01cfc3"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\browser\\page-2026-10-16T11-24-06-093Z.yml",
+      "bytes": 1056,
+      "sha256": "f71dcd001d6ef2de411eedc1ca2626ccbd15ddaae394046e12895bb3b86623ba"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\browser\\page-2026-10-16T11-24-06-649Z.yml",
+      "bytes": 1062,
+      "sha256": "d53fd192015326ce7c3dfaf72a69cfa984b948a375f099e5ff138177e95c2dab"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\browser\\page-2026-10-16T11-24-06-725Z.yml",
+      "bytes": 267,
+      "sha256": "88f530cbf5b731949bee12748e7dc4ac829921785633bf33bec871c2cde713e9"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\browser\\page-2026-10-16T11-24-07-306Z.yml",
+      "bytes": 1091,
+      "sha256": "e74edbe45b408ca4fe9e17145b05091a9afccf2e1a49396efed950d839846618"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\browser\\page-2026-10-16T11-24-08-376Z.yml",
+      "bytes": 1135,
+      "sha256": "534e22df6b6ae9bb9922acb7090a711b23f0136d4bbb5a46a3a99f24ee1f1274"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\child-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\fixture.json",
+      "bytes": 730,
+      "sha256": "f7b3237147d99b24ed2c814d84b8105fc2961bf19373bb77724d6f23b6037cea"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\lifecycle.json",
+      "bytes": 423,
+      "sha256": "4e277fc890c302937ee4ae19a3b46a2abb3ffefcb7052a13f96f4922f11f7993"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\requests.jsonl",
+      "bytes": 241,
+      "sha256": "570d8dfaccc323241cfafc362e542b22114ffa592de5b0cc7db6c65ab9e75510"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\runtime.json",
+      "bytes": 1128,
+      "sha256": "c6dec192180b7a4255d157c6763109c68171f27143e09adde1e4664757dfc67a"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\scope.json",
+      "bytes": 34,
+      "sha256": "2169225cb9e5739d3910f7c53ccb285bf25093e5dd79c7391bec1f0fd8e5b03a"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\runs\\20261016T112403Z-a746fd81\\trace.jsonl",
+      "bytes": 12337,
+      "sha256": "bab2736733bd1bf61516cecb5ea99bcc0859bd23a53722e876f54033532b0b58"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\sdk_resolver.mjs",
+      "bytes": 1435,
+      "sha256": "5002ecac7630754a77ea8bc8a4492bf318da23176aa848191a1565428fce4c17"
+    },
+    {
+      "path": "H\\tools\\company-browser-simulation\\template.json",
+      "bytes": 580,
+      "sha256": "b3a9980da27d5fdc97c9e83fdbfa48b8476d96053bd4ab31300ede19b3e74340"
+    }
+  ],
+  "sdk_root_anchor_sha256": "ccd4968f46eb2dc1acb5bdef8f444b5bf7c3f48c802912d33b5ad4d6de55d369",
+  "sdk_vendor_lock": "SDK_DEPENDENCY_LOCK.json",
+  "full_new_file_inventory": "Local only full hash inventory; public root digests cover it, 93 package content manifests cover vendor closure.",
+  "rollback_executed": false,
+  "not_modified": [
+    "H/memories/MEMORY.md",
+    "H/memories/USER.md",
+    "H/cron/jobs.json",
+    "OpenClaw Gateway",
+    "old MCP directories/bindings",
+    "Skills/scripts/sessions/state.db/checkpoints/browser profiles",
+    "model .env/auth",
+    "temporary test profiles/CMDs",
+    "old valid backups"
+  ]
+}

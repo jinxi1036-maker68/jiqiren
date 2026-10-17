@@ -28,15 +28,15 @@
 - **可追溯但不泄密**：GitHub保留可复现代码、角色规则、流程知识、脱敏测试和迭代记录；本地存有登录凭据、Cookie、员工身份信息、工资明细、视频源文件，不应提交仓库。
 - **可回退、可复核**：升级前备份；经Codex真实验证后才记录“已具备”，不可把计划误写成成果。
 
-## 当前阶段
+## 当前阶段（2026-10-16）
 
-**PHASE 01：已完成本机盘点和隔离浏览器演示测试，等待Owner与ChatGPT复核。** 已提交脱敏报告和待批准变更建议；未进入第二阶段、未清理记忆、未登录灵生后台、未新增自动运行任务。审计发现原配置存在1字节未归因变化，详见报告的完整性限制。
+**Gate1A最小原身份接入已落盘，完整验收未通过/尚未完成。** 原SOUL、18份可追溯知识、Desktop默认公司工作区及新增中性模拟MCP已放入原H；原生加载函数和已落盘的真实浏览器组件验证通过。Computer Use在应用发现前报资源路径不存在，原Desktop未启动、实际Agent对话0/3；未用CLI测试冒充原入口验收。旧MEMORY/USER保留并仍会加载，语义冲突与自动回流待真实会话验证。没有真实灵生访问、派单、自动值班或旧资料清理。
 
-- [第一阶段执行任务](tasks/PHASE_01_LOCAL_AUDIT.md)
-- [第一阶段实测报告](reports/PHASE_01_LOCAL_AUDIT_REPORT.md)
-- [第一阶段后续变更建议（待批准）](reports/PHASE_01_CHANGE_PROPOSAL.md)
-- [审计复现说明](audit/README.md)
-- [迭代变更记录](CHANGELOG.md)
+- [本轮实际实施、失败、回退和遗留事项](reports/ISSUE_09_GATE_1A_MINIMAL_ORIGINAL_INTEGRATION.md)
+- [精确变更及哈希](evidence/issue09_gate1a/EXACT_CHANGES.json) / [验证记录](evidence/issue09_gate1a/VALIDATION.json)
+- [本轮实现与使用限制](integration/issue09_gate1a/README.md)
+- 继承[PR #10](https://github.com/jinxi1036-maker68/jiqiren/pull/10)和[PR #11](https://github.com/jinxi1036-maker68/jiqiren/pull/11)；二者及#6/#8仍未合并，未改base。
+- 已有Phase01/02A/02B审计、备份和模型结果是历史证据，本轮没有重跑全量审计/备份/模型矩阵。
 
 ## 读取业务上下文
 
