@@ -21,7 +21,18 @@
     "task_plan": "总场景划分A线边物料货架区、B空箱回收区、C产品外观检查区；向吴启蒙提交任务目标、关键动作、任务SOP；具体方案是否已递交并审批未知",
     "partner_trial_data_accepted_hours": null,
     "settlement_received": null,
-    "reference": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md"
+    "reference": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+    "recording_efficiency_open_item": {
+      "date": "2026-10-17",
+      "status": "owner_proposal_pending_livsyn_response",
+      "type": "recording_device_efficiency_and_worker_pay_design",
+      "source": "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+      "owner_reported_equipment": "128GB内存卡设备可持续录制超过单条5分钟限制；录后从卡用手机或电脑读取上传；未实测格式与固件能力",
+      "sop_reference": "单Episode 30秒至5分钟、起止约2秒规范应核实最新原文及合格样例，禁止未经批准改造/切片绕过",
+      "priority_solution": "先与灵生沟通提前时长提醒、每小时累计原始录制提醒及后续合规自动启停/官方分段能力；工资模型为备选",
+      "status_boundary": "讨论与Owner计划而非厂家承诺/灵生批准/已部署，未取得新的质检结算证据",
+      "owner_next_step": "电话与吴启蒙确认设备提醒可行性、2秒真实起止规则、五分钟上限原因、是否允许自动分段/后处理；保存回复后再同步知识库"
+    }
   },
   "project_lead_mode": {
     "enabled": true,
