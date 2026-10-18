@@ -3,7 +3,7 @@
   "requires_separate_owner_approval": true,
   "target": "W/GATE_1A_STATUS.json",
   "before_sha256": "b2a38d9d66ebce7442ff3ce3711d36fcae06f213cc726c34340f0ae911a48609",
-  "after_sha256_if_applied_to_exact_before": "1407e1cc9f6f7e253a2d59e65100280f7719c19fdeb711694b7dab32e815202a",
+  "after_sha256_if_applied_to_exact_before": "7c489ceb40766135fc5cdd56c183c4052497e170cf8d645a77ded2376d42a1d4",
   "serializer": "Python json.dumps ensure_ascii=False indent=2 then one LF, encoded UTF-8 without BOM; preserve original key order and all unmentioned values",
   "patch_format": "RFC6902 operations; preserve other fields",
   "operations": [
@@ -53,8 +53,8 @@
       "op": "add",
       "path": "/knowledge_release",
       "value": {
-        "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R1",
-        "source_commit": "649c5406ba545136c4c275ff4aa10d4b4f8d739c",
+        "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R2",
+        "source_commit": "a6d6b2f80ad69f6b840ff75786d9048fbee8b4e2",
         "disk_state": "hashes_verified_only_when_this_patch_is_applied_after_payload_verification",
         "model_acquisition": "unverified",
         "real_backend_permission_changed": false

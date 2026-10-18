@@ -2,9 +2,15 @@
   "json_valid": true,
   "shared_schema_and_semantics_passed": true,
   "work_item_consistent": true,
+  "owner_reported_actuals_consistent": true,
+  "historical_plan_separate": true,
+  "raw_not_QA_or_settlement": true,
+  "upload_and_report_send_unknown": true,
+  "entry_literal_newline_escape_removed": true,
+  "team_policy_unchanged": true,
   "charter_blob_unchanged": true,
   "payload_hashes_verified": 32,
-  "references_checked": 119,
+  "references_checked": 122,
   "missing_references": [],
   "repo_only_references_not_in_payload": [
     {
@@ -119,6 +125,7 @@
     }
   ],
   "deployment_plan_present": true,
+  "deployment_plan_checked": true,
   "Hermes_model_calls": 0,
   "original_environment_writes": 0
 }
