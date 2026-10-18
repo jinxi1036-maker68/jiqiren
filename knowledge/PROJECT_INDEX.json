@@ -4,7 +4,7 @@
   "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
   "authority_branch": "main",
   "current": {
-    "date": "2026-10-15",
+    "date": "2026-10-18",
     "phase": "PRE_TRIAL_PREPARATION",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
@@ -16,16 +16,19 @@
     "readiness": "已取得灵生对自建小型真实作业车间及自有受训采集员的微信/飞书沟通认可；选定线边仓补货、空容器回收、外观质检三项拟议任务，正按场景分区+任务目标+关键动作+任务SOP提交审核。尚无样本验收、有效小时及首笔结算证据；设备到位数未核实。",
     "latest_operational_update": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "latest_partner_decision": "对方业务联系人认可自建真实工位组织方式；不等于具体SOP、所有场景或正式验收一概批准",
-    "expansion_boundary": "杜振成在群中建议月底达100人；Owner明确不承诺，先验证有效数据与结算；20-30人仅为交流中的争取方向，不是达成产能或签约计划"
+    "expansion_boundary": "Owner最新明确：自营场地、设备、采集岗位未来封顶10台/约10人；稳定后不再自己招人扩厂，外部每个独立合作团队原则配置10台，按拟价30元/审核有效小时与25元/台/天收费（押金数额待定）；灵生正式转包和转租书面权限未获，不能直接实施。旧自营50台战略已于2026-10-18废止。",
+    "latest_strategy_decision": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+    "latest_stage_cap_proposal_2026_10_18": "Owner proposes approximately 100 total devices operating only locally, provisionally modelled as 10 self-operated + 9 nearby independent 10-device teams; still future target and needs clarification whether 100 includes original 10. No formal partner permission.",
+    "latest_tax_review": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+    "latest_local_team_leader_hiring_policy_2026_10_18": "Owner latest decision: nine local team leaders are direct Lingju employees; Lingju signs their employment contracts, pays wages and remits social insurance. Other collectors' employment, B2B team identity and device fee VAT treatment still unresolved. Detail in current decision ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
   },
-  "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
+  "long_term_goal": "以10台/约10人的凌矩自营样板基地，形成可审核的真实场景、设备培训、SOP和结算能力；经上游书面许可后，以每合作团队10台的合规外部交付网络扩展，逐渐服务多个上游。自营50台扩张思路已被最新Owner决定取代。",
   "strategic_sequence": [
-    "10台小规模试采",
-    "验证有效时长/通过率/成本/结算",
-    "稳定20台",
-    "建立场景资源库和质控SOP",
-    "发展2-3个稳定上游",
-    "再评估30-50台及区域供应商/城市运营能力"
+    "自营10台稳定生产与真实QA/回款",
+    "向上游核实分包、设备二次出租、第三方数据处理等授权",
+    "以独立B2B采集合作团队每家10台试点首家",
+    "按团队真实可盈利、质量、到账和设备管理逐家复制",
+    "扩展多上游订单而非继续扩自营设备"
   ],
   "current_machine_facts": [
     "knowledge/CURRENT_WORK.json",
@@ -40,7 +43,9 @@
     "choice": "多场景资源 + 成熟管理与质控体系 + 多上游真实服务能力",
     "rejected_as_north_star": "单纯扩至50人采集队伍、依赖一个上游按小时赚差价",
     "priority": "战略方向确认；执行上仍先进行10台试采和首笔结算验证",
-    "adr_ref": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md"
+    "adr_ref": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md",
+    "current_implementation": "2026-10-18 Owner自营固定10台、发展每家10台合作团队；不可未经上游许可转包或转租。",
+    "current_adr_ref": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
   },
   "hermes_digital_employee": {
     "owner_decision_date": "2026-10-16",
