@@ -291,6 +291,22 @@
     },
     "tax_note": "2026 VAT small-scale statutory annual sales cap CNY5m, general services often 6%, equipment movable rental 13% when general taxpayer, small low-profit CIT effective 5% if applicable; invoice and agency/principal treatment must be checked",
     "veteran_policy_note": "Henan qualified self-employed veteran individual household: up to CNY24000/year actual listed tax reductions for 36 months; enterprise hiring qualified veterans with >=1y contract and legal insurance up to CNY9000/person/year; no automatic application to veteran shareholder LLC; user identity unknown",
-    "decision_doc": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    "decision_doc": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+    "leader_employment_model_2026_10_18": {
+      "status": "owner_decision_pending_execution",
+      "local_team_leaders_count": 9,
+      "legal_employer": "Lingju company directly",
+      "employment_contract": "signed by Lingju",
+      "payroll": "paid directly by Lingju",
+      "social_insurance": "enrolled and legally contributed by Lingju",
+      "individuals_actual_hired": false,
+      "other_collectors_employer": "unresolved",
+      "leader_compensation_terms": "pending; management salary and possible personal approved-data output performance",
+      "tax_hiring_reduction_cap_example_cny_per_person_year": 9000,
+      "tax_hiring_reduction_9_qualifying_full_year_cap_cny": 81000,
+      "tax_conditions": "qualifying workers per national veteran employment policy, >=1-year employment contract, social insurance, prorated actual eligible employment months, tax availability, no repeated entitlement",
+      "important_finance_correction": "Leaders are employees, not automatically independent partner principals. Verify whether team equipment charge is internal cost or real B2B lease; never apply independent partner VAT/surplus model without verifying legal relationship.",
+      "reference": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    }
   }
 }
