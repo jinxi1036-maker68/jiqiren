@@ -1,4 +1,8 @@
 {
+  "static_artifact_runtime_deployment_separated": true,
+  "deployment_authority_manifest_and_authorized_record": true,
+  "missing_deployment_evidence_is_unverified": true,
+  "stale_current_deployment_assertions_removed": true,
   "json_valid": true,
   "shared_schema_and_semantics_passed": true,
   "work_item_consistent": true,
