@@ -47,7 +47,7 @@
       "link": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
       "latest_team_model_clarification": "Owner明确未来10台合作团队属于凌矩业务协作体系，队长可自己采集兼管理，也可由10位其他人员采集而自己管理；约85平方米场地参考月租850元，工位前期建设可复用，凌矩可指定集中上传地点并承担网络。须先核合法用工及第三方分包、转租许可。"
     },
-    "current_owner_operating_priority": "先把自营10台/约10人跑通并复核真实订单、QA/上传与现金回款；准备未来每家10台合作网络的低成本场地和队长经营样板；未核实灵生书面分包、设备转租、集中上传信息安全前不实际给新团队发设备或订单。",
+    "current_owner_operating_priority": "先验证自营10台合格数据、上传及真实回款；后续九个附近团队队长拟由凌矩直接聘用、发薪和缴社保；在定团队其他采集员用工主体、25元设备费是否真实对外交易、取得上游设备/分包授权之前，不对外派设备或承诺收入与税收优惠。",
     "future_network_cap_discussion_2026_10_18": {
       "proposed_devices_total": 100,
       "provisionally_ten_own_plus_nine_ten_device_teams": true,
@@ -56,6 +56,16 @@
       "tax_questions": "VAT taxable sales gross vs net and 5m general-payer threshold, small micro CIT 5% eligibility, Henan eligible veteran individual enterprise tax deductions up to 24000 vs LLC hiring veteran up to 9000/person/year",
       "veteran_identity": "unspecified_do_not_assume",
       "reference": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    },
+    "nine_team_leaders_employment_2026_10_18": {
+      "status": "owner_approved_future_hiring_method",
+      "total_leaders": 9,
+      "employer": "Lingju",
+      "contract_pay_social_insurance": "direct employment contracts, Lingju payroll, lawful company social insurance",
+      "team_other_worker_employer": "pending",
+      "leader_salary": "to be set and budgeted",
+      "tax_eligibility": "check individually before claiming Henan qualified-hire tax reduction; private verification, no personal docs in GitHub",
+      "source": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
     }
   },
   "project_lead_mode": {
