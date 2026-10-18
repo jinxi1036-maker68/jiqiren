@@ -93,14 +93,33 @@
       "未经需要预先堆新业务"
     ],
     "implementation_as_of": "2026-10-18",
-    "implementation_state": "original_hermes_gate1a_partial_conditional_acceptance_company_knowledge_candidate_not_deployed",
+    "implementation_state": "original_hermes_gate1a_partial_conditional_acceptance",
     "evidence_prs": [
       "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/6",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
     ],
-    "caveat": "岗位接入和目标会话W目录/12次读取已有证据；自动装载完整性仍未证，旧业务未清理；本候选未部署，不授权真实灵生。",
-    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+    "caveat": "岗位接入和目标会话W目录/12次读取已有证据；自动装载完整性仍未证，旧业务未清理；公司知识的实际部署情况以本机manifest和授权部署核验记录为准，静态版本信息不授权真实灵生。",
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "company_knowledge_version": {
+      "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "artifact_status": "versioned_knowledge_artifact",
+      "reference": "knowledge/OPERATING_BRIEF_2026-10-18.md"
+    },
+    "local_knowledge_deployment": {
+      "state_source": "local_manifest_and_authorized_deployment_verification_record",
+      "manifest_location": "公司工作区W根目录",
+      "manifest_file": "SNAPSHOT_MANIFEST.json",
+      "verification_record": "Owner批准范围内实际执行完成的本机部署核验记录；须与manifest中的release_id、固定来源提交及源文件哈希对应",
+      "static_artifact_is_deployment_evidence": false,
+      "required_evidence": [
+        "本机manifest的release_id及ref对应本知识版本和固定来源提交",
+        "manifest所列32份源文件的当前SHA256逐项一致",
+        "对应的授权部署核验记录确认该版本实际部署完成"
+      ],
+      "missing_or_conflicting_evidence": "unverified; report missing or mismatched evidence, never infer deployed or not_deployed from this static knowledge",
+      "verified_scope": "仅确认该版本已在本机磁盘完成部署；不证明Hermes已逐份读取、完整自动装载或取得新业务权限"
+    }
   },
   "company_identity": {
     "official_zh_name": "平顶山凌矩信息科技有限责任公司",

@@ -50,6 +50,24 @@ assert r'\n' not in (ROOT/'knowledge/00_START_HERE.md').read_text(encoding='utf-
 revision=load('hermes/knowledge_release/2026-10-18/REVIEW_18_RESPONSE.json')
 policy_keys=['current_owner_self_operated_cap_2026_10_18','future_network_cap_discussion_2026_10_18','nine_team_leaders_employment_2026_10_18']
 assert hashlib.sha256(json.dumps({k:cw['now'][k] for k in policy_keys},ensure_ascii=False,sort_keys=True).encode()).hexdigest()==revision['unchanged_team_policy_sha256']
+# Static source versions must remain valid before and after any future deployment.
+candidate=cw['now']['company_knowledge_candidate']
+assert candidate['status']=='versioned_knowledge_artifact'
+assert candidate['status_scope']=='immutable_artifact_metadata_not_runtime_deployment_state'
+policy=candidate['local_deployment_evidence']
+assert policy==pi['hermes_digital_employee']['local_knowledge_deployment']
+assert policy['state_source']=='local_manifest_and_authorized_deployment_verification_record'
+assert policy['manifest_file']=='SNAPSHOT_MANIFEST.json'
+assert policy['static_artifact_is_deployment_evidence'] is False
+assert len(policy['required_evidence'])==3
+assert policy['missing_or_conflicting_evidence'].startswith('unverified;')
+assert candidate['release_id']==pi['hermes_digital_employee']['company_knowledge_version']['release_id']
+brief=(ROOT/'knowledge/OPERATING_BRIEF_2026-10-18.md').read_text(encoding='utf-8')
+assert candidate['release_id'] in brief and 'Owner授权部署核验记录' in brief
+assert '不从本静态快照推定已部署或未部署' in brief
+active_fields=[candidate['status'],cw['parallel_development_track']['status'],cw['parallel_development_track']['current_limits'],cw['parallel_development_track']['current_phase'],pi['hermes_digital_employee']['implementation_state'],pi['hermes_digital_employee']['caveat'],brief]
+for value in active_fields:
+ assert all(stale not in value for stale in ('draft_for_owner_review_not_deployed','company_knowledge_candidate_not_deployed','公司W知识刷新尚未执行','本候选未部署','本次仅整合公司知识并准备增量部署，未写入W','状态：待Owner与ChatGPT审查的知识版本'))
 econ=load('knowledge/ECONOMICS_MODEL.json')
 assert econ['model_applicability_2026_10_18']['old_self_operated_50']=='superseded_historical_scenario'
 assert econ['local_network_100_device_stage_cap_2026_10_18']['leader_employment_model_2026_10_18']['individuals_actual_hired'] is False
@@ -57,6 +75,7 @@ charter=ROOT/'knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md'
 assert blob(charter.read_bytes())=='9471c5894e323461957e56f5594001207d4c1292'
 payload=load('hermes/knowledge_release/2026-10-18/PAYLOAD_FILES.json')
 assert len(payload['files'])==32
+assert candidate['release_id']==payload['release_id']
 for f in payload['files']:
  p=(ROOT/f['path']).resolve();assert p.is_relative_to(ROOT.resolve())
  data=p.read_bytes();assert hashlib.sha256(data).hexdigest()==f['sha256'] and blob(data)==f['git_blob_sha']
@@ -108,8 +127,21 @@ if plan_path.is_file() and '--knowledge-only' not in sys.argv:
  manifest=(HERE/'SNAPSHOT_MANIFEST.candidate.json').read_bytes()
  assert hashlib.sha256(manifest).hexdigest()==plan['manifest_update']['after_sha256']
  assert len(json.loads(manifest)['files'])==32
+ decoded=json.loads(manifest)
+ assert plan['approved_source_commit']==decoded['ref']
+ assert plan['release_id']==decoded['release_id']==payload['release_id']
+ manifest_rows={x['path']:x for x in decoded['files']}
+ payload_rows={x['path']:x for x in payload['files']}
+ assert set(manifest_rows)==set(payload_rows)=={x['repository_path'] for x in rows}
+ for row in rows:
+  path=row['repository_path']; m=manifest_rows[path]; p=payload_rows[path]
+  assert row['github_source']['commit']==decoded['ref']
+  assert row['after_sha256']==m['sha256']==p['sha256']
+  assert row['github_source']['git_blob_sha']==m['git_blob_sha']==p['git_blob_sha']
+ assert decoded['deployment_evidence_policy']==policy
+
  for x in json.loads(manifest)['files']:
   assert hashlib.sha256((ROOT/x['path']).read_bytes()).hexdigest()==x['sha256']
 
-report={'json_valid':True,'shared_schema_and_semantics_passed':True,'work_item_consistent':True,'owner_reported_actuals_consistent':True,'historical_plan_separate':True,'raw_not_QA_or_settlement':True,'upload_and_report_send_unknown':True,'entry_literal_newline_escape_removed':True,'team_policy_unchanged':True,'charter_blob_unchanged':True,'payload_hashes_verified':32,'references_checked':len(checked),'missing_references':missing,'repo_only_references_not_in_payload':not_cached,'deployment_plan_present':plan_path.is_file(),'deployment_plan_checked':'--knowledge-only' not in sys.argv,'Hermes_model_calls':0,'original_environment_writes':0}
+report={'static_artifact_runtime_deployment_separated':True,'deployment_authority_manifest_and_authorized_record':True,'missing_deployment_evidence_is_unverified':True,'stale_current_deployment_assertions_removed':True,'json_valid':True,'shared_schema_and_semantics_passed':True,'work_item_consistent':True,'owner_reported_actuals_consistent':True,'historical_plan_separate':True,'raw_not_QA_or_settlement':True,'upload_and_report_send_unknown':True,'entry_literal_newline_escape_removed':True,'team_policy_unchanged':True,'charter_blob_unchanged':True,'payload_hashes_verified':32,'references_checked':len(checked),'missing_references':missing,'repo_only_references_not_in_payload':not_cached,'deployment_plan_present':plan_path.is_file(),'deployment_plan_checked':'--knowledge-only' not in sys.argv,'Hermes_model_calls':0,'original_environment_writes':0}
 print(json.dumps(report,ensure_ascii=False,indent=2))

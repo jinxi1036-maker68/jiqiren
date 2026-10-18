@@ -723,6 +723,129 @@
       "chosen": "Owner报告三场景就绪并内测；10月16日制定的17日3台试采计划保留。17日Owner另报3人原始采集18小时、人均6小时、可用10台异常0台；当日上传完成、平台QA、结算及日报发送未知。先稳定自营10台，附近团队及队长直接雇佣的授权边界不变。",
       "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
       "resolution": "Owner actual report supplements, rather than replaces, historical plan"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/company_knowledge_candidate",
+      "previous_candidate_value": {
+        "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R2",
+        "status": "draft_for_owner_review_not_deployed",
+        "reference": "knowledge/OPERATING_BRIEF_2026-10-18.md",
+        "identity_charter_unchanged": true
+      },
+      "chosen": {
+        "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+        "status": "versioned_knowledge_artifact",
+        "reference": "knowledge/OPERATING_BRIEF_2026-10-18.md",
+        "identity_charter_unchanged": true,
+        "status_scope": "immutable_artifact_metadata_not_runtime_deployment_state",
+        "build_context": {
+          "recorded_on": "2026-10-18",
+          "review_context": "PR18 Draft知识整合制品；这是生成背景，不是当前部署状态",
+          "review_ref": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807"
+        },
+        "local_deployment_evidence": {
+          "state_source": "local_manifest_and_authorized_deployment_verification_record",
+          "manifest_location": "公司工作区W根目录",
+          "manifest_file": "SNAPSHOT_MANIFEST.json",
+          "verification_record": "Owner批准范围内实际执行完成的本机部署核验记录；须与manifest中的release_id、固定来源提交及源文件哈希对应",
+          "static_artifact_is_deployment_evidence": false,
+          "required_evidence": [
+            "本机manifest的release_id及ref对应本知识版本和固定来源提交",
+            "manifest所列32份源文件的当前SHA256逐项一致",
+            "对应的授权部署核验记录确认该版本实际部署完成"
+          ],
+          "missing_or_conflicting_evidence": "unverified; report missing or mismatched evidence, never infer deployed or not_deployed from this static knowledge",
+          "verified_scope": "仅确认该版本已在本机磁盘完成部署；不证明Hermes已逐份读取、完整自动装载或取得新业务权限"
+        }
+      },
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/parallel_development_track/status",
+      "previous_candidate_value": "gate1a_partial_conditional_acceptance_latest_company_knowledge_candidate_not_deployed",
+      "chosen": "gate1a_partial_conditional_acceptance",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/parallel_development_track/current_limits",
+      "previous_candidate_value": "公司W知识刷新尚未执行；HERMES自动装载及SOUL/旧记忆完整注入未证实；原旧业务未清理；真实灵生只读培训与新增模型消息未授权。",
+      "chosen": "公司知识磁盘部署情况以now.company_knowledge_candidate.local_deployment_evidence指定的本机证据为准；HERMES自动装载及SOUL/旧记忆完整注入未证实；原旧业务未清理；真实灵生只读培训与新增模型消息未授权。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/parallel_development_track/next_gate",
+      "previous_candidate_value": "Owner与ChatGPT审查整合候选和逐文件部署清单后，单独批准本机增量写入；真实页面与模型使用另行授权。",
+      "chosen": "以本机manifest和授权部署核验记录判定知识部署情况；如尚无匹配证据，先审查并取得具体增量写入授权。真实页面与模型使用另行授权。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/parallel_development_track/current_phase",
+      "previous_candidate_value": "Gate1A部分验收；本次仅整合公司知识并准备增量部署，未写入W",
+      "chosen": "Gate1A部分验收（2026-10-18记录）；公司知识版本与实际本机部署状态分开，后者以本机manifest和授权部署核验记录为准。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/hermes_digital_employee/implementation_state",
+      "previous_candidate_value": "original_hermes_gate1a_partial_conditional_acceptance_company_knowledge_candidate_not_deployed",
+      "chosen": "original_hermes_gate1a_partial_conditional_acceptance",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/hermes_digital_employee/caveat",
+      "previous_candidate_value": "岗位接入和目标会话W目录/12次读取已有证据；自动装载完整性仍未证，旧业务未清理；本候选未部署，不授权真实灵生。",
+      "chosen": "岗位接入和目标会话W目录/12次读取已有证据；自动装载完整性仍未证，旧业务未清理；公司知识的实际部署情况以本机manifest和授权部署核验记录为准，静态版本信息不授权真实灵生。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/hermes_digital_employee/company_knowledge_version",
+      "previous_candidate_value": {
+        "absent": true
+      },
+      "chosen": {
+        "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+        "artifact_status": "versioned_knowledge_artifact",
+        "reference": "knowledge/OPERATING_BRIEF_2026-10-18.md"
+      },
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/hermes_digital_employee/local_knowledge_deployment",
+      "previous_candidate_value": {
+        "absent": true
+      },
+      "chosen": {
+        "state_source": "local_manifest_and_authorized_deployment_verification_record",
+        "manifest_location": "公司工作区W根目录",
+        "manifest_file": "SNAPSHOT_MANIFEST.json",
+        "verification_record": "Owner批准范围内实际执行完成的本机部署核验记录；须与manifest中的release_id、固定来源提交及源文件哈希对应",
+        "static_artifact_is_deployment_evidence": false,
+        "required_evidence": [
+          "本机manifest的release_id及ref对应本知识版本和固定来源提交",
+          "manifest所列32份源文件的当前SHA256逐项一致",
+          "对应的授权部署核验记录确认该版本实际部署完成"
+        ],
+        "missing_or_conflicting_evidence": "unverified; report missing or mismatched evidence, never infer deployed or not_deployed from this static knowledge",
+        "verified_scope": "仅确认该版本已在本机磁盘完成部署；不证明Hermes已逐份读取、完整自动装载或取得新业务权限"
+      },
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "resolution": "static version metadata does not assert mutable local deployment status"
     }
   ],
   "no_source_history_deleted": true,
@@ -731,5 +854,5 @@
     "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
     "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
   },
-  "latest_review_revision": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820"
+  "latest_review_revision": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807"
 }

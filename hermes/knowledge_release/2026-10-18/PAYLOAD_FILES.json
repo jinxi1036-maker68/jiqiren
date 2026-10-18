@@ -1,5 +1,5 @@
 {
-  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R2",
+  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
   "files": [
     {
       "path": "AGENTS.md",
@@ -215,22 +215,28 @@
     },
     {
       "path": "knowledge/CURRENT_WORK.json",
-      "sha256": "1444cd3fa3e05780ac069fc0291d2de54b7830431e0e42346fe59c9137066640",
-      "git_blob_sha": "bcb3b44836e3bb708dc8335294bbbe13ba9040f5",
-      "bytes": 22574,
+      "sha256": "6a5b8eb4d6cefa502ca3c99919280296eca01651c8b36c9577bbe82d1117655c",
+      "git_blob_sha": "0c19c65e2d6c31d97fd8ff0a0a7bf74aa52a90a1",
+      "bytes": 24161,
       "provenance": {
-        "kind": "review18_revision",
+        "kind": "review18_deployment_state_separation",
+        "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+        "previous_candidate_commit": "dd529de70ebc0642a3a3ac75862be470376687ea",
         "previous_provenance": {
-          "kind": "field_merge",
-          "sources": {
-            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-          }
+          "kind": "review18_revision",
+          "previous_provenance": {
+            "kind": "field_merge",
+            "sources": {
+              "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+              "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+              "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+            }
+          },
+          "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+          "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+          "plan_and_actuals_not_equated": true
         },
-        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
-        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
-        "plan_and_actuals_not_equated": true
+        "business_facts_unchanged": true
       }
     },
     {
@@ -301,22 +307,28 @@
     },
     {
       "path": "knowledge/OPERATING_BRIEF_2026-10-18.md",
-      "sha256": "6ccbb6792b4fc22a8893e69a19bcc8b20c527a7181ec4e2e975bfe9eed414f38",
-      "git_blob_sha": "213017fffa8d40bc989aba0f3e63eb1a1993865c",
-      "bytes": 4822,
+      "sha256": "4a0b510d73b1fcbf59e83df2bda4e117a22adc098d75f73b38b60ca73321f070",
+      "git_blob_sha": "5b0496e0aadb81af746427aa42088846399372c2",
+      "bytes": 5764,
       "provenance": {
-        "kind": "review18_revision",
+        "kind": "review18_deployment_state_separation",
+        "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+        "previous_candidate_commit": "dd529de70ebc0642a3a3ac75862be470376687ea",
         "previous_provenance": {
-          "kind": "integration summary",
-          "sources": {
-            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-          }
+          "kind": "review18_revision",
+          "previous_provenance": {
+            "kind": "integration summary",
+            "sources": {
+              "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+              "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+              "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+            }
+          },
+          "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+          "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+          "plan_and_actuals_not_equated": true
         },
-        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
-        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
-        "plan_and_actuals_not_equated": true
+        "business_facts_unchanged": true
       }
     },
     {
@@ -341,22 +353,28 @@
     },
     {
       "path": "knowledge/PROJECT_INDEX.json",
-      "sha256": "7fe9f74ae27e8b899a4b243377857f066001d9a5df565ccd616b13703480ad57",
-      "git_blob_sha": "f55edfbe65f9f9199b5d16ceafb447fea75df789",
-      "bytes": 8380,
+      "sha256": "dfef8e25329796d39e95fac19ae3759ec220e041a20eb92540c343fda0447abf",
+      "git_blob_sha": "5aaf6f1e21363d8cf486b2b67a5a240b5aaf7228",
+      "bytes": 9682,
       "provenance": {
-        "kind": "review18_revision",
+        "kind": "review18_deployment_state_separation",
+        "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+        "previous_candidate_commit": "dd529de70ebc0642a3a3ac75862be470376687ea",
         "previous_provenance": {
-          "kind": "field_merge",
-          "sources": {
-            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-          }
+          "kind": "review18_revision",
+          "previous_provenance": {
+            "kind": "field_merge",
+            "sources": {
+              "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+              "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+              "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+            }
+          },
+          "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+          "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+          "plan_and_actuals_not_equated": true
         },
-        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
-        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
-        "plan_and_actuals_not_equated": true
+        "business_facts_unchanged": true
       }
     },
     {
