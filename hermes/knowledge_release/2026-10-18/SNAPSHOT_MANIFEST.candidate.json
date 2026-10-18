@@ -1,0 +1,250 @@
+{
+  "schema_version": "hermes_knowledge_snapshot_v2",
+  "repository": "jinxi1036-maker68/jiqiren",
+  "ref": "649c5406ba545136c4c275ff4aa10d4b4f8d739c",
+  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R1",
+  "source_basis": {
+    "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+    "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+    "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+  },
+  "not_a_full_repository": true,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 3306,
+      "sha256": "1052fe315983ffc417ed3e70222bd8c026fbe45ab252ed720665fa5b833df871",
+      "git_blob_sha": "243bf4367db6ed130c84ecf232c6d9a5da7ed148",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/AGENTS.md"
+    },
+    {
+      "path": "hermes/AGENTS.md",
+      "bytes": 4369,
+      "sha256": "943366142e85aceb4c4d2c11b305ccba3e8b0c0f962523199d8ae169f948aad9",
+      "git_blob_sha": "dba3fefcb373263c93e5cbc5c06fe9dc93d80ec2",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/hermes/AGENTS.md"
+    },
+    {
+      "path": "hermes/identity/ROLE_BRIEF.md",
+      "bytes": 4622,
+      "sha256": "9eecd961bd75a398e367721a62eb214b78080dba6acf9418b9da9fa68551b241",
+      "git_blob_sha": "7bf0af739e8482a987bd7f63ec046bc4a1f72629",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/hermes/identity/ROLE_BRIEF.md"
+    },
+    {
+      "path": "knowledge/00_START_HERE.md",
+      "bytes": 3763,
+      "sha256": "9d961165c7cab953b0e21094c6cf06ef365df9750e2987b1786b9d8f49e678e2",
+      "git_blob_sha": "bce5393b3283f289ba986681ee4017ae7313d7b8",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/00_START_HERE.md"
+    },
+    {
+      "path": "knowledge/01_NORTH_STAR.md",
+      "bytes": 3926,
+      "sha256": "eccfae63e33d7df13370fea962ec4988517e121559540fcc929cb910fe695791",
+      "git_blob_sha": "8b152d0731ec577795f2021b8a12f903f6c01957",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/01_NORTH_STAR.md"
+    },
+    {
+      "path": "knowledge/04_SCENE_STRATEGY.md",
+      "bytes": 2834,
+      "sha256": "acbdc3128fd773eba08d689d71bbe3b607367435bc8c4e98c9c65a89f9151cfc",
+      "git_blob_sha": "95d0981905ffcdf56a70e11d50656772908998a3",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/04_SCENE_STRATEGY.md"
+    },
+    {
+      "path": "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+      "bytes": 2286,
+      "sha256": "7d59acddc50a7704213b7703458bf6d822e092748cd33d921b594c5fdc2388f4",
+      "git_blob_sha": "3fae0005bbb7b7a1012459391591ad204d25baa8",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/05_PEOPLE_TRAINING_AND_QA.md"
+    },
+    {
+      "path": "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+      "bytes": 1064,
+      "sha256": "47456b3e2708c46a3919a86e75cda7b65269936fd5a5cccaa40812fa89418044",
+      "git_blob_sha": "cd62ef46599ae50c397b018ac112d07a74047293",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md"
+    },
+    {
+      "path": "knowledge/10_UPDATE_PROTOCOL.md",
+      "bytes": 4424,
+      "sha256": "8feb4f4d14c835e40e93802e902a2c54068fc2eece73c2b85947836b3796223f",
+      "git_blob_sha": "da925a42e8901bb18e467c17457182129f5c534a",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/10_UPDATE_PROTOCOL.md"
+    },
+    {
+      "path": "knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md",
+      "bytes": 12016,
+      "sha256": "cb166fa89e7626e729fd7892b8e2246cd5b48a43b43ee56d34ba2e9aa0f8c83e",
+      "git_blob_sha": "d87fdcfd1b50c13324be13d1a9ffef0460d9faa4",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md"
+    },
+    {
+      "path": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+      "bytes": 13295,
+      "sha256": "69b296beda5fde5215278c353ef1bb91a6a48f4936fa261cbb03ccb0f64f7aa2",
+      "git_blob_sha": "b5d99ca7c99af4dfbc57199e4bd1f2c64264a54c",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md"
+    },
+    {
+      "path": "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+      "bytes": 27379,
+      "sha256": "b44a557d05e7e51931f6127c5e58cdbfd2721eb050377b65bb8e4cea9e002ba2",
+      "git_blob_sha": "1aa531c4af3fdb806edfca78044423f28fe8935d",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md"
+    },
+    {
+      "path": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+      "bytes": 6713,
+      "sha256": "f48f94636a4b9b3c399f29d42e991b58804e8a90fe77b370e5e52b57e14c0a80",
+      "git_blob_sha": "46a3aa1ac7305b21a9a6b8d52213440c46fe3012",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
+    },
+    {
+      "path": "knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md",
+      "bytes": 10176,
+      "sha256": "4d21af25af6beb8a894ac5c920026b124767dab9055beed2a8aacb1a2c72904a",
+      "git_blob_sha": "28dedb726926e3a0e7f707c0b1b974f4cbe0a2e3",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md"
+    },
+    {
+      "path": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+      "bytes": 10607,
+      "sha256": "9c042713d2f77ef601a818931d2259eb291e5706a516a1f8ef3d9c490f89a2f3",
+      "git_blob_sha": "0a205ae2f964ea713e56bf375e4dba79467d00fa",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md"
+    },
+    {
+      "path": "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md",
+      "bytes": 8049,
+      "sha256": "5b2c2fceaee60a7c8f1393abfd24951c70722af0c3c90f5940e56976e1c5445d",
+      "git_blob_sha": "a9e6bbd80b398f4a872fe6c0e18846d39dfb1ced",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md"
+    },
+    {
+      "path": "knowledge/COMPANY_PROFILE.json",
+      "bytes": 2678,
+      "sha256": "b8babbbca13efe40310a2568ca8bc4f588d0cb3d2bec2ead83e66a8f57544ccc",
+      "git_blob_sha": "81cfcd63aee5ec6c21fad1fbcf2888ec416483a7",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/COMPANY_PROFILE.json"
+    },
+    {
+      "path": "knowledge/CURRENT_WORK.json",
+      "bytes": 20171,
+      "sha256": "f921e11b219e06f998b1859ef1cd0e8633341854187ff66e12875ebcf80b1d2f",
+      "git_blob_sha": "e86df614f633ed70002eaf4d54abaf2f8f5beecf",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/CURRENT_WORK.json"
+    },
+    {
+      "path": "knowledge/ECONOMICS_MODEL.json",
+      "bytes": 17944,
+      "sha256": "d3e2548f0b21d9d040119a56cc5cf046cd1b2ea34fd92b4788b8b24ddccead14",
+      "git_blob_sha": "2178715eb4f56205cc88d3cb7ef7816d20bffc08",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/ECONOMICS_MODEL.json"
+    },
+    {
+      "path": "knowledge/FRESHNESS_PROTOCOL.md",
+      "bytes": 844,
+      "sha256": "2862d7c4e53ae9b33a2e742907ff0f2901e84207af5fe006c239e3c61684d037",
+      "git_blob_sha": "e47933d0590279783f1372e3e78b9b4ae9fdead8",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/FRESHNESS_PROTOCOL.md"
+    },
+    {
+      "path": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "bytes": 12513,
+      "sha256": "9b907998b296365f07df8aea646383a74b3e97ae95f3e190c95e3d3f4a0d586d",
+      "git_blob_sha": "9471c5894e323461957e56f5594001207d4c1292",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md"
+    },
+    {
+      "path": "knowledge/KNOWLEDGE_HARNESS.json",
+      "bytes": 4629,
+      "sha256": "4767797b382900068935cc2aa4a6ca525a12361fe0cc066ecdc0ff75f8e27e98",
+      "git_blob_sha": "2e15cde7aa1792ab7ab391f7ce812270a7da50a2",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/KNOWLEDGE_HARNESS.json"
+    },
+    {
+      "path": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+      "bytes": 4164,
+      "sha256": "5377e2e1591065cdb16a2fd52cc24f2ddd3ed5d14a6ce07e46e8b08202ce4202",
+      "git_blob_sha": "0540779cd424c0e745b7bda12cea4eb98be21f1d",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json"
+    },
+    {
+      "path": "knowledge/OPERATING_BRIEF_2026-10-18.md",
+      "bytes": 3766,
+      "sha256": "f7e4841b7405f3d01fff5f1778ac273c883563781bb4e6e61cc015727c75c3bd",
+      "git_blob_sha": "3c24c189ee10c7858d5a1d9e168af3eb9b959666",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/OPERATING_BRIEF_2026-10-18.md"
+    },
+    {
+      "path": "knowledge/PARTNER_LEDGER.json",
+      "bytes": 10825,
+      "sha256": "5c6c1df616d0c4ffaedb77ecec93ee92b5f8b9298ef24d86c08f4e42e916e071",
+      "git_blob_sha": "47c7e2c8fb69e287044e7e5b80981f74e30aa0cd",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/PARTNER_LEDGER.json"
+    },
+    {
+      "path": "knowledge/PROJECT_INDEX.json",
+      "bytes": 7473,
+      "sha256": "6a87450edd4a0c64e3190dea32dc78846aff29f96382387d3d9e0190dc804d0a",
+      "git_blob_sha": "9f86c99e71d23f2967f0f7a509350bdab2c3e46d",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/PROJECT_INDEX.json"
+    },
+    {
+      "path": "knowledge/SCENE_PIPELINE.json",
+      "bytes": 16007,
+      "sha256": "83439eb79b8e422cc65a6a0ec174ee46efe5faa0b650414daa7930b570aa3a4e",
+      "git_blob_sha": "78d70f88ee3995c0c370d60b41ef47ed61e68b62",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/SCENE_PIPELINE.json"
+    },
+    {
+      "path": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+      "bytes": 5253,
+      "sha256": "117317f8f2abc7aa392d07b2d91e2bf66176956e27726a9dc35969a4d079b79b",
+      "git_blob_sha": "cb47c9616a3c7152526bd436e07a48b9dbeab95f",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md"
+    },
+    {
+      "path": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+      "bytes": 10605,
+      "sha256": "1bdbda35eadf5d60b4d3e19b4e434af2c7699e5570d03dbc6756d6ae9914521a",
+      "git_blob_sha": "115d4a2d5ee39e8d948e230f97e9699532aece81",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    },
+    {
+      "path": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+      "bytes": 13166,
+      "sha256": "8a9a4a5cab8cfac8c8ddcf5647be20b104c854bb0c3d5dc80ac81be4c08553c2",
+      "git_blob_sha": "7b5a7dffffa33b7af432f3a2d32953eaa3890827",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+    },
+    {
+      "path": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md",
+      "bytes": 6820,
+      "sha256": "73b005044f4de19d11d2a7e479993c448153504ffa11d70d6f8ca4113283880e",
+      "git_blob_sha": "33277a5b1d2dd5b434c6d16d8e366d437cabdc25",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md"
+    },
+    {
+      "path": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "bytes": 10696,
+      "sha256": "a833ece42c192748796704aa80fe8c888ed62ea68c71dd73e13cbf33951751cc",
+      "git_blob_sha": "70fffb020dba25c1fb40de7c07f258d59e35c7bb",
+      "source_url": "https://github.com/jinxi1036-maker68/jiqiren/blob/649c5406ba545136c4c275ff4aa10d4b4f8d739c/knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md"
+    }
+  ],
+  "counts": {
+    "source_files": 32,
+    "deployment_files": 3,
+    "workspace_regular_files": 35
+  },
+  "deployment_files_excluded_from_source_count": [
+    "HERMES.md",
+    "GATE_1A_STATUS.json",
+    "SNAPSHOT_MANIFEST.json"
+  ],
+  "protected_HERMES_sha256": "0ae46293b8773631ceb3acf0da4a44ae6d361860e44c95926ccf322185374247",
+  "scope": "disk source version; does not prove model loading, permissions or business completion"
+}
