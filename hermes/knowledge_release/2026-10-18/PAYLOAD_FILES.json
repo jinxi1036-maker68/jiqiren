@@ -1,5 +1,5 @@
 {
-  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R1",
+  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R2",
   "files": [
     {
       "path": "AGENTS.md",
@@ -39,16 +39,22 @@
     },
     {
       "path": "knowledge/00_START_HERE.md",
-      "sha256": "9d961165c7cab953b0e21094c6cf06ef365df9750e2987b1786b9d8f49e678e2",
-      "git_blob_sha": "bce5393b3283f289ba986681ee4017ae7313d7b8",
-      "bytes": 3763,
+      "sha256": "0fec091601212480a12159f4beb94d9f2a2ef637d6a4ce74b258400e3b0d8718",
+      "git_blob_sha": "ee840164d48992beaa105d145f12ca3686249f15",
+      "bytes": 3761,
       "provenance": {
-        "kind": "PR13 company entry plus integrated current brief",
-        "sources": {
-          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-        }
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "PR13 company entry plus integrated current brief",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
       }
     },
     {
@@ -143,14 +149,20 @@
     },
     {
       "path": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
-      "sha256": "f48f94636a4b9b3c399f29d42e991b58804e8a90fe77b370e5e52b57e14c0a80",
-      "git_blob_sha": "46a3aa1ac7305b21a9a6b8d52213440c46fe3012",
-      "bytes": 6713,
+      "sha256": "e46f43cc447426dc268a39605d6e53647112f90555b3e63ff05a2da51bed4c1b",
+      "git_blob_sha": "5cd14a59518f925e8a0989ca64123b0fd5e44f5c",
+      "bytes": 7061,
       "provenance": {
-        "kind": "verbatim",
-        "source": "pr13",
-        "source_commit": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-        "source_blob": "46a3aa1ac7305b21a9a6b8d52213440c46fe3012"
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "verbatim",
+          "source": "pr13",
+          "source_commit": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+          "source_blob": "46a3aa1ac7305b21a9a6b8d52213440c46fe3012"
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
       }
     },
     {
@@ -203,16 +215,22 @@
     },
     {
       "path": "knowledge/CURRENT_WORK.json",
-      "sha256": "f921e11b219e06f998b1859ef1cd0e8633341854187ff66e12875ebcf80b1d2f",
-      "git_blob_sha": "e86df614f633ed70002eaf4d54abaf2f8f5beecf",
-      "bytes": 20171,
+      "sha256": "1444cd3fa3e05780ac069fc0291d2de54b7830431e0e42346fe59c9137066640",
+      "git_blob_sha": "bcb3b44836e3bb708dc8335294bbbe13ba9040f5",
+      "bytes": 22574,
       "provenance": {
-        "kind": "field_merge",
-        "sources": {
-          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-        }
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "field_merge",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
       }
     },
     {
@@ -263,58 +281,82 @@
     },
     {
       "path": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
-      "sha256": "5377e2e1591065cdb16a2fd52cc24f2ddd3ed5d14a6ce07e46e8b08202ce4202",
-      "git_blob_sha": "0540779cd424c0e745b7bda12cea4eb98be21f1d",
-      "bytes": 4164,
+      "sha256": "3695ba99fd7d72ff4a4996d74262843625a588b7ca0f73d8bab1d4426b0d6032",
+      "git_blob_sha": "0d2d7b818ffef6d6334d97daf90a00a10a2eec1c",
+      "bytes": 5276,
       "provenance": {
-        "kind": "PR13 four sections plus PR17 format clarification",
-        "sources": {
-          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-        }
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "PR13 four sections plus PR17 format clarification",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
       }
     },
     {
       "path": "knowledge/OPERATING_BRIEF_2026-10-18.md",
-      "sha256": "f7e4841b7405f3d01fff5f1778ac273c883563781bb4e6e61cc015727c75c3bd",
-      "git_blob_sha": "3c24c189ee10c7858d5a1d9e168af3eb9b959666",
-      "bytes": 3766,
+      "sha256": "6ccbb6792b4fc22a8893e69a19bcc8b20c527a7181ec4e2e975bfe9eed414f38",
+      "git_blob_sha": "213017fffa8d40bc989aba0f3e63eb1a1993865c",
+      "bytes": 4822,
       "provenance": {
-        "kind": "integration summary",
-        "sources": {
-          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-        }
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "integration summary",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
       }
     },
     {
       "path": "knowledge/PARTNER_LEDGER.json",
-      "sha256": "5c6c1df616d0c4ffaedb77ecec93ee92b5f8b9298ef24d86c08f4e42e916e071",
-      "git_blob_sha": "47c7e2c8fb69e287044e7e5b80981f74e30aa0cd",
-      "bytes": 10825,
+      "sha256": "f7cda4ff7433ef2a5e64f21fbfb45d8c424c4c3fa438c9ddb962bde58d1a7cea",
+      "git_blob_sha": "5df1b2682cc2aca44881c55813a53fd046fbd8c5",
+      "bytes": 12129,
       "provenance": {
-        "kind": "field_merge",
-        "sources": {
-          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-        }
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "field_merge",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
       }
     },
     {
       "path": "knowledge/PROJECT_INDEX.json",
-      "sha256": "6a87450edd4a0c64e3190dea32dc78846aff29f96382387d3d9e0190dc804d0a",
-      "git_blob_sha": "9f86c99e71d23f2967f0f7a509350bdab2c3e46d",
-      "bytes": 7473,
+      "sha256": "7fe9f74ae27e8b899a4b243377857f066001d9a5df565ccd616b13703480ad57",
+      "git_blob_sha": "f55edfbe65f9f9199b5d16ceafb447fea75df789",
+      "bytes": 8380,
       "provenance": {
-        "kind": "field_merge",
-        "sources": {
-          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
-          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
-          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-        }
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "field_merge",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
       }
     },
     {

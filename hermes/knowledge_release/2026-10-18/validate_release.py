@@ -1,6 +1,6 @@
 """Offline semantic/reference/hash checks. Never accesses Hermes home or runs a model."""
 from pathlib import Path
-import hashlib, json, re
+import hashlib, json, re, sys
 
 ROOT=Path(__file__).resolve().parents[3]
 HERE=Path(__file__).resolve().parent
@@ -25,6 +25,31 @@ daily=load('knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.j
 assert len(daily['required_sections'])==4 and daily['submission_format']=='plain_text_message'
 assert daily['pilot_plan']['current_actual_qa_accepted_hours'] is None
 assert daily['partner_followup_2026_10_16']['payment_timing_specified'] is False
+actual=cw['now']['owner_reported_daily_actuals_2026_10_17']
+assert actual['operating_date']=='2026-10-17'
+assert actual['evidence_level']=='owner_reported_not_platform_verified'
+assert (actual['staff_participating'],actual['raw_capture_hours'],actual['average_raw_hours_per_person'])==(3,18,6)
+assert actual['raw_capture_hours']/actual['staff_participating']==actual['average_raw_hours_per_person']
+assert (actual['available_devices'],actual['abnormal_devices'])==(10,0)
+assert all(actual[k] is None for k in ('upload_completed_for_operating_date','actual_uploaded_hours','platform_qa_effective_hours','settlement_confirmed','payment_received','daily_report_sent'))
+assert actual['historical_backlog']['owner_reported_status']=='none_reported'
+assert actual['historical_backlog']['platform_verified'] is False
+assert actual['historical_backlog']['does_not_establish_operating_date_upload_completion'] is True
+assert len(actual['owner_reported_efficiency_issues'])==2
+assert cw['now']['owner_reported_operational_update']['actual_staffing']==3
+assert cw['now']['owner_reported_operational_update']['actual_capture_hours']==18
+assert cw['now']['owner_reported_operational_update']['reported_on']=='2026-10-16'
+assert cw['now']['owner_reported_operational_update']['total_planned_effective_target_hours']==12
+assert daily['pilot_plan']['aggregate_capture_target_device_hours']==18
+assert daily['pilot_plan']['aggregate_effective_target_device_hours']==12
+assert daily['pilot_plan']['record_status']=='historical_plan_as_of_2026_10_16'
+assert daily['actual_submission_status']=='unverified'
+for summary in (pi['current']['owner_reported_daily_actuals_2026_10_17'],liv['daily_reporting_requirement_2026_10_17']['day_one_actuals'],daily['owner_reported_daily_actuals_2026_10_17']):
+ for k in ('evidence_level','staff_participating','raw_capture_hours','average_raw_hours_per_person','available_devices','abnormal_devices','upload_completed_for_operating_date','platform_qa_effective_hours','settlement_confirmed','daily_report_sent'):assert summary[k]==actual[k]
+assert r'\n' not in (ROOT/'knowledge/00_START_HERE.md').read_text(encoding='utf-8')
+revision=load('hermes/knowledge_release/2026-10-18/REVIEW_18_RESPONSE.json')
+policy_keys=['current_owner_self_operated_cap_2026_10_18','future_network_cap_discussion_2026_10_18','nine_team_leaders_employment_2026_10_18']
+assert hashlib.sha256(json.dumps({k:cw['now'][k] for k in policy_keys},ensure_ascii=False,sort_keys=True).encode()).hexdigest()==revision['unchanged_team_policy_sha256']
 econ=load('knowledge/ECONOMICS_MODEL.json')
 assert econ['model_applicability_2026_10_18']['old_self_operated_50']=='superseded_historical_scenario'
 assert econ['local_network_100_device_stage_cap_2026_10_18']['leader_employment_model_2026_10_18']['individuals_actual_hired'] is False
@@ -68,7 +93,7 @@ for f in payload['files']:
  if f['path'].endswith('.json'):walk(load(f['path']),f['path'])
 assert not missing,missing
 plan_path=HERE/'DEPLOYMENT_PLAN.json'
-if plan_path.is_file():
+if plan_path.is_file() and '--knowledge-only' not in sys.argv:
  plan=json.loads(plan_path.read_text(encoding='utf-8'));assert plan['deployment_performed'] is False
  assert plan['counts']=={'before_source_files':18,'after_source_files':32,'before_deployment_files':3,'after_deployment_files':3,'before_total_files':21,'after_total_files':35}
  rows=plan['files'];assert len(rows)==32
@@ -86,5 +111,5 @@ if plan_path.is_file():
  for x in json.loads(manifest)['files']:
   assert hashlib.sha256((ROOT/x['path']).read_bytes()).hexdigest()==x['sha256']
 
-report={'json_valid':True,'shared_schema_and_semantics_passed':True,'work_item_consistent':True,'charter_blob_unchanged':True,'payload_hashes_verified':32,'references_checked':len(checked),'missing_references':missing,'repo_only_references_not_in_payload':not_cached,'deployment_plan_present':plan_path.is_file(),'Hermes_model_calls':0,'original_environment_writes':0}
+report={'json_valid':True,'shared_schema_and_semantics_passed':True,'work_item_consistent':True,'owner_reported_actuals_consistent':True,'historical_plan_separate':True,'raw_not_QA_or_settlement':True,'upload_and_report_send_unknown':True,'entry_literal_newline_escape_removed':True,'team_policy_unchanged':True,'charter_blob_unchanged':True,'payload_hashes_verified':32,'references_checked':len(checked),'missing_references':missing,'repo_only_references_not_in_payload':not_cached,'deployment_plan_present':plan_path.is_file(),'deployment_plan_checked':'--knowledge-only' not in sys.argv,'Hermes_model_calls':0,'original_environment_writes':0}
 print(json.dumps(report,ensure_ascii=False,indent=2))

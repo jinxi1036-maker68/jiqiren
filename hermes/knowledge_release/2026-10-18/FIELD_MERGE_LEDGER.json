@@ -600,6 +600,129 @@
       "resolution": "latest Oct18 employment decision has precedence",
       "previous_merged_value": "independent contractor-like B2B collection team per partner with 10 devices maximum per team, requiring partner authorization and compliant real setup",
       "chosen": "附近每组10台；九位队长拟由凌矩直接雇佣、发薪、参保。其他采集员用工和团队法律关系、付款对象与设备费性质未定，不能默认独立B2B合作商模型适用于全部团队。"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/owner_reported_daily_actuals_2026_10_17",
+      "previous_candidate_value": {
+        "absent": true
+      },
+      "chosen": {
+        "operating_date": "2026-10-17",
+        "recorded_on": "2026-10-18",
+        "evidence_level": "owner_reported_not_platform_verified",
+        "source": "Owner-provided 2026-10-17 daily report, explicitly restated in current Owner instruction; ChatGPT Review 5561291820",
+        "review_ref": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "staff_participating": 3,
+        "raw_capture_hours": 18,
+        "average_raw_hours_per_person": 6,
+        "available_devices": 10,
+        "abnormal_devices": 0,
+        "owner_reported_efficiency_issues": [
+          "每5分钟暂停后重新开始，操作耗时",
+          "文件较大，上传速度慢"
+        ],
+        "upload_completed_for_operating_date": null,
+        "actual_uploaded_hours": null,
+        "historical_backlog": {
+          "owner_reported_status": "none_reported",
+          "scope_dates": null,
+          "platform_verified": false,
+          "does_not_establish_operating_date_upload_completion": true
+        },
+        "platform_qa_effective_hours": null,
+        "settlement_confirmed": null,
+        "payment_received": null,
+        "daily_report_sent": null,
+        "boundaries": [
+          "原始采集18小时不是审核有效18小时",
+          "未提供平台审核证据或已结算证明",
+          "历史数据暂无积压仅为Owner报告，具体日期范围未给出；当日全部上传是否完成仍未知",
+          "不得将日报内容已填写或Owner已报告等同于日报已向灵生发送"
+        ]
+      },
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "Owner report is evidence of reported raw activity, not platform QA or payment"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/owner_reported_operational_update/actual_staffing",
+      "previous_candidate_value": null,
+      "chosen": 3,
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "fill omitted Owner-reported actuals; original plan fields remain historical"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/owner_reported_operational_update/actual_capture_hours",
+      "previous_candidate_value": null,
+      "chosen": 18,
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "raw capture hours, not accepted effective hours"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/actual_workers_deployed",
+      "previous_candidate_value": null,
+      "chosen": 3,
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "dated Owner-reported participation, not independent staffing audit"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/phase",
+      "previous_candidate_value": "Owner报告三处真实工位均已搭建、10月16日内部路径及动作演练已进行；10月17日拟以3台设备启动试采。尚无真实平台QA、已确认有效小时或结算记录。",
+      "chosen": "Owner报告三场景已准备并内测，10月17日3人实际原始采集18小时、人均6小时，可用设备10台异常0台；均为Owner报告，上传完成、平台QA有效小时、结算及日报发送仍未知。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "do not continue to call all raw collection unknown"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/proposed_trial_date",
+      "previous_candidate_value": "2026-10-17（Owner向灵生沟通的3台设备试采计划；实际开机、上传及审核数据待核实）",
+      "chosen": "历史计划：2026-10-16制定于10月17日用3台试采；该计划独立保留，10月17日Owner报告实际原始采集见owner_reported_daily_actuals_2026_10_17。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "explicit historical plan separate from dated actual report"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/next_action",
+      "previous_candidate_value": "先补齐已发生采集、上传、QA与回款的真实证据并按文字日报四部分记录；稳定自营10台。附近每组10台及约100台阶段规划先核上游授权、其他采集员用工主体、队长薪资和设备费交易对象，再决定是否执行。",
+      "chosen": "按Owner报告的10月17日3人/18原始小时、可用10台异常0台准备文字日报，补核当日上传是否完成、平台QA与回款及实际发送状态；稳定自营10台，附近团队仍先核上游授权、用工和费用对象。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "current work follows known raw actuals while retaining missing platform evidence"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/phase",
+      "previous_candidate_value": "THREE_SCENES_READY_INTERNAL_REHEARSAL_DONE_THREE_DEVICE_TRIAL_PLANNED",
+      "chosen": "OWNER_REPORTED_RAW_CAPTURE_QA_UPLOAD_COMPLETION_AND_SETTLEMENT_UNVERIFIED",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "raw activity reported, not platform-accepted production"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/readiness",
+      "previous_candidate_value": "Owner报告三处真实工位10月15日均已搭建，10月16日完成内部场景规划及操作演练，并与灵生方面沟通10月17日3台设备先行试采计划；日报四部分已收到。实际采集、上传、QA有效小时及结算未核验。",
+      "chosen": "Owner报告三场景10月15日就绪、16日内测；17日3人实际原始采集18小时、人均6小时，可用设备10台、异常0台。每5分钟启停耗时、文件大上传慢；当日全部上传完成、平台QA有效小时、结算及日报是否发送仍未知。历史暂无积压为Owner报告。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "replace blanket unknown with correctly graded Owner report"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/actual_capture_uploaded_qa_and_cash_receipts",
+      "previous_candidate_value": "not_verified",
+      "chosen": "raw_capture_owner_reported_18h_2026_10_17; upload_completion_platform_QA_settlement_and_receipts_unverified",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "separate reported raw production from unverified platform states"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/current_path",
+      "previous_candidate_value": "Owner报告三场景已就绪并于10月16日内测；10月17日3台试采是历史计划，实际采集、上传、QA与回款仍待证。先稳定自营10台，日报按四段文字记录；附近10台团队及约100台阶段网络须先核合同、上游授权和队长直接雇佣安排。",
+      "chosen": "Owner报告三场景就绪并内测；10月16日制定的17日3台试采计划保留。17日Owner另报3人原始采集18小时、人均6小时、可用10台异常0台；当日上传完成、平台QA、结算及日报发送未知。先稳定自营10台，附近团队及队长直接雇佣的授权边界不变。",
+      "evidence": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "resolution": "Owner actual report supplements, rather than replaces, historical plan"
     }
   ],
   "no_source_history_deleted": true,
@@ -607,5 +730,6 @@
     "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
     "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
     "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
-  }
+  },
+  "latest_review_revision": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820"
 }

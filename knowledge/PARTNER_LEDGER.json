@@ -7,7 +7,7 @@
       "name": "北京灵生科技有限公司 / LivSyn",
       "status": "three_scenes_ready_three_device_trial_planned_not_yet_qa_verified",
       "priority": "P0",
-      "current_path": "Owner报告三场景已就绪并于10月16日内测；10月17日3台试采是历史计划，实际采集、上传、QA与回款仍待证。先稳定自营10台，日报按四段文字记录；附近10台团队及约100台阶段网络须先核合同、上游授权和队长直接雇佣安排。",
+      "current_path": "Owner报告三场景就绪并内测；10月16日制定的17日3台试采计划保留。17日Owner另报3人原始采集18小时、人均6小时、可用10台异常0台；当日上传完成、平台QA、结算及日报发送未知。先稳定自营10台，附近团队及队长直接雇佣的授权边界不变。",
       "evidence_level": "conversation_confirmed",
       "known_terms_ref": "knowledge/ECONOMICS_MODEL.json",
       "next_gate": "核实实际采集/上传/QA/到账及三任务SOP、试采费用；明确文字日报投递和T+1/T+3口径。团队扩张先确认上游分包/设备授权、凌矩直接雇佣九位队长及其他人员用工、付款对象与设备费性质。",
@@ -62,7 +62,9 @@
         "feedback_interpretation": "T起算点/自然或工作日/周结束截止与反馈结果是否最终QA未定；不是结算付款到账日期",
         "actual_submitted_hours": null,
         "actual_qa_confirmed_hours": null,
-        "source": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
+        "source": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+        "plan_record_status": "historical_plan_as_of_2026_10_16",
+        "later_owner_actuals_ref": "knowledge/CURRENT_WORK.json"
       },
       "daily_reporting_requirement_2026_10_17": {
         "status": "owner_reported_pending_official_details",
@@ -79,7 +81,23 @@
         "report_details_status": "screenshot_structure_verified_actuals_pending_owner",
         "day_one": "2026-10-17",
         "day_one_plan": "3 devices, 6 raw recording hours per device, total planned 18 raw hours",
-        "day_one_actuals": "pending_owner_report_not_submitted_or_verified",
+        "day_one_actuals": {
+          "operating_date": "2026-10-17",
+          "evidence_level": "owner_reported_not_platform_verified",
+          "staff_participating": 3,
+          "raw_capture_hours": 18,
+          "average_raw_hours_per_person": 6,
+          "available_devices": 10,
+          "abnormal_devices": 0,
+          "upload_completed_for_operating_date": null,
+          "platform_qa_effective_hours": null,
+          "settlement_confirmed": null,
+          "daily_report_sent": null,
+          "canonical_fact_file": "knowledge/CURRENT_WORK.json",
+          "canonical_fact_field": "now/owner_reported_daily_actuals_2026_10_17",
+          "historical_backlog_owner_reported_status": "none_reported",
+          "historical_backlog_is_not_current_upload_completion": true
+        },
         "customer_fixed_template": "owner_provided_screenshot_confirms_visible_headings_fields",
         "template_evidence": "2026-10-17 Owner conversation screenshot; image bytes not uploaded to repository",
         "required_sections": [
@@ -116,7 +134,18 @@
           }
         ],
         "canonical_requirements_ref": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
-        "original_reference_retained": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md"
+        "original_reference_retained": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+        "actual_report_sent": null,
+        "owner_reported_operational_issues": [
+          "每5分钟暂停后重新开始，操作耗时",
+          "文件较大，上传速度慢"
+        ],
+        "historical_backlog": {
+          "owner_reported_status": "none_reported",
+          "scope_dates": null,
+          "platform_verified": false,
+          "does_not_establish_operating_date_upload_completion": true
+        }
       },
       "current_owner_network_policy": {
         "source": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",

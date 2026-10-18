@@ -63,7 +63,8 @@
     "targets_are_not_actuals": true,
     "current_actual_uploaded_hours": null,
     "current_actual_qa_accepted_hours": null,
-    "formally_defined_accepted_hours_metric": null
+    "formally_defined_accepted_hours_metric": null,
+    "record_status": "historical_plan_as_of_2026_10_16"
   },
   "pending_clarifications": [
     "日报发送渠道、接收人和发送截止时间",
@@ -99,5 +100,32 @@
   "evidence_partner_id": "livsyn",
   "evidence_field": "daily_reporting_requirement_2026_10_17",
   "actual_submission_status": "unverified",
-  "required_sections_source_preserved": true
+  "required_sections_source_preserved": true,
+  "owner_reported_daily_actuals_2026_10_17": {
+    "operating_date": "2026-10-17",
+    "evidence_level": "owner_reported_not_platform_verified",
+    "staff_participating": 3,
+    "raw_capture_hours": 18,
+    "average_raw_hours_per_person": 6,
+    "available_devices": 10,
+    "abnormal_devices": 0,
+    "upload_completed_for_operating_date": null,
+    "platform_qa_effective_hours": null,
+    "settlement_confirmed": null,
+    "daily_report_sent": null,
+    "canonical_fact_file": "knowledge/CURRENT_WORK.json",
+    "canonical_fact_field": "now/owner_reported_daily_actuals_2026_10_17",
+    "historical_backlog_owner_reported_status": "none_reported",
+    "historical_backlog_is_not_current_upload_completion": true
+  },
+  "owner_reported_efficiency_issues": [
+    "每5分钟暂停后重新开始，操作耗时",
+    "文件较大，上传速度慢"
+  ],
+  "historical_backlog": {
+    "owner_reported_status": "none_reported",
+    "scope_dates": null,
+    "platform_verified": false,
+    "does_not_establish_operating_date_upload_completion": true
+  }
 }

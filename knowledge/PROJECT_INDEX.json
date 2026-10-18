@@ -5,7 +5,7 @@
   "authority_branch": "main",
   "current": {
     "date": "2026-10-18",
-    "phase": "THREE_SCENES_READY_INTERNAL_REHEARSAL_DONE_THREE_DEVICE_TRIAL_PLANNED",
+    "phase": "OWNER_REPORTED_RAW_CAPTURE_QA_UPLOAD_COMPLETION_AND_SETTLEMENT_UNVERIFIED",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
     "target_city": "河南平顶山",
@@ -13,7 +13,7 @@
     "target_trial_start": "2026-10-17：Owner报告与灵生沟通计划先用3台试采，每台6小时采集、4小时目标有效；18/12是目标而非已验收实际",
     "latest_readiness_review": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
     "latest_evidence_id": "EV-PDS-XLSX-20261011",
-    "readiness": "Owner报告三处真实工位10月15日均已搭建，10月16日完成内部场景规划及操作演练，并与灵生方面沟通10月17日3台设备先行试采计划；日报四部分已收到。实际采集、上传、QA有效小时及结算未核验。",
+    "readiness": "Owner报告三场景10月15日就绪、16日内测；17日3人实际原始采集18小时、人均6小时，可用设备10台、异常0台。每5分钟启停耗时、文件大上传慢；当日全部上传完成、平台QA有效小时、结算及日报是否发送仍未知。历史暂无积压为Owner报告。",
     "latest_operational_update": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
     "latest_partner_decision": "灵生方已转交四部分每日报告要求、T+1/T+3有效时长反馈说法；具体起算点、QA口径、计费/合同仍待确认。",
     "expansion_boundary": "Owner最新决定：自营10台封顶；附近团队每组10台，约100台为未来阶段上限，是否包含自营10台待确认。九位队长拟由凌矩直接签合同、发工资和缴社保；其他采集员用工主体、分包/设备授权、付款及设备费交易对象未定。50台自营方案已废止，30元/有效小时及25元/台日仅保留为待合同核对的早期条件报价。",
@@ -30,7 +30,24 @@
     "latest_tax_review": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
     "latest_local_team_leader_hiring_policy_2026_10_18": "Owner latest decision: nine local team leaders are direct Lingju employees; Lingju signs their employment contracts, pays wages and remits social insurance. Other collectors' employment, B2B team identity and device fee VAT treatment still unresolved. Detail in current decision ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
     "knowledge_candidate_ref": "knowledge/OPERATING_BRIEF_2026-10-18.md",
-    "actual_capture_uploaded_qa_and_cash_receipts": "not_verified"
+    "actual_capture_uploaded_qa_and_cash_receipts": "raw_capture_owner_reported_18h_2026_10_17; upload_completion_platform_QA_settlement_and_receipts_unverified",
+    "owner_reported_daily_actuals_2026_10_17": {
+      "operating_date": "2026-10-17",
+      "evidence_level": "owner_reported_not_platform_verified",
+      "staff_participating": 3,
+      "raw_capture_hours": 18,
+      "average_raw_hours_per_person": 6,
+      "available_devices": 10,
+      "abnormal_devices": 0,
+      "upload_completed_for_operating_date": null,
+      "platform_qa_effective_hours": null,
+      "settlement_confirmed": null,
+      "daily_report_sent": null,
+      "canonical_fact_file": "knowledge/CURRENT_WORK.json",
+      "canonical_fact_field": "now/owner_reported_daily_actuals_2026_10_17",
+      "historical_backlog_owner_reported_status": "none_reported",
+      "historical_backlog_is_not_current_upload_completion": true
+    }
   },
   "long_term_goal": "以10台/约10人的凌矩自营样板基地，形成可审核的真实场景、设备培训、SOP和结算能力；经上游书面许可后，以每合作团队10台的合规外部交付网络扩展，逐渐服务多个上游。自营50台扩张思路已被最新Owner决定取代。",
   "strategic_sequence": [

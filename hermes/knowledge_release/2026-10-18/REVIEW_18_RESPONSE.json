@@ -1,0 +1,65 @@
+{
+  "review_id": 5561291820,
+  "review_url": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R2",
+  "state": "changes_prepared_for_review_not_accepted_or_deployed",
+  "parent_pr_head": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+  "addressed": [
+    "Owner raw actuals omitted",
+    "historical plan vs actuals boundary",
+    "18 raw hours vs platform QA and settlement",
+    "historical backlog vs unknown same-day upload",
+    "daily report send status unknown",
+    "literal newline escapes in entry",
+    "regenerate fixed source/hashes/manifest/plan/validation"
+  ],
+  "canonical_fact_file": "knowledge/CURRENT_WORK.json",
+  "canonical_fact_field": "now/owner_reported_daily_actuals_2026_10_17",
+  "facts": {
+    "operating_date": "2026-10-17",
+    "recorded_on": "2026-10-18",
+    "evidence_level": "owner_reported_not_platform_verified",
+    "source": "Owner-provided 2026-10-17 daily report, explicitly restated in current Owner instruction; ChatGPT Review 5561291820",
+    "review_ref": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+    "staff_participating": 3,
+    "raw_capture_hours": 18,
+    "average_raw_hours_per_person": 6,
+    "available_devices": 10,
+    "abnormal_devices": 0,
+    "owner_reported_efficiency_issues": [
+      "每5分钟暂停后重新开始，操作耗时",
+      "文件较大，上传速度慢"
+    ],
+    "upload_completed_for_operating_date": null,
+    "actual_uploaded_hours": null,
+    "historical_backlog": {
+      "owner_reported_status": "none_reported",
+      "scope_dates": null,
+      "platform_verified": false,
+      "does_not_establish_operating_date_upload_completion": true
+    },
+    "platform_qa_effective_hours": null,
+    "settlement_confirmed": null,
+    "payment_received": null,
+    "daily_report_sent": null,
+    "boundaries": [
+      "原始采集18小时不是审核有效18小时",
+      "未提供平台审核证据或已结算证明",
+      "历史数据暂无积压仅为Owner报告，具体日期范围未给出；当日全部上传是否完成仍未知",
+      "不得将日报内容已填写或Owner已报告等同于日报已向灵生发送"
+    ]
+  },
+  "unchanged_team_policy_sha256": "cd95445f8b758e6b22593bcc709ba55c10624638bd418832e4db07893b281753",
+  "planned_fields_preserved": {
+    "reported_on": "2026-10-16",
+    "planned_first_capture_date": "2026-10-17",
+    "planned_active_devices": 3,
+    "per_device_daily_capture_target_hours": 6,
+    "per_device_daily_effective_target_hours": 4,
+    "total_planned_device_capture_hours": 18,
+    "total_planned_effective_target_hours": 12
+  },
+  "charter_git_blob": "9471c5894e323461957e56f5594001207d4c1292",
+  "original_Hermes_mutations": 0,
+  "Hermes_model_calls": 0
+}

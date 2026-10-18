@@ -7,11 +7,11 @@
   "objective": "按灵生对接人认可的自建真实作业场景方式，完善平顶山三分区具体任务SOP，先完成小批采集、上传及质检反馈，在真实有效小时和费用条款可核实后再扩大10台及人员规模。",
   "now": {
     "date": "2026-10-18",
-    "phase": "Owner报告三处真实工位均已搭建、10月16日内部路径及动作演练已进行；10月17日拟以3台设备启动试采。尚无真实平台QA、已确认有效小时或结算记录。",
+    "phase": "Owner报告三场景已准备并内测，10月17日3人实际原始采集18小时、人均6小时，可用设备10台异常0台；均为Owner报告，上传完成、平台QA有效小时、结算及日报发送仍未知。",
     "first_batch_device_target": 10,
     "actual_devices_received": null,
-    "actual_workers_deployed": null,
-    "proposed_trial_date": "2026-10-17（Owner向灵生沟通的3台设备试采计划；实际开机、上传及审核数据待核实）",
+    "actual_workers_deployed": 3,
+    "proposed_trial_date": "历史计划：2026-10-16制定于10月17日用3台试采；该计划独立保留，10月17日Owner报告实际原始采集见owner_reported_daily_actuals_2026_10_17。",
     "accepted_organization_mode": "吴启蒙以书面消息明确认可自建小型真实作业工位、真实物料真实工序、受训采集员操作（conversation_confirmed）",
     "selected_tasks": [
       "线边仓补货",
@@ -41,10 +41,18 @@
       "total_planned_effective_target_hours": 12,
       "classification": "owner_reported_partner_conversation_tentative_operational_target",
       "actual_equipment_in_hand": null,
-      "actual_staffing": null,
-      "actual_capture_hours": null,
+      "actual_staffing": 3,
+      "actual_capture_hours": 18,
       "actual_qa_accepted_hours": null,
-      "note": "计划指标非实际产出；原10台阶段目标不变，三台启动实际状态与甲方正式QA/计费口径须核实。"
+      "note": "10月16日3台及18/12小时均保留为历史计划。10月17日Owner另报3人、实际原始采集18小时、人均6小时、可用10台异常0台；并非平台QA证据。当日上传完成、审核有效小时、结算和日报发送仍未知。",
+      "actuals_operating_date": "2026-10-17",
+      "actuals_evidence_level": "owner_reported_not_platform_verified",
+      "actuals_recorded_on": "2026-10-18",
+      "actual_available_devices": 10,
+      "actual_abnormal_devices": 0,
+      "average_raw_hours_per_person": 6,
+      "actuals_canonical_field": "now/owner_reported_daily_actuals_2026_10_17",
+      "plan_record_status": "historical_plan_as_of_2026_10_16"
     },
     "partner_daily_reporting": {
       "status": "owner_forwarded_partner_request",
@@ -111,19 +119,55 @@
       "source": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
     },
     "company_knowledge_candidate": {
-      "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R1",
+      "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R2",
       "status": "draft_for_owner_review_not_deployed",
       "reference": "knowledge/OPERATING_BRIEF_2026-10-18.md",
       "identity_charter_unchanged": true
-    }
+    },
+    "owner_reported_daily_actuals_2026_10_17": {
+      "operating_date": "2026-10-17",
+      "recorded_on": "2026-10-18",
+      "evidence_level": "owner_reported_not_platform_verified",
+      "source": "Owner-provided 2026-10-17 daily report, explicitly restated in current Owner instruction; ChatGPT Review 5561291820",
+      "review_ref": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "staff_participating": 3,
+      "raw_capture_hours": 18,
+      "average_raw_hours_per_person": 6,
+      "available_devices": 10,
+      "abnormal_devices": 0,
+      "owner_reported_efficiency_issues": [
+        "每5分钟暂停后重新开始，操作耗时",
+        "文件较大，上传速度慢"
+      ],
+      "upload_completed_for_operating_date": null,
+      "actual_uploaded_hours": null,
+      "historical_backlog": {
+        "owner_reported_status": "none_reported",
+        "scope_dates": null,
+        "platform_verified": false,
+        "does_not_establish_operating_date_upload_completion": true
+      },
+      "platform_qa_effective_hours": null,
+      "settlement_confirmed": null,
+      "payment_received": null,
+      "daily_report_sent": null,
+      "boundaries": [
+        "原始采集18小时不是审核有效18小时",
+        "未提供平台审核证据或已结算证明",
+        "历史数据暂无积压仅为Owner报告，具体日期范围未给出；当日全部上传是否完成仍未知",
+        "不得将日报内容已填写或Owner已报告等同于日报已向灵生发送"
+      ]
+    },
+    "actual_workers_deployed_asof": "2026-10-17",
+    "actual_workers_deployed_evidence": "owner_reported"
   },
   "project_lead_mode": {
     "enabled": true,
     "rule": "ChatGPT负责维护事实、准备场景任务与SOP/核算/风险门槛；Owner负责业务沟通、线下决策、合同和资金确认",
     "next_24h_focus": [
-      "回收10月17日起实际设备投入、采集、上传积压和平台QA记录；未提供的实际值保持未知，不把3台18/12小时计划当成果。",
-      "按四部分文字消息准备日报；发送渠道、收件人、截止时间、人效与有效时长口径仍待灵生确认，未经授权不外发。",
-      "核实三任务完整SOP、试采费用和有效小时结算；先验证自营10台，再按最新用工决定评估附近团队。"
+      "以10月17日Owner报告的3人、18原始小时、人均6小时、可用10台异常0台为已报告事实，补核当日上传是否完成；历史暂无积压不替代当日上传完成证明。",
+      "整理每5分钟启停耗时和大文件慢上传问题；核实平台QA有效小时、人效口径、日报投递及是否已实际发送，不擅自改SOP或认定已结算。",
+      "核实三任务完整SOP、试采费用和结算；最新自营10台、附近每组10台及九位队长直接雇佣安排保持不变。"
     ]
   },
   "confirmed_by_conversation": [
@@ -161,7 +205,7 @@
     "不得虚构正在运营工厂订单、真实缺陷样品来源、工作场景授权或已有项目业绩。",
     "不得用影响工人安全的方式满足拍摄要求；不强迫省略必要的专业防护。"
   ],
-  "next_action": "先补齐已发生采集、上传、QA与回款的真实证据并按文字日报四部分记录；稳定自营10台。附近每组10台及约100台阶段规划先核上游授权、其他采集员用工主体、队长薪资和设备费交易对象，再决定是否执行。",
+  "next_action": "按Owner报告的10月17日3人/18原始小时、可用10台异常0台准备文字日报，补核当日上传是否完成、平台QA与回款及实际发送状态；稳定自营10台，附近团队仍先核上游授权、用工和费用对象。",
   "must_read": [
     "knowledge/OPERATING_BRIEF_2026-10-18.md",
     "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
@@ -224,9 +268,9 @@
     }
   },
   "next_pre_trial_actions": [
-    "回收10月17日起实际设备投入、采集、上传积压和平台QA记录；未提供的实际值保持未知，不把3台18/12小时计划当成果。",
-    "按四部分文字消息准备日报；发送渠道、收件人、截止时间、人效与有效时长口径仍待灵生确认，未经授权不外发。",
-    "核实三任务完整SOP、试采费用和有效小时结算；先验证自营10台，再按最新用工决定评估附近团队。"
+    "以10月17日Owner报告的3人、18原始小时、人均6小时、可用10台异常0台为已报告事实，补核当日上传是否完成；历史暂无积压不替代当日上传完成证明。",
+    "整理每5分钟启停耗时和大文件慢上传问题；核实平台QA有效小时、人效口径、日报投递及是否已实际发送，不擅自改SOP或认定已结算。",
+    "核实三任务完整SOP、试采费用和结算；最新自营10台、附近每组10台及九位队长直接雇佣安排保持不变。"
   ],
   "codex_procurement_photo_task": {
     "date": "2026-10-15",
