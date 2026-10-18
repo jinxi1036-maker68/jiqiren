@@ -4,28 +4,41 @@
   "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
   "authority_branch": "main",
   "current": {
-    "date": "2026-10-15",
-    "phase": "PRE_TRIAL_PREPARATION",
+    "date": "2026-10-18",
+    "phase": "THREE_SCENES_READY_INTERNAL_REHEARSAL_DONE_THREE_DEVICE_TRIAL_PLANNED",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
     "target_city": "河南平顶山",
     "target_training_date": "2026-10-13赴北京的培训与沟通已发生（Owner转述）；具体签到/证件仍以现场记录为准",
-    "target_trial_start": "2026-10-16（Owner目标：首轮样本；正式可结算采集尚待具体任务SOP与上传质检路径确认）",
+    "target_trial_start": "2026-10-17：Owner报告与灵生沟通计划先用3台试采，每台6小时采集、4小时目标有效；18/12是目标而非已验收实际",
     "latest_readiness_review": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
     "latest_evidence_id": "EV-PDS-XLSX-20261011",
-    "readiness": "已取得灵生对自建小型真实作业车间及自有受训采集员的微信/飞书沟通认可；选定线边仓补货、空容器回收、外观质检三项拟议任务，正按场景分区+任务目标+关键动作+任务SOP提交审核。尚无样本验收、有效小时及首笔结算证据；设备到位数未核实。",
-    "latest_operational_update": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
-    "latest_partner_decision": "对方业务联系人认可自建真实工位组织方式；不等于具体SOP、所有场景或正式验收一概批准",
-    "expansion_boundary": "杜振成在群中建议月底达100人；Owner明确不承诺，先验证有效数据与结算；20-30人仅为交流中的争取方向，不是达成产能或签约计划"
+    "readiness": "Owner报告三处真实工位10月15日均已搭建，10月16日完成内部场景规划及操作演练，并与灵生方面沟通10月17日3台设备先行试采计划；日报四部分已收到。实际采集、上传、QA有效小时及结算未核验。",
+    "latest_operational_update": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+    "latest_partner_decision": "灵生方已转交四部分每日报告要求、T+1/T+3有效时长反馈说法；具体起算点、QA口径、计费/合同仍待确认。",
+    "expansion_boundary": "Owner最新决定：自营10台封顶；附近团队每组10台，约100台为未来阶段上限，是否包含自营10台待确认。九位队长拟由凌矩直接签合同、发工资和缴社保；其他采集员用工主体、分包/设备授权、付款及设备费交易对象未定。50台自营方案已废止，30元/有效小时及25元/台日仅保留为待合同核对的早期条件报价。",
+    "trial_three_device_plan": {
+      "date": "2026-10-17",
+      "devices": 3,
+      "capture_hours_per_device": 6,
+      "effective_goal_hours_per_device": 4,
+      "status": "planned_not_actual",
+      "reporting_requirements": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json"
+    },
+    "latest_strategy_decision": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+    "latest_stage_cap_proposal_2026_10_18": "Owner proposes approximately 100 total devices operating only locally, provisionally modelled as 10 self-operated + 9 nearby independent 10-device teams; still future target and needs clarification whether 100 includes original 10. No formal partner permission.",
+    "latest_tax_review": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+    "latest_local_team_leader_hiring_policy_2026_10_18": "Owner latest decision: nine local team leaders are direct Lingju employees; Lingju signs their employment contracts, pays wages and remits social insurance. Other collectors' employment, B2B team identity and device fee VAT treatment still unresolved. Detail in current decision ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+    "knowledge_candidate_ref": "knowledge/OPERATING_BRIEF_2026-10-18.md",
+    "actual_capture_uploaded_qa_and_cash_receipts": "not_verified"
   },
-  "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
+  "long_term_goal": "以10台/约10人的凌矩自营样板基地，形成可审核的真实场景、设备培训、SOP和结算能力；经上游书面许可后，以每合作团队10台的合规外部交付网络扩展，逐渐服务多个上游。自营50台扩张思路已被最新Owner决定取代。",
   "strategic_sequence": [
-    "10台小规模试采",
-    "验证有效时长/通过率/成本/结算",
-    "稳定20台",
-    "建立场景资源库和质控SOP",
-    "发展2-3个稳定上游",
-    "再评估30-50台及区域供应商/城市运营能力"
+    "稳定自营10台，取得真实QA、上传与回款证据",
+    "明确上游授权、队长直接雇佣和其他人员用工主体",
+    "在明确合同/付款对象后试点附近首个10台团队",
+    "以真实质量、资金、上传和管理负载决定是否复制；约100台上限仍待确认统计口径",
+    "保留多场景、多上游和可迁移运营能力，不继续扩大自营场地设备"
   ],
   "current_machine_facts": [
     "knowledge/CURRENT_WORK.json",
@@ -33,14 +46,18 @@
     "knowledge/SCENE_PIPELINE.json",
     "knowledge/PEOPLE_PIPELINE.json",
     "knowledge/ECONOMICS_MODEL.json",
-    "knowledge/EVIDENCE_INDEX.json"
+    "knowledge/EVIDENCE_INDEX.json",
+    "knowledge/COMPANY_PROFILE.json",
+    "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json"
   ],
   "owner_approved_strategic_choice": {
     "decision_date": "2026-10-10",
     "choice": "多场景资源 + 成熟管理与质控体系 + 多上游真实服务能力",
     "rejected_as_north_star": "单纯扩至50人采集队伍、依赖一个上游按小时赚差价",
     "priority": "战略方向确认；执行上仍先进行10台试采和首笔结算验证",
-    "adr_ref": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md"
+    "adr_ref": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md",
+    "current_implementation": "2026-10-18 Owner自营固定10台、发展每家10台合作团队；不可未经上游许可转包或转租。",
+    "current_adr_ref": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
   },
   "hermes_digital_employee": {
     "owner_decision_date": "2026-10-16",
@@ -58,14 +75,25 @@
       "对每一步操作和思考硬编码固定路线",
       "未经需要预先堆新业务"
     ],
-    "implementation_as_of": "2026-10-16",
-    "implementation_state": "owner_principle_documented_in_github_pending_original_hermes_migration",
+    "implementation_as_of": "2026-10-18",
+    "implementation_state": "original_hermes_gate1a_partial_conditional_acceptance_company_knowledge_candidate_not_deployed",
     "evidence_prs": [
       "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/6",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
     ],
-    "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
+    "caveat": "岗位接入和目标会话W目录/12次读取已有证据；自动装载完整性仍未证，旧业务未清理；本候选未部署，不授权真实灵生。",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+  },
+  "company_identity": {
+    "official_zh_name": "平顶山凌矩信息科技有限责任公司",
+    "source": "Owner于2026-10-16明确提供的公司全称",
+    "evidence_level": "conversation_confirmed",
+    "authority_file": "knowledge/COMPANY_PROFILE.json",
+    "registration_verification": "pending_official_license_or_registry_review",
+    "brand_status": "logo_research_only_not_approved",
+    "brand_research": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+    "brand_short_name": "凌矩",
+    "brand_short_name_evidence": "Owner 2026-10-16确认，仅确定简称，并未确定Logo造型"
   }
 }

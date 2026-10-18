@@ -2,6 +2,12 @@
 
 > 聊天记忆不是权威；旧截图不是当前事实；口头条件在写进正式协议前都只是“待合同确认”。
 
+## 公司名称｜Owner最新确认（2026-10-16）
+
+**公司工商全称（Owner在对话中直接确认）：平顶山凌矩信息科技有限责任公司。**
+权威企业档案：[`COMPANY_PROFILE.json`](COMPANY_PROFILE.json)；品牌研究：[`28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md`](28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md)。
+当前仅由Owner口述确认，尚未校验营业执照或商标；不得把旧供应商申请中的其他法人主体当作凌矩，也不能自行确定英文名、信用代码或品牌正式Logo。
+
 ## Hermes数字员工｜Owner最高有效理念（2026-10-16）
 
 **任何新窗口、Codex或其他Agent，只要任务涉及Hermes身份、开发、记忆清理、浏览器、巡检、派单或扩展业务，必须在制订方案/改代码之前先读：**
@@ -13,7 +19,11 @@
 
 **关键结论：Owner电脑里最终只有一名正式Hermes员工；不把它变成新管理系统，也不长期保留旧Hermes+数采Hermes两个身份。公司给目标/底线，员工自主判断/完成/成长；当前先灵生数采，未来按Owner需要扩展。** 之前独立profile仅是模拟测试策略；原Hermes正式清理/迁移尚未做。具体岗位权限仍需单独授权和验收。
 
-**换新对话窗口时可直接复制：**[Hermes跨窗口接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口仍须读取上述宪章/ADR/历史，不仅凭交接语回答。\n\n## Agent Bootstrap
+**换新对话窗口时可直接复制：**[Hermes跨窗口接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口仍须读取上述宪章/ADR/历史，不仅凭交接语回答。\n\n## 2026-10-18公司业务知识整合候选
+
+完成最小Bootstrap并核对最新授权后，当前业务阅读[经营知识摘要](OPERATING_BRIEF_2026-10-18.md)，再按需阅读现行10台/本地网络ADR与文字日报。此候选未部署，不改变Hermes岗位宪章或真实业务权限；旧50台模型只作历史。
+
+## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
 
 1. 读 `knowledge/KNOWLEDGE_HARNESS.json`

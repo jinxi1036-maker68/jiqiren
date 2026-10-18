@@ -1,0 +1,611 @@
+{
+  "shared_files": [
+    "knowledge/CURRENT_WORK.json",
+    "knowledge/PARTNER_LEDGER.json",
+    "knowledge/PROJECT_INDEX.json"
+  ],
+  "method": "recursive three-way merge; partner arrays matched by id, not by position; explicit current-summary resolutions follow",
+  "entries": [
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/date",
+      "resolution": "latest record date; historical event dates remain unchanged",
+      "main": "2026-10-15",
+      "PR13": "2026-10-16",
+      "PR17": "2026-10-18",
+      "chosen": "2026-10-18"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/phase",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "Owner报告三处真实工位均已搭建、10月16日内部路径及动作演练已进行；10月17日拟以3台设备启动试采。尚无真实平台QA、已确认有效小时或结算记录。"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/proposed_trial_date",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "2026-10-17（Owner向灵生沟通的3台设备试采计划；实际开机、上传及审核数据待核实）"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/task_plan",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "线边仓补货、空容器回收、产品外观质检三个场景已按Owner报告布置到位并完成内部规划/动作演练；甲方逐任务最终SOP是否正式核准仍未知。"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/reference",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/owner_reported_operational_update",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "reported_on": "2026-10-16",
+        "site_scene_preparation_completed_on": "2026-10-15",
+        "scene_names": [
+          "线边仓补货",
+          "空容器回收",
+          "产品外观质检"
+        ],
+        "internal_rehearsal_on": "2026-10-16",
+        "rehearsal_scope": "场景规划、主要路径、动作测试/演练（不等同灵生正式试采或质检验收）",
+        "partner_communication_on": "2026-10-16晚间",
+        "planned_first_capture_date": "2026-10-17",
+        "planned_active_devices": 3,
+        "per_device_daily_capture_target_hours": 6,
+        "per_device_daily_effective_target_hours": 4,
+        "total_planned_device_capture_hours": 18,
+        "total_planned_effective_target_hours": 12,
+        "classification": "owner_reported_partner_conversation_tentative_operational_target",
+        "actual_equipment_in_hand": null,
+        "actual_staffing": null,
+        "actual_capture_hours": null,
+        "actual_qa_accepted_hours": null,
+        "note": "计划指标非实际产出；原10台阶段目标不变，三台启动实际状态与甲方正式QA/计费口径须核实。"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/partner_daily_reporting",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "status": "owner_forwarded_partner_request",
+        "reported_on": "2026-10-16",
+        "requirements_ref": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "sections": [
+          "今日投入及产出",
+          "设备盘点",
+          "时间/人力及场景计划",
+          "上传完成与按采集日期区分的积压"
+        ],
+        "recipient_channel_deadline": "pending",
+        "effectiveness_and_productivity_definition": "pending"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/recording_efficiency_open_item",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": {
+        "date": "2026-10-17",
+        "status": "owner_proposal_pending_livsyn_response",
+        "type": "recording_device_efficiency_and_worker_pay_design",
+        "source": "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+        "owner_reported_equipment": "128GB内存卡设备可持续录制超过单条5分钟限制；录后从卡用手机或电脑读取上传；未实测格式与固件能力",
+        "sop_reference": "单Episode 30秒至5分钟、起止约2秒规范应核实最新原文及合格样例，禁止未经批准改造/切片绕过",
+        "priority_solution": "先与灵生沟通提前时长提醒、每小时累计原始录制提醒及后续合规自动启停/官方分段能力；工资模型为备选",
+        "status_boundary": "讨论与Owner计划而非厂家承诺/灵生批准/已部署，未取得新的质检结算证据",
+        "owner_next_step": "电话与吴启蒙确认设备提醒可行性、2秒真实起止规则、五分钟上限原因、是否允许自动分段/后处理；保存回复后再同步知识库"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/current_owner_self_operated_cap_2026_10_18",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": {
+        "status": "owner_decision_future_plan",
+        "own_devices_target": 10,
+        "own_people_target": 10,
+        "no_further_direct_site_expansion": true,
+        "external_partner_team_devices": 10,
+        "device_rent_proposal_cny_per_day": 25,
+        "approved_hour_partner_price_cny": 30,
+        "upstream_40_cny_per_approved_hour_reference": true,
+        "equipment_deposit_from_partner": "proposed_amount_pending",
+        "current_authorization_to_subcontract": "not_verified",
+        "link": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+        "latest_team_model_clarification": "Owner明确未来10台合作团队属于凌矩业务协作体系，队长可自己采集兼管理，也可由10位其他人员采集而自己管理；约85平方米场地参考月租850元，工位前期建设可复用，凌矩可指定集中上传地点并承担网络。须先核合法用工及第三方分包、转租许可。"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/current_owner_operating_priority",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": "先验证自营10台合格数据、上传及真实回款；后续九个附近团队队长拟由凌矩直接聘用、发薪和缴社保；在定团队其他采集员用工主体、25元设备费是否真实对外交易、取得上游设备/分包授权之前，不对外派设备或承诺收入与税收优惠。"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/future_network_cap_discussion_2026_10_18",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": {
+        "proposed_devices_total": 100,
+        "provisionally_ten_own_plus_nine_ten_device_teams": true,
+        "location": "near Owner local area",
+        "status": "owner_future_upper_bound_not_installed",
+        "tax_questions": "VAT taxable sales gross vs net and 5m general-payer threshold, small micro CIT 5% eligibility, Henan eligible veteran individual enterprise tax deductions up to 24000 vs LLC hiring veteran up to 9000/person/year",
+        "veteran_identity": "unspecified_do_not_assume",
+        "reference": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/nine_team_leaders_employment_2026_10_18",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": {
+        "status": "owner_approved_future_hiring_method",
+        "total_leaders": 9,
+        "employer": "Lingju",
+        "contract_pay_social_insurance": "direct employment contracts, Lingju payroll, lawful company social insurance",
+        "team_other_worker_employer": "pending",
+        "leader_salary": "to be set and budgeted",
+        "tax_eligibility": "check individually before claiming Henan qualified-hire tax reduction; private verification, no personal docs in GitHub",
+        "source": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/project_lead_mode",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "enabled": true,
+        "rule": "ChatGPT负责维护事实、准备场景任务与SOP/核算/风险门槛；Owner负责业务沟通、线下决策、合同和资金确认",
+        "next_24h_focus": [
+          "2026-10-17首批3台试采前确认设备实际可用、分场景人力、时间安排与安全。",
+          "确认线边补货台账、空容器回收堆叠和外观质检扫描/上报的完整SOP及实际上传/审核规则是否获灵生确认。",
+          "按灵生四段式日报记录实际投入、人效、可用/异常设备、各场景计划以及按采集日追踪上传积压；区分计划/采集/上传/审核有效，确认日报收件渠道和时限。",
+          "继续书面核实试采计费、押金、结算及设备责任，尚未取得正式QA与真实有效小时不得扩大承诺。"
+        ]
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/next_action",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "按10月17日3台设备试采计划落实安全、人员及设备检查；先准备灵生四部分日报并确认投递渠道/口径，以真实采集上传与QA审核证据记录成果，再评估扩台。"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/must_read",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": [
+        "knowledge/COMPANY_PROFILE.json",
+        "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+        "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+        "knowledge/SCENE_PIPELINE.json",
+        "knowledge/PARTNER_LEDGER.json",
+        "knowledge/04_SCENE_STRATEGY.md",
+        "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md"
+      ]
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/trial_validation_proposal",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "status": "historical_1_to_2_device_suggestion_superseded_by_owner_planned_three_device_trial",
+        "suggested_initial_devices": "历史建议1—2台；2026-10-16 Owner报告已与灵生沟通拟10月17日启用3台，此条仅保留原建议的演进轨迹",
+        "action": "先送审三分区任务SOP，正式确认后小批录制0.5—5分钟Episode并上传实际质检；核算真实产能、损坏、成本与结算，再扩10台。",
+        "approved_by_partner": "仅确认自建真实工位模式可尝试；未确认三任务具体SOP和小批样本通过",
+        "does_not_replace_first_batch_target": 10,
+        "latest_owner_plan": {
+          "plan_date": "2026-10-16",
+          "start": "2026-10-17",
+          "devices": 3,
+          "per_device_hours": 6,
+          "effective_target_hours": 4,
+          "status": "planned_not_yet_operated"
+        }
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/next_pre_trial_actions",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": [
+        "准备10月17日3台首批试采的设备/人员/场景分配与安全，确认SOP具体动作并留可核实现场记录。",
+        "按灵生要求准备每日四段式日报，实报采集小时、人力人效、设备可用及异常、场景计划、上传积压的采集日期。",
+        "实际首次上传/QA/有效时长与费用均据平台和书面规则记录；不把内部测试、18/12小时计划或未返回QA当已验收成果。"
+      ]
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/company_identity",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "name": "平顶山凌矩信息科技有限责任公司",
+        "name_source": "Owner 2026-10-16",
+        "verification": "owner_confirmed_legal_name_registration_details_pending",
+        "profile": "knowledge/COMPANY_PROFILE.json"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/company_identity_ref",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "knowledge/COMPANY_PROFILE.json"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/updated_at",
+      "resolution": "latest record date; historical event dates remain unchanged",
+      "main": "2026-10-15",
+      "PR13": "2026-10-16",
+      "PR17": "2026-10-17",
+      "chosen": "2026-10-17"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/partners/id=livsyn/status",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "three_scenes_ready_three_device_trial_planned_not_yet_qa_verified"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/partners/id=livsyn/current_path",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "Owner报告10月15日三场景已就绪→10月16日内部动作演练→当晚与灵生沟通计划10月17日三台试采（每台6小时采集/4小时目标有效）→按四段式日报记录与确认T+1/T+3有效时长反馈→以真实QA和结算验证后扩张"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/partners/id=livsyn/next_gate",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "实际试采后核对设备/人力/上传与QA审核结果；核实日报发送渠道、时限、T+1/T+3起算规则、有效4小时指标是否强制最低；书面核实试采费用"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/partners/id=livsyn/reporting_and_pilot_2026_10_16",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "status": "owner_forwarded_partner_conversation_not_formal_contract",
+        "three_scenes_prepared": "2026-10-15 (Owner reported)",
+        "internal_rehearsal": "2026-10-16",
+        "first_three_device_trial_planned": "2026-10-17",
+        "daily_capture_target_hours_per_device": 6,
+        "daily_effective_target_hours_per_device": 4,
+        "three_device_target_capture_hours": 18,
+        "three_device_target_effective_hours": 12,
+        "partner_daily_report": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "trial_feedback_statement": "试采 T+1 出有效时长；周结束不超过 T+3",
+        "feedback_interpretation": "T起算点/自然或工作日/周结束截止与反馈结果是否最终QA未定；不是结算付款到账日期",
+        "actual_submitted_hours": null,
+        "actual_qa_confirmed_hours": null,
+        "source": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
+      }
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/partners/id=livsyn/daily_reporting_requirement_2026_10_17",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": {
+        "status": "owner_reported_pending_official_details",
+        "report_frequency": "daily",
+        "reason": "Owner stated LivSyn previously requested daily reports",
+        "template": "owner_provided_screenshot_visible_four_sections",
+        "send_deadline": "not_confirmed",
+        "submit_channel": "not_confirmed",
+        "reference": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+        "internal_template": "templates/TRIAL_DAILY_DASHBOARD.csv",
+        "note": "Do not treat planned 3 devices x 6 hours as completed actual output. Do not equate raw recording to accepted effective hours. Recipient, send time, output hour definition unknown.",
+        "submission_format": "plain_text_message",
+        "submission_format_evidence": "owner_explicit_confirmation_2026_10_17",
+        "report_details_status": "screenshot_structure_verified_actuals_pending_owner",
+        "day_one": "2026-10-17",
+        "day_one_plan": "3 devices, 6 raw recording hours per device, total planned 18 raw hours",
+        "day_one_actuals": "pending_owner_report_not_submitted_or_verified",
+        "customer_fixed_template": "owner_provided_screenshot_confirms_visible_headings_fields",
+        "template_evidence": "2026-10-17 Owner conversation screenshot; image bytes not uploaded to repository",
+        "required_sections": [
+          {
+            "heading": "一、今日投入及产出",
+            "fields": [
+              "完成产出多少小时数据",
+              "今日投入人力多少",
+              "平均人效",
+              "人效降低原因"
+            ]
+          },
+          {
+            "heading": "二、设备盘点",
+            "fields": [
+              "可用设备多少台",
+              "异常设备多少台"
+            ]
+          },
+          {
+            "heading": "三、时间+人力及场景计划",
+            "fields": [
+              "要出多少人",
+              "具体采集场景",
+              "每个场景投入多少人"
+            ]
+          },
+          {
+            "heading": "四、上传情况",
+            "fields": [
+              "当日任务和数据是否全部上传",
+              "未传完时准确注明未上传完的数据日期及积压"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/date",
+      "resolution": "latest record date; historical event dates remain unchanged",
+      "main": "2026-10-15",
+      "PR13": "2026-10-16",
+      "PR17": "2026-10-18",
+      "chosen": "2026-10-18"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/phase",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "THREE_SCENES_READY_INTERNAL_REHEARSAL_DONE_THREE_DEVICE_TRIAL_PLANNED"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/target_trial_start",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "2026-10-17：Owner报告与灵生沟通计划先用3台试采，每台6小时采集、4小时目标有效；18/12是目标而非已验收实际"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/readiness",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "Owner报告三处真实工位10月15日均已搭建，10月16日完成内部场景规划及操作演练，并与灵生方面沟通10月17日3台设备先行试采计划；日报四部分已收到。实际采集、上传、QA有效小时及结算未核验。"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/latest_operational_update",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/latest_partner_decision",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": "灵生方已转交四部分每日报告要求、T+1/T+3有效时长反馈说法；具体起算点、QA口径、计费/合同仍待确认。"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/expansion_boundary",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": "Owner最新明确：自营场地、设备、采集岗位未来封顶10台/约10人；稳定后不再自己招人扩厂，外部每个独立合作团队原则配置10台，按拟价30元/审核有效小时与25元/台/天收费（押金数额待定）；灵生正式转包和转租书面权限未获，不能直接实施。旧自营50台战略已于2026-10-18废止。"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/trial_three_device_plan",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "date": "2026-10-17",
+        "devices": 3,
+        "capture_hours_per_device": 6,
+        "effective_goal_hours_per_device": 4,
+        "status": "planned_not_actual",
+        "reporting_requirements": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json"
+      }
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/latest_strategy_decision",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/latest_stage_cap_proposal_2026_10_18",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": "Owner proposes approximately 100 total devices operating only locally, provisionally modelled as 10 self-operated + 9 nearby independent 10-device teams; still future target and needs clarification whether 100 includes original 10. No formal partner permission."
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/latest_tax_review",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/latest_local_team_leader_hiring_policy_2026_10_18",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": "Owner latest decision: nine local team leaders are direct Lingju employees; Lingju signs their employment contracts, pays wages and remits social insurance. Other collectors' employment, B2B team identity and device fee VAT treatment still unresolved. Detail in current decision ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/long_term_goal",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": "以10台/约10人的凌矩自营样板基地，形成可审核的真实场景、设备培训、SOP和结算能力；经上游书面许可后，以每合作团队10台的合规外部交付网络扩展，逐渐服务多个上游。自营50台扩张思路已被最新Owner决定取代。"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/strategic_sequence",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": [
+        "自营10台稳定生产与真实QA/回款",
+        "向上游核实分包、设备二次出租、第三方数据处理等授权",
+        "以独立B2B采集合作团队每家10台试点首家",
+        "按团队真实可盈利、质量、到账和设备管理逐家复制",
+        "扩展多上游订单而非继续扩自营设备"
+      ]
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current_machine_facts",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": [
+        "knowledge/CURRENT_WORK.json",
+        "knowledge/PARTNER_LEDGER.json",
+        "knowledge/SCENE_PIPELINE.json",
+        "knowledge/PEOPLE_PIPELINE.json",
+        "knowledge/ECONOMICS_MODEL.json",
+        "knowledge/EVIDENCE_INDEX.json",
+        "knowledge/COMPANY_PROFILE.json",
+        "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json"
+      ]
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/owner_approved_strategic_choice",
+      "resolution": "PR17 changed; PR13 equals main",
+      "chosen": {
+        "decision_date": "2026-10-10",
+        "choice": "多场景资源 + 成熟管理与质控体系 + 多上游真实服务能力",
+        "rejected_as_north_star": "单纯扩至50人采集队伍、依赖一个上游按小时赚差价",
+        "priority": "战略方向确认；执行上仍先进行10台试采和首笔结算验证",
+        "adr_ref": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md",
+        "current_implementation": "2026-10-18 Owner自营固定10台、发展每家10台合作团队；不可未经上游许可转包或转租。",
+        "current_adr_ref": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+      }
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/company_identity",
+      "resolution": "PR13 changed; PR17 equals main",
+      "chosen": {
+        "official_zh_name": "平顶山凌矩信息科技有限责任公司",
+        "source": "Owner于2026-10-16明确提供的公司全称",
+        "evidence_level": "conversation_confirmed",
+        "authority_file": "knowledge/COMPANY_PROFILE.json",
+        "registration_verification": "pending_official_license_or_registry_review",
+        "brand_status": "logo_research_only_not_approved",
+        "brand_research": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+        "brand_short_name": "凌矩",
+        "brand_short_name_evidence": "Owner 2026-10-16确认，仅确定简称，并未确定Logo造型"
+      }
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/next_action",
+      "resolution": "Oct18 current priority supersedes past-tense Oct17 preparation; no actual production invented",
+      "previous_merged_value": "按10月17日3台设备试采计划落实安全、人员及设备检查；先准备灵生四部分日报并确认投递渠道/口径，以真实采集上传与QA审核证据记录成果，再评估扩台。",
+      "chosen": "先补齐已发生采集、上传、QA与回款的真实证据并按文字日报四部分记录；稳定自营10台。附近每组10台及约100台阶段规划先核上游授权、其他采集员用工主体、队长薪资和设备费交易对象，再决定是否执行。"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/next_pre_trial_actions",
+      "resolution": "retain PR13 requirements while updating current date/strategy",
+      "previous_merged_value": [
+        "准备10月17日3台首批试采的设备/人员/场景分配与安全，确认SOP具体动作并留可核实现场记录。",
+        "按灵生要求准备每日四段式日报，实报采集小时、人力人效、设备可用及异常、场景计划、上传积压的采集日期。",
+        "实际首次上传/QA/有效时长与费用均据平台和书面规则记录；不把内部测试、18/12小时计划或未返回QA当已验收成果。"
+      ],
+      "chosen": [
+        "回收10月17日起实际设备投入、采集、上传积压和平台QA记录；未提供的实际值保持未知，不把3台18/12小时计划当成果。",
+        "按四部分文字消息准备日报；发送渠道、收件人、截止时间、人效与有效时长口径仍待灵生确认，未经授权不外发。",
+        "核实三任务完整SOP、试采费用和有效小时结算；先验证自营10台，再按最新用工决定评估附近团队。"
+      ]
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/project_lead_mode/next_24h_focus",
+      "resolution": "current focus is Oct18 evidence collection, not assumed Oct17 future launch",
+      "previous_merged_value": [
+        "2026-10-17首批3台试采前确认设备实际可用、分场景人力、时间安排与安全。",
+        "确认线边补货台账、空容器回收堆叠和外观质检扫描/上报的完整SOP及实际上传/审核规则是否获灵生确认。",
+        "按灵生四段式日报记录实际投入、人效、可用/异常设备、各场景计划以及按采集日追踪上传积压；区分计划/采集/上传/审核有效，确认日报收件渠道和时限。",
+        "继续书面核实试采计费、押金、结算及设备责任，尚未取得正式QA与真实有效小时不得扩大承诺。"
+      ],
+      "chosen": [
+        "回收10月17日起实际设备投入、采集、上传积压和平台QA记录；未提供的实际值保持未知，不把3台18/12小时计划当成果。",
+        "按四部分文字消息准备日报；发送渠道、收件人、截止时间、人效与有效时长口径仍待灵生确认，未经授权不外发。",
+        "核实三任务完整SOP、试采费用和有效小时结算；先验证自营10台，再按最新用工决定评估附近团队。"
+      ]
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/future_network_cap_discussion_2026_10_18/includes_self_operated_ten",
+      "resolution": "100-device inclusion is unresolved; provisional modelling is not confirmation",
+      "previous_merged_value": {
+        "absent": true
+      },
+      "chosen": null
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/future_network_cap_discussion_2026_10_18/inclusion_confirmation_status",
+      "resolution": "explicitly retain ambiguity",
+      "previous_merged_value": {
+        "absent": true
+      },
+      "chosen": "pending_owner_confirmation"
+    },
+    {
+      "file": "knowledge/CURRENT_WORK.json",
+      "pointer": "/now/current_owner_self_operated_cap_2026_10_18/team_legal_model",
+      "resolution": "latest employment decision overrides earlier independent-business assumption",
+      "previous_merged_value": {
+        "absent": true
+      },
+      "chosen": "九位队长拟由凌矩直接签劳动合同、发工资和依法缴社保；不默认其为独立合作商负责人。其他采集员用工主体、团队合同关系、30元付款对象和25元设备费交易对象待核。"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/current_path",
+      "resolution": "PR13 operational progress plus latest Oct18 direction; historical plan is not actuals",
+      "previous_merged_value": "Owner报告10月15日三场景已就绪→10月16日内部动作演练→当晚与灵生沟通计划10月17日三台试采（每台6小时采集/4小时目标有效）→按四段式日报记录与确认T+1/T+3有效时长反馈→以真实QA和结算验证后扩张",
+      "chosen": "Owner报告三场景已就绪并于10月16日内测；10月17日3台试采是历史计划，实际采集、上传、QA与回款仍待证。先稳定自营10台，日报按四段文字记录；附近10台团队及约100台阶段网络须先核合同、上游授权和队长直接雇佣安排。"
+    },
+    {
+      "file": "knowledge/PARTNER_LEDGER.json",
+      "pointer": "/next_gate",
+      "resolution": "retain both reporting gates and latest employment boundaries",
+      "previous_merged_value": "实际试采后核对设备/人力/上传与QA审核结果；核实日报发送渠道、时限、T+1/T+3起算规则、有效4小时指标是否强制最低；书面核实试采费用",
+      "chosen": "核实实际采集/上传/QA/到账及三任务SOP、试采费用；明确文字日报投递和T+1/T+3口径。团队扩张先确认上游分包/设备授权、凌矩直接雇佣九位队长及其他人员用工、付款对象与设备费性质。"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/current/expansion_boundary",
+      "resolution": "latest direct employment decision qualifies PR17 earlier B2B wording",
+      "previous_merged_value": "Owner最新明确：自营场地、设备、采集岗位未来封顶10台/约10人；稳定后不再自己招人扩厂，外部每个独立合作团队原则配置10台，按拟价30元/审核有效小时与25元/台/天收费（押金数额待定）；灵生正式转包和转租书面权限未获，不能直接实施。旧自营50台战略已于2026-10-18废止。",
+      "chosen": "Owner最新决定：自营10台封顶；附近团队每组10台，约100台为未来阶段上限，是否包含自营10台待确认。九位队长拟由凌矩直接签合同、发工资和缴社保；其他采集员用工主体、分包/设备授权、付款及设备费交易对象未定。50台自营方案已废止，30元/有效小时及25元/台日仅保留为待合同核对的早期条件报价。"
+    },
+    {
+      "file": "knowledge/PROJECT_INDEX.json",
+      "pointer": "/strategic_sequence",
+      "resolution": "do not treat all teams as independent B2B businesses",
+      "previous_merged_value": [
+        "自营10台稳定生产与真实QA/回款",
+        "向上游核实分包、设备二次出租、第三方数据处理等授权",
+        "以独立B2B采集合作团队每家10台试点首家",
+        "按团队真实可盈利、质量、到账和设备管理逐家复制",
+        "扩展多上游订单而非继续扩自营设备"
+      ],
+      "chosen": [
+        "稳定自营10台，取得真实QA、上传与回款证据",
+        "明确上游授权、队长直接雇佣和其他人员用工主体",
+        "在明确合同/付款对象后试点附近首个10台团队",
+        "以真实质量、资金、上传和管理负载决定是否复制；约100台上限仍待确认统计口径",
+        "保留多场景、多上游和可迁移运营能力，不继续扩大自营场地设备"
+      ]
+    },
+    {
+      "file": "knowledge/ECONOMICS_MODEL.json",
+      "pointer": "/outside_growth",
+      "resolution": "latest Oct18 employment decision has precedence",
+      "previous_merged_value": "independent contractor-like B2B collection team per partner with 10 devices maximum per team, requiring partner authorization and compliant real setup",
+      "chosen": "附近每组10台；九位队长拟由凌矩直接雇佣、发薪、参保。其他采集员用工和团队法律关系、付款对象与设备费性质未定，不能默认独立B2B合作商模型适用于全部团队。"
+    }
+  ],
+  "no_source_history_deleted": true,
+  "source_history_immutable_commits": {
+    "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+    "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+    "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+  }
+}
