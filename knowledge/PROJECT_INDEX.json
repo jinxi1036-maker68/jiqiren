@@ -66,6 +66,9 @@
       "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
     ],
     "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
-    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "lean_dev_adr": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md",
+    "owner_development_preference_2026_10_18": "轻量化、最少必要代码：先培训原Hermes并复用现有知识/文件/浏览器/记忆/Skills，实测缺口才加小Skill或最小代码；自主工作，禁止平行正式Agent或另造管理系统，保留必要安全保护。",
+    "lean_dev_implementation_scope": "github_documentation_proposal_only; not_part_of_fixed_local_R3_32_files; no_runtime_or_permission_change"
   }
 }
