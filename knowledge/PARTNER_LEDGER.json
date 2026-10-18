@@ -1,16 +1,16 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-18",
   "partners": [
     {
       "id": "livsyn",
       "name": "北京灵生科技有限公司 / LivSyn",
-      "status": "active_trial_preparation_sop_review",
+      "status": "three_scenes_ready_three_device_trial_planned_not_yet_qa_verified",
       "priority": "P0",
-      "current_path": "自建真实操作工位组织方式已获对接人认可 → 三个分区任务SOP提交审核 → 少量上传正式质检 → 依据实际有效产出再扩10台和更多人员",
+      "current_path": "Owner报告三场景就绪并内测；10月16日制定的17日3台试采计划保留。17日Owner另报3人原始采集18小时、人均6小时、可用10台异常0台；当日上传完成、平台QA、结算及日报发送未知。先稳定自营10台，附近团队及队长直接雇佣的授权边界不变。",
       "evidence_level": "conversation_confirmed",
       "known_terms_ref": "knowledge/ECONOMICS_MODEL.json",
-      "next_gate": "确认三项任务的具体SOP可验收、场景及操作流程报备、平台数据上传与审核反馈；书面确认试采租金和有效数据结算",
+      "next_gate": "核实实际采集/上传/QA/到账及三任务SOP、试采费用；明确文字日报投递和T+1/T+3口径。团队扩张先确认上游分包/设备授权、凌矩直接雇佣九位队长及其他人员用工、付款对象与设备费性质。",
       "scene_model_confirmation": {
         "date": "2026-10-15",
         "evidence_level": "conversation_confirmed",
@@ -47,6 +47,117 @@
         "partner_group_message": "杜振成提出“月底前增加到一百人”",
         "nature": "上游提出的激励/目标，尚不能判断玩笑或正式要求",
         "owner_commitment": "无100人承诺；初期集中试采质量与现金回款"
+      },
+      "reporting_and_pilot_2026_10_16": {
+        "status": "owner_forwarded_partner_conversation_not_formal_contract",
+        "three_scenes_prepared": "2026-10-15 (Owner reported)",
+        "internal_rehearsal": "2026-10-16",
+        "first_three_device_trial_planned": "2026-10-17",
+        "daily_capture_target_hours_per_device": 6,
+        "daily_effective_target_hours_per_device": 4,
+        "three_device_target_capture_hours": 18,
+        "three_device_target_effective_hours": 12,
+        "partner_daily_report": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "trial_feedback_statement": "试采 T+1 出有效时长；周结束不超过 T+3",
+        "feedback_interpretation": "T起算点/自然或工作日/周结束截止与反馈结果是否最终QA未定；不是结算付款到账日期",
+        "actual_submitted_hours": null,
+        "actual_qa_confirmed_hours": null,
+        "source": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+        "plan_record_status": "historical_plan_as_of_2026_10_16",
+        "later_owner_actuals_ref": "knowledge/CURRENT_WORK.json"
+      },
+      "daily_reporting_requirement_2026_10_17": {
+        "status": "owner_reported_pending_official_details",
+        "report_frequency": "daily",
+        "reason": "Owner stated LivSyn previously requested daily reports",
+        "template": "owner_provided_screenshot_visible_four_sections",
+        "send_deadline": "not_confirmed",
+        "submit_channel": "not_confirmed",
+        "reference": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "internal_template": "templates/TRIAL_DAILY_DASHBOARD.csv",
+        "note": "Do not treat planned 3 devices x 6 hours as completed actual output. Do not equate raw recording to accepted effective hours. Recipient, send time, output hour definition unknown.",
+        "submission_format": "plain_text_message",
+        "submission_format_evidence": "owner_explicit_confirmation_2026_10_17",
+        "report_details_status": "screenshot_structure_verified_actuals_pending_owner",
+        "day_one": "2026-10-17",
+        "day_one_plan": "3 devices, 6 raw recording hours per device, total planned 18 raw hours",
+        "day_one_actuals": {
+          "operating_date": "2026-10-17",
+          "evidence_level": "owner_reported_not_platform_verified",
+          "staff_participating": 3,
+          "raw_capture_hours": 18,
+          "average_raw_hours_per_person": 6,
+          "available_devices": 10,
+          "abnormal_devices": 0,
+          "upload_completed_for_operating_date": null,
+          "platform_qa_effective_hours": null,
+          "settlement_confirmed": null,
+          "daily_report_sent": null,
+          "canonical_fact_file": "knowledge/CURRENT_WORK.json",
+          "canonical_fact_field": "now/owner_reported_daily_actuals_2026_10_17",
+          "historical_backlog_owner_reported_status": "none_reported",
+          "historical_backlog_is_not_current_upload_completion": true
+        },
+        "customer_fixed_template": "owner_provided_screenshot_confirms_visible_headings_fields",
+        "template_evidence": "2026-10-17 Owner conversation screenshot; image bytes not uploaded to repository",
+        "required_sections": [
+          {
+            "heading": "一、今日投入及产出",
+            "fields": [
+              "完成产出多少小时数据",
+              "今日投入人力多少",
+              "平均人效",
+              "人效降低原因"
+            ]
+          },
+          {
+            "heading": "二、设备盘点",
+            "fields": [
+              "可用设备多少台",
+              "异常设备多少台"
+            ]
+          },
+          {
+            "heading": "三、时间+人力及场景计划",
+            "fields": [
+              "要出多少人",
+              "具体采集场景",
+              "每个场景投入多少人"
+            ]
+          },
+          {
+            "heading": "四、上传情况",
+            "fields": [
+              "当日任务和数据是否全部上传",
+              "未传完时准确注明未上传完的数据日期及积压"
+            ]
+          }
+        ],
+        "canonical_requirements_ref": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "original_reference_retained": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+        "actual_report_sent": null,
+        "owner_reported_operational_issues": [
+          "每5分钟暂停后重新开始，操作耗时",
+          "文件较大，上传速度慢"
+        ],
+        "historical_backlog": {
+          "owner_reported_status": "none_reported",
+          "scope_dates": null,
+          "platform_verified": false,
+          "does_not_establish_operating_date_upload_completion": true
+        }
+      },
+      "current_owner_network_policy": {
+        "source": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+        "network_stage_source": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+        "self_operated_cap": 10,
+        "devices_per_local_team": 10,
+        "network_cap_proposal": 100,
+        "cap_includes_own_ten": null,
+        "nine_leaders_direct_employment": "planned_not_executed",
+        "subcontracting_and_device_permissions": "not_verified",
+        "signed_team_contracts": "not_verified",
+        "actual_qa_and_receipts": "not_verified"
       }
     },
     {

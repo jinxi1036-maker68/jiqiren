@@ -1,0 +1,131 @@
+{
+  "schema_version": "livsyn_pingdingshan_daily_report_requirements_v1",
+  "date_recorded": "2026-10-16",
+  "source": "Owner转发灵生方面《平顶山每日采集日报》要求文本",
+  "source_status": "conversation_confirmed_owner_forwarded_partner_request",
+  "requirement_status": "daily_reporting_requested_details_pending",
+  "partner": "LivSyn/灵生",
+  "location": "河南平顶山",
+  "required_sections": [
+    {
+      "id": "daily_output",
+      "heading": "今日投入及产出",
+      "required_fields": [
+        "今天完成产出多少小时数据",
+        "今日投入人力多少",
+        "平均人效",
+        "人效降低原因"
+      ]
+    },
+    {
+      "id": "equipment",
+      "heading": "设备盘点",
+      "required_fields": [
+        "可用设备数",
+        "异常设备数"
+      ]
+    },
+    {
+      "id": "staff_scene_plan",
+      "heading": "时间、人力及场景计划",
+      "required_fields": [
+        "计划投入人力",
+        "具体采集场景",
+        "每个场景投入人数",
+        "场景及人员对应时间安排"
+      ]
+    },
+    {
+      "id": "upload_backlog",
+      "heading": "上传情况",
+      "required_fields": [
+        "当日采集任务及数据是否上传完成",
+        "未传完的具体采集日期（月/日）",
+        "积压数据情况"
+      ]
+    }
+  ],
+  "proposed_internal_fields_not_partner_mandates": [
+    "报告日期、实际与计划分开",
+    "采集小时与QA确认有效小时分开",
+    "各场景人员/设备/时长记录",
+    "上传已完成、未上传积压、平台待审、已审核有效的不同状态",
+    "异常原因及补传计划只填写已核实信息"
+  ],
+  "pilot_plan": {
+    "plan_as_of": "2026-10-16",
+    "start_date": "2026-10-17",
+    "device_count": 3,
+    "per_device_daily_capture_target_hours": 6,
+    "per_device_daily_effective_target_hours": 4,
+    "aggregate_capture_target_device_hours": 18,
+    "aggregate_effective_target_device_hours": 12,
+    "targets_are_not_actuals": true,
+    "current_actual_uploaded_hours": null,
+    "current_actual_qa_accepted_hours": null,
+    "formally_defined_accepted_hours_metric": null,
+    "record_status": "historical_plan_as_of_2026_10_16"
+  },
+  "pending_clarifications": [
+    "日报发送渠道、接收人和发送截止时间",
+    "人效分母、分子和轮班统计口径",
+    "有效时长是否须QA返回及何时确认",
+    "第三部分计划具体按当天还是次日填写",
+    "积压数量统计单位及补传截止要求",
+    "是否有灵生正式的日报表格模板",
+    "T+1从采集完成日还是上传完成日起算、T+3对应哪一周结截止时点、自然日或工作日",
+    "周结束T+3是有效时长确认、整周报表还是其他产物，是否最终QA结果"
+  ],
+  "privacy_boundary": "不得在公开GitHub记录员工实名、QQ/手机号、登录资料、原始视频和工资明细。",
+  "reference": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+  "partner_followup_2026_10_16": {
+    "source": "Owner转发的灵生原话；暂无正式补充定义",
+    "exact_wording": [
+      "1. 最低采集目标时长（按6h/天计算） ；",
+      "2. 有效时长（按4h/天计算）",
+      "试采我们T+1出有效时长",
+      "周结束我们不超过T+3"
+    ],
+    "interpretation_status": "provisional_requires_partner_confirmation",
+    "daily_capture_target_hours_per_device": 6,
+    "daily_effective_target_hours_per_device": 4,
+    "trial_effective_hours_feedback": "T+1; exact T origin and calendar/business day rule pending",
+    "weekly_closing_feedback": "no later than T+3; weekly cutoff, T origin, and output meaning pending",
+    "payment_timing_specified": false,
+    "targets_are_not_guaranteed_qa_passed_hours": true
+  },
+  "submission_format": "plain_text_message",
+  "submission_format_evidence": "Owner explicit confirmation 2026-10-17 recorded in PR17/PARTNER_LEDGER",
+  "evidence_ref": "knowledge/PARTNER_LEDGER.json",
+  "evidence_partner_id": "livsyn",
+  "evidence_field": "daily_reporting_requirement_2026_10_17",
+  "actual_submission_status": "unverified",
+  "required_sections_source_preserved": true,
+  "owner_reported_daily_actuals_2026_10_17": {
+    "operating_date": "2026-10-17",
+    "evidence_level": "owner_reported_not_platform_verified",
+    "staff_participating": 3,
+    "raw_capture_hours": 18,
+    "average_raw_hours_per_person": 6,
+    "available_devices": 10,
+    "abnormal_devices": 0,
+    "upload_completed_for_operating_date": null,
+    "platform_qa_effective_hours": null,
+    "settlement_confirmed": null,
+    "daily_report_sent": null,
+    "canonical_fact_file": "knowledge/CURRENT_WORK.json",
+    "canonical_fact_field": "now/owner_reported_daily_actuals_2026_10_17",
+    "historical_backlog_owner_reported_status": "none_reported",
+    "historical_backlog_is_not_current_upload_completion": true
+  },
+  "owner_reported_efficiency_issues": [
+    "每5分钟暂停后重新开始，操作耗时",
+    "文件较大，上传速度慢"
+  ],
+  "historical_backlog": {
+    "owner_reported_status": "none_reported",
+    "scope_dates": null,
+    "platform_verified": false,
+    "does_not_establish_operating_date_upload_completion": true
+  }
+}

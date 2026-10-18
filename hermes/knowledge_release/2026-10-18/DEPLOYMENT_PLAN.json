@@ -1,0 +1,768 @@
+{
+  "schema": "hermes_knowledge_incremental_deployment_plan_v1",
+  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+  "state": "draft_approval_required",
+  "deployment_performed": false,
+  "model_acquisition_verified": false,
+  "approved_source_commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+  "integration_basis": {
+    "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+    "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+    "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+  },
+  "baseline": {
+    "source_ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+    "manifest_observed_at": "2026-10-18T10:44:57.289283+08:00",
+    "source_hash_basis": "manifest declared hashes, inherited Oct18 10:06 complete source-hash verification; recheck every target before any future write"
+  },
+  "counts": {
+    "before_source_files": 18,
+    "after_source_files": 32,
+    "before_deployment_files": 3,
+    "after_deployment_files": 3,
+    "before_total_files": 21,
+    "after_total_files": 35
+  },
+  "files": [
+    {
+      "repository_path": "AGENTS.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "AGENTS.md",
+        "git_blob_sha": "243bf4367db6ed130c84ecf232c6d9a5da7ed148",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/AGENTS.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/AGENTS.md",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "be80d544574238b790edbe07c9b0397986f6eeab1ef7da05a4f2594d59b9829f",
+      "after_sha256": "1052fe315983ffc417ed3e70222bd8c026fbe45ab252ed720665fa5b833df871",
+      "after_bytes": 3306,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "hermes/AGENTS.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "hermes/AGENTS.md",
+        "git_blob_sha": "dba3fefcb373263c93e5cbc5c06fe9dc93d80ec2",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/hermes/AGENTS.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/hermes/AGENTS.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "943366142e85aceb4c4d2c11b305ccba3e8b0c0f962523199d8ae169f948aad9",
+      "after_sha256": "943366142e85aceb4c4d2c11b305ccba3e8b0c0f962523199d8ae169f948aad9",
+      "after_bytes": 4369,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "hermes/identity/ROLE_BRIEF.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "hermes/identity/ROLE_BRIEF.md",
+        "git_blob_sha": "7bf0af739e8482a987bd7f63ec046bc4a1f72629",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/hermes/identity/ROLE_BRIEF.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/hermes/identity/ROLE_BRIEF.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "9eecd961bd75a398e367721a62eb214b78080dba6acf9418b9da9fa68551b241",
+      "after_sha256": "9eecd961bd75a398e367721a62eb214b78080dba6acf9418b9da9fa68551b241",
+      "after_bytes": 4622,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "knowledge/00_START_HERE.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/00_START_HERE.md",
+        "git_blob_sha": "ee840164d48992beaa105d145f12ca3686249f15",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/00_START_HERE.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/00_START_HERE.md",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "94eff41af85e0c79239b03822f7d6f70e9a8305c494bf83bc759486124faf7c5",
+      "after_sha256": "0fec091601212480a12159f4beb94d9f2a2ef637d6a4ce74b258400e3b0d8718",
+      "after_bytes": 3761,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/01_NORTH_STAR.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/01_NORTH_STAR.md",
+        "git_blob_sha": "8b152d0731ec577795f2021b8a12f903f6c01957",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/01_NORTH_STAR.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/01_NORTH_STAR.md",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "b7f38a645113b6c5cc89c72ed27e1d24f68a992c3e6f62f5e28f09b10ce0b4a8",
+      "after_sha256": "eccfae63e33d7df13370fea962ec4988517e121559540fcc929cb910fe695791",
+      "after_bytes": 3926,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/04_SCENE_STRATEGY.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/04_SCENE_STRATEGY.md",
+        "git_blob_sha": "95d0981905ffcdf56a70e11d50656772908998a3",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/04_SCENE_STRATEGY.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/04_SCENE_STRATEGY.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "acbdc3128fd773eba08d689d71bbe3b607367435bc8c4e98c9c65a89f9151cfc",
+      "after_sha256": "acbdc3128fd773eba08d689d71bbe3b607367435bc8c4e98c9c65a89f9151cfc",
+      "after_bytes": 2834,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+        "git_blob_sha": "3fae0005bbb7b7a1012459391591ad204d25baa8",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/05_PEOPLE_TRAINING_AND_QA.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "ec535f492f2c95607a1d1bb7509d9948e06b4c2a607497939bef470e62abb3ae",
+      "after_sha256": "7d59acddc50a7704213b7703458bf6d822e092748cd33d921b594c5fdc2388f4",
+      "after_bytes": 2286,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+        "git_blob_sha": "cd62ef46599ae50c397b018ac112d07a74047293",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "47456b3e2708c46a3919a86e75cda7b65269936fd5a5cccaa40812fa89418044",
+      "after_sha256": "47456b3e2708c46a3919a86e75cda7b65269936fd5a5cccaa40812fa89418044",
+      "after_bytes": 1064,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "knowledge/10_UPDATE_PROTOCOL.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/10_UPDATE_PROTOCOL.md",
+        "git_blob_sha": "da925a42e8901bb18e467c17457182129f5c534a",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/10_UPDATE_PROTOCOL.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/10_UPDATE_PROTOCOL.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "8feb4f4d14c835e40e93802e902a2c54068fc2eece73c2b85947836b3796223f",
+      "after_bytes": 4424,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md",
+        "git_blob_sha": "d87fdcfd1b50c13324be13d1a9ffef0460d9faa4",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "cb166fa89e7626e729fd7892b8e2246cd5b48a43b43ee56d34ba2e9aa0f8c83e",
+      "after_bytes": 12016,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+        "git_blob_sha": "b5d99ca7c99af4dfbc57199e4bd1f2c64264a54c",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "3d6d9204d8b301a3399083603c5266b51deb283bf6b06f88cef7feed29bf438f",
+      "after_sha256": "69b296beda5fde5215278c353ef1bb91a6a48f4936fa261cbb03ccb0f64f7aa2",
+      "after_bytes": 13295,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+        "git_blob_sha": "1aa531c4af3fdb806edfca78044423f28fe8935d",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "b44a557d05e7e51931f6127c5e58cdbfd2721eb050377b65bb8e4cea9e002ba2",
+      "after_bytes": 27379,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+        "git_blob_sha": "5cd14a59518f925e8a0989ca64123b0fd5e44f5c",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "e46f43cc447426dc268a39605d6e53647112f90555b3e63ff05a2da51bed4c1b",
+      "after_bytes": 7061,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md",
+        "git_blob_sha": "28dedb726926e3a0e7f707c0b1b974f4cbe0a2e3",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "4d21af25af6beb8a894ac5c920026b124767dab9055beed2a8aacb1a2c72904a",
+      "after_bytes": 10176,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+        "git_blob_sha": "0a205ae2f964ea713e56bf375e4dba79467d00fa",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "9c042713d2f77ef601a818931d2259eb291e5706a516a1f8ef3d9c490f89a2f3",
+      "after_bytes": 10607,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md",
+        "git_blob_sha": "a9e6bbd80b398f4a872fe6c0e18846d39dfb1ced",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "5b2c2fceaee60a7c8f1393abfd24951c70722af0c3c90f5940e56976e1c5445d",
+      "after_bytes": 8049,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/COMPANY_PROFILE.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/COMPANY_PROFILE.json",
+        "git_blob_sha": "81cfcd63aee5ec6c21fad1fbcf2888ec416483a7",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/COMPANY_PROFILE.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/COMPANY_PROFILE.json",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "b8babbbca13efe40310a2568ca8bc4f588d0cb3d2bec2ead83e66a8f57544ccc",
+      "after_bytes": 2678,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/CURRENT_WORK.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/CURRENT_WORK.json",
+        "git_blob_sha": "0c19c65e2d6c31d97fd8ff0a0a7bf74aa52a90a1",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/CURRENT_WORK.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/CURRENT_WORK.json",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "a12cd29b3c512986e6e00a1ec3fc41d5249bc553ebd7cea767766bf659396ff5",
+      "after_sha256": "6a5b8eb4d6cefa502ca3c99919280296eca01651c8b36c9577bbe82d1117655c",
+      "after_bytes": 24161,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/ECONOMICS_MODEL.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/ECONOMICS_MODEL.json",
+        "git_blob_sha": "2178715eb4f56205cc88d3cb7ef7816d20bffc08",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/ECONOMICS_MODEL.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/ECONOMICS_MODEL.json",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "d3e2548f0b21d9d040119a56cc5cf046cd1b2ea34fd92b4788b8b24ddccead14",
+      "after_bytes": 17944,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/FRESHNESS_PROTOCOL.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/FRESHNESS_PROTOCOL.md",
+        "git_blob_sha": "e47933d0590279783f1372e3e78b9b4ae9fdead8",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/FRESHNESS_PROTOCOL.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/FRESHNESS_PROTOCOL.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "2862d7c4e53ae9b33a2e742907ff0f2901e84207af5fe006c239e3c61684d037",
+      "after_sha256": "2862d7c4e53ae9b33a2e742907ff0f2901e84207af5fe006c239e3c61684d037",
+      "after_bytes": 844,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+        "git_blob_sha": "9471c5894e323461957e56f5594001207d4c1292",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "9b907998b296365f07df8aea646383a74b3e97ae95f3e190c95e3d3f4a0d586d",
+      "after_sha256": "9b907998b296365f07df8aea646383a74b3e97ae95f3e190c95e3d3f4a0d586d",
+      "after_bytes": 12513,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "knowledge/KNOWLEDGE_HARNESS.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/KNOWLEDGE_HARNESS.json",
+        "git_blob_sha": "2e15cde7aa1792ab7ab391f7ce812270a7da50a2",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/KNOWLEDGE_HARNESS.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/KNOWLEDGE_HARNESS.json",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "4767797b382900068935cc2aa4a6ca525a12361fe0cc066ecdc0ff75f8e27e98",
+      "after_sha256": "4767797b382900068935cc2aa4a6ca525a12361fe0cc066ecdc0ff75f8e27e98",
+      "after_bytes": 4629,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+        "git_blob_sha": "0d2d7b818ffef6d6334d97daf90a00a10a2eec1c",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "3695ba99fd7d72ff4a4996d74262843625a588b7ca0f73d8bab1d4426b0d6032",
+      "after_bytes": 5276,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/OPERATING_BRIEF_2026-10-18.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/OPERATING_BRIEF_2026-10-18.md",
+        "git_blob_sha": "5b0496e0aadb81af746427aa42088846399372c2",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/OPERATING_BRIEF_2026-10-18.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/OPERATING_BRIEF_2026-10-18.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "4a0b510d73b1fcbf59e83df2bda4e117a22adc098d75f73b38b60ca73321f070",
+      "after_bytes": 5764,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/PARTNER_LEDGER.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/PARTNER_LEDGER.json",
+        "git_blob_sha": "5df1b2682cc2aca44881c55813a53fd046fbd8c5",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/PARTNER_LEDGER.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/PARTNER_LEDGER.json",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "fd9a5615656cfa18d3a076332cad8b958fa83ee7e3db639a95d8b7ca5f670a48",
+      "after_sha256": "f7cda4ff7433ef2a5e64f21fbfb45d8c424c4c3fa438c9ddb962bde58d1a7cea",
+      "after_bytes": 12129,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/PROJECT_INDEX.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/PROJECT_INDEX.json",
+        "git_blob_sha": "5aaf6f1e21363d8cf486b2b67a5a240b5aaf7228",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/PROJECT_INDEX.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/PROJECT_INDEX.json",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "72cbf0194219b20c1a4fd0373cdeaf7d42c606ac86034989443122d347e50354",
+      "after_sha256": "dfef8e25329796d39e95fac19ae3759ec220e041a20eb92540c343fda0447abf",
+      "after_bytes": 9682,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/SCENE_PIPELINE.json",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/SCENE_PIPELINE.json",
+        "git_blob_sha": "78d70f88ee3995c0c370d60b41ef47ed61e68b62",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/SCENE_PIPELINE.json"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/SCENE_PIPELINE.json",
+      "action": "update",
+      "required_before_state": "sha256_match",
+      "before_sha256": "2c0f8353b738d2c8b40c3e2b70a4adc435629f528fc6f6a4dd9c27698540bc96",
+      "after_sha256": "83439eb79b8e422cc65a6a0ec174ee46efe5faa0b650414daa7930b570aa3a4e",
+      "after_bytes": 16007,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "restore this file exact private before-image only if current hash == after and backup hash == before; stop on any mismatch"
+    },
+    {
+      "repository_path": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+        "git_blob_sha": "cb47c9616a3c7152526bd436e07a48b9dbeab95f",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "117317f8f2abc7aa392d07b2d91e2bf66176956e27726a9dc35969a4d079b79b",
+      "after_sha256": "117317f8f2abc7aa392d07b2d91e2bf66176956e27726a9dc35969a4d079b79b",
+      "after_bytes": 5253,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    },
+    {
+      "repository_path": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+        "git_blob_sha": "115d4a2d5ee39e8d948e230f97e9699532aece81",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "1bdbda35eadf5d60b4d3e19b4e434af2c7699e5570d03dbc6756d6ae9914521a",
+      "after_bytes": 10605,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+        "git_blob_sha": "7b5a7dffffa33b7af432f3a2d32953eaa3890827",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "8a9a4a5cab8cfac8c8ddcf5647be20b104c854bb0c3d5dc80ac81be4c08553c2",
+      "after_bytes": 13166,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md",
+        "git_blob_sha": "33277a5b1d2dd5b434c6d16d8e366d437cabdc25",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md",
+      "action": "add",
+      "required_before_state": "absent",
+      "before_sha256": null,
+      "after_sha256": "73b005044f4de19d11d2a7e479993c448153504ffa11d70d6f8ca4113283880e",
+      "after_bytes": 6820,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "remove only this newly added file after current hash == after and path stays inside W; explicit rollback authorization required"
+    },
+    {
+      "repository_path": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "github_source": {
+        "repository": "jinxi1036-maker68/jiqiren",
+        "commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "path": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+        "git_blob_sha": "70fffb020dba25c1fb40de7c07f258d59e35c7bb",
+        "url": "https://github.com/jinxi1036-maker68/jiqiren/blob/812c9728c4a39e3451518392eb819c40efe334a5/knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md"
+      },
+      "adopted_version": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "target": "W/knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "action": "preserve",
+      "required_before_state": "sha256_match",
+      "before_sha256": "a833ece42c192748796704aa80fe8c888ed62ea68c71dd73e13cbf33951751cc",
+      "after_sha256": "a833ece42c192748796704aa80fe8c888ed62ea68c71dd73e13cbf33951751cc",
+      "after_bytes": 10696,
+      "hash_method": "SHA256 of exact UTF-8 file bytes; no BOM/newline conversion",
+      "manifest_entry_after": true,
+      "rollback": "no write"
+    }
+  ],
+  "manifest_update": {
+    "target": "W/SNAPSHOT_MANIFEST.json",
+    "candidate_repository_path": "hermes/knowledge_release/2026-10-18/SNAPSHOT_MANIFEST.candidate.json",
+    "action": "update_last_after_all_payload_files_verify",
+    "before_sha256": "8b4783d361b71cfe2b61c7b9949b57dbc11deeefa45f43fb31c8397159d7cf6e",
+    "after_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+    "source_count_after": 32,
+    "workspace_count_after": 35,
+    "rollback": "restore exact old manifest only after reverting corresponding source files to recorded before state; verify both hashes"
+  },
+  "optional_status_update": {
+    "target": "W/GATE_1A_STATUS.json",
+    "patch_repository_path": "hermes/knowledge_release/2026-10-18/GATE_1A_STATUS.proposed_patch.json",
+    "requires_separate_owner_approval": true,
+    "before_sha256": "b2a38d9d66ebce7442ff3ce3711d36fcae06f213cc726c34340f0ae911a48609",
+    "after_sha256": "eed206fbebc93c24c7ecb783bdb10c3cce1376a67231d7123a6e7a15c5f470a8",
+    "rollback": "restore only this file exact private before-image if current hash still equals proposed after"
+  },
+  "protected": {
+    "W/HERMES.md": "0ae46293b8773631ceb3acf0da4a44ae6d361860e44c95926ccf322185374247",
+    "H/SOUL.md": "6cde9e101908e83578a666380a0dab0aa9fba00cbb5bdfa480cb0a748c7032eb",
+    "H/memories/MEMORY.md": "unchanged; no body read or copied",
+    "H/memories/USER.md": "unchanged; no body read or copied",
+    "H/config.yaml": "never write; includes model/credentials/QQ/voice/MCP/service config",
+    "H/cron/jobs.json": "never write",
+    "all_other_original_files_services_profiles": "outside allowlist; never modify or clean"
+  },
+  "preflight": [
+    "Owner explicitly approves this release and target set; approval does not authorize model calls or real websites",
+    "Refetch exact source commit, verify git blobs and all SHA256; moving main/PR heads are not substitutes",
+    "Resolve each target and every parent inside actual W; reject traversal, symlink/reparse escapes",
+    "For update/preserve compare actual current hash with before; for add require absent; reject unexpected W files or changed baseline rather than overwrite",
+    "Use existing recovery evidence; capture only exact before-images of approved updated files in private Owner-local storage at actual deployment time; no full backup, none made in this preparation",
+    "Stage outside W; copy exact bytes one approved file at a time; leave 9 preserved source files and HERMES untouched",
+    "Verify 32 source files, then atomically replace the one manifest; optional status patch requires its separate approval and exact old hash",
+    "Verify final counts 32+3=35 and protected invariants; stage files must not remain in W; do not send model messages to manufacture evidence"
+  ],
+  "rollback": [
+    "Stop on first mismatch; do not overwrite unrelated or concurrent changes",
+    "For updated files require current == planned after and before-image == before before restoring exact bytes",
+    "For new files require resolved path inside W and current == planned after before any explicitly authorized single-file removal; no recursive deletion",
+    "Restore matching manifest/status last and verify old source set/count; refuse rollback if later edits make these guards fail"
+  ],
+  "independent_open_issues": [
+    {
+      "topic": "voice.auto_tts=false",
+      "evidence": "Oct18 prior read-only status report; differs from earlier Owner preference",
+      "cause": "unknown",
+      "action_in_this_release": "none"
+    },
+    {
+      "topic": "WeCom gateway errors and process exit",
+      "evidence": "Oct18 prior bounded log review",
+      "cause": "not established; not attributed to Hermes model service",
+      "action_in_this_release": "none"
+    }
+  ],
+  "approval_required": [
+    "23 payload writes: 9 updates and 14 additions exactly as listed",
+    "one manifest update from 18 to 32 source records",
+    "optional one GATE_1A_STATUS field patch; no reset of historical model budgets",
+    "private one-file before-images and guarded per-file rollback at deployment time"
+  ],
+  "explicitly_not_authorized": [
+    "local deployment in this task",
+    "SOUL/HERMES/MEMORY/USER/config/tool permission changes",
+    "new Hermes model calls",
+    "real LingSyn login/requests or writes",
+    "profile/old memory cleanup",
+    "merging source or integration PRs"
+  ],
+  "deployment_evidence_policy": {
+    "state_source": "local_manifest_and_authorized_deployment_verification_record",
+    "manifest_location": "公司工作区W根目录",
+    "manifest_file": "SNAPSHOT_MANIFEST.json",
+    "verification_record": "Owner批准范围内实际执行完成的本机部署核验记录；须与manifest中的release_id、固定来源提交及源文件哈希对应",
+    "static_artifact_is_deployment_evidence": false,
+    "required_evidence": [
+      "本机manifest的release_id及ref对应本知识版本和固定来源提交",
+      "manifest所列32份源文件的当前SHA256逐项一致",
+      "对应的授权部署核验记录确认该版本实际部署完成"
+    ],
+    "missing_or_conflicting_evidence": "unverified; report missing or mismatched evidence, never infer deployed or not_deployed from this static knowledge",
+    "verified_scope": "仅确认该版本已在本机磁盘完成部署；不证明Hermes已逐份读取、完整自动装载或取得新业务权限"
+  },
+  "completion_record_requirements": {
+    "scope": "future Owner-authorized deployment only; no completion record produced by this preparation",
+    "must_record": [
+      "actual Owner authorization reference",
+      "actual completion time and resolved company workspace",
+      "release_id and fixed source commit matching installed manifest",
+      "32 current source SHA256 checks and protected-file invariants",
+      "per-file results and any failure or rollback; declare complete only on all required checks passing"
+    ],
+    "storage": "Owner-local deployment verification record outside the 35-file W payload; publish redacted evidence only when separately authorized",
+    "does_not_prove": [
+      "model knowledge acquisition",
+      "new model or real business permissions"
+    ]
+  }
+}

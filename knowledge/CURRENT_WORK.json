@@ -6,31 +6,188 @@
   "context_profile": "pre_trial_preparation",
   "objective": "按灵生对接人认可的自建真实作业场景方式，完善平顶山三分区具体任务SOP，先完成小批采集、上传及质检反馈，在真实有效小时和费用条款可核实后再扩大10台及人员规模。",
   "now": {
-    "date": "2026-10-15",
-    "phase": "三分区任务设计/送审准备，正式采集产能尚未验证",
+    "date": "2026-10-18",
+    "phase": "Owner报告三场景已准备并内测，10月17日3人实际原始采集18小时、人均6小时，可用设备10台异常0台；均为Owner报告，上传完成、平台QA有效小时、结算及日报发送仍未知。",
     "first_batch_device_target": 10,
     "actual_devices_received": null,
-    "actual_workers_deployed": null,
-    "proposed_trial_date": "2026-10-16（Owner希望启动少量试采；SOP/上传/计费仍待确认）",
+    "actual_workers_deployed": 3,
+    "proposed_trial_date": "历史计划：2026-10-16制定于10月17日用3台试采；该计划独立保留，10月17日Owner报告实际原始采集见owner_reported_daily_actuals_2026_10_17。",
     "accepted_organization_mode": "吴启蒙以书面消息明确认可自建小型真实作业工位、真实物料真实工序、受训采集员操作（conversation_confirmed）",
     "selected_tasks": [
       "线边仓补货",
       "空容器回收",
       "外观质检"
     ],
-    "task_plan": "总场景划分A线边物料货架区、B空箱回收区、C产品外观检查区；向吴启蒙提交任务目标、关键动作、任务SOP；具体方案是否已递交并审批未知",
+    "task_plan": "线边仓补货、空容器回收、产品外观质检三个场景已按Owner报告布置到位并完成内部规划/动作演练；甲方逐任务最终SOP是否正式核准仍未知。",
     "partner_trial_data_accepted_hours": null,
     "settlement_received": null,
-    "reference": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md"
+    "reference": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+    "owner_reported_operational_update": {
+      "reported_on": "2026-10-16",
+      "site_scene_preparation_completed_on": "2026-10-15",
+      "scene_names": [
+        "线边仓补货",
+        "空容器回收",
+        "产品外观质检"
+      ],
+      "internal_rehearsal_on": "2026-10-16",
+      "rehearsal_scope": "场景规划、主要路径、动作测试/演练（不等同灵生正式试采或质检验收）",
+      "partner_communication_on": "2026-10-16晚间",
+      "planned_first_capture_date": "2026-10-17",
+      "planned_active_devices": 3,
+      "per_device_daily_capture_target_hours": 6,
+      "per_device_daily_effective_target_hours": 4,
+      "total_planned_device_capture_hours": 18,
+      "total_planned_effective_target_hours": 12,
+      "classification": "owner_reported_partner_conversation_tentative_operational_target",
+      "actual_equipment_in_hand": null,
+      "actual_staffing": 3,
+      "actual_capture_hours": 18,
+      "actual_qa_accepted_hours": null,
+      "note": "10月16日3台及18/12小时均保留为历史计划。10月17日Owner另报3人、实际原始采集18小时、人均6小时、可用10台异常0台；并非平台QA证据。当日上传完成、审核有效小时、结算和日报发送仍未知。",
+      "actuals_operating_date": "2026-10-17",
+      "actuals_evidence_level": "owner_reported_not_platform_verified",
+      "actuals_recorded_on": "2026-10-18",
+      "actual_available_devices": 10,
+      "actual_abnormal_devices": 0,
+      "average_raw_hours_per_person": 6,
+      "actuals_canonical_field": "now/owner_reported_daily_actuals_2026_10_17",
+      "plan_record_status": "historical_plan_as_of_2026_10_16"
+    },
+    "partner_daily_reporting": {
+      "status": "owner_forwarded_partner_request",
+      "reported_on": "2026-10-16",
+      "requirements_ref": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+      "sections": [
+        "今日投入及产出",
+        "设备盘点",
+        "时间/人力及场景计划",
+        "上传完成与按采集日期区分的积压"
+      ],
+      "recipient_channel_deadline": "pending",
+      "effectiveness_and_productivity_definition": "pending",
+      "submission_format": "plain_text_message",
+      "submission_format_evidence": "Owner explicit confirmation 2026-10-17 recorded in PR17",
+      "actual_report_sent": "unverified"
+    },
+    "recording_efficiency_open_item": {
+      "date": "2026-10-17",
+      "status": "owner_proposal_pending_livsyn_response",
+      "type": "recording_device_efficiency_and_worker_pay_design",
+      "source": "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+      "owner_reported_equipment": "128GB内存卡设备可持续录制超过单条5分钟限制；录后从卡用手机或电脑读取上传；未实测格式与固件能力",
+      "sop_reference": "单Episode 30秒至5分钟、起止约2秒规范应核实最新原文及合格样例，禁止未经批准改造/切片绕过",
+      "priority_solution": "先与灵生沟通提前时长提醒、每小时累计原始录制提醒及后续合规自动启停/官方分段能力；工资模型为备选",
+      "status_boundary": "讨论与Owner计划而非厂家承诺/灵生批准/已部署，未取得新的质检结算证据",
+      "owner_next_step": "电话与吴启蒙确认设备提醒可行性、2秒真实起止规则、五分钟上限原因、是否允许自动分段/后处理；保存回复后再同步知识库"
+    },
+    "current_owner_self_operated_cap_2026_10_18": {
+      "status": "owner_decision_future_plan",
+      "own_devices_target": 10,
+      "own_people_target": 10,
+      "no_further_direct_site_expansion": true,
+      "external_partner_team_devices": 10,
+      "device_rent_proposal_cny_per_day": 25,
+      "approved_hour_partner_price_cny": 30,
+      "upstream_40_cny_per_approved_hour_reference": true,
+      "equipment_deposit_from_partner": "proposed_amount_pending",
+      "current_authorization_to_subcontract": "not_verified",
+      "link": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+      "latest_team_model_clarification": "Owner明确未来10台合作团队属于凌矩业务协作体系，队长可自己采集兼管理，也可由10位其他人员采集而自己管理；约85平方米场地参考月租850元，工位前期建设可复用，凌矩可指定集中上传地点并承担网络。须先核合法用工及第三方分包、转租许可。",
+      "team_legal_model": "九位队长拟由凌矩直接签劳动合同、发工资和依法缴社保；不默认其为独立合作商负责人。其他采集员用工主体、团队合同关系、30元付款对象和25元设备费交易对象待核。"
+    },
+    "current_owner_operating_priority": "先验证自营10台合格数据、上传及真实回款；后续九个附近团队队长拟由凌矩直接聘用、发薪和缴社保；在定团队其他采集员用工主体、25元设备费是否真实对外交易、取得上游设备/分包授权之前，不对外派设备或承诺收入与税收优惠。",
+    "future_network_cap_discussion_2026_10_18": {
+      "proposed_devices_total": 100,
+      "provisionally_ten_own_plus_nine_ten_device_teams": true,
+      "location": "near Owner local area",
+      "status": "owner_future_upper_bound_not_installed",
+      "tax_questions": "VAT taxable sales gross vs net and 5m general-payer threshold, small micro CIT 5% eligibility, Henan eligible veteran individual enterprise tax deductions up to 24000 vs LLC hiring veteran up to 9000/person/year",
+      "veteran_identity": "unspecified_do_not_assume",
+      "reference": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+      "includes_self_operated_ten": null,
+      "inclusion_confirmation_status": "pending_owner_confirmation"
+    },
+    "nine_team_leaders_employment_2026_10_18": {
+      "status": "owner_approved_future_hiring_method",
+      "total_leaders": 9,
+      "employer": "Lingju",
+      "contract_pay_social_insurance": "direct employment contracts, Lingju payroll, lawful company social insurance",
+      "team_other_worker_employer": "pending",
+      "leader_salary": "to be set and budgeted",
+      "tax_eligibility": "check individually before claiming Henan qualified-hire tax reduction; private verification, no personal docs in GitHub",
+      "source": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    },
+    "company_knowledge_candidate": {
+      "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "status": "versioned_knowledge_artifact",
+      "reference": "knowledge/OPERATING_BRIEF_2026-10-18.md",
+      "identity_charter_unchanged": true,
+      "status_scope": "immutable_artifact_metadata_not_runtime_deployment_state",
+      "build_context": {
+        "recorded_on": "2026-10-18",
+        "review_context": "PR18 Draft知识整合制品；这是生成背景，不是当前部署状态",
+        "review_ref": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807"
+      },
+      "local_deployment_evidence": {
+        "state_source": "local_manifest_and_authorized_deployment_verification_record",
+        "manifest_location": "公司工作区W根目录",
+        "manifest_file": "SNAPSHOT_MANIFEST.json",
+        "verification_record": "Owner批准范围内实际执行完成的本机部署核验记录；须与manifest中的release_id、固定来源提交及源文件哈希对应",
+        "static_artifact_is_deployment_evidence": false,
+        "required_evidence": [
+          "本机manifest的release_id及ref对应本知识版本和固定来源提交",
+          "manifest所列32份源文件的当前SHA256逐项一致",
+          "对应的授权部署核验记录确认该版本实际部署完成"
+        ],
+        "missing_or_conflicting_evidence": "unverified; report missing or mismatched evidence, never infer deployed or not_deployed from this static knowledge",
+        "verified_scope": "仅确认该版本已在本机磁盘完成部署；不证明Hermes已逐份读取、完整自动装载或取得新业务权限"
+      }
+    },
+    "owner_reported_daily_actuals_2026_10_17": {
+      "operating_date": "2026-10-17",
+      "recorded_on": "2026-10-18",
+      "evidence_level": "owner_reported_not_platform_verified",
+      "source": "Owner-provided 2026-10-17 daily report, explicitly restated in current Owner instruction; ChatGPT Review 5561291820",
+      "review_ref": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "staff_participating": 3,
+      "raw_capture_hours": 18,
+      "average_raw_hours_per_person": 6,
+      "available_devices": 10,
+      "abnormal_devices": 0,
+      "owner_reported_efficiency_issues": [
+        "每5分钟暂停后重新开始，操作耗时",
+        "文件较大，上传速度慢"
+      ],
+      "upload_completed_for_operating_date": null,
+      "actual_uploaded_hours": null,
+      "historical_backlog": {
+        "owner_reported_status": "none_reported",
+        "scope_dates": null,
+        "platform_verified": false,
+        "does_not_establish_operating_date_upload_completion": true
+      },
+      "platform_qa_effective_hours": null,
+      "settlement_confirmed": null,
+      "payment_received": null,
+      "daily_report_sent": null,
+      "boundaries": [
+        "原始采集18小时不是审核有效18小时",
+        "未提供平台审核证据或已结算证明",
+        "历史数据暂无积压仅为Owner报告，具体日期范围未给出；当日全部上传是否完成仍未知",
+        "不得将日报内容已填写或Owner已报告等同于日报已向灵生发送"
+      ]
+    },
+    "actual_workers_deployed_asof": "2026-10-17",
+    "actual_workers_deployed_evidence": "owner_reported"
   },
   "project_lead_mode": {
     "enabled": true,
     "rule": "ChatGPT负责维护事实、准备场景任务与SOP/核算/风险门槛；Owner负责业务沟通、线下决策、合同和资金确认",
     "next_24h_focus": [
-      "提交三分区逐任务SOP供吴启蒙确认，尤其台账更新、托盘堆叠、外观扫描/标注/上报",
-      "确认首批只试采哪些具体任务、录制要求、上传审核路径和审核反馈时点",
-      "确认10台实际交付/使用许可、押金、试采免租的起止条件和试采有效数据是否按约结算",
-      "不重投入先完成安全工位/物料准备与少量试采，保存甲方认可和正式审核记录"
+      "以10月17日Owner报告的3人、18原始小时、人均6小时、可用10台异常0台为已报告事实，补核当日上传是否完成；历史暂无积压不替代当日上传完成证明。",
+      "整理每5分钟启停耗时和大文件慢上传问题；核实平台QA有效小时、人效口径、日报投递及是否已实际发送，不擅自改SOP或认定已结算。",
+      "核实三任务完整SOP、试采费用和结算；最新自营10台、附近每组10台及九位队长直接雇佣安排保持不变。"
     ]
   },
   "confirmed_by_conversation": [
@@ -68,8 +225,14 @@
     "不得虚构正在运营工厂订单、真实缺陷样品来源、工作场景授权或已有项目业绩。",
     "不得用影响工人安全的方式满足拍摄要求；不强迫省略必要的专业防护。"
   ],
-  "next_action": "取得灵生对三分区任务SOP及首条任务录制上传规则的确认；按批准版本低成本试采、正式质检，再测算是否扩设备和人数。",
+  "next_action": "按Owner报告的10月17日3人/18原始小时、可用10台异常0台准备文字日报，补核当日上传是否完成、平台QA与回款及实际发送状态；稳定自营10台，附近团队仍先核上游授权、用工和费用对象。",
   "must_read": [
+    "knowledge/OPERATING_BRIEF_2026-10-18.md",
+    "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+    "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+    "knowledge/COMPANY_PROFILE.json",
+    "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+    "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
     "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "knowledge/SCENE_PIPELINE.json",
     "knowledge/PARTNER_LEDGER.json",
@@ -110,16 +273,24 @@
     "note": "缺记录不等于实际未完成；候选与意愿不能当作合格人员或正式授权，预填10台不能当作实际到位。"
   },
   "trial_validation_proposal": {
-    "status": "partner_scene_type_allowed_task_level_approval_pending",
-    "suggested_initial_devices": "1—2台（我方建议；设备到位与具体试采数量未知）",
+    "status": "historical_1_to_2_device_suggestion_superseded_by_owner_planned_three_device_trial",
+    "suggested_initial_devices": "历史建议1—2台；2026-10-16 Owner报告已与灵生沟通拟10月17日启用3台，此条仅保留原建议的演进轨迹",
     "action": "先送审三分区任务SOP，正式确认后小批录制0.5—5分钟Episode并上传实际质检；核算真实产能、损坏、成本与结算，再扩10台。",
     "approved_by_partner": "仅确认自建真实工位模式可尝试；未确认三任务具体SOP和小批样本通过",
-    "does_not_replace_first_batch_target": 10
+    "does_not_replace_first_batch_target": 10,
+    "latest_owner_plan": {
+      "plan_date": "2026-10-16",
+      "start": "2026-10-17",
+      "devices": 3,
+      "per_device_hours": 6,
+      "effective_target_hours": 4,
+      "status": "planned_not_yet_operated"
+    }
   },
   "next_pre_trial_actions": [
-    "按照吴启蒙要求提交三分区SOP；确认文件对外文风正式、通俗易懂，不掺内部问题/采购计划。",
-    "优先完成空容器回收低风险场景样本；线边仓补货和外观质检待原任务全部环节确认。",
-    "所有任务以首批质检实际结果为证据，不以‘可以搭建’代替‘会通过验收’。"
+    "以10月17日Owner报告的3人、18原始小时、人均6小时、可用10台异常0台为已报告事实，补核当日上传是否完成；历史暂无积压不替代当日上传完成证明。",
+    "整理每5分钟启停耗时和大文件慢上传问题；核实平台QA有效小时、人效口径、日报投递及是否已实际发送，不擅自改SOP或认定已结算。",
+    "核实三任务完整SOP、试采费用和结算；最新自营10台、附近每组10台及九位队长直接雇佣安排保持不变。"
   ],
   "codex_procurement_photo_task": {
     "date": "2026-10-15",
@@ -135,20 +306,20 @@
   "parallel_development_track": {
     "id": "HERMES-DIGITAL-EMPLOYEE",
     "created_at": "2026-10-15",
-    "status": "phase02b_gate_a_simulation_reviewed_new_owner_single_employee_direction_pending_original_install_migration",
+    "status": "gate1a_partial_conditional_acceptance",
     "purpose": "在既有业务知识库旁同步建设Hermes数字员工开发档案；由Codex在本地盘点并训练Hermes，不预设灵生后台菜单及用户操作习惯",
     "entry": "hermes/README.md",
     "phase_one_task": "hermes/tasks/PHASE_01_LOCAL_AUDIT.md",
-    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/7",
-    "current_limits": "原安装Hermes旧记忆尚未清理、正式主身份尚未按新理念重建；独立测试profile仅为阶段实验；临时模型授权已结束；未登录灵生真实后台，未实现自动值班/正式派单。",
-    "next_gate": "Codex先依据最新Owner宪章重新评估现有本地原Hermes和PR#6/#8，拟定具体可复核的单身份岗位迁移、旧业务清理及能力接入方案；Owner核对永久删除范围/实际操作授权，之后再执行。",
+    "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "current_limits": "公司知识磁盘部署情况以now.company_knowledge_candidate.local_deployment_evidence指定的本机证据为准；HERMES自动装载及SOUL/旧记忆完整注入未证实；原旧业务未清理；真实灵生只读培训与新增模型消息未授权。",
+    "next_gate": "以本机manifest和授权部署核验记录判定知识部署情况；如尚无匹配证据，先审查并取得具体增量写入授权。真实页面与模型使用另行授权。",
     "scope_note": "该并行技术工作不替换原有唯一业务主工作项WI-2026-10-livsyn-first-trial-prep",
     "phase_01_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
     "phase_01_review": "已审查并合并；阶段模拟组件测试不代表生产运营",
     "phase_01_verified_basis": "Hermes Agent 0.20.4 Windows; Playwright MCP独立虚拟浏览器9项测试通过；原CDP连接失败；配置净增1字节后来核实为voice.auto_tts true→false但历史写入者未知",
     "phase_02a_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/5",
     "phase_02a_scope": "review config drift, backup/restore, build isolated job profile, verify Hermes Agent autonomously operates synthetic browser page; no production login or operations",
-    "current_phase": "Owner单员工理念已定稿；Phase02B Gate A模拟训练已审，正在准备实施方案改线",
+    "current_phase": "Gate1A部分验收（2026-10-18记录）；公司知识版本与实际本机部署状态分开，后者以本机manifest和授权部署核验记录为准。",
     "owner_charter": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
     "owner_adr": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
     "evolution_history": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
@@ -160,6 +331,14 @@
     "phase_02b_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/8",
     "phase_02b_status": "2026-10-16 Gate A范围内审查通过，PR当时未合并且基于PR#6分支；23次模型对话/97次浏览器调用；九类最新模拟样本通过，Windows CMD双击视觉验收待完成",
     "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆",
-    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
-  }
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "review_evidence": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6244446585"
+  },
+  "company_identity": {
+    "name": "平顶山凌矩信息科技有限责任公司",
+    "name_source": "Owner 2026-10-16",
+    "verification": "owner_confirmed_legal_name_registration_details_pending",
+    "profile": "knowledge/COMPANY_PROFILE.json"
+  },
+  "company_identity_ref": "knowledge/COMPANY_PROFILE.json"
 }

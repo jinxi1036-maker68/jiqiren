@@ -1,6 +1,6 @@
 {
   "schema_version": "economics_model_v1",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-18",
   "partner": "北京灵生科技有限公司 / LivSyn",
   "terms": [
     {
@@ -68,6 +68,20 @@
       "unit": "CNY/effective_hour",
       "status": "assumption",
       "note": "用户本地观察，不是平台规则"
+    },
+    {
+      "key": "worker_pay_per_approved_effective_hour",
+      "value": 15,
+      "unit": "CNY/approved-effective-hour",
+      "status": "owner_proposed_policy_not_formally_implemented",
+      "note": "仅指Owner提出的A级基础15元/审核有效小时；A级实际拟按当月个人A级有效率分档至16/18/20，B级拟为12。详细见knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md；制度尚待合同和劳动合规确认。"
+    },
+    {
+      "key": "worker_pay_per_approved_effective_hour_increase_option",
+      "value": 16,
+      "unit": "CNY/approved-effective-hour",
+      "status": "owner_proposed_A_tier_50_to_below_80",
+      "note": "既有2026-10-14 A级月度有效率50%至不足80%档位为16元/审核有效小时，不能只理解为统一涨薪；2026-10-17再次讨论15/16元未明确废止旧A/B分档。"
     }
   ],
   "trial_formula": "贡献毛利 = 有效小时×40 - 设备数×计租天数×20 - 人工 - 场景 - 管理质检 - 交通网络 - 税费 - 返工损耗",
@@ -90,5 +104,219 @@
     "request_from_partner_group": "月底前100人",
     "binding_to_owner": false,
     "decision": "先有小批有效数据、审核反馈、第一笔实际结算与资金测算，再决定设备、人力扩张"
+  },
+  "worker_pay_design": {
+    "source": "knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md",
+    "source_in_main": true,
+    "source_document_date": "2026-10-14",
+    "status": "owner_proposed_not_formally_implemented_pending_labor_compliance_and_written_terms",
+    "pricing_basis": "platform_approved_effective_hours",
+    "A_monthly_yield_tiers": [
+      {
+        "effective_ratio_gte": 0,
+        "effective_ratio_lt": 0.5,
+        "cny_per_approved_effective_hour": 15
+      },
+      {
+        "effective_ratio_gte": 0.5,
+        "effective_ratio_lt": 0.8,
+        "cny_per_approved_effective_hour": 16
+      },
+      {
+        "effective_ratio_gte": 0.8,
+        "effective_ratio_lt": 0.95,
+        "cny_per_approved_effective_hour": 18
+      },
+      {
+        "effective_ratio_gte": 0.95,
+        "effective_ratio_lt": null,
+        "cny_per_approved_effective_hour": 20
+      }
+    ],
+    "B_cny_per_approved_effective_hour": 12,
+    "A_monthly_ratio_rule": "approved_effective_duration_of_A_tasks / submitted_compliant_raw_duration_of_A_tasks; calendar month; exclude B tasks",
+    "B_to_A_eligibility_rule": "five consecutive actual tasked-and-completed collection days; days without assigned tasks do not reset; only future task pricing",
+    "owner_proposed_payment_day_of_month": 10,
+    "payment_day_qualification": "monthly settlement intent only; mandatory legal wage/payment frequency and employment obligations control",
+    "unresolved": [
+      "minimum eligible sample size",
+      "quality audit delay and provisional settlement",
+      "work relationship and legal wage protections",
+      "whether prior A/B proposal has now been finalized for actual recruitment"
+    ]
+  },
+  "team_leader_staffing_design_2026_10_17": {
+    "status": "historical_50_device_own_operations_scenario_superseded_2026_10_18",
+    "date": "2026-10-17",
+    "devices_per_team": 10,
+    "leaders_count_at_50_devices": 5,
+    "headcount_model": "50采集岗位，含5人兼任组长，另45人为普通采集岗位；不是50+5额外独立管理岗位",
+    "leader_is_collector": true,
+    "leader_data_pay": "按本人平台审核有效小时与A级/B级实际等级对应单价计算，已包括在50位采集员总绩效内",
+    "additional_management_stipend_monthly_options_cny": [
+      1500,
+      2000
+    ],
+    "additional_group_hours_commission": "not_authorized_in_latest_owner_decision_do_not_budget",
+    "performance_review": "整组有效小时、审核有效率、任务完成、设备/上传/质量闭环用于管理岗位考核，须查明不可控拒收原因及合规",
+    "primary_scenario": "50台每台6原始h每日30天，75%有效率，全部A级假设16元/有效小时",
+    "estimated_monthly_surplus_before_unmeasured_legal_costs": {
+      "management_1500_extra_expenses_excluding_separate_qa_cny": 121250,
+      "management_2000_extra_expenses_excluding_separate_qa_cny": 118750,
+      "management_1500_including_separate_optional_qa_3000_cny": 118250,
+      "management_2000_including_separate_optional_qa_3000_cny": 115750
+    },
+    "cost_assumptions": "设备20元/台日，宽带250元/月，电费1000元/月，耗材2000元/月均为情景估算；3000独立QA费用只有实际额外发生才扣，避免组长管理费重复计",
+    "labor_and_capacity_caveat": "组长管理工作可能减少个人原始录制；依法保障真实劳动关系下最低工资/保险/休息，50设备岗位30运营日不代表同50人无休",
+    "source": "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md"
+  },
+  "channel_partner_growth_strategy_2026_10_17": {
+    "date": "2026-10-17",
+    "status": "superseded_by_owner_decision_2026_10_18",
+    "direct_operated_device_ceiling": 50,
+    "intended_cap_interpretation": "After establishing a real demonstration base and operating capability, stop self-operated device headcount growth around 50; expand via independent data-delivery partners.",
+    "rationale": "Own-site training/showcase, demonstrable real audit and settlement, standardised operations, reputational trust in partners",
+    "partner_role": "only with explicit upstream authorization, partners fulfil capture tasks using their independently organised lawful people/scenes/equipment and return approved data",
+    "pricing_example_status": "owner_future_pricing_idea_not_offered_or_authorized",
+    "partner_spread_cny_per_approved_hour": 10,
+    "hypothetical_quotes": [
+      {
+        "buyer_cny_per_approved_hour": 40,
+        "partner_cny_per_approved_hour": 30
+      },
+      {
+        "buyer_cny_per_approved_hour": 50,
+        "partner_cny_per_approved_hour": 40
+      }
+    ],
+    "example_ten_device_partner_at_75pct": {
+      "devices": 10,
+      "raw_hours_per_device_daily": 6,
+      "operating_days_monthly": 30,
+      "approved_hours_monthly": 1350,
+      "platform_payment_at_40_cny": 54000,
+      "partner_payment_at_30_cny": 40500,
+      "gross_spread_cny": 13500
+    },
+    "gate": "no redistribution before upstream written subcontracting/third-party data processing/device-account permissions, contract and finance review; no assumption 50 owned devices or franchise compliance already achieved",
+    "source": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md",
+    "superseded_by": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+  },
+  "current_approved_owner_growth_strategy_2026_10_18": {
+    "decision_status": "owner_decision_future_plan_pending_partner_authorization",
+    "date": "2026-10-18",
+    "self_operated_devices_ceiling": 10,
+    "self_operated_collectors_target": 10,
+    "self_operated_goal": "Fix 10 owned/leased operating stations as production, on-site training and showcase; stop expanding own sites and direct collector headcount after these are stable",
+    "outside_growth": "附近每组10台；九位队长拟由凌矩直接雇佣、发薪、参保。其他采集员用工和团队法律关系、付款对象与设备费性质未定，不能默认独立B2B合作商模型适用于全部团队。",
+    "devices_per_independent_partner": 10,
+    "supplier_to_lingju_device_rent_reference_cny_per_device_day": 20,
+    "lingju_to_partner_proposed_device_rent_cny_per_device_day": 25,
+    "device_rent_gross_spread_per_device_day_cny": 5,
+    "buyer_to_lingju_price_reference_cny_per_approved_hour": 40,
+    "lingju_to_partner_proposed_price_cny_per_approved_hour": 30,
+    "approved_hour_gross_spread_cny": 10,
+    "device_deposit": "Owner intends to collect refundable equipment deposit from each external partner; exact amount and pass-through liability conditions not decided, upstream reference 1000 CNY/device; never record refundable deposits as profit",
+    "one_partner_example_30_operating_days_75pct": {
+      "raw_hours": 1800,
+      "effective_hours": 1350,
+      "buyer_payment_cny": 54000,
+      "partner_data_payment_cny": 40500,
+      "data_gross_spread_cny": 13500,
+      "device_rent_received_cny": 7500,
+      "device_rent_paid_cny": 6000,
+      "device_gross_spread_cny": 1500,
+      "combined_gross_spread_cny": 15000,
+      "hypothetical_partner_wages_all_A_at_16_cny": 21600,
+      "partner_balance_after_device_rent_and_variable_piece_rates_cny": 11400
+    },
+    "supersedes": {
+      "date": "2026-10-17",
+      "prior_self_operated_devices_ceiling": 50,
+      "old_adr": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md"
+    },
+    "gates": [
+      "upstream written approval for subprocessing, subcontracting, device re-rental and new devices",
+      "partner contract equipment deposit/damage/refund; quality and payment cycle align",
+      "verified one-team real metrics and sustainable partner-level net economic results"
+    ],
+    "reference": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+    "new_clarifications_2026_10_18": {
+      "team_relation": "Owner views external teams as belonging to Lingju's integrated task-delivery and management system; legal contracting, labor allocation and upstream subcontracting permissions need explicit identification",
+      "team_leader_role": "Can capture and manage as one of ten producers or just manage: fully used 10 devices then need ten other producers; else nine producer devices with tenth rented but idle",
+      "goal_leader_monthly_income_cny": "around or above 10000, target only, not guaranteed",
+      "venue_area_square_meters_example": 85,
+      "venue_rent_example_monthly_cny": 850,
+      "utilities_example_monthly_cny": 300,
+      "local_internet_example_monthly_cny": 150,
+      "initial_fit_out_and_workstations": "front-loaded reusable capital; separate cash and amortization records rather than charging full setup costs every month",
+      "company_provided_upload": "Optional designated central upload location/infrastructure paid by Lingju. Partner could avoid separate upstream bandwidth spend, but Lingju retains transmission/storage/transport/QA/security costs.",
+      "scenario_30operating_days_75pct": {
+        "captain_captures_with_9_other_producers_balance_cny": 12260,
+        "captain_only_manages_with_10_producers_balance_cny": 10100,
+        "captain_only_manages_with_9_producers_10devices_rented_balance_cny": 8210
+      },
+      "scenario_26operating_days_75pct": {
+        "captain_captures_with_9_other_producers_balance_cny": 10452,
+        "captain_only_manages_with_10_producers_balance_cny": 8580,
+        "captain_only_manages_with_9_producers_10devices_rented_balance_cny": 6942
+      },
+      "own_internet_waived_delta_for_partner_cny_per_month": 150,
+      "scenario_status": "hypothetical_pending_contract_actual_days_effective_hours_legally_required_labor_costs",
+      "source": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md"
+    },
+    "pricing_and_partner_surplus_applicability": "early conditional independent-partner scenario; not current employee compensation or signed terms"
+  },
+  "local_network_100_device_stage_cap_2026_10_18": {
+    "status": "owner_proposed_future_ceiling_not_operationally_achieved",
+    "date": "2026-10-18",
+    "total_equipment_cap_proposal": 100,
+    "count_interpretation": "provisionally total includes ten self-operated and nine nearby 10-device teams; confirm before committing money",
+    "self_operated_devices": 10,
+    "nearby_partner_teams": 9,
+    "partner_team_devices": 10,
+    "captain_role": "may manage + personally record, or exclusively manage while ten other collectors work the ten devices",
+    "case_30days_75pct": {
+      "effective_hours_total": 13500,
+      "platform_data_receipts_cny": 540000,
+      "partner_9_teams_data_gross_spread_cny": 121500,
+      "partner_9_teams_rental_gross_spread_cny": 13500,
+      "partner_9_teams_combined_gross_spread_cny": 135000
+    },
+    "case_26days_75pct": {
+      "effective_hours_total": 11700,
+      "platform_data_receipts_cny": 468000,
+      "partner_equipment_rental_receipts_cny": 58500,
+      "conditional_total_cash_invoice_amount_cny": 526500,
+      "pre_overhead_pretax_simplified_balance_cny": 139430
+    },
+    "tax_note": "2026 VAT small-scale statutory annual sales cap CNY5m, general services often 6%, equipment movable rental 13% when general taxpayer, small low-profit CIT effective 5% if applicable; invoice and agency/principal treatment must be checked",
+    "veteran_policy_note": "Henan qualified self-employed veteran individual household: up to CNY24000/year actual listed tax reductions for 36 months; enterprise hiring qualified veterans with >=1y contract and legal insurance up to CNY9000/person/year; no automatic application to veteran shareholder LLC; user identity unknown",
+    "decision_doc": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+    "leader_employment_model_2026_10_18": {
+      "status": "owner_decision_pending_execution",
+      "local_team_leaders_count": 9,
+      "legal_employer": "Lingju company directly",
+      "employment_contract": "signed by Lingju",
+      "payroll": "paid directly by Lingju",
+      "social_insurance": "enrolled and legally contributed by Lingju",
+      "individuals_actual_hired": false,
+      "other_collectors_employer": "unresolved",
+      "leader_compensation_terms": "pending; management salary and possible personal approved-data output performance",
+      "tax_hiring_reduction_cap_example_cny_per_person_year": 9000,
+      "tax_hiring_reduction_9_qualifying_full_year_cap_cny": 81000,
+      "tax_conditions": "qualifying workers per national veteran employment policy, >=1-year employment contract, social insurance, prorated actual eligible employment months, tax availability, no repeated entitlement",
+      "important_finance_correction": "Leaders are employees, not automatically independent partner principals. Verify whether team equipment charge is internal cost or real B2B lease; never apply independent partner VAT/surplus model without verifying legal relationship.",
+      "reference": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
+    }
+  },
+  "model_applicability_2026_10_18": {
+    "current_self_operated_cap": 10,
+    "old_self_operated_50": "superseded_historical_scenario",
+    "leader_employment": "nine_leaders_planned_direct_Lingju_employment_not_yet_hired",
+    "independent_partner_profit_models": "conditional_historical_assumptions_not_promised_income",
+    "price_30_and_equipment_25": "pending_counterparty_legal_transaction_and_contract",
+    "tax_material": "source_notes_not_revalidated_in_this_integration_no_automatic_entitlement",
+    "source": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md"
   }
 }

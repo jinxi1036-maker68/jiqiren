@@ -1,0 +1,570 @@
+{
+  "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+  "state": "candidate_not_deployed",
+  "repository": "jinxi1036-maker68/jiqiren",
+  "basis": {
+    "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+    "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+    "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+  },
+  "source_files": [
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "AGENTS.md",
+      "git_blob_sha": "95e513061eaa1ec9460bf7f50efad5288f5235ea"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "hermes/AGENTS.md",
+      "git_blob_sha": "dba3fefcb373263c93e5cbc5c06fe9dc93d80ec2"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "hermes/identity/ROLE_BRIEF.md",
+      "git_blob_sha": "7bf0af739e8482a987bd7f63ec046bc4a1f72629"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/00_START_HERE.md",
+      "git_blob_sha": "172f6c9c8e3e31744c50a9cd1358d72dd2185aea"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/KNOWLEDGE_HARNESS.json",
+      "git_blob_sha": "2e15cde7aa1792ab7ab391f7ce812270a7da50a2"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "git_blob_sha": "9471c5894e323461957e56f5594001207d4c1292"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+      "git_blob_sha": "cb47c9616a3c7152526bd436e07a48b9dbeab95f"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "git_blob_sha": "70fffb020dba25c1fb40de7c07f258d59e35c7bb"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/FRESHNESS_PROTOCOL.md",
+      "git_blob_sha": "e47933d0590279783f1372e3e78b9b4ae9fdead8"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/01_NORTH_STAR.md",
+      "git_blob_sha": "8b91aa6ee7469ca3a1e92477b7811cfd65ab6455"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/04_SCENE_STRATEGY.md",
+      "git_blob_sha": "95d0981905ffcdf56a70e11d50656772908998a3"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+      "git_blob_sha": "ff60758bc5ade878a4d636a184732019576accd5"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+      "git_blob_sha": "cd62ef46599ae50c397b018ac112d07a74047293"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+      "git_blob_sha": "fa79f1c925b6a9d8e9cd1afaa504a64433da99c5"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/SCENE_PIPELINE.json",
+      "git_blob_sha": "e4e096391510b380f1273934e77eb4d0458a71ad"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/PROJECT_INDEX.json",
+      "git_blob_sha": "2fe0df2f8eeba441e26866699f51be16a90a3ba3"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/CURRENT_WORK.json",
+      "git_blob_sha": "4f26e3c726f4b52b01f3a432d32359dd4eeaf68e"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/PARTNER_LEDGER.json",
+      "git_blob_sha": "7279eb2f824d255c749bf825b8aff3769e375049"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/10_UPDATE_PROTOCOL.md",
+      "git_blob_sha": "81b2eab20cf12ff1503699a964a3af73f2b80f18"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/ECONOMICS_MODEL.json",
+      "git_blob_sha": "67102f0bbd2a9e807f680f0536368a08b9f49536"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/00_START_HERE.md",
+      "git_blob_sha": "bb5f48d1bbe5fd476366a1b376b87e6b2a758912"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md",
+      "git_blob_sha": "46a3aa1ac7305b21a9a6b8d52213440c46fe3012"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md",
+      "git_blob_sha": "0a205ae2f964ea713e56bf375e4dba79467d00fa"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/COMPANY_PROFILE.json",
+      "git_blob_sha": "81cfcd63aee5ec6c21fad1fbcf2888ec416483a7"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/CURRENT_WORK.json",
+      "git_blob_sha": "f1c25f77f287714dc2a1960be6ab5cdc8fa72430"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json",
+      "git_blob_sha": "845fcf4b6a3273b14e6aebab53847ab4f06ac9d2"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/PARTNER_LEDGER.json",
+      "git_blob_sha": "9e41d4dd0572c356aeb67eba18770e4df51166d2"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/PROJECT_INDEX.json",
+      "git_blob_sha": "560510bf22f7ac21b8727da61ebb1b2e5858009d"
+    },
+    {
+      "group": "pr13",
+      "ref": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "path": "knowledge/SCENE_PIPELINE.json",
+      "git_blob_sha": "78d70f88ee3995c0c370d60b41ef47ed61e68b62"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "AGENTS.md",
+      "git_blob_sha": "243bf4367db6ed130c84ecf232c6d9a5da7ed148"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/01_NORTH_STAR.md",
+      "git_blob_sha": "abaf24a5066cba988e541ad2f7ded161b6299d67"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+      "git_blob_sha": "127441b0c75fbd4e00bcec6942682ac023c83d47"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/10_UPDATE_PROTOCOL.md",
+      "git_blob_sha": "217b0c2c37f12482b65761e99d67a23196197d6a"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+      "git_blob_sha": "b5d99ca7c99af4dfbc57199e4bd1f2c64264a54c"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md",
+      "git_blob_sha": "1aa531c4af3fdb806edfca78044423f28fe8935d"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md",
+      "git_blob_sha": "28dedb726926e3a0e7f707c0b1b974f4cbe0a2e3"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md",
+      "git_blob_sha": "a9e6bbd80b398f4a872fe6c0e18846d39dfb1ced"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/CURRENT_WORK.json",
+      "git_blob_sha": "5c8d2e94f85e2e077041c2d74865593dfe0e2e7a"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/ECONOMICS_MODEL.json",
+      "git_blob_sha": "8b4b3dac919caaf2f9d4806d52e9b5ca1ef98b08"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/PARTNER_LEDGER.json",
+      "git_blob_sha": "b9bcf0461631307198e4e46310ef6bb3f3cbd151"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/PROJECT_INDEX.json",
+      "git_blob_sha": "f105f6b1d5af9c65a26e0954d8cc69f23282db8a"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md",
+      "git_blob_sha": "115d4a2d5ee39e8d948e230f97e9699532aece81"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md",
+      "git_blob_sha": "7b5a7dffffa33b7af432f3a2d32953eaa3890827"
+    },
+    {
+      "group": "pr17",
+      "ref": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "path": "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md",
+      "git_blob_sha": "33277a5b1d2dd5b434c6d16d8e366d437cabdc25"
+    },
+    {
+      "group": "main",
+      "ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "path": "knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md",
+      "git_blob_sha": "d87fdcfd1b50c13324be13d1a9ffef0460d9faa4"
+    }
+  ],
+  "payload_provenance": {
+    "AGENTS.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "243bf4367db6ed130c84ecf232c6d9a5da7ed148"
+    },
+    "hermes/AGENTS.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "dba3fefcb373263c93e5cbc5c06fe9dc93d80ec2"
+    },
+    "hermes/identity/ROLE_BRIEF.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "7bf0af739e8482a987bd7f63ec046bc4a1f72629"
+    },
+    "knowledge/00_START_HERE.md": {
+      "kind": "review18_revision",
+      "previous_provenance": {
+        "kind": "PR13 company entry plus integrated current brief",
+        "sources": {
+          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+        }
+      },
+      "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+      "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "plan_and_actuals_not_equated": true
+    },
+    "knowledge/01_NORTH_STAR.md": {
+      "kind": "PR17 plus latest-decision summary correction",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+    },
+    "knowledge/04_SCENE_STRATEGY.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "95d0981905ffcdf56a70e11d50656772908998a3"
+    },
+    "knowledge/05_PEOPLE_TRAINING_AND_QA.md": {
+      "kind": "PR17 plus latest direct-employment notice",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+    },
+    "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "cd62ef46599ae50c397b018ac112d07a74047293"
+    },
+    "knowledge/10_UPDATE_PROTOCOL.md": {
+      "kind": "PR17 synchronization rule plus current scale wording",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+    },
+    "knowledge/22_COLLECTION_WORKER_RECRUITMENT_PAY_DESIGN_2026-10-14.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "d87fdcfd1b50c13324be13d1a9ffef0460d9faa4"
+    },
+    "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "b5d99ca7c99af4dfbc57199e4bd1f2c64264a54c"
+    },
+    "knowledge/27_LIVSYN_RECORDING_EFFICIENCY_AND_DEVICE_REMINDERS_2026-10-17.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "1aa531c4af3fdb806edfca78044423f28fe8935d"
+    },
+    "knowledge/27_LIVSYN_THREE_SCENES_READY_AND_DAILY_REPORT_2026-10-16.md": {
+      "kind": "review18_revision",
+      "previous_provenance": {
+        "kind": "verbatim",
+        "source": "pr13",
+        "source_commit": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+        "source_blob": "46a3aa1ac7305b21a9a6b8d52213440c46fe3012"
+      },
+      "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+      "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "plan_and_actuals_not_equated": true
+    },
+    "knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "28dedb726926e3a0e7f707c0b1b974f4cbe0a2e3"
+    },
+    "knowledge/28_LINGJU_BRAND_IDENTITY_RESEARCH_2026-10-16.md": {
+      "kind": "verbatim",
+      "source": "pr13",
+      "source_commit": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "source_blob": "0a205ae2f964ea713e56bf375e4dba79467d00fa"
+    },
+    "knowledge/29_FIFTY_DEVICES_TEAM_LEADER_SCALE_THRESHOLD_2026-10-17.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "a9e6bbd80b398f4a872fe6c0e18846d39dfb1ced"
+    },
+    "knowledge/COMPANY_PROFILE.json": {
+      "kind": "verbatim",
+      "source": "pr13",
+      "source_commit": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "source_blob": "81cfcd63aee5ec6c21fad1fbcf2888ec416483a7"
+    },
+    "knowledge/CURRENT_WORK.json": {
+      "kind": "review18_deployment_state_separation",
+      "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "previous_candidate_commit": "dd529de70ebc0642a3a3ac75862be470376687ea",
+      "previous_provenance": {
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "field_merge",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
+      },
+      "business_facts_unchanged": true
+    },
+    "knowledge/ECONOMICS_MODEL.json": {
+      "kind": "PR17 preserved scenarios plus latest-employment applicability correction",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+    },
+    "knowledge/FRESHNESS_PROTOCOL.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "e47933d0590279783f1372e3e78b9b4ae9fdead8"
+    },
+    "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "9471c5894e323461957e56f5594001207d4c1292"
+    },
+    "knowledge/KNOWLEDGE_HARNESS.json": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "2e15cde7aa1792ab7ab391f7ce812270a7da50a2"
+    },
+    "knowledge/LIVSYN_PINGDINGSHAN_DAILY_REPORT_REQUIREMENTS_2026-10-16.json": {
+      "kind": "review18_revision",
+      "previous_provenance": {
+        "kind": "PR13 four sections plus PR17 format clarification",
+        "sources": {
+          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+        }
+      },
+      "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+      "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "plan_and_actuals_not_equated": true
+    },
+    "knowledge/OPERATING_BRIEF_2026-10-18.md": {
+      "kind": "review18_deployment_state_separation",
+      "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "previous_candidate_commit": "dd529de70ebc0642a3a3ac75862be470376687ea",
+      "previous_provenance": {
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "integration summary",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
+      },
+      "business_facts_unchanged": true
+    },
+    "knowledge/PARTNER_LEDGER.json": {
+      "kind": "review18_revision",
+      "previous_provenance": {
+        "kind": "field_merge",
+        "sources": {
+          "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+          "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+          "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+        }
+      },
+      "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+      "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "plan_and_actuals_not_equated": true
+    },
+    "knowledge/PROJECT_INDEX.json": {
+      "kind": "review18_deployment_state_separation",
+      "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "previous_candidate_commit": "dd529de70ebc0642a3a3ac75862be470376687ea",
+      "previous_provenance": {
+        "kind": "review18_revision",
+        "previous_provenance": {
+          "kind": "field_merge",
+          "sources": {
+            "main": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+            "pr13": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+            "pr17": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c"
+          }
+        },
+        "previous_candidate_commit": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+        "owner_report_review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+        "plan_and_actuals_not_equated": true
+      },
+      "business_facts_unchanged": true
+    },
+    "knowledge/SCENE_PIPELINE.json": {
+      "kind": "verbatim",
+      "source": "pr13",
+      "source_commit": "0cbb692e3029b1e19662c62b0f7598ce2525f49e",
+      "source_blob": "78d70f88ee3995c0c370d60b41ef47ed61e68b62"
+    },
+    "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "cb47c9616a3c7152526bd436e07a48b9dbeab95f"
+    },
+    "knowledge/decisions/ADR-LOCAL_100_DEVICE_NETWORK_AND_TAX_CHECK_2026-10-18.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "115d4a2d5ee39e8d948e230f97e9699532aece81"
+    },
+    "knowledge/decisions/ADR-SELF_OPERATED_10_CAP_10_DEVICE_PARTNER_TEAMS_2026-10-18.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "7b5a7dffffa33b7af432f3a2d32953eaa3890827"
+    },
+    "knowledge/decisions/ADR-SELF_OPERATED_50_CAP_PARTNER_NETWORK_2026-10-17.md": {
+      "kind": "verbatim",
+      "source": "pr17",
+      "source_commit": "ec612fbefe07dc71215d1f1f9b6162b2f15f465c",
+      "source_blob": "33277a5b1d2dd5b434c6d16d8e366d437cabdc25"
+    },
+    "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md": {
+      "kind": "verbatim",
+      "source": "main",
+      "source_commit": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+      "source_blob": "70fffb020dba25c1fb40de7c07f258d59e35c7bb"
+    }
+  },
+  "charter_git_blob_unchanged": "9471c5894e323461957e56f5594001207d4c1292",
+  "previous_state_review": "https://github.com/jinxi1036-maker68/jiqiren/issues/9#issuecomment-6244697770",
+  "scope": {
+    "original_environment_writes": 0,
+    "Hermes_model_calls": 0,
+    "real_business_requests": 0,
+    "merge_any_pr": false
+  },
+  "review_revisions": [
+    {
+      "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+      "parent_pr_head": "e88b96e27f98c35f046e6b2359e20c65d994e48a",
+      "previous_knowledge_commit": "649c5406ba545136c4c275ff4aa10d4b4f8d739c",
+      "recorded_on": "2026-10-18",
+      "additional_source": "Owner current task explicitly supplies Oct17 actual daily report; source grade owner_reported only",
+      "knowledge_file_count_unchanged": 32,
+      "deployment_performed": false
+    },
+    {
+      "review": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807",
+      "parent_pr_head": "dd529de70ebc0642a3a3ac75862be470376687ea",
+      "previous_knowledge_commit": "a6d6b2f80ad69f6b840ff75786d9048fbee8b4e2",
+      "recorded_on": "2026-10-18",
+      "scope": "Separate immutable source version from evidence-based local deployment status; no business fact changes",
+      "knowledge_file_count_unchanged": 32,
+      "deployment_performed": false
+    }
+  ],
+  "latest_owner_report_revision": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561291820",
+  "latest_deployment_state_revision": "https://github.com/jinxi1036-maker68/jiqiren/pull/18#pullrequestreview-5561385807"
+}

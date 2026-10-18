@@ -1,0 +1,68 @@
+{
+  "status": "proposal_only_not_applied",
+  "requires_separate_owner_approval": true,
+  "target": "W/GATE_1A_STATUS.json",
+  "before_sha256": "b2a38d9d66ebce7442ff3ce3711d36fcae06f213cc726c34340f0ae911a48609",
+  "after_sha256_if_applied_to_exact_before": "eed206fbebc93c24c7ecb783bdb10c3cce1376a67231d7123a6e7a15c5f470a8",
+  "serializer": "Python json.dumps ensure_ascii=False indent=2 then one LF, encoded UTF-8 without BOM; preserve original key order and all unmentioned values",
+  "patch_format": "RFC6902 operations; preserve other fields",
+  "operations": [
+    {
+      "op": "test",
+      "path": "/model_dialogues_used",
+      "value": 0
+    },
+    {
+      "op": "test",
+      "path": "/desktop_acceptance",
+      "value": "blocked: Computer Use kernel asset path does not exist"
+    },
+    {
+      "op": "replace",
+      "path": "/phase",
+      "value": "gate1a_partial_conditional_acceptance"
+    },
+    {
+      "op": "replace",
+      "path": "/desktop_acceptance",
+      "value": "partial_conditional_acceptance_review_6244446585"
+    },
+    {
+      "op": "remove",
+      "path": "/model_dialogues_used"
+    },
+    {
+      "op": "add",
+      "path": "/historical_desktop_tool_blocker",
+      "value": "blocked: Computer Use kernel asset path does not exist"
+    },
+    {
+      "op": "add",
+      "path": "/model_usage_evidence",
+      "value": {
+        "target_session_sha256": "fb5d14fc650e11af7aa374b0b63372761e38c4cdc014e9d4ee2967e129e27b71",
+        "task_date": "2026-10-17",
+        "owner_messages_in_target_session": 1,
+        "recorded_api_rounds_in_target_session": 4,
+        "this_preparation_new_model_calls": 0,
+        "new_model_authorization_remaining": 0,
+        "older_budgets": "not_reset_or_recomputed"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/knowledge_release",
+      "value": {
+        "release_id": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+        "source_commit": "812c9728c4a39e3451518392eb819c40efe334a5",
+        "disk_state": "hashes_verified_only_when_this_patch_is_applied_after_payload_verification",
+        "model_acquisition": "unverified",
+        "real_backend_permission_changed": false
+      }
+    }
+  ],
+  "private_original_fields_not_exported": true,
+  "unchanged_fields_validated": true,
+  "model_budget_reset": false,
+  "apply_only_after": "all 32 source hashes and new manifest verify successfully; do not claim model loading or Gate1A full pass"
+}

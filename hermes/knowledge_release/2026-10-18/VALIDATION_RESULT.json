@@ -1,0 +1,135 @@
+{
+  "static_artifact_runtime_deployment_separated": true,
+  "deployment_authority_manifest_and_authorized_record": true,
+  "missing_deployment_evidence_is_unverified": true,
+  "stale_current_deployment_assertions_removed": true,
+  "json_valid": true,
+  "shared_schema_and_semantics_passed": true,
+  "work_item_consistent": true,
+  "owner_reported_actuals_consistent": true,
+  "historical_plan_separate": true,
+  "raw_not_QA_or_settlement": true,
+  "upload_and_report_send_unknown": true,
+  "entry_literal_newline_escape_removed": true,
+  "team_policy_unchanged": true,
+  "charter_blob_unchanged": true,
+  "payload_hashes_verified": 32,
+  "references_checked": 122,
+  "missing_references": [],
+  "repo_only_references_not_in_payload": [
+    {
+      "origin": "knowledge/00_START_HERE.md",
+      "target": "knowledge/HERMES_NEW_CHAT_HANDOFF.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "knowledge/EVIDENCE_INDEX.json",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "knowledge/12_INFORMATION_RADAR.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "knowledge/20_OWN_DATA_ASSET_STRATEGY_PROPOSAL_2026-10-11.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "knowledge/tasks/CODEX_2026-10-15_21项线下采购表_插入真实图片.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "knowledge/tasks/data/2026-10-15_平顶山三场景线下采购_21项原始数据.csv",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "hermes/README.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/CURRENT_WORK.json",
+      "target": "hermes/tasks/PHASE_01_LOCAL_AUDIT.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/KNOWLEDGE_HARNESS.json",
+      "target": "knowledge/EVIDENCE_INDEX.json",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/KNOWLEDGE_HARNESS.json",
+      "target": "knowledge/06_ECONOMICS_AND_SCALE.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/KNOWLEDGE_HARNESS.json",
+      "target": "knowledge/PEOPLE_PIPELINE.json",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/KNOWLEDGE_HARNESS.json",
+      "target": "knowledge/06_ECONOMICS_AND_SCALE.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/KNOWLEDGE_HARNESS.json",
+      "target": "knowledge/EVIDENCE_INDEX.json",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/KNOWLEDGE_HARNESS.json",
+      "target": "knowledge/08_ROADMAP.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/KNOWLEDGE_HARNESS.json",
+      "target": "knowledge/03_PARTNER_STRATEGY.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/PARTNER_LEDGER.json",
+      "target": "templates/TRIAL_DAILY_DASHBOARD.csv",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/PROJECT_INDEX.json",
+      "target": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/PROJECT_INDEX.json",
+      "target": "knowledge/PEOPLE_PIPELINE.json",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/PROJECT_INDEX.json",
+      "target": "knowledge/EVIDENCE_INDEX.json",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/PROJECT_INDEX.json",
+      "target": "knowledge/decisions/ADR-003-own-transferable-regional-capability.md",
+      "availability": "GitHub main only; not W payload"
+    },
+    {
+      "origin": "knowledge/SCENE_PIPELINE.json",
+      "target": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
+      "availability": "GitHub main only; not W payload"
+    }
+  ],
+  "deployment_plan_present": true,
+  "deployment_plan_checked": true,
+  "Hermes_model_calls": 0,
+  "original_environment_writes": 0
+}

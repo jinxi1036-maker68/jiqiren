@@ -1,0 +1,131 @@
+{
+  "observed_at_plus08": "2026-10-18T10:44:57.289283+08:00",
+  "authority_of_source_preconditions": "manifest declared hashes, inherited Oct18 10:06 complete source-hash verification; recheck every target before any future write",
+  "last_full_source_verification_date": "2026-10-18",
+  "old_ref": "053b5b4cd2476fdf6df68e2c924a6b1c7d28e080",
+  "source_files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 2787,
+      "sha256": "be80d544574238b790edbe07c9b0397986f6eeab1ef7da05a4f2594d59b9829f",
+      "git_blob_sha": "95e513061eaa1ec9460bf7f50efad5288f5235ea"
+    },
+    {
+      "path": "hermes/AGENTS.md",
+      "bytes": 4369,
+      "sha256": "943366142e85aceb4c4d2c11b305ccba3e8b0c0f962523199d8ae169f948aad9",
+      "git_blob_sha": "dba3fefcb373263c93e5cbc5c06fe9dc93d80ec2"
+    },
+    {
+      "path": "knowledge/00_START_HERE.md",
+      "bytes": 2881,
+      "sha256": "94eff41af85e0c79239b03822f7d6f70e9a8305c494bf83bc759486124faf7c5",
+      "git_blob_sha": "172f6c9c8e3e31744c50a9cd1358d72dd2185aea"
+    },
+    {
+      "path": "knowledge/KNOWLEDGE_HARNESS.json",
+      "bytes": 4629,
+      "sha256": "4767797b382900068935cc2aa4a6ca525a12361fe0cc066ecdc0ff75f8e27e98",
+      "git_blob_sha": "2e15cde7aa1792ab7ab391f7ce812270a7da50a2"
+    },
+    {
+      "path": "knowledge/PROJECT_INDEX.json",
+      "bytes": 4589,
+      "sha256": "72cbf0194219b20c1a4fd0373cdeaf7d42c606ac86034989443122d347e50354",
+      "git_blob_sha": "2fe0df2f8eeba441e26866699f51be16a90a3ba3"
+    },
+    {
+      "path": "knowledge/CURRENT_WORK.json",
+      "bytes": 12591,
+      "sha256": "a12cd29b3c512986e6e00a1ec3fc41d5249bc553ebd7cea767766bf659396ff5",
+      "git_blob_sha": "4f26e3c726f4b52b01f3a432d32359dd4eeaf68e"
+    },
+    {
+      "path": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+      "bytes": 12513,
+      "sha256": "9b907998b296365f07df8aea646383a74b3e97ae95f3e190c95e3d3f4a0d586d",
+      "git_blob_sha": "9471c5894e323461957e56f5594001207d4c1292"
+    },
+    {
+      "path": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+      "bytes": 5253,
+      "sha256": "117317f8f2abc7aa392d07b2d91e2bf66176956e27726a9dc35969a4d079b79b",
+      "git_blob_sha": "cb47c9616a3c7152526bd436e07a48b9dbeab95f"
+    },
+    {
+      "path": "hermes/identity/ROLE_BRIEF.md",
+      "bytes": 4622,
+      "sha256": "9eecd961bd75a398e367721a62eb214b78080dba6acf9418b9da9fa68551b241",
+      "git_blob_sha": "7bf0af739e8482a987bd7f63ec046bc4a1f72629"
+    },
+    {
+      "path": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+      "bytes": 10696,
+      "sha256": "a833ece42c192748796704aa80fe8c888ed62ea68c71dd73e13cbf33951751cc",
+      "git_blob_sha": "70fffb020dba25c1fb40de7c07f258d59e35c7bb"
+    },
+    {
+      "path": "knowledge/FRESHNESS_PROTOCOL.md",
+      "bytes": 844,
+      "sha256": "2862d7c4e53ae9b33a2e742907ff0f2901e84207af5fe006c239e3c61684d037",
+      "git_blob_sha": "e47933d0590279783f1372e3e78b9b4ae9fdead8"
+    },
+    {
+      "path": "knowledge/01_NORTH_STAR.md",
+      "bytes": 1790,
+      "sha256": "b7f38a645113b6c5cc89c72ed27e1d24f68a992c3e6f62f5e28f09b10ce0b4a8",
+      "git_blob_sha": "8b91aa6ee7469ca3a1e92477b7811cfd65ab6455"
+    },
+    {
+      "path": "knowledge/04_SCENE_STRATEGY.md",
+      "bytes": 2834,
+      "sha256": "acbdc3128fd773eba08d689d71bbe3b607367435bc8c4e98c9c65a89f9151cfc",
+      "git_blob_sha": "95d0981905ffcdf56a70e11d50656772908998a3"
+    },
+    {
+      "path": "knowledge/05_PEOPLE_TRAINING_AND_QA.md",
+      "bytes": 862,
+      "sha256": "ec535f492f2c95607a1d1bb7509d9948e06b4c2a607497939bef470e62abb3ae",
+      "git_blob_sha": "ff60758bc5ade878a4d636a184732019576accd5"
+    },
+    {
+      "path": "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+      "bytes": 1064,
+      "sha256": "47456b3e2708c46a3919a86e75cda7b65269936fd5a5cccaa40812fa89418044",
+      "git_blob_sha": "cd62ef46599ae50c397b018ac112d07a74047293"
+    },
+    {
+      "path": "knowledge/PARTNER_LEDGER.json",
+      "bytes": 6335,
+      "sha256": "fd9a5615656cfa18d3a076332cad8b958fa83ee7e3db639a95d8b7ca5f670a48",
+      "git_blob_sha": "7279eb2f824d255c749bf825b8aff3769e375049"
+    },
+    {
+      "path": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+      "bytes": 9312,
+      "sha256": "3d6d9204d8b301a3399083603c5266b51deb283bf6b06f88cef7feed29bf438f",
+      "git_blob_sha": "fa79f1c925b6a9d8e9cd1afaa504a64433da99c5"
+    },
+    {
+      "path": "knowledge/SCENE_PIPELINE.json",
+      "bytes": 15226,
+      "sha256": "2c0f8353b738d2c8b40c3e2b70a4adc435629f528fc6f6a4dd9c27698540bc96",
+      "git_blob_sha": "e4e096391510b380f1273934e77eb4d0458a71ad"
+    }
+  ],
+  "manifest_before_sha256": "8b4783d361b71cfe2b61c7b9949b57dbc11deeefa45f43fb31c8397159d7cf6e",
+  "status_before_sha256": "b2a38d9d66ebce7442ff3ce3711d36fcae06f213cc726c34340f0ae911a48609",
+  "status_public_fields": {
+    "phase": "gate1a_partial_install_pending_original_desktop_acceptance",
+    "model_dialogues_used": 0,
+    "desktop_acceptance": "blocked: Computer Use kernel asset path does not exist",
+    "real_backend_authorized": false,
+    "memory_user_rewritten": false
+  },
+  "HERMES_sha256": "0ae46293b8773631ceb3acf0da4a44ae6d361860e44c95926ccf322185374247",
+  "HERMES_bytes": 1790,
+  "baseline_source_count": 18,
+  "baseline_deployment_count": 3,
+  "baseline_total_count": 21,
+  "original_environment_writes": 0
+}
