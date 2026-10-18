@@ -8,6 +8,7 @@
 
 - [唯一当前指导原则：Hermes数字员工岗位宪章](HERMES_DIGITAL_EMPLOYEE_CHARTER.md)
 - [正式Owner决策与已否决方案](decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md)
+- [Owner 2026-10-18追加：Hermes轻量化、少代码、原生能力复用](decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)（所有涉及Hermes开发/新增功能的任务必读；它从属于唯一宪章）
 - [从起点到现在的理念、开发、纠偏历史](history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)（首次接手/需要复盘时读）
 - [开发Agent入口](../AGENTS.md)与[Hermes代码工作区约束](../hermes/AGENTS.md)
 
