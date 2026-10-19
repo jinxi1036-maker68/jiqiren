@@ -9,6 +9,7 @@
 - [唯一当前指导原则：Hermes数字员工岗位宪章](HERMES_DIGITAL_EMPLOYEE_CHARTER.md)
 - [正式Owner决策与已否决方案](decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md)
 - [Owner 2026-10-18追加：Hermes轻量化、少代码、原生能力复用](decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)（所有涉及Hermes开发/新增功能的任务必读；它从属于唯一宪章）
+- **2026-10-19最新决定：浏览器专项技术路线已研究归档、当前暂停。** [唯一专项决定及暂停边界](decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md)；详见[Codex原研究](../hermes/reports/HERMES_BROWSER_CODEX_RESEARCH_SOURCE_2026-10-19.md)和[技术深度对照](../hermes/reports/HERMES_BROWSER_DEEP_COMPARISON_2026-10-19.md)。新窗口若讨论Hermes浏览器，应按需先读ADR；**未获Owner恢复指令不得执行或安装**。先前09:00 QQ晨报也暂缓。
 - [从起点到现在的理念、开发、纠偏历史](history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)（首次接手/需要复盘时读）
 - [开发Agent入口](../AGENTS.md)与[Hermes代码工作区约束](../hermes/AGENTS.md)
 
