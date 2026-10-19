@@ -2,6 +2,8 @@
 
 **必须阅读的最高理念**：[`../knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md`](../knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md)。此文件只把原则翻译成工程约束，不另设新的理念。历史演进见[`../knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md`](../knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)。
 
+**最新进度与暂停命令（2026-10-19）**：Owner已批准研究、分类归档浏览器能力专项，但随后明确要求**暂停**。入口见[浏览器能力专项ADR](../knowledge/decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md)，本机静态研究原文见[Codex报告](reports/HERMES_BROWSER_CODEX_RESEARCH_SOURCE_2026-10-19.md)，候选比较见[深度对照](reports/HERMES_BROWSER_DEEP_COMPARISON_2026-10-19.md)。未接到Owner再次明确恢复之前，不安装浏览器框架、不改原Hermes MCP/CDP/配置、不开展模型或真实灵生操作。09:00 QQ晨报需求保留但同样暂停。历史方向不等于当前执行任务。
+
 ## 工程任务到底要做什么
 
 目标是**训练并增强Owner电脑原来安装的唯一正式Hermes**，让它像受过公司培训的员工一样独立经营指定业务，而不是搭另一个业务管理系统。
