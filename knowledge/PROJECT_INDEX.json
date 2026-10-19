@@ -79,7 +79,7 @@
       "suggested_analysis_window": "前一自然日采集与上传；近7天新增QA审核/人员异常；按真实数据与Owner反馈调整",
       "implementation_preference": "reuse_original_hermes_native_cron_gateway_and_existing_read_only_browser_or_tools; no_new_management_system",
       "real_platform_access": "pending_explicit_owner_login_and_read_only_authorization",
-      "delivery_channel": "pending_owner_confirmation_and_existing_channel_verification",
+      "delivery_channel": "QQ (Owner confirmed; actual channel send capability still unverified)",
       "scheduled_job_state": "not_created_or_enabled; project_knowledge_requirement_only",
       "go_live_conditions": [
         "owner_confirmed_livsyn_login_and_read_only_scope",
@@ -87,6 +87,24 @@
         "one_real_read_only_collection_report_and_delivery_verified"
       ],
       "authority_ref": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md",
+      "tracking_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+      "owner_delivery_confirmation_date": "2026-10-18",
+      "work_status": "paused_by_owner_2026_10_19",
+      "pause_reason": "Owner暂停晨报/QQ/Cron/其他数字员工实施，浏览器专项研究也在归档后暂停；已有时间与渠道需求保留，未启用任何任务"
+    },
+    "browser_capability_focus": {
+      "owner_direction_date": "2026-10-19",
+      "subject": "原Hermes浏览器操作能力尽可能强：读数、复杂表单、创建项目/任务、绑定采集员/设备、提交后结果核对",
+      "status": "paused_by_owner_after_research_archive",
+      "phase": "research_and_design_only_not_implemented",
+      "decision_adr": "knowledge/decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md",
+      "codex_original_research": "hermes/reports/HERMES_BROWSER_CODEX_RESEARCH_SOURCE_2026-10-19.md",
+      "comparative_research": "hermes/reports/HERMES_BROWSER_DEEP_COMPARISON_2026-10-19.md",
+      "architecture": "one_original_Hermes; dedicated_local_Chrome_or_Edge; compare_native_Browser_Use_CLI_vs_Playwright_MCP; one_primary_driver; DOM_first_vision_if_needed; verify_persisted_business_result",
+      "core_validation_goal": "simulate_create_project_then_task_then_bind_unique_worker_and_device_then_submit_once_then_refresh_and_verify_ID_and_relations",
+      "measured_implementation": "no_browser_A_B_test; no_new_Hermes_model_calls; no_real_platform_login_or_write",
+      "authorization": "real_livsyn_read_only_and_any_real_write_pending_owner_explicit_confirmation",
+      "next_action": "none_until_owner_explicitly_resumes_browser_special_project",
       "tracking_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
     }
   }
