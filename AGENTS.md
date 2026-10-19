@@ -9,6 +9,8 @@
 3. 重要变更动机读`knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md`；需要理解走过的路再读`knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md`。
 4. 开发Hermes时读`hermes/AGENTS.md`和`hermes/identity/ROLE_BRIEF.md`，再看对应代码与已合并/未合并PR。
 
+**最新跨窗口工作状态（2026-10-19）**：Hermes浏览器能力顶级化方案、Codex完整调研与ChatGPT比较已分类保存；Owner明确要求先暂停，不实施或测试。参阅[浏览器专项ADR](knowledge/decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md)；过去09:00 QQ晨报也暂缓。任何开发Agent不能因看到历史待办而自行恢复或改本机环境。
+
 ## 宪章的不可偏离要义
 
 - Hermes是Owner电脑里**唯一正式数字员工**；不是第二套业务系统，也不追求长期维护原Hermes+隔离Hermes双身份。
