@@ -132,3 +132,13 @@ Owner明确要求：将理念、方向变化、每个阶段、做过的工程、
 Owner纠正此前长期集中于知识哈希、工具次数和重复入职考核的开发方法：正式员工的核心价值应是每天按时查看采集员近期数据、发现采集/上传/QA异常并主动向Owner汇报；对Owner临时提出的问题自主协助，而不让Owner持续陪同做工具实验。**首个固定工作时间定为每天09:00，凌矩工作地北京时间（Asia/Shanghai）。**
 
 这是明确的岗位目标，尚非已部署能力：原Hermes的真实灵生后台只读登录仍待Owner现场确认，原生Cron/gateway与推送通道尚需核验，不得用ChatGPT的提醒代替原Hermes工作，也不能用静态R3资料冒充每日真实数据。先复用已有原生能力，确认数据和消息送达后才启用自动晨报。细则记录在[轻量化ADR](../decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)。
+
+## 13. 2026-10-19：浏览器能力专项研究，随后由Owner暂停
+
+Owner明确将当前开发聚焦于原Hermes的浏览器能力：查看采集员数据、复杂中文表单、创建项目和采集任务、绑定采集员与设备、提交后回查。此前09:00主动晨报及QQ送达已确定为未来需求，但当前暂停实施。
+
+Codex上传《原Hermes浏览器能力增强研究与实施建议》，推荐可见Chrome/Edge＋Playwright MCP、DOM优先和视觉辅助，同时指出本机浏览器源码能力不等于当前Desktop已实测启用。ChatGPT对照原有PR #6/#8模拟记录和公开工具资料，建议先比较Hermes原生Browser Use CLI/Browser与Playwright MCP，再选择单一主操作引擎；Chrome DevTools MCP、Stagehand仅作为必要时的补充。两方一致要求：业务对象以唯一编号核对、提交结果不明时不得盲目重复创建，以真实任务结果评价能力。**上述全部为研究建议，尚未执行模型A/B实验、浏览器配置变更或真实灵生业务操作。**
+
+**Owner最后指令**：将本次所有讨论和报告分类归档，然后暂停这个专项，先讨论其他事情。该暂停状态优先于较早的浏览器测试计划，不代表否决长期理念。
+
+归档：[浏览器专项ADR](../decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md)、[Codex原始研究](../../hermes/reports/HERMES_BROWSER_CODEX_RESEARCH_SOURCE_2026-10-19.md)、[技术深度对照](../../hermes/reports/HERMES_BROWSER_DEEP_COMPARISON_2026-10-19.md)；机器状态见`knowledge/PROJECT_INDEX.json`。
