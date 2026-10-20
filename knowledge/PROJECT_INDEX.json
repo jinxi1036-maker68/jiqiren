@@ -107,5 +107,23 @@
       "next_action": "none_until_owner_explicitly_resumes_browser_special_project",
       "tracking_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
     }
-  }
+  },
+  "business_strategy_latest_discussion": {
+    "discussion_date": "2026-10-19_to_2026-10-20",
+    "subject": "承接义乌真实工厂外发手工加工订单，让采集员实际生产交付，同时在工厂和数据客户许可条件下采集EGO操作数据；未来每个采集点一个差异化特色场景，其余结合真实加工作业",
+    "status": "owner_concept_proposal_not_implemented_or_approved_by_livsyn",
+    "authority_document": "knowledge/strategy/REAL_PRODUCTION_AND_EGO_CAPTURE_CONCEPT_2026-10-20.md",
+    "proposed_livsyn_discussion": "向吴总说明真实加工不是摆拍，询问真实生产工序适配和每点一个特色场景的可接受性；尚未证实联系或回复",
+    "ten_sites": "long_term_hypothesis_not_existing_ten_sites_or_ten_devices",
+    "dual_revenue": "potential_only; factory_accepted_processing_fees_plus_livsyn_QA_approved_data_fees; neither verified",
+    "key_requirements": "factory_subcontract_and_filming_data_use_permission; LivSyn_written_scenario_and_SOP_acceptance; quality_logistics_labor_economics",
+    "not_to_conflate_with": "current_10_device_self_operated_cap_and_R3_raw_hours"
+  },
+  "pending_corporate_registry_question": {
+    "asked_at": "2026-10-20",
+    "subject": "确认灵生LivSyn营业执照注册主体全称、注册资本（注册资金）、实缴资本（如公开可查）",
+    "state": "unresearched_unverified",
+    "warning": "不得用别的灵生同名主体或集团关联公司的资本替代；需官方公示/可靠工商登记核查"
+  },
+  "new_chat_handoff": "knowledge/HERMES_NEW_CHAT_HANDOFF.md"
 }
