@@ -4,7 +4,7 @@
   "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
   "authority_branch": "main",
   "current": {
-    "date": "2026-10-15",
+    "date": "2026-10-24",
     "phase": "PRE_TRIAL_PREPARATION",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
@@ -13,10 +13,15 @@
     "target_trial_start": "2026-10-16（Owner目标：首轮样本；正式可结算采集尚待具体任务SOP与上传质检路径确认）",
     "latest_readiness_review": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
     "latest_evidence_id": "EV-PDS-XLSX-20261011",
-    "readiness": "已取得灵生对自建小型真实作业车间及自有受训采集员的微信/飞书沟通认可；选定线边仓补货、空容器回收、外观质检三项拟议任务，正按场景分区+任务目标+关键动作+任务SOP提交审核。尚无样本验收、有效小时及首笔结算证据；设备到位数未核实。",
+    "readiness": "已取得灵生对自建小型真实作业车间及自有受训采集员的微信/飞书沟通认可；选定线边仓补货、空容器回收、外观质检三项拟议任务，正按场景分区+任务目标+关键动作+任务SOP提交审核。尚无样本验收、有效小时及首笔结算证据；设备到位数未核实。；截至2026-10-24新增公司设立、税务开业信息提交和合同/验收规范审阅记录，但未取得正式试采产能/回款新增证据。",
     "latest_operational_update": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "latest_partner_decision": "对方业务联系人认可自建真实工位组织方式；不等于具体SOP、所有场景或正式验收一概批准",
-    "expansion_boundary": "杜振成在群中建议月底达100人；Owner明确不承诺，先验证有效数据与结算；20-30人仅为交流中的争取方向，不是达成产能或签约计划"
+    "expansion_boundary": "杜振成在群中建议月底达100人；Owner明确不承诺，先验证有效数据与结算；20-30人仅为交流中的争取方向，不是达成产能或签约计划",
+    "latest_admin_update": "knowledge/reports/2026-10-24_COMPANY_TAX_PROGRESS.md",
+    "latest_contract_review": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md",
+    "tax_planning": "knowledge/reports/2026-10-24_TAX_PLANNING.md",
+    "company": "平顶山凌矩信息科技有限责任公司（执照图片；2026-10-19成立，注册资本10万元）",
+    "tax_progress": "Owner报告已点击税务信息确认，系统返回主页；是否办结未核实，企业登录待重试"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
