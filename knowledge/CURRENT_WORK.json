@@ -169,16 +169,17 @@
     "date": "2026-10-24",
     "company_registered": "confirmed_by_business_license_image",
     "business_place": "平顶山新城区/示范区（Owner最后确认）",
-    "tax_one_license_one_code": "submitted_as_reported_by_owner_completion_unverified",
-    "tax_enterprise_login": "retry_pending",
+    "tax_one_license_one_code": "submission_reported_and_enterprise_login_successful; formal registration/base-tax status not yet inspected",
+    "tax_enterprise_login": "owner_confirmed_success",
     "vat_taxpayer_category": "unknown",
     "invoice_6_percent": "partner_oral_request_contract_blank",
     "owner_goals": "亲自办理税务和记账，依法尽用优惠、保障正常开票申报、最小化综合税费与成本并提高净利润",
-    "next_single_action": "重试河南电子税务局企业业务登录；若失败向税局核实一照一码户确认状态",
+    "next_single_action": "从企业业务首页进入我的信息/纳税人信息，核实税务登记与纳税人基本状态，截图需遮盖个人敏感信息；不先申请一般纳税人或发票",
     "latest_reports": [
       "knowledge/reports/2026-10-24_COMPANY_TAX_PROGRESS.md",
       "knowledge/reports/2026-10-24_TAX_PLANNING.md"
-    ]
+    ],
+    "enterprise_login_latest": "2026-10-24 Owner已确认成功进入河南电子税务局企业账户"
   },
   "partner_contract_review": {
     "date": "2026-10-24",
