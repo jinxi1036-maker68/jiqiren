@@ -1,6 +1,6 @@
 {
   "schema_version": "evidence_index_v1",
-  "updated_at": "2026-10-11",
+  "updated_at": "2026-10-24",
   "evidence": [
     {
       "id": "EV-LS-001",
@@ -129,6 +129,44 @@
         "真实产能、通过率、盈利或结算到账"
       ],
       "privacy_note": "Owner本次明确要求上传该表格，原始附件完整保存于既有私有仓库；摘要和结构化台账不重复手机号、私人微信或住宅详细地址。本次原始附件保存不改变其他知识记录的隐私约定。"
+    },
+    {
+      "id": "EV-COMPANY-20261024",
+      "topic": "公司执照及河南电子税务局新办开业表单的Owner操作",
+      "source_type": "owner_provided_license_photo_and_tax_portal_screenshots_owner_report",
+      "date": "2026-10-24",
+      "status": "pending",
+      "proves": [
+        "营业执照照片显示公司成立及注册资本10万元",
+        "股东认缴比例40/60与Owner确认一致",
+        "系统提示投资总额合计不符后Owner调整并点击确认返回主页"
+      ],
+      "does_not_prove": [
+        "税务信息已审核办结",
+        "企业业务登录成功",
+        "已是一般纳税人或可开6%专票"
+      ],
+      "privacy_note": "仅记录业务摘要，不上传实名及证件、联系与税务页面图片",
+      "report": "knowledge/reports/2026-10-24_COMPANY_TAX_PROGRESS.md"
+    },
+    {
+      "id": "EV-LS-CONTRACT-QA-20261024",
+      "topic": "灵生19页合同草案与13页质检验收标准审阅",
+      "source_type": "owner_provided_docx_and_owner_call_report",
+      "date": "2026-10-24",
+      "status": "pending",
+      "proves": [
+        "合同草案包含复检扣款、月度结算、预开发票、可选设备租赁、分包限制、违约条款",
+        "验收规范规定Episode、Bad分割丢弃、视频要求和质检流程"
+      ],
+      "does_not_prove": [
+        "合同已最终签署并生效",
+        "6%税率及单价已写入合同",
+        "首笔项目数据验收合格或回款",
+        "吴总已答复第一项问题"
+      ],
+      "privacy_note": "原文件仅为会话附件，不在GitHub存实名信息或原始合同扫描",
+      "report": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md"
     }
   ]
 }
