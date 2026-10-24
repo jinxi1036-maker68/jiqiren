@@ -6,8 +6,8 @@
   "context_profile": "pre_trial_preparation",
   "objective": "按灵生对接人认可的自建真实作业场景方式，完善平顶山三分区具体任务SOP，先完成小批采集、上传及质检反馈，在真实有效小时和费用条款可核实后再扩大10台及人员规模。",
   "now": {
-    "date": "2026-10-15",
-    "phase": "三分区任务设计/送审准备，正式采集产能尚未验证",
+    "date": "2026-10-24",
+    "phase": "原试采准备主线未有新增交付证据；并行办理公司税务开业确认、审查灵生合同与质检规范",
     "first_batch_device_target": 10,
     "actual_devices_received": null,
     "actual_workers_deployed": null,
@@ -68,13 +68,16 @@
     "不得虚构正在运营工厂订单、真实缺陷样品来源、工作场景授权或已有项目业绩。",
     "不得用影响工人安全的方式满足拍摄要求；不强迫省略必要的专业防护。"
   ],
-  "next_action": "取得灵生对三分区任务SOP及首条任务录制上传规则的确认；按批准版本低成本试采、正式质检，再测算是否扩设备和人数。",
+  "next_action": "Owner便利时复核一照一码户确认是否完成及企业登录；业务主线仍以获得灵生具体SOP批准、小批验收和实际回款为扩张依据。",
   "must_read": [
     "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "knowledge/SCENE_PIPELINE.json",
     "knowledge/PARTNER_LEDGER.json",
     "knowledge/04_SCENE_STRATEGY.md",
-    "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md"
+    "knowledge/07_RISK_COMPLIANCE_AND_CONTRACT.md",
+    "knowledge/reports/2026-10-24_COMPANY_TAX_PROGRESS.md",
+    "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md",
+    "knowledge/reports/2026-10-24_TAX_PLANNING.md"
   ],
   "on_demand": [
     "knowledge/ECONOMICS_MODEL.json",
@@ -161,5 +164,28 @@
     "phase_02b_status": "2026-10-16 Gate A范围内审查通过，PR当时未合并且基于PR#6分支；23次模型对话/97次浏览器调用；九类最新模拟样本通过，Windows CMD双击视觉验收待完成",
     "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+  },
+  "admin_finance_track": {
+    "date": "2026-10-24",
+    "company_registered": "confirmed_by_business_license_image",
+    "business_place": "平顶山新城区/示范区（Owner最后确认）",
+    "tax_one_license_one_code": "submitted_as_reported_by_owner_completion_unverified",
+    "tax_enterprise_login": "retry_pending",
+    "vat_taxpayer_category": "unknown",
+    "invoice_6_percent": "partner_oral_request_contract_blank",
+    "owner_goals": "亲自办理税务和记账，依法尽用优惠、保障正常开票申报、最小化综合税费与成本并提高净利润",
+    "next_single_action": "重试河南电子税务局企业业务登录；若失败向税局核实一照一码户确认状态",
+    "latest_reports": [
+      "knowledge/reports/2026-10-24_COMPANY_TAX_PROGRESS.md",
+      "knowledge/reports/2026-10-24_TAX_PLANNING.md"
+    ]
+  },
+  "partner_contract_review": {
+    "date": "2026-10-24",
+    "status": "draft_19_pages_and_qa_standard_13_pages_reviewed_not_signed",
+    "first_question": "部分Episode只有Bad片段时仅扣Bad并保留合格时长结算？",
+    "partner_answer": "not_observed",
+    "negotiation_rule": "一条短消息一次只谈一个问题",
+    "report": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md"
   }
 }
