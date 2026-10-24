@@ -1,6 +1,6 @@
 {
   "schema_version": "risk_register_v1",
-  "updated_at": "2026-10-11",
+  "updated_at": "2026-10-24",
   "risks": [
     {
       "id": "R-001",
@@ -60,6 +60,46 @@
       "impact": "critical",
       "trigger": "合同未明确复用/转售权就想额外保留上游采集视频、动作数据或衍生信息",
       "mitigation": "按合同/场地及个人信息授权区分自有运营数据、客户委托交付、独立自主采集；未经书面许可不留样不转售；后期考虑律师审阅许可",
+      "status": "open"
+    },
+    {
+      "id": "R-007",
+      "category": "tax",
+      "title": "税务信息提交后未核实办结与开票纳税人身份",
+      "probability": "unknown",
+      "impact": "high",
+      "trigger": "企业业务仍无法登录或首次开票/申报失败",
+      "mitigation": "先重试企业登录与主管税务机关核验；查发票资格、税种及申报期限，不假定已办结",
+      "status": "open"
+    },
+    {
+      "id": "R-008",
+      "category": "tax",
+      "title": "口头要求6%专票与公司纳税身份及含税定价不匹配",
+      "probability": "unknown",
+      "impact": "high",
+      "trigger": "正式合同6%专票要求确认而自身不能合法开具或报价不含税口径错",
+      "mitigation": "含税单价/税目/税率先书面明确，按税法核验资格并定量比较真实税费与现金流",
+      "status": "open"
+    },
+    {
+      "id": "R-009",
+      "category": "commercial",
+      "title": "合同草案验收/复检/单条Bad片段计时及可修订标准争议",
+      "probability": "medium",
+      "impact": "high",
+      "trigger": "部分视频不合格被整条扣除、复检扣款、上游追加最新标准",
+      "mitigation": "先短问Bad切片是否仅扣片段，再落实验收附件版本、生效期、申诉和补采比例",
+      "status": "open"
+    },
+    {
+      "id": "R-010",
+      "category": "legal_finance",
+      "title": "未经确认的税收优惠或团长外包导致涉税及转包风险",
+      "probability": "unknown",
+      "impact": "high",
+      "trigger": "仅凭退役经历申报资格、无真实业务转票、未经批准外包",
+      "mitigation": "逐项核实资格/社保/开票与实际成本；禁止虚构，按合同事先取得分包书面允许",
       "status": "open"
     }
   ]
