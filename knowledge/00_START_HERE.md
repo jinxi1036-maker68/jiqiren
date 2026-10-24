@@ -13,7 +13,14 @@
 
 **关键结论：Owner电脑里最终只有一名正式Hermes员工；不把它变成新管理系统，也不长期保留旧Hermes+数采Hermes两个身份。公司给目标/底线，员工自主判断/完成/成长；当前先灵生数采，未来按Owner需要扩展。** 之前独立profile仅是模拟测试策略；原Hermes正式清理/迁移尚未做。具体岗位权限仍需单独授权和验收。
 
-**换新对话窗口时可直接复制：**[Hermes跨窗口接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口仍须读取上述宪章/ADR/历史，不仅凭交接语回答。\n\n## Agent Bootstrap
+**换新对话窗口时可直接复制：**[Hermes跨窗口接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口仍须读取上述宪章/ADR/历史，不仅凭交接语回答。\n\n## 2026-10-24 最新公司/税务与合同进展
+
+- 当前税务办理记录：[开业信息确认进度](reports/2026-10-24_COMPANY_TAX_PROGRESS.md)。Owner报告已提交，但最终办结状态未核实。
+- 当前税务优化目标：[合法节税核查清单](reports/2026-10-24_TAX_PLANNING.md)。政策优惠须在实际申报前再次核实。
+- 灵生合作最新合同、验收问题：[合同和QA沟通报告](reports/2026-10-24_LIVSYN_CONTRACT_QA.md)。尚无最终签署合同和最新结算证据。
+- 具体机器状态以 [CURRENT_WORK.json](CURRENT_WORK.json)、[PROJECT_INDEX.json](PROJECT_INDEX.json) 为准；Hermes现行理念仍以其岗位宪章为唯一权威。
+
+## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
 
 1. 读 `knowledge/KNOWLEDGE_HARNESS.json`
