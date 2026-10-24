@@ -1,0 +1,5 @@
+hermes/browser/node_modules/
+hermes/browser/.local/
+hermes/browser/.venv/
+**/__pycache__/
+*.pyc

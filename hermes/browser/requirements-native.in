@@ -1,0 +1,3 @@
+# Only installed into the new browser tool environment, never Hermes' venv.
+browser-use==0.13.11
+browser-harness==0.1.13

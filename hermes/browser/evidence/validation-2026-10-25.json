@@ -1,0 +1,218 @@
+{
+  "checked_at": "2026-10-24T16:25:26.592592+00:00",
+  "base_main": "689100ce85b86943638a39ea5b3bd37d8ce85067",
+  "release": "LINGJU-BROWSER-LOCAL-B-2026-10-24",
+  "status": "tooling_partial_model_acceptance_blocked",
+  "new_hermes_identities": 0,
+  "hermes_messages_sent": 0,
+  "hermes_model_requests": 0,
+  "production_platform_access": false,
+  "raw_receipts_uploaded": false,
+  "unit_tests": {
+    "node_passed": 13,
+    "python_passed": 4,
+    "recorded_at": "2026-10-24T16:25:23.325126+00:00",
+    "actual_command_results": {
+      "node": {
+        "exit_code": 0,
+        "passed_count": 13,
+        "duration_seconds": 0.641,
+        "stdout_sha256": "98c28f3252a5170f94065080f58b59b2831d75a45737fe7b0aa4fb8614814b2b",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "python": {
+        "exit_code": 0,
+        "passed_count": 4,
+        "duration_seconds": 0.734,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "27a0690ad6d898741f15f5ec03bad81f73ea792f775a6b0e86c3a21d693900a0"
+      }
+    }
+  },
+  "versions": {
+    "@playwright/mcp": "0.0.83",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "browser-use": "0.13.11",
+    "browser-harness": "0.1.13",
+    "native_distribution_count": 107,
+    "chrome": "156.0.8078.47",
+    "packaged_original_desktop": "0.17.0"
+  },
+  "playwright_component": {
+    "status": "component_pass",
+    "tools": [
+      "browser_close",
+      "browser_handle_dialog",
+      "browser_fill_form",
+      "browser_press_key",
+      "browser_type",
+      "browser_navigate",
+      "browser_navigate_back",
+      "browser_take_screenshot",
+      "browser_snapshot",
+      "browser_click",
+      "browser_select_option",
+      "browser_tabs",
+      "browser_wait_for"
+    ],
+    "image_block_delivered": true,
+    "vision_understanding": "unverified",
+    "employee_tasks_performed": false,
+    "business_records_created": 0
+  },
+  "native_component": {
+    "status": "failed",
+    "error": "native CLI timed out",
+    "exit_code": null,
+    "root_cause": "unknown; isolated daemon/CDP initialization observed, execution did not return"
+  },
+  "dispatch_regression": {
+    "unmarked_tools": [
+      "browser_click",
+      "browser_close",
+      "browser_navigate",
+      "browser_snapshot"
+    ],
+    "marked_tools": [
+      "browser_close",
+      "browser_handle_dialog",
+      "browser_fill_form",
+      "browser_press_key",
+      "browser_type",
+      "browser_navigate",
+      "browser_navigate_back",
+      "browser_take_screenshot",
+      "browser_snapshot",
+      "browser_click",
+      "browser_select_option",
+      "browser_tabs",
+      "browser_wait_for"
+    ],
+    "marker_received": true,
+    "original_home_unchanged": true,
+    "desktop_environment_proven": false
+  },
+  "desktop": {
+    "started_this_round": false,
+    "model_session_tested": false,
+    "reason": "Do not start a potentially bootstrapping Desktop under a home without canonical runtime; no relocation or install permitted."
+  },
+  "budget_gate": {
+    "checked_at": "2026-10-24T15:50:14.965450+00:00",
+    "message_limit": 6,
+    "physical_request_limit": 120,
+    "max_turns_per_task": 16,
+    "configured_app_attempts_per_loop": 3,
+    "six_tasks_times_16_loops_times_app_attempts": 288,
+    "fallback_config_present": true,
+    "logical_loop_counter_found": true,
+    "logical_counter_is_physical_counter": false,
+    "physical_api_budget_enforced": false,
+    "all_zero_model_gates_passed": false,
+    "owner_may_send_message": false,
+    "reason": "Existing turn/usage counters do not enforce a global physical request limit including retries, fallback and auxiliary calls. No authorized transport-wide limiter is installed.",
+    "action": "Stop model acceptance. Do not alter model/config/provider routes or inject runtime patches.",
+    "source_witnesses": {
+      "agent/conversation_loop.py": {
+        "sha256": "626fe188208dbd790712e4470f6933d8a21f010644bcec9a165999aefd150536",
+        "lines": {
+          "api_call_count += 1": [
+            2002
+          ],
+          "while retry_count < max_retries:": [
+            2835
+          ],
+          "agent.session_api_calls += 1": [
+            4190
+          ]
+        }
+      },
+      "agent/agent_init.py": {
+        "sha256": "4d68ddf051c9f06ddd971da22d5a4039ccbce8954462e23253cc3d15a4d75887",
+        "lines": {
+          "_agent_section.get(\"api_max_retries\", 3)": [
+            2024
+          ]
+        }
+      },
+      "tui_gateway/server.py": {
+        "sha256": "67baa60d9e23e02ad7a7029d0c4e2c515442ae7ba160c917b1c2077bd38649b3",
+        "lines": {
+          "os.environ.get(\"HERMES_TUI_MAX_TURNS\")": [
+            6623
+          ]
+        }
+      }
+    },
+    "model_calls": 0
+  },
+  "protection": {
+    "records_checked": 61,
+    "existing_files": 59,
+    "all_unchanged": true,
+    "workspace_files": 37,
+    "workspace_manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c"
+  },
+  "existing_file_change": {
+    "file": "H/tools/company-browser-simulation/launch_bridge.py",
+    "before_sha256": "9b793583b3fc15735411a051abffa84a3c5a64c5e5bc88379f63c1d1598d4f4e",
+    "after_sha256": "d060dfb7fa03f7aed9f6612805688b5dbbd043e08e4b410c1626d8f7b39a594a",
+    "unmarked_original_body_preserved": true,
+    "preimage_hash_verified": true,
+    "recovery_acl": {
+      "private": true,
+      "rules": 2,
+      "protected": true
+    },
+    "rollback_performed": false
+  },
+  "new_tool_files_deployed": 20,
+  "tool_source_sha256": {
+    "package.json": "1ffabb9d0a305e0c89e6e0a5d42549ffd6d65db40da337d78414add0a0034f08",
+    "package-lock.json": "aa124fd555139fc3111df357756ff622bd61ae234018a047b5cff361e91c6e47",
+    "requirements-native.in": "ec873780e0a5f7061bc83e8a0a2d432f8216714cc2e7e04ce134973bc854a420",
+    "requirements-native.lock": "a96b2c641f74326365ce745ebd8bea21e364b5f74333a1c039d0ffa613371d4c",
+    "cases.json": "8758851dc890e8caa0936c6ffc15ecf2fce898e2f89ea5e17dcee50b1c86d33e",
+    "safety.py": "37d2d0ddf38c59d9932e861c4a084322ef300c21f8ad78f7b166d94b648e1ba1",
+    "fixture.mjs": "6cdafa49a3172b6179185c7343100bf3fa213a0017e32036a96566b421973e1c",
+    "bridge.mjs": "e814adc336c1330f25fdfe216b1d14793dd50742f52345440cc8d3a916eacf0b",
+    "dispatch.py": "57639bf36562d0b2f19730106f026bd326c8a1c26737730d3704a5eaf3555907",
+    "owned_job.py": "d776d632b47830a2e1e19d6687b54cdf55482b0f8cdeaa3d4e7251f18b4e53f5",
+    "launch.py": "8222b59d57ed694b3b7821d86ea3fea43b14823f27d6863c4a33afac7411e290",
+    "watch.py": "cdbe4245f62f05fd4d5d53900916bf40e8926bbb13064d96059dd4bda923862e",
+    "TASKS.md": "d42dc2c881c258d352c6f34177638f94ebecf0ecad08e637c3baec3669d3d20b",
+    "web/index.html": "8ea6c2eb619594c239fd8dbd61745f36b49f8cc8ff9a730705e5b8acb0dc748b",
+    "web/app.js": "1866bf1f901fbff687ce320d80c7f8b76e685e2eb26a793d2677e2642aa7d30e",
+    "web/style.css": "2208a638f6ab7b53db628e8f355397c5665443efa7aa3d6dc12059e567a7c8ea",
+    "image_result.mjs": "d8d55cb342ed55690aa66195ee0ae6b5455e4bcbc5f79df1d87f29db35fd6bb5",
+    "native_cli.py": "55d038077ab19ef93ac93b3c505e21f651c74ccdfd591e7e76a509800882b8ac",
+    "compat/bin/browser-use.cmd": "0624e35317e5e5b9d74d0dfa736fb8b1493919c06de6d207b43f88847cfb7730",
+    "budget_gate.py": "f5365ec6ea4a7336eecd86d3271aec1366ae2544d74072fc6094ad0f72ba5f5d"
+  },
+  "components_total_call_counts": {
+    "browser_navigate": 11,
+    "browser_snapshot": 10,
+    "browser_type": 6,
+    "browser_select_option": 5,
+    "browser_take_screenshot": 9,
+    "browser_tabs": 4,
+    "browser_click": 4,
+    "browser_handle_dialog": 4
+  },
+  "recorded_runs": 12,
+  "all_recorded_children_exited": true,
+  "agent_acceptance": {
+    "native": {
+      "analysis": "not_run",
+      "binding": "not_run",
+      "recovery": "not_run"
+    },
+    "playwright": {
+      "analysis": "not_run",
+      "binding": "not_run",
+      "recovery": "not_run"
+    }
+  },
+  "selected_primary_driver": null,
+  "note": "Component checks and developer actions are not Hermes Agent acceptance."
+}
