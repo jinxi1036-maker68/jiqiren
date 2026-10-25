@@ -2,7 +2,7 @@
 
 > 这是**新聊天的使用入口**，不是另外一份岗位宪章；当前唯一有效的开发理念始终由`knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md`定义。历史实施状态必须以实时GitHub与本机Codex实际反馈核验。此文档不代表Owner已批准执行旧记忆永久删除、后台登录或任务写入。
 
-## 可直接复制到新ChatGPT对话的指令
+> **2026-10-25时效提示**：以下正文中“原Hermes尚未接入、仍停在PR#8”等为2026-10-16创建本交接语时的历史快照。后续PR#12/#15已有原Hermes部分本机接入与合成模拟记录，PR#20报告QQ普通对话入口恢复尝试；正式灵生业务权限和完整验收仍不可据此认定。**接力前先读** [2026-10-25 PR分流台账](reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md) 和 [恢复的决策时间线](history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md)，再核当前机器和Owner授权。\n\n## 可直接复制到新ChatGPT对话的指令
 
 我正在持续建设机器人数据采集公司的**唯一Hermes数字员工**。请接管GitHub仓库 `jinxi1036-maker68/jiqiren` 的该项目，不要按照旧聊天的独立双Hermes方案继续。
 
