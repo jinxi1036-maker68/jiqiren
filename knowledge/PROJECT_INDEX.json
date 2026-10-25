@@ -41,7 +41,9 @@
     "meeting_newest_status": "2026-10-25 16:59-17:53 AI纪要：新增20台预计2026-10-26到货/30台每日/150h每日/720h周为计划未验收；工厂任务5h/超市暂至周四；平台AI质检/一键申诉仅在规划；22二级三级名单与已有文件名32、表内34冲突待定",
     "customer_scene_survey_priority": "先摸排有真实授权的工厂、超市、仓库等场地；我方并行设计具体三级类和操作SOP并送审；不等客户代写动作，也不将候选任务视为平台已批准",
     "latest_owner_scene_sop_decision": "knowledge/decisions/ADR-OWNER-SCENE-THIRD_LEVEL-TASK-SOP-OWNERSHIP-2026-10-25.md",
-    "tertiary_task_ownership": "2026-10-25 Owner纠正：凌矩自行设计真实场景下三级细分、独立任务、动作顺序和完整SOP并提交灵生审查；不是等王乾坤为我们设计动作。22/32/34只涉及客户场景分类版本待核。"
+    "tertiary_task_ownership": "2026-10-25 Owner纠正：凌矩自行设计真实场景下三级细分、独立任务、动作顺序和完整SOP并提交灵生审查；不是等王乾坤为我们设计动作。22/32/34只涉及客户场景分类版本待核。",
+    "pending_scene_selection_plan": "knowledge/reports/2026-10-25_LINGJU_SCENE_SELECTION_PREAPPROVAL_V1.md",
+    "next_owner_gate": "Owner确认工厂车间/零售购物空间/仓库三类优先与个人工作区备选，随后编写逐项动作SOP发灵生审核，批准后才布置并采购"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
