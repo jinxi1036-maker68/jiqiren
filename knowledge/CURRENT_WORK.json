@@ -246,5 +246,23 @@
     "device_rent_per_day_cny": 20,
     "captain_mode": "a prior alternative B proposal, not included in self-operating scenario; neither modeled scale nor contractor plan proves implementation"
   },
-  "current_business_decision_history": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md"
+  "current_business_decision_history": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md",
+  "customer_scene_request_20261025": {
+    "source": "Owner转发灵生对接人文字和Excel附件",
+    "provided_label": "32个二级采集场景.xlsx",
+    "observed_sheet": "34个二级采集场景",
+    "observed_scene_count": 34,
+    "scope": "classification_names_only_no_tasks_SOP_rates_or_acceptance",
+    "report": "knowledge/reports/2026-10-25_LIVSYN_34_SECONDARY_SCENES_SCREENING.md",
+    "preliminary_shortlist": [
+      "工厂车间",
+      "仓库",
+      "零售购物空间",
+      "分拣中心",
+      "生活服务空间",
+      "住宿休闲空间"
+    ],
+    "status": "new_upstream_scene_discovery_request_pending_actual_site_contact_and_client_category_approval",
+    "next_gate": "向灵生先核实自建真实工位能否作为工厂车间/仓库二级场景报备试拍；后续按分类动作要求逐步寻找授权场地"
+  }
 }
