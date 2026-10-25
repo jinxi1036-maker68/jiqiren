@@ -1,0 +1,73 @@
+{
+  "schema_version": "lingju_scene_sop_archive_v1",
+  "date": "2026-10-25",
+  "main_index": "knowledge/sop/00_START_HERE.md",
+  "github_binary_verified": true,
+  "binary_verification_method": "For each of five Excel files, the decoded source base64 and the GitHub returned base64 were exactly equal",
+  "files": [
+    {
+      "id": "source_customer",
+      "path": "knowledge/sop/source/2026-10-25_灵生32个二级采集场景_原表.xlsx",
+      "bytes": 7773,
+      "sha256": "81752935a5d2635bbb06abdf0658f166a6ad4a7e75d1856f7645d9968e6e80f5",
+      "status": "customer_source_unmodified"
+    },
+    {
+      "id": "historical_assessment",
+      "path": "knowledge/sop/history/2026-10-25_34类场景资源初筛.xlsx",
+      "bytes": 11522,
+      "sha256": "1e8888ea78f071106a85c8c699810cf7e34bea33737e29eaaa6550aca98c84d4",
+      "status": "reference_internal"
+    },
+    {
+      "id": "V1_superseded",
+      "path": "knowledge/sop/archive/2026-10-25_早期V1七表详细版_已取代.xlsx",
+      "bytes": 67419,
+      "sha256": "620c1ea9e205100ae99b874b8c8e99022d4bc68d1463a2663a336344a8df497b",
+      "status": "superseded_not_for_client"
+    },
+    {
+      "id": "V2_client",
+      "path": "knowledge/sop/client/2026-10-25_三场景三级分类任务目录_V2.xlsx",
+      "bytes": 8358,
+      "sha256": "c01389764e4c9b801c1c4f12bab97a18a17408f5f660e707382dcd2c7051cdf4",
+      "status": "owner_review_pending_not_sent"
+    },
+    {
+      "id": "V3_internal",
+      "path": "knowledge/sop/internal/2026-10-25_三场景33项完整内部SOP_V3.xlsx",
+      "bytes": 16156,
+      "sha256": "1c0a2a856bd25b299499c0d0a61bc62b96bf0e2b4aa156b2ec0a41e000132840",
+      "status": "internal_draft_field_revisions_pending"
+    }
+  ],
+  "task_count": 33,
+  "primary_scene_count": 3,
+  "tertiary_category_count": 11,
+  "scenes": [
+    "工厂车间",
+    "零售购物空间",
+    "仓库"
+  ],
+  "internal_sop": {
+    "path": "knowledge/sop/internal/2026-10-25_LINGJU_33_TASK_SOPS_HERMES_V3.md",
+    "task_ids": "F01-F12;S01-S12;W01-W09",
+    "steps_per_task": 6,
+    "total_steps": 198,
+    "source_sha256": "d2db3d8272d95e62c980b10166d188fb8984350f79a82281f1b37c57451a93ba",
+    "status": "internal_owner_suggested_steps_pending_field_observation_and_partner_review"
+  },
+  "client_csv": {
+    "path": "knowledge/sop/external/2026-10-25_LINGJU_SCENE_TASKS_V2_RECONSTRUCTABLE.csv",
+    "rows": 33
+  },
+  "backup": "ChatGPT Library: /机器人数据采集/2026-10-25_场景任务与SOP/",
+  "constraints": [
+    "V2 external only and not yet sent",
+    "V3 never externally shared without owner authorization",
+    "all proposed tasks use reusable resettable materials, avoid ongoing consumables",
+    "privacy-sensitive parcel sorting paused",
+    "do not overstate real site authenticity or approved QA"
+  ],
+  "release_policy": "Only owner-confirmed scenes and real field SOP revisions, after partner feedback and permission, may be used for production task creation; original Hermes not authorized for production writes by mere document existence"
+}
