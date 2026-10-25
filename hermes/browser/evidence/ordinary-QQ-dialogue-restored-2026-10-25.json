@@ -1,0 +1,99 @@
+{
+  "checked_at": "2026-10-25T11:57:15.094856+00:00",
+  "Owner_request": "Why does an ordinary QQ question such as are you online receive fixed completed-acceptance replies? Restore normal dialogue.",
+  "cause": "Codex left temporary acceptance communication-only handler in charge of all non-status QQ text; exhausted2-message acceptance grant blocked ordinary questions before native model.",
+  "correction": "Original installed QQAdapter/GatewayRunner primary conversation path restored for actual authorized Owner messages. Ordinary dialogue uses native session routing and original H/W/model/identity. No forced test-slot thread or reply.",
+  "authorization_interpretation": "Owner requests normal QQ replies. Direct Owner messages are ordinary interactive model use, not a new Codex simulation budget. No automatic tests, budget compensation, or acceptance reopening.",
+  "ordinary_QQ_protocol_READY": true,
+  "live_PID": 23204,
+  "home_company_workspace_verified": true,
+  "native_session_routing": true,
+  "no_new_identity_or_profile": true,
+  "model_proxy_bypass": {
+    "hosts": [
+      "apihub.agnes-ai.com"
+    ],
+    "process_only": true,
+    "native_resolver_model_direct": true,
+    "QQ_routes_unchanged": true,
+    "inherited_exceptions_preserved": true,
+    "model_requests_sent": 0
+  },
+  "Clash_or_global_proxy_changed": false,
+  "only_owner_initiated_model_admission": true,
+  "startup_model_attempts": 0,
+  "Codex_model_messages_sent": 0,
+  "autonomous_model_probes": 0,
+  "ordinary_chat_messages_observed_at_check": 0,
+  "ordinary_request_attempts_observed_at_check": 0,
+  "ordinary_usage_audit_separate_from_test_ledger": true,
+  "acceptance_budget": {
+    "limit": 30,
+    "reserved_network_attempts": 29,
+    "armed": false,
+    "events": {
+      "denied_unarmed": 5,
+      "reserved_before_send": 29
+    },
+    "families": {
+      "chat_completions": 27,
+      "other_httpx": 2
+    }
+  },
+  "acceptance_message_grant": "2/2 remains consumed",
+  "normal_use_limits": "No2-message/30-request exercise gate for ordinary human dialogue. Original provider rules/native finite retries remain; same12-second spacing/one in-flight. Requests without active Owner message denied, provider long-wait fail-closed retained.",
+  "tools_exposed": [],
+  "scope": "ordinary conversation only; browser/business tools not enabled or restored by this change",
+  "not_started": [
+    "MCP browsers",
+    "cron",
+    "old automatic jobs",
+    "other messaging platforms",
+    "real business operation"
+  ],
+  "tests": {
+    "new_local_tests_passed": 5,
+    "real_model_requests_in_tests": 0,
+    "covers": [
+      "explicit ordinary Owner-chat gate required",
+      "outside-message model requests blocked",
+      "normal dialogue not capped at two test messages",
+      "provider freeze/background fail closed",
+      "QQ control renewals not limited by exercise lifetime count"
+    ]
+  },
+  "source_sha256": {
+    "qq_chat.py": "44082e538e43bf7113b95cd7be796de1ad68b41cc2c019c231bb3044ee88d43c",
+    "tests/test_qq_chat.py": "8984cfc23dff19dc6e0539e8922c255592658ccc155ad6afd07ee586d6a9e58e"
+  },
+  "tool_changes": {
+    "qq_chat.py": {
+      "new_file": true,
+      "sha256": "44082e538e43bf7113b95cd7be796de1ad68b41cc2c019c231bb3044ee88d43c"
+    },
+    "deployment.json": {
+      "before_sha256": "f0909d79ccaf85e4733911dcfa5c3c8f5c5e0e3a9703ba5fae99f9d285c4d07e",
+      "after_sha256": "1a71509c88d7ac3d2382609bf10b8cb6c05847ddaa5fc9b6bc5f415f470ba6c5"
+    },
+    "qq-addon-deployment.json": {
+      "before_sha256": "32c5ef91d48ebece2e7f23db10f3cb890cab271446a4af291b9c92b4613e3a99",
+      "after_sha256": "57facebdb160ea945414d5850f623ed115a8ed67424c0cbad31f845a7eb985a5"
+    }
+  },
+  "necessary_private_preimages": 2,
+  "rollback_performed": false,
+  "restart": "Only own completed-acceptance status QQ process and launcher replaced; original Hermes identity preserved",
+  "protected_records_unchanged": 59,
+  "workspace_files": 37,
+  "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+  "all_old_acceptance_ledgers_byte_unchanged": true,
+  "original_config_memory_identity_credentials_knowledge_permissions_unchanged": true,
+  "unverified": [
+    "first actual natural model reply after switch",
+    "long-lived ordinary conversation stability",
+    "browser/recovery acceptance",
+    "voice or attachment behavior after switch"
+  ],
+  "rollback": "Stop only this owned chat process; source/receipt conditional restoration from exact post-hash private preimages; no whole configuration or history rollback.",
+  "conclusion": "Ordinary Owner QQ text now routes to original model instead of the consumed acceptance notice. Startup/connection/route proven; no Codex-generated test message, actual reply not yet claimed."
+}

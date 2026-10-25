@@ -75,7 +75,7 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "model_proxy_bypass_live_original_QQ_status_only_no_generation_verification",
+      "status": "ordinary_Owner_QQ_dialogue_restored_simulation_still_paused",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -88,7 +88,7 @@
         "current_message_grant_consumed",
         "rejected_unavailable_terminal_attempt"
       ],
-      "next_step": "Owner已要求Hermes模型连接不走HTTP代理。新工具增加显式进程gate，在原dotenv装载后仅为apihub.agnes-ai.com合并NO_PROXY/no_proxy，校验模型直连和QQ路由不变，失败恢复子进程环境。24项QQ本地检查及1次未认证目录GET200通过；仅替换本轮自有QQ管线，原H/W原身份READY，活动进程已证实绕过。当前仅状态模式，无模型管线/MCP，新增模型调用0，29/30、消息2/2仍暂停；未永久修改Desktop默认入口、配置或Clash，尚未验证真实生成/SSE。",
+      "next_step": "Owner指出普通QQ问候被固定“验收已结束”拦住。已替换遗留测试状态入口：原安装QQAdapter/GatewayRunner/原H/W/原模型和原生会话路由接收Owner日常对话，不再套用模拟2条/30次上限；模型仅在Owner消息期间放行，保留节流和模型域名HTTP代理绕过。QQ协议READY，启动模型调用0，5项本地检查通过；首条实际答复待Owner自然聊天观察。普通对话不开放浏览器/业务工具、不启动旧cron；旧29/30、消息2/2和所有验收账本字节不变。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -357,6 +357,17 @@
         "permanent_Desktop_entry_changed": false,
         "real_generation_verified": false,
         "evidence": "hermes/browser/evidence/model-proxy-bypass-applied-2026-10-25.json"
+      },
+      "ordinary_QQ_dialogue": {
+        "native_original_identity_and_routing": true,
+        "QQ_READY": true,
+        "test_caps_not_applied_to_ordinary_chat": true,
+        "model_only_on_actual_Owner_messages": true,
+        "Codex_model_messages": 0,
+        "startup_model_attempts": 0,
+        "browser_and_business_tools": false,
+        "first_natural_reply": "not yet verified",
+        "evidence": "hermes/browser/evidence/ordinary-QQ-dialogue-restored-2026-10-25.json"
       }
     }
   }

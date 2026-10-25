@@ -57,4 +57,4 @@ Current 只保存“现在”；History 只保存“过去”；Evidence 只保�
 
 ## 2026-10-25 Hermes浏览器专项本地实施
 
-Owner已要求Hermes模型连接不走HTTP代理。新工具增加显式进程gate，在原dotenv装载后仅为apihub.agnes-ai.com合并NO_PROXY/no_proxy，校验模型直连和QQ路由不变，失败恢复子进程环境。24项QQ本地检查及1次未认证目录GET200通过；仅替换本轮自有QQ管线，原H/W原身份READY，活动进程已证实绕过。当前仅状态模式，无模型管线/MCP，新增模型调用0，29/30、消息2/2仍暂停；未永久修改Desktop默认入口、配置或Clash，尚未验证真实生成/SSE。 见[报告第26节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[生效证据](../hermes/browser/evidence/model-proxy-bypass-applied-2026-10-25.json)。
+Owner指出普通QQ问候被固定“验收已结束”拦住。已替换遗留测试状态入口：原安装QQAdapter/GatewayRunner/原H/W/原模型和原生会话路由接收Owner日常对话，不再套用模拟2条/30次上限；模型仅在Owner消息期间放行，保留节流和模型域名HTTP代理绕过。QQ协议READY，启动模型调用0，5项本地检查通过；首条实际答复待Owner自然聊天观察。普通对话不开放浏览器/业务工具、不启动旧cron；旧29/30、消息2/2和所有验收账本字节不变。 见[报告第27节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)和[恢复证据](../hermes/browser/evidence/ordinary-QQ-dialogue-restored-2026-10-25.json)。

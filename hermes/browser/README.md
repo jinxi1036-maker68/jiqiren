@@ -292,3 +292,8 @@ Owner续办在3次浏览器动作后APIConnectionError中断，未提交项目�
 ### 本轮模型HTTP代理绕过已装入临时QQ入口
 
 显式gate.model_proxy_bypass匹配Owner授权、hosts=[apihub.agnes-ai.com]、process_only=true才生效。原dotenv装载后合并NO_PROXY/no_proxy，保留旧例外，用原生解析器确认模型直连/QQ路由不变；失败恢复环境并停止。无标记继续原逻辑，不改配置或全局代理。24项QQ检查和目录GET200通过，当前原QQ状态进程路由已证实；不永久改Desktop入口，也不宣称真实生成/SSE通过。29/30及2/2仍暂停，勿发送新业务任务。见[证据](evidence/model-proxy-bypass-applied-2026-10-25.json)。
+
+
+### 当前QQ：日常对话恢复，模拟验收保持暂停
+
+qq_chat.py复用原安装/身份/原生会话管线，只接Owner日常对话，不把“2条模拟任务已用完”回复给普通文字。新普通使用收据与测试账本区分，测试29/30及2/2冻结保留；无Owner消息的模型请求拒绝，保留进程节流与Agnes域名绕过HTTP代理。工具为空、不启旧cron/MCP/真实业务。入口gate需ordinary_owner_chat及Owner恢复授权，运行在原H/W，不创建profile。首条真实自然答复待观察，见[收据](evidence/ordinary-QQ-dialogue-restored-2026-10-25.json)。
