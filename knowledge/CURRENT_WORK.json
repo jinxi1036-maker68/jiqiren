@@ -324,5 +324,25 @@
       "reusable zippered pouch"
     ],
     "acceptance_gate": "partner must approve real packaging task/category/SOP, privacy safety and per-task time restrictions; test true lifecycle material plus reset labor before equipment purchase"
+  },
+  "scene_selection_v1_20261025": {
+    "status": "owner_confirmation_pending",
+    "source": "Customer original Excel 34 observed names plus two apartment constraints",
+    "proposal_ref": "knowledge/reports/2026-10-25_LINGJU_SCENE_SELECTION_PREAPPROVAL_V1.md",
+    "primary": [
+      "工厂车间",
+      "零售购物空间",
+      "仓库"
+    ],
+    "secondary": [
+      "个人工作区"
+    ],
+    "future_only": [
+      "创意工坊"
+    ],
+    "paused": [
+      "分拣中心（涉及收件人隐私）"
+    ],
+    "next_gate": "Owner确认后编写首轮3大类33个候选独立任务的完整SOP，每条包括真实操作序列、复位方式、隐私/耗材/质量标准，送灵生审核；严禁先装修/采购"
   }
 }
