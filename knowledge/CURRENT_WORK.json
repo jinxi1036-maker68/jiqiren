@@ -326,7 +326,7 @@
     "acceptance_gate": "partner must approve real packaging task/category/SOP, privacy safety and per-task time restrictions; test true lifecycle material plus reset labor before equipment purchase"
   },
   "scene_selection_v1_20261025": {
-    "status": "owner_confirmed_for_sop_drafting_partner_approval_pending",
+    "status": "owner_selected_3_scene_types_33_task_workbook_drafted_pending_owner_reviewer_and_livsyn_approval",
     "source": "Customer original Excel 34 observed names plus two apartment constraints",
     "proposal_ref": "knowledge/reports/2026-10-25_LINGJU_SCENE_SELECTION_PREAPPROVAL_V1.md",
     "primary": [
@@ -343,7 +343,7 @@
     "paused": [
       "分拣中心（涉及收件人隐私）"
     ],
-    "next_gate": "Now draft detailed tertiary classes and candidate SOPs for selected 3 primary scenes with zero routine disposable consumables and demonstrated reset loop; Owner reviews then partner reviews; purchases only after approval.",
+    "next_gate": "Owner先下载审阅33任务Excel并提出修改，发灵生明确场景真实性、每任务SOP可采与录像/5小时计量口径；返回审核意见后才决定采购",
     "non_consumable_material_rule": {
       "status": "owner_mandatory_design_requirement",
       "principle": "Every selected task, prop and packaging material must be reusable over many cycles; avoid tape, single-use labels/bags/film, destructive seals and one-off consumables; allow unavoidable wear only when documented, measured and minimized; do not buy before partner SOP approval.",
@@ -357,7 +357,11 @@
       ],
       "disqualify": "If a task requires consuming new materials every cycle and no real reusable option, exclude or defer it.",
       "category_scope": "工厂车间、零售购物空间、仓库及备选个人工作区的全部候选任务"
-    }
+    },
+    "workbook_report": "knowledge/reports/2026-10-25_LINGJU_33_TASK_SOP_REVIEW_WORKBOOK_V1.md",
+    "task_count": 33,
+    "step_count": 264,
+    "purchase_gate": "no new furnishings/consumables until owner review and written partner task category/SOP confirmation"
   },
   "scene_sop_submission_v1_20261025": {
     "status": "xlsx_generated_owner_review_pending_partner_not_submitted",
