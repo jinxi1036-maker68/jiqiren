@@ -43,7 +43,9 @@
     "latest_owner_scene_sop_decision": "knowledge/decisions/ADR-OWNER-SCENE-THIRD_LEVEL-TASK-SOP-OWNERSHIP-2026-10-25.md",
     "tertiary_task_ownership": "2026-10-25 Owner纠正：凌矩自行设计真实场景下三级细分、独立任务、动作顺序和完整SOP并提交灵生审查；不是等王乾坤为我们设计动作。22/32/34只涉及客户场景分类版本待核。",
     "pending_scene_selection_plan": "knowledge/reports/2026-10-25_LINGJU_SCENE_SELECTION_PREAPPROVAL_V1.md",
-    "next_owner_gate": "Owner确认工厂车间/零售购物空间/仓库三类优先与个人工作区备选，随后编写逐项动作SOP发灵生审核，批准后才布置并采购"
+    "next_owner_gate": "Owner确认工厂车间/零售购物空间/仓库三类优先与个人工作区备选，随后编写逐项动作SOP发灵生审核，批准后才布置并采购",
+    "scene_choice_status": "Owner confirmed 2026-10-25: 工厂车间+零售购物空间+仓库 first SOP batch; 个人工作区 second batch; 灵生审核前不采购",
+    "mandatory_reuse_rule": "所有场景任务、工具、物料必须优先循环复用、每轮可复位；不采用每次消耗胶带、一次性包装、撕毁标签等方案；不可避免磨损须量化并压低，不符合则暂停该任务。"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
