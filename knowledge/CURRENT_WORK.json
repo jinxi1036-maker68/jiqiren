@@ -39,7 +39,7 @@
     "enabled": true,
     "rule": "ChatGPT负责维护事实、准备场景任务与SOP/核算/风险门槛；Owner负责业务沟通、线下决策、合同和资金确认",
     "next_24h_focus": [
-      "核实王乾坤会后发出的22二级+三级正式清单：现有文件名32但实际34个名称；确定周四日期与填报格式",
+      "根据灵生给的二级场景目录先核实可用工厂/超市/仓库等场地；凌矩自主设计三级业务类、具体动作顺序和逐任务SOP提交灵生审核，不等客户替我们设计；22/32/34名称数量独立核对",
       "核实纪要提到的20台发货单、预计2026-10-26到货、检测和起租/设备责任，未签收不得写已到位",
       "提交三分区逐任务SOP供吴启蒙确认，尤其台账更新、托盘堆叠、外观扫描/标注/上报",
       "确认首批只试采哪些具体任务、录制要求、上传审核路径和审核反馈时点",
@@ -266,10 +266,11 @@
       "住宿休闲空间"
     ],
     "status": "new_upstream_scene_discovery_request_pending_actual_site_contact_and_client_category_approval",
-    "next_gate": "confirm final classification and tertiary task list, then map factory/retail/warehouse scene with explicit authorization status before Thursday; only forecast arrivals and revenue",
+    "next_gate": "在已有类别下自行设计三级动作和SOP并提交客户审核，同时查明具体场景授权；22/32/34仅是最终分类名称版本待核对，而不是待客户生成动作SOP",
     "meeting_report": "knowledge/reports/2026-10-25_LIVSYN_PARTNER_WEEKLY_MEETING_REVIEW.md",
     "meeting_conflict": "meeting says 22二级+三级; named 32 Excel contains 34 item names; obtain final version",
-    "priority": "survey_real_scene_resources_for_meeting_deadline"
+    "priority": "survey_real_scene_resources_for_meeting_deadline",
+    "owner_clarification": "knowledge/decisions/ADR-OWNER-SCENE-THIRD_LEVEL-TASK-SOP-OWNERSHIP-2026-10-25.md"
   },
   "meeting_20261025": {
     "meeting_time_local": "2026-10-25 16:59–17:53 GMT+08",
@@ -291,6 +292,23 @@
     "ai_agent": "meeting mentions ChatGPT-based locally running agent and sharing to WeCom/Feishu as agenda; NOT verified to be Lingju original Hermes or deployed in LivSyn production",
     "category_conflict": "meeting 22 level-two plus level-three; earlier filename 32; earlier sheet 34 names; final category list and third-level task list still pending",
     "deadline": "meeting says by Thursday; interpreted next 2026-10-29 but requires group confirmation",
-    "next_step": "before deadline, establish final level-two/level-three category version and submit real site availability mapping using existing low-risk factory/retail/warehouse contacts; verify 20-device shipment with tracking separately"
+    "next_step": "凌矩根据现有场地自主设计三级动作和SOP，交灵生审查；客户提到的分类版本22/32/34需要单独核对",
+    "owner_task_design_clarification": "knowledge/decisions/ADR-OWNER-SCENE-THIRD_LEVEL-TASK-SOP-OWNERSHIP-2026-10-25.md"
+  },
+  "owner_scene_action_design_clarification_20261025": {
+    "date": "2026-10-25",
+    "source": "Owner explicit clarification after 16:59-17:53 meeting minute review",
+    "status": "owner_approved_working_process_for_lingju",
+    "adr": "knowledge/decisions/ADR-OWNER-SCENE-THIRD_LEVEL-TASK-SOP-OWNERSHIP-2026-10-25.md",
+    "partner_role": "provide accepted scene taxonomy and review/approve submitted proposed tasks and SOP",
+    "lingju_role": "source real authorized venues; propose tertiary activity/product classes, distinct action sequences, task goals and complete SOP independently; submit for LivSyn approval",
+    "examples": [
+      "超市/零售→饮料、零食、水果等三级类→逐类详细真实上架/整理SOP",
+      "工厂→不同真实产品质检、包装、分类、备料→逐任务完整SOP",
+      "仓库→入库、核对、分拣、上架、拣货、归位"
+    ],
+    "scale_note": "many candidate tasks possible, not all approved, changing only names does not create valid new task; 5h per task interpretation pending",
+    "correction": "Earlier assistant incorrectly suggested customer would author a tertiary task/SOP list; that is not Owner's understood division of work",
+    "next_action": "select actually accessible factory/supermarket/warehouse scenes and independently draft 3–5 task families each for Owner review, then submit short scene-and-SOP catalogue for partner approval without waiting for partner to author actions"
   }
 }
