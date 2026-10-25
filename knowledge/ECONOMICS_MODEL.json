@@ -1,6 +1,6 @@
 {
   "schema_version": "economics_model_v1",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-25",
   "partner": "北京灵生科技有限公司 / LivSyn",
   "terms": [
     {
@@ -67,7 +67,7 @@
       ],
       "unit": "CNY/effective_hour",
       "status": "assumption",
-      "note": "用户本地观察，不是平台规则"
+      "note": "用户本地观察，不是平台规则；此为10月15日旧假设，不要覆盖新假设：10月25日Owner给出15~20元/验收有效小时，见self_operated_30_devices_scenario"
     }
   ],
   "trial_formula": "贡献毛利 = 有效小时×40 - 设备数×计租天数×20 - 人工 - 场景 - 管理质检 - 交通网络 - 税费 - 返工损耗",
@@ -90,5 +90,37 @@
     "request_from_partner_group": "月底前100人",
     "binding_to_owner": false,
     "decision": "先有小批有效数据、审核反馈、第一笔实际结算与资金测算，再决定设备、人力扩张"
+  },
+  "latest_owner_business_terms": {
+    "status": "conversation_confirmed_pricing_not_signed",
+    "reference": "knowledge/reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md",
+    "livsyn_data_price_cny_per_accepted_hour_inclusive_of_vat": 40,
+    "b_captain_proposal_cny_per_accepted_hour_inclusive_of_vat": 30,
+    "b_captain_device_daily_rent_cny": 20,
+    "caveat": "B团长仅为未签约独立业务方案，不能混入自营方案；历史PR#17的25元日租是10/18版本提案，已不是10/24最新口头报价"
+  },
+  "self_operated_30_devices_scenario": {
+    "status": "owner_requested_hypothetical_2026-10-25_not_actual_production",
+    "devices": 30,
+    "raw_hours_per_device_per_day": 6,
+    "operating_days_per_month": 30,
+    "acceptance_rate_assumption": 0.75,
+    "monthly_raw_hours": 5400,
+    "monthly_accepted_hours": 4050,
+    "sales_receipts_cny_tax_inclusive": 162000,
+    "device_rent_cny_month": 18000,
+    "labor_cost_per_accepted_hour_assumption_cny": [
+      15,
+      20
+    ],
+    "labor_cost_cny_month_range": [
+      60750,
+      81000
+    ],
+    "receipts_minus_labor_minus_rent_before_taxes_other_costs_cny_range": [
+      63000,
+      83250
+    ],
+    "note": "2016? no: scenario assumes all devices used 30 days, not actual labor/legal wage confirmation; tax/QA/refund and management cost excluded"
   }
 }
