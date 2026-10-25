@@ -57,4 +57,4 @@ Current 只保存“现在”；History 只保存“过去”；Evidence 只保�
 
 ## 2026-10-25 Hermes浏览器专项本地实施
 
-Owner已委托技术自主推进。原Desktop接入和QQ实际浏览器/辅助视觉已有证据；两次QQ任务未完成全目标，旧120次保守HTTPX额度已满。定点零模型改进已通过组件检查，旧翻页超时原因仍未知；Owner已明确追加新一轮60次模型/3条QQ任务，新计数护栏已接入，原身份W和QQ目录门槛通过，当前仅开放第一条任务。见[实施报告第11节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[范围决策](decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md)。原宪章不变，真实平台及QQ晨报未启用。
+Owner已委托技术自主推进。原Desktop接入和QQ实际浏览器/辅助视觉已有证据；两次QQ任务未完成全目标，旧120次保守HTTPX额度已满。定点零模型改进已通过组件检查，旧翻页超时原因仍未知；Owner已明确追加新一轮60次模型/3条QQ任务，新计数护栏已接入；第一项全页QA比较有实证，但复用了旧会话，新会话验收条件未通过。接入已修正编号并加只读查重，当前仅开放第二项创建绑定，60次中已用19、剩41，仍同一原身份W。见[实施报告第11节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[范围决策](decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md)。原宪章不变，真实平台及QQ晨报未启用。

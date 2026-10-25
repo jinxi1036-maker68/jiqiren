@@ -76,6 +76,21 @@ def official_qq_websocket(url):
     return url
 
 
+def acceptance_thread_id(runtime, slot):
+    # Output leaf names (e.g. qq-transport) repeat between runs. Using them
+    # silently resumed an older conversation. Bind the thread to the unique run.
+    if slot not in (1, 2, 3):
+        raise ValueError("Invalid acceptance slot")
+    return "browser-" + Path(runtime).parent.name + "-" + str(slot)
+
+
+def verify_unused_thread(db, thread_id):
+    with contextlib.closing(sqlite3.connect(Path(db).resolve().as_uri() + "?mode=ro", uri=True)) as c:
+        if c.execute("SELECT 1 FROM sessions WHERE source='qqbot' AND thread_id=? LIMIT 1",
+                     (thread_id,)).fetchone():
+            raise RuntimeError("Acceptance thread already has a conversation; do not reuse it")
+
+
 def metadata_catalog_urls(config):
     """Only existing model configuration; no URLs or secrets in receipts."""
     found = set()
@@ -266,6 +281,8 @@ async def serve(args):
         except Exception as exc:
             event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
         intake = Intake(settings["intake"] or out / "intake.sqlite", cap=args.admit_through_slot or 3)
+        if args.allow_task_messages and intake.count() < intake.cap:
+            verify_unused_thread(home / "state.db", acceptance_thread_id(runtime, intake.count() + 1))
         busy = asyncio.Lock()
         ready = False
         primary = runner._primary_message_handler()
@@ -307,9 +324,12 @@ async def serve(args):
                     return None
                 # Fresh conversation for each acceptance goal, same identity/home.
                 # QQ reply destination/user identity are preserved by dataclass replace.
-                msg.source = dataclasses.replace(msg.source, thread_id=out.name + "-" + str(slot))
+                thread_id = acceptance_thread_id(runtime, slot)
+                verify_unused_thread(home / "state.db", thread_id)
+                msg.source = dataclasses.replace(msg.source, thread_id=thread_id)
                 os.environ["TERMINAL_CWD"] = str(workspace)
                 event(out, "owner_task_admitted", slot=slot, cwd=str(workspace),
+                      thread_id=thread_id,
                       toolsets=TOOLSETS, budget_before=budget.status(),
                       traffic_before=traffic.counts() if traffic else None)
                 try:
@@ -337,6 +357,7 @@ async def serve(args):
               original_gateway_start_called=False, protected_changes=[],
               browser_catalog_verified=browser_ready, task_admission_enabled=args.allow_task_messages,
               admission_ceiling=intake.cap, existing_admitted_tasks=intake.count(),
+              next_thread_id=acceptance_thread_id(runtime, intake.count() + 1) if intake.count() < intake.cap else None,
               accounting_mode=gate.get('accounting_mode','legacy_all_httpx'),
               traffic=traffic.counts() if traffic else None)
         print(json.dumps({"event":"qq_ready", "pid":os.getpid(), "budget":budget.status(),

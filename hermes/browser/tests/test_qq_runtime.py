@@ -6,10 +6,29 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from qq_runtime import (Intake, official_qq_websocket, verify_browser_catalog,
-                        metadata_catalog_urls, round_settings, TOOLSETS)
+                        metadata_catalog_urls, round_settings, TOOLSETS,
+                        acceptance_thread_id, verify_unused_thread)
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_thread_id_does_not_collide_across_runs_or_slots(self):
+        a=Path('runs/run-A/runtime.json');b=Path('runs/run-B/runtime.json')
+        self.assertNotEqual(acceptance_thread_id(a,1),acceptance_thread_id(b,1))
+        self.assertNotEqual(acceptance_thread_id(a,1),acceptance_thread_id(a,2))
+        self.assertNotEqual(acceptance_thread_id(a,1),'qq-transport-1')
+
+    def test_existing_conversation_is_rejected_without_mutating_database(self):
+        import sqlite3,hashlib,contextlib
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'state.sqlite'
+            with contextlib.closing(sqlite3.connect(p)) as c, c:
+                c.execute('create table sessions(source text,thread_id text)')
+                c.execute("insert into sessions values('qqbot','already-used')")
+            before=hashlib.sha256(p.read_bytes()).hexdigest()
+            verify_unused_thread(p,'new-run-thread')
+            with self.assertRaises(RuntimeError):verify_unused_thread(p,'already-used')
+            self.assertEqual(hashlib.sha256(p.read_bytes()).hexdigest(),before)
+
     def test_model_metadata_exemption_only_comes_from_clean_model_config(self):
         cfg={'model':{'base_url':'https://synthetic.invalid/v1'},
              'auxiliary':{'vision':{'base_url':'https://synthetic.invalid/aux'}},

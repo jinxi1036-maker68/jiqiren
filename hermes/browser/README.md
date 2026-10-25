@@ -210,3 +210,15 @@ Owner已在当前对话明确批准上述新额度，旧120账本不改。当前
 SDK/QQ目录、原运行环境及保护检查通过后才开放模型发送。阶段目标和范围见TASKS.md；
 只有Owner发任务。跨阶段准备与取证由Codex负责，无须等待ChatGPT逐轮复核；不补发或追加提示。
 [新轮次收据](evidence/qq-authorized-round-ready-2026-10-25.json)。
+
+### 新轮次slot1结果与slot2准备
+
+slot1本人实际读完QA前后各3页/关键详情，1次刷新、12次浏览器/16条工具收据，变化及分析与模拟真值一致。
+没有文件或terminal调用，保护内容不变。消耗新预算19（chat路径17+未知HTTPX2），剩41，消息1/3。
+但旧thread_id只使用`qq-transport`叶目录和slot，复用旧会话；新会话条件失败，不能算干净对照或全路线通过。
+不清旧记录、不补发。现在改用唯一runtime目录+slot，启动及接收前只读检查线程尚不存在；新增2项检查，模块12项通过。
+
+slot2已换到干净binding站，仍同一60次账本和Intake、同一原H/W/QQ管线。
+准备时只暂停armed不清计数，启动检查通过再开放；`--admit-through-slot 2`只再接收一条。
+实际新会话、图片理解、绑定关系及刷新持久性须等Owner本人发送后取证，不以预检推定。
+[读取分析证据](evidence/qq-round2-analysis-2026-10-25.json) · [创建绑定就绪](evidence/qq-round2-binding-ready-2026-10-25.json)。
