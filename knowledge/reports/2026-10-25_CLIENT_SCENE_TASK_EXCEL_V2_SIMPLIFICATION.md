@@ -8,3 +8,7 @@
 - 两张表：`01_场景概览`和`02_三级分类与任务`。三类：工厂车间（4三级/12任务）、零售购物空间（4/12）、仓库（3/9），合计3/11/33。
 - V2仍是拟议沟通版，未取得Owner对最终文字或灵生对场景及任务的批准。三级任务进一步根据真实操作修订、需要的SOP再按已确认的动作完成，之后才确定采集设备/采购/布置细节。
 - **内部硬条件依然有效但不对外展示**：任务优先采用可以循环使用的物料工具、禁止隐私快件分拣、现场复位和低耗材、真实任务与质量。参照`knowledge/decisions/ADR-REUSABLE-PACKAGING-AND-NO-PERSONAL-PARCEL-SORTING-2026-10-25.md`。
+
+## 2026-10-25最新存档补正
+
+以上提及V2仅在ChatGPT会话附件的状态已被新进展替代：**对外V2 Excel二进制原件已经真实上传GitHub主分支**，路径 `knowledge/sop/client/2026-10-25_三场景三级分类任务目录_V2.xlsx`；另有33任务CSV `knowledge/sop/external/2026-10-25_LINGJU_SCENE_TASKS_V2_RECONSTRUCTABLE.csv`。内部V3另存 `knowledge/sop/internal/`。统一查看 `knowledge/sop/00_START_HERE.md`，**V2依旧未获Owner最终对外发送确认、未提交灵生、更未通过甲方审核**。
