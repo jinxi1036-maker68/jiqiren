@@ -23,7 +23,7 @@
     "company": "平顶山凌矩信息科技有限责任公司（执照图片；2026-10-19成立，注册资本10万元）",
     "tax_progress": "Owner已成功以企业业务登录电子税务局；纳税人基础信息截图显示状态正常。增值税税费种认定可查；一般纳税人资格记录未查到，尚未完成正式身份确认；数电票用票需求仅到预览，未提交；社保单位登录开通受阻，拟线下了解。",
     "latest_knowledge_audit": "knowledge/reports/2026-10-25_KNOWLEDGE_COMPLETENESS_AUDIT.md",
-    "knowledge_status": "2026-10-25第二轮已从PR筛出关键Owner历史，财税、录制效率、Hermes少代码原则分别归类；但2026-09以来全部原聊天逐句比对、开放PR完整源码审查仍未完成。",
+    "knowledge_status": "第三轮补录9月至10月15日早期可证实历史；5份核心Markdown不同相对链接目标23/23、6份核心JSON引用41/41可读取。9月原始全聊天尚缺，未经递归整库校验。业务仍先采集后扩张。",
     "pr_triage": "knowledge/reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md",
     "owner_decision_history": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md",
     "business_principle": "Owner 2026-10-25明确先稳定Ego采集，AI清洗标注只作远期，不启动试验、购买模型/硬件或招标注员",
@@ -32,7 +32,9 @@
     "finance_personnel_reconciliation": "knowledge/reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md",
     "owner_business_history_supplement": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md",
     "recording_efficiency_supplement": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md",
-    "pr_evidence_supplement": "knowledge/reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md"
+    "pr_evidence_supplement": "knowledge/reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md",
+    "early_history_source_audit": "knowledge/history/2026-09_TO_2026-10-15_EARLY_HISTORY_EVIDENCE_AUDIT.md",
+    "knowledge_core_link_audit": "knowledge/reports/2026-10-25_KNOWLEDGE_LINK_AND_EARLY_SOURCE_AUDIT.md"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
