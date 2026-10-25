@@ -20,6 +20,13 @@
 - 灵生合作最新合同、验收问题：[合同和QA沟通报告](reports/2026-10-24_LIVSYN_CONTRACT_QA.md)。尚无最终签署合同和最新结算证据。
 - 具体机器状态以 [CURRENT_WORK.json](CURRENT_WORK.json)、[PROJECT_INDEX.json](PROJECT_INDEX.json) 为准；Hermes现行理念仍以其岗位宪章为唯一权威。
 
+## 2026-10-25 知识库完整性审计与最新状态
+
+- [知识库完整性、历史时间点与未合并PR缺口审计](reports/2026-10-25_KNOWLEDGE_COMPLETENESS_AUDIT.md)：**已查出缺口，尚未全部补档**；不能把旧总历史等同完整聊天归档。
+- 当前阶段以 `CURRENT_WORK.json` 为准：**先稳定灵生Ego采集；AI清洗/动作标注试验暂缓，不采购或启动**。参见 [AI试验及Owner暂停决定](reports/2026-10-25_AI_EGO_QA_ANNOTATION_PILOT.md)。
+- 2026-10-25之前后续财税/社保/工资等对话仍需专题补档，现已在当前工作与上述审计记录脱敏摘要；正式合同/实际验收/税惠获批不能推定。
+- 未合并PR中的知识不自动成为 `main` 权威；特别是公司品牌、录制效率、Hermes轻量化理念及后续本机工作记录需要分别复核。
+
 ## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
 
