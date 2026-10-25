@@ -188,6 +188,27 @@
         "上游合同约定的6%已正式签署"
       ],
       "privacy_note": "不上传税务界面照片、统一社会信用代码、个人联系方式等"
+    },
+    {
+      "id": "EV-EARLY-GIT-20261009-14",
+      "topic": "项目最早期可检索Git提交与9月至10月初历史证据缺口",
+      "source_type": "github_commit_metadata_verified_and_existing_source_review",
+      "date": "2026-10-09/2026-10-14",
+      "status": "confirmed_scope_limited",
+      "proves": [
+        "2026-10-09提交培训前执行计划20f2fef25e3e9da84e63cf1c9448879ae8cc2fa8",
+        "2026-10-09提交具身数据行业判断7b77f06ecae120807fd8cceec1ab9e08873423d0",
+        "2026-10-14提交员工招聘工资设计4dd34870429253c2d9f58d8986a84a9c6a451d87",
+        "2026-10-14提交Ego验收SOP可行性分析47921295c381ec54fbd4acc8fd168f7f389d20a0"
+      ],
+      "does_not_prove": [
+        "已找到2026年9月原始全部ChatGPT对话与微信沟通",
+        "已穷尽所有GitHub提交或全部分支",
+        "2026-10-09之前一定没有讨论/文件",
+        "当时已签约、试采合格或已经取得资金回款"
+      ],
+      "report": "knowledge/history/2026-09_TO_2026-10-15_EARLY_HISTORY_EVIDENCE_AUDIT.md",
+      "privacy_note": "不上传原始微信联系人、身份资料、工资个人明细"
     }
   ]
 }
