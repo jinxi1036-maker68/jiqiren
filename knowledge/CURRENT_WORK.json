@@ -188,5 +188,14 @@
     "partner_answer": "not_observed",
     "negotiation_rule": "一条短消息一次只谈一个问题",
     "report": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md"
+  },
+  "parallel_ai_ego_data_services": {
+    "decision_date": "2026-10-25",
+    "status": "planning_only_not_started",
+    "owner_choice": "AI-first data cleaning/action annotation with human verification",
+    "pilot": "7 days, 50 authorized short Ego videos, no client data upload without authorization",
+    "report": "knowledge/reports/2026-10-25_AI_EGO_QA_ANNOTATION_PILOT.md",
+    "boundary": "does not replace LivSyn trial, no assumption of signed client contract or actual annotated dataset",
+    "next_gate": "check existing computer resources; select 50 self-owned and processing-authorized episodes"
   }
 }
