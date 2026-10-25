@@ -1,6 +1,6 @@
 {
   "schema_version": "evidence_index_v1",
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-25",
   "evidence": [
     {
       "id": "EV-LS-001",
@@ -167,6 +167,27 @@
       ],
       "privacy_note": "原文件仅为会话附件，不在GitHub存实名信息或原始合同扫描",
       "report": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md"
+    },
+    {
+      "id": "EV-TAX-PORTAL-20261024-25",
+      "topic": "河南电子税务局企业信息及发票流程复核",
+      "source_type": "owner_provided_tax_portal_screenshots_and_reports",
+      "date": "2026-10-24/2026-10-25",
+      "status": "conversation_confirmed",
+      "proves": [
+        "Owner可进入企业税务账户",
+        "纳税人基础信息截图显示状态正常",
+        "税费种认定有增值税相关条目",
+        "一般纳税人资格查询无记录",
+        "数电票用票申请到预览阶段，Owner未提交"
+      ],
+      "does_not_prove": [
+        "公司为一般纳税人或已正式确认为小规模",
+        "具有6%专票开票权限",
+        "发票用票需求已经获批",
+        "上游合同约定的6%已正式签署"
+      ],
+      "privacy_note": "不上传税务界面照片、统一社会信用代码、个人联系方式等"
     }
   ]
 }
