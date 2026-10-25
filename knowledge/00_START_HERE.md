@@ -40,6 +40,12 @@
 - [真实手工加工订单结合Ego采集的远期构想](strategy/REAL_PRODUCTION_EGO_CONCEPT_HISTORY_2026-10-20.md)：PR #19的Owner想法，未获工厂/灵生合同许可，当前不启动。
 - 2026年9月以来的**所有原始对话逐句对照仍未完成**；不能说“从一开始每个时间点已100%完整归档”。原资料不够时以未知标记，不补造历史。
 
+## 2026-10-25 第三轮：最早期历史与核心链接核验
+
+- [9月至10月15日早期证据时间线](history/2026-09_TO_2026-10-15_EARLY_HISTORY_EVIDENCE_AUDIT.md)：区分原始Git提交、Owner事后报告与早期历史缺失；不假定已恢复全部早期对话。
+- [第三轮链接与来源审计](reports/2026-10-25_KNOWLEDGE_LINK_AND_EARLY_SOURCE_AUDIT.md)：5份核心文档相对链接的23个不同文件目标、6份核心JSON中的41个不同文件路径均可读取；不等于整仓库零缺失。
+- [旧路线图](08_ROADMAP.md)和[长期目标](01_NORTH_STAR.md)已标注历史规模假设。**公司现阶段仍先稳定灵生采集、核对正式QA及回款，AI清洗和标注不启动。**
+
 ## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
 
