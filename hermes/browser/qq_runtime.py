@@ -204,7 +204,8 @@ async def serve(args):
             browser_ready = await discover_company_browser(out)
         except Exception as exc:
             event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
-        intake, busy = Intake(out / "intake.sqlite"), asyncio.Lock()
+        intake = Intake(out / "intake.sqlite", cap=args.admit_through_slot or 3)
+        busy = asyncio.Lock()
         ready = False
         primary = runner._primary_message_handler()
         async def receive(msg):
@@ -213,7 +214,8 @@ async def serve(args):
                 return None
             if msg.text.strip().lower() == "/status":
                 event(out, "status_requested", model_calls=0)
-                state = "等待Owner复核，暂停新模型任务" if not args.allow_task_messages else "本机模拟任务接收已开启"
+                admission_open = args.allow_task_messages and intake.count() < intake.cap
+                state = "本次批准的一条模拟任务接收已开启" if admission_open else "等待Owner复核，暂停新模型任务"
                 browser = "13项浏览器工具目录预检通过" if browser_ready else "浏览器工具目录预检未通过"
                 return (f"QQ通道已连接，仍是原Hermes、原公司工作区。{state}；{browser}。"
                         f"已接收{intake.count()}/3条任务；共享请求额度已用"
@@ -224,6 +226,9 @@ async def serve(args):
             if not args.allow_task_messages or not browser_ready:
                 event(out, "inbound_paused_without_model", model_calls=0)
                 return "QQ仍在线。本轮第一条浏览器任务未通过，已暂停新模型任务，等待Owner复核；没有补发或重试。"
+            if intake.count() >= intake.cap:
+                event(out, "approved_message_allowance_used", model_calls=0)
+                return "本次批准的任务机会已用完，QQ仍在线；本条没有提交模型，等待Owner复核。"
             if msg.text.startswith("/") or msg.media_urls:
                 return "本轮仅接收文字任务和/status，不执行重启、配置、媒体或其他命令。"
             if budget.status()["reserved_network_attempts"] >= 115:
@@ -263,7 +268,8 @@ async def serve(args):
               source_sha256=sha256(__file__), budget=budget.status(),
               codex_model_messages=0, cron_started=False, other_channels_started=False,
               original_gateway_start_called=False, protected_changes=[],
-              browser_catalog_verified=browser_ready, task_admission_enabled=args.allow_task_messages)
+              browser_catalog_verified=browser_ready, task_admission_enabled=args.allow_task_messages,
+              admission_ceiling=intake.cap, existing_admitted_tasks=intake.count())
         print(json.dumps({"event":"qq_ready", "pid":os.getpid(), "budget":budget.status(),
                           "owner_can_send":"/status", "model_messages_sent_by_codex":0}), flush=True)
         await asyncio.Event().wait()
@@ -286,8 +292,13 @@ if __name__ == "__main__":
         p.add_argument("--" + name, required=True)
     p.add_argument("--allow-task-messages", action="store_true",
                    help="Explicitly reopen intake only after Owner review; default is status only")
+    p.add_argument("--admit-through-slot", type=int, choices=[1, 2, 3],
+                   help="Persistent total admission ceiling for the explicitly approved opening")
     try:
-        asyncio.run(serve(p.parse_args()))
+        args = p.parse_args()
+        if args.allow_task_messages and args.admit_through_slot is None:
+            p.error("--allow-task-messages requires an explicit --admit-through-slot ceiling")
+        asyncio.run(serve(args))
     except BaseException as exc:
         import traceback
         print(json.dumps({"event":"qq_stopped", "error_type":type(exc).__name__,

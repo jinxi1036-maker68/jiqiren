@@ -9,6 +9,19 @@ from qq_runtime import Intake, official_qq_websocket, verify_browser_catalog
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_one_approved_retry_preserves_failed_slot_and_closes_after_second(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "intake.sqlite"
+            old = Intake(path)
+            self.assertEqual(old.take("failed-first-task"), 1)
+            reopened = Intake(path, cap=2)
+            self.assertEqual(reopened.take("one-owner-approved-retry"), 2)
+            self.assertIsNone(reopened.take("failed-first-task"))
+            restarted = Intake(path, cap=2)
+            with self.assertRaises(RuntimeError):
+                restarted.take("not-approved-third-task")
+            self.assertEqual(restarted.count(), 2)
+
     def test_a_live_adapter_without_model_catalog_is_not_ready(self):
         status = [{"name": "company_browser_simulation", "connected": True}]
         with self.assertRaises(RuntimeError):

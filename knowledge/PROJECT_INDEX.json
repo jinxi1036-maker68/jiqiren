@@ -75,7 +75,7 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "first_QQ_browser_task_failed_discovery_fixed_status_only_waiting_review",
+      "status": "one_Owner_approved_QQ_retry_ready_slot2_only_not_yet_sent",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -83,10 +83,10 @@
       "production_access": false,
       "blocks": [
         "first_QQ_analysis_goal_failed",
-        "failed_task_replay_requires_Owner_exception",
-        "shared_request_budget_remaining_36_including_QQ_traffic"
+        "one_explicit_retry_not_yet_sent",
+        "shared_request_budget_remaining_28_including_QQ_traffic"
       ],
-      "next_step": "先审查首次失败及修复证据；QQ保持/status，新模型任务暂停。原计划禁止失败补发，是否使用B剩余机会补验须Owner明确批准；不得重置/增加120共享额度或挪用A机会。",
+      "next_step": "Owner从QQ仅发送已批准的一条读取分析补验；计入B的slot2。随后自动暂停新模型任务，由Codex只读取证。失败slot1不删除，120共享额度不重置、不增加，到限即停；不自动开始绑定/恢复或真实业务。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -120,17 +120,20 @@
         "protected_changes": 0,
         "other_services_changed": false,
         "startup_persistence_changed": false,
-        "evidence": "hermes/browser/evidence/qq-first-browser-task-2026-10-25.json",
+        "evidence": "hermes/browser/evidence/qq-one-approved-retry-ready-2026-10-25.json",
         "conservative_httpx_attempts_after_status": 4,
-        "status": "status_only_after_first_failed_task",
+        "status": "one_retry_ready",
         "browser_catalog_tools_verified": 13,
         "agent_browser_task_verified": false,
-        "new_zero_model_tests_passed": 2
+        "new_zero_model_tests_passed": 2,
+        "current_admission_ceiling": 2,
+        "task_admission_enabled": true,
+        "owner_one_retry_explicitly_approved": true
       },
       "model_accounting": {
         "logical_api_calls": 11,
         "classified_chat_completions_attempts": 14,
-        "all_transport_requests_reserved": 84,
+        "all_transport_requests_reserved": 92,
         "cap": 120,
         "model_only_total": "not_separately_proven",
         "codex_model_messages": 0

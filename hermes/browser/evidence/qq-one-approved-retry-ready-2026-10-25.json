@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-25T00:55:08.661708+00:00",
+  "authorization": "Owner explicitly allowed one retry using one of the two remaining B message opportunities; human response in this chat",
+  "failed_slot_1_preserved": true,
+  "current_total_admitted": 1,
+  "approved_ceiling": 2,
+  "additional_messages_allowed": 1,
+  "message_cap_B_unchanged": 3,
+  "A_opportunities_transferred": false,
+  "request_cap": 120,
+  "request_ledger_reset": false,
+  "all_transport_budget": {
+    "limit": 120,
+    "reserved_network_attempts": 92,
+    "armed": true,
+    "events": {
+      "denied_unarmed": 30,
+      "reserved_before_send": 92
+    },
+    "families": {
+      "chat_completions": 14,
+      "messages": 13,
+      "other_httpx": 65
+    }
+  },
+  "shared_requests_remaining": 28,
+  "model_task_sent_by_codex": false,
+  "chat_completions_attempts_unchanged": 14,
+  "actual_retry_not_yet_run": true,
+  "QQ_ready_at": "2026-10-25T00:53:37.394610+00:00",
+  "same_process_browser_catalog_verified": true,
+  "browser_catalog_count": 13,
+  "initial_tool_search_available": true,
+  "source_sha256": "82801bdef16ac16f89f643862f46388d55cf4ba326694a37a87ceba58de4d11a",
+  "new_unit_test": "retain failed slot1, admit slot2 only, reject slot3 even after restart",
+  "QQ_unit_module_total_passed": 7,
+  "protected_content_records": 59,
+  "protected_changes": [],
+  "private_preimages_this_change": 2,
+  "rollback_performed": false,
+  "other_services_restarted": false,
+  "after_slot2": "Automatically reject further model tasks; status remains available",
+  "production_access": false
+}
