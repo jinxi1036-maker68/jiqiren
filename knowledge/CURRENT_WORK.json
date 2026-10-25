@@ -167,18 +167,18 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "QQ_retry_partial_browser_and_vision_proven_goal_incomplete_round_stopped_at_120",
+      "status": "targeted_zero_model_improvements_passed_real_Agent_goal_still_incomplete",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": null,
       "production_access": false,
       "blocks": [
-        "page2_click_actionability_timeout_unresolved",
-        "all_pages_details_and_QA_change_goal_incomplete",
-        "shared_120_request_budget_exhausted_round_stopped"
+        "original_actionability_timeout_root_cause_unknown",
+        "all_pages_details_and_QA_change_Agent_goal_incomplete",
+        "old_120_ledger_exhausted_new_model_budget_not_yet_authorized"
       ],
-      "next_step": "停止本轮，Owner/ChatGPT复核首次失败与补验部分能力证据。QQ本轮临时接入及自有浏览器已停，原配置未变；不重置账本、不自动开启slot3。后续定点零模型排查及计数设计/新增模型预算另行批准。",
+      "next_step": "Owner已授权技术自主推进，不再等待ChatGPT逐轮复核；已完成定点零模型改进。原120账本保留，到限后不自动追加模型额度。新计数机制尚未接入，新的真实模型额度及QQ任务上限待Owner明确授权；不进入真实后台。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -238,6 +238,23 @@
         "QA_change_comparison": "not_completed",
         "real_platform": "not_tested_or_authorized",
         "formal_driver_selected": false
+      },
+      "targeted_zero_model_improvements": {
+        "date": "2026-10-25",
+        "owner_delegated_technical_execution": true,
+        "inline_browser_snapshot_deployed": true,
+        "one_observation_after_failed_action_no_retry": true,
+        "screenshot_css_default_optional": true,
+        "public_tools": 13,
+        "new_unit_tests_passed": 10,
+        "actual_bridge_component_passed": true,
+        "click_diagnostic": "page2 succeeded; original timeout not reproduced or attributed",
+        "traffic_guard_candidate": "6 tests passed, not activated",
+        "old_ledger": "120/120 unchanged; denied_at_limit still34",
+        "new_model_calls": 0,
+        "protected_records_unchanged": 59,
+        "diagnostic_owned_processes_exited": true,
+        "evidence": "hermes/browser/evidence/browser-followup-zero-model-2026-10-25.json"
       }
     }
   },

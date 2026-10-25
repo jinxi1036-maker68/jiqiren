@@ -57,4 +57,4 @@ Current 只保存“现在”；History 只保存“过去”；Evidence 只保�
 
 ## 2026-10-25 Hermes浏览器专项本地实施
 
-Owner已恢复B路线首轮本地建设。工具组件部分通过；原生IPC、物理API预算和原Desktop环境传递仍有门槛，模型验收未开始。见[实施报告](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[范围决策](decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md)。原宪章不变，真实平台及QQ晨报未启用。
+Owner已委托技术自主推进。原Desktop接入和QQ实际浏览器/辅助视觉已有证据；两次QQ任务未完成全目标，旧120次保守HTTPX额度已满。定点零模型改进已通过组件检查，旧翻页超时原因仍未知；新计数候选未启用，新增模型预算待明确授权。见[实施报告第11节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[范围决策](decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md)。原宪章不变，真实平台及QQ晨报未启用。
