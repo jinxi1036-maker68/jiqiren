@@ -1,0 +1,135 @@
+{
+  "checked_at": "2026-10-25T08:54:11.798599+00:00",
+  "stage": "Owner single QQ recovery follow-up stopped by provider HTTP429",
+  "session": {
+    "id": "20261025_164819_9a7168ed",
+    "source": "qqbot",
+    "cwd": null,
+    "started_at": 1792918099.2871535,
+    "ended_at": null,
+    "api_call_count": 2,
+    "tool_call_count": 9
+  },
+  "thread_id": "browser-20261025T083655Z-playwright-recovery-cdb598f5-1",
+  "Owner_messages_admitted": 1,
+  "Codex_model_messages": 0,
+  "original_H_and_W_proven_by_ready_and_intake": true,
+  "DB_cwd_null_does_not_alone_prove_process_workdir": true,
+  "tool_counts": {
+    "tool_search": 1,
+    "tool_describe": 8
+  },
+  "tool_receipts": [
+    {
+      "id": 104911,
+      "tool_name": "tool_search",
+      "timestamp": 1792918122.132556
+    },
+    {
+      "id": 104913,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.1401105
+    },
+    {
+      "id": 104914,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.1491363
+    },
+    {
+      "id": 104915,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.1580615
+    },
+    {
+      "id": 104916,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.1669261
+    },
+    {
+      "id": 104917,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.1768394
+    },
+    {
+      "id": 104918,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.18635
+    },
+    {
+      "id": 104919,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.1983714
+    },
+    {
+      "id": 104920,
+      "tool_name": "tool_describe",
+      "timestamp": 1792918141.2085795
+    }
+  ],
+  "Agent_browser_calls": 0,
+  "preflight_browser_calls_excluded": 1,
+  "no_file_terminal_or_business_actions": true,
+  "logical_API_count": 2,
+  "assistant_final_report_rows": 0,
+  "actual_error_evidence": {
+    "source": "original QQ backend console output; extracted error/status markers only, no raw error body exported",
+    "provider_HTTP_status": 429,
+    "SDK_exception_class": "RateLimitError",
+    "exact_rate_limit_cause": "unknown: no RPM/TPM, concurrency, account quota or Retry-After evidence retained",
+    "agent_log_and_errors_log": "no matching current-window records; not falsely treated as complete logging",
+    "local_request_cap_triggered": false
+  },
+  "budget": {
+    "limit": 30,
+    "reserved_network_attempts": 11,
+    "armed": false,
+    "events": {
+      "denied_unarmed": 5,
+      "reserved_before_send": 11
+    },
+    "families": {
+      "chat_completions": 10,
+      "other_httpx": 1
+    }
+  },
+  "remaining_request_reservations": 19,
+  "physical_attempts_vs_logical_API": "10 chat endpoint attempts +1 unknown HTTPX conservatively charged; exact retry/aux split not proven; not 11 successful model replies",
+  "intake_events": {
+    "admitted_at": "2026-10-25T08:48:18.828952+00:00",
+    "returned_at": "2026-10-25T08:49:19.592086+00:00"
+  },
+  "fixture_state": {
+    "phase": 0,
+    "projects": [],
+    "tasks": [],
+    "create_attempts": 0,
+    "qa_refreshes": 0,
+    "login_attempts": 0
+  },
+  "owned_browser_children_exited": true,
+  "owned_browser_closed_at": "2026-10-25T08:52:06.376427+00:00",
+  "QQ_still_online_but_task_allowance_used": true,
+  "model_pipeline_constructed_but_further_tasks_rejected": true,
+  "new_model_admission_closed": true,
+  "budget_paused_without_reset": true,
+  "protected_records_unchanged": 59,
+  "workspace_files": 37,
+  "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+  "previous60_and120_ledgers_byte_unchanged": true,
+  "tool_source_or_original_files_changed_this_evidence_turn": false,
+  "restore_performed": false,
+  "real_platform_access": false,
+  "verdict": {
+    "task_completion": "not completed",
+    "recovery_browser_goal": "not exercised by Agent; not passed",
+    "permission_guard_Agent_revalidation": "still unverified; zero actions cannot prove compliance",
+    "provider_response": "HTTP429 proven; root cause unknown"
+  },
+  "no_retry_message_or_new_model_probe_sent": true,
+  "receipt_sha256": {
+    "tool-receipts.jsonl": "72a4d0b4ffe79bccf884b39668f3a289ff1a996d2a1f2111736235dfcc395ad4",
+    "fixture-events.jsonl": "1b6dc10528ecad24746983f0fc57446b7ec603b824af751d6f55420c9f964eaf",
+    "fixture-truth.json": "8bbd3bd25dc2e5e141b9f4c80c4a53349ec3b2763815a9de0c195a5557e0679a",
+    "lifecycle.json": "61fa9c625e68974926cf9b074a85f7c20a6a78fe97cab2555f4112b4bd2b37d9"
+  }
+}

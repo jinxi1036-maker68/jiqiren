@@ -167,18 +167,19 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "limited_recovery_recheck_ready_30_model_1_Owner_QQ_task_prior_failures_retained",
+      "status": "single_recovery_recheck_blocked_provider_HTTP429_no_Agent_browser_actions",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": null,
       "production_access": false,
       "blocks": [
-        "recovery_permission_discipline_and_final_report_Agent_revalidation_pending",
-        "first_goal_clean_session_condition_failed_retained",
-        "formal_driver_and_real_platform_not_validated"
+        "provider_HTTP429_root_cause_unknown",
+        "one_authorized_QQ_task_used_no_retry_grant",
+        "recovery_permission_and_final_report_Agent_revalidation_not_performed",
+        "historical_clean_session_failure_and_no_formal_driver_selection_retained"
       ],
-      "next_step": "Owner新授权30次请求/1条QQ模拟任务已就绪；只补验权限边界和完整异常汇报，原60及120账本/失败保留。仍同一原身份W和原QQ管线，不是Desktop窗口输入。0/30、任务0/1；Owner只发一次，Codex取证，不补发、不自动加额、不访问真实后台。",
+      "next_step": "本条QQ任务已接收，2逻辑API/9工具仅查目录，随后模型服务HTTP429；浏览器动作0，未创建记录。预算用11/30、剩19但已暂停，消息1/1已用；不让Owner重发、不自动探测模型。先确认服务端限制原因/恢复条件；如需续办须明确允许新的消息机会，保留旧账本及失败，不进真实后台。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -332,7 +333,7 @@
         "date": "2026-10-25",
         "model_cap": 30,
         "message_cap": 1,
-        "status": "READY awaiting exactly one Owner QQ task",
+        "status": "not completed: provider HTTP429 before Agent browser action",
         "reserved_model_attempts_at_ready": 0,
         "Owner_tasks_admitted_at_ready": 0,
         "previous_60_and_120_ledgers_unchanged": true,
@@ -349,7 +350,23 @@
         "QQ_control_requests_at_ready": 2,
         "formal_driver_selected": false,
         "real_platform_authorized": false,
-        "evidence": "hermes/browser/evidence/qq-round3-recovery-ready-2026-10-25.json"
+        "evidence": "hermes/browser/evidence/qq-round3-recovery-ready-2026-10-25.json",
+        "reserved_model_attempts_current": 11,
+        "remaining_request_reservations": 19,
+        "Owner_tasks_admitted_current": 1,
+        "budget_armed": false,
+        "logical_API": 2,
+        "tool_calls": 9,
+        "tool_counts": {
+          "tool_search": 1,
+          "tool_describe": 8
+        },
+        "Agent_browser_calls": 0,
+        "raw_provider_HTTP_status": 429,
+        "rate_limit_root_cause": "unknown",
+        "message_allowance_used": true,
+        "model_probe_or_retry_sent_by_Codex": false,
+        "result_evidence": "hermes/browser/evidence/qq-round3-provider-limit-2026-10-25.json"
       }
     }
   },
