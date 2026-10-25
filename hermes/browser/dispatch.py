@@ -11,10 +11,12 @@ from owned_job import OwnedJob
 
 
 def main():
-    if os.environ.get("LINGJU_BROWSER_EXERCISE") != "playwright":
-        raise RuntimeError("Explicit B-route process marker required")
     root = ordinary_path(Path(__file__).parent)
-    runtime = ordinary_path(os.environ["LINGJU_BROWSER_RUNTIME"])
+    direct = os.environ.get("LINGJU_BROWSER_EXERCISE") == "playwright"
+    alias = os.environ.get("XDG_LINGJU_BROWSER_RUNTIME")
+    if not direct and not alias:
+        raise RuntimeError("Explicit B-route process metadata required")
+    runtime = ordinary_path(os.environ.get("LINGJU_BROWSER_RUNTIME") if direct else alias)
     run = ordinary_path(root / "runs")
     if run not in runtime.parents:
         raise RuntimeError("Runtime outside company browser runs")
@@ -23,7 +25,9 @@ def main():
         raise RuntimeError("Runtime/route identity mismatch")
     (runtime.parent / "dispatch-receipt.json").write_text(json.dumps({
         "route_marker_received": True, "runtime_validated": True,
-        "wrapper_pid": os.getpid(), "original_home_unchanged": os.environ.get("HERMES_HOME") == str(Path.home() / ".hermes"),
+        "activation_source": "direct_marker" if direct else "xdg_runtime_path",
+        "wrapper_pid": os.getpid(), "home_env_present": bool(os.environ.get("HERMES_HOME")),
+        "original_home_unchanged": Path(os.environ.get("HERMES_HOME") or Path.home() / ".hermes").resolve() == (Path.home() / ".hermes").resolve(),
         "max_turns_received": os.environ.get("HERMES_TUI_MAX_TURNS"),
         "toolsets_received": os.environ.get("HERMES_TUI_TOOLSETS"),
         "model_calls": 0}), encoding="utf-8")

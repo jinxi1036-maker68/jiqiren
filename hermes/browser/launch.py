@@ -14,10 +14,33 @@ import uuid
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from safety import ordinary_path, write_new_json, sha256, windows_metadata
 from owned_job import OwnedJob
+from desktop_runtime import existing_runtime, runtime_env
+
+
+def arm_run(run):
+    """An operator may open a verified active run, never reset its shared cap."""
+    from request_budget import RequestBudget
+    gate = json.loads((run.root / "acceptance-gate.json").read_text(encoding="utf-8"))
+    config = json.loads(run.runtime.read_text(encoding="utf-8"))
+    if not (gate.get("all_zero_model_gates_passed") and gate.get("physical_api_budget_enforced")):
+        raise RuntimeError("Zero-model prerequisites are not verified")
+    if (gate.get("active_runtime") != str(run.runtime) or gate.get("route") != run.route
+            or gate.get("case") != run.case or gate.get("shared_ledger") != config.get("roundBudget")):
+        raise RuntimeError("Gate belongs to a different run/route/ledger")
+    for rel, digest in gate.get("tool_source_sha256", {}).items():
+        if sha256(run.root / rel) != digest:
+            raise RuntimeError("Tool changed after zero-model verification: " + rel)
+    if not gate.get("tool_source_sha256"):
+        raise RuntimeError("Missing tool source verification")
+    budget = RequestBudget(config["roundBudget"])
+    if budget.status()["limit"] != 120:
+        raise RuntimeError("Shared cap differs from the Owner limit")
+    budget.arm()
+    return budget.status()
 
 
 class TrainingRun:
-    def __init__(self, root, route, case, chrome, node, headed=False):
+    def __init__(self, root, route, case, chrome, node, headed=False, budget_ledger=None):
         self.root = ordinary_path(root)
         if route not in {"native", "playwright"} or case not in {"analysis", "binding", "recovery"}:
             raise ValueError("Unknown route/case")
@@ -76,6 +99,8 @@ class TrainingRun:
                        "trace": str(self.output / "tool-receipts.jsonl"),
                        "schema": str(self.output / "tool-schema.json"),
                        "stderr": str(self.output / "mcp-stderr.log")}
+            if budget_ledger:
+                runtime["roundBudget"] = str(ordinary_path(budget_ledger))
             write_new_json(self.runtime, runtime)
             self.meta.update(origin=self.origin, cdp=self.cdp, proxy=ready["proxy"],
                              chrome_version=version.get("Browser"), child_pids=[p.pid for p in self.children])
@@ -100,11 +125,27 @@ class TrainingRun:
         # No credentials/config paths are copied into a new identity.
         env["LINGJU_BROWSER_EXERCISE"] = self.route
         env["LINGJU_BROWSER_RUNTIME"] = str(self.runtime)
+        if self.route == "playwright":
+            # Installed MCP inherits XDG_* path metadata but strips LINGJU_*.
+            # No changes to its environment allowlist or server registration.
+            env["XDG_LINGJU_BROWSER_RUNTIME"] = str(self.runtime)
+        else:
+            env.pop("XDG_LINGJU_BROWSER_RUNTIME", None)
         env["HERMES_TUI_MAX_TURNS"] = "16"
-        env["HERMES_TUI_TOOLSETS"] = "browser,terminal,file" if self.route == "native" else "company_browser_simulation,file"
+        env["HERMES_TUI_TOOLSETS"] = "browser,terminal,file,vision" if self.route == "native" else "company_browser_simulation,file,vision"
+        config = json.loads(self.runtime.read_text(encoding="utf-8"))
+        if config.get("roundBudget"):
+            env["LINGJU_BROWSER_BUDGET"] = "1"
+            env["PYTHONDONTWRITEBYTECODE"] = "1"
+            env["PYTHONPATH"] = str(self.root / "startup") + os.pathsep + env.get("PYTHONPATH", "")
         if self.route == "native":
             env["BU_CDP_URL"] = self.cdp
             env.pop("BU_CDP_WS", None)
+            ipc = self.output / "native-ipc"
+            ipc.mkdir(exist_ok=True)
+            env.update(BH_HOME=str(ipc), BH_RUNTIME_DIR=str(ipc), BH_TMP_DIR=str(ipc),
+                       BH_AGENT_WORKSPACE=str(self.output / "browser"),
+                       BH_UPDATE_CHECK="0", BH_TELEMETRY="false")
             env["PATH"] = str(self.root / "compat" / "bin") + os.pathsep + str(self.root / "native-env" / "Scripts") + os.pathsep + env.get("PATH", "")
         return env
 
@@ -112,19 +153,18 @@ class TrainingRun:
         exe = ordinary_path(exe)
         if exe.name.lower() != "hermes.exe":
             raise RuntimeError("Only the existing Hermes executable is permitted")
-        # Installed Desktop computes its canonical runtime from HERMES_HOME.
-        # Do not let this development launch accidentally enter first-install.
-        expected_runtime = Path.home() / ".hermes" / "hermes-agent"
-        if not (expected_runtime / "venv" / "Scripts" / "python.exe").is_file():
-            raise RuntimeError("Desktop canonical runtime is absent under the existing HERMES_HOME; stop rather than bootstrap, relocate home or install another copy")
+        # Use the installed Desktop's supported per-process runtime selector.
+        # Its canonical HOME/hermes-agent is not the only valid runtime.
+        runtime = existing_runtime(exe, Path.home() / ".hermes")
         existing = windows_metadata("@(Get-Process -Name Hermes -ErrorAction SilentlyContinue).Count")
         if existing != "0":
             raise RuntimeError("Original Desktop already open. Do not replace or kill it.")
-        p = self.spawn([str(exe)], env=self.desktop_env(),
+        p = self.spawn([str(exe)], env=runtime_env(self.desktop_env(), runtime),
                        cwd=str(Path.home() / ".hermes" / "company-workspace"))
         self.meta.update(desktop_pid=p.pid, desktop_exe=str(exe), desktop_exe_sha256=sha256(exe),
                          original_home=str(Path.home() / ".hermes"),
-                         workspace=str(Path.home() / ".hermes" / "company-workspace"))
+                         workspace=str(Path.home() / ".hermes" / "company-workspace"),
+                         existing_runtime=runtime)
         (self.output / "lifecycle.json").write_text(json.dumps(self.meta, indent=2), encoding="utf-8")
         return p
 
@@ -132,8 +172,9 @@ class TrainingRun:
         env = dict(self.env)
         ipc = self.output / "native-ipc"
         ipc.mkdir()
-        env.update(BU_CDP_URL=self.cdp, BU_NAME="lingju_zero", BH_RUNTIME_DIR=str(ipc),
-                   BH_TMP_DIR=str(ipc), BH_AGENT_WORKSPACE=str(self.output / "browser"))
+        env.update(BU_CDP_URL=self.cdp, BU_NAME="lingju_zero", BH_HOME=str(ipc), BH_RUNTIME_DIR=str(ipc),
+                   BH_TMP_DIR=str(ipc), BH_AGENT_WORKSPACE=str(self.output / "browser"),
+                   BH_UPDATE_CHECK="0", BH_TELEMETRY="false")
         cli = self.root / "compat" / "bin" / "browser-use.cmd"
         proc = self.spawn([str(cli), "exec"], stdout=subprocess.PIPE,
                           stdin=subprocess.PIPE, env=env)
@@ -174,23 +215,48 @@ def main():
     p.add_argument("--desktop")
     p.add_argument("--headed", action="store_true")
     p.add_argument("--acceptance", action="store_true")
+    p.add_argument("--budget-ledger")
     args = p.parse_args()
     root = Path(__file__).resolve().parent
     if args.acceptance:
         gate = json.loads((root / "acceptance-gate.json").read_text(encoding="utf-8"))
         if not gate.get("all_zero_model_gates_passed") or not gate.get("physical_api_budget_enforced"):
             raise RuntimeError("Model acceptance is blocked; do not send a Desktop task")
-    run = TrainingRun(root, args.route, args.case, args.chrome, args.node, args.headed)
+    run = TrainingRun(root, args.route, args.case, args.chrome, args.node, args.headed, args.budget_ledger)
     try:
         if args.desktop:
             run.start_desktop(args.desktop)
         print(json.dumps({"event": "run_ready", "output": str(run.output), "runtime": str(run.runtime),
                           "origin": run.origin, "cdp": run.cdp, "model_messages_sent": 0,
                           "owner_may_send_message": bool(args.acceptance)}, ensure_ascii=False), flush=True)
-        for line in sys.stdin:
-            if line.strip() == "stop":
+        commands = queue.Queue()
+        def read_commands():
+            for line in sys.stdin:
+                commands.put(line.strip())
+            commands.put("stop")
+        threading.Thread(target=read_commands, daemon=True).start()
+        while True:
+            if args.budget_ledger:
+                from request_budget import RequestBudget
+                status = RequestBudget(args.budget_ledger).status()
+                if status["events"].get("denied_at_limit", 0):
+                    run.meta["stopped_at_request_limit"] = True
+                    print(json.dumps({"event": "budget_stop", "status": status}), flush=True)
+                    break
+            try:
+                line = commands.get(timeout=.5)
+            except queue.Empty:
+                continue
+            if line == "stop":
                 break
-            if line.strip() == "native-smoke":
+            if line == "arm":
+                status = arm_run(run)
+                run.meta["owner_may_send_message"] = True
+                (run.output / "lifecycle.json").write_text(json.dumps(run.meta, indent=2), encoding="utf-8")
+                print(json.dumps({"event": "owner_message_ready", "route": run.route,
+                                  "case": run.case, "origin": run.origin,
+                                  "budget": status, "codex_messages_sent": 0}), flush=True)
+            if line == "native-smoke":
                 result = run.native_smoke()
                 print(json.dumps({"event": "native_smoke", **result}, ensure_ascii=False), flush=True)
     finally:

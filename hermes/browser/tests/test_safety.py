@@ -11,6 +11,7 @@ from native_cli import normalize_args
 
 class SafetyTests(unittest.TestCase):
     def test_native_adapter_only_removes_legacy_exec_argument(self):
+        self.assertEqual(normalize_args([]), [])
         self.assertEqual(normalize_args(["exec"]), [])
         self.assertEqual(normalize_args(["skill"]), ["skill"])
         self.assertEqual(normalize_args(["--version"]), ["--version"])

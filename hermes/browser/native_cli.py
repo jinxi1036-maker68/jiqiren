@@ -1,15 +1,17 @@
-"""Compatibility for the existing Hermes 'browser-use exec' invocation.
-The pinned CLI accepts Python on stdin without 'exec'. No model/identity logic.
+"""Compatibility for both stdin-only and legacy 'browser-use exec' callers.
+The current installed Hermes sends stdin without 'exec'. No model/identity logic.
 """
 import sys
 
 
 def normalize_args(args):
+    if args == []:
+        return []
     if args == ["exec"]:
         return []
     if args in (["skill"], ["--version"], ["--help"]):
         return args
-    raise ValueError("Only exec(stdin), skill, --version and --help are allowed")
+    raise ValueError("Only stdin, exec(stdin), skill, --version and --help are allowed")
 
 
 def main():

@@ -1,5 +1,6 @@
 """Run only the new component unit tests and record actual outcomes."""
 import datetime
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -10,10 +11,16 @@ import time
 from deploy import FILES
 
 root = Path(__file__).resolve().parent
+parser = argparse.ArgumentParser()
+parser.add_argument("--only-python", action="store_true")
+parser.add_argument("--output", default=str(root / ".local/unit-test-receipts.json"))
+args = parser.parse_args()
 commands = [
     ("node", ["node", "--test", *[str(p.relative_to(root)) for p in sorted((root / "tests").glob("*.test.mjs"))]]),
-    ("python", [sys.executable, "-B", "tests/test_safety.py"]),
+    ("python", [sys.executable, "-B", "-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py"]),
 ]
+if args.only_python:
+    commands = [c for c in commands if c[0] == "python"]
 results = {}
 for name, command in commands:
     start = time.monotonic()
@@ -29,10 +36,11 @@ for name, command in commands:
     (local / (name + "-unit-output.txt")).write_text(text, encoding="utf-8")
 inputs = set(FILES + ["deploy.py", "prepare.py", "collect_validation.py", "run_unit_tests.py",
                      "smoke.mjs", "dispatch_smoke.mjs", "tests/test_safety.py"])
-inputs.update(str(p.relative_to(root)).replace("\\", "/") for p in (root / "tests").glob("*.test.mjs"))
+inputs.update(str(p.relative_to(root)).replace("\\", "/") for p in (root / "tests").glob("*test*"))
+inputs.update(["desktop_runtime.py", "native_probe.py", "request_budget.py"])
 receipt = {"at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "model_calls": 0,
            "all_passed": all(r["exit_code"] == 0 for r in results.values()),
            "commands": results, "source_sha256": {n: hashlib.sha256((root / n).read_bytes()).hexdigest() for n in sorted(inputs)}}
-(root / ".local/unit-test-receipts.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+Path(args.output).write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
 print(json.dumps({"all_passed": receipt["all_passed"], "commands": results, "model_calls": 0}))
 raise SystemExit(0 if receipt["all_passed"] else 1)

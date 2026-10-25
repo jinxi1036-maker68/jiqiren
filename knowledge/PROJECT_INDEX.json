@@ -75,19 +75,31 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "tooling_partial_model_acceptance_blocked",
+      "status": "playwright_zero_model_ready_waiting_owner_browser_tasks",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": 0,
       "production_access": false,
-      "blocks": [
-        "native_isolated_cli_timeout",
-        "physical_request_budget_not_enforced",
-        "original_desktop_environment_not_runtime_verified"
-      ],
-      "next_step": "Owner/ChatGPT审查具体门槛；不得发送验收消息或进入真实平台",
-      "resume_scope_note": "仅恢复本地浏览器专项；QQ晨报和生产自动化不恢复"
+      "blocks": [],
+      "next_step": "Owner在当前原Desktop新会话发送Playwright读取与分析任务一次；Codex随后只读取证。每路线最多3条，不挪用额度，不进入真实平台。",
+      "resume_scope_note": "仅恢复本地浏览器专项；QQ晨报和生产自动化不恢复",
+      "zero_model_followup": {
+        "date": "2026-10-25",
+        "owner_approved_temporary_request_budget": true,
+        "desktop_home_and_workspace_runtime_verified": true,
+        "actual_playwright_tools_registered": 13,
+        "python_component_tests_passed": 15,
+        "hermes_model_requests": 0,
+        "native_page_and_screenshot_interface_check": "passed; original timeout cause unknown",
+        "vision_understanding": "not_tested",
+        "request_cap": 120,
+        "message_cap": 6,
+        "current_route": "playwright",
+        "current_case": "analysis",
+        "default_entry_permanently_changed": false,
+        "evidence": "hermes/browser/evidence/preacceptance-followup-2026-10-25.json"
+      }
     }
   }
 }

@@ -34,6 +34,17 @@ try{
  assert.equal(receipt.route_marker_received,true);assert.equal(receipt.original_home_unchanged,true);assert.equal(receipt.max_turns_received,'16');
  result.marked={status:'pass',tools:richer,receipt,output:ready.output};
  await current.client.close();await current.transport.close();current=null;
+ const filteredEnv={...plainEnv,XDG_LINGJU_BROWSER_RUNTIME:ready.runtime};
+ delete filteredEnv.HERMES_HOME;
+ current=await connect(filteredEnv);
+ const filteredTools=(await current.client.listTools()).tools.map(x=>x.name);
+ assert.equal(filteredTools.length,13);
+ const filteredReceipt=JSON.parse(await fs.readFile(path.join(ready.output,'dispatch-receipt.json'),'utf8'));
+ assert.equal(filteredReceipt.activation_source,'xdg_runtime_path');
+ assert.equal(filteredReceipt.runtime_validated,true);
+ assert.equal(filteredReceipt.original_home_unchanged,true);
+ result.filtered={status:'pass',tools:filteredTools,receipt:filteredReceipt};
+ await current.client.close();await current.transport.close();current=null;
  controller.stdin.end('stop\n');
  await new Promise(resolve=>controller.once('exit',resolve));controller=null;
  result.desktop_environment_proven=false;

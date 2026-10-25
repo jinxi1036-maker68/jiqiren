@@ -1,0 +1,195 @@
+{
+  "report_date": "2026-10-25",
+  "checked_at_utc": "2026-10-25T00:06:52.605237+00:00",
+  "status": "playwright_zero_model_verified_waiting_owner_first_task",
+  "hermes_messages_sent_by_codex": 0,
+  "real_hermes_model_requests": 0,
+  "employee_tasks_performed": false,
+  "original_desktop": {
+    "packaged_version": "0.17.0",
+    "executable": "I/apps/desktop/release/win-unpacked/Hermes.exe",
+    "executable_sha256": "fd3830889d337c149ef5990d029b79f813dc6c0218f56089ee21d33415c04be9",
+    "main_source_sha256": "942065f5039a18a4afc2a68ee6d39371b8a90f45e9957f4868c0aa17dc53e799",
+    "python": "I/venv/Scripts/python.exe",
+    "desktop_pid": 7032,
+    "backend_pid": 15952,
+    "profile": "original default identity",
+    "workspace": "W",
+    "workspace_and_home_confirmed_by_live_startup_receipt": true,
+    "existing_runtime_parameters_supported": true,
+    "home_changed": false,
+    "shortcut_changed": false,
+    "normal_restarts_performed": true
+  },
+  "active_run": {
+    "route": "playwright",
+    "case": "analysis",
+    "run_id": "20261024T235959Z-playwright-analysis-a2d43bab",
+    "launcher_session_id": 23619,
+    "operator_origin": "http://127.0.0.1:52348",
+    "user_messages_since_start": 0,
+    "actual_registered_mcp_tools": [
+      "browser_click",
+      "browser_close",
+      "browser_fill_form",
+      "browser_handle_dialog",
+      "browser_navigate",
+      "browser_navigate_back",
+      "browser_press_key",
+      "browser_select_option",
+      "browser_snapshot",
+      "browser_tabs",
+      "browser_take_screenshot",
+      "browser_type",
+      "browser_wait_for"
+    ],
+    "dispatch_metadata_source": "XDG_LINGJU_BROWSER_RUNTIME",
+    "mcp_environment_allowlist_changed": false,
+    "mcp_registration_changed": false
+  },
+  "request_budget": {
+    "shared_limit": 120,
+    "status": {
+      "limit": 120,
+      "reserved_network_attempts": 0,
+      "armed": true,
+      "events": {
+        "denied_unarmed": 30
+      },
+      "families": {}
+    },
+    "startup_hook_loaded_in_actual_backend": true,
+    "sync_async_httpx_guarded": true,
+    "unmetered_external_python_connections_denied": true,
+    "main_and_aux_sdk_local_fake_server_test_passed": true,
+    "sdk_retries_and_redirects_counted": true,
+    "counter_is_conservative_network_attempts_not_server_billing": true,
+    "independent_program_sandbox": false,
+    "new_model_transport_requires_stop": true,
+    "account_credentials_recorded": false,
+    "full_urls_or_prompts_recorded": false
+  },
+  "unit_tests": {
+    "python": {
+      "exit_code": 0,
+      "passed_count": 15,
+      "duration_seconds": 6.156,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "313439e8f4bef6ea678b95fe082c383999374713fca6d1a50667bfd76fb05dd7"
+    },
+    "recorded_at": "2026-10-24T23:59:46.400523+00:00",
+    "node_tests_repeated": false,
+    "source_sha256": {
+      "TASKS.md": "d42dc2c881c258d352c6f34177638f94ebecf0ecad08e637c3baec3669d3d20b",
+      "bridge.mjs": "e814adc336c1330f25fdfe216b1d14793dd50742f52345440cc8d3a916eacf0b",
+      "budget_gate.py": "f5365ec6ea4a7336eecd86d3271aec1366ae2544d74072fc6094ad0f72ba5f5d",
+      "cases.json": "8758851dc890e8caa0936c6ffc15ecf2fce898e2f89ea5e17dcee50b1c86d33e",
+      "collect_validation.py": "1cebe7f3167df85332a0cf28028b473e69b46dc14a60ed69fb3797160a8e6928",
+      "compat/bin/browser-use.cmd": "0624e35317e5e5b9d74d0dfa736fb8b1493919c06de6d207b43f88847cfb7730",
+      "deploy.py": "c1fbe7f240ea92301a4792cf62518b20ea5cf0601747c506093375e54f69bcfb",
+      "desktop_runtime.py": "067afa6a494267f79069f1fcad44e7c5b007c95c5f8fb59f1532a4d3f58ebbb6",
+      "dispatch.py": "605d2dbb775636a3cca687f3b01896ea4d9e26b8341e0e5618db24a5f0b7d336",
+      "dispatch_smoke.mjs": "92253f990c95275ffd86e8bfa5bc0360f6d2695795c7f10cff947ff6d30b1cdf",
+      "fixture.mjs": "6cdafa49a3172b6179185c7343100bf3fa213a0017e32036a96566b421973e1c",
+      "image_result.mjs": "d8d55cb342ed55690aa66195ee0ae6b5455e4bcbc5f79df1d87f29db35fd6bb5",
+      "launch.py": "1322aaf6cf89a55af6dae696fb2ec34b4001d37d9e0beb4cbd047a5d0b2321ef",
+      "native_cli.py": "91e32a9d97586e7972f381407e189959b3765c7ddb066dc19960f87026240e1d",
+      "native_probe.py": "03d320265dfe4009b22cdf8e327d3bc326de463d0f17fd66af4c88e96957b6cf",
+      "owned_job.py": "d776d632b47830a2e1e19d6687b54cdf55482b0f8cdeaa3d4e7251f18b4e53f5",
+      "package-lock.json": "aa124fd555139fc3111df357756ff622bd61ae234018a047b5cff361e91c6e47",
+      "package.json": "1ffabb9d0a305e0c89e6e0a5d42549ffd6d65db40da337d78414add0a0034f08",
+      "prepare.py": "b269e0e284c355c17e8ffdb6040cb7504a14924a00c5fb25dca629924130117f",
+      "request_budget.py": "245b5a0c5fc5121850b242e084abdd22bb7437f29e4caabf5eee34819458507e",
+      "requirements-native.in": "ec873780e0a5f7061bc83e8a0a2d432f8216714cc2e7e04ce134973bc854a420",
+      "requirements-native.lock": "a96b2c641f74326365ce745ebd8bea21e364b5f74333a1c039d0ffa613371d4c",
+      "run_unit_tests.py": "73c1cbdfe1e1f36f37c547be58d6c0125dc6f3f1dadfe3fedf0b87c54249ce15",
+      "safety.py": "37d2d0ddf38c59d9932e861c4a084322ef300c21f8ad78f7b166d94b648e1ba1",
+      "smoke.mjs": "0c8b95e6089ad273e3d8315f7948825a2519c00cb909f5b899e4568067d70fc2",
+      "startup/sitecustomize.py": "77c3108f4a9948be1b35a34b8669f917e3022197c6b4c5680cc3f74f56a14cef",
+      "tests/fixture.test.mjs": "729a105fe639177f1274b959b6f1bbe7dd1d6912f4ef6824222599e0f8c58c4b",
+      "tests/image_result.test.mjs": "ac6ec69a3e4b223576631f989a94a37fab83c55baa4951fa239952db661c35b6",
+      "tests/test_desktop_runtime.py": "b81449d87f85d4ff2bd5eee4577a285220c94f8119a41811bfc94e88c8ccc332",
+      "tests/test_request_budget.py": "9b65ebdcda53d43b0c6e6360d7be06c6133f2d996119e9ca786980aa621610dc",
+      "tests/test_safety.py": "40380287816c3b90a6f538a4a1c86166f10145d9dfaeaf6ea31b7e16386932dc",
+      "watch.py": "cdbe4245f62f05fd4d5d53900916bf40e8926bbb13064d96059dd4bda923862e",
+      "web/app.js": "1866bf1f901fbff687ce320d80c7f8b76e685e2eb26a793d2677e2642aa7d30e",
+      "web/index.html": "8ea6c2eb619594c239fd8dbd61745f36b49f8cc8ff9a730705e5b8acb0dc748b",
+      "web/style.css": "2208a638f6ab7b53db628e8f355397c5665443efa7aa3d6dc12059e567a7c8ea"
+    }
+  },
+  "dispatch_regression": {
+    "unmarked": {
+      "passed": true,
+      "tool_count": 4
+    },
+    "marked": {
+      "passed": true,
+      "tool_count": 13
+    },
+    "filtered": {
+      "passed": true,
+      "tool_count": 13
+    }
+  },
+  "native": {
+    "bounded_cli_probes_passed": 3,
+    "last_probe_includes_screenshot": true,
+    "previous_timeout_cause": "unknown; not reproduced under current isolated diagnostic setup",
+    "original_browser_exec_interface_first_failed": "new compatibility shim rejected valid stdin-only/no-argument invocation",
+    "own_shim_fixed": true,
+    "original_browser_exec_page_and_screenshot_check_passed": true,
+    "native_fast_image_attachment": false,
+    "existing_vision_tool_selected_in_both_routes": true,
+    "agent_visual_understanding": "unverified",
+    "model_tasks_run": 0
+  },
+  "protection": {
+    "immutable_records_checked": 59,
+    "all_immutable_records_unchanged": true,
+    "runtime_heartbeat_files_observed_separately": [
+      "ticker_heartbeat",
+      "ticker_last_success"
+    ],
+    "heartbeat_writer_not_os_traced": true,
+    "workspace_files": 37,
+    "workspace_manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+    "no_config_or_credential_writes": true
+  },
+  "local_changes": {
+    "new_tool_source_files_deployed": 3,
+    "updated_prior_round_tool_sources": [
+      "launch.py",
+      "native_cli.py",
+      "dispatch.py"
+    ],
+    "new_tool_source_total": 23,
+    "existing_bridge_opt_in_updated": true,
+    "bridge_before_sha256": "d060dfb7fa03f7aed9f6612805688b5dbbd043e08e4b410c1626d8f7b39a594a",
+    "bridge_after_sha256": "da478285552cf6fbdca5402975295efe4c1a3b96905ee0ed884b8ae3580bc208",
+    "default_unmarked_implementation_preserved": true,
+    "local_tool_deployment_metadata_updated": true,
+    "local_acceptance_gate_updated": true,
+    "private_preimages_count": 6,
+    "private_preimages_verified": true,
+    "rollback_performed": false
+  },
+  "model_acceptance": {
+    "playwright": {
+      "analysis": "not_run",
+      "binding": "not_run",
+      "recovery": "not_run"
+    },
+    "native": {
+      "analysis": "not_run",
+      "binding": "not_run",
+      "recovery": "not_run"
+    }
+  },
+  "messages_limit": 6,
+  "per_route_limit": 3,
+  "message_allowance_transferred": false,
+  "selected_primary_driver": null,
+  "production_platform_access": false,
+  "pr_merged": false,
+  "syntax_files_checked": 19
+}
