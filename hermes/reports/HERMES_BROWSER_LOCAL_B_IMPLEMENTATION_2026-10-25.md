@@ -569,3 +569,16 @@ Owner要求定位连接故障，未新增业务任务或模型调用。原H/.env
 29/30、消息2/2保持暂停，新增模型消息/请求0，59项保护/W37/R3及旧账本不变，无服务重启、私有备份、回退或生产访问。仓库只新增脱敏诊断证据及更新进展；不重复审计/浏览器旧验收。
 
 [诊断证据](../browser/evidence/model-connection-proxy-diagnosis-2026-10-25.json)。
+
+
+## 26. Owner批准模型绕过HTTP代理，本轮原QQ进程已生效
+
+原话“那现在怎么办能不能不让他走代理”。仅在新工具qq_runtime增加显式gate.model_proxy_bypass：精确apihub.agnes-ai.com、当前进程、Owner批准标记三项匹配才启用；原dotenv装载后合并NO_PROXY/no_proxy，保留继承例外，用原生代理解析函数确认模型直连和三项QQ路由未变，失败即恢复环境并拒绝继续。未改原HTTPS_PROXY值、H/.env、模型地址/凭据或全局Clash。
+
+新增4项网络路由边界测试，QQ模块24项通过。首轮2项测试断言误把Windows环境名当大小写独立，修正测试映射后全通过；未在失败状态部署。独立检查子进程执行实际新函数，原生客户端池ConnectionPool，一次未认证GET模型目录200，无Authorization、提示词、POST或模型生成。此检查不证明真实生成/SSE长期稳定。
+
+本机只更新新工具QQ源及两份部署收据，3文件/3必要私有前像，哈希匹配，无回退。仅关闭旧自有QQ管线及受验证后代后，以原安装Python/原H/W重启；新QQ协议READY，原生解析器证实模型域名绕过HTTP代理，QQ路由未变，Clash原进程仍运行。进程级例外退出即撤下，不永久修改原Desktop默认入口。
+
+原消息已2/2，预算29/30保持暂停，故当前communication-only且未构建模型管线/MCP，Codex没有代发、探活或加额。24项本地检查/目录GET/启动路由收据不能代替真实模型和浏览器验收。59项保护/W37/R3和旧账本不变，无普通服务、权限或记忆变更。已完成请求路由修复；真实生成/SSE及剩余recovery目标仍待批准的新消息/额度验证，不让Owner现在盲目发任务。
+
+[生效证据](../browser/evidence/model-proxy-bypass-applied-2026-10-25.json)。

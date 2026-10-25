@@ -9,9 +9,61 @@ from qq_runtime import (Intake, official_qq_websocket, verify_browser_catalog,
                         metadata_catalog_urls, round_settings, TOOLSETS,
                         acceptance_thread_id, verify_unused_thread, communication_only_mode,
                         paused_notice, newly_budget_blocked, verify_closed_status_mode)
+from qq_runtime import apply_model_proxy_bypass
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_proxy_bypass_preserves_both_case_exceptions_and_QQ_routes(self):
+        import os,urllib.request
+        from urllib.parse import urlsplit
+        from unittest.mock import patch
+        gate={'model_proxy_bypass':{
+            'authorization':'2026-10-25 Owner: bypass original Hermes model HTTP proxy; preserve QQ route',
+            'hosts':['apihub.agnes-ai.com'],'process_only':True}}
+        def resolver(url):
+            return None if urllib.request.proxy_bypass_environment(urlsplit(url).hostname) else 'existing-proxy'
+        # Windows's real environment aliases case; use a plain mapping to also
+        # exercise independently inherited spellings on case-sensitive hosts.
+        with patch('qq_runtime.os.environ',{'NO_PROXY':'localhost,127.0.0.1','no_proxy':'existing.internal'}):
+            receipt=apply_model_proxy_bypass(gate,resolver)
+            self.assertTrue(receipt['native_resolver_model_direct'])
+            self.assertEqual(os.environ['NO_PROXY'],os.environ['no_proxy'])
+            for host in ['localhost','127.0.0.1','existing.internal','apihub.agnes-ai.com']:
+                self.assertIsNone(resolver('https://'+host))
+            for host in ['api.sgroup.qq.com','bots.qq.com','apihub.agnes-ai.com.evil.invalid','other.invalid']:
+                self.assertEqual(resolver('https://'+host),'existing-proxy')
+
+    def test_proxy_bypass_default_off_and_rejects_broader_scope(self):
+        import os
+        from unittest.mock import patch
+        with patch('qq_runtime.os.environ',{'NO_PROXY':'localhost'}):
+            self.assertIsNone(apply_model_proxy_bypass({}))
+            for value in [{'hosts':['*']},{'hosts':['agnes-ai.com']},{'process_only':False}]:
+                with self.assertRaises(RuntimeError):apply_model_proxy_bypass({'model_proxy_bypass':value})
+            self.assertEqual(dict(os.environ),{'NO_PROXY':'localhost'})
+
+    def test_proxy_bypass_failed_native_route_check_restores_environment(self):
+        import os
+        from unittest.mock import patch
+        gate={'model_proxy_bypass':{
+            'authorization':'2026-10-25 Owner: bypass original Hermes model HTTP proxy; preserve QQ route',
+            'hosts':['apihub.agnes-ai.com'],'process_only':True}}
+        with patch('qq_runtime.os.environ',{'NO_PROXY':'localhost'}):
+            with self.assertRaises(RuntimeError):apply_model_proxy_bypass(gate,lambda url:'still-proxied')
+            self.assertEqual(dict(os.environ),{'NO_PROXY':'localhost'})
+
+    def test_proxy_bypass_rejects_QQ_route_change_and_rolls_back(self):
+        import os
+        from unittest.mock import patch
+        gate={'model_proxy_bypass':{
+            'authorization':'2026-10-25 Owner: bypass original Hermes model HTTP proxy; preserve QQ route',
+            'hosts':['apihub.agnes-ai.com'],'process_only':True}}
+        def broken_resolver(url):
+            return None if 'apihub.agnes-ai.com' in os.environ.get('NO_PROXY','') else 'existing-proxy'
+        with patch('qq_runtime.os.environ',{'no_proxy':'old.internal'}):
+            with self.assertRaises(RuntimeError):apply_model_proxy_bypass(gate,broken_resolver)
+            self.assertEqual(dict(os.environ),{'no_proxy':'old.internal'})
+
     def test_continuation_retains_first_message_and_same_30_request_ledger(self):
         import json
         from request_budget import RequestBudget

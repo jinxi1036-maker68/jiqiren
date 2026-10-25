@@ -57,4 +57,4 @@ Current 只保存“现在”；History 只保存“过去”；Evidence 只保�
 
 ## 2026-10-25 Hermes浏览器专项本地实施
 
-已定点复现模型域名经本机127.0.0.1:7897代理TLS断开3次；原生客户端代理另1次返回401，应用层绕过HTTP代理4次200。原H/.env/原生客户端代理选择及历史代理日志18/18请求时点吻合支持该方向，但旧APIConnectionError每次根因未留链，不能完全定论。仅诊断子进程追加模型域名NO_PROXY已零模型验证，QQ代理保留；未改活动QQ/安装代码/配置或全局代理。新增模型调用0，29/30、消息2/2暂停；不让Owner再盲目重发。 见[报告第25节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)及[诊断证据](../hermes/browser/evidence/model-connection-proxy-diagnosis-2026-10-25.json)。
+Owner已要求Hermes模型连接不走HTTP代理。新工具增加显式进程gate，在原dotenv装载后仅为apihub.agnes-ai.com合并NO_PROXY/no_proxy，校验模型直连和QQ路由不变，失败恢复子进程环境。24项QQ本地检查及1次未认证目录GET200通过；仅替换本轮自有QQ管线，原H/W原身份READY，活动进程已证实绕过。当前仅状态模式，无模型管线/MCP，新增模型调用0，29/30、消息2/2仍暂停；未永久修改Desktop默认入口、配置或Clash，尚未验证真实生成/SSE。 见[报告第26节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[生效证据](../hermes/browser/evidence/model-proxy-bypass-applied-2026-10-25.json)。

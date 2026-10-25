@@ -287,3 +287,8 @@ Owner“那你开始吧”允许在原11/30、剩19的条件下继续同一未�
 ### 上述续办已结束：当前暂停，勿复用就绪URL
 
 Owner续办在3次浏览器动作后APIConnectionError中断，未提交项目。当前29/30、消息2/2、armed=false，自有fixture/Chrome已关闭，QQ仅可状态回复/拒绝新模型任务。13工具启动就绪不等于本次业务验收通过。具体连接根因尚未证实；没有本次429收据，不盲目补发，见[实际结果](evidence/qq-round3-continuation-result-2026-10-25.json)。
+
+
+### 本轮模型HTTP代理绕过已装入临时QQ入口
+
+显式gate.model_proxy_bypass匹配Owner授权、hosts=[apihub.agnes-ai.com]、process_only=true才生效。原dotenv装载后合并NO_PROXY/no_proxy，保留旧例外，用原生解析器确认模型直连/QQ路由不变；失败恢复环境并停止。无标记继续原逻辑，不改配置或全局代理。24项QQ检查和目录GET200通过，当前原QQ状态进程路由已证实；不永久改Desktop入口，也不宣称真实生成/SSE通过。29/30及2/2仍暂停，勿发送新业务任务。见[证据](evidence/model-proxy-bypass-applied-2026-10-25.json)。

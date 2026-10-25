@@ -137,6 +137,51 @@ def metadata_catalog_urls(config):
     return found
 
 
+def apply_model_proxy_bypass(gate, resolver=None):
+    """Opt-in process environment only, after native dotenv has loaded.
+
+    Keep both spellings consistent: urllib's lowercase no_proxy can otherwise
+    override NO_PROXY. Preserve every inherited exception and the QQ route.
+    """
+    value = gate.get('model_proxy_bypass')
+    if value is None:
+        return None
+    expected = {
+        'authorization': '2026-10-25 Owner: bypass original Hermes model HTTP proxy; preserve QQ route',
+        'hosts': ['apihub.agnes-ai.com'],
+        'process_only': True,
+    }
+    if value != expected:
+        raise RuntimeError('Model proxy exception differs from Owner-approved scope')
+    if resolver is None:
+        from agent.process_bootstrap import _get_proxy_for_base_url
+        resolver = _get_proxy_for_base_url
+    model = 'https://apihub.agnes-ai.com/v1'
+    qq_urls = ['https://api.sgroup.qq.com', 'https://bots.qq.com', 'https://sandbox.api.sgroup.qq.com']
+    before_qq = [resolver(url) for url in qq_urls]
+    keys = ['NO_PROXY', 'no_proxy']
+    previous = {key: os.environ.get(key) for key in keys}
+    entries = list(dict.fromkeys(token.strip() for text in previous.values()
+                               for token in (text or '').split(',') if token.strip()))
+    entries.append('apihub.agnes-ai.com')
+    merged = ','.join(dict.fromkeys(entries))
+    try:
+        for key in keys:
+            os.environ[key] = merged
+        if resolver(model) is not None or [resolver(url) for url in qq_urls] != before_qq:
+            raise RuntimeError('Model direct route or unchanged QQ route not verified')
+    except BaseException:
+        for key, old in previous.items():
+            if old is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = old
+        raise
+    return {'hosts': ['apihub.agnes-ai.com'], 'process_only': True,
+            'native_resolver_model_direct': True, 'QQ_routes_unchanged': True,
+            'inherited_exceptions_preserved': True, 'model_requests_sent': 0}
+
+
 def round_settings(gate, cfg, runtime, root):
     """New budget needs its own explicit authorization; legacy ledger unchanged."""
     if gate.get("accounting_mode") != "model_attempts_v1":
@@ -298,6 +343,7 @@ async def serve(args):
     runner = adapter = None
     try:
         config = native.load_gateway_config_for_runner()
+        proxy_bypass = apply_model_proxy_bypass(gate)
         qq = config.platforms[Platform.QQBOT]
         if not qq.enabled or not qq.extra.get("allow_from") or "*" in str(qq.extra["allow_from"]):
             raise RuntimeError("Original QQ owner allowlist is not restrictive")
@@ -441,6 +487,7 @@ async def serve(args):
               next_thread_id=acceptance_thread_id(runtime, intake.count() + 1) if intake.count() < intake.cap else None,
               accounting_mode=gate.get('accounting_mode','legacy_all_httpx'),
               communication_only=communication_only, model_pipeline_constructed=not communication_only,
+              model_proxy_bypass=proxy_bypass,
               provider_pacing_enabled=bool(pacer) if settings['classified'] else False,
               traffic=traffic.counts() if traffic else None)
         print(json.dumps({"event":"qq_ready", "pid":os.getpid(), "budget":budget.status(),
