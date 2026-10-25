@@ -7,10 +7,27 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from qq_runtime import (Intake, official_qq_websocket, verify_browser_catalog,
                         metadata_catalog_urls, round_settings, TOOLSETS,
-                        acceptance_thread_id, verify_unused_thread)
+                        acceptance_thread_id, verify_unused_thread, communication_only_mode,
+                        paused_notice, newly_budget_blocked)
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_status_only_gate_cannot_open_model_task_intake(self):
+        gate={'communication_only':True,'model_execution_permitted':False}
+        self.assertTrue(communication_only_mode(gate,False))
+        with self.assertRaises(RuntimeError):communication_only_mode(gate,True)
+        with self.assertRaises(RuntimeError):communication_only_mode({'communication_only':True},False)
+
+    def test_finished_notice_explains_counts_and_no_model_resubmission(self):
+        text=paused_notice({'reserved_network_attempts':60,'limit':60},3)
+        for value in ['3/3','60/60','没有送给模型','不要重复发送','不表示QQ或模型服务失联']:
+            self.assertIn(value,text)
+
+    def test_only_new_limit_denial_is_attributed_to_budget(self):
+        before={'events':{'denied_at_limit':1}}
+        self.assertFalse(newly_budget_blocked(before,{'events':{'denied_at_limit':1}}))
+        self.assertTrue(newly_budget_blocked(before,{'events':{'denied_at_limit':2}}))
+
     def test_thread_id_does_not_collide_across_runs_or_slots(self):
         a=Path('runs/run-A/runtime.json');b=Path('runs/run-B/runtime.json')
         self.assertNotEqual(acceptance_thread_id(a,1),acceptance_thread_id(b,1))

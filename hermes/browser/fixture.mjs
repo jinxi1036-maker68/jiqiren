@@ -5,6 +5,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import {fileURLToPath} from 'node:url';
 import crypto from 'node:crypto';
+import {requestScope} from './request_scope.mjs';
 
 const here=path.dirname(fileURLToPath(import.meta.url));
 const digits=['111101101101111','010110010010111','111001111100111','111001111001111','101101111001001','111100111001111','111100111101111','111001001001001','111101111101111','111101111001111'];
@@ -80,30 +81,36 @@ export async function startFixture({output,visualCode='47'}={}){
  return{server,origin,state,events,close:()=>new Promise(r=>server.close(r))};
 }
 
-export async function startGuard(origin,{output}={}){
- const allowed=new URL(origin),entries=[];
- const log=(url,allowedFlag,method)=>{const e={at:new Date().toISOString(),url,allowed:allowedFlag,method};entries.push(e);if(output)fs.appendFileSync(path.join(output,'guard-events.jsonl'),JSON.stringify(e)+'\n');};
+export async function startGuard(origin,{output,caseId='read-only'}={}){
+ const allowed=new URL(origin),entries=[],scope=requestScope(caseId);
+ const log=(url,allowedFlag,method,reason)=>{const e={at:new Date().toISOString(),url,allowed:allowedFlag,method,task_scope:caseId,reason};entries.push(e);if(output)fs.appendFileSync(path.join(output,'guard-events.jsonl'),JSON.stringify(e)+'\n');};
  const server=http.createServer((req,res)=>{
   let u;try{u=new URL(req.url);}catch{res.writeHead(400);res.end('Absolute proxy URL required');return;}
-  const ok=u.origin===allowed.origin&&!u.username&&!u.password;
-  log(u.origin+u.pathname,ok,req.method);
-  if(!ok){res.writeHead(403);res.end('Only this synthetic origin is allowed');return;}
+  const sameOrigin=u.origin===allowed.origin&&!u.username&&!u.password;
+  const ok=sameOrigin&&scope.allows(req.method,u.pathname);
+  log(u.origin+u.pathname,ok,req.method,ok?'allowed':sameOrigin?'task_mutation_not_authorized':'origin_not_authorized');
+  if(!ok){
+   res.writeHead(403,{'content-type':'application/json; charset=utf-8'});
+   res.end(JSON.stringify({error:sameOrigin?'本次任务未授权此状态变更；本地权限护栏已拦截，目标服务未收到请求。':'Only this synthetic origin is allowed',
+    code:'LINGJU_LOCAL_SCOPE_DENIED',source:'local_browser_permission_guard',upstream_request_sent:false}));
+   return;
+  }
   const headers={...req.headers,host:allowed.host};delete headers['proxy-authorization'];
   const upstream=http.request({hostname:allowed.hostname,port:allowed.port,path:u.pathname+u.search,method:req.method,headers},r=>{res.writeHead(r.statusCode,r.headers);r.pipe(res);});
   upstream.on('error',()=>{res.writeHead(502);res.end('Local fixture unavailable');});req.pipe(upstream);
  });
  server.on('clientError',(_error,socket)=>socket.destroy());
- server.on('connect',(req,socket)=>{socket.on('error',()=>{});log(req.url,false,'CONNECT');socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n');});
+ server.on('connect',(req,socket)=>{socket.on('error',()=>{});log(req.url,false,'CONNECT','origin_not_authorized');socket.end('HTTP/1.1 403 Forbidden\r\nConnection: close\r\n\r\n');});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));
- return{server,url:'http://127.0.0.1:'+server.address().port,entries,close:()=>new Promise(r=>server.close(r))};
+ return{server,url:'http://127.0.0.1:'+server.address().port,entries,taskScope:scope.caseId,close:()=>new Promise(r=>server.close(r))};
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const config=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
  fs.mkdirSync(config.output,{recursive:true});
  const fixture=await startFixture({output:config.output,visualCode:config.visualCode||'47'});
- const guard=await startGuard(fixture.origin,{output:config.output});
- console.log(JSON.stringify({event:'fixture_ready',origin:fixture.origin,proxy:guard.url}));
+ const guard=await startGuard(fixture.origin,{output:config.output,caseId:config.case||'read-only'});
+ console.log(JSON.stringify({event:'fixture_ready',origin:fixture.origin,proxy:guard.url,task_scope:guard.taskScope}));
  const finish=async()=>{await guard.close();await fixture.close();process.exit(0);};
  process.on('SIGTERM',finish);process.on('SIGINT',finish);
 }

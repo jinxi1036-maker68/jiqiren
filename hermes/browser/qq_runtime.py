@@ -91,6 +91,25 @@ def verify_unused_thread(db, thread_id):
             raise RuntimeError("Acceptance thread already has a conversation; do not reuse it")
 
 
+def communication_only_mode(gate, allow_tasks):
+    if not gate.get('communication_only'):
+        return False
+    if allow_tasks or gate.get('model_execution_permitted') is not False:
+        raise RuntimeError('Communication-only gate cannot admit model tasks')
+    return True
+
+
+def paused_notice(status, admitted):
+    title = '本轮模拟验收已结束' if admitted >= 3 or status['reserved_network_attempts'] >= status['limit'] else '当前阶段暂停接收任务'
+    return (f"QQ正常在线。{title}：已接收{admitted}/3条任务，"
+            f"模型预算已用{status['reserved_network_attempts']}/{status['limit']}次（含重试、辅助及未知请求）。"
+            "本条没有送给模型，请不要重复发送。已执行结果由Codex核对；这不表示QQ或模型服务失联。")
+
+
+def newly_budget_blocked(before, after):
+    return after['events'].get('denied_at_limit', 0) > before['events'].get('denied_at_limit', 0)
+
+
 def metadata_catalog_urls(config):
     """Only existing model configuration; no URLs or secrets in receipts."""
     found = set()
@@ -183,7 +202,8 @@ async def serve(args):
     if gate_path != root / "acceptance-gate.json" and gate_path.parent != runtime.parent:
         raise RuntimeError("Per-run acceptance gate must be in the owned runtime")
     gate = json.loads(gate_path.read_text(encoding="utf-8"))
-    if gate.get("active_runtime") != str(runtime) or not gate.get("all_zero_model_gates_passed"):
+    communication_only = communication_only_mode(gate, args.allow_task_messages)
+    if gate.get("active_runtime") != str(runtime) or (not communication_only and not gate.get("all_zero_model_gates_passed")):
         raise RuntimeError("Browser prerequisite gate missing for this runtime")
     if gate.get("runtime_sha256") and gate["runtime_sha256"] != sha256(runtime):
         raise RuntimeError("Runtime changed after prerequisite verification")
@@ -276,16 +296,19 @@ async def serve(args):
                 _inside_metered_transport.reset(token)
         adapter._open_ws = open_qq
         browser_ready = False
-        try:
-            browser_ready = await discover_company_browser(out)
-        except Exception as exc:
-            event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
+        if not communication_only:
+            try:
+                browser_ready = await discover_company_browser(out)
+            except Exception as exc:
+                event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
         intake = Intake(settings["intake"] or out / "intake.sqlite", cap=args.admit_through_slot or 3)
+        if communication_only and (budget.status()['reserved_network_attempts'] != settings['limit'] or intake.count() != 3):
+            raise RuntimeError('Completed-round status mode requires exhausted budget and all3 tasks accounted')
         if args.allow_task_messages and intake.count() < intake.cap:
             verify_unused_thread(home / "state.db", acceptance_thread_id(runtime, intake.count() + 1))
         busy = asyncio.Lock()
         ready = False
-        primary = runner._primary_message_handler()
+        primary = None if communication_only else runner._primary_message_handler()
         async def receive(msg):
             if msg.source.chat_type != "dm" or not runner._is_user_authorized(msg.source):
                 event(out, "inbound_rejected", reason="not_existing_authorized_dm")
@@ -293,6 +316,8 @@ async def serve(args):
             if msg.text.strip().lower() == "/status":
                 event(out, "status_requested", model_calls=0)
                 status = budget.status()
+                if communication_only:
+                    return paused_notice(status, intake.count()) + ' 当前仅状态回复，没有启动浏览器或模型任务。'
                 admission_open = (args.allow_task_messages and browser_ready and status['armed']
                                   and intake.count() < intake.cap and status['reserved_network_attempts'] < status['limit'])
                 state = "本次批准的模拟任务接收已开启" if admission_open else "当前暂停新模型任务"
@@ -306,10 +331,10 @@ async def serve(args):
                 return "当前正在准备或处理上一条任务，请先等待完成；本条没有送给模型。"
             if not args.allow_task_messages or not browser_ready:
                 event(out, "inbound_paused_without_model", model_calls=0)
-                return "QQ仍在线，当前暂停新模型任务；本条未提交模型。"
+                return paused_notice(budget.status(), intake.count())
             if intake.count() >= intake.cap:
                 event(out, "approved_message_allowance_used", model_calls=0)
-                return "当前阶段的任务机会已用完，QQ仍在线；本条没有提交模型。"
+                return paused_notice(budget.status(), intake.count())
             if msg.text.startswith("/") or msg.media_urls:
                 return "本轮仅接收文字任务和/status，不执行重启、配置、媒体或其他命令。"
             status = budget.status()
@@ -333,7 +358,17 @@ async def serve(args):
                       toolsets=TOOLSETS, budget_before=budget.status(),
                       traffic_before=traffic.counts() if traffic else None)
                 try:
-                    return await primary(msg)
+                    before = budget.status()
+                    try:
+                        result = await primary(msg)
+                    except Exception:
+                        if not newly_budget_blocked(before, budget.status()):
+                            raise
+                        result = None
+                    if newly_budget_blocked(before, budget.status()):
+                        event(out, 'budget_notice_replaces_generic_error', model_calls=0)
+                        return paused_notice(budget.status(), intake.count()) + ' 本次任务因额度拦截未形成完整最终汇报，已执行动作须以本地收据核验。'
+                    return result
                 finally:
                     event(out, "owner_task_returned", slot=slot, budget_after=budget.status(),
                           traffic_after=traffic.counts() if traffic else None,
@@ -351,7 +386,7 @@ async def serve(args):
             raise RuntimeError("Protected file changed during QQ startup")
         ready = True
         event(out, "qq_ready", pid=os.getpid(), python=sys.executable, install=str(install),
-              home=str(home), cwd=os.getcwd(), toolsets=TOOLSETS, max_turns=16,
+              home=str(home), cwd=os.getcwd(), toolsets=[] if communication_only else TOOLSETS, max_turns=0 if communication_only else 16,
               source_sha256=sha256(__file__), budget=budget.status(),
               codex_model_messages=0, cron_started=False, other_channels_started=False,
               original_gateway_start_called=False, protected_changes=[],
@@ -359,6 +394,7 @@ async def serve(args):
               admission_ceiling=intake.cap, existing_admitted_tasks=intake.count(),
               next_thread_id=acceptance_thread_id(runtime, intake.count() + 1) if intake.count() < intake.cap else None,
               accounting_mode=gate.get('accounting_mode','legacy_all_httpx'),
+              communication_only=communication_only, model_pipeline_constructed=not communication_only,
               traffic=traffic.counts() if traffic else None)
         print(json.dumps({"event":"qq_ready", "pid":os.getpid(), "budget":budget.status(),
                           "owner_can_send":"/status", "model_messages_sent_by_codex":0}), flush=True)

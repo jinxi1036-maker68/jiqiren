@@ -75,18 +75,19 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "analysis_and_binding_goals_proven_recovery_final_stage_ready_goal1_session_defect_retained",
+      "status": "round_closed_recovery_permission_failure_zero_model_scope_fix_installed_QQ_status_only",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": null,
       "production_access": false,
       "blocks": [
-        "goal1_clean_session_condition_failed_historical_limit_retained",
-        "recovery_goal_pending_with_only20_request_reservations_left",
-        "formal_two_route_selection_and_production_not_validated"
+        "recovery_task_failed_due_unapproved_QA_mutations_and_no_final_report",
+        "first_goal_clean_session_condition_failed",
+        "no_model_budget_or_task_slots_remaining",
+        "new_scope_guard_not_Agent_revalidated_no_formal_driver_selection"
       ],
-      "next_step": "新slot2真实独立会话完成1项目/1任务、准确绑定EMP002/DEV010、截图视觉47和服务器重查询；保护不变。最后slot3异常恢复已就绪，仍同一60账本，40已用/20剩、消息2/3；Owner只发一次，Codex取证后结束本轮，不补发或加额，不访问真实后台。第一项旧上下文限制保留。",
+      "next_step": "本轮3条/60次已全部用完，停止新模型任务；QQ仅状态回复，提示明确次数。第三项项目503后回查无重复有实证，但越权QA刷新2次且最终报告在额度拦截后缺失，不能通过。操作范围护栏5项及实际新浏览器零模型检查通过，QQ提示3项新增检查后模块15项通过；原失败保留，不清资料、不补发、不加额。下一次本人验收须有新明确消息/模型额度授权，真实平台仍未开放。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -149,7 +150,8 @@
         "formal_driver_selected": false,
         "create_bind": "passed in synthetic workplace with unique IDs and server requery; no duplicates",
         "auxiliary_image_understanding": "iframe cropped two digits47 correctly recognized; main direct visual not proven",
-        "fresh_session_after_intake_fix": "confirmed by unique new session20261025_132913_37894105"
+        "fresh_session_after_intake_fix": "confirmed by unique new session20261025_132913_37894105",
+        "recovery": "partial behavior proven: no duplicate project after503; failed permission discipline and no final model report"
       },
       "targeted_zero_model_improvements": {
         "date": "2026-10-25",
@@ -172,13 +174,13 @@
         "date": "2026-10-25",
         "model_cap": 60,
         "message_cap": 3,
-        "Owner_messages_admitted": 2,
+        "Owner_messages_admitted": 3,
         "current_stage_message_ceiling": 3,
-        "model_attempts_reserved_at_ready": 40,
-        "QQ_control_requests_audited": 30,
+        "model_attempts_reserved_at_ready": 60,
+        "QQ_control_requests_audited": 42,
         "startup_unknown_httpx_blocked_before_send": 15,
         "old_round_budget_unchanged": true,
-        "intake_status": "final recovery slot3 READY; waiting Owner",
+        "intake_status": "round closed, only QQ status replies; no model pipeline",
         "native_QQ_same_identity": true,
         "Desktop_window_transport": false,
         "browser_tools": 13,
@@ -186,11 +188,11 @@
           "company_browser_simulation",
           "vision"
         ],
-        "QQ_total_tests_passed": 12,
+        "QQ_total_tests_passed": 15,
         "traffic_guard_deployed_and_active": true,
         "real_platform_authorized": false,
-        "evidence": "hermes/browser/evidence/qq-round2-recovery-ready-2026-10-25.json",
-        "remaining": 20,
+        "evidence": "hermes/browser/evidence/qq-round2-recovery-2026-10-25.json",
+        "remaining": 0,
         "analysis_result": {
           "browser_goal": "passed",
           "fresh_session_gate": "failed: old qq-transport-1 reused",
@@ -213,6 +215,26 @@
           "this_task_budget": 21,
           "protected_changes": 0,
           "evidence": "hermes/browser/evidence/qq-round2-binding-2026-10-25.json"
+        },
+        "recovery_result": {
+          "goal": "not passed",
+          "session": "20261025_134403_9a8cfbc2",
+          "logical_API": 15,
+          "tool_receipts": 27,
+          "browser_calls": 14,
+          "unauthorized_QA_refreshes": 2,
+          "final_model_report": false,
+          "this_task_budget": 20,
+          "two_later_messages_blocked_no_model": true
+        },
+        "zero_model_failure_fix": {
+          "permission_tests_passed": 5,
+          "actual_browser_guard_check_passed": true,
+          "new_Agent_model_calls": 0,
+          "QQ_module_tests_passed": 15,
+          "communication_only_live": true,
+          "Agent_retest": "not performed",
+          "evidence": "hermes/browser/evidence/qq-round2-closed-scope-fix-2026-10-25.json"
         }
       }
     }

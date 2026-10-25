@@ -59,13 +59,15 @@ class TrainingRun:
         self.env["ANONYMIZED_TELEMETRY"] = "false"
         try:
             fixture_config = self.output / "fixture-config.json"
-            write_new_json(fixture_config, {"output": str(self.output), "visualCode": "47"})
+            write_new_json(fixture_config, {"output": str(self.output), "visualCode": "47", "case": self.case})
             fixture = self.spawn([node, str(self.root / "fixture.mjs"), str(fixture_config)], stdout=subprocess.PIPE)
             ready_queue = queue.Queue()
             threading.Thread(target=lambda: ready_queue.put(fixture.stdout.readline()), daemon=True).start()
             ready = json.loads(ready_queue.get(timeout=15))
             if ready.get("event") != "fixture_ready":
                 raise RuntimeError("Fixture not ready")
+            if ready.get("task_scope") != self.case:
+                raise RuntimeError("Browser request scope missing or different from this task")
             self.origin = ready["origin"]
             profile = self.output / "chrome-profile"
             profile.mkdir()
@@ -94,7 +96,7 @@ class TrainingRun:
             self.runtime = self.output / "runtime.json"
             browser_output = self.output / "browser"
             browser_output.mkdir()
-            runtime = {**self.meta, "origin": self.origin, "cdp": self.cdp,
+            runtime = {**self.meta, "origin": self.origin, "cdp": self.cdp, "taskScope": ready["task_scope"],
                        "dependencyRoot": str(self.root), "browserOutput": str(browser_output),
                        "trace": str(self.output / "tool-receipts.jsonl"),
                        "schema": str(self.output / "tool-schema.json"),
@@ -102,7 +104,7 @@ class TrainingRun:
             if budget_ledger:
                 runtime["roundBudget"] = str(ordinary_path(budget_ledger))
             write_new_json(self.runtime, runtime)
-            self.meta.update(origin=self.origin, cdp=self.cdp, proxy=ready["proxy"],
+            self.meta.update(origin=self.origin, cdp=self.cdp, proxy=ready["proxy"], task_scope=ready["task_scope"],
                              chrome_version=version.get("Browser"), child_pids=[p.pid for p in self.children])
             write_new_json(self.output / "lifecycle.json", self.meta)
         except BaseException:

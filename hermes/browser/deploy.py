@@ -11,7 +11,7 @@ import subprocess
 from safety import ordinary_path, sha256, write_new_json, check_snapshot, windows_metadata
 
 FILES = ["package.json", "package-lock.json", "requirements-native.in",
-         "requirements-native.lock", "cases.json", "safety.py", "fixture.mjs",
+         "requirements-native.lock", "cases.json", "safety.py", "fixture.mjs", "request_scope.mjs",
          "bridge.mjs", "image_result.mjs", "browser_evidence.mjs", "native_cli.py", "compat/bin/browser-use.cmd", "dispatch.py", "owned_job.py", "launch.py",
          "watch.py", "TASKS.md", "web/index.html", "web/app.js", "web/style.css"]
 FILES.append("budget_gate.py")

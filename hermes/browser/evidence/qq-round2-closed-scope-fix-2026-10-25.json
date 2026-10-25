@@ -1,0 +1,140 @@
+{
+  "checked_at": "2026-10-25T06:26:43.806708+00:00",
+  "purpose": "Fix observed unapproved QA mutations and misleading exhausted-round status; no Agent retry",
+  "new_Agent_model_messages": 0,
+  "new_real_model_requests": 0,
+  "scope_guard": {
+    "installed": true,
+    "source": "request_scope.mjs + fixture proxy + launch case binding",
+    "read_policy": "GET/HEAD only on current synthetic origin",
+    "mutations": {
+      "analysis": [
+        "POST /api/qa-refresh"
+      ],
+      "binding": [
+        "POST /api/projects",
+        "POST /api/tasks",
+        "POST /api/reorder"
+      ],
+      "recovery": [
+        "POST /api/projects",
+        "POST /api/reorder"
+      ],
+      "missing_scope": "read-only",
+      "unknown_scope": "fail closed"
+    },
+    "HTTP_403_source": "local_browser_permission_guard; upstream_request_sent=false; not a target platform auth response",
+    "no_hardcoded_click_order": true,
+    "not_a_production_platform_policy_or_OS_sandbox": true,
+    "no_entity_field_or_duplicate_submit_guarantee": true,
+    "Agent_compliance_retest": "not performed or passed"
+  },
+  "new_scope_tests": {
+    "passed": 5,
+    "all_synthetic_and_zero_model": true,
+    "covers": [
+      "unapproved QA blocked twice before server",
+      "allowed uncertain project create503 then query",
+      "partial503 from upstream distinguished from guard403",
+      "allowed option refresh",
+      "binding invalid form can be corrected",
+      "analysis QA grant retained",
+      "origin restriction retained"
+    ]
+  },
+  "actual_new_browser_component": {
+    "at": "2026-10-25T06:25:07.226Z",
+    "passed": true,
+    "model_calls": 0,
+    "Agent_acceptance": false,
+    "task_scope": "recovery",
+    "tools": 13,
+    "forbidden_POST_blocked_before_upstream": true,
+    "QA_updates_after_forbidden_click": 0,
+    "page_shows_local_guard_denial": true,
+    "Playwright_click_transport_isError": false,
+    "transport_success_does_not_mean_business_permission_granted": true
+  },
+  "diagnostic_owned_children_exited": true,
+  "QQ_fix": {
+    "source_deployed": true,
+    "module_tests_passed": 15,
+    "new_tests": 3,
+    "current_status_mode_ready": true,
+    "original_identity_H_W": true,
+    "communication_only": true,
+    "model_pipeline_constructed": false,
+    "browser_MCP_started": false,
+    "new_model_task_admission": false,
+    "reply_now_explains_3_of3_and60_of60": true,
+    "actual_phone_round_trip_after_update": "not yet observed",
+    "future_generic_model_error_budget_override": "zero-model unit check only; not real model tested"
+  },
+  "old_owned_QQ_process_stopped_and_7_tool_children_exited": true,
+  "current_budget": {
+    "limit": 60,
+    "reserved_network_attempts": 60,
+    "armed": false,
+    "events": {
+      "denied_at_limit": 6,
+      "denied_unarmed": 15,
+      "reserved_before_send": 60
+    },
+    "families": {
+      "chat_completions": 55,
+      "other_httpx": 5
+    }
+  },
+  "messages_used": 3,
+  "new_budget_or_admission_allowance_created": false,
+  "QQ_control_traffic": {
+    "model": 60,
+    "qq": 42
+  },
+  "tool_files_changed": {
+    "fixture.mjs": {
+      "before_sha256": "6cdafa49a3172b6179185c7343100bf3fa213a0017e32036a96566b421973e1c",
+      "after_sha256": "c7f14639da586e157e0697f706239e47ad6a83b14f3e62b0c71e5b3918e00822"
+    },
+    "launch.py": {
+      "before_sha256": "1322aaf6cf89a55af6dae696fb2ec34b4001d37d9e0beb4cbd047a5d0b2321ef",
+      "after_sha256": "6aca0a1fc5c7ca665df0255a03951081047b3be5e45101e1e93233f5c582d5ec"
+    },
+    "qq_runtime.py": {
+      "before_sha256": "4f140fbdd2c010977cd984a1b7423b61b07ec1fbe3e2156b1fcb6ce2dfaaf51d",
+      "after_sha256": "650f3310f3c7756f271278d904d11c1a31250e53cc62a87466523cf7e31cbc33"
+    },
+    "deployment.json": {
+      "before_sha256": "56a96ea1e0c61cd272c700d0669abcac3a35a2d3a5774096715b005311f49c36",
+      "after_sha256": "03303bb4fc0447f168cae574662aa1d31f7a2be7f1bbc18db85a3a736eb2c358"
+    },
+    "qq-addon-deployment.json": {
+      "before_sha256": "7155696c235b14f6597adb6d58efe9d83227e8303c016900342967da8a31c5da",
+      "after_sha256": "edc1bc89919127996899c4b5cfb7556926de4f410d07fdd370bfac0bb8bd3e59"
+    },
+    "request_scope.mjs": {
+      "new_file": true,
+      "after_sha256": "70c4a589f26397963677dc05b5af42cff44a83e18300602108b2f09c62c4f588"
+    }
+  },
+  "necessary_private_preimages": 5,
+  "restore_performed": false,
+  "protected": {
+    "immutable_records": 59,
+    "changes": 0,
+    "workspace_files": 37,
+    "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+    "original_normal_services_stopped": false
+  },
+  "source_sha256": {
+    "request_scope.mjs": "70c4a589f26397963677dc05b5af42cff44a83e18300602108b2f09c62c4f588",
+    "fixture.mjs": "c7f14639da586e157e0697f706239e47ad6a83b14f3e62b0c71e5b3918e00822",
+    "launch.py": "6aca0a1fc5c7ca665df0255a03951081047b3be5e45101e1e93233f5c582d5ec",
+    "deploy.py": "f26ff1c547b8f8492348f9ac235246aecc4ba4ada9da06e34a32e86178ecc0e9",
+    "qq_runtime.py": "650f3310f3c7756f271278d904d11c1a31250e53cc62a87466523cf7e31cbc33",
+    "tests/request_scope.test.mjs": "1ed4536d73bc7cae1654c9a1bddabde3ad9bf95f00e739a15fd36985d60993e3",
+    "tests/test_qq_runtime.py": "a162f1cadeaaaf533403659072712029a61cf231800e21bfba579e6a73c53960"
+  },
+  "old_recovery_failure_not_regraded": true,
+  "failed_synthetic_state_not_rolled_back_or_cleaned": true
+}
