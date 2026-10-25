@@ -31,7 +31,8 @@
       "quality_accepted_hours": null,
       "payment_received": null,
       "note": "不替代设备交付单、灵生后台正式质检或回款记录"
-    }
+    },
+    "recording_efficiency_history": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md"
   },
   "project_lead_mode": {
     "enabled": true,
@@ -148,25 +149,25 @@
   "parallel_development_track": {
     "id": "HERMES-DIGITAL-EMPLOYEE",
     "created_at": "2026-10-15",
-    "status": "phase02b_gate_a_simulation_reviewed_new_owner_single_employee_direction_pending_original_install_migration",
+    "status": "2026-10-25_hermes_original_identity_partial_evidence_not_production_verified",
     "purpose": "在既有业务知识库旁同步建设Hermes数字员工开发档案；由Codex在本地盘点并训练Hermes，不预设灵生后台菜单及用户操作习惯",
     "entry": "hermes/README.md",
     "phase_one_task": "hermes/tasks/PHASE_01_LOCAL_AUDIT.md",
     "issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/7",
-    "current_limits": "原安装Hermes旧记忆尚未清理、正式主身份尚未按新理念重建；独立测试profile仅为阶段实验；临时模型授权已结束；未登录灵生真实后台，未实现自动值班/正式派单。",
-    "next_gate": "Codex先依据最新Owner宪章重新评估现有本地原Hermes和PR#6/#8，拟定具体可复核的单身份岗位迁移、旧业务清理及能力接入方案；Owner核对永久删除范围/实际操作授权，之后再执行。",
+    "current_limits": "唯一岗位宪章有效；PR#6/#8为被废弃长期双profile方案下的历史测试；PR#12/#15/#20报告仅记录当时本机部分操作和模拟证据，仍未确认原Hermes当前默认新会话加载、旧记忆清理、真实灵生权限、跨日巡检、正式派单、晨报成功执行。",
+    "next_gate": "仅当Owner重启Hermes专项，按当前机器最新证据与PR#20授权范围核查，不重复Phase02A初期已做过的测试；严禁把模拟和未合并PR当生产上线。",
     "scope_note": "该并行技术工作不替换原有唯一业务主工作项WI-2026-10-livsyn-first-trial-prep",
     "phase_01_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
     "phase_01_review": "已审查并合并；阶段模拟组件测试不代表生产运营",
     "phase_01_verified_basis": "Hermes Agent 0.20.4 Windows; Playwright MCP独立虚拟浏览器9项测试通过；原CDP连接失败；配置净增1字节后来核实为voice.auto_tts true→false但历史写入者未知",
     "phase_02a_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/5",
     "phase_02a_scope": "review config drift, backup/restore, build isolated job profile, verify Hermes Agent autonomously operates synthetic browser page; no production login or operations",
-    "current_phase": "Owner单员工理念已定稿；Phase02B Gate A模拟训练已审，正在准备实施方案改线",
+    "current_phase": "Owner唯一原Hermes理念与轻量化准则已进入main；PR#12称曾做最小岗位接入、PR#15有原Desktop模拟证据、PR#20有QQ普通会话恢复尝试；当前机器状态需重新核查，全部不等于灵生生产上线",
     "owner_charter": "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
     "owner_adr": "knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
     "evolution_history": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
-    "owner_latest_decision_date": "2026-10-16",
-    "owner_latest_decision": "只有原Hermes一名正式数字员工；当前灵生数采运营，未来公司新增业务时再逐步培训；给工作目标、必要底线与结果标准，由Hermes自主思考执行和自我提高，不进行操作过程微管理。旧无关业务不必长期保留。",
+    "owner_latest_decision_date": "2026-10-19",
+    "owner_latest_decision": "保持唯一原Hermes自主员工与按需少代码原则；10月19日Owner暂停浏览器/09:00晨报专项；PR#20有此后Owner授权的局部QQ普通会话与合成浏览器研究，但未构成灵生真实业务授权。当前公司业务先稳采集，不擅自开启新的专项。",
     "previous_dual_profile_architecture": "superseded_for_long_term_deployment_but_valid_as_historical_safe_testing",
     "phase_02a_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/6",
     "phase_02a_status": "2026-10-16已审查模拟能力，PR当时未合并；独立profile+主包14,349文件/129 SQLite恢复验证+实际Hermes Agent模拟三种巡查",
@@ -175,7 +176,9 @@
     "implementation_do_not_confuse": "知识库原则已发布到main ≠ 已部署于本地原Hermes；PR测试成功 ≠ 真实灵生后台上线；不得混淆",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
     "latest_evidence_summary": "PR#12原Hermes最小文件接入、PR#15原Desktop模拟工具使用、PR#20 QQ普通消息入口恢复和模型代理故障研究都有各轮PR证据；完整正式业务验收/当前本机状态未经本轮核实。PR #19轻量化理念已选择性归入main唯一岗位宪章与独立ADR；各PR仍未合并。",
-    "owner_lean_principle": "先自然语言岗位培训和原有工具，真实重复缺口再最小必要代码；原员工唯一身份不变"
+    "owner_lean_principle": "先自然语言岗位培训和原有工具，真实重复缺口再最小必要代码；原员工唯一身份不变",
+    "latest_pr_triage": "knowledge/reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md",
+    "lean_adr": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md"
   },
   "admin_finance_track": {
     "date": "2026-10-25",
@@ -236,5 +239,6 @@
     ],
     "device_rent_per_day_cny": 20,
     "captain_mode": "a prior alternative B proposal, not included in self-operating scenario; neither modeled scale nor contractor plan proves implementation"
-  }
+  },
+  "current_business_decision_history": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md"
 }
