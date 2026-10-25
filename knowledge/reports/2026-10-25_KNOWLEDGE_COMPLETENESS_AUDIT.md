@@ -62,3 +62,10 @@
 
 ## 审计未执行事项
 本报告仅保存缺口和检查结论。**本次检查不代表历史缺口已全部回填，不代表PR已合并，不代表任何合同/税务/社保/数据验收已完成。**
+
+## 第二轮纠正附注（2026-10-25，前述发现作为当时审计快照保留）
+
+- 实际新增 [PR逐项分类](2026-10-25_OPEN_PR_TRIAGE_REGISTER.md)、[2026-10-16至25决策变化](../history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md)、[财税工资社保主题](2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md)。
+- 主索引CURRENT_WORK、PROJECT_INDEX、ECONOMICS_MODEL已加入更新的Owner采集报告、30台假设和税务身份核验状态；HISTORY/00_START_HERE/HERMES_NEW_CHAT_HANDOFF增加跳转与时效警示。
+- 从开放PR#19选择性恢复Owner关于Hermes轻量化的批准决策到main的ADR及唯一岗位宪章；**这不是合并PR#19**，没有改Owner本机Hermes；10月18后续PR的本机部分接入证据与生产未验收状态均如实保留。
+- 上述内容仅修复了可查证的关键缺口，不代表9月起全部对话、未合并PR全部内容已完整统一；未核合同签署、设备真实产量、实际QA、发票办理、社保参保与退役优惠仍保持未知。
