@@ -11,9 +11,11 @@
 - [从起点到现在的理念、开发、纠偏历史](history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)（首次接手/需要复盘时读）
 - [开发Agent入口](../AGENTS.md)与[Hermes代码工作区约束](../hermes/AGENTS.md)
 
-**关键结论：Owner电脑里最终只有一名正式Hermes员工；不把它变成新管理系统，也不长期保留旧Hermes+数采Hermes两个身份。公司给目标/底线，员工自主判断/完成/成长；当前先灵生数采，未来按Owner需要扩展。** 之前独立profile仅是模拟测试策略；原Hermes正式清理/迁移尚未做。具体岗位权限仍需单独授权和验收。
+**关键结论：Owner电脑里最终只有一名正式Hermes员工；不把它变成新管理系统，也不长期保留旧Hermes+数采Hermes两个身份。公司给目标/底线，员工自主判断/完成/成长；当前先灵生数采，未来按Owner需要扩展。** 之前独立profile仅是模拟测试策略；原Hermes曾有部分本机岗位接入与模拟操作证据，但整体迁移、旧记忆清理及生产验收尚未完成或当前状态未核实。具体岗位权限仍需单独授权和验收。
 
-**换新对话窗口时可直接复制：**[Hermes跨窗口接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口仍须读取上述宪章/ADR/历史，不仅凭交接语回答。\n\n## 2026-10-24 历史公司/税务与合同进展（较新状态见2026-10-25）
+**换新对话窗口时可直接复制：**[Hermes跨窗口接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口仍须读取上述宪章/ADR/历史，不仅凭交接语回答。
+
+## 2026-10-24 历史公司/税务与合同进展（较新状态见2026-10-25）
 
 - 当前税务办理记录：[开业信息确认进度](reports/2026-10-24_COMPANY_TAX_PROGRESS.md)。Owner报告已提交，但最终办结状态未核实。
 - 当前税务优化目标：[合法节税核查清单](reports/2026-10-24_TAX_PLANNING.md)。政策优惠须在实际申报前再次核实。
@@ -34,6 +36,13 @@
 - [2026-10-25财税、人事、社保和价格情景归档](reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md)：已证事实、Owner口述、假设与未核验签署/参保/审批分别标注。
 - [原Hermes轻量化Owner ADR](decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)：从PR #19按Owner明确决定选择性恢复，**不是合并整个PR或部署本机**。原Hermes少代码准则已写入唯一岗位宪章；其后本机局部接入/QQ恢复的证据及未验收部分应查PR台账。
 - [录制分段效率、官方设备提醒与上传瓶颈专题](reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md)：PR #17讨论的设备和后台问题仅作历史研究，不代表已经安装升级。\n- [真实手工加工订单结合Ego采集的远期构想](strategy/REAL_PRODUCTION_EGO_CONCEPT_HISTORY_2026-10-20.md)：PR #19的Owner想法，未获工厂/灵生合同许可，当前不启动。\n- 2026年9月以来的**所有原始对话逐句对照仍未完成**；不能说“从一开始每个时间点已100%完整归档”。原资料不够时以未知标记，不补造历史。
+
+**第二轮复核补充：经营历史与设备效率**
+
+- [10月16—25经营策略历史摘要](history/BUSINESS_DECISIONS_2026-10-16_TO_25.md)：记录50台自营→10台团队网络→团长B与30台自营试算的变化，均不代表已投产。
+- [10月17录制效率与上传瓶颈摘要](reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md)：重点保留视频启停/后切需先获上游许可的讨论。
+- [未来真实加工＋Ego采集构想](strategy/REAL_PRODUCTION_EGO_CONCEPT_HISTORY_2026-10-20.md)：仍在研究阶段；不属于当前投入。
+- [2026-10-25分支补充证据清单](reports/2026-10-25_OPEN_PR_EVIDENCE_REGISTER.md)：PR保留历史，不擅合并或声明本机已验收。
 
 ## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
