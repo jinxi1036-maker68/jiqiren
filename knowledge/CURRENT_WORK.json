@@ -32,12 +32,15 @@
       "payment_received": null,
       "note": "不替代设备交付单、灵生后台正式质检或回款记录"
     },
-    "recording_efficiency_history": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md"
+    "recording_efficiency_history": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md",
+    "next_primary_gate_note": "2026-10-25 meeting adds immediate actual scene coverage survey due by Thursday and forecast +20 devices; no actual acceptance/delivery/QA evidence. Keep no premature expansion assurance."
   },
   "project_lead_mode": {
     "enabled": true,
     "rule": "ChatGPT负责维护事实、准备场景任务与SOP/核算/风险门槛；Owner负责业务沟通、线下决策、合同和资金确认",
     "next_24h_focus": [
+      "核实王乾坤会后发出的22二级+三级正式清单：现有文件名32但实际34个名称；确定周四日期与填报格式",
+      "核实纪要提到的20台发货单、预计2026-10-26到货、检测和起租/设备责任，未签收不得写已到位",
       "提交三分区逐任务SOP供吴启蒙确认，尤其台账更新、托盘堆叠、外观扫描/标注/上报",
       "确认首批只试采哪些具体任务、录制要求、上传审核路径和审核反馈时点",
       "确认10台实际交付/使用许可、押金、试采免租的起止条件和试采有效数据是否按约结算",
@@ -263,6 +266,31 @@
       "住宿休闲空间"
     ],
     "status": "new_upstream_scene_discovery_request_pending_actual_site_contact_and_client_category_approval",
-    "next_gate": "向灵生先核实自建真实工位能否作为工厂车间/仓库二级场景报备试拍；后续按分类动作要求逐步寻找授权场地"
+    "next_gate": "confirm final classification and tertiary task list, then map factory/retail/warehouse scene with explicit authorization status before Thursday; only forecast arrivals and revenue",
+    "meeting_report": "knowledge/reports/2026-10-25_LIVSYN_PARTNER_WEEKLY_MEETING_REVIEW.md",
+    "meeting_conflict": "meeting says 22二级+三级; named 32 Excel contains 34 item names; obtain final version",
+    "priority": "survey_real_scene_resources_for_meeting_deadline"
+  },
+  "meeting_20261025": {
+    "meeting_time_local": "2026-10-25 16:59–17:53 GMT+08",
+    "origin": "Owner supplied AI-generated 5-page meeting minutes DOCX; may contain recognition/summarization errors",
+    "evidence_status": "meeting_ai_summary_unverified",
+    "report": "knowledge/reports/2026-10-25_LIVSYN_PARTNER_WEEKLY_MEETING_REVIEW.md",
+    "planned_devices_shipped": 20,
+    "planned_arrival_date": "2026-10-26_morning_expected_unverified",
+    "planned_ready_date": "2026-10-27_expected_unverified",
+    "potential_total_daily_devices": 30,
+    "potential_accepted_hours_daily": 150,
+    "weekly_target_hours": 720,
+    "figures_status": "planned_not_delivered_not_QA_accepted_not_invoiced",
+    "scene_task_limit_reported": "each distinct task <=5 collected hours, interpretation pending",
+    "store_video_cutoff_reported": "6 minute auto-stop considered difficult; no formal rule change",
+    "supermarket_venue": "meeting reports family-related supermarket opportunity through Thursday; privacy/authorization and actual venue pending",
+    "platform_one_click_appeal": "planned_not_live",
+    "platform_ai_quality_review": "expected_next_week_not_live_retroactive_QA_unverified",
+    "ai_agent": "meeting mentions ChatGPT-based locally running agent and sharing to WeCom/Feishu as agenda; NOT verified to be Lingju original Hermes or deployed in LivSyn production",
+    "category_conflict": "meeting 22 level-two plus level-three; earlier filename 32; earlier sheet 34 names; final category list and third-level task list still pending",
+    "deadline": "meeting says by Thursday; interpreted next 2026-10-29 but requires group confirmation",
+    "next_step": "before deadline, establish final level-two/level-three category version and submit real site availability mapping using existing low-risk factory/retail/warehouse contacts; verify 20-device shipment with tracking separately"
   }
 }
