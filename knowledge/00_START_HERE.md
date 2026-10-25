@@ -55,6 +55,13 @@
 
 - [Owner正式分工澄清ADR](decisions/ADR-OWNER-SCENE-THIRD_LEVEL-TASK-SOP-OWNERSHIP-2026-10-25.md)：**上游提供场景目录并审核，凌矩自行寻找合法真实场地、拆分三级业务类别和不同操作任务、编排完整SOP，再提交灵生确认**。不等对方帮我们写三级动作。22/32/34属于目录数量歧义，单独核对，不阻碍自建候选任务库。
 
+## 2026-10-25 最终接力：三场景Excel原件与Hermes详细SOP已归档
+
+- **[场景/SOP唯一版本入口](sop/00_START_HERE.md)**、[机器清单](sop/MANIFEST.json)：GitHub `main` 已保存客户原始分类、34类评估、历史废弃V1、**对外简版V2**、**内部详细V3**等五个Excel原件，并已逐文件核验内容一致。
+- [V2对外两表Excel](sop/client/2026-10-25_三场景三级分类任务目录_V2.xlsx)：3类场景、11个三级类、33项候选任务，**待Owner最终确认且未送灵生，不写内部布置及循环道具细节**。
+- [V3内部两表Excel](sop/internal/2026-10-25_三场景33项完整内部SOP_V3.xlsx)与[Hermes可读33任务198步SOP全文](sop/internal/2026-10-25_LINGJU_33_TASK_SOPS_HERMES_V3.md)：**仅内部草稿，需真实现场持续核改、需客户认可，不能自动发布任务**。
+- [本轮新聊天接力说明](2026-10-25_NEXT_CHAT_HANDOFF_SCENE_SOP.md)：可复制的接力语和当前剩余工作。旧七表V1已经被Owner否决为对外版本，严禁混发V3。原始Excel亦已备份ChatGPT长期文件库。
+
 ## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
 
