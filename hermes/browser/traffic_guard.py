@@ -68,7 +68,7 @@ class TrafficAudit:
             return dict(c.execute('SELECT category,count(*) FROM traffic GROUP BY category'))
 
 
-def install_traffic_guard(model_budget, audit, policy, add_network_audit=False):
+def install_traffic_guard(model_budget, audit, policy, add_network_audit=False, pacer=None):
     import httpx
     if httpx.__version__ != '0.28.1':
         raise BudgetBlocked('Unreviewed HTTPX version')
@@ -86,18 +86,60 @@ def install_traffic_guard(model_budget, audit, policy, add_network_audit=False):
         audit.reserve(category, family)
 
     def send(transport, request):
-        reserve(transport, request)
+        paced = pacer is not None and policy.category(request) == 'model'
+        if paced:
+            pacer.enter()
         token = _inside_metered_transport.set(True)
         try:
-            return old_sync(transport, request)
+            reserve(transport, request)
+            if paced:
+                pacer.started(request_family(request))
+            response = old_sync(transport, request)
+            if paced:
+                try:
+                    pacer.response(response)
+                except BaseException:
+                    response.close()
+                    raise
+                from provider_pacing import paced_sync_stream
+                if response.is_closed:
+                    pacer.leave()
+                else:
+                    response.stream = paced_sync_stream(response.stream, pacer)
+            return response
+        except BaseException:
+            if paced:
+                pacer.leave()
+            raise
         finally:
             _inside_metered_transport.reset(token)
 
     async def asend(transport, request):
-        reserve(transport, request)
+        paced = pacer is not None and policy.category(request) == 'model'
+        if paced:
+            await pacer.aenter()
         token = _inside_metered_transport.set(True)
         try:
-            return await old_async(transport, request)
+            reserve(transport, request)
+            if paced:
+                pacer.started(request_family(request))
+            response = await old_async(transport, request)
+            if paced:
+                try:
+                    pacer.response(response)
+                except BaseException:
+                    await response.aclose()
+                    raise
+                from provider_pacing import paced_async_stream
+                if response.is_closed:
+                    pacer.leave()
+                else:
+                    response.stream = paced_async_stream(response.stream, pacer)
+            return response
+        except BaseException:
+            if paced:
+                pacer.leave()
+            raise
         finally:
             _inside_metered_transport.reset(token)
 

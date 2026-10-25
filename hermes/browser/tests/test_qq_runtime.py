@@ -8,10 +8,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from qq_runtime import (Intake, official_qq_websocket, verify_browser_catalog,
                         metadata_catalog_urls, round_settings, TOOLSETS,
                         acceptance_thread_id, verify_unused_thread, communication_only_mode,
-                        paused_notice, newly_budget_blocked)
+                        paused_notice, newly_budget_blocked, verify_closed_status_mode)
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_status_mode_keeps_unused_requests_paused_and_cannot_reopen_message_grant(self):
+        verify_closed_status_mode({'armed':False,'limit':30,'reserved_network_attempts':11},1,1)
+        with self.assertRaises(RuntimeError):verify_closed_status_mode({'armed':True},1,1)
+        with self.assertRaises(RuntimeError):verify_closed_status_mode({'armed':False},0,1)
+
     def test_status_only_gate_cannot_open_model_task_intake(self):
         gate={'communication_only':True,'model_execution_permitted':False}
         self.assertTrue(communication_only_mode(gate,False))

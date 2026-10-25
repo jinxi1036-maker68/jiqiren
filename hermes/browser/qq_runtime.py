@@ -99,6 +99,12 @@ def communication_only_mode(gate, allow_tasks):
     return True
 
 
+def verify_closed_status_mode(status, admitted, task_cap):
+    # Unspent requests are not permission to reopen a consumed message grant.
+    if status['armed'] or admitted != task_cap:
+        raise RuntimeError('Status mode requires paused budget and all approved messages accounted')
+
+
 def paused_notice(status, admitted, task_cap=3):
     title = '本轮模拟验收已结束' if admitted >= task_cap or status['reserved_network_attempts'] >= status['limit'] else '当前阶段暂停接收任务'
     return (f"QQ正常在线。{title}：已接收{admitted}/{task_cap}条任务，"
@@ -239,14 +245,17 @@ async def serve(args):
     os.chdir(workspace)
     sys.path.insert(0, str(install))
     # Install before importing the native gateway: startup requests are covered.
-    traffic = policy = None
+    traffic = policy = pacer = None
     if settings["classified"]:
         import yaml
         from traffic_guard import TrafficPolicy, TrafficAudit, install_traffic_guard
         saved = yaml.safe_load((home / "config.yaml").read_text(encoding="utf-8")) or {}
         policy = TrafficPolicy(metadata_urls=metadata_catalog_urls(saved))
         traffic = TrafficAudit(budget.path.parent / "traffic.sqlite")
-        install_traffic_guard(budget, traffic, policy, add_network_audit=True)
+        from provider_pacing import approved_pacing, ModelPacer
+        pacing = approved_pacing(gate)
+        pacer = ModelPacer(budget, budget.path.parent / 'model-response-events.jsonl') if pacing else None
+        install_traffic_guard(budget, traffic, policy, add_network_audit=True, pacer=pacer)
     else:
         install_httpx_budget(budget, add_network_audit=True)
     # Suppress native account IDs/message text; metadata-only receipts below.
@@ -312,8 +321,8 @@ async def serve(args):
             except Exception as exc:
                 event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
         intake = Intake(settings["intake"] or out / "intake.sqlite", cap=args.admit_through_slot or task_cap)
-        if communication_only and (budget.status()['reserved_network_attempts'] != settings['limit'] or intake.count() != task_cap):
-            raise RuntimeError('Completed-round status mode requires exhausted budget and all approved tasks accounted')
+        if communication_only:
+            verify_closed_status_mode(budget.status(), intake.count(), task_cap)
         if args.allow_task_messages and intake.count() < intake.cap:
             verify_unused_thread(home / "state.db", acceptance_thread_id(runtime, intake.count() + 1))
         busy = asyncio.Lock()
@@ -372,9 +381,12 @@ async def serve(args):
                     try:
                         result = await primary(msg)
                     except Exception:
-                        if not newly_budget_blocked(before, budget.status()):
+                        if not newly_budget_blocked(before, budget.status()) and not (pacer and pacer.frozen):
                             raise
                         result = None
+                    if pacer and pacer.frozen:
+                        event(out, 'provider_requested_long_wait_paused', model_calls=0)
+                        return '模型服务返回的等待时间超过本轮允许的等待上限，已暂停后续模型请求，没有缩短等待或继续重试。任务结果需要按收据核对；这不是浏览器故障。'
                     if newly_budget_blocked(before, budget.status()):
                         event(out, 'budget_notice_replaces_generic_error', model_calls=0)
                         return paused_notice(budget.status(), intake.count(), task_cap) + ' 本次任务因额度拦截未形成完整最终汇报，已执行动作须以本地收据核验。'
@@ -405,6 +417,7 @@ async def serve(args):
               next_thread_id=acceptance_thread_id(runtime, intake.count() + 1) if intake.count() < intake.cap else None,
               accounting_mode=gate.get('accounting_mode','legacy_all_httpx'),
               communication_only=communication_only, model_pipeline_constructed=not communication_only,
+              provider_pacing_enabled=bool(pacer) if settings['classified'] else False,
               traffic=traffic.counts() if traffic else None)
         print(json.dumps({"event":"qq_ready", "pid":os.getpid(), "budget":budget.status(),
                           "owner_can_send":"/status", "model_messages_sent_by_codex":0}), flush=True)

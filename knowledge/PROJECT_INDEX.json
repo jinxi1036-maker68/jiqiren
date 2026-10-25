@@ -75,7 +75,7 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "single_recovery_recheck_blocked_provider_HTTP429_no_Agent_browser_actions",
+      "status": "provider_pacing_installed_zero_model_status_only_remaining19_message_grant_used",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -87,7 +87,7 @@
         "recovery_permission_and_final_report_Agent_revalidation_not_performed",
         "historical_clean_session_failure_and_no_formal_driver_selection_retained"
       ],
-      "next_step": "本条QQ任务已接收，2逻辑API/9工具仅查目录，随后模型服务HTTP429；浏览器动作0，未创建记录。预算用11/30、剩19但已暂停，消息1/1已用；不让Owner重发、不自动探测模型。先确认服务端限制原因/恢复条件；如需续办须明确允许新的消息机会，保留旧账本及失败，不进真实后台。",
+      "next_step": "已从本次request_dump根级error确认429/throttling_error，具体账号档位/RPM/并发/配额细因仍未知。节流补丁已装入本轮工具并在原QQ仅状态进程初始化：12秒启动间隔、单在途、429等待/脱敏响应元数据，32项零模型检查通过；服务端是否恢复仍未实测。保留11/30及19次，消息1/1已用；需Owner明确允许同一任务一次续办消息，才准备继续，不自动加额、探活或进入真实后台。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -275,6 +275,27 @@
         "message_allowance_used": true,
         "model_probe_or_retry_sent_by_Codex": false,
         "result_evidence": "hermes/browser/evidence/qq-round3-provider-limit-2026-10-25.json"
+      },
+      "provider_limit_followup": {
+        "date": "2026-10-25",
+        "exact_provider_error": "429 throttling_error Too Many Requests",
+        "account_key_type_or_actual_limit": "unverified",
+        "official_public_default_text_RPM_reference": 10,
+        "official_source": "https://wiki.agnes-ai.com/zh-Hans/docs/tokenplan",
+        "root_cause_risk": "10 chat attempts in49s; a low-limit/shared pool may throttle; not proven as this account cause",
+        "pacing_installed_process_only": true,
+        "source_scope": "new company-browser tools only; original config unchanged",
+        "min_start_interval_seconds": 12,
+        "max_inflight_through_stream_close": 1,
+        "local_429_cooldown_without_header_seconds": 60,
+        "zero_model_checks": 32,
+        "new_real_Hermes_model_requests": 0,
+        "QQ_communication_only_READY": true,
+        "model_pipeline_constructed": false,
+        "remaining19_paused": true,
+        "new_task_message_permission": false,
+        "provider_recovery_verified": false,
+        "evidence": "hermes/browser/evidence/provider-throttle-followup-2026-10-25.json"
       }
     }
   }

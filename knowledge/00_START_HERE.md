@@ -57,4 +57,4 @@ Current 只保存“现在”；History 只保存“过去”；Evidence 只保�
 
 ## 2026-10-25 Hermes浏览器专项本地实施
 
-最新30次/1条QQ补验已接收，但模型服务HTTP429阻断；仅2逻辑API/9次工具目录查找，没有Agent浏览器动作或记录创建，恢复目标仍未验证。已用11/30、剩19但暂停，消息1/1用完；不重发、不自动探测或加额，服务端限流原因未知。QQ仍在线，只回状态/拒绝新任务；原59项保护/W/R3/配置不变，旧120/60账本及历史失败保留。读页比较有实证但首次会话条件失败，独立新会话创建绑定/本例辅助视觉/回查通过，未选正式主驱动或放行真实平台。见[报告第21节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[当前取证](../hermes/browser/evidence/qq-round3-provider-limit-2026-10-25.json)。
+30次/1条QQ补验被服务端429阻断，Agent浏览器动作0，实际错误字段为throttling_error；账号限流细因及恢复状态未证实。现已在新工具接入进程内节流/脱敏响应收据，32项零模型检查通过，原QQ仅状态模式READY，无模型管线/MCP。仍11/30、剩19暂停，消息1/1已用，不自动探活/补发/加额。需Owner明确允许一次同任务续办消息后再准备验收。原59项保护/W/R3/配置及旧60/120账本不变，历史失败保留，未选正式主驱动或放行真实平台。见[报告第22节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)与[限流跟进证据](../hermes/browser/evidence/provider-throttle-followup-2026-10-25.json)。

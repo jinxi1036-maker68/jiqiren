@@ -15,6 +15,7 @@ FILES = ["package.json", "package-lock.json", "requirements-native.in",
          "bridge.mjs", "image_result.mjs", "browser_evidence.mjs", "native_cli.py", "compat/bin/browser-use.cmd", "dispatch.py", "owned_job.py", "launch.py",
          "watch.py", "TASKS.md", "web/index.html", "web/app.js", "web/style.css"]
 FILES.append("budget_gate.py")
+FILES.append("provider_pacing.py")
 FILES.append("desktop_runtime.py")
 FILES.extend(["request_budget.py", "traffic_guard.py", "startup/sitecustomize.py"])
 

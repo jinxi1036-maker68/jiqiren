@@ -515,3 +515,16 @@ Owner于08:48:18 UTC发送1条，08:49:19管线返回限流提示。新会话202
 已暂停本轮账本armed=false，保留used11/limit30/剩19，Intake1/1已用。仅关闭完成返回后的自有模拟浏览器，children_exited=true；QQ仍在线，接收层拒绝更多模型任务，原已构建模型管线仍在，不能称无模型管线的communication-only模式。59项保护/W37文件/R3 Manifest及旧120/60账本一致。
 本次只读取证和自有运行状态暂停，无新增模型探活/重试、源码改动、原环境变更、回退或真实平台操作。下一步先确认服务端限制及恢复条件；新的Owner消息机会须另行明确，不能自动补发或增加预算。
 [本次取证](../browser/evidence/qq-round3-provider-limit-2026-10-25.json)。
+
+
+## 22. 429详细错误与最小节流改进，新增模型请求0
+
+在原Hermes实际H/sessions/request_dump_20261025_164819_9a7168ed_20261025_164919_459439.json尾部，只定位并反序列化根级error，未解码request.headers/request.body，也未上传原始dump。HTTP429/response_status429、服务端type=throttling_error、消息为Too Many Requests；此前只从控制台得出的状态现有持久记录支持。原dump未保留响应头，不能说服务端当时没返回Retry-After。账号Key类型、剩余订阅配额、并发/RPM具体根因仍未知。
+配置显示agnes-3.0-flash/custom:Agnes.ai，端点主机apihub.agnes-ai.com，agent.api_max_retries=3，均未改。原账本10次chat端点尝试集中在49.168857秒，含辅助/重试的精确分层仍未知。
+[官方Token Plan文档](https://wiki.agnes-ai.com/zh-Hans/docs/tokenplan)当前公开文本参考default10 RPM、enterprise20 RPM、TokenPlan1000 RPM，并说明同类型Key共享池；[官方FAQ](https://wiki.agnes-ai.com/zh-Hans/docs/faqs)亦列RPM或订阅配额限制。[官方错误码](https://github.com/AgnesAI-Labs/AgnesAI-Models/blob/main/docs/ERROR_CODES.md)建议降低频率、并发并退避。不能拿公共套餐表代替本账号事实，也不能由429推出欠费、失效Key或OpenAI官方账号问题。
+
+最小改进仅在新工具provider_pacing模块：显式进程gate启用，模型请求启动间隔至少12秒、单在途一直持有至响应流关闭；同进程同步/异步、重试、辅助/未知HTTPX共用节流和原硬上限，QQ状态/精确目录请求独立审计。429按服务端数字或HTTP日期等待；无可用指示时60秒是本地冷却政策，不是根因判断/恢复承诺。等待指示超过600秒则冻结后续模型，不擅自缩短；保留硬上限拒绝收据与既有关闭规则。
+仅记录HTTP状态、数值Retry-After及选定数值速率字段，不记录URL/提示词/正文/私人头。流关闭/异常/取消释放许可；未花完的请求不等于可重开消息授权。8节流+6流量+18QQ=32项零模型检查通过，含真实SDK对loopback合成429/成功服务，无真实模型调用。
+已写入新工具QQ源、traffic源、新pacing模块及两份部署收据，4份必要私有前像，无回退。首次自有进程验证拒绝conhost后代，在停止前中止；定点核对其父进程/可执行路径后只关闭5个本轮管线进程与随之退出的3个控制台子进程，没有停正常服务。原QQ重新以communication-only READY，pacer初始化但没有模型管线/MCP，不假称已关闭浏览器仍满足验收前置。原59项保护/W37/R3及旧60/120账本一致。
+本轮仍11/30、剩19、Owner消息1/1，armed=false；新增模型消息/请求0，未探活或补发。节流的真实效果、服务商恢复和员工权限/异常汇报尚未验证。下一步仅需Owner明确允许同一任务一次续办消息，沿用剩19/总30，不追加费用额度；未获此消息例外前不重开。
+[定点跟进证据](../browser/evidence/provider-throttle-followup-2026-10-25.json)。

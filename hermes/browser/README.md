@@ -268,3 +268,12 @@ Agent浏览器动作0、模拟项目/任务/QA变更0，无最终汇报，权限
 QQ在线但Intake已满、预算未arm，不接新模型任务；既有模型处理管线仍在，不能称无管线的communication-only模式。
 自有浏览器已退出、59项保护未变，旧账本不清零；不要重发或自动调用模型探活。
 [结果取证](evidence/qq-round3-provider-limit-2026-10-25.json)。
+
+
+### 429定点跟进：进程节流已接入，模型仍暂停
+
+本次H/sessions/request_dump仅反序列化根级error，确认429/throttling_error/Too Many Requests，未解码request.headers或request.body。原dump没有保留响应头，不能判断当时是否返回Retry-After；账号档位及确切限流原因仍未知。
+新provider_pacing.py默认不启用；仅显式provider_pacing gate使用固定12秒启动间隔、单在途直到流关闭。同步/异步/SDK重试/辅助/未知路由共用原模型硬预算；QQ及精确目录查询另审计。429尊重数字/HTTP日期Retry-After，缺失时本地60秒冷却；超过600秒则停止，不缩短服务器等待。这是本轮进程节流，不控制其他软件的同账号用量，不保证配额恢复。
+响应只留HTTP状态、数值等待/速率字段，不记URL、提示词、正文、账号或任意头。8项节流、6项流量、18项QQ检查通过，含真实SDK对本机合成HTTP服务，无新增真实Hermes模型请求。
+已更新新工具QQ/traffic源、新pacing模块及两份收据，4份必要私有前像；当前原QQ仅状态模式READY，无模型管线/MCP，仍11/30、消息1/1、剩19暂停。服务商实际恢复及带节流的员工任务尚未验证，需要明确的一次续办消息例外，不自动补发。
+[跟进证据](evidence/provider-throttle-followup-2026-10-25.json)。
