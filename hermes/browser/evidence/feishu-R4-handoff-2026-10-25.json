@@ -1,6 +1,6 @@
 {
   "timestamp_shanghai": "2026-10-25T21:39:16.808163+08:00",
-  "status": "PAUSED_AFTER_READY; original protection baseline retained; no Owner exercise task admitted",
+  "status": "READY_FOR_ONE_OWNER_FEISHU_RECOVERY_TASK; temporary entry, not permanent default",
   "Owner_decisions": {
     "channel": "Feishu instead of QQ",
     "one_formal_Hermes_only": true,
@@ -116,13 +116,97 @@
     "unknown_startup_requests_blocked_when_unarmed": true,
     "reconciled_five_attempts_preserved_in_future_admission": true
   },
-  "next_required": "Owner reviews the four exact configuration differences; explicitly decide the new read-only protection baseline and a further controlled load before another exercise. Do not overwrite current config or silently consume another restart.",
+  "next_required": "Owner sends the single current-URL Feishu task; Codex reads actual receipts after response. Preserve all failures and quota; do not auto-merge or expand.",
   "no_real_Livsyn_access_or_business": true,
   "no_automatic_model_retest": true,
   "private_evidence_retained_outside_W": true,
   "raw_logs_prompts_memory_credentials_databases_uploaded": false,
-  "historical_record_notice": "Existing verified/revisions_only_in_repository sections describe the first load on 2026-10-25; latest_observation is current.",
+  "historical_record_notice": "verified/revisions_only_in_repository describe first load; pause_after_second_load preserves the later stop; latest_observation is current.",
   "latest_observation": {
+    "observed_shanghai": "2026-10-26T00:44:08.033534+08:00",
+    "state": "READY_FOR_ONE_OWNER_FEISHU_RECOVERY_TASK; temporary entry, not permanent default",
+    "ready_receipt_utc": "2026-10-25T16:39:25.496380+00:00",
+    "gateway_pid": 19004,
+    "gateway_parent_pid": 16520,
+    "original_venv_parent_verified": true,
+    "original_venv": "I/venv/Scripts/python.exe",
+    "Windows_venv_redirector_physical_CPython": "3.11.15",
+    "H": "original H",
+    "W": "original H/company-workspace",
+    "active_browser_tools_in_native_catalog": 13,
+    "original_native_message_pipeline": true,
+    "profiles_created": 0,
+    "platform_transport_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "new_application_delivery_test_by_Codex": false,
+    "old_weixin_application_expiry_not_retested": true,
+    "old_wecom_callback_disconnection_not_repaired": true,
+    "config_baseline": {
+      "Owner_approval": "允许按此范围继续",
+      "current_config_sha256": "4209e370566538f86a5085c22ffd7ec0f25112e96fdb745270de3c7959a27128",
+      "original_config_sha256": "2a67fd3a5911898d3327b7a9de12e7b009cf231b9e179801bc19d011ee4ffa9d",
+      "old_baseline_preserved": true,
+      "protected_records_match": 59,
+      "explicit_readonly_baseline_exceptions": 3,
+      "config_or_other_protected_file_writes": 0
+    },
+    "controlled_handoff": {
+      "native_original_H_gateway_PID_before_stop": 1048,
+      "program_directory_before_stop": "user-home/hermes-agent-v0.21.0",
+      "directory_name_not_used_as_independent_version_proof": true,
+      "observed_python_before_stop": "3.14.4",
+      "same_H_and_W_before_stop": true,
+      "active_agents_before_stop": 0,
+      "native_planned_stop_protocol_verified": true,
+      "worker_and_two_cli_wrappers_exited": true,
+      "forced_kills": 0,
+      "newer_program_files_modified_or_deleted": 0,
+      "previous_command_retained_privately_for_restore": true,
+      "preceding_prestart_attempt_had_no_READY_or_gateway_receipts": true,
+      "concurrent_native_CLI_was_observed_before_controlled_stop": true,
+      "original_Desktop_process_stopped": false
+    },
+    "budget": {
+      "cap": 30,
+      "used_conservatively": 5,
+      "remaining": 25,
+      "Owner_task_used": 0,
+      "Owner_task_cap": 1,
+      "armed": true,
+      "new_reserved_before_send_attempts": 0,
+      "new_Hermes_messages_sent_by_Codex": 0,
+      "old_120_60_30_ledgers_unchanged": true,
+      "unknown_five_not_refunded": true,
+      "cumulative_unarmed_denials_before_wire": 8
+    },
+    "fixture": {
+      "projects": 0,
+      "tasks": 0,
+      "QA_refreshes": 0,
+      "new_isolated_no_login_browser_profile": true,
+      "current_origin": "http://127.0.0.1:64722",
+      "old_URLs_retired": true
+    },
+    "validation_scope": {
+      "fresh_13_tool_catalog_and_component_snapshot": true,
+      "code_unchanged_since_15_Feishu_component_tests": true,
+      "no_repeat_business_matrix_or_R3_deployment": true,
+      "source_hashes_match": true,
+      "CLI_matcher_accepts_custom_entry": false,
+      "CLI_status_command_not_invoked": "Only the pure command-line matcher was checked; no status lookup that might prune a runtime record.",
+      "CLI_status_limitation": "Native CLI command-name matcher does not recognize this temporary wrapper. READY is based on verified live PID/parent, WSS and native tool catalog. Do not claim default-entry or long-term stability acceptance."
+    },
+    "Agent_acceptance": "not started; Owner sends exactly one prefixed goal; no automatic retries or follow-up messages",
+    "no_real_platform_login_or_business": true,
+    "no_model_or_account_configuration_changes_by_Codex": true,
+    "next": "Owner sends the single current-URL Feishu task; Codex reads actual receipts after response. Preserve all failures and quota; do not auto-merge or expand."
+  },
+  "pause_after_second_load": {
     "observed_shanghai": "2026-10-26T00:29:59.152929+08:00",
     "state": "PAUSED_AFTER_READY; original protection baseline retained; no Owner exercise task admitted",
     "second_controlled_load": {
