@@ -13,17 +13,20 @@
     "target_trial_start": "2026-10-16（Owner目标：首轮样本；正式可结算采集尚待具体任务SOP与上传质检路径确认）",
     "latest_readiness_review": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
     "latest_evidence_id": "EV-PDS-XLSX-20261011",
-    "readiness": "已取得灵生对自建小型真实作业车间及自有受训采集员的微信/飞书沟通认可；选定线边仓补货、空容器回收、外观质检三项拟议任务，正按场景分区+任务目标+关键动作+任务SOP提交审核。尚无样本验收、有效小时及首笔结算证据；设备到位数未核实。；截至2026-10-24新增公司设立、税务开业信息提交和合同/验收规范审阅记录，但未取得正式试采产能/回款新增证据。",
-    "latest_operational_update": "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
+    "readiness": "Owner报告2026-10-15三处受控工位已准备、10-16内部演练；PR #18载Owner口述10-17三人合计18原始采集小时、可用10台，但平台QA有效小时、全部上传完成、正式合同及首笔回款无独立证据。继续先落实灵生真实采集—QA—结算—到账闭环，再决定扩张；30台自营/团长网络均有假设或未签约阶段边界。",
+    "latest_operational_update": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md",
     "latest_partner_decision": "对方业务联系人认可自建真实工位组织方式；不等于具体SOP、所有场景或正式验收一概批准",
     "expansion_boundary": "杜振成在群中建议月底达100人；Owner明确不承诺，先验证有效数据与结算；20-30人仅为交流中的争取方向，不是达成产能或签约计划",
-    "latest_admin_update": "knowledge/reports/2026-10-24_COMPANY_TAX_PROGRESS.md",
+    "latest_admin_update": "knowledge/reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md",
     "latest_contract_review": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md",
     "tax_planning": "knowledge/reports/2026-10-24_TAX_PLANNING.md",
     "company": "平顶山凌矩信息科技有限责任公司（执照图片；2026-10-19成立，注册资本10万元）",
     "tax_progress": "Owner已成功以企业业务登录电子税务局；纳税人基础信息截图显示状态正常。增值税税费种认定可查；一般纳税人资格记录未查到，尚未完成正式身份确认；数电票用票需求仅到预览，未提交；社保单位登录开通受阻，拟线下了解。",
     "latest_knowledge_audit": "knowledge/reports/2026-10-25_KNOWLEDGE_COMPLETENESS_AUDIT.md",
-    "knowledge_status": "主索引与部分未合并PR、10月24~25对话存在归档缺口，审计报告已列出；不代表已补齐全部"
+    "knowledge_status": "第二轮已补档2026-10-16至25的关键Owner决策/财税和PR情况，但2026-09起全部原对话逐次对照仍未完成；未合并PR仍保留为PR证据",
+    "pr_triage": "knowledge/reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md",
+    "owner_decision_history": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md",
+    "business_principle": "Owner 2026-10-25明确先稳定Ego采集，AI清洗标注只作远期，不启动试验、购买模型/硬件或招标注员"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
@@ -74,6 +77,9 @@
     ],
     "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
-    "latest_pr_audit": "2026-10-25 实时核对PR#4 merged；#6/#8/#10~#20 open且未合并；#12/#15等包含原身份本机最小接入/模拟证据，未证明完整验收；#19含轻量化理念提案待整合，详见knowledge audit"
+    "latest_pr_audit": "2026-10-25 PR#4已合并，#2/#6/#8/#10~#20开放未合并。详见PR分流台账。",
+    "lean_development_adr": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md",
+    "lean_principle": "Owner批准：像培养一名自主员工一样用已有工具和自然语言为主；确实有重复能力缺口才写尽可能少的代码，不先造第二套系统",
+    "current_evidence_caveat": "PR#12有原Hermes最小接入的PR证据、PR#15有原Desktop部分模拟能力证据；PR#20有QQ接入恢复尝试。均非正式灵生生产验收，且这些PR未合并main；状态需要重新查看Owner机器"
   }
 }
