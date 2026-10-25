@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "Feishu R4 NOT_READY; first process load failed; original native entry restored; fixed candidate not activated",
+      "status": "PAUSED_AFTER_READY; original protection baseline retained; no Owner exercise task admitted",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -177,10 +177,10 @@
         "recovery_permission_and_final_report_Agent_revalidation_not_performed",
         "historical_clean_session_failure_and_no_formal_driver_selection_retained",
         "current_APIConnectionError_root_cause_unknown",
-        "current_message_grant_consumed",
-        "rejected_unavailable_terminal_attempt"
+        "rejected_unavailable_terminal_attempt",
+        "R4_config_drift_and_exercise_gateway_no_longer_active"
       ],
-      "next_step": "先定点验证修订版启动控制流/护栏，再申请一次受控加载；不要发送飞书验收任务。原30次授权保守剩25次、1条任务。",
+      "next_step": "先核对Owner/Hermes为飞书限流所做的四项配置变化；未明确新保护点及新的单次加载前不开放任务。保守剩25次/1条。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -465,10 +465,13 @@
       "feishu_R4_handoff": {
         "evidence": "hermes/browser/evidence/feishu-R4-handoff-2026-10-25.json",
         "report": "hermes/browser/reports/2026-10-25_FEISHU_HANDOFF_BLOCKED.md",
-        "status": "NOT_READY",
+        "status": "PAUSED_AFTER_READY",
         "same_employee": true,
         "one_restart_authorization_consumed": true,
-        "original_entry_restored": true,
+        "first_load_original_entry_restored": true,
+        "current_entry_exact_invocation_verified": false,
+        "current_gateway_without_exercise_markers": true,
+        "controlled_loads_individually_approved_and_attempted": 2,
         "local_tests": 32,
         "Feishu_specific_tests": 15,
         "component_browser_catalog": 13,
@@ -481,11 +484,17 @@
         "Owner_task_messages_limit": 1,
         "armed": false,
         "post_send_reconciliation_not_pre_wire_success": true,
-        "protected_records_match_approved_baseline": 59,
+        "protected_records_match_approved_baseline": 58,
         "explicit_readonly_baseline_exceptions": 2,
         "Codex_protected_file_writes": 0,
-        "fixed_code_reactivated": false,
-        "original_gateway_services_application_reply_not_tested": true
+        "fixed_code_reactivated": true,
+        "original_gateway_services_application_reply_not_tested": true,
+        "current_status": "PAUSED_AFTER_READY; original protection baseline retained; no Owner exercise task admitted",
+        "current_exercise_active": false,
+        "current_protected_difference": "H/config.yaml",
+        "baseline_advanced": false,
+        "latest_observed_date": "2026-10-26",
+        "Owner_reported_limit_fix_instruction": true
       }
     }
   },

@@ -1,6 +1,6 @@
 {
   "timestamp_shanghai": "2026-10-25T21:39:16.808163+08:00",
-  "status": "NOT_READY; first process integration failed; original native CLI entry restored",
+  "status": "PAUSED_AFTER_READY; original protection baseline retained; no Owner exercise task admitted",
   "Owner_decisions": {
     "channel": "Feishu instead of QQ",
     "one_formal_Hermes_only": true,
@@ -116,9 +116,118 @@
     "unknown_startup_requests_blocked_when_unarmed": true,
     "reconciled_five_attempts_preserved_in_future_admission": true
   },
-  "next_required": "Classify remaining native control traffic with pre-send blocking, verify corrected native ABI/cleanup, then request a fresh controlled-load approval. Same30-request grant has25 remaining and1 Owner task; do not send it yet.",
+  "next_required": "Owner reviews the four exact configuration differences; explicitly decide the new read-only protection baseline and a further controlled load before another exercise. Do not overwrite current config or silently consume another restart.",
   "no_real_Livsyn_access_or_business": true,
   "no_automatic_model_retest": true,
   "private_evidence_retained_outside_W": true,
-  "raw_logs_prompts_memory_credentials_databases_uploaded": false
+  "raw_logs_prompts_memory_credentials_databases_uploaded": false,
+  "historical_record_notice": "Existing verified/revisions_only_in_repository sections describe the first load on 2026-10-25; latest_observation is current.",
+  "latest_observation": {
+    "observed_shanghai": "2026-10-26T00:29:59.152929+08:00",
+    "state": "PAUSED_AFTER_READY; original protection baseline retained; no Owner exercise task admitted",
+    "second_controlled_load": {
+      "Owner_approved": true,
+      "pid": 22232,
+      "ready_at_utc": "2026-10-25T13:54:22.305864+00:00",
+      "original_H_and_W": true,
+      "profiles_created": 0,
+      "native_model_catalog_browser_tools": 13,
+      "protected_match_at_ready": 59,
+      "new_exercise_generation_requests": 0,
+      "Codex_model_messages_sent": 0,
+      "used": 5,
+      "remaining": 25,
+      "task_used": 0,
+      "task_cap": 1,
+      "unknown_startup_requests_denied_before_wire": 4,
+      "ready_entry_no_longer_running": true,
+      "exit_cause": "not proven"
+    },
+    "zero_model_native_catalog_probe": {
+      "external_HTTPX_denied_before_wire": 5,
+      "catalog_passed": true,
+      "protected_changes": [],
+      "safe_caller_evidence": "vision check -> model_metadata.detect_local_server_type; context metadata -> _query_ollama_api_show",
+      "old_five_attempts_not_refunded_or_reclassified": true
+    },
+    "current_original_home_gateway": {
+      "pid": 20216,
+      "H_and_W_retained": true,
+      "exercise_environment_markers": false,
+      "native_entry_exact_invocation": "not established; no full command or environment published",
+      "transport_states": {
+        "feishu": "connected",
+        "qqbot": "connected",
+        "wecom": "connected",
+        "weixin": "connected",
+        "wecom_callback": "disconnected"
+      },
+      "new_application_reply_tested_by_Codex": false
+    },
+    "protected_files": {
+      "records": 59,
+      "unchanged_against_approved_baseline": 58,
+      "changed_file": "H/config.yaml",
+      "original_sha256": "2a67fd3a5911898d3327b7a9de12e7b009cf231b9e179801bc19d011ee4ffa9d",
+      "current_sha256": "4209e370566538f86a5085c22ffd7ec0f25112e96fdb745270de3c7959a27128",
+      "config_modified_utc": "2026-10-25T16:18:29.719347+00:00",
+      "hash_matched_existing_backup_found": true,
+      "Codex_writes_to_protected_files": 0,
+      "baseline_advanced": false,
+      "field_differences": [
+        "approvals.destructive_slash_confirm: true -> false",
+        "fallback_providers: serialized string -> list with one entry; semantics changed",
+        "mcp_servers.xianyu-browser-tools: removed",
+        "model.chat_template_kwargs: serialized value changed; decoded enable_thinking remains true"
+      ],
+      "company_browser_simulation_registration_present": true,
+      "other_yaml_fields_unchanged": true,
+      "targeted_session_evidence": {
+        "session": "20261025_233258_8e06d97c",
+        "config_patch_request_message": 107303,
+        "config_patch_result_message": 107304,
+        "patch_arguments_sha256": "e8717026b2af44d50886b94538c9b9659e3d54b0ed06780882643533a445dc2d",
+        "supports": "Hermes patch removed xianyu-browser-tools; does not independently attribute every later field change"
+      }
+    },
+    "Owner_report": {
+      "instructed_Hermes_to_change_or_restart": true,
+      "goal": "Desktop chat does not hit rate limits, Feishu work often does; asked Hermes to address it",
+      "exact_all_changes_authorized_or_effective": "not independently established"
+    },
+    "model_and_task_budget": {
+      "cap": 30,
+      "conservative_used": 5,
+      "remaining": 25,
+      "Owner_messages_used": 0,
+      "remaining_messages": 1,
+      "armed": false,
+      "old_ledgers_byte_identical": true
+    },
+    "fixture": {
+      "own_fixture_pids_exited": true,
+      "projects": 0,
+      "tasks": 0,
+      "QA_refreshes": 0,
+      "old_URL_must_not_be_used": true
+    },
+    "modified_this_continuation": {
+      "owned_tool_sources": [
+        "qq_browser_task.py",
+        "feishu_gateway.py",
+        "feishu_meter.py"
+      ],
+      "owned_deployment_receipts": 2,
+      "necessary_private_preimages": 5,
+      "original_install_or_configuration_writes": 0
+    },
+    "not_proven": [
+      "current gateway has the exercise hooks",
+      "Feishu recovery Agent goal passed",
+      "provider rate limiting resolved",
+      "cause and actor of the temporary entry exit",
+      "all configuration changes fully authorized in detail"
+    ],
+    "next": "Owner reviews the four exact configuration differences; explicitly decide the new read-only protection baseline and a further controlled load before another exercise. Do not overwrite current config or silently consume another restart."
+  }
 }
