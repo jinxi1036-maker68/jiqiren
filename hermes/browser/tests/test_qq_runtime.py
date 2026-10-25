@@ -28,6 +28,38 @@ class QQIntakeTests(unittest.TestCase):
         self.assertFalse(newly_budget_blocked(before,{'events':{'denied_at_limit':1}}))
         self.assertTrue(newly_budget_blocked(before,{'events':{'denied_at_limit':2}}))
 
+    def test_one_task_notice_closes_after_one_even_with_budget_remaining(self):
+        text=paused_notice({'reserved_network_attempts':19,'limit':30},1,1)
+        for value in ['1/1','19/30','本轮模拟验收已结束','没有送给模型']:
+            self.assertIn(value,text)
+
+    def test_authorized_30_one_task_round_keeps_exhausted_60_round_unchanged(self):
+        from request_budget import RequestBudget
+        local=Path(__file__).resolve().parents[1]/'.local'
+        local.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='qq-30-round-test-',dir=local) as d:
+            root=Path(d);old=root/'runs/old/requests.sqlite';new=root/'runs/new/requests.sqlite'
+            runtime=root/'runs/case/runtime.json'
+            for p in [old,new,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            runtime.write_text('{}')
+            previous=RequestBudget.create(old,60)
+            for _ in range(60):previous.take()
+            before=previous.status()
+            RequestBudget.create(new,30,armed=False)
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':30,
+                  'approved_task_limit':1,'owner_authorization':'2026-10-25 Owner: 30 model requests, 1 QQ simulation task',
+                  'previous_exhausted_ledger':str(old)}
+            settings=round_settings(gate,{'roundBudget':str(new)},runtime,root)
+            self.assertEqual((settings['limit'],settings['task_cap']),(30,1))
+            intake=Intake(settings['intake'],cap=settings['task_cap'])
+            self.assertEqual(intake.take('only-approved-task'),1)
+            with self.assertRaises(RuntimeError):intake.take('extra-message')
+            for key,value in [('approved_model_limit',31),('approved_task_limit',3),('owner_authorization','')]:
+                with self.assertRaises(RuntimeError):
+                    round_settings({**gate,key:value},{'roundBudget':str(new)},runtime,root)
+            with self.assertRaises(RuntimeError):round_settings(gate,{'roundBudget':str(old)},runtime,root)
+            self.assertEqual(previous.status(),before)
+
     def test_thread_id_does_not_collide_across_runs_or_slots(self):
         a=Path('runs/run-A/runtime.json');b=Path('runs/run-B/runtime.json')
         self.assertNotEqual(acceptance_thread_id(a,1),acceptance_thread_id(b,1))

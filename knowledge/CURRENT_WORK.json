@@ -167,19 +167,18 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "round_closed_recovery_permission_failure_zero_model_scope_fix_installed_QQ_status_only",
+      "status": "limited_recovery_recheck_ready_30_model_1_Owner_QQ_task_prior_failures_retained",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": null,
       "production_access": false,
       "blocks": [
-        "recovery_task_failed_due_unapproved_QA_mutations_and_no_final_report",
-        "first_goal_clean_session_condition_failed",
-        "no_model_budget_or_task_slots_remaining",
-        "new_scope_guard_not_Agent_revalidated_no_formal_driver_selection"
+        "recovery_permission_discipline_and_final_report_Agent_revalidation_pending",
+        "first_goal_clean_session_condition_failed_retained",
+        "formal_driver_and_real_platform_not_validated"
       ],
-      "next_step": "本轮3条/60次已全部用完，停止新模型任务；QQ仅状态回复，提示明确次数。第三项项目503后回查无重复有实证，但越权QA刷新2次且最终报告在额度拦截后缺失，不能通过。操作范围护栏5项及实际新浏览器零模型检查通过，QQ提示3项新增检查后模块15项通过；原失败保留，不清资料、不补发、不加额。下一次本人验收须有新明确消息/模型额度授权，真实平台仍未开放。",
+      "next_step": "Owner新授权30次请求/1条QQ模拟任务已就绪；只补验权限边界和完整异常汇报，原60及120账本/失败保留。仍同一原身份W和原QQ管线，不是Desktop窗口输入。0/30、任务0/1；Owner只发一次，Codex取证，不补发、不自动加额、不访问真实后台。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -328,6 +327,29 @@
           "Agent_retest": "not performed",
           "evidence": "hermes/browser/evidence/qq-round2-closed-scope-fix-2026-10-25.json"
         }
+      },
+      "authorized_recovery_recheck": {
+        "date": "2026-10-25",
+        "model_cap": 30,
+        "message_cap": 1,
+        "status": "READY awaiting exactly one Owner QQ task",
+        "reserved_model_attempts_at_ready": 0,
+        "Owner_tasks_admitted_at_ready": 0,
+        "previous_60_and_120_ledgers_unchanged": true,
+        "previous_failure_results_preserved": true,
+        "original_identity_and_W": true,
+        "QQ_pipeline_not_Desktop_window_input": true,
+        "scope": "synthetic recovery task only",
+        "QQ_module_tests_passed": 17,
+        "inherited_scope_tests": 5,
+        "actual_browser_tools_verified": 13,
+        "protected_records_unchanged": 59,
+        "new_model_messages_sent_by_Codex": 0,
+        "unknown_startup_requests_blocked_before_send": 5,
+        "QQ_control_requests_at_ready": 2,
+        "formal_driver_selected": false,
+        "real_platform_authorized": false,
+        "evidence": "hermes/browser/evidence/qq-round3-recovery-ready-2026-10-25.json"
       }
     }
   },

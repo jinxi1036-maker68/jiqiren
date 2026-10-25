@@ -99,9 +99,9 @@ def communication_only_mode(gate, allow_tasks):
     return True
 
 
-def paused_notice(status, admitted):
-    title = '本轮模拟验收已结束' if admitted >= 3 or status['reserved_network_attempts'] >= status['limit'] else '当前阶段暂停接收任务'
-    return (f"QQ正常在线。{title}：已接收{admitted}/3条任务，"
+def paused_notice(status, admitted, task_cap=3):
+    title = '本轮模拟验收已结束' if admitted >= task_cap or status['reserved_network_attempts'] >= status['limit'] else '当前阶段暂停接收任务'
+    return (f"QQ正常在线。{title}：已接收{admitted}/{task_cap}条任务，"
             f"模型预算已用{status['reserved_network_attempts']}/{status['limit']}次（含重试、辅助及未知请求）。"
             "本条没有送给模型，请不要重复发送。已执行结果由Codex核对；这不表示QQ或模型服务失联。")
 
@@ -137,17 +137,24 @@ def round_settings(gate, cfg, runtime, root):
         return {"limit": 120, "classified": False, "intake": None}
     from safety import ordinary_path
     from request_budget import RequestBudget
-    if (gate.get("approved_model_limit") != 60 or gate.get("approved_task_limit") != 3
-            or gate.get("owner_authorization") != "2026-10-25 Owner: 60 model requests, 3 QQ simulation tasks"):
+    approvals = {
+        "2026-10-25 Owner: 60 model requests, 3 QQ simulation tasks": (60, 3, 120),
+        "2026-10-25 Owner: 30 model requests, 1 QQ simulation task": (30, 1, 60),
+    }
+    approval = approvals.get(gate.get("owner_authorization"))
+    if (not approval or gate.get("approved_model_limit") != approval[0]
+            or gate.get("approved_task_limit") != approval[1]):
         raise RuntimeError("New round authorization does not match the approved limits")
     ledger = ordinary_path(cfg["roundBudget"])
     old = ordinary_path(gate["previous_exhausted_ledger"])
     if (root / "runs" not in ledger.parents or ledger == old
             or old.parent == ledger.parent or runtime.parent == ledger.parent):
         raise RuntimeError("New authorized ledger must be distinct from old round and per-case runtime")
-    if RequestBudget(old).status()["reserved_network_attempts"] != 120:
+    previous = RequestBudget(old).status()
+    if previous["limit"] != approval[2] or previous["reserved_network_attempts"] != approval[2]:
         raise RuntimeError("Historical exhausted ledger changed")
-    return {"limit": 60, "classified": True, "intake": ledger.parent / "qq-intake.sqlite"}
+    return {"limit": approval[0], "task_cap": approval[1], "classified": True,
+            "intake": ledger.parent / "qq-intake.sqlite"}
 
 
 class Intake:
@@ -167,7 +174,7 @@ class Intake:
                 return None
             n = c.execute("SELECT count(*) FROM tasks").fetchone()[0]
             if n >= self.cap:
-                raise RuntimeError("This route's three task messages have been admitted")
+                raise RuntimeError("This round's approved task message allowance is used")
             c.execute("INSERT INTO tasks VALUES(?,?,?)", (digest, n + 1, datetime.datetime.now(datetime.timezone.utc).isoformat()))
             return n + 1
 
@@ -218,6 +225,9 @@ async def serve(args):
         raise RuntimeError("QQ receipts outside the current owned run")
     budget = RequestBudget(cfg["roundBudget"])
     settings = round_settings(gate, cfg, runtime, root)
+    task_cap = settings.get('task_cap', 3)
+    if args.admit_through_slot and args.admit_through_slot > task_cap:
+        raise RuntimeError('Admission ceiling exceeds this round authorization')
     if budget.status()["limit"] != settings["limit"]:
         raise RuntimeError("Budget differs from the approved round")
     if not settings["classified"] and not budget.status()["armed"]:
@@ -301,9 +311,9 @@ async def serve(args):
                 browser_ready = await discover_company_browser(out)
             except Exception as exc:
                 event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
-        intake = Intake(settings["intake"] or out / "intake.sqlite", cap=args.admit_through_slot or 3)
-        if communication_only and (budget.status()['reserved_network_attempts'] != settings['limit'] or intake.count() != 3):
-            raise RuntimeError('Completed-round status mode requires exhausted budget and all3 tasks accounted')
+        intake = Intake(settings["intake"] or out / "intake.sqlite", cap=args.admit_through_slot or task_cap)
+        if communication_only and (budget.status()['reserved_network_attempts'] != settings['limit'] or intake.count() != task_cap):
+            raise RuntimeError('Completed-round status mode requires exhausted budget and all approved tasks accounted')
         if args.allow_task_messages and intake.count() < intake.cap:
             verify_unused_thread(home / "state.db", acceptance_thread_id(runtime, intake.count() + 1))
         busy = asyncio.Lock()
@@ -317,24 +327,24 @@ async def serve(args):
                 event(out, "status_requested", model_calls=0)
                 status = budget.status()
                 if communication_only:
-                    return paused_notice(status, intake.count()) + ' 当前仅状态回复，没有启动浏览器或模型任务。'
+                    return paused_notice(status, intake.count(), task_cap) + ' 当前仅状态回复，没有启动浏览器或模型任务。'
                 admission_open = (args.allow_task_messages and browser_ready and status['armed']
                                   and intake.count() < intake.cap and status['reserved_network_attempts'] < status['limit'])
                 state = "本次批准的模拟任务接收已开启" if admission_open else "当前暂停新模型任务"
                 browser = "13项浏览器工具目录预检通过" if browser_ready else "浏览器工具目录预检未通过"
                 label = "模型请求（含重试、视觉辅助及未知路由）" if settings['classified'] else "共享HTTP请求"
                 return (f"QQ通道已连接，仍是原Hermes、原公司工作区。{state}；{browser}。"
-                        f"本轮已接收{intake.count()}/3条任务；{label}已用"
+                        f"本轮已接收{intake.count()}/{task_cap}条任务；{label}已用"
                         f"{status['reserved_network_attempts']}/{status['limit']}次。"
                         "没有登录真实灵生后台。")
             if not ready or busy.locked():
                 return "当前正在准备或处理上一条任务，请先等待完成；本条没有送给模型。"
             if not args.allow_task_messages or not browser_ready:
                 event(out, "inbound_paused_without_model", model_calls=0)
-                return paused_notice(budget.status(), intake.count())
+                return paused_notice(budget.status(), intake.count(), task_cap)
             if intake.count() >= intake.cap:
                 event(out, "approved_message_allowance_used", model_calls=0)
-                return paused_notice(budget.status(), intake.count())
+                return paused_notice(budget.status(), intake.count(), task_cap)
             if msg.text.startswith("/") or msg.media_urls:
                 return "本轮仅接收文字任务和/status，不执行重启、配置、媒体或其他命令。"
             status = budget.status()
@@ -367,7 +377,7 @@ async def serve(args):
                         result = None
                     if newly_budget_blocked(before, budget.status()):
                         event(out, 'budget_notice_replaces_generic_error', model_calls=0)
-                        return paused_notice(budget.status(), intake.count()) + ' 本次任务因额度拦截未形成完整最终汇报，已执行动作须以本地收据核验。'
+                        return paused_notice(budget.status(), intake.count(), task_cap) + ' 本次任务因额度拦截未形成完整最终汇报，已执行动作须以本地收据核验。'
                     return result
                 finally:
                     event(out, "owner_task_returned", slot=slot, budget_after=budget.status(),
