@@ -4,7 +4,7 @@
   "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
   "authority_branch": "main",
   "current": {
-    "date": "2026-10-24",
+    "date": "2026-10-25",
     "phase": "PRE_TRIAL_PREPARATION",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
@@ -21,7 +21,9 @@
     "latest_contract_review": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md",
     "tax_planning": "knowledge/reports/2026-10-24_TAX_PLANNING.md",
     "company": "平顶山凌矩信息科技有限责任公司（执照图片；2026-10-19成立，注册资本10万元）",
-    "tax_progress": "Owner报告已点击税务信息确认，系统返回主页；是否办结未核实，企业登录待重试"
+    "tax_progress": "Owner已成功以企业业务登录电子税务局；纳税人基础信息截图显示状态正常。增值税税费种认定可查；一般纳税人资格记录未查到，尚未完成正式身份确认；数电票用票需求仅到预览，未提交；社保单位登录开通受阻，拟线下了解。",
+    "latest_knowledge_audit": "knowledge/reports/2026-10-25_KNOWLEDGE_COMPLETENESS_AUDIT.md",
+    "knowledge_status": "主索引与部分未合并PR、10月24~25对话存在归档缺口，审计报告已列出；不代表已补齐全部"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
@@ -71,6 +73,7 @@
       "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
     ],
     "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
-    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "latest_pr_audit": "2026-10-25 实时核对PR#4 merged；#6/#8/#10~#20 open且未合并；#12/#15等包含原身份本机最小接入/模拟证据，未证明完整验收；#19含轻量化理念提案待整合，详见knowledge audit"
   }
 }
