@@ -358,5 +358,20 @@
       "disqualify": "If a task requires consuming new materials every cycle and no real reusable option, exclude or defer it.",
       "category_scope": "工厂车间、零售购物空间、仓库及备选个人工作区的全部候选任务"
     }
+  },
+  "scene_sop_submission_v1_20261025": {
+    "status": "xlsx_generated_owner_review_pending_partner_not_submitted",
+    "task_count": 33,
+    "tertiary_category_count": 11,
+    "scene_counts": {
+      "工厂车间": 12,
+      "零售购物空间": 12,
+      "仓库": 9
+    },
+    "full_workbook_filename": "凌矩_三级任务分类与详细采集SOP_灵生审核版_V1.xlsx",
+    "workbook_storage": "ChatGPT conversation downloadable attachment only; not GitHub-backed",
+    "release_index": "knowledge/reports/2026-10-25_LINGJU_33_SOP_SUBMISSION_V1_RELEASE.md",
+    "quality_rules": "every SOP has 6 sequenced actions, complete/restore/safety info; no personal parcel sorting or routine single-use tape/bags; no props purchased until partner approval",
+    "next_step": "Owner to review Excel against real available props, then forward to LivSyn; capture scene-category recognition and task-level feedback, revise before any purchasing."
   }
 }
