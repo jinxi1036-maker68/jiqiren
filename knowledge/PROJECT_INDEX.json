@@ -29,7 +29,10 @@
     "business_principle": "Owner 2026-10-25明确先稳定Ego采集，AI清洗标注只作远期，不启动试验、购买模型/硬件或招标注员",
     "recording_efficiency_history": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md",
     "future_real_production_concept": "knowledge/strategy/REAL_PRODUCTION_EGO_CONCEPT_HISTORY_2026-10-20.md",
-    "finance_personnel_reconciliation": "knowledge/reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md"
+    "finance_personnel_reconciliation": "knowledge/reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md",
+    "owner_business_history_supplement": "knowledge/history/BUSINESS_DECISIONS_2026-10-16_TO_25.md",
+    "recording_efficiency_supplement": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md",
+    "pr_evidence_supplement": "knowledge/reports/2026-10-25_OPEN_PR_EVIDENCE_REGISTER.md"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
@@ -88,5 +91,6 @@
     "lean_development_adr": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md",
     "lean_principle": "Owner批准：像培养一名自主员工一样用已有工具和自然语言为主；确实有重复能力缺口才写尽可能少的代码，不先造第二套系统",
     "current_evidence_caveat": "PR#12有原Hermes最小接入的PR证据、PR#15有原Desktop部分模拟能力证据；PR#20有QQ接入恢复尝试。均非正式灵生生产验收，且这些PR未合并main；状态需要重新查看Owner机器"
-  }
+  },
+  "strategic_sequence_status": "最初通用路线的历史性阶段规划，不是截至2026-10-25确定要自营20/30/50台的实施计划；Owner曾先后讨论自营50台上限、自营10台上限/周边合作团队、30台自营纯测算。实际本阶段只依据已验证灵生采集QA结算和回款推进。"
 }
