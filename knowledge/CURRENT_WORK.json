@@ -166,20 +166,22 @@
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
   },
   "admin_finance_track": {
-    "date": "2026-10-24",
+    "date": "2026-10-25",
     "company_registered": "confirmed_by_business_license_image",
     "business_place": "平顶山新城区/示范区（Owner最后确认）",
-    "tax_one_license_one_code": "submission_reported_and_enterprise_login_successful; formal registration/base-tax status not yet inspected",
+    "tax_one_license_one_code": "owner_screen_confirmed_taxpayer_normal; no separate final filing receipt seen",
     "tax_enterprise_login": "owner_confirmed_success",
-    "vat_taxpayer_category": "unknown",
-    "invoice_6_percent": "partner_oral_request_contract_blank",
+    "vat_taxpayer_category": "not_formally_confirmed; general-taxpayer qualification lookup empty; VAT assessment shows quarterly and 3% levy/6% tax-rate fields",
+    "invoice_6_percent": "partner_oral_request; special e-invoice application previewed but not submitted; contract fields blank",
     "owner_goals": "亲自办理税务和记账，依法尽用优惠、保障正常开票申报、最小化综合税费与成本并提高净利润",
-    "next_single_action": "从企业业务首页进入我的信息/纳税人信息，核实税务登记与纳税人基本状态，截图需遮盖个人敏感信息；不先申请一般纳税人或发票",
+    "next_single_action": "业务主线仍优先稳定Ego采集。办税/社保已暂停线下查询；将本轮财税及用工信息归入专题，不将试算当实际收入。",
     "latest_reports": [
       "knowledge/reports/2026-10-24_COMPANY_TAX_PROGRESS.md",
       "knowledge/reports/2026-10-24_TAX_PLANNING.md"
     ],
-    "enterprise_login_latest": "2026-10-24 Owner已确认成功进入河南电子税务局企业账户"
+    "enterprise_login_latest": "2026-10-24 Owner已确认成功进入河南电子税务局企业账户",
+    "salary_and_veteran_track": "Owner confirms two eligible veteran-status claims; both say no previous preference use; plans real work contracts from 2026-10-25, roles operations lead and field lead, 5000 CNY gross/month each, salary on 10th of next month; contracts draft only, company social account not confirmed; Owner paused online setup pending offline inquiry",
+    "tax_savings_track": "Any veteran deduction and VAT/CIT scenarios remain estimates, no preferential deduction actually approved or claimed"
   },
   "partner_contract_review": {
     "date": "2026-10-24",
@@ -198,5 +200,25 @@
     "boundary": "does not replace LivSyn trial, no assumption of signed client contract or actual annotated dataset",
     "next_gate": "只有采集业务稳定且Owner重新明确启动时才评估是否进行7天50条试验；必须基于已获授权的数据。",
     "instruction": "Owner明确先稳住灵生Ego采集业务，一步一步验证真实采集、质检、结算和回款；当前不进行AI清洗标注试验、不采购额外硬件或付费模型、不成立标注团队、不占用采集主线资源。"
+  },
+  "knowledge_completeness_audit": {
+    "date": "2026-10-25",
+    "status": "gaps_identified_not_yet_fully_backfilled",
+    "report": "knowledge/reports/2026-10-25_KNOWLEDGE_COMPLETENESS_AUDIT.md"
+  },
+  "current_operating_model_discussion": {
+    "status": "hypothetical_not_actual_deployment",
+    "self_operated_devices_example": 30,
+    "daily_hours_per_device": 6,
+    "days_per_month": 30,
+    "quality_accepted_rate": 0.75,
+    "effective_hours_month": 4050,
+    "partner_payment_per_accepted_hour_cny_tax_inclusive": 40,
+    "worker_payment_assumption_per_accepted_hour_cny": [
+      15,
+      20
+    ],
+    "device_rent_per_day_cny": 20,
+    "captain_mode": "a prior alternative B proposal, not included in self-operating scenario; neither modeled scale nor contractor plan proves implementation"
   }
 }
