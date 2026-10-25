@@ -191,11 +191,12 @@
   },
   "parallel_ai_ego_data_services": {
     "decision_date": "2026-10-25",
-    "status": "planning_only_not_started",
-    "owner_choice": "AI-first data cleaning/action annotation with human verification",
+    "status": "deferred_owner_decision",
+    "owner_choice": "AI-first with human review remains a future possible direction only",
     "pilot": "7 days, 50 authorized short Ego videos, no client data upload without authorization",
     "report": "knowledge/reports/2026-10-25_AI_EGO_QA_ANNOTATION_PILOT.md",
     "boundary": "does not replace LivSyn trial, no assumption of signed client contract or actual annotated dataset",
-    "next_gate": "check existing computer resources; select 50 self-owned and processing-authorized episodes"
+    "next_gate": "只有采集业务稳定且Owner重新明确启动时才评估是否进行7天50条试验；必须基于已获授权的数据。",
+    "instruction": "Owner明确先稳住灵生Ego采集业务，一步一步验证真实采集、质检、结算和回款；当前不进行AI清洗标注试验、不采购额外硬件或付费模型、不成立标注团队、不占用采集主线资源。"
   }
 }
