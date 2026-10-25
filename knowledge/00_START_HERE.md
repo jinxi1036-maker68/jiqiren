@@ -32,6 +32,7 @@
 ## 2026-10-25 第二轮历史补档完成范围
 
 - [逐项PR核查与待合并分流台账](reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md)：PR #4已合并，其余检查的#2、#6、#8、#10～#20仍未合并；**不要将旧分支的CURRENT_WORK直接覆盖main**。
+- **未合并分支专题原文历史归档（非现行指令）**：[10月16日Logo与同行研究](archive/pr13/2026-10-16_LINGJU_BRAND_RESEARCH.md)、[三场景准备和日报](archive/pr13/2026-10-16_LIVSYN_SCENES_AND_REPORT.md)、[10月17日完整录制效率讨论](archive/pr17/2026-10-17_RECORDING_EFFICIENCY.md)、[10月20日真实加工＋Ego构想](archive/pr19/2026-10-20_REAL_PRODUCTION_EGO_CONCEPT.md)。这些是来源PR讨论备份，非合同/正式实施证明。
 - [10月16至25日决策变化历史](history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md)：包含Owner多次自营/团长扩张方案的时间顺序、10月17日报、录制效率、真实加工构想和Hermes工程分层证据；这是一份History，**不是当前工作指令**。
 - [2026-10-25财税、人事、社保和价格情景归档](reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md)：已证事实、Owner口述、假设与未核验签署/参保/审批分别标注。
 - [原Hermes轻量化Owner ADR](decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)：从PR #19按Owner明确决定选择性恢复，**不是合并整个PR或部署本机**。原Hermes少代码准则已写入唯一岗位宪章；其后本机局部接入/QQ恢复的证据及未验收部分应查PR台账。
