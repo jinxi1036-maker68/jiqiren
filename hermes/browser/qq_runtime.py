@@ -159,7 +159,31 @@ def round_settings(gate, cfg, runtime, root):
     previous = RequestBudget(old).status()
     if previous["limit"] != approval[2] or previous["reserved_network_attempts"] != approval[2]:
         raise RuntimeError("Historical exhausted ledger changed")
-    return {"limit": approval[0], "task_cap": approval[1], "classified": True,
+    task_cap = approval[1]
+    continuation = gate.get('one_time_continuation')
+    if continuation is not None:
+        # Owner's explicit same-goal exception retains the failed first message
+        # and the SAME 30-request ledger. It is not a new budget or a generic retry.
+        expected = {
+            'authorization': '2026-10-25 Owner: begin one same-task continuation using remaining19 of30',
+            'additional_messages': 1,
+            'original_messages_retained': 1,
+            'shared_ledger': str(ledger),
+            'purpose': 'same_incomplete_recovery_goal',
+        }
+        if (approval != (30, 1, 60) or cfg.get('case') != 'recovery'
+                or continuation != expected):
+            raise RuntimeError('Continuation differs from the specific Owner exception')
+        current = RequestBudget(ledger).status()
+        intake_path = ledger.parent / 'qq-intake.sqlite'
+        with contextlib.closing(sqlite3.connect(intake_path.as_uri() + '?mode=ro', uri=True)) as c:
+            admitted = c.execute('SELECT count(*) FROM tasks').fetchone()[0]
+        if (current['limit'] != 30 or admitted not in (1, 2)
+                or not 11 <= current['reserved_network_attempts'] <= 30
+                or (admitted == 1 and current['reserved_network_attempts'] != 11)):
+            raise RuntimeError('Original message or remaining19 ledger no longer matches')
+        task_cap = 2
+    return {"limit": approval[0], "task_cap": task_cap, "classified": True,
             "intake": ledger.parent / "qq-intake.sqlite"}
 
 

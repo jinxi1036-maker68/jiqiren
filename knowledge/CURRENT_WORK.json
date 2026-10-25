@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "provider_pacing_installed_zero_model_status_only_remaining19_message_grant_used",
+      "status": "same_goal_continuation_QQ_ready_remaining19_no_new_model_request",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -175,11 +175,10 @@
       "production_access": false,
       "blocks": [
         "provider_HTTP429_root_cause_unknown",
-        "one_authorized_QQ_task_used_no_retry_grant",
         "recovery_permission_and_final_report_Agent_revalidation_not_performed",
         "historical_clean_session_failure_and_no_formal_driver_selection_retained"
       ],
-      "next_step": "已从本次request_dump根级error确认429/throttling_error，具体账号档位/RPM/并发/配额细因仍未知。节流补丁已装入本轮工具并在原QQ仅状态进程初始化：12秒启动间隔、单在途、429等待/脱敏响应元数据，32项零模型检查通过；服务端是否恢复仍未实测。保留11/30及19次，消息1/1已用；需Owner明确允许同一任务一次续办消息，才准备继续，不自动加额、探活或进入真实后台。",
+      "next_step": "Owner已在本对话说“那你开始吧”，据此前一次同任务续办提议开放一条额外QQ消息。沿用原30账本，已用11/剩19，保留失败slot1，最多接收slot2，不重置或加额。原QQ临时管线/原H和W READY，13浏览器目录通过，进程节流启用，20项QQ零模型检查通过；仅启动快照，新增模型请求0。Owner报告企业用户；实际Key池和429细因未证实，10次/49秒不能单独证明超企业20RPM。待Owner发送一次同目标自然语言任务，按收据验收；不访问真实平台。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -388,6 +387,22 @@
         "new_task_message_permission": false,
         "provider_recovery_verified": false,
         "evidence": "hermes/browser/evidence/provider-throttle-followup-2026-10-25.json"
+      },
+      "same_goal_continuation": {
+        "owner_instruction": "那你开始吧。",
+        "limit_unchanged": 30,
+        "prior_spent_retained": 11,
+        "remaining_requests": 19,
+        "old_message_retained": 1,
+        "total_message_ceiling": 2,
+        "additional_messages_remaining": 1,
+        "QQ_ready": true,
+        "browser_catalog_tools": 13,
+        "new_model_requests": 0,
+        "fresh_session_pending": true,
+        "enterprise_status": "Owner report; actual API Key pool not verified",
+        "pacing_real_model_effect": "not yet verified",
+        "evidence": "hermes/browser/evidence/qq-round3-continuation-ready-2026-10-25.json"
       }
     }
   },

@@ -12,6 +12,63 @@ from qq_runtime import (Intake, official_qq_websocket, verify_browser_catalog,
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_continuation_retains_first_message_and_same_30_request_ledger(self):
+        import json
+        from request_budget import RequestBudget
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d); old=root/'runs/old/requests.sqlite'; ledger=root/'runs/round3/requests.sqlite'
+            runtime=root/'runs/fresh-recovery/runtime.json'
+            for p in [old,ledger,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            previous=RequestBudget.create(old,60)
+            for _ in range(60):previous.take()
+            budget=RequestBudget.create(ledger,30)
+            for _ in range(11):budget.take()
+            original=Intake(ledger.parent/'qq-intake.sqlite',cap=1)
+            original.take('failed-429-message')
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':30,
+                  'approved_task_limit':1,'owner_authorization':'2026-10-25 Owner: 30 model requests, 1 QQ simulation task',
+                  'previous_exhausted_ledger':str(old)}
+            cfg={'roundBudget':str(ledger),'case':'recovery'}
+            self.assertEqual(round_settings(gate,cfg,runtime,root)['task_cap'],1)
+            extra={'authorization':'2026-10-25 Owner: begin one same-task continuation using remaining19 of30',
+                   'additional_messages':1,'original_messages_retained':1,'shared_ledger':str(ledger),
+                   'purpose':'same_incomplete_recovery_goal'}
+            gate['one_time_continuation']=extra
+            before=budget.status(); old_before=previous.status()
+            settings=round_settings(gate,cfg,runtime,root)
+            self.assertEqual((settings['limit'],settings['task_cap']),(30,2))
+            for key,value in [('additional_messages',2),('shared_ledger',str(old)),('authorization',''),('purpose','different_goal')]:
+                with self.assertRaises(RuntimeError):
+                    round_settings({**gate,'one_time_continuation':{**extra,key:value}},cfg,runtime,root)
+            with self.assertRaises(RuntimeError):round_settings(gate,{**cfg,'case':'binding'},runtime,root)
+            self.assertEqual(budget.status(),before)
+            resumed=Intake(settings['intake'],cap=2)
+            self.assertEqual(resumed.take('one-owner-continuation'),2)
+            self.assertIsNone(resumed.take('failed-429-message'))
+            with self.assertRaises(RuntimeError):resumed.take('unapproved-third')
+            self.assertEqual(round_settings(gate,cfg,runtime,root)['task_cap'],2)
+            self.assertEqual(previous.status(),old_before)
+
+    def test_continuation_does_not_restore_spent_requests_before_admission(self):
+        from request_budget import RequestBudget
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);old=root/'runs/old/requests.sqlite';new=root/'runs/new/requests.sqlite'
+            runtime=root/'runs/case/runtime.json'
+            for p in [old,new,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            previous=RequestBudget.create(old,60)
+            for _ in range(60):previous.take()
+            budget=RequestBudget.create(new,30)
+            for _ in range(12):budget.take()
+            Intake(new.parent/'qq-intake.sqlite',cap=1).take('old')
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':30,'approved_task_limit':1,
+                  'owner_authorization':'2026-10-25 Owner: 30 model requests, 1 QQ simulation task',
+                  'previous_exhausted_ledger':str(old),'one_time_continuation':{
+                  'authorization':'2026-10-25 Owner: begin one same-task continuation using remaining19 of30',
+                  'additional_messages':1,'original_messages_retained':1,'shared_ledger':str(new),
+                  'purpose':'same_incomplete_recovery_goal'}}
+            with self.assertRaises(RuntimeError):round_settings(gate,{'roundBudget':str(new),'case':'recovery'},runtime,root)
+            self.assertEqual(budget.status()['reserved_network_attempts'],12)
+
     def test_status_mode_keeps_unused_requests_paused_and_cannot_reopen_message_grant(self):
         verify_closed_status_mode({'armed':False,'limit':30,'reserved_network_attempts':11},1,1)
         with self.assertRaises(RuntimeError):verify_closed_status_mode({'armed':True},1,1)

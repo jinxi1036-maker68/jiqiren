@@ -277,3 +277,8 @@ QQ在线但Intake已满、预算未arm，不接新模型任务；既有模型处
 响应只留HTTP状态、数值等待/速率字段，不记URL、提示词、正文、账号或任意头。8项节流、6项流量、18项QQ检查通过，含真实SDK对本机合成HTTP服务，无新增真实Hermes模型请求。
 已更新新工具QQ/traffic源、新pacing模块及两份收据，4份必要私有前像；当前原QQ仅状态模式READY，无模型管线/MCP，仍11/30、消息1/1、剩19暂停。服务商实际恢复及带节流的员工任务尚未验证，需要明确的一次续办消息例外，不自动补发。
 [跟进证据](evidence/provider-throttle-followup-2026-10-25.json)。
+
+
+### 当前：同一30次账本的一次Owner续办
+
+Owner“那你开始吧”允许在原11/30、剩19的条件下继续同一未完成recovery目标。原30/1授权保留，只有gate中的one_time_continuation精确对象才增加一个消息，原qq-intake.sqlite保留slot1，接收总上限2；禁止修改计数或转移目的。原QQ/native pipeline已READY，--allow-task-messages --admit-through-slot 2；新线程/空合成站，没有静默恢复无关历史。模型调用由Owner发送一次QQ自然语言任务才触发，Codex不探活。20项QQ本地检查通过，继承节流/流量检查。实际429是否恢复、目标是否通过待实际收据，不能由企业用户身份或本地测试推断。见[evidence](evidence/qq-round3-continuation-ready-2026-10-25.json)。
