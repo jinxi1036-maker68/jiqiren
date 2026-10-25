@@ -394,5 +394,23 @@
     ],
     "truthfulness": "do not claim actual operating commercial factory/supermarket/warehouse or approved tasks without evidence",
     "next_step": "Owner reads V2; adjust names to real operating tasks, submit concise candidate list to LivSyn; derive task SOPs from genuine workflow when confirmed"
+  },
+  "internal_sop_v3_20261025": {
+    "date": "2026-10-25",
+    "status": "prepared_in_chat_not_livsyn_approved_not_uploaded_to_github_binary",
+    "report": "knowledge/reports/2026-10-25_LINGJU_INTERNAL_SOP_V3_HERMES_HANDOFF.md",
+    "xlsx": "凌矩_三场景33项任务_内部详细SOP与Hermes参考版_V3.xlsx",
+    "hermes_markdown": "凌矩_33项任务内部SOP_Hermes知识版_V3.md",
+    "source": "exact V2 tasks 33 IDs",
+    "steps_per_task": 6,
+    "total_action_steps": 198,
+    "scope": "internal only; field check and revisions are required before Hermes production task preparation",
+    "rules": [
+      "preserve client-facing V2 unchanged",
+      "field revisions supersede provisional steps",
+      "all items reusable with minimal per-cycle consumables",
+      "do not publish to LivSyn before official approval",
+      "Hermes cannot read full SOP solely from GitHub handoff index; markdown must be uploaded or connected"
+    ]
   }
 }
