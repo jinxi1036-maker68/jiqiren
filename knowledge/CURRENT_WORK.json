@@ -167,14 +167,14 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "qq_server_ready_waiting_owner_status_and_browser_acceptance",
+      "status": "qq_status_round_trip_confirmed_waiting_first_browser_task",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": 0,
       "production_access": false,
       "blocks": [],
-      "next_step": "Owner在原QQ私聊先发送/status确认双向收发；随后再发送Playwright首条验收任务，Codex只读取证。QQ使用原安装的原生网关消息管线及同一H/W，不经过Desktop窗口。B仍最多3条，共享120次请求额度；不转移A额度，不进入真实平台。",
+      "next_step": "Owner通过原QQ发送Playwright读取分析任务一次；Codex仅核对实际Agent会话和工具收据。B最多3条，不转移A额度，共享120次请求上限不变。真实浏览器目标能力仍未验收。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -199,7 +199,7 @@
         "uses_native_qq_adapter_and_gateway_pipeline": true,
         "desktop_window_transport": false,
         "server_ready": true,
-        "owner_round_trip": "pending",
+        "owner_round_trip": "confirmed: Owner received /status; local receipt matched",
         "shared_request_cap": 120,
         "conservative_httpx_attempts_at_start": 2,
         "model_requests": 0,
@@ -208,7 +208,8 @@
         "protected_changes": 0,
         "other_services_changed": false,
         "startup_persistence_changed": false,
-        "evidence": "hermes/browser/evidence/qq-intake-2026-10-25.json"
+        "evidence": "hermes/browser/evidence/qq-intake-2026-10-25.json",
+        "conservative_httpx_attempts_after_status": 4
       }
     }
   },

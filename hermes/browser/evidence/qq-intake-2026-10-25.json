@@ -50,7 +50,7 @@
     "cron_or_kanban_started": false,
     "other_platforms_started": false,
     "persistently_enabled_at_startup": false,
-    "owner_phone_round_trip": "pending /status"
+    "owner_phone_round_trip": "confirmed by Owner; correlated local status receipt"
   },
   "protection": {
     "content_records_checked": 59,
@@ -81,5 +81,17 @@
     "reason old supervisor finally exited",
     "unattended persistence after restart"
   ],
-  "production_access": false
+  "production_access": false,
+  "owner_round_trip_followup": {
+    "checked_at": "2026-10-25T00:31:59.851028+00:00",
+    "owner_report": "Received the /status response in original QQ chat",
+    "local_receipt": "status_requested at 2026-10-25T00:30:51.794112+00:00, model_calls=0",
+    "tasks_admitted": 0,
+    "new_sessions_since_ready": 0,
+    "model_calls": 0,
+    "conservative_httpx_attempts": 4,
+    "messages_family_note": "Two attempts by QQ process PID 7296 immediately after /status. Native QQ send endpoints also end in /messages; this family label is not proof of model use. The status handler returns a local string without invoking GatewayRunner primary/Agent.",
+    "protected_changes": [],
+    "request_limit_unchanged": 120
+  }
 }
