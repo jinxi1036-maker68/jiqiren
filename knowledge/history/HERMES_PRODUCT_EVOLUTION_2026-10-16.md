@@ -182,3 +182,16 @@ Owner要求不再等待ChatGPT逐轮复核，由Codex负责推进。继承原两
 唯一正式Hermes及自主方法理念不变，未访问真实后台、未改原配置或原知识、未合并PR。
 [证据](../../hermes/browser/evidence/browser-followup-zero-model-2026-10-25.json)及
 [报告第11节](../../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)。
+
+
+### 2026-10-25｜新60次模型/3条Owner QQ任务获批，第一阶段就绪
+
+Owner明确批准新一轮最多60次真实模型请求和3条QQ模拟任务，不等待ChatGPT逐轮复核。
+新计数护栏已接入同一个原Hermes的QQ管线，旧120/120账本完整保留；新轮次先未开放，
+实际QQ同进程13项浏览器工具目录/原H/W/59项保护/清洁模拟初态通过后开放，当前0/60、Owner任务0/3。
+QQ通信2次单独审计；5次未知初始化HTTPX请求在开放前被阻断、未发送，不能说成5次模型调用。
+B仅提供浏览器和视觉工具；消息去重和3条上限位于新共享账本目录，跨案例与重启不清零。
+新增3项QQ检查后模块10项通过。工具侧更新QQ源、新计数模块和两份收据，保存3份必要私有前像；
+未改原配置/身份/记忆/知识、原MCP权限或正常服务。服务器READY不等于手机完成新任务验收。
+当前只开放新slot1，仍由Owner发送；完成后Codex取证再准备后续目标，不补发、不自动登录真实后台。
+[新轮次就绪证据](../../hermes/browser/evidence/qq-authorized-round-ready-2026-10-25.json)。

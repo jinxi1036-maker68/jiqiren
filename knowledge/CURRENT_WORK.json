@@ -167,18 +167,18 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "targeted_zero_model_improvements_passed_real_Agent_goal_still_incomplete",
+      "status": "authorized_new_QQ_round_ready_waiting_Owner_goal1",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": null,
       "production_access": false,
       "blocks": [
-        "original_actionability_timeout_root_cause_unknown",
-        "all_pages_details_and_QA_change_Agent_goal_incomplete",
-        "old_120_ledger_exhausted_new_model_budget_not_yet_authorized"
+        "Hermes_full_page_QA_goal_still_requires_real_Agent_result",
+        "create_bind_and_recovery_not_yet_verified",
+        "original_actionability_timeout_cause_still_unknown_not_reproduced"
       ],
-      "next_step": "Owner已授权技术自主推进，不再等待ChatGPT逐轮复核；已完成定点零模型改进。原120账本保留，到限后不自动追加模型额度。新计数机制尚未接入，新的真实模型额度及QQ任务上限待Owner明确授权；不进入真实后台。",
+      "next_step": "Owner已批准新一轮60次真实模型请求/3条QQ任务；旧账本保留120/120。新QQ同进程13项浏览器目录和计数已接通，原身份W、预算已开放，当前只接收第1条读取分析。Owner发送一次，Codex取证后自主准备下一项，不等待ChatGPT逐轮复核；不补发、不访问真实后台。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -220,7 +220,8 @@
         "new_zero_model_tests_passed": 2,
         "current_admission_ceiling": 2,
         "task_admission_enabled": false,
-        "owner_one_retry_explicitly_approved": true
+        "owner_one_retry_explicitly_approved": true,
+        "historical_round_record": true
       },
       "model_accounting": {
         "logical_api_calls": 21,
@@ -255,6 +256,29 @@
         "protected_records_unchanged": 59,
         "diagnostic_owned_processes_exited": true,
         "evidence": "hermes/browser/evidence/browser-followup-zero-model-2026-10-25.json"
+      },
+      "authorized_new_QQ_round": {
+        "date": "2026-10-25",
+        "model_cap": 60,
+        "message_cap": 3,
+        "Owner_messages_admitted": 0,
+        "current_stage_message_ceiling": 1,
+        "model_attempts_reserved_at_ready": 0,
+        "QQ_control_requests_audited": 2,
+        "startup_unknown_httpx_blocked_before_send": 5,
+        "old_round_budget_unchanged": true,
+        "intake_status": "READY and armed; waiting Owner task1",
+        "native_QQ_same_identity": true,
+        "Desktop_window_transport": false,
+        "browser_tools": 13,
+        "toolsets": [
+          "company_browser_simulation",
+          "vision"
+        ],
+        "QQ_total_tests_passed": 10,
+        "traffic_guard_deployed_and_active": true,
+        "real_platform_authorized": false,
+        "evidence": "hermes/browser/evidence/qq-authorized-round-ready-2026-10-25.json"
       }
     }
   },

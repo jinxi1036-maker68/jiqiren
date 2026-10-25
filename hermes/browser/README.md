@@ -193,3 +193,20 @@ Owner已委托Codex自主推进技术，不再等待逐轮审查。原120次保�
 
 当前源码/部署哈希、保护校验及退出证据见
 [零模型后续证据](evidence/browser-followup-zero-model-2026-10-25.json)。
+
+### 新授权轮次：60次模型请求、3条Owner QQ任务
+
+Owner已在当前对话明确批准上述新额度，旧120账本不改。当前新QQ入口已恢复服务器READY，
+原身份H/W和同进程13项浏览器目录已确认；本轮只选择company_browser_simulation和vision，
+不提供file/terminal工具，不让合成源码读取代替浏览器操作。
+
+使用原Python运行工具qq_runtime.py，额外传入明确的`--acceptance-gate <本次runtime目录/qq-acceptance-gate.json>`，
+并显式`--allow-task-messages --admit-through-slot 1`开放第一阶段。Gate绑定runtime/source SHA及新授权、
+独立60次模型账本、原120次历史账本；目录和保护内容缺失则拒绝。旧模式仍使用旧120次规则，不能代替新授权。
+新Intake在共享60次账本的同目录持久保存；切换案例或重启时保留同一个Intake，不逐案例清零。
+当前初始0/60，未发送任何模型任务。新护栏在原网关导入前安装，QQ和精确GET目录单独审计，
+未知HTTPX仍扣模型硬限额。仅本次进程有效，原配置/账号/权限不变。
+
+SDK/QQ目录、原运行环境及保护检查通过后才开放模型发送。阶段目标和范围见TASKS.md；
+只有Owner发任务。跨阶段准备与取证由Codex负责，无须等待ChatGPT逐轮复核；不补发或追加提示。
+[新轮次收据](evidence/qq-authorized-round-ready-2026-10-25.json)。

@@ -16,7 +16,7 @@ FILES = ["package.json", "package-lock.json", "requirements-native.in",
          "watch.py", "TASKS.md", "web/index.html", "web/app.js", "web/style.css"]
 FILES.append("budget_gate.py")
 FILES.append("desktop_runtime.py")
-FILES.extend(["request_budget.py", "startup/sitecustomize.py"])
+FILES.extend(["request_budget.py", "traffic_guard.py", "startup/sitecustomize.py"])
 
 
 def hook_text(root):

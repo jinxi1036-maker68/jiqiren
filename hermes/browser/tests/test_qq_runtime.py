@@ -5,10 +5,49 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from qq_runtime import Intake, official_qq_websocket, verify_browser_catalog
+from qq_runtime import (Intake, official_qq_websocket, verify_browser_catalog,
+                        metadata_catalog_urls, round_settings, TOOLSETS)
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_model_metadata_exemption_only_comes_from_clean_model_config(self):
+        cfg={'model':{'base_url':'https://synthetic.invalid/v1'},
+             'auxiliary':{'vision':{'base_url':'https://synthetic.invalid/aux'}},
+             'mcp_servers':{'anything':{'base_url':'https://not-a-model.invalid'}},
+             'custom_providers':[{'base_url':'https://user:secret@synthetic.invalid/v1'},
+                                 {'base_url':'https://synthetic.invalid/v1?prompt=x'}]}
+        self.assertEqual(metadata_catalog_urls(cfg),{'https://synthetic.invalid/v1/models',
+                                                     'https://synthetic.invalid/aux/models'})
+
+    def test_B_browser_tasks_have_no_file_or_terminal_tools(self):
+        self.assertEqual(set(TOOLSETS),{'company_browser_simulation','vision'})
+
+    def test_new_round_requires_explicit_limits_and_preserves_old_exhausted_ledger(self):
+        from request_budget import RequestBudget
+        local=Path(__file__).resolve().parents[1]/'.local'
+        local.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='qq-round-test-',dir=local) as d:
+            root=Path(d);old=root/'runs/old/requests.sqlite';new=root/'runs/new/requests.sqlite'
+            runtime=root/'runs/case/runtime.json'
+            for p in [old,new,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            runtime.write_text('{}')
+            previous=RequestBudget.create(old,120)
+            for _ in range(120):previous.take()
+            before=previous.status()
+            RequestBudget.create(new,60,armed=False)
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':60,
+                  'approved_task_limit':3,'owner_authorization':'2026-10-25 Owner: 60 model requests, 3 QQ simulation tasks',
+                  'previous_exhausted_ledger':str(old)}
+            settings=round_settings(gate,{'roundBudget':str(new)},runtime,root)
+            self.assertEqual(settings['limit'],60)
+            self.assertEqual(settings['intake'],new.parent/'qq-intake.sqlite')
+            self.assertEqual(previous.status(),before)
+            with self.assertRaises(RuntimeError):
+                round_settings(gate,{'roundBudget':str(old)},runtime,root)
+            for key,value in [('approved_model_limit',61),('approved_task_limit',4),('owner_authorization','')]:
+                with self.assertRaises(RuntimeError):
+                    round_settings({**gate,key:value},{'roundBudget':str(new)},runtime,root)
+
     def test_one_approved_retry_preserves_failed_slot_and_closes_after_second(self):
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "intake.sqlite"

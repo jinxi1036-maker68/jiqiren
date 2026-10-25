@@ -21,7 +21,7 @@ import sys
 from urllib.parse import urlsplit
 
 
-TOOLSETS = ["company_browser_simulation", "file", "vision"]
+TOOLSETS = ["company_browser_simulation", "vision"]
 EXPECTED_BROWSER_TOOLS = {
     "browser_close", "browser_handle_dialog", "browser_fill_form", "browser_press_key",
     "browser_type", "browser_navigate", "browser_navigate_back", "browser_take_screenshot",
@@ -76,6 +76,46 @@ def official_qq_websocket(url):
     return url
 
 
+def metadata_catalog_urls(config):
+    """Only existing model configuration; no URLs or secrets in receipts."""
+    found = set()
+    def walk(node):
+        if isinstance(node, dict):
+            base = node.get("base_url")
+            if isinstance(base, str):
+                u = urlsplit(base)
+                if (u.scheme == "https" and u.hostname and not u.username
+                        and not u.password and not u.query and not u.fragment):
+                    found.add(base.rstrip("/") + "/models")
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+    for key in ["model", "custom_providers", "auxiliary"]:
+        walk(config.get(key, {}))
+    return found
+
+
+def round_settings(gate, cfg, runtime, root):
+    """New budget needs its own explicit authorization; legacy ledger unchanged."""
+    if gate.get("accounting_mode") != "model_attempts_v1":
+        return {"limit": 120, "classified": False, "intake": None}
+    from safety import ordinary_path
+    from request_budget import RequestBudget
+    if (gate.get("approved_model_limit") != 60 or gate.get("approved_task_limit") != 3
+            or gate.get("owner_authorization") != "2026-10-25 Owner: 60 model requests, 3 QQ simulation tasks"):
+        raise RuntimeError("New round authorization does not match the approved limits")
+    ledger = ordinary_path(cfg["roundBudget"])
+    old = ordinary_path(gate["previous_exhausted_ledger"])
+    if (root / "runs" not in ledger.parents or ledger == old
+            or old.parent == ledger.parent or runtime.parent == ledger.parent):
+        raise RuntimeError("New authorized ledger must be distinct from old round and per-case runtime")
+    if RequestBudget(old).status()["reserved_network_attempts"] != 120:
+        raise RuntimeError("Historical exhausted ledger changed")
+    return {"limit": 60, "classified": True, "intake": ledger.parent / "qq-intake.sqlite"}
+
+
 class Intake:
     """Durable dedup/admission, separate from prompts, credentials and memories."""
     def __init__(self, path, cap=3):
@@ -124,9 +164,14 @@ async def serve(args):
     cfg = json.loads(runtime.read_text(encoding="utf-8"))
     if root / "runs" not in runtime.parents or cfg["route"] != "playwright" or cfg["toolRoot"] != str(root):
         raise RuntimeError("Not the current approved Playwright exercise")
-    gate = json.loads((root / "acceptance-gate.json").read_text(encoding="utf-8"))
+    gate_path = ordinary_path(args.acceptance_gate) if args.acceptance_gate else root / "acceptance-gate.json"
+    if gate_path != root / "acceptance-gate.json" and gate_path.parent != runtime.parent:
+        raise RuntimeError("Per-run acceptance gate must be in the owned runtime")
+    gate = json.loads(gate_path.read_text(encoding="utf-8"))
     if gate.get("active_runtime") != str(runtime) or not gate.get("all_zero_model_gates_passed"):
-        raise RuntimeError("Desktop browser prerequisite gate missing")
+        raise RuntimeError("Browser prerequisite gate missing for this runtime")
+    if gate.get("runtime_sha256") and gate["runtime_sha256"] != sha256(runtime):
+        raise RuntimeError("Runtime changed after prerequisite verification")
     for rel, digest in gate["tool_source_sha256"].items():
         if sha256(root / rel) != digest:
             raise RuntimeError("Previously verified browser source changed")
@@ -137,7 +182,10 @@ async def serve(args):
     if runtime.parent not in out.parents:
         raise RuntimeError("QQ receipts outside the current owned run")
     budget = RequestBudget(cfg["roundBudget"])
-    if budget.status()["limit"] != 120 or not budget.status()["armed"]:
+    settings = round_settings(gate, cfg, runtime, root)
+    if budget.status()["limit"] != settings["limit"]:
+        raise RuntimeError("Budget differs from the approved round")
+    if not settings["classified"] and not budget.status()["armed"]:
         raise RuntimeError("The existing shared budget is not armed")
     os.environ.update(HERMES_HOME=str(home), TERMINAL_CWD=str(workspace),
                       LINGJU_BROWSER_EXERCISE="playwright",
@@ -145,6 +193,17 @@ async def serve(args):
                       XDG_LINGJU_BROWSER_RUNTIME=str(runtime))
     os.chdir(workspace)
     sys.path.insert(0, str(install))
+    # Install before importing the native gateway: startup requests are covered.
+    traffic = policy = None
+    if settings["classified"]:
+        import yaml
+        from traffic_guard import TrafficPolicy, TrafficAudit, install_traffic_guard
+        saved = yaml.safe_load((home / "config.yaml").read_text(encoding="utf-8")) or {}
+        policy = TrafficPolicy(metadata_urls=metadata_catalog_urls(saved))
+        traffic = TrafficAudit(budget.path.parent / "traffic.sqlite")
+        install_traffic_guard(budget, traffic, policy, add_network_audit=True)
+    else:
+        install_httpx_budget(budget, add_network_audit=True)
     # Suppress native account IDs/message text; metadata-only receipts below.
     logging.disable(logging.CRITICAL)
     import gateway.run as native
@@ -170,6 +229,9 @@ async def serve(args):
         config.platforms = {Platform.QQBOT: qq}
         runner = native.GatewayRunner(config)
         adapter = QQAdapter(qq)
+        if policy:
+            # Original adapter normalized the existing allowlist; do not persist it.
+            policy.qq_users = frozenset(adapter._allow_from)
         runner.adapters[Platform.QQBOT] = adapter
         runner.delivery_router.adapters = runner.adapters
         runner._gateway_loop = asyncio.get_running_loop()
@@ -187,7 +249,7 @@ async def serve(args):
         adapter.set_busy_session_handler(runner._handle_active_session_busy_message)
         adapter.set_fatal_error_handler(runner._handle_adapter_fatal_error)
         # QQ's native WebSocket uses aiohttp; narrowly allow that connection.
-        # HTTPX model/aux/retry requests keep the unchanged shared hard guard.
+        # HTTPX model/aux/retry requests keep the active round's hard guard.
         raw_open = adapter._open_ws
         @functools.wraps(raw_open)
         async def open_qq(url):
@@ -198,13 +260,12 @@ async def serve(args):
             finally:
                 _inside_metered_transport.reset(token)
         adapter._open_ws = open_qq
-        install_httpx_budget(budget, add_network_audit=True)
         browser_ready = False
         try:
             browser_ready = await discover_company_browser(out)
         except Exception as exc:
             event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
-        intake = Intake(out / "intake.sqlite", cap=args.admit_through_slot or 3)
+        intake = Intake(settings["intake"] or out / "intake.sqlite", cap=args.admit_through_slot or 3)
         busy = asyncio.Lock()
         ready = False
         primary = runner._primary_message_handler()
@@ -214,25 +275,29 @@ async def serve(args):
                 return None
             if msg.text.strip().lower() == "/status":
                 event(out, "status_requested", model_calls=0)
-                admission_open = args.allow_task_messages and intake.count() < intake.cap
-                state = "本次批准的一条模拟任务接收已开启" if admission_open else "等待Owner复核，暂停新模型任务"
+                status = budget.status()
+                admission_open = (args.allow_task_messages and browser_ready and status['armed']
+                                  and intake.count() < intake.cap and status['reserved_network_attempts'] < status['limit'])
+                state = "本次批准的模拟任务接收已开启" if admission_open else "当前暂停新模型任务"
                 browser = "13项浏览器工具目录预检通过" if browser_ready else "浏览器工具目录预检未通过"
+                label = "模型请求（含重试、视觉辅助及未知路由）" if settings['classified'] else "共享HTTP请求"
                 return (f"QQ通道已连接，仍是原Hermes、原公司工作区。{state}；{browser}。"
-                        f"已接收{intake.count()}/3条任务；共享请求额度已用"
-                        f"{budget.status()['reserved_network_attempts']}/120次（含QQ连接等HTTP请求）。"
+                        f"本轮已接收{intake.count()}/3条任务；{label}已用"
+                        f"{status['reserved_network_attempts']}/{status['limit']}次。"
                         "没有登录真实灵生后台。")
             if not ready or busy.locked():
                 return "当前正在准备或处理上一条任务，请先等待完成；本条没有送给模型。"
             if not args.allow_task_messages or not browser_ready:
                 event(out, "inbound_paused_without_model", model_calls=0)
-                return "QQ仍在线。本轮第一条浏览器任务未通过，已暂停新模型任务，等待Owner复核；没有补发或重试。"
+                return "QQ仍在线，当前暂停新模型任务；本条未提交模型。"
             if intake.count() >= intake.cap:
                 event(out, "approved_message_allowance_used", model_calls=0)
-                return "本次批准的任务机会已用完，QQ仍在线；本条没有提交模型，等待Owner复核。"
+                return "当前阶段的任务机会已用完，QQ仍在线；本条没有提交模型。"
             if msg.text.startswith("/") or msg.media_urls:
                 return "本轮仅接收文字任务和/status，不执行重启、配置、媒体或其他命令。"
-            if budget.status()["reserved_network_attempts"] >= 115:
-                return "本轮共享请求额度接近上限，已暂停接收任务。"
+            status = budget.status()
+            if not status['armed'] or status['reserved_network_attempts'] >= status['limit'] - 5:
+                return "本轮请求额度尚未开放或接近上限，已暂停接收任务。"
             async with busy:
                 try:
                     slot = intake.take(msg.message_id)
@@ -245,11 +310,13 @@ async def serve(args):
                 msg.source = dataclasses.replace(msg.source, thread_id=out.name + "-" + str(slot))
                 os.environ["TERMINAL_CWD"] = str(workspace)
                 event(out, "owner_task_admitted", slot=slot, cwd=str(workspace),
-                      toolsets=TOOLSETS, budget_before=budget.status())
+                      toolsets=TOOLSETS, budget_before=budget.status(),
+                      traffic_before=traffic.counts() if traffic else None)
                 try:
                     return await primary(msg)
                 finally:
                     event(out, "owner_task_returned", slot=slot, budget_after=budget.status(),
+                          traffic_after=traffic.counts() if traffic else None,
                           protected_changes=check_snapshot(baseline))
         adapter.set_message_handler(receive)
         write_pid_file()
@@ -269,7 +336,9 @@ async def serve(args):
               codex_model_messages=0, cron_started=False, other_channels_started=False,
               original_gateway_start_called=False, protected_changes=[],
               browser_catalog_verified=browser_ready, task_admission_enabled=args.allow_task_messages,
-              admission_ceiling=intake.cap, existing_admitted_tasks=intake.count())
+              admission_ceiling=intake.cap, existing_admitted_tasks=intake.count(),
+              accounting_mode=gate.get('accounting_mode','legacy_all_httpx'),
+              traffic=traffic.counts() if traffic else None)
         print(json.dumps({"event":"qq_ready", "pid":os.getpid(), "budget":budget.status(),
                           "owner_can_send":"/status", "model_messages_sent_by_codex":0}), flush=True)
         await asyncio.Event().wait()
@@ -291,7 +360,8 @@ if __name__ == "__main__":
     for name in ["runtime", "install", "baseline", "output"]:
         p.add_argument("--" + name, required=True)
     p.add_argument("--allow-task-messages", action="store_true",
-                   help="Explicitly reopen intake only after Owner review; default is status only")
+                   help="Explicitly open only the approved stage; default is status only")
+    p.add_argument("--acceptance-gate", help="Explicit per-run zero-model gate for an authorized new round")
     p.add_argument("--admit-through-slot", type=int, choices=[1, 2, 3],
                    help="Persistent total admission ceiling for the explicitly approved opening")
     try:
