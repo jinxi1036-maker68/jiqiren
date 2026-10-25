@@ -1,0 +1,149 @@
+{
+  "checked_at": "2026-10-25T10:44:11.374838+00:00",
+  "purpose": "Targeted provider429 diagnosis and process-local pacing, no Hermes model probe",
+  "new_real_Hermes_model_requests": 0,
+  "new_Owner_model_messages": 0,
+  "error_evidence": {
+    "path": "H/sessions/request_dump_20261025_164819_9a7168ed_20261025_164919_459439.json",
+    "decoded": "Root response error only; request.headers and request.body not decoded",
+    "decoded_error_tail_sha256": "fe605c5bc605a25ce417c9f219815e6a9e56237c133f027f26500ae6803ce76a",
+    "HTTP_status": 429,
+    "provider_error_type": "throttling_error",
+    "safe_message": "RateLimitError: OpenAIException - Too Many Requests",
+    "Retry_After_or_rate_headers": "not preserved by original dump; cannot assert server did not send them",
+    "reason_subtype": "not identified; no account subscription/remaining quota verified",
+    "no_raw_dump_prompt_credentials_uploaded": true
+  },
+  "model_metadata": {
+    "model": "agnes-3.0-flash",
+    "provider": "custom:Agnes.ai",
+    "endpoint_host": "apihub.agnes-ai.com",
+    "agent_api_max_retries_config": 3,
+    "original_config_changed": false
+  },
+  "official_public_sources": [
+    {
+      "url": "https://wiki.agnes-ai.com/zh-Hans/docs/tokenplan",
+      "facts": "Public text reference default10RPM, enterprise20RPM, TokenPlan1000RPM; actual account/key type unknown, same-type keys share limit pool; values can change"
+    },
+    {
+      "url": "https://wiki.agnes-ai.com/zh-Hans/docs/faqs",
+      "facts": "429 may reflect RPM or subscription quota; lower frequency/concurrency and verify account allowance"
+    },
+    {
+      "url": "https://github.com/AgnesAI-Labs/AgnesAI-Models/blob/main/docs/ERROR_CODES.md",
+      "facts": "429 includes rate/concurrency/repeated calls; docs alone do not diagnose this account"
+    }
+  ],
+  "observed_requests": {
+    "chat_endpoint_attempts": 10,
+    "first": "2026-10-25T08:48:28.347511+00:00",
+    "last": "2026-10-25T08:49:17.516368+00:00",
+    "span_seconds": 49.168857,
+    "hypothesis": "Self-generated burst is a plausible risk if a low-limit pool applies; actual account RPM/concurrency/quota cause remains unproven",
+    "not_claimed": "No claim of unpaid balance, expired key, or upstream OpenAI official account error"
+  },
+  "process_only_pacing": {
+    "installed": true,
+    "original_configuration_changed": false,
+    "opt_in_gate_required": true,
+    "one_inflight_request_through_stream_close": true,
+    "minimum_start_interval_seconds": 12,
+    "approx_sustained_requests_per_minute": 5,
+    "429_Retry_After": "Numeric and HTTP-date honored; no header => local60s policy, not a recovery guarantee",
+    "long_Retry_After_over600s": "Freeze further admissions; do not shorten server wait",
+    "QQ_and_exact_metadata_catalog": "Separately audited; bypass model pacing, not model cap",
+    "response_receipts": "HTTP status, numeric Retry-After and selected numeric rate limits only; no URL/body/prompt/credentials/arbitrary headers",
+    "scope_limit": "Only this process, not other applications, account quota or OS sandbox",
+    "actual_model_provider_recovery": "not probed or proven"
+  },
+  "zero_model_tests": {
+    "provider_pacing": 8,
+    "traffic_guard": 6,
+    "QQ_runtime": 18,
+    "total": 32,
+    "local_stub_and_loopback_real_SDK_only": true,
+    "covers": [
+      "sync/async and SDK retry shared spacing/cap",
+      "stream permit lifetime and cancellation",
+      "QQ replies while model stream in flight",
+      "Retry-After seconds/date and cooldown",
+      "long wait fail-closed",
+      "budget denial preserves standard hard-stop receipt",
+      "no sensitive receipt content"
+    ]
+  },
+  "runtime_status": {
+    "original_employee_H_W": true,
+    "QQ_READY": true,
+    "communication_only": true,
+    "model_pipeline_constructed": false,
+    "MCP_started": false,
+    "provider_pacer_initialized": true,
+    "new_task_admission": false,
+    "phone_roundtrip": "not yet observed"
+  },
+  "budget": {
+    "limit": 30,
+    "reserved_network_attempts": 11,
+    "armed": false,
+    "events": {
+      "denied_unarmed": 5,
+      "reserved_before_send": 11
+    },
+    "families": {
+      "chat_completions": 10,
+      "other_httpx": 1
+    }
+  },
+  "remaining_request_reservations": 19,
+  "messages_admitted": 1,
+  "approved_messages": 1,
+  "no_counter_reset_or_additional_message_grant": true,
+  "QQ_control_audit": {
+    "model": 11,
+    "qq": 11
+  },
+  "tool_files_changed": {
+    "traffic_guard.py": {
+      "before_sha256": "ea3d8c004bdc9d5b01c8cc950a402d4723a45ed9475106428342be0d489c0d1e",
+      "after_sha256": "3eb8b4903a15c3492a545ea6cbc9ff765413684966e46f27b73b3b86bf144f6e"
+    },
+    "qq_runtime.py": {
+      "before_sha256": "4d24d70ede1804ec5b70556a81d09bfd423f3ddebc7f985713959e984d8d0be7",
+      "after_sha256": "8bfbf2e65bb3b445dc2409b3bc32b957d23474e11715c3feb74ce59fd856c098"
+    },
+    "deployment.json": {
+      "before_sha256": "c849fe9e137eaf9cb44db609e198523806de74f6db5edd9a4ee6c48772678822",
+      "after_sha256": "28261ecc0a3cc11251bc2279fa6bccdde12a2defd6084728cd2cefc6ca33aefd"
+    },
+    "qq-addon-deployment.json": {
+      "before_sha256": "b4535663f7180e4c5fc2881a693ab33cdc8cfa6bffa80d3634d81e2554aa5ce2",
+      "after_sha256": "cc57e29331a5e916e7cb54f4f63ee7ce3b77ab01e30730fecf158e385fdbf1a0"
+    },
+    "provider_pacing.py": {
+      "new_file": true,
+      "after_sha256": "40aa48b60bfbb2d85c9c1d2171adb6de257f773ba030fe9333a9a4bf4a8d16bb"
+    }
+  },
+  "necessary_private_preimages": 4,
+  "restore_performed": false,
+  "owned_prior_QQ_and_children_exited": true,
+  "ordinary_services_stopped": false,
+  "bounded_setup_issue": "Initial owned-process check rejected console-host descendants before stopping; validated their ancestry and executable, then closed only this own pipeline and console children",
+  "protected": {
+    "records_unchanged": 59,
+    "workspace_files": 37,
+    "Manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+    "old60_and120_ledgers_byte_unchanged": true
+  },
+  "source_sha256": {
+    "provider_pacing.py": "40aa48b60bfbb2d85c9c1d2171adb6de257f773ba030fe9333a9a4bf4a8d16bb",
+    "traffic_guard.py": "3eb8b4903a15c3492a545ea6cbc9ff765413684966e46f27b73b3b86bf144f6e",
+    "qq_runtime.py": "8bfbf2e65bb3b445dc2409b3bc32b957d23474e11715c3feb74ce59fd856c098",
+    "deploy.py": "0f1c8e5fdac10c6f0022570b2a925819be6d1c47dbab420eb4b83c15c67d8324",
+    "tests/test_provider_pacing.py": "bba51ec62550e2615f127742701a93efd02db703e7722ac506cae00ad93281a4",
+    "tests/test_qq_runtime.py": "531872745020e95a6645af4e730ce5a1979c2e519ac040e188db6189e1f556c3"
+  },
+  "next": "Any further Owner task message must explicitly authorize a one-time continuation; keep remaining19 and total30, do not auto retry or open real platform"
+}

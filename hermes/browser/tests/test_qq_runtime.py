@@ -1,0 +1,305 @@
+import concurrent.futures
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from qq_runtime import (Intake, official_qq_websocket, verify_browser_catalog,
+                        metadata_catalog_urls, round_settings, TOOLSETS,
+                        acceptance_thread_id, verify_unused_thread, communication_only_mode,
+                        paused_notice, newly_budget_blocked, verify_closed_status_mode)
+from qq_runtime import apply_model_proxy_bypass
+
+
+class QQIntakeTests(unittest.TestCase):
+    def test_proxy_bypass_preserves_both_case_exceptions_and_QQ_routes(self):
+        import os,urllib.request
+        from urllib.parse import urlsplit
+        from unittest.mock import patch
+        gate={'model_proxy_bypass':{
+            'authorization':'2026-10-25 Owner: bypass original Hermes model HTTP proxy; preserve QQ route',
+            'hosts':['apihub.agnes-ai.com'],'process_only':True}}
+        def resolver(url):
+            return None if urllib.request.proxy_bypass_environment(urlsplit(url).hostname) else 'existing-proxy'
+        # Windows's real environment aliases case; use a plain mapping to also
+        # exercise independently inherited spellings on case-sensitive hosts.
+        with patch('qq_runtime.os.environ',{'NO_PROXY':'localhost,127.0.0.1','no_proxy':'existing.internal'}):
+            receipt=apply_model_proxy_bypass(gate,resolver)
+            self.assertTrue(receipt['native_resolver_model_direct'])
+            self.assertEqual(os.environ['NO_PROXY'],os.environ['no_proxy'])
+            for host in ['localhost','127.0.0.1','existing.internal','apihub.agnes-ai.com']:
+                self.assertIsNone(resolver('https://'+host))
+            for host in ['api.sgroup.qq.com','bots.qq.com','apihub.agnes-ai.com.evil.invalid','other.invalid']:
+                self.assertEqual(resolver('https://'+host),'existing-proxy')
+
+    def test_proxy_bypass_default_off_and_rejects_broader_scope(self):
+        import os
+        from unittest.mock import patch
+        with patch('qq_runtime.os.environ',{'NO_PROXY':'localhost'}):
+            self.assertIsNone(apply_model_proxy_bypass({}))
+            for value in [{'hosts':['*']},{'hosts':['agnes-ai.com']},{'process_only':False}]:
+                with self.assertRaises(RuntimeError):apply_model_proxy_bypass({'model_proxy_bypass':value})
+            self.assertEqual(dict(os.environ),{'NO_PROXY':'localhost'})
+
+    def test_proxy_bypass_failed_native_route_check_restores_environment(self):
+        import os
+        from unittest.mock import patch
+        gate={'model_proxy_bypass':{
+            'authorization':'2026-10-25 Owner: bypass original Hermes model HTTP proxy; preserve QQ route',
+            'hosts':['apihub.agnes-ai.com'],'process_only':True}}
+        with patch('qq_runtime.os.environ',{'NO_PROXY':'localhost'}):
+            with self.assertRaises(RuntimeError):apply_model_proxy_bypass(gate,lambda url:'still-proxied')
+            self.assertEqual(dict(os.environ),{'NO_PROXY':'localhost'})
+
+    def test_proxy_bypass_rejects_QQ_route_change_and_rolls_back(self):
+        import os
+        from unittest.mock import patch
+        gate={'model_proxy_bypass':{
+            'authorization':'2026-10-25 Owner: bypass original Hermes model HTTP proxy; preserve QQ route',
+            'hosts':['apihub.agnes-ai.com'],'process_only':True}}
+        def broken_resolver(url):
+            return None if 'apihub.agnes-ai.com' in os.environ.get('NO_PROXY','') else 'existing-proxy'
+        with patch('qq_runtime.os.environ',{'no_proxy':'old.internal'}):
+            with self.assertRaises(RuntimeError):apply_model_proxy_bypass(gate,broken_resolver)
+            self.assertEqual(dict(os.environ),{'no_proxy':'old.internal'})
+
+    def test_continuation_retains_first_message_and_same_30_request_ledger(self):
+        import json
+        from request_budget import RequestBudget
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d); old=root/'runs/old/requests.sqlite'; ledger=root/'runs/round3/requests.sqlite'
+            runtime=root/'runs/fresh-recovery/runtime.json'
+            for p in [old,ledger,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            previous=RequestBudget.create(old,60)
+            for _ in range(60):previous.take()
+            budget=RequestBudget.create(ledger,30)
+            for _ in range(11):budget.take()
+            original=Intake(ledger.parent/'qq-intake.sqlite',cap=1)
+            original.take('failed-429-message')
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':30,
+                  'approved_task_limit':1,'owner_authorization':'2026-10-25 Owner: 30 model requests, 1 QQ simulation task',
+                  'previous_exhausted_ledger':str(old)}
+            cfg={'roundBudget':str(ledger),'case':'recovery'}
+            self.assertEqual(round_settings(gate,cfg,runtime,root)['task_cap'],1)
+            extra={'authorization':'2026-10-25 Owner: begin one same-task continuation using remaining19 of30',
+                   'additional_messages':1,'original_messages_retained':1,'shared_ledger':str(ledger),
+                   'purpose':'same_incomplete_recovery_goal'}
+            gate['one_time_continuation']=extra
+            before=budget.status(); old_before=previous.status()
+            settings=round_settings(gate,cfg,runtime,root)
+            self.assertEqual((settings['limit'],settings['task_cap']),(30,2))
+            for key,value in [('additional_messages',2),('shared_ledger',str(old)),('authorization',''),('purpose','different_goal')]:
+                with self.assertRaises(RuntimeError):
+                    round_settings({**gate,'one_time_continuation':{**extra,key:value}},cfg,runtime,root)
+            with self.assertRaises(RuntimeError):round_settings(gate,{**cfg,'case':'binding'},runtime,root)
+            self.assertEqual(budget.status(),before)
+            resumed=Intake(settings['intake'],cap=2)
+            self.assertEqual(resumed.take('one-owner-continuation'),2)
+            self.assertIsNone(resumed.take('failed-429-message'))
+            with self.assertRaises(RuntimeError):resumed.take('unapproved-third')
+            self.assertEqual(round_settings(gate,cfg,runtime,root)['task_cap'],2)
+            self.assertEqual(previous.status(),old_before)
+
+    def test_continuation_does_not_restore_spent_requests_before_admission(self):
+        from request_budget import RequestBudget
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);old=root/'runs/old/requests.sqlite';new=root/'runs/new/requests.sqlite'
+            runtime=root/'runs/case/runtime.json'
+            for p in [old,new,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            previous=RequestBudget.create(old,60)
+            for _ in range(60):previous.take()
+            budget=RequestBudget.create(new,30)
+            for _ in range(12):budget.take()
+            Intake(new.parent/'qq-intake.sqlite',cap=1).take('old')
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':30,'approved_task_limit':1,
+                  'owner_authorization':'2026-10-25 Owner: 30 model requests, 1 QQ simulation task',
+                  'previous_exhausted_ledger':str(old),'one_time_continuation':{
+                  'authorization':'2026-10-25 Owner: begin one same-task continuation using remaining19 of30',
+                  'additional_messages':1,'original_messages_retained':1,'shared_ledger':str(new),
+                  'purpose':'same_incomplete_recovery_goal'}}
+            with self.assertRaises(RuntimeError):round_settings(gate,{'roundBudget':str(new),'case':'recovery'},runtime,root)
+            self.assertEqual(budget.status()['reserved_network_attempts'],12)
+
+    def test_status_mode_keeps_unused_requests_paused_and_cannot_reopen_message_grant(self):
+        verify_closed_status_mode({'armed':False,'limit':30,'reserved_network_attempts':11},1,1)
+        with self.assertRaises(RuntimeError):verify_closed_status_mode({'armed':True},1,1)
+        with self.assertRaises(RuntimeError):verify_closed_status_mode({'armed':False},0,1)
+
+    def test_status_only_gate_cannot_open_model_task_intake(self):
+        gate={'communication_only':True,'model_execution_permitted':False}
+        self.assertTrue(communication_only_mode(gate,False))
+        with self.assertRaises(RuntimeError):communication_only_mode(gate,True)
+        with self.assertRaises(RuntimeError):communication_only_mode({'communication_only':True},False)
+
+    def test_finished_notice_explains_counts_and_no_model_resubmission(self):
+        text=paused_notice({'reserved_network_attempts':60,'limit':60},3)
+        for value in ['3/3','60/60','没有送给模型','不要重复发送','不表示QQ或模型服务失联']:
+            self.assertIn(value,text)
+
+    def test_only_new_limit_denial_is_attributed_to_budget(self):
+        before={'events':{'denied_at_limit':1}}
+        self.assertFalse(newly_budget_blocked(before,{'events':{'denied_at_limit':1}}))
+        self.assertTrue(newly_budget_blocked(before,{'events':{'denied_at_limit':2}}))
+
+    def test_one_task_notice_closes_after_one_even_with_budget_remaining(self):
+        text=paused_notice({'reserved_network_attempts':19,'limit':30},1,1)
+        for value in ['1/1','19/30','本轮模拟验收已结束','没有送给模型']:
+            self.assertIn(value,text)
+
+    def test_authorized_30_one_task_round_keeps_exhausted_60_round_unchanged(self):
+        from request_budget import RequestBudget
+        local=Path(__file__).resolve().parents[1]/'.local'
+        local.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='qq-30-round-test-',dir=local) as d:
+            root=Path(d);old=root/'runs/old/requests.sqlite';new=root/'runs/new/requests.sqlite'
+            runtime=root/'runs/case/runtime.json'
+            for p in [old,new,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            runtime.write_text('{}')
+            previous=RequestBudget.create(old,60)
+            for _ in range(60):previous.take()
+            before=previous.status()
+            RequestBudget.create(new,30,armed=False)
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':30,
+                  'approved_task_limit':1,'owner_authorization':'2026-10-25 Owner: 30 model requests, 1 QQ simulation task',
+                  'previous_exhausted_ledger':str(old)}
+            settings=round_settings(gate,{'roundBudget':str(new)},runtime,root)
+            self.assertEqual((settings['limit'],settings['task_cap']),(30,1))
+            intake=Intake(settings['intake'],cap=settings['task_cap'])
+            self.assertEqual(intake.take('only-approved-task'),1)
+            with self.assertRaises(RuntimeError):intake.take('extra-message')
+            for key,value in [('approved_model_limit',31),('approved_task_limit',3),('owner_authorization','')]:
+                with self.assertRaises(RuntimeError):
+                    round_settings({**gate,key:value},{'roundBudget':str(new)},runtime,root)
+            with self.assertRaises(RuntimeError):round_settings(gate,{'roundBudget':str(old)},runtime,root)
+            self.assertEqual(previous.status(),before)
+
+    def test_thread_id_does_not_collide_across_runs_or_slots(self):
+        a=Path('runs/run-A/runtime.json');b=Path('runs/run-B/runtime.json')
+        self.assertNotEqual(acceptance_thread_id(a,1),acceptance_thread_id(b,1))
+        self.assertNotEqual(acceptance_thread_id(a,1),acceptance_thread_id(a,2))
+        self.assertNotEqual(acceptance_thread_id(a,1),'qq-transport-1')
+
+    def test_existing_conversation_is_rejected_without_mutating_database(self):
+        import sqlite3,hashlib,contextlib
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'state.sqlite'
+            with contextlib.closing(sqlite3.connect(p)) as c, c:
+                c.execute('create table sessions(source text,thread_id text)')
+                c.execute("insert into sessions values('qqbot','already-used')")
+            before=hashlib.sha256(p.read_bytes()).hexdigest()
+            verify_unused_thread(p,'new-run-thread')
+            with self.assertRaises(RuntimeError):verify_unused_thread(p,'already-used')
+            self.assertEqual(hashlib.sha256(p.read_bytes()).hexdigest(),before)
+
+    def test_model_metadata_exemption_only_comes_from_clean_model_config(self):
+        cfg={'model':{'base_url':'https://synthetic.invalid/v1'},
+             'auxiliary':{'vision':{'base_url':'https://synthetic.invalid/aux'}},
+             'mcp_servers':{'anything':{'base_url':'https://not-a-model.invalid'}},
+             'custom_providers':[{'base_url':'https://user:secret@synthetic.invalid/v1'},
+                                 {'base_url':'https://synthetic.invalid/v1?prompt=x'}]}
+        self.assertEqual(metadata_catalog_urls(cfg),{'https://synthetic.invalid/v1/models',
+                                                     'https://synthetic.invalid/aux/models'})
+
+    def test_B_browser_tasks_have_no_file_or_terminal_tools(self):
+        self.assertEqual(set(TOOLSETS),{'company_browser_simulation','vision'})
+
+    def test_new_round_requires_explicit_limits_and_preserves_old_exhausted_ledger(self):
+        from request_budget import RequestBudget
+        local=Path(__file__).resolve().parents[1]/'.local'
+        local.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='qq-round-test-',dir=local) as d:
+            root=Path(d);old=root/'runs/old/requests.sqlite';new=root/'runs/new/requests.sqlite'
+            runtime=root/'runs/case/runtime.json'
+            for p in [old,new,runtime]:p.parent.mkdir(parents=True,exist_ok=True)
+            runtime.write_text('{}')
+            previous=RequestBudget.create(old,120)
+            for _ in range(120):previous.take()
+            before=previous.status()
+            RequestBudget.create(new,60,armed=False)
+            gate={'accounting_mode':'model_attempts_v1','approved_model_limit':60,
+                  'approved_task_limit':3,'owner_authorization':'2026-10-25 Owner: 60 model requests, 3 QQ simulation tasks',
+                  'previous_exhausted_ledger':str(old)}
+            settings=round_settings(gate,{'roundBudget':str(new)},runtime,root)
+            self.assertEqual(settings['limit'],60)
+            self.assertEqual(settings['intake'],new.parent/'qq-intake.sqlite')
+            self.assertEqual(previous.status(),before)
+            with self.assertRaises(RuntimeError):
+                round_settings(gate,{'roundBudget':str(old)},runtime,root)
+            for key,value in [('approved_model_limit',61),('approved_task_limit',4),('owner_authorization','')]:
+                with self.assertRaises(RuntimeError):
+                    round_settings({**gate,key:value},{'roundBudget':str(new)},runtime,root)
+
+    def test_one_approved_retry_preserves_failed_slot_and_closes_after_second(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "intake.sqlite"
+            old = Intake(path)
+            self.assertEqual(old.take("failed-first-task"), 1)
+            reopened = Intake(path, cap=2)
+            self.assertEqual(reopened.take("one-owner-approved-retry"), 2)
+            self.assertIsNone(reopened.take("failed-first-task"))
+            restarted = Intake(path, cap=2)
+            with self.assertRaises(RuntimeError):
+                restarted.take("not-approved-third-task")
+            self.assertEqual(restarted.count(), 2)
+
+    def test_a_live_adapter_without_model_catalog_is_not_ready(self):
+        status = [{"name": "company_browser_simulation", "connected": True}]
+        with self.assertRaises(RuntimeError):
+            verify_browser_catalog(status, {"read_file", "vision_analyze"}, {"browser_navigate"})
+
+    def test_both_process_connection_and_model_catalog_are_required(self):
+        names = {"browser_navigate", "browser_snapshot"}
+        expected = set(names)
+        with self.assertRaises(RuntimeError):
+            verify_browser_catalog([], names, expected)
+        with self.assertRaises(RuntimeError):
+            verify_browser_catalog([{"name":"company_browser_simulation", "connected":False}], names, expected)
+        verify_browser_catalog([{"name":"company_browser_simulation", "connected":True}], names, expected)
+
+    def test_only_native_qq_websocket_is_exempted(self):
+        self.assertEqual(official_qq_websocket("wss://api.sgroup.qq.com/websocket"),
+                         "wss://api.sgroup.qq.com/websocket")
+        for url in ["ws://api.sgroup.qq.com/websocket", "wss://evil.test/websocket",
+                    "wss://api.sgroup.qq.com.evil.test/websocket",
+                    "wss://someone@api.sgroup.qq.com/websocket",
+                    "wss://api.sgroup.qq.com:444/websocket", "wss://api.sgroup.qq.com/other"]:
+            with self.assertRaises((RuntimeError, ValueError)):
+                official_qq_websocket(url)
+
+    def test_dedup_and_count_survive_transport_restart(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "intake.sqlite"
+            a = Intake(path)
+            self.assertEqual(a.take("first"), 1)
+            b = Intake(path)
+            self.assertIsNone(b.take("first"))
+            self.assertEqual(b.take("second"), 2)
+            self.assertEqual(b.take("third"), 3)
+            with self.assertRaises(RuntimeError):
+                b.take("fourth")
+            self.assertEqual(b.count(), 3)
+
+    def test_atomic_task_limit_under_concurrent_delivery(self):
+        with tempfile.TemporaryDirectory() as d:
+            a = Intake(Path(d) / "intake.sqlite")
+            def take(n):
+                try:
+                    return a.take(str(n))
+                except RuntimeError:
+                    return None
+            with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+                admitted = list(pool.map(take, range(12)))
+            self.assertEqual(sorted(x for x in admitted if x is not None), [1, 2, 3])
+            self.assertEqual(a.count(), 3)
+
+    def test_missing_message_id_is_not_admitted(self):
+        with tempfile.TemporaryDirectory() as d:
+            a = Intake(Path(d) / "intake.sqlite")
+            with self.assertRaises(RuntimeError):
+                a.take("")
+            self.assertEqual(a.count(), 0)
+
+
+if __name__ == "__main__":
+    unittest.main()

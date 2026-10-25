@@ -1,0 +1,285 @@
+{
+  "checked_at": "2026-10-25T11:36:08.642000+00:00",
+  "scope": "Targeted connection diagnosis; no Agent task or model generation",
+  "new_model_messages": 0,
+  "new_model_generation_requests": 0,
+  "account_credentials_sent_in_checks": false,
+  "confirmed": {
+    "original_runtime_environment": "HTTP_PROXY/HTTPS_PROXY local HTTP proxy 127.0.0.1:7897; NO_PROXY does not bypass model host",
+    "original_H_dotenv_HTTPS_PROXY": "same local proxy; only this network value parsed, not credential fields",
+    "proxy_listener": {
+      "port": 7897,
+      "process": "verge-mihomo.exe",
+      "application": "Clash Verge",
+      "pid_at_check": 11244
+    },
+    "original_client_proxy_selection": "I/run_agent.py:5101+ and I/agent/process_bootstrap.py:113+ explicitly resolve HTTPS_PROXY/NO_PROXY",
+    "native_factory_original_pool": "HTTPProxy",
+    "candidate_native_factory_pool": "ConnectionPool",
+    "hidden_transport_retries": 0,
+    "TLS_verification_kept": true,
+    "historical_proxy_records": [
+      {
+        "at": "2026-10-25T19:15:12+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "77b0429aed04e24010533786b6ee3cabdae92a3ad34fb6ca512ef59a552bb867",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:15:17+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "d3b1661fc65e4e8622123b2bd7d77c0b255d0d73ac4aad828f8bee44c8909211",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:15:18+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "6eb9eb75b3863c0ef9f0bd49cbbf518991743ff482f3c945f114e5bd2440ebf1",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:15:30+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "454aee0ecf55fa5e5b80d8d29b778d5a6aeeaf9499120d326ed4a16e765db862",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:15:41+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "77a7ca12bcb750daa772bd2bb4bc03a1e3a57b30dede217eecc893d278044946",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:15:54+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "e5948d7e1512d7ce0e235f87acfae280265792c856807b07c26da5ee81019b15",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:16:07+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "b94a416ed4498a3dd75068a4240dc6330de3afb5e79d6e7b9b6770bcf4aab399",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:16:19+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "fa496ef6be53c6ba84833ef9890b647bacd7b17b4d91ab207a4eacb6c2f3be47",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:16:30+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "8a67d207446735d4f56be3ebb8c9434d58dd90eb347d859decbe8b9242ead190",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:16:42+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "04226f58435380836c6a051dfe69488f3b8450a5acfd05f77064b417ff84ad46",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:16:54+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "1a561506dfb04c73c2e6e209e67f8b70d81c3cd363046c33e9a097da6ef715de",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:17:40+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "fe6a1635e2db1905fecec3b4caca1c36447c1190232ae154007bcd9c2e32d05c",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:17:53+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "8aa6e0e66a1028b238ba26ee5185c9a4fbc64d67c622fe6130829848c260d988",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:18:07+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "5ac32036a6f01be66803607599fb8f26f1318468a9b301358046bb9ac9146e5c",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:19:06+08:00",
+        "source": "proxy sidecar/sidecar_2026-10-25_18-22-47.log",
+        "line_sha256": "5fba0d8a71b48320f402a9d282685b5ec332328db9bcf77c2a79f4545443275a",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:19:18+08:00",
+        "source": "proxy sidecar/sidecar_latest.log",
+        "line_sha256": "f32bf376a2505a08285a3c8f61935b2b7356a6ce7a28a2a5c6220a670e5d683f",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:19:30+08:00",
+        "source": "proxy sidecar/sidecar_latest.log",
+        "line_sha256": "d7618eb4748f38f4ba1714e5a08b83de7a044070a3db78826913f2608e181621",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:19:42+08:00",
+        "source": "proxy sidecar/sidecar_latest.log",
+        "line_sha256": "e702024fe46ddba215110cf24500df65a73dc8e528c2cbc654c63e604ddc63e0",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:19:54+08:00",
+        "source": "proxy sidecar/sidecar_latest.log",
+        "line_sha256": "39d4532fce44f76772bdda35a5d3e7cc3985d4b861b60b8b3ebb58ec490192f3",
+        "TCP": true,
+        "response_status_logged": false
+      },
+      {
+        "at": "2026-10-25T19:20:06+08:00",
+        "source": "proxy sidecar/sidecar_latest.log",
+        "line_sha256": "7e1a0dabab14f5c1d92f5da4084d30e1405ead27188490402435dfedc43a752d",
+        "TCP": true,
+        "response_status_logged": false
+      }
+    ],
+    "historical_proxy_records_count": 20,
+    "prior_request_start_times_correlated_within2seconds": {
+      "matched": 18,
+      "total": 18,
+      "process_attribution_limit": "domain/time correlation and source/env evidence; proxy lines do not include Hermes PID or underlying TLS exception"
+    },
+    "packages": {
+      "python": "3.11.15",
+      "httpx": "0.28.1",
+      "httpcore": "1.0.9",
+      "openai": "2.24.0",
+      "certifi": "2026.5.20",
+      "idna": "3.18",
+      "aiohttp": "3.14.3"
+    },
+    "connection_failure_reproduced": "httpx.ConnectError <- httpcore.ConnectError <- ssl.SSLEOFError on proxy path",
+    "no_current_root_exception_chain_in_agent_log": "QQ wrapper disabled logging, request_dump root saves type/message only; cannot reconstruct missing cause from old dump"
+  },
+  "bounded_network_checks": {
+    "total_unauthenticated_GET_requests": 10,
+    "model_catalog_requests": 8,
+    "public_GitHub_control_requests": 2,
+    "method": "No Authorization, no POST, no prompt, no generation; response headers only; cert verification on",
+    "same_model_catalog": "https://apihub.agnes-ai.com/v1/models",
+    "plain_httpx_checks": [
+      {
+        "at_UTC": "2026-10-25T11:29:52",
+        "proxy": "TLS_EOF",
+        "direct": 200
+      },
+      {
+        "at_UTC": "2026-10-25T11:30:37",
+        "proxy": "TLS_EOF",
+        "direct": 200
+      },
+      {
+        "at_UTC": "2026-10-25T11:30:44",
+        "proxy": "TLS_EOF",
+        "direct": 200
+      }
+    ],
+    "native_original_client_factory_checks": [
+      {
+        "at_UTC": "2026-10-25T11:33:12.084577",
+        "proxy_pool": "HTTPProxy",
+        "proxy": 401
+      },
+      {
+        "at_UTC": "2026-10-25T11:33:12.786094",
+        "candidate_pool": "ConnectionPool",
+        "direct": 200,
+        "QQ_proxy_preserved": true
+      }
+    ],
+    "model_catalog_summary": {
+      "proxy_TLS_failures": 3,
+      "proxy_HTTP_responses": {
+        "401": 1
+      },
+      "direct_HTTP_responses": {
+        "200": 4
+      }
+    },
+    "public_control_summary": {
+      "endpoint": "https://api.github.com/meta",
+      "proxy": 403,
+      "direct": 200
+    },
+    "401_403_limit": "Deliberately unauthenticated public metadata checks; not evidence original account Key is invalid or business authorization failed",
+    "direct_definition": "Application-layer bypass of explicit HTTP proxy; not a claim that OS TUN/VPN or every network intermediary was excluded",
+    "limits": "Small metadata sample, not streaming/generation validation, not account quota verification"
+  },
+  "historical_failure_inference": {
+    "strong_lead": "Proxy TLS instability reproduced and proxy use during old task supported by env/source/time-correlated logs",
+    "not_fully_proven": "Exact cause of each historical APIConnectionError; whether connection closed at local proxy, its selected upstream, remote gateway or model service",
+    "not_claimed": [
+      "provider service globally down",
+      "enterprise rate limit exceeded",
+      "credential invalid",
+      "all future direct model calls stable"
+    ]
+  },
+  "minimal_fix_candidate": {
+    "mechanism": "Append exact apihub.agnes-ai.com to NO_PROXY in this temporary Hermes QQ process only, retaining existing entries",
+    "validated_in_diagnostic_child_only": true,
+    "actual_running_QQ_changed": false,
+    "QQ_route": "Existing proxy retained",
+    "global_proxy_or_Clash_config_changed": false,
+    "model_endpoint_credentials_config_changed": false,
+    "certificate_verification_disabled": false,
+    "restore": "Exit future opt-in process or omit opt-in; no persistent configuration restore required",
+    "future_preconditions": "If implemented, apply/verify after dotenv load and before client construction; fail closed if model host remains proxied or QQ route changes",
+    "real_model_validation": "Not run; existing messages2/2 consumed,29/30 paused; do not spend remaining1 or open additional messages automatically"
+  },
+  "actual_changes": {
+    "installed_Hermes_or_tools": 0,
+    "config_identity_memory_knowledge_permissions": 0,
+    "services_restarted_or_stopped": 0,
+    "proxy_settings_changed": 0,
+    "diagnostic_child_env_only": true,
+    "repository": "sanitized evidence and progress only",
+    "backups_created": 0
+  },
+  "protected_records_unchanged": 59,
+  "workspace_files": 37,
+  "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+  "old60_and120_ledgers_unchanged": true,
+  "budget": {
+    "limit": 30,
+    "reserved_network_attempts": 29,
+    "armed": false,
+    "events": {
+      "denied_unarmed": 5,
+      "reserved_before_send": 29
+    },
+    "families": {
+      "chat_completions": 27,
+      "other_httpx": 2
+    }
+  },
+  "tasks_admitted": 2,
+  "conclusion": "Current proxy-path TLS instability is confirmed; historical task is not retrospectively passed. Minimal per-process bypass candidate passed zero-model metadata checks only."
+}

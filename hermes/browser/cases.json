@@ -1,0 +1,16 @@
+{
+  "release": "LINGJU-BROWSER-LOCAL-B-2026-10-24",
+  "message_limit": 6,
+  "api_request_limit": 120,
+  "max_turns_per_task": 16,
+  "routes": ["native", "playwright"],
+  "cases": [
+    {"id": "analysis", "goal": "Read, compare QA changes, distinguish facts and unknown scope"},
+    {"id": "binding", "goal": "Create one synthetic project and task, bind EMP-002 and DEV-010, verify persistence"},
+    {"id": "recovery", "goal": "Investigate partial reads, uncertain submission, stale objects and expired login"}
+  ],
+  "selection": ["all_hard_gates_pass", "human_interventions", "failed_recoveries", "api_requests", "elapsed_seconds", "prefer_native_if_tied"],
+  "model_calls_permitted_by_codex": 0,
+  "owner_sends_desktop_messages": true,
+  "production_access": false
+}

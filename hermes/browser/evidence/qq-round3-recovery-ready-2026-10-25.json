@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-10-25T08:40:52.688242+00:00",
+  "stage": "one Owner QQ recovery follow-up, awaiting Owner task",
+  "owner_authorization": "2026-10-25: 30 requests, 1 QQ simulated task",
+  "transport": "original installed QQAdapter + GatewayRunner native message pipeline; not Desktop window input",
+  "original_install_and_identity": true,
+  "original_H_and_W_proven_by_live_ready": true,
+  "actual_session_for_this_task": "not yet created; expected thread absent verified read-only",
+  "new_thread": "browser-20261025T083655Z-playwright-recovery-cdb598f5-1",
+  "runtime_run_id": "20261025T083655Z-playwright-recovery-cdb598f5",
+  "synthetic_origin": "http://127.0.0.1:50987",
+  "task_scope": "recovery",
+  "browser_catalog_tools": 13,
+  "verified_tool_source_files": 27,
+  "protected_records_unchanged": 59,
+  "workspace_file_count": 37,
+  "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+  "QQ_protocol_ready": true,
+  "task_admission_ceiling": 1,
+  "tasks_admitted": 0,
+  "new_model_messages": 0,
+  "new_model_network_requests": 0,
+  "budget": {
+    "limit": 30,
+    "reserved_network_attempts": 0,
+    "armed": true,
+    "events": {
+      "denied_unarmed": 5
+    },
+    "families": {}
+  },
+  "QQ_control_audit": {
+    "qq": 2
+  },
+  "startup_unknown_HTTPX_blocked_before_send": 5,
+  "previous120_and60_ledgers_byte_unchanged": true,
+  "previous_failure_results_preserved": true,
+  "QQ_module_tests_passed": 17,
+  "new_tests": 2,
+  "inherited_scope_component_checks": {
+    "unit_tests_passed": 5,
+    "actual_browser_block_before_upstream": true,
+    "Agent_revalidation": "still pending this Owner task"
+  },
+  "current_readiness_component": {
+    "passed": true,
+    "at": "2026-10-25T08:38:33.091512+00:00",
+    "model_calls": 0,
+    "Agent_acceptance": false,
+    "readiness_snapshot_only": true,
+    "sdk_tools": 13,
+    "task_scope": "recovery",
+    "clean_projects": 0,
+    "clean_tasks": 0,
+    "QA_refreshes": 0,
+    "phase": 0,
+    "checker_issue": "Initial ad-hoc verifier used truth.projects instead of truth.state.projects; only checker failed, corrected from existing receipts without another browser action"
+  },
+  "tool_files_changed": {
+    "qq_runtime.py": {
+      "before_sha256": "650f3310f3c7756f271278d904d11c1a31250e53cc62a87466523cf7e31cbc33",
+      "after_sha256": "4d24d70ede1804ec5b70556a81d09bfd423f3ddebc7f985713959e984d8d0be7"
+    },
+    "deployment.json": {
+      "before_sha256": "03303bb4fc0447f168cae574662aa1d31f7a2be7f1bbc18db85a3a736eb2c358",
+      "after_sha256": "c849fe9e137eaf9cb44db609e198523806de74f6db5edd9a4ee6c48772678822"
+    },
+    "qq-addon-deployment.json": {
+      "before_sha256": "edc1bc89919127996899c4b5cfb7556926de4f410d07fdd370bfac0bb8bd3e59",
+      "after_sha256": "b4535663f7180e4c5fc2881a693ab33cdc8cfa6bffa80d3634d81e2554aa5ce2"
+    }
+  },
+  "necessary_private_preimages": 3,
+  "restore_performed": false,
+  "unrelated_services_stopped": false,
+  "old_owned_status_QQ_replaced": true,
+  "no_original_identity_config_knowledge_permission_changes": true,
+  "real_business_platform_access": false,
+  "phone_round_trip_after_this_update": "not yet observed",
+  "formal_driver_or_whole_route_verdict": "not passed or selected",
+  "no_additional_task_or_budget_without_new_approval": true
+}

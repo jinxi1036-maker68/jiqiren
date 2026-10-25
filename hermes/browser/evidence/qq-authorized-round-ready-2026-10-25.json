@@ -1,0 +1,121 @@
+{
+  "checked_at": "2026-10-25T04:49:31.707271+00:00",
+  "owner_authorization": "Current conversation: explicitly approved a new round of <=60 model requests and <=3 Owner QQ simulation messages",
+  "round_id": "authorized-qq-round-20261025T044416Z-8af340",
+  "route": "playwright",
+  "case": "analysis",
+  "original_employee": {
+    "python": "I/venv/Scripts/python.exe",
+    "same_home_H": true,
+    "working_directory": "W = H/company-workspace",
+    "native_QQAdapter_and_GatewayRunner_pipeline": true,
+    "Desktop_window_input": false,
+    "new_profile_or_identity": false,
+    "new_gateway_full_start": false
+  },
+  "status": "QQ protocol READY, catalog proven, new budget armed; waiting Owner first task",
+  "origin": "http://127.0.0.1:51415",
+  "model_messages_sent_by_codex": 0,
+  "Owner_tasks_admitted": 0,
+  "total_new_round_task_limit": 3,
+  "current_stage_admit_through_slot": 1,
+  "budget": {
+    "limit": 60,
+    "reserved_network_attempts": 0,
+    "armed": true,
+    "events": {
+      "denied_unarmed": 5
+    },
+    "families": {}
+  },
+  "old_ledger_unchanged": {
+    "limit": 120,
+    "reserved_network_attempts": 120,
+    "armed": true,
+    "events": {
+      "denied_at_limit": 34,
+      "denied_unarmed": 30,
+      "reserved_before_send": 120
+    },
+    "families": {
+      "chat_completions": 28,
+      "messages": 16,
+      "other_httpx": 76
+    }
+  },
+  "traffic": {
+    "qq": 2
+  },
+  "startup_denied_unknown_httpx": {
+    "attempts": 5,
+    "family": "other_httpx",
+    "sent": 0,
+    "cause": "not separately determined; do not equate blocked startup probes with 5 model calls"
+  },
+  "actual_model_catalog_browser_tools": 13,
+  "initial_model_tool_names": [
+    "tool_call",
+    "tool_describe",
+    "tool_search",
+    "vision_analyze"
+  ],
+  "process_toolsets": [
+    "company_browser_simulation",
+    "vision"
+  ],
+  "B_no_file_terminal_tools_advertised": true,
+  "original_MCP_permissions_changed": false,
+  "new_QQ_tests_passed": 3,
+  "QQ_test_module_total_passed": 10,
+  "inherited_traffic_tests_passed": 6,
+  "inherited_browser_evidence_tests_passed": 4,
+  "fresh_actual_SDK_catalog_check": {
+    "tools": 13,
+    "browser_actions": 0,
+    "model_calls": 0
+  },
+  "fresh_initial_fixture": {
+    "phase": 0,
+    "qa_refreshes": 0,
+    "projects": 0,
+    "tasks": 0,
+    "event_count": 2
+  },
+  "tool_file_changes": [
+    "update company-browser/qq_runtime.py",
+    "new company-browser/traffic_guard.py",
+    "update company-browser/qq-addon-deployment.json",
+    "update company-browser/deployment.json"
+  ],
+  "necessary_private_preimages": 3,
+  "protected": {
+    "immutable_records": 59,
+    "changed": 0,
+    "workspace_files": 37,
+    "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+    "normal_heartbeat_records_observed_separately": 2
+  },
+  "source_sha256": {
+    "qq_runtime.py": "b8f575497ee04298cf82a50dbcdaa5dc340f26969e6b32014b67c6845d182a29",
+    "traffic_guard.py": "ea3d8c004bdc9d5b01c8cc950a402d4723a45ed9475106428342be0d489c0d1e",
+    "deploy.py": "57689a3a025fc7f19c0c81b48c5df3d046f887110683ccfcfc4dc1615aa7923b",
+    "tests/test_qq_runtime.py": "2e9b9bf7e507db143f54fa6c02504022e91ab8f744379a81fde1c6d5e2e3a60f"
+  },
+  "deployed_source_matches": true,
+  "runtime_receipts": {
+    "gate_sha256": "ed10ae9deb35b9149becbf15f5fada081097b559456818e7aef0d09264e649ca",
+    "ready_receipt_file_sha256": "666e36b98b655bdfea1b517e4f0034843c52d3d7bc2fa5d3951617cca18c572e",
+    "arm_receipt_sha256": "0f88396fef4ed6a31c758cf80458a1a504e73e8f288bc38cc595c7e5e740ef9b"
+  },
+  "restore_performed": false,
+  "production_access": false,
+  "PRs_merged": false,
+  "not_yet_verified": [
+    "New round Owner QQ task result",
+    "All pages and QA comparison as Agent goal",
+    "Create and bind",
+    "Uncertain submit and partial read recovery",
+    "New guard actual main/auxiliary traffic under model load",
+    "Permanent QQ uptime or formal driver selection"
+  ]
+}

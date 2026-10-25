@@ -1,0 +1,111 @@
+{
+  "checked_at": "2026-10-25T11:43:47.971873+00:00",
+  "owner_instruction": "那现在怎么办能不能不让他走代理",
+  "scope": "Only this temporary original Hermes QQ process, exact model-host NO_PROXY entry; not a persisted Desktop/default-entry/global proxy change",
+  "installed": true,
+  "live_original_QQ_pid": 2524,
+  "original_python_home_company_workspace_verified": true,
+  "native_resolver_live": {
+    "hosts": [
+      "apihub.agnes-ai.com"
+    ],
+    "process_only": true,
+    "native_resolver_model_direct": true,
+    "QQ_routes_unchanged": true,
+    "inherited_exceptions_preserved": true,
+    "model_requests_sent": 0
+  },
+  "applied_after_native_dotenv_load": true,
+  "existing_proxy_exceptions_preserved": true,
+  "both_environment_spellings_handled": true,
+  "QQ_protocol_READY": true,
+  "phone_roundtrip_after_restart": "not yet observed",
+  "QQ_routes_unchanged": true,
+  "Clash_still_running_PID": 11244,
+  "original_HTTPS_PROXY_setting_unchanged": true,
+  "zero_model_preflight": {
+    "hosts": [
+      "apihub.agnes-ai.com"
+    ],
+    "process_only": true,
+    "native_resolver_model_direct": true,
+    "QQ_routes_unchanged": true,
+    "inherited_exceptions_preserved": true,
+    "model_requests_sent": 0,
+    "at": "2026-10-25T11:40:43.160117+00:00",
+    "native_pool_type": "ConnectionPool",
+    "metadata_HTTP_status": 200,
+    "no_Authorization_or_prompt": true,
+    "model_generation_requests": 0
+  },
+  "public_metadata_GET_requests": 1,
+  "no_credential_or_prompt_sent": true,
+  "tests": {
+    "QQ_module_passed": 24,
+    "new_proxy_cases": 4,
+    "initial_fixture_issue": "Two initial test assertions assumed case-sensitive Windows os.environ; corrected fixture to independent mapping, then all24 passed. No installed code changed before final pass.",
+    "covers": [
+      "default off and rejects wildcard/broader gate",
+      "merge inherited exceptions and preserve QQ routing",
+      "failed native direct check restores environment",
+      "changed QQ route fails closed and restores environment"
+    ]
+  },
+  "source_sha256": {
+    "qq_runtime.py": "e1d37997e3c6ec6ab3e53de501fa67f4fa2e9f1eb984b81e92c7236db8fec794",
+    "tests/test_qq_runtime.py": "e7b94235b0184b17caa1d580e1e39d5c115b8d5a183d851c1170beaa38b7f04e"
+  },
+  "tool_file_changes": {
+    "qq_runtime.py": {
+      "before_sha256": "cfa9f8cb06a94e669f51400646375bb72d0a4bef54e1fe42f951f2455a530d55",
+      "after_sha256": "e1d37997e3c6ec6ab3e53de501fa67f4fa2e9f1eb984b81e92c7236db8fec794"
+    },
+    "deployment.json": {
+      "before_sha256": "257684f2f4a6dc0aad187a0c4d32131a907423d1b2169d3cd9631cf54953d623",
+      "after_sha256": "f0909d79ccaf85e4733911dcfa5c3c8f5c5e0e3a9703ba5fae99f9d285c4d07e"
+    },
+    "qq-addon-deployment.json": {
+      "before_sha256": "11c1f02bbbc906634f7d5ef50d5acb215df54f89888fd9169ea0e3496fed8fed",
+      "after_sha256": "32c5ef91d48ebece2e7f23db10f3cb890cab271446a4af291b9c92b4613e3a99"
+    }
+  },
+  "tool_files_written": 3,
+  "necessary_private_preimages": 3,
+  "restore_performed": false,
+  "restart": "Only prior owned QQ pipeline and descendants; original formal identity retained, ordinary services not restarted",
+  "communication_only": true,
+  "model_pipeline_constructed": false,
+  "MCP_started": false,
+  "new_model_messages": 0,
+  "new_model_generation_requests": 0,
+  "budget": {
+    "limit": 30,
+    "reserved_network_attempts": 29,
+    "armed": false,
+    "events": {
+      "denied_unarmed": 5,
+      "reserved_before_send": 29
+    },
+    "families": {
+      "chat_completions": 27,
+      "other_httpx": 2
+    }
+  },
+  "messages_used": 2,
+  "message_limit": 2,
+  "new_task_admission": false,
+  "protected_records_unchanged": 59,
+  "workspace_files": 37,
+  "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+  "old60_and120_ledgers_unchanged": true,
+  "original_config_identity_memory_knowledge_credentials_permissions_changed": false,
+  "not_verified": [
+    "real generation or SSE stability after bypass",
+    "provider quota availability",
+    "recovery Agent task pass",
+    "permanent original Desktop entry routing"
+  ],
+  "reproduce": "Use original installed Python and qq_runtime.py with explicit per-run gate.model_proxy_bypass, existing runtime/baseline and status-only options; no --allow-task-messages for exhausted message grant",
+  "rollback": "Omit opt-in field or stop own QQ process to remove environment override; tool rollback only from exact post-hash, restore the3 necessary private preimages individually if authorized, never overwrite concurrent changes",
+  "conclusion": "HTTP proxy bypass for Agnes model domain is live in original QQ process; QQ route unchanged. No claim of completed real model/browser validation."
+}

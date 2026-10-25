@@ -1,0 +1,599 @@
+{
+  "checked_at": "2026-10-25T05:18:39.549830+00:00",
+  "case": "analysis",
+  "authorized_round_slot": 1,
+  "message_from_Owner": 1,
+  "Codex_model_messages": 0,
+  "session": {
+    "id": "20261025_083252_cc5965b5",
+    "source": "qqbot",
+    "cwd": null,
+    "started_at": 1792888372.1230526,
+    "ended_at": null,
+    "thread_id": "qq-transport-1",
+    "api_call_count": 25,
+    "tool_call_count": 46
+  },
+  "session_is_new": false,
+  "session_isolation_failure": {
+    "proven": true,
+    "cause": "qq_runtime used output leaf qq-transport plus slot1, colliding with old qq-transport-1",
+    "old_session_reused": "20261025_083252_cc5965b5",
+    "historical_api_count": 11,
+    "current_cumulative_api_count": 25,
+    "logical_api_increment": 14,
+    "historical_tool_count": 30,
+    "new_tool_receipts": 16,
+    "not_a_new_employee_identity": true,
+    "no_repeat_model_test": true,
+    "effect_on_conclusion": "Operational read/compare goal proven; fresh-conversation acceptance condition failed, no clean comparison/whole-route pass",
+    "Codex_did_not_edit_delete_old_messages_or_reset_conversation": true,
+    "native_pipeline_appended_messages_and_updated_existing_session_counters": true
+  },
+  "process_cwd_evidence": "Original QQ event records W; database cwd stays null",
+  "Owner_user_row": {
+    "id": 104799,
+    "timestamp": 1792904776.0,
+    "has_current_origin": 1
+  },
+  "current_task_tools": {
+    "tool_describe": 4,
+    "mcp__company_browser_simulation__browser_navigate": 7,
+    "mcp__company_browser_simulation__browser_click": 5
+  },
+  "browser_handler_counts": {
+    "browser_navigate": 7,
+    "browser_click": 5
+  },
+  "browser_handler_errors": 0,
+  "automatic_failure_observations": 0,
+  "file_terminal_vision_calls": 0,
+  "new_tool_receipts": [
+    {
+      "id": 104801,
+      "tool_name": "tool_describe",
+      "timestamp": 1792904818.9785876
+    },
+    {
+      "id": 104802,
+      "tool_name": "tool_describe",
+      "timestamp": 1792904818.9896874
+    },
+    {
+      "id": 104803,
+      "tool_name": "tool_describe",
+      "timestamp": 1792904819.0008965
+    },
+    {
+      "id": 104804,
+      "tool_name": "tool_describe",
+      "timestamp": 1792904819.0101137
+    },
+    {
+      "id": 104806,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792904822.6268919
+    },
+    {
+      "id": 104808,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792904850.7841127
+    },
+    {
+      "id": 104810,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792904857.579257
+    },
+    {
+      "id": 104812,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792904869.9438825
+    },
+    {
+      "id": 104814,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792904875.373435
+    },
+    {
+      "id": 104816,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792904916.5532053
+    },
+    {
+      "id": 104818,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792904933.677397
+    },
+    {
+      "id": 104820,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792904937.8599732
+    },
+    {
+      "id": 104822,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792904949.7126517
+    },
+    {
+      "id": 104824,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792904956.9990652
+    },
+    {
+      "id": 104826,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792904983.9155328
+    },
+    {
+      "id": 104828,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792904994.3705597
+    }
+  ],
+  "answer_proof": {
+    "message_id": 104829,
+    "sha256": "d6b0c02c922d0dfd42eeb73a8d9680d9d4a0d0c4e45ee35be9b9127cbdf72b6b",
+    "finish_reason": "stop",
+    "private_or_system_prompt_exported": false
+  },
+  "before": [
+    {
+      "id": "DEMO-001",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-002",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "已审核",
+      "qa_note": "模拟需补充说明",
+      "effective_hours": "1"
+    },
+    {
+      "id": "DEMO-003",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "已审核",
+      "qa_note": "模拟需补充说明",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-004",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "已审核",
+      "qa_note": "模拟需补充说明",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-005",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-006",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-007",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-008",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-009",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-010",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-011",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-012",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    }
+  ],
+  "after": [
+    {
+      "id": "DEMO-001",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "已审核",
+      "qa_note": "模拟通过",
+      "effective_hours": "1"
+    },
+    {
+      "id": "DEMO-002",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "已审核",
+      "qa_note": "模拟需补充说明",
+      "effective_hours": "1"
+    },
+    {
+      "id": "DEMO-003",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "已审核",
+      "qa_note": "模拟需补充说明",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-004",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "已审核",
+      "qa_note": "模拟需补充说明",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-005",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "模拟待补充设备编号",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-006",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-007",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-008",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-009",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-010",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-011",
+      "employee_id": "EMP-001",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    },
+    {
+      "id": "DEMO-012",
+      "employee_id": "EMP-002",
+      "raw_hours": "1.5",
+      "review_status": "待审",
+      "qa_note": "暂无",
+      "effective_hours": "未知"
+    }
+  ],
+  "field_changes": {
+    "DEMO-001": {
+      "review_status": {
+        "before": "待审",
+        "after": "已审核"
+      },
+      "qa_note": {
+        "before": "暂无",
+        "after": "模拟通过"
+      },
+      "effective_hours": {
+        "before": "未知",
+        "after": "1"
+      }
+    },
+    "DEMO-005": {
+      "qa_note": {
+        "before": "暂无",
+        "after": "模拟待补充设备编号"
+      }
+    }
+  },
+  "aggregate_before": {
+    "reviewed": 3,
+    "pending": 9,
+    "known_effective_hours": 1.0,
+    "raw_hours": 18.0
+  },
+  "aggregate_after": {
+    "reviewed": 4,
+    "pending": 8,
+    "known_effective_hours": 2.0,
+    "raw_hours": 18.0
+  },
+  "fixture_events_during_task": [
+    {
+      "at": "2026-10-25T05:07:02.531Z",
+      "type": "page_open",
+      "path": "/analysis"
+    },
+    {
+      "at": "2026-10-25T05:07:02.570Z",
+      "type": "records_page",
+      "page": 1,
+      "status": 200,
+      "partial": false,
+      "filter": ""
+    },
+    {
+      "at": "2026-10-25T05:07:29.738Z",
+      "type": "records_page",
+      "page": 2,
+      "status": 200,
+      "partial": false,
+      "filter": ""
+    },
+    {
+      "at": "2026-10-25T05:07:36.531Z",
+      "type": "records_page",
+      "page": 3,
+      "status": 200,
+      "partial": false,
+      "filter": ""
+    },
+    {
+      "at": "2026-10-25T05:07:49.860Z",
+      "type": "page_open",
+      "path": "/detail"
+    },
+    {
+      "at": "2026-10-25T05:07:49.899Z",
+      "type": "record_detail",
+      "id": "DEMO-002",
+      "status": 200
+    },
+    {
+      "at": "2026-10-25T05:07:55.300Z",
+      "type": "page_open",
+      "path": "/detail"
+    },
+    {
+      "at": "2026-10-25T05:07:55.334Z",
+      "type": "record_detail",
+      "id": "DEMO-001",
+      "status": 200
+    },
+    {
+      "at": "2026-10-25T05:08:36.481Z",
+      "type": "page_open",
+      "path": "/detail"
+    },
+    {
+      "at": "2026-10-25T05:08:36.524Z",
+      "type": "record_detail",
+      "id": "DEMO-005",
+      "status": 200
+    },
+    {
+      "at": "2026-10-25T05:08:53.600Z",
+      "type": "page_open",
+      "path": "/analysis"
+    },
+    {
+      "at": "2026-10-25T05:08:53.645Z",
+      "type": "records_page",
+      "page": 1,
+      "status": 200,
+      "partial": false,
+      "filter": ""
+    },
+    {
+      "at": "2026-10-25T05:08:56.812Z",
+      "type": "qa_refresh"
+    },
+    {
+      "at": "2026-10-25T05:08:56.823Z",
+      "type": "records_page",
+      "page": 1,
+      "status": 200,
+      "partial": false,
+      "filter": ""
+    },
+    {
+      "at": "2026-10-25T05:09:08.672Z",
+      "type": "records_page",
+      "page": 2,
+      "status": 200,
+      "partial": false,
+      "filter": ""
+    },
+    {
+      "at": "2026-10-25T05:09:15.958Z",
+      "type": "records_page",
+      "page": 3,
+      "status": 200,
+      "partial": false,
+      "filter": ""
+    },
+    {
+      "at": "2026-10-25T05:09:43.847Z",
+      "type": "page_open",
+      "path": "/detail"
+    },
+    {
+      "at": "2026-10-25T05:09:43.876Z",
+      "type": "record_detail",
+      "id": "DEMO-001",
+      "status": 200
+    },
+    {
+      "at": "2026-10-25T05:09:54.298Z",
+      "type": "page_open",
+      "path": "/detail"
+    },
+    {
+      "at": "2026-10-25T05:09:54.341Z",
+      "type": "record_detail",
+      "id": "DEMO-005",
+      "status": 200
+    }
+  ],
+  "scope": {
+    "before_pages": [
+      1,
+      2,
+      3
+    ],
+    "after_pages": [
+      1,
+      2,
+      3
+    ],
+    "details_before": [
+      "DEMO-002",
+      "DEMO-001",
+      "DEMO-005"
+    ],
+    "details_after": [
+      "DEMO-001",
+      "DEMO-005"
+    ],
+    "QA_refreshes": 1,
+    "record_creates": 0,
+    "503_in_mock": false,
+    "all_12_records_read_each_phase": true,
+    "filter_or_other_detail_pages_tested": false,
+    "no_claim_of_real_platform_evidence": true
+  },
+  "network": {
+    "all_tool_navigation_current_origin": true,
+    "proxy_allowed_GETs_during_task": 33,
+    "proxy_allowed_POSTs_during_task": 1,
+    "external_CONNECTs_denied_during_task": 9,
+    "successful_external_browser_access_observed": false,
+    "blocked_attempt_origin": "Not individually attributed; do not assert zero background network attempts"
+  },
+  "budget": {
+    "before": {
+      "limit": 60,
+      "reserved_network_attempts": 0,
+      "armed": true,
+      "events": {
+        "denied_unarmed": 5
+      },
+      "families": {}
+    },
+    "after_task": {
+      "limit": 60,
+      "reserved_network_attempts": 19,
+      "armed": true,
+      "events": {
+        "denied_unarmed": 5,
+        "reserved_before_send": 19
+      },
+      "families": {
+        "chat_completions": 17,
+        "other_httpx": 2
+      }
+    },
+    "remaining": 41,
+    "chat_completions_endpoint_attempts": 17,
+    "unknown_httpx_charged_conservatively": 2,
+    "exact_main_retry_aux_split": "not proven from path-only counters",
+    "traffic_after_reply": {
+      "model": 19,
+      "qq": 19
+    },
+    "no_metadata_exempted_in_this_task": true,
+    "counter_reset": false,
+    "paused_between_stages_without_clearing_counters": true
+  },
+  "verdict": {
+    "browser_read_compare_goal": "passed based on current tool snapshots and server receipts",
+    "report_business_facts_and_scope": "passed for synthetic records; settlement kept unknown",
+    "protected_business_files": "unchanged",
+    "fresh_session_requirement": "failed in intake implementation, disclosed and fix prepared for later stages",
+    "whole_route_selection": "not passed/selected"
+  },
+  "protection": {
+    "immutable_records": 59,
+    "changes": 0,
+    "workspace_files": 37,
+    "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+    "note": "Normal browser snapshot/log/session writes allowed; not a whole-disk no-write claim"
+  },
+  "receipt_file_sha256": {
+    "tool-receipts.jsonl": "d57f05099e788d33e18e637954108bd64d135a5251f17c41376e51ca4513081c",
+    "fixture-events.jsonl": "da13a83e3d2b5caf03178cc9a645157fdf533ae262e12801026a2666d36d420e",
+    "guard-events.jsonl": "e1ba3510e660be6d10cab6dd973b661d8124dab85a4a6714a6df7494e86d33f2",
+    "fixture-truth.json": "18bd6e0320901daa2b0d7c24a3f51c1937f786f712c0c926856ea3efa43936c1",
+    "lifecycle.json": "68b5d2ca5b99bee0bff86c04be378b5ad39e42c7cc8f5da0b6f22256d661fcc7"
+  },
+  "process_exit": {
+    "old_mock_children_exited": true,
+    "old_QQ_owned_process_stopped": true,
+    "old_QQ_descendants_exited": 7,
+    "normal_services_stopped": false
+  },
+  "not_verified": [
+    "New-session requirement for this task (failed)",
+    "Model individual retry/status/aux attribution",
+    "Binding/visual challenge and recovery goals",
+    "Production platform access"
+  ]
+}
