@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-25T05:38:56.309638+00:00",
+  "case": "recovery",
+  "stage": 3,
+  "origin": "http://127.0.0.1:58761",
+  "same_authorized_round": true,
+  "budget": {
+    "limit": 60,
+    "reserved_network_attempts": 40,
+    "armed": true,
+    "events": {
+      "denied_unarmed": 15,
+      "reserved_before_send": 40
+    },
+    "families": {
+      "chat_completions": 36,
+      "other_httpx": 4
+    }
+  },
+  "remaining": 20,
+  "round_messages_used": 2,
+  "current_message_ceiling": 3,
+  "one_final_task_can_be_admitted": true,
+  "no_counter_or_message_reset": true,
+  "QQ_protocol_READY": true,
+  "actual_same_process_browser_catalog_tools": 13,
+  "original_identity_H_W_and_native_QQ_pipeline": true,
+  "Desktop_window_transport": false,
+  "next_thread_id": "browser-20261025T053722Z-playwright-recovery-b3a17ddf-3",
+  "expected_thread_absent_before_message": true,
+  "fresh_actual_model_session": "pending Owner message",
+  "process_toolsets": [
+    "company_browser_simulation",
+    "vision"
+  ],
+  "source_code_changed_this_preparation": false,
+  "dependency_config_identity_memory_knowledge_modified": false,
+  "private_backups_this_preparation": 0,
+  "new_model_calls_by_Codex": 0,
+  "protected_records_unchanged": 59,
+  "workspace_files": 37,
+  "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+  "gate_sha256": "2c3bec8565e1d919d4fe82aafac0092a46ccab050627c7faa15a2010531908dd",
+  "inherited_QQ_tests_passed": 12,
+  "fresh_SDK_catalog_tools": 13,
+  "fresh_initial_mock_projects": 0,
+  "fresh_initial_mock_tasks": 0,
+  "source_sha256": {
+    "qq_runtime.py": "4f140fbdd2c010977cd984a1b7423b61b07ec1fbe3e2156b1fcb6ce2dfaaf51d",
+    "traffic_guard.py": "ea3d8c004bdc9d5b01c8cc950a402d4723a45ed9475106428342be0d489c0d1e",
+    "bridge.mjs": "68a9f8435b189f3c2fc174ae5964fc583243600b47c85f9f41b431aae322e8a5",
+    "browser_evidence.mjs": "3b412c422cc61308ac3fe30bf52590600a8091d21f9788e81c0e25ea9444a189"
+  },
+  "startup_blocked_unknown_HTTPX_cumulative": 15,
+  "control_traffic": {
+    "model": 40,
+    "qq": 30
+  },
+  "limitations": [
+    "20 shared request reservations remain; no automatic extra budget on exhaustion",
+    "first new round goal reused old context, clean-comparison condition failed",
+    "uncertain submission, partial503, dynamic options and login expiry still pending Agent task",
+    "real platform not authorized"
+  ]
+}

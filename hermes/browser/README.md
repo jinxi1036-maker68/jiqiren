@@ -222,3 +222,15 @@ slot2已换到干净binding站，仍同一60次账本和Intake、同一原H/W/QQ
 准备时只暂停armed不清计数，启动检查通过再开放；`--admit-through-slot 2`只再接收一条。
 实际新会话、图片理解、绑定关系及刷新持久性须等Owner本人发送后取证，不以预检推定。
 [读取分析证据](evidence/qq-round2-analysis-2026-10-25.json) · [创建绑定就绪](evidence/qq-round2-binding-ready-2026-10-25.json)。
+
+### 最新：slot2有实证，最后slot3已开放
+
+slot2实际新会话20261025_132913_37894105，1条Owner任务、13逻辑API、20工具（10浏览器+9描述+1视觉）。
+仅创建1项目/1任务，正确选择EMP-002和DEV-010；iframe截图经辅助视觉识别47后填入，
+应用内重新查询与服务端真值一致，无重复。新会话键修正已在真实任务生效。
+本项消耗21，累计40/60，消息2/3。第一项旧上下文限制仍保留，不宣称整路线验收通过。
+
+最后recovery站已换干净初态，原H/W/QQ管线、13项目录及新线程查重通过。
+仍原账本/Intake；当前`--admit-through-slot 3`只允许最后一条，不增加额度，20次用完即停。
+准备阶段无新模型、源码或依赖变更，不重跑旧矩阵。
+[创建绑定取证](evidence/qq-round2-binding-2026-10-25.json) · [最终项就绪](evidence/qq-round2-recovery-ready-2026-10-25.json)。

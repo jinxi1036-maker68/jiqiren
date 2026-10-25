@@ -209,3 +209,16 @@ Owner收到完整QA对比报告，Codex核对新16条工具收据、12次浏览�
 同一Intake保留1条，当前仅开放slot2。原H/W/身份/配置/模型/MCP权限及正常服务不变，真实平台仍禁止。
 [分析取证](../../hermes/browser/evidence/qq-round2-analysis-2026-10-25.json) ·
 [下一项准备](../../hermes/browser/evidence/qq-round2-binding-ready-2026-10-25.json)。
+
+
+### 2026-10-25｜新slot2创建绑定实证通过，最后异常恢复已就绪
+
+新会话20261025_132913_37894105，线程键修正实际生效。1条Owner任务、13逻辑API、20工具
+（10浏览器、9描述、1视觉），只创建PRJ-001和TASK-001各1条，正确关联EMP002/DEV010及固定模拟日期。
+iframe截图确实进入辅助视觉，识别47后才填入并成功提交；应用内服务器重查询与实际字段一致，无重复。
+本项消耗21（chat路径19、未知HTTPX2），累计40/60、剩20，消息2/3。59项保护/W/R3不变，正常服务未停。
+只停完成后的自有QQ/工具子进程及binding浏览器，暂停/开放原账本不清计数，准备干净recovery环境，
+原H/W、13项目录、新线程查重通过后，当前只开放slot3最后一条；不补额、不补发、不进入真实后台。
+继承已有组件测试，无新源码或依赖变更；第一项旧会话比较条件失败继续保留，未选正式主驱动。
+[绑定取证](../../hermes/browser/evidence/qq-round2-binding-2026-10-25.json) ·
+[最后一项准备](../../hermes/browser/evidence/qq-round2-recovery-ready-2026-10-25.json)。

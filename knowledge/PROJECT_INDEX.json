@@ -75,18 +75,18 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "analysis_goal_proven_session_reuse_defect_disclosed_binding_stage_ready",
+      "status": "analysis_and_binding_goals_proven_recovery_final_stage_ready_goal1_session_defect_retained",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": null,
       "production_access": false,
       "blocks": [
-        "first_new_round_task_reused_old_context_not_clean_fresh_session_comparison",
-        "binding_and_recovery_Agent_results_pending",
-        "full_route_driver_selection_not_passed"
+        "goal1_clean_session_condition_failed_historical_limit_retained",
+        "recovery_goal_pending_with_only20_request_reservations_left",
+        "formal_two_route_selection_and_production_not_validated"
       ],
-      "next_step": "已证实新slot1读完QA刷新前后各3页和关键详情，业务分析正确；发现QQ输出目录叶名称导致旧会话复用，已修为运行目录唯一编号并检查无旧会话。原记录不改、不补测。新slot2创建绑定已就绪，由Owner从QQ发送一次，仍共用60预算，19已用/41剩；消息1/3，当前接收总上限2。后续实际新会话仍需收据核实，不等ChatGPT逐轮复核，不访问真实后台。",
+      "next_step": "新slot2真实独立会话完成1项目/1任务、准确绑定EMP002/DEV010、截图视觉47和服务器重查询；保护不变。最后slot3异常恢复已就绪，仍同一60账本，40已用/20剩、消息2/3；Owner只发一次，Codex取证后结束本轮，不补发或加额，不访问真实后台。第一项旧上下文限制保留。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -146,7 +146,10 @@
         "pagination": "all3 pages before and after QA proved in new task; historical timeout cause remains unknown",
         "QA_change_comparison": "goal passed, fresh-session comparison condition failed due intake key collision",
         "real_platform": "not_tested_or_authorized",
-        "formal_driver_selected": false
+        "formal_driver_selected": false,
+        "create_bind": "passed in synthetic workplace with unique IDs and server requery; no duplicates",
+        "auxiliary_image_understanding": "iframe cropped two digits47 correctly recognized; main direct visual not proven",
+        "fresh_session_after_intake_fix": "confirmed by unique new session20261025_132913_37894105"
       },
       "targeted_zero_model_improvements": {
         "date": "2026-10-25",
@@ -169,13 +172,13 @@
         "date": "2026-10-25",
         "model_cap": 60,
         "message_cap": 3,
-        "Owner_messages_admitted": 1,
-        "current_stage_message_ceiling": 2,
-        "model_attempts_reserved_at_ready": 19,
-        "QQ_control_requests_audited": 21,
-        "startup_unknown_httpx_blocked_before_send": 10,
+        "Owner_messages_admitted": 2,
+        "current_stage_message_ceiling": 3,
+        "model_attempts_reserved_at_ready": 40,
+        "QQ_control_requests_audited": 30,
+        "startup_unknown_httpx_blocked_before_send": 15,
         "old_round_budget_unchanged": true,
-        "intake_status": "new slot2 binding READY; waiting Owner",
+        "intake_status": "final recovery slot3 READY; waiting Owner",
         "native_QQ_same_identity": true,
         "Desktop_window_transport": false,
         "browser_tools": 13,
@@ -186,8 +189,8 @@
         "QQ_total_tests_passed": 12,
         "traffic_guard_deployed_and_active": true,
         "real_platform_authorized": false,
-        "evidence": "hermes/browser/evidence/qq-round2-binding-ready-2026-10-25.json",
-        "remaining": 41,
+        "evidence": "hermes/browser/evidence/qq-round2-recovery-ready-2026-10-25.json",
+        "remaining": 20,
         "analysis_result": {
           "browser_goal": "passed",
           "fresh_session_gate": "failed: old qq-transport-1 reused",
@@ -199,6 +202,17 @@
           "budget_spent": 19,
           "protected_changes": 0,
           "evidence": "hermes/browser/evidence/qq-round2-analysis-2026-10-25.json"
+        },
+        "binding_result": {
+          "goal": "passed",
+          "new_session": "20261025_132913_37894105",
+          "logical_API": 13,
+          "tool_receipts": 20,
+          "browser_calls": 10,
+          "vision_calls": 1,
+          "this_task_budget": 21,
+          "protected_changes": 0,
+          "evidence": "hermes/browser/evidence/qq-round2-binding-2026-10-25.json"
         }
       }
     }

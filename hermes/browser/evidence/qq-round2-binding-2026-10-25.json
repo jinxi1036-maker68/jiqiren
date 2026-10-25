@@ -1,0 +1,329 @@
+{
+  "checked_at": "2026-10-25T05:35:46.629944+00:00",
+  "case": "binding",
+  "authorized_round_slot": 2,
+  "Owner_task_messages": 1,
+  "Codex_model_messages": 0,
+  "session": {
+    "id": "20261025_132913_37894105",
+    "source": "qqbot",
+    "cwd": null,
+    "started_at": 1792906153.9899728,
+    "ended_at": null,
+    "thread_id": "browser-20261025T051918Z-playwright-binding-562338c3-2",
+    "api_call_count": 13,
+    "tool_call_count": 20,
+    "profile_is_default_or_unset": true
+  },
+  "session_is_new": true,
+  "previous_thread_key_fix_actual_result": "passed: unique thread persisted and session started after this task admission",
+  "process_cwd": "W verified in QQ event; database cwd remains null",
+  "user_receipt": {
+    "id": 104830,
+    "timestamp": 1792906152.0
+  },
+  "tool_counts": {
+    "tool_describe": 9,
+    "mcp__company_browser_simulation__browser_navigate": 1,
+    "mcp__company_browser_simulation__browser_fill_form": 2,
+    "mcp__company_browser_simulation__browser_click": 3,
+    "mcp__company_browser_simulation__browser_take_screenshot": 1,
+    "vision_analyze": 1,
+    "mcp__company_browser_simulation__browser_select_option": 3
+  },
+  "tool_receipts": [
+    {
+      "id": 104832,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.368178
+    },
+    {
+      "id": 104833,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.377934
+    },
+    {
+      "id": 104834,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.3868852
+    },
+    {
+      "id": 104835,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.396742
+    },
+    {
+      "id": 104836,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.4055097
+    },
+    {
+      "id": 104837,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.4199715
+    },
+    {
+      "id": 104838,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.42969
+    },
+    {
+      "id": 104839,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.4389935
+    },
+    {
+      "id": 104840,
+      "tool_name": "tool_describe",
+      "timestamp": 1792906177.448558
+    },
+    {
+      "id": 104842,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate",
+      "timestamp": 1792906180.8895485
+    },
+    {
+      "id": 104844,
+      "tool_name": "mcp__company_browser_simulation__browser_fill_form",
+      "timestamp": 1792906217.1455128
+    },
+    {
+      "id": 104846,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792906224.2560427
+    },
+    {
+      "id": 104848,
+      "tool_name": "mcp__company_browser_simulation__browser_take_screenshot",
+      "timestamp": 1792906230.74091
+    },
+    {
+      "id": 104850,
+      "tool_name": "vision_analyze",
+      "timestamp": 1792906248.3538108
+    },
+    {
+      "id": 104852,
+      "tool_name": "mcp__company_browser_simulation__browser_select_option",
+      "timestamp": 1792906252.211588
+    },
+    {
+      "id": 104854,
+      "tool_name": "mcp__company_browser_simulation__browser_fill_form",
+      "timestamp": 1792906257.5624034
+    },
+    {
+      "id": 104856,
+      "tool_name": "mcp__company_browser_simulation__browser_select_option",
+      "timestamp": 1792906263.6264763
+    },
+    {
+      "id": 104858,
+      "tool_name": "mcp__company_browser_simulation__browser_select_option",
+      "timestamp": 1792906277.204164
+    },
+    {
+      "id": 104860,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792906285.6338015
+    },
+    {
+      "id": 104862,
+      "tool_name": "mcp__company_browser_simulation__browser_click",
+      "timestamp": 1792906291.2445714
+    }
+  ],
+  "browser_calls": 10,
+  "browser_errors": 0,
+  "file_terminal_calls": 0,
+  "project": {
+    "id": "PRJ-001",
+    "name": "凌矩模拟试采",
+    "code": "BIND-20261024"
+  },
+  "task": {
+    "id": "TASK-001",
+    "project_id": "PRJ-001",
+    "name": "次日模拟采集",
+    "employee_id": "EMP-002",
+    "device_id": "DEV-010",
+    "start_date": "2026-10-25"
+  },
+  "project_create_attempts": 1,
+  "task_create_attempts": 1,
+  "duplicate_records": 0,
+  "same_name_object_selection": {
+    "initial_snapshot_contains_disabled_EMP001_and_available_EMP002": true,
+    "initial_snapshot_contains_repair_DEV001_and_available_DEV010": true,
+    "selected_EMP002_DEV010_persisted": true
+  },
+  "visual": {
+    "browser_screenshot_generated": true,
+    "width_height": [
+      145,
+      91
+    ],
+    "PNG_bytes": 369,
+    "PNG_sha256": "842ff9fb540629f9840fe3bf57ef968abe9efd6d94a026f59a0468adeeeabf55",
+    "trace_base64_string_sha256": "93bd8181ed77834478c80025d783adece2255f5842a13e102dab282782985672",
+    "same_screenshot_path_passed_to_vision": true,
+    "vision_success": true,
+    "vision_receipt_id": 104850,
+    "vision_at": 1792906248.3538108,
+    "recognized_two_digits": "47",
+    "Codex_viewed_existing_synthetic_image": true,
+    "input_47_after_vision_and_server_accepted": true,
+    "main_model_direct_visual": "not proven; auxiliary vision proven for this cropped synthetic image"
+  },
+  "verification": {
+    "explicit_query_button_clicked": true,
+    "fresh_server_GET_projects_and_tasks_after_submit": true,
+    "final_table_fields_match_server_truth": true,
+    "project_and_task_each_one": true,
+    "full_page_reload_or_browser_restart_persistence": "not tested"
+  },
+  "fixture_events_during_task": [
+    {
+      "at": "2026-10-25T05:29:40.729Z",
+      "type": "page_open",
+      "path": "/binding"
+    },
+    {
+      "at": "2026-10-25T05:29:40.774Z",
+      "type": "options_read"
+    },
+    {
+      "at": "2026-10-25T05:29:40.787Z",
+      "type": "projects_read"
+    },
+    {
+      "at": "2026-10-25T05:29:40.789Z",
+      "type": "tasks_read"
+    },
+    {
+      "at": "2026-10-25T05:29:40.793Z",
+      "type": "visual_image_requested"
+    },
+    {
+      "at": "2026-10-25T05:30:23.213Z",
+      "type": "project_created",
+      "id": "PRJ-001",
+      "code": "BIND-20261024",
+      "uncertain_response": false
+    },
+    {
+      "at": "2026-10-25T05:30:23.221Z",
+      "type": "projects_read"
+    },
+    {
+      "at": "2026-10-25T05:30:23.223Z",
+      "type": "tasks_read"
+    },
+    {
+      "at": "2026-10-25T05:31:24.588Z",
+      "type": "task_created",
+      "id": "TASK-001",
+      "project_id": "PRJ-001",
+      "employee_id": "EMP-002",
+      "device_id": "DEV-010"
+    },
+    {
+      "at": "2026-10-25T05:31:24.599Z",
+      "type": "projects_read"
+    },
+    {
+      "at": "2026-10-25T05:31:24.602Z",
+      "type": "tasks_read"
+    },
+    {
+      "at": "2026-10-25T05:31:30.192Z",
+      "type": "projects_read"
+    },
+    {
+      "at": "2026-10-25T05:31:30.194Z",
+      "type": "tasks_read"
+    }
+  ],
+  "proxy": {
+    "allowed_GETs": 14,
+    "allowed_POSTs": 2,
+    "external_CONNECTs_denied": 18,
+    "Agent_navigation_all_current_origin": true,
+    "no_allowed_external_browser_access": true
+  },
+  "budget": {
+    "before": {
+      "limit": 60,
+      "reserved_network_attempts": 19,
+      "armed": true,
+      "events": {
+        "denied_unarmed": 10,
+        "reserved_before_send": 19
+      },
+      "families": {
+        "chat_completions": 17,
+        "other_httpx": 2
+      }
+    },
+    "after_task": {
+      "limit": 60,
+      "reserved_network_attempts": 40,
+      "armed": true,
+      "events": {
+        "denied_unarmed": 10,
+        "reserved_before_send": 40
+      },
+      "families": {
+        "chat_completions": 36,
+        "other_httpx": 4
+      }
+    },
+    "this_task_reserved": 21,
+    "chat_completions_endpoint_attempt_increment": 19,
+    "unknown_httpx_increment": 2,
+    "logical_API": 13,
+    "remaining_round": 20,
+    "main_aux_retry_exact_split": "not proven; one successful auxiliary vision tool call is proven",
+    "new_allowance_or_counter_reset": false,
+    "paused_for_stage_switch_without_counter_change": true
+  },
+  "answer_proof": {
+    "id": 104863,
+    "sha256": "7e9adf3f56b52f1e5cf427bbc46f0f29125de26a83e38fc9269c31610ff9164f",
+    "finish_reason": "stop"
+  },
+  "protection": {
+    "immutable_records": 59,
+    "changes": 0,
+    "workspace_files": 37,
+    "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+    "normal_browser_cache_logs_and_session_writes_allowed": true
+  },
+  "process_exit": {
+    "owned_QQ_stopped": true,
+    "owned_QQ_descendants_exited": 7,
+    "owned_mock_children_exited": true,
+    "normal_services_stopped": false
+  },
+  "receipt_file_sha256": {
+    "tool-receipts.jsonl": "fef7adaed62b2fa755308af7167f07ccd5c24a2def0519768accfe773ae4b24c",
+    "fixture-events.jsonl": "1d7d3d9231d0c6131889ef396916cc3648a006f0f02cf70fc8a0c044207107cd",
+    "guard-events.jsonl": "eead24f9a3da57c5c350f6916fdb986be2e0697799d58652171fc628c9ac2339",
+    "fixture-truth.json": "d394419dcc4da78f53a7437f969b42324429f08a9e7565bc40d9d8ae05dcb54c",
+    "lifecycle.json": "4c1afef2583d0ecff1111387bac58a48706792357d15d2436388a2cee7a3691b"
+  },
+  "verdict": {
+    "create_bind_query_goal": "passed on synthetic workplace",
+    "new_conversation": "passed",
+    "auxiliary_image_understanding": "passed for two digits",
+    "protected_file_discipline": "passed",
+    "whole_route_formal_selection": "not passed or selected; goal1 session defect and recovery outstanding"
+  },
+  "not_verified": [
+    "Incorrect form rejection/negative validation path",
+    "Dynamic option reorder and stale element handling",
+    "Uncertain submit response recovery and partial503",
+    "Main model direct visual input",
+    "Production platform or cross-restart durability"
+  ]
+}
