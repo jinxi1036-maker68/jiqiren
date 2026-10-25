@@ -40,13 +40,6 @@
 - [真实手工加工订单结合Ego采集的远期构想](strategy/REAL_PRODUCTION_EGO_CONCEPT_HISTORY_2026-10-20.md)：PR #19的Owner想法，未获工厂/灵生合同许可，当前不启动。
 - 2026年9月以来的**所有原始对话逐句对照仍未完成**；不能说“从一开始每个时间点已100%完整归档”。原资料不够时以未知标记，不补造历史。
 
-**第二轮复核补充：经营历史与设备效率**
-
-- [10月16—25经营策略历史摘要](history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md)：记录50台自营→10台团队网络→团长B与30台自营试算的变化，均不代表已投产。
-- [10月17录制效率与上传瓶颈摘要](reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md)：重点保留视频启停/后切需先获上游许可的讨论。
-- [未来真实加工＋Ego采集构想](strategy/REAL_PRODUCTION_EGO_CONCEPT_HISTORY_2026-10-20.md)：仍在研究阶段；不属于当前投入。
-- [2026-10-25分支补充证据清单](reports/2026-10-25_OPEN_PR_TRIAGE_REGISTER.md)：PR保留历史，不擅合并或声明本机已验收。
-
 ## Agent Bootstrap
 新 ChatGPT / Codex / 协作者只按这个顺序启动：
 
