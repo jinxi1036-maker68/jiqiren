@@ -31,3 +31,15 @@
 - `knowledge/reports/2026-10-25_CLIENT_SCENE_TASK_EXCEL_V2_SIMPLIFICATION.md`
 - `knowledge/decisions/ADR-OWNER-SCENE-THIRD_LEVEL-TASK-SOP-OWNERSHIP-2026-10-25.md`
 - `knowledge/decisions/ADR-REUSABLE-PACKAGING-AND-NO-PERSONAL-PARCEL-SORTING-2026-10-25.md`
+
+## 2026-10-25 跨窗口正式归档补正（覆盖上文『GitHub未上传』旧状态）
+
+**最新事实：真正的二进制Excel及V3完整文字已写入GitHub `main` 并且回读核对：**
+- [完整版本入口与SHA256校验](../sop/00_START_HERE.md)
+- [对外V2两表Excel](../sop/client/2026-10-25_三场景三级分类任务目录_V2.xlsx)；**未发灵生**，不可与内部SOP混发。
+- [内部V3两表Excel](../sop/internal/2026-10-25_三场景33项完整内部SOP_V3.xlsx)；**仅供凌矩内部和授权Hermes参考**。
+- [V3 Hermes可读33任务198步全文](../sop/internal/2026-10-25_LINGJU_33_TASK_SOPS_HERMES_V3.md)。不等于本机Hermes已自行加载或具有正式后台权限。
+- 原始客户Excel及34类初筛、废弃历史V1均保存于`knowledge/sop/`，历史V1不得继续对外使用。
+- ChatGPT长期文件库另外备份于`/机器人数据采集/2026-10-25_场景任务与SOP/`。
+
+上文『二进制尚未上传GitHub』仅代表**形成本报告时**状态，**现已失效**。真实现场工序、灵生认定和正式QA仍未得到新核验。
