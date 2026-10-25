@@ -129,3 +129,26 @@ verify_active_run.py验证活跃原Desktop、后端父子关系、工作区、�
 
 详情：[续办证据](evidence/preacceptance-followup-2026-10-25.json)、
 [临时限额器授权和范围](REQUEST_BUDGET_INTEGRATION_PROPOSAL.md)。
+
+
+## QQ远程入口（2026-10-25 Owner追加授权）
+
+Owner离开电脑后要求通过原QQ发任务。`qq_runtime.py`复用原安装I的QQAdapter与
+GatewayRunner原生消息管线，使用同一H/W及本轮已武装的共享120请求账本；不是另一个身份。
+QQ消息不经过Desktop窗口，这一点不能冒称为Desktop对话验收。
+首条先由Owner发`/status`，它由接入层返回状态，不调用模型。当前服务器READY已证实，手机收发待证。
+
+启动只选择原有白名单中的QQ私聊；不执行整个gateway启动过程，因其还会启动其他平台、
+cron、kanban、恢复旧后台进程和历史维护。未改原配置、模型地址/凭据、QQ或语音持久设置。
+只有原QQ官方WebSocket连接被允许使用其aiohttp传输；HTTPX请求仍共用硬限额，
+QQ认证/回复等HTTPX也保守计数。任意代码/独立子程序仍不在沙箱保证内。
+
+Playwright最多接收3条文字任务，不挪用A路线额度；消息ID哈希去重和额度持久保存在本轮工具目录。
+每条建新会话，仍使用同一正式身份；发回QQ的对象不变。原生处理管线自行运行Agent，接入层不替它操作页面。
+模型实际使用工具、公司知识和任务结果必须等真实收据，不能由启动参数提前宣布通过。
+
+可复现启动使用原`I/venv/Scripts/python.exe -B -u H/tools/company-browser/qq_runtime.py`，
+传入`--install I --runtime <现有runtime.json> --baseline <本轮保护快照> --output <本轮qq-transport>`。
+新文件单独校验SHA，并记录`qq-addon-deployment.json`；既有23份工具源及分派无需覆盖。
+不注册开机启动。关停仅结束此QQ接入及其自有子进程，不停Desktop、OpenClaw或原守护任务；
+不删原记忆、不整份回滚数据库或配置。

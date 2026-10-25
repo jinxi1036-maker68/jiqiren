@@ -1,0 +1,85 @@
+{
+  "checked_at": "2026-10-25T00:28:11.843932+00:00",
+  "scope": "Owner requested QQ access while away from computer",
+  "original_install": "%LOCALAPPDATA%/hermes/hermes-agent",
+  "original_python": "I/venv/Scripts/python.exe",
+  "home": "%USERPROFILE%/.hermes",
+  "workspace": "H/company-workspace",
+  "initial_fault": {
+    "native_gateway_process_running": false,
+    "old_gateway_state_stale": true,
+    "old_supervisor_history": "Repeated start/kill observed; final exit cause not proven",
+    "old_gateway_cwd": "User home, not W"
+  },
+  "native_qq_connection_probe": {
+    "connected": true,
+    "server_ready": true,
+    "model_calls": 0,
+    "messages_sent": 0,
+    "disconnected_after_probe": true
+  },
+  "active_intake": {
+    "qq_ready_at": "2026-10-25T00:24:55.855899+00:00",
+    "pid": 7296,
+    "native_qq_adapter": true,
+    "native_gateway_message_pipeline": true,
+    "desktop_window_used_for_qq_messages": false,
+    "same_formal_identity": true,
+    "new_profile_created": false,
+    "configured_toolsets": [
+      "company_browser_simulation",
+      "file",
+      "vision"
+    ],
+    "qq_agent_tool_execution": "not_yet_verified",
+    "shared_request_budget": {
+      "limit": 120,
+      "reserved_network_attempts": 2,
+      "armed": true,
+      "events": {
+        "denied_unarmed": 30,
+        "reserved_before_send": 2
+      },
+      "families": {
+        "other_httpx": 2
+      }
+    },
+    "task_message_cap_for_playwright": 3,
+    "tasks_admitted": 0,
+    "model_requests_initiated_by_codex": 0,
+    "cron_or_kanban_started": false,
+    "other_platforms_started": false,
+    "persistently_enabled_at_startup": false,
+    "owner_phone_round_trip": "pending /status"
+  },
+  "protection": {
+    "content_records_checked": 59,
+    "differences": [],
+    "original_configuration_and_code_modified": false,
+    "old_watchdog_and_openclaw_modified": false,
+    "new_tool_file": "H/tools/company-browser/qq_runtime.py",
+    "new_tool_sha256": "e42a758a8dc5136c16dd193e039c056cf16074a4517ce8050f0338a177d1eb5b",
+    "runtime_writes": [
+      "addon deployment receipt",
+      "QQ intake receipt/SQLite",
+      "native gateway PID and scoped lock; normal session/runtime writes permitted"
+    ]
+  },
+  "new_tests": {
+    "passed": 4,
+    "scope": [
+      "WebSocket destination validation",
+      "persistent dedup and task cap",
+      "concurrent admission cap",
+      "missing message ID denied"
+    ],
+    "model_calls": 0
+  },
+  "not_proven": [
+    "Owner phone send/receive",
+    "QQ-triggered Agent browser task results",
+    "reason old supervisor finally exited",
+    "unattended persistence after restart"
+  ],
+  "production_access": false
+}
