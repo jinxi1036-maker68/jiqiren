@@ -1,0 +1,133 @@
+{
+  "checked_at": "2026-10-25T00:44:16.538353+00:00",
+  "verdict": "failed: no browser operations; do not replay without Owner exception",
+  "session": {
+    "id": "20261025_083252_cc5965b5",
+    "source": "qqbot",
+    "cwd": null,
+    "started_at": 1792888372.1230526,
+    "ended_at": null,
+    "api_call_count": 11,
+    "tool_call_count": 30,
+    "message_count": 44
+  },
+  "tool_receipt_counts": {
+    "read_file": 14,
+    "search_files": 8,
+    "vision_analyze": 8
+  },
+  "browser_tool_calls": 0,
+  "vision_failures": {
+    "count": 8,
+    "reason": "blocked: unsafe or private URL",
+    "guardrail": "same_tool_failure_halt",
+    "actual_HTTP_GET_proven": false
+  },
+  "fixture": {
+    "phase": 0,
+    "qa_refreshes": 0,
+    "total_request_events": 2,
+    "latest_event_at": "2026-10-25T00:00:01.157Z"
+  },
+  "file_evidence": {
+    "read_file_calls": 14,
+    "search_files_calls": 8,
+    "read_company_knowledge": true,
+    "read_fixture_source_and_ground_truth": true,
+    "source_reading_is_browser_acceptance": false,
+    "private_memory_bodies_exported": false
+  },
+  "model_accounting": {
+    "session_logical_api_calls": 11,
+    "classified_chat_completions_attempts": 14,
+    "all_transport_budget": {
+      "limit": 120,
+      "reserved_network_attempts": 84,
+      "armed": true,
+      "events": {
+        "denied_unarmed": 30,
+        "reserved_before_send": 84
+      },
+      "families": {
+        "chat_completions": 14,
+        "messages": 13,
+        "other_httpx": 57
+      }
+    },
+    "all_transport_count_is_not_model_only_count": true,
+    "difference_between_11_and_14": "not fully attributed; do not assume all retries",
+    "request_cap_changed_or_reset": false,
+    "codex_model_messages": 0
+  },
+  "root_cause": {
+    "proven": "Initial QQ transport skipped native gateway MCP discovery, so configured server alias was not registered in that process. Original gateway/run.py lines30601-30610 performs discover_mcp_tools before start. Initial qq_runtime.py did not.",
+    "initial_QQ_startup_tool_list_was_insufficient_evidence": true,
+    "old_Desktop_schema_does_not_prove_QQ_Agent_tools": true,
+    "vision_URL_safety_rule_relaxed": false
+  },
+  "minimal_fix": {
+    "source": "hermes/browser/qq_runtime.py",
+    "source_sha256": "c5f602e14097051edf021474ff99fce79b178ef39f483daa93aa3ffe7e26d5d9",
+    "original_install_files_modified": false,
+    "native_MCP_discovery_reused": true,
+    "process_only_server_selection": [
+      "company_browser_simulation"
+    ],
+    "persisted_MCP_config_or_permissions_changed": false,
+    "catalog_gate": {
+      "same_process": true,
+      "connected": true,
+      "browser_tools": 13,
+      "catalog_names": [
+        "mcp__company_browser_simulation__browser_click",
+        "mcp__company_browser_simulation__browser_close",
+        "mcp__company_browser_simulation__browser_fill_form",
+        "mcp__company_browser_simulation__browser_handle_dialog",
+        "mcp__company_browser_simulation__browser_navigate",
+        "mcp__company_browser_simulation__browser_navigate_back",
+        "mcp__company_browser_simulation__browser_press_key",
+        "mcp__company_browser_simulation__browser_select_option",
+        "mcp__company_browser_simulation__browser_snapshot",
+        "mcp__company_browser_simulation__browser_tabs",
+        "mcp__company_browser_simulation__browser_take_screenshot",
+        "mcp__company_browser_simulation__browser_type",
+        "mcp__company_browser_simulation__browser_wait_for"
+      ],
+      "initial_model_tools": [
+        "patch",
+        "read_file",
+        "search_files",
+        "tool_call",
+        "tool_describe",
+        "tool_search",
+        "vision_analyze",
+        "write_file"
+      ],
+      "deferred_tool_search_available": true,
+      "actual_browser_tool_execution": false
+    },
+    "new_tests": 2,
+    "QQ_test_module_total_passed": 6,
+    "QQ_after_fix_ready": true,
+    "model_task_intake_enabled": false,
+    "owner_tasks_retained": 1,
+    "model_tasks_replayed": 0,
+    "private_preimages": 2,
+    "rollback_performed": false
+  },
+  "protection": {
+    "records": 59,
+    "differences": [],
+    "normal_services_stopped": false,
+    "owned_QQ_process_restarted": true,
+    "R3_or_memory_or_identity_changed": false
+  },
+  "still_unverified": [
+    "actual Agent discovery and browser use after fix",
+    "successful analysis goal",
+    "vision understanding",
+    "creating and binding",
+    "recovery scenario"
+  ],
+  "stop_condition": "QQ status only; original failed slot1 and shared budget retained; await Owner/ChatGPT review"
+}

@@ -22,6 +22,49 @@ from urllib.parse import urlsplit
 
 
 TOOLSETS = ["company_browser_simulation", "file", "vision"]
+EXPECTED_BROWSER_TOOLS = {
+    "browser_close", "browser_handle_dialog", "browser_fill_form", "browser_press_key",
+    "browser_type", "browser_navigate", "browser_navigate_back", "browser_take_screenshot",
+    "browser_snapshot", "browser_click", "browser_select_option", "browser_tabs", "browser_wait_for",
+}
+
+
+def verify_browser_catalog(status, names, expected):
+    company = [s for s in status if s.get("name") == "company_browser_simulation"]
+    if len(company) != 1 or not company[0].get("connected"):
+        raise RuntimeError("Company browser MCP is not connected in this QQ process")
+    if not set(expected).issubset(names):
+        raise RuntimeError("Company browser tools missing from this process's model catalog")
+
+
+async def discover_company_browser(out):
+    """Run the native startup step omitted by the initial QQ transport adapter."""
+    from tools import mcp_tool
+    original_config_loader = mcp_tool._load_mcp_config
+    def selected_config():
+        configured = original_config_loader()
+        if "company_browser_simulation" not in configured:
+            raise RuntimeError("Original company browser registration is absent")
+        # Process-local tool selection, not a persisted MCP permission/config edit.
+        return {"company_browser_simulation": configured["company_browser_simulation"]}
+    mcp_tool._load_mcp_config = selected_config
+    await asyncio.wait_for(asyncio.to_thread(mcp_tool.discover_mcp_tools), timeout=35)
+    from model_tools import get_tool_definitions
+    wanted = {mcp_tool.mcp_prefixed_tool_name("company_browser_simulation", t)
+              for t in EXPECTED_BROWSER_TOOLS}
+    full = get_tool_definitions(enabled_toolsets=TOOLSETS, quiet_mode=True,
+                                skip_tool_search_assembly=True)
+    names = {t["function"]["name"] for t in full}
+    status = mcp_tool.get_mcp_status()
+    verify_browser_catalog(status, names, wanted)
+    initial = get_tool_definitions(enabled_toolsets=TOOLSETS, quiet_mode=True)
+    event(out, "qq_browser_catalog_verified", pid=os.getpid(),
+          server_status=[{k:s.get(k) for k in ["name", "connected", "tools", "transport"]}
+                         for s in status],
+          model_catalog_browser_tools=sorted(wanted),
+          initial_model_tool_names=sorted(t["function"]["name"] for t in initial),
+          tool_execution_performed=False, model_calls=0)
+    return True
 
 
 def official_qq_websocket(url):
@@ -156,6 +199,11 @@ async def serve(args):
                 _inside_metered_transport.reset(token)
         adapter._open_ws = open_qq
         install_httpx_budget(budget, add_network_audit=True)
+        browser_ready = False
+        try:
+            browser_ready = await discover_company_browser(out)
+        except Exception as exc:
+            event(out, "qq_browser_catalog_failed", error_type=type(exc).__name__, model_calls=0)
         intake, busy = Intake(out / "intake.sqlite"), asyncio.Lock()
         ready = False
         primary = runner._primary_message_handler()
@@ -165,12 +213,17 @@ async def serve(args):
                 return None
             if msg.text.strip().lower() == "/status":
                 event(out, "status_requested", model_calls=0)
-                return ("QQ通道已连接，仍是原Hermes、原公司工作区。当前只开放本机模拟浏览器验收，"
+                state = "等待Owner复核，暂停新模型任务" if not args.allow_task_messages else "本机模拟任务接收已开启"
+                browser = "13项浏览器工具目录预检通过" if browser_ready else "浏览器工具目录预检未通过"
+                return (f"QQ通道已连接，仍是原Hermes、原公司工作区。{state}；{browser}。"
                         f"已接收{intake.count()}/3条任务；共享请求额度已用"
                         f"{budget.status()['reserved_network_attempts']}/120次（含QQ连接等HTTP请求）。"
                         "没有登录真实灵生后台。")
             if not ready or busy.locked():
                 return "当前正在准备或处理上一条任务，请先等待完成；本条没有送给模型。"
+            if not args.allow_task_messages or not browser_ready:
+                event(out, "inbound_paused_without_model", model_calls=0)
+                return "QQ仍在线。本轮第一条浏览器任务未通过，已暂停新模型任务，等待Owner复核；没有补发或重试。"
             if msg.text.startswith("/") or msg.media_urls:
                 return "本轮仅接收文字任务和/status，不执行重启、配置、媒体或其他命令。"
             if budget.status()["reserved_network_attempts"] >= 115:
@@ -209,7 +262,8 @@ async def serve(args):
               home=str(home), cwd=os.getcwd(), toolsets=TOOLSETS, max_turns=16,
               source_sha256=sha256(__file__), budget=budget.status(),
               codex_model_messages=0, cron_started=False, other_channels_started=False,
-              original_gateway_start_called=False, protected_changes=[])
+              original_gateway_start_called=False, protected_changes=[],
+              browser_catalog_verified=browser_ready, task_admission_enabled=args.allow_task_messages)
         print(json.dumps({"event":"qq_ready", "pid":os.getpid(), "budget":budget.status(),
                           "owner_can_send":"/status", "model_messages_sent_by_codex":0}), flush=True)
         await asyncio.Event().wait()
@@ -219,6 +273,9 @@ async def serve(args):
         if adapter:
             with contextlib.suppress(Exception):
                 await adapter.disconnect()
+        with contextlib.suppress(Exception):
+            from tools.mcp_tool import shutdown_mcp_servers
+            await asyncio.to_thread(shutdown_mcp_servers)
         remove_pid_file()
         release_gateway_runtime_lock()
 
@@ -227,6 +284,8 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     for name in ["runtime", "install", "baseline", "output"]:
         p.add_argument("--" + name, required=True)
+    p.add_argument("--allow-task-messages", action="store_true",
+                   help="Explicitly reopen intake only after Owner review; default is status only")
     try:
         asyncio.run(serve(p.parse_args()))
     except BaseException as exc:

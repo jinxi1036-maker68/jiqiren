@@ -5,10 +5,24 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from qq_runtime import Intake, official_qq_websocket
+from qq_runtime import Intake, official_qq_websocket, verify_browser_catalog
 
 
 class QQIntakeTests(unittest.TestCase):
+    def test_a_live_adapter_without_model_catalog_is_not_ready(self):
+        status = [{"name": "company_browser_simulation", "connected": True}]
+        with self.assertRaises(RuntimeError):
+            verify_browser_catalog(status, {"read_file", "vision_analyze"}, {"browser_navigate"})
+
+    def test_both_process_connection_and_model_catalog_are_required(self):
+        names = {"browser_navigate", "browser_snapshot"}
+        expected = set(names)
+        with self.assertRaises(RuntimeError):
+            verify_browser_catalog([], names, expected)
+        with self.assertRaises(RuntimeError):
+            verify_browser_catalog([{"name":"company_browser_simulation", "connected":False}], names, expected)
+        verify_browser_catalog([{"name":"company_browser_simulation", "connected":True}], names, expected)
+
     def test_only_native_qq_websocket_is_exempted(self):
         self.assertEqual(official_qq_websocket("wss://api.sgroup.qq.com/websocket"),
                          "wss://api.sgroup.qq.com/websocket")

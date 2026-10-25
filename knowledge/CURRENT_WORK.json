@@ -167,14 +167,18 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "qq_status_round_trip_confirmed_waiting_first_browser_task",
+      "status": "first_QQ_browser_task_failed_discovery_fixed_status_only_waiting_review",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
-      "new_hermes_model_requests": 0,
+      "new_hermes_model_requests": null,
       "production_access": false,
-      "blocks": [],
-      "next_step": "Owner通过原QQ发送Playwright读取分析任务一次；Codex仅核对实际Agent会话和工具收据。B最多3条，不转移A额度，共享120次请求上限不变。真实浏览器目标能力仍未验收。",
+      "blocks": [
+        "first_QQ_analysis_goal_failed",
+        "failed_task_replay_requires_Owner_exception",
+        "shared_request_budget_remaining_36_including_QQ_traffic"
+      ],
+      "next_step": "先审查首次失败及修复证据；QQ保持/status，新模型任务暂停。原计划禁止失败补发，是否使用B剩余机会补验须Owner明确批准；不得重置/增加120共享额度或挪用A机会。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -202,14 +206,26 @@
         "owner_round_trip": "confirmed: Owner received /status; local receipt matched",
         "shared_request_cap": 120,
         "conservative_httpx_attempts_at_start": 2,
-        "model_requests": 0,
-        "owner_tasks_admitted": 0,
+        "model_requests": null,
+        "owner_tasks_admitted": 1,
         "b_task_cap": 3,
         "protected_changes": 0,
         "other_services_changed": false,
         "startup_persistence_changed": false,
-        "evidence": "hermes/browser/evidence/qq-intake-2026-10-25.json",
-        "conservative_httpx_attempts_after_status": 4
+        "evidence": "hermes/browser/evidence/qq-first-browser-task-2026-10-25.json",
+        "conservative_httpx_attempts_after_status": 4,
+        "status": "status_only_after_first_failed_task",
+        "browser_catalog_tools_verified": 13,
+        "agent_browser_task_verified": false,
+        "new_zero_model_tests_passed": 2
+      },
+      "model_accounting": {
+        "logical_api_calls": 11,
+        "classified_chat_completions_attempts": 14,
+        "all_transport_requests_reserved": 84,
+        "cap": 120,
+        "model_only_total": "not_separately_proven",
+        "codex_model_messages": 0
       }
     }
   },
