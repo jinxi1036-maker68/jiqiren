@@ -34,7 +34,8 @@
     },
     "recording_efficiency_history": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md",
     "next_primary_gate_note": "2026-10-25 meeting adds immediate actual scene coverage survey due by Thursday and forecast +20 devices; no actual acceptance/delivery/QA evidence. Keep no premature expansion assurance.",
-    "owner_latest_scene_requirement": "工厂80平已布局；130平客厅做超市；原主卧分拣提案因灵生暂不接受隐私分拣而停止；改研究无胶带、免一次性耗材的可循环装盒和内部周转任务；客户审核前不采购/施工。"
+    "owner_latest_scene_requirement": "工厂80平已布局；130平客厅做超市；原主卧分拣提案因灵生暂不接受隐私分拣而停止；改研究无胶带、免一次性耗材的可循环装盒和内部周转任务；客户审核前不采购/施工。",
+    "latest_sop_handoff": "2026-10-25 all scene spreadsheets and full 33-task Hermes-readable V3 Markdown archived on GitHub main; client-facing V2 only, internal V3 draft. No customer submission, approval or production Hermes integration observed."
   },
   "project_lead_mode": {
     "enabled": true,
@@ -83,7 +84,7 @@
     "不得虚构正在运营工厂订单、真实缺陷样品来源、工作场景授权或已有项目业绩。",
     "不得用影响工人安全的方式满足拍摄要求；不强迫省略必要的专业防护。"
   ],
-  "next_action": "先推进灵生真实Ego采集：核对现有设备及上传、逐任务SOP和QA有效时长、正式合同结算，再依据实际结果决策扩张。社保单位线上开户按Owner要求暂停待线下了解；AI清洗/标注为以后方向，不启动试验。",
+  "next_action": "先由Owner核看V2对外33任务目录及V3内部逐步动作草案，场景和真实工序报灵生确认；按现场实际操作修订V3，未经灵生确认不提前采购布置；未来Hermes仅在授权下据最新版SOP起草任务。",
   "must_read": [
     "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "knowledge/SCENE_PIPELINE.json",
@@ -364,7 +365,7 @@
     "purchase_gate": "no new furnishings/consumables until owner review and written partner task category/SOP confirmation"
   },
   "scene_sop_submission_v1_20261025": {
-    "status": "xlsx_generated_owner_review_pending_partner_not_submitted",
+    "status": "superseded_for_external_by_V2_but_archived_in_github",
     "task_count": 33,
     "tertiary_category_count": 11,
     "scene_counts": {
@@ -373,7 +374,7 @@
       "仓库": 9
     },
     "full_workbook_filename": "凌矩_三级任务分类与详细采集SOP_灵生审核版_V1.xlsx",
-    "workbook_storage": "ChatGPT conversation downloadable attachment only; not GitHub-backed",
+    "workbook_storage": "knowledge/sop/archive/2026-10-25_早期V1七表详细版_已取代.xlsx",
     "release_index": "knowledge/reports/2026-10-25_LINGJU_33_SOP_SUBMISSION_V1_RELEASE.md",
     "quality_rules": "every SOP has 6 sequenced actions, complete/restore/safety info; no personal parcel sorting or routine single-use tape/bags; no props purchased until partner approval",
     "next_step": "Owner to review Excel against real available props, then forward to LivSyn; capture scene-category recognition and task-level feedback, revise before any purchasing."
@@ -393,11 +394,14 @@
       "classification methodology page"
     ],
     "truthfulness": "do not claim actual operating commercial factory/supermarket/warehouse or approved tasks without evidence",
-    "next_step": "Owner reads V2; adjust names to real operating tasks, submit concise candidate list to LivSyn; derive task SOPs from genuine workflow when confirmed"
+    "next_step": "Owner reads V2; adjust names to real operating tasks, submit concise candidate list to LivSyn; derive task SOPs from genuine workflow when confirmed",
+    "github_excel": "knowledge/sop/client/2026-10-25_三场景三级分类任务目录_V2.xlsx",
+    "github_manifest": "knowledge/sop/00_START_HERE.md",
+    "workbook_storage": "GitHub main actual XLSX verified, backed up ChatGPT Library; not yet sent to LivSyn."
   },
   "internal_sop_v3_20261025": {
     "date": "2026-10-25",
-    "status": "prepared_in_chat_not_livsyn_approved_not_uploaded_to_github_binary",
+    "status": "git_main_excel_and_complete_markdown_verified_stored_internal_draft_not_livsyn_approved",
     "report": "knowledge/reports/2026-10-25_LINGJU_INTERNAL_SOP_V3_HERMES_HANDOFF.md",
     "xlsx": "凌矩_三场景33项任务_内部详细SOP与Hermes参考版_V3.xlsx",
     "hermes_markdown": "凌矩_33项任务内部SOP_Hermes知识版_V3.md",
@@ -410,7 +414,12 @@
       "field revisions supersede provisional steps",
       "all items reusable with minimal per-cycle consumables",
       "do not publish to LivSyn before official approval",
-      "Hermes cannot read full SOP solely from GitHub handoff index; markdown must be uploaded or connected"
-    ]
+      "Full V3 markdown already stored in GitHub main; Hermes must explicitly fetch it and still needs Owner authorization for task execution."
+    ],
+    "github_manifest": "knowledge/sop/00_START_HERE.md",
+    "github_excel": "knowledge/sop/internal/2026-10-25_三场景33项完整内部SOP_V3.xlsx",
+    "github_markdown": "knowledge/sop/internal/2026-10-25_LINGJU_33_TASK_SOPS_HERMES_V3.md",
+    "workbook_storage": "GitHub main actual binary XLSX plus full MD source; ChatGPT Library separate backup; no production Hermes import/deployment implied",
+    "next_gate": "Owner and on-site lead review V3 by F/S/W task ID, amend to match real task before Hermes uses it; client receives only V2 after Owner authorizes sending."
   }
 }
