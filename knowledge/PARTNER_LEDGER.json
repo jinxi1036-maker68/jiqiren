@@ -1,6 +1,6 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-25",
   "partners": [
     {
       "id": "livsyn",
@@ -10,7 +10,7 @@
       "current_path": "自建真实操作工位组织方式已获对接人认可 → 三个分区任务SOP提交审核 → 少量上传正式质检 → 依据实际有效产出再扩10台和更多人员",
       "evidence_level": "conversation_confirmed",
       "known_terms_ref": "knowledge/ECONOMICS_MODEL.json",
-      "next_gate": "确认三项任务的具体SOP可验收、场景及操作流程报备、平台数据上传与审核反馈；书面确认试采租金和有效数据结算",
+      "next_gate": "按2026-10-25会后要求核实22/32/34分类及三级任务清单，周四前提交现有真实可联系场地覆盖情况；单独查20台设备物流与签到、平台AI质检是否真正上线、真实验收与合同结算",
       "scene_model_confirmation": {
         "date": "2026-10-15",
         "evidence_level": "conversation_confirmed",
@@ -47,6 +47,17 @@
         "partner_group_message": "杜振成提出“月底前增加到一百人”",
         "nature": "上游提出的激励/目标，尚不能判断玩笑或正式要求",
         "owner_commitment": "无100人承诺；初期集中试采质量与现金回款"
+      },
+      "latest_meeting": {
+        "date": "2026-10-25",
+        "report": "knowledge/reports/2026-10-25_LIVSYN_PARTNER_WEEKLY_MEETING_REVIEW.md",
+        "source": "AI-generated meeting minutes provided by Owner; not verified platform/system evidence",
+        "equipment": "partner minutes claim 20 dispatched expected Mon arrival, Tue usable; no receipt",
+        "capacity": "planned ~30 devices/day 150 QA-effective hours/day & 720 weekly, not achieved",
+        "scenes": "factory task <=5 collected hours; supermarket through Thu; 22 L2 plus L3 meeting category conflicts with 32 filename/34 sheet names",
+        "platform": "one-click appeal and AI QA scheduled not yet online; unsampled effective hours may not display",
+        "agent": "minutes mention local ChatGPT agent and suggested Feishu bot; not confirmed Hermes production",
+        "priority": "confirm category list and survey sites by Thursday"
       }
     },
     {
