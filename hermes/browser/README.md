@@ -282,3 +282,8 @@ QQ在线但Intake已满、预算未arm，不接新模型任务；既有模型处
 ### 当前：同一30次账本的一次Owner续办
 
 Owner“那你开始吧”允许在原11/30、剩19的条件下继续同一未完成recovery目标。原30/1授权保留，只有gate中的one_time_continuation精确对象才增加一个消息，原qq-intake.sqlite保留slot1，接收总上限2；禁止修改计数或转移目的。原QQ/native pipeline已READY，--allow-task-messages --admit-through-slot 2；新线程/空合成站，没有静默恢复无关历史。模型调用由Owner发送一次QQ自然语言任务才触发，Codex不探活。20项QQ本地检查通过，继承节流/流量检查。实际429是否恢复、目标是否通过待实际收据，不能由企业用户身份或本地测试推断。见[evidence](evidence/qq-round3-continuation-ready-2026-10-25.json)。
+
+
+### 上述续办已结束：当前暂停，勿复用就绪URL
+
+Owner续办在3次浏览器动作后APIConnectionError中断，未提交项目。当前29/30、消息2/2、armed=false，自有fixture/Chrome已关闭，QQ仅可状态回复/拒绝新模型任务。13工具启动就绪不等于本次业务验收通过。具体连接根因尚未证实；没有本次429收据，不盲目补发，见[实际结果](evidence/qq-round3-continuation-result-2026-10-25.json)。

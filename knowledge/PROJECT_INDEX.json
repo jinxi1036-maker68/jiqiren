@@ -75,18 +75,20 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "same_goal_continuation_QQ_ready_remaining19_no_new_model_request",
+      "status": "QQ_continuation_failed_APIConnectionError_paused29of30_messages2of2",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
       "new_hermes_model_requests": null,
       "production_access": false,
       "blocks": [
-        "provider_HTTP429_root_cause_unknown",
         "recovery_permission_and_final_report_Agent_revalidation_not_performed",
-        "historical_clean_session_failure_and_no_formal_driver_selection_retained"
+        "historical_clean_session_failure_and_no_formal_driver_selection_retained",
+        "current_APIConnectionError_root_cause_unknown",
+        "current_message_grant_consumed",
+        "rejected_unavailable_terminal_attempt"
       ],
-      "next_step": "Owner已在本对话说“那你开始吧”，据此前一次同任务续办提议开放一条额外QQ消息。沿用原30账本，已用11/剩19，保留失败slot1，最多接收slot2，不重置或加额。原QQ临时管线/原H和W READY，13浏览器目录通过，进程节流启用，20项QQ零模型检查通过；仅启动快照，新增模型请求0。Owner报告企业用户；实际Key池和429细因未证实，10次/49秒不能单独证明超企业20RPM。待Owner发送一次同目标自然语言任务，按收据验收；不访问真实平台。",
+      "next_step": "Owner本次QQ续办已结束，19:15:10–19:20:07（北京时间）。APIConnectionError连接错误，有5份HTTP200响应头，3个浏览器动作成功；未提交项目/未处理分页等剩余目标。尝试terminal一次但工具不存在被拒绝。累计29/30、消息2/2，已暂停且关闭自有模拟浏览器，QQ仍在线。不再让Owner盲目重发；先针对连接失败补充可脱敏的异常链依据，具体DNS/TLS/代理/服务商根因未证实，不假称端点停服或本次429。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -311,6 +313,21 @@
         "enterprise_status": "Owner report; actual API Key pool not verified",
         "pacing_real_model_effect": "not yet verified",
         "evidence": "hermes/browser/evidence/qq-round3-continuation-ready-2026-10-25.json"
+      },
+      "continuation_result": {
+        "status": "failed_connection_error_no_final_report",
+        "attempt_reservations": 18,
+        "DB_logical_API_calls": 4,
+        "browser_calls": 3,
+        "rejected_terminal_calls": 1,
+        "projects": 0,
+        "QA_refreshes": 0,
+        "budget_used": 29,
+        "budget_limit": 30,
+        "armed": false,
+        "messages_used": 2,
+        "message_ceiling": 2,
+        "evidence": "hermes/browser/evidence/qq-round3-continuation-result-2026-10-25.json"
       }
     }
   }

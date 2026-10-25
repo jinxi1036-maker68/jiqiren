@@ -1,0 +1,154 @@
+{
+  "checked_at": "2026-10-25T11:25:28.432130+00:00",
+  "purpose": "Read-only evidence of Owner same-goal QQ continuation failure; no new test",
+  "session": {
+    "id": "20261025_191510_4a78958e",
+    "source": "qqbot",
+    "model": "agnes-3.0-flash",
+    "cwd": null,
+    "started_at": 1792926910.7703757,
+    "ended_at": null,
+    "end_reason": null,
+    "message_count": 16,
+    "tool_call_count": 10,
+    "api_call_count": 4,
+    "thread_id": "browser-20261025T110545Z-playwright-recovery-53dc6604-2"
+  },
+  "H_W_evidence": "qq_ready and owner_task_admitted prove original install/home/company-workspace; DB cwd null is not independent W proof",
+  "owner_task_messages_this_continuation": 1,
+  "two_QQ_error_bubbles": "one admitted task; does not prove two model tasks or endpoint stopped",
+  "time_UTC": {
+    "admitted": "2026-10-25T11:15:10.406905+00:00",
+    "returned": "2026-10-25T11:20:07.354374+00:00"
+  },
+  "actual_error": {
+    "type": "APIConnectionError",
+    "message": "Connection error."
+  },
+  "error_root_tail_sha256": "c6a3e7c622973208b74eef3e6420eb6b2fff8ebd8a952be1f0e6bf8ee937168f",
+  "raw_dump_uploaded": false,
+  "prompt_headers_credentials_not_decoded": true,
+  "physical_attempt_reservations": 18,
+  "attempt_families": {
+    "chat_completions": 17,
+    "other_httpx": 1
+  },
+  "successful_generation_count": "not inferable from physical reservations; DB logical api_call_count4 recorded separately",
+  "response_headers_recorded": {
+    "count": 5,
+    "statuses": {
+      "200": 5
+    },
+    "429": 0,
+    "no_headers_observed_attempts": 13,
+    "limits": "missing response header receipt alone does not identify DNS/TCP/TLS/proxy/provider/root cause"
+  },
+  "process_pacing_observed": {
+    "wire_start_count": 18,
+    "minimum_interval_seconds": 12.01096510887146,
+    "quota_not_exceeded": true,
+    "actual_provider_recovery_or_stability": "not proven"
+  },
+  "tool_receipts": [
+    {
+      "id": 104924,
+      "tool_name": null
+    },
+    {
+      "id": 104925,
+      "tool_name": "tool_describe"
+    },
+    {
+      "id": 104926,
+      "tool_name": "tool_describe"
+    },
+    {
+      "id": 104927,
+      "tool_name": "tool_describe"
+    },
+    {
+      "id": 104928,
+      "tool_name": "tool_describe"
+    },
+    {
+      "id": 104929,
+      "tool_name": "tool_describe"
+    },
+    {
+      "id": 104930,
+      "tool_name": "tool_describe"
+    },
+    {
+      "id": 104932,
+      "tool_name": "mcp__company_browser_simulation__browser_navigate"
+    },
+    {
+      "id": 104934,
+      "tool_name": "mcp__company_browser_simulation__browser_click"
+    },
+    {
+      "id": 104936,
+      "tool_name": "mcp__company_browser_simulation__browser_fill_form"
+    }
+  ],
+  "tool_counts": {
+    "rejected_unavailable_terminal": 1,
+    "tool_describe": 6,
+    "browser": 3,
+    "total": 10
+  },
+  "browser_actions": [
+    "navigate recovery success",
+    "query existing projects/tasks success",
+    "fill project name and business code success"
+  ],
+  "not_executed": [
+    "submit/create project",
+    "partial pagination",
+    "dynamic employee options refresh",
+    "expired login page"
+  ],
+  "fixture_truth": {
+    "projects": 0,
+    "tasks": 0,
+    "QA_refreshes": 0,
+    "create_attempts": 0
+  },
+  "discipline_issue": "Agent requested unavailable terminal once; rejected by native catalog. No terminal execution. This attempt is recorded, not graded as a clean browser-only discipline pass.",
+  "observed_side_effects": "No create, no QA refresh, no external business site action in browser receipts; protected files unchanged",
+  "unproven": [
+    "specific connection failure cause",
+    "whether provider service was down",
+    "whether account quota affected anything",
+    "completed recovery or final report"
+  ],
+  "budget": {
+    "limit": 30,
+    "reserved_network_attempts": 29,
+    "armed": false,
+    "events": {
+      "denied_unarmed": 5,
+      "reserved_before_send": 29
+    },
+    "families": {
+      "chat_completions": 27,
+      "other_httpx": 2
+    }
+  },
+  "messages_used": 2,
+  "message_ceiling": 2,
+  "remaining_requests": 1,
+  "further_model_tasks_allowed": false,
+  "new_Codex_model_messages": 0,
+  "new_model_probe_requests": 0,
+  "protected_records_unchanged": 59,
+  "workspace_files": 37,
+  "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+  "old60_and120_ledgers_byte_unchanged": true,
+  "config_identity_memory_knowledge_permissions_changed": false,
+  "owned_fixture_and_browser_closed": true,
+  "QQ_kept_online": true,
+  "retries_paused": true,
+  "rollback_performed": false,
+  "conclusion": "Recovery task NOT completed; connection errors interrupted after3 browser actions; no more blind task resubmissions"
+}
