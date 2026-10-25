@@ -9,10 +9,13 @@
 3. 重要变更动机读`knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md`；需要理解走过的路再读`knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md`。
 4. 开发Hermes时读`hermes/AGENTS.md`和`hermes/identity/ROLE_BRIEF.md`，再看对应代码与已合并/未合并PR。
 
+**最新跨窗口工作状态（2026-10-19）**：Hermes浏览器能力顶级化方案、Codex完整调研与ChatGPT比较已分类保存；Owner明确要求先暂停，不实施或测试。参阅[浏览器专项ADR](knowledge/decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md)；过去09:00 QQ晨报也暂缓。任何开发Agent不能因看到历史待办而自行恢复或改本机环境。
+
 ## 宪章的不可偏离要义
 
 - Hermes是Owner电脑里**唯一正式数字员工**；不是第二套业务系统，也不追求长期维护原Hermes+隔离Hermes双身份。
 - **公司给岗位目标、业务知识、授权、底线和成果标准；Hermes自主决定工作方法、自己发现问题和自我提升。** 不将思考限制在硬编码“第一步/第二步/第三步”。
+- **Owner 2026-10-18轻量化决定**：先培训、再复用原Hermes的知识/文件/浏览器/记忆/Skills；确有实测缺口才增加小Skill或最少必要代码。禁止为虚构需求叠加Agent、管理系统、数据库和固定工作流水线。完整决策见[`ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18`](knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)；不可因少代码取消必要权限与安全保护。
 - 只为当前实际需要逐步培养新技能。现在重点是灵生真实数采后台运营；Owner未来增加新客户/项目时，继续培养同一员工。
 - 底线必须遵守：真实数据、正式SOP/任务关键要求、权限、隐私、财务/重大操作审批；日常明确授权的工作不必事事请示。
 - 原Hermes目前**尚未执行正式单身份清理/迁移**；Phase02A/02B隔离profile为历史模拟实验，不可把它们称为Owner批准的终局架构。

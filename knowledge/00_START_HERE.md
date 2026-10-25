@@ -2,12 +2,21 @@
 
 > 聊天记忆不是权威；旧截图不是当前事实；口头条件在写进正式协议前都只是“待合同确认”。
 
+## 2026-10-20 最新经营讨论与跨窗口接力
+
+- **Owner新商业构想（尚未实施）**：[义乌真实手工订单＋真实EGO数据采集＋每点一个特色场景](strategy/REAL_PRODUCTION_AND_EGO_CAPTURE_CONCEPT_2026-10-20.md)。Owner计划未来与灵生吴总探讨真实生产工序是否符合数据要求，以及特色场景如何按客户需求分点建设。该文档是经营意向，**不等于灵生认可、工厂订单已接、10个点已建或双收入已取得**。
+- **待研究工商问题**：灵生LivSyn的营业执照登记主体与注册资本/实缴资本尚未核实。以权威工商来源和准确主体为准，不得虚构金额。
+- **新版跨窗口交接语**：[2026-10-20接力启动语](HERMES_NEW_CHAT_HANDOFF.md)。新窗口先查当前Draft PR #19、PR #18和main差异，再按任务读取必要文档。
+- **研发状态**：Owner明确暂停Hermes浏览器专项、09:00 QQ晨报和其他工程实施；商业规划讨论不代表重新授权研发或真实灵生操作。
+
 ## Hermes数字员工｜Owner最高有效理念（2026-10-16）
 
 **任何新窗口、Codex或其他Agent，只要任务涉及Hermes身份、开发、记忆清理、浏览器、巡检、派单或扩展业务，必须在制订方案/改代码之前先读：**
 
 - [唯一当前指导原则：Hermes数字员工岗位宪章](HERMES_DIGITAL_EMPLOYEE_CHARTER.md)
 - [正式Owner决策与已否决方案](decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md)
+- [Owner 2026-10-18追加：Hermes轻量化、少代码、原生能力复用](decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)（所有涉及Hermes开发/新增功能的任务必读；它从属于唯一宪章）
+- **2026-10-19最新决定：浏览器专项技术路线已研究归档、当前暂停。** [唯一专项决定及暂停边界](decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md)；详见[Codex原研究](../hermes/reports/HERMES_BROWSER_CODEX_RESEARCH_SOURCE_2026-10-19.md)和[技术深度对照](../hermes/reports/HERMES_BROWSER_DEEP_COMPARISON_2026-10-19.md)。新窗口若讨论Hermes浏览器，应按需先读ADR；**未获Owner恢复指令不得执行或安装**。先前09:00 QQ晨报也暂缓。
 - [从起点到现在的理念、开发、纠偏历史](history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)（首次接手/需要复盘时读）
 - [开发Agent入口](../AGENTS.md)与[Hermes代码工作区约束](../hermes/AGENTS.md)
 

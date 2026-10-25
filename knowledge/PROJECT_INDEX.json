@@ -71,6 +71,64 @@
       "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
     ],
     "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
-    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
-  }
+    "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+    "lean_dev_adr": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md",
+    "owner_development_preference_2026_10_18": "轻量化、最少必要代码：先培训原Hermes并复用现有知识/文件/浏览器/记忆/Skills，实测缺口才加小Skill或最小代码；自主工作，禁止平行正式Agent或另造管理系统，保留必要安全保护。",
+    "lean_dev_implementation_scope": "github_documentation_proposal_only; not_part_of_fixed_local_R3_32_files; no_runtime_or_permission_change",
+    "daily_staff_briefing": {
+      "owner_request_date": "2026-10-18",
+      "purpose": "原Hermes每天主动查看采集员近期数据、分析异常并向Owner汇报",
+      "time_local": "09:00",
+      "timezone": "Asia/Shanghai",
+      "cadence": "daily_including_weekends",
+      "suggested_analysis_window": "前一自然日采集与上传；近7天新增QA审核/人员异常；按真实数据与Owner反馈调整",
+      "implementation_preference": "reuse_original_hermes_native_cron_gateway_and_existing_read_only_browser_or_tools; no_new_management_system",
+      "real_platform_access": "pending_explicit_owner_login_and_read_only_authorization",
+      "delivery_channel": "QQ (Owner confirmed; actual channel send capability still unverified)",
+      "scheduled_job_state": "not_created_or_enabled; project_knowledge_requirement_only",
+      "go_live_conditions": [
+        "owner_confirmed_livsyn_login_and_read_only_scope",
+        "original_hermes_native_scheduler_and_delivery_verified",
+        "one_real_read_only_collection_report_and_delivery_verified"
+      ],
+      "authority_ref": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md",
+      "tracking_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
+      "owner_delivery_confirmation_date": "2026-10-18",
+      "work_status": "paused_by_owner_2026_10_19",
+      "pause_reason": "Owner暂停晨报/QQ/Cron/其他数字员工实施，浏览器专项研究也在归档后暂停；已有时间与渠道需求保留，未启用任何任务"
+    },
+    "browser_capability_focus": {
+      "owner_direction_date": "2026-10-19",
+      "subject": "原Hermes浏览器操作能力尽可能强：读数、复杂表单、创建项目/任务、绑定采集员/设备、提交后结果核对",
+      "status": "paused_by_owner_after_research_archive",
+      "phase": "research_and_design_only_not_implemented",
+      "decision_adr": "knowledge/decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md",
+      "codex_original_research": "hermes/reports/HERMES_BROWSER_CODEX_RESEARCH_SOURCE_2026-10-19.md",
+      "comparative_research": "hermes/reports/HERMES_BROWSER_DEEP_COMPARISON_2026-10-19.md",
+      "architecture": "one_original_Hermes; dedicated_local_Chrome_or_Edge; compare_native_Browser_Use_CLI_vs_Playwright_MCP; one_primary_driver; DOM_first_vision_if_needed; verify_persisted_business_result",
+      "core_validation_goal": "simulate_create_project_then_task_then_bind_unique_worker_and_device_then_submit_once_then_refresh_and_verify_ID_and_relations",
+      "measured_implementation": "no_browser_A_B_test; no_new_Hermes_model_calls; no_real_platform_login_or_write",
+      "authorization": "real_livsyn_read_only_and_any_real_write_pending_owner_explicit_confirmation",
+      "next_action": "none_until_owner_explicitly_resumes_browser_special_project",
+      "tracking_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9"
+    }
+  },
+  "business_strategy_latest_discussion": {
+    "discussion_date": "2026-10-19_to_2026-10-20",
+    "subject": "承接义乌真实工厂外发手工加工订单，让采集员实际生产交付，同时在工厂和数据客户许可条件下采集EGO操作数据；未来每个采集点一个差异化特色场景，其余结合真实加工作业",
+    "status": "owner_concept_proposal_not_implemented_or_approved_by_livsyn",
+    "authority_document": "knowledge/strategy/REAL_PRODUCTION_AND_EGO_CAPTURE_CONCEPT_2026-10-20.md",
+    "proposed_livsyn_discussion": "向吴总说明真实加工不是摆拍，询问真实生产工序适配和每点一个特色场景的可接受性；尚未证实联系或回复",
+    "ten_sites": "long_term_hypothesis_not_existing_ten_sites_or_ten_devices",
+    "dual_revenue": "potential_only; factory_accepted_processing_fees_plus_livsyn_QA_approved_data_fees; neither verified",
+    "key_requirements": "factory_subcontract_and_filming_data_use_permission; LivSyn_written_scenario_and_SOP_acceptance; quality_logistics_labor_economics",
+    "not_to_conflate_with": "current_10_device_self_operated_cap_and_R3_raw_hours"
+  },
+  "pending_corporate_registry_question": {
+    "asked_at": "2026-10-20",
+    "subject": "确认灵生LivSyn营业执照注册主体全称、注册资本（注册资金）、实缴资本（如公开可查）",
+    "state": "unresearched_unverified",
+    "warning": "不得用别的灵生同名主体或集团关联公司的资本替代；需官方公示/可靠工商登记核查"
+  },
+  "new_chat_handoff": "knowledge/HERMES_NEW_CHAT_HANDOFF.md"
 }

@@ -2,6 +2,8 @@
 
 **必须阅读的最高理念**：[`../knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md`](../knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md)。此文件只把原则翻译成工程约束，不另设新的理念。历史演进见[`../knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md`](../knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md)。
 
+**最新进度与暂停命令（2026-10-19）**：Owner已批准研究、分类归档浏览器能力专项，但随后明确要求**暂停**。入口见[浏览器能力专项ADR](../knowledge/decisions/ADR-HERMES-BROWSER-CAPABILITY-2026-10-19.md)，本机静态研究原文见[Codex报告](reports/HERMES_BROWSER_CODEX_RESEARCH_SOURCE_2026-10-19.md)，候选比较见[深度对照](reports/HERMES_BROWSER_DEEP_COMPARISON_2026-10-19.md)。未接到Owner再次明确恢复之前，不安装浏览器框架、不改原Hermes MCP/CDP/配置、不开展模型或真实灵生操作。09:00 QQ晨报需求保留但同样暂停。历史方向不等于当前执行任务。
+
 ## 工程任务到底要做什么
 
 目标是**训练并增强Owner电脑原来安装的唯一正式Hermes**，让它像受过公司培训的员工一样独立经营指定业务，而不是搭另一个业务管理系统。
@@ -15,6 +17,16 @@
 - **自主循环需要运行支撑**：今后根据实测需要提供唤醒、持久待办、审核变更比较、去重、通知、失败重试；未验证则在报告中写`not_implemented`。
 - **后台按真实页面培训**：Owner授权并登录后，逐页掌握菜单、字段、记录主键、分页/筛选、真实QA标注和操作风险；测试第一步只读。决不按演示页面猜真实菜单。
 - **区分事实与推断**：403/503/未读/部分分页不能说“无数据/全正常”；`已审核`不等于`审核通过`；新返回标注能用于分析，但不能编造员工错误或工资。
+
+## Owner轻量化开发约束（2026-10-18新增）
+
+依据[轻量化开发ADR](../knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)：**先培训现有唯一Hermes，再复用其原生工具与知识；按需小Skill；最后才考虑最小新代码。** 不是每项数采业务都要做新模块，也不设第二管理系统。
+
+每次准备新增正式代码或常驻组件，先列出：①真实重复痛点和证据；②为何现有Hermes工具/培训/Skill不够；③最小实现与工作成果验收；④维护成本和能减少的重复代码/工具。缺任一项先做最小实测，不预置新业务；已经有能力的就直接复用。
+
+知识入口保持精简，不把全部历史、32份R3知识或哈希核验脚本当成每次对话的固定流程。必要的权限控制、证据、幂等、防误写和故障恢复属于合理复杂度，不能为少代码而删。开发验收看真实任务结果和越权行为，允许Hermes自主选择不同的正确工作方法。
+
+**Owner第一个可验收的日常工作（2026-10-18）**：原Hermes每天**北京时间09:00**主动分析近期采集员数据并把摘要送到Owner；具体准则见[轻量化ADR](../knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md)与`knowledge/PROJECT_INDEX.json`。先核验本机已有Cron/gateway、浏览器只读能力和实际送达渠道，避免新写定时服务。Owner未现场确认灵生登录及只读范围前不得生产访问/启用虚假日报；不要把ChatGPT提醒当原Hermes定时任务。后续验证只看报告是否真实、自动、按时、可送达和安全，不再反复进行完整知识考试。
 
 ## 对现有PR和代码的处理
 
