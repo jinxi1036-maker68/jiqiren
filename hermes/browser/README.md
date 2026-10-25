@@ -297,3 +297,8 @@ Owner续办在3次浏览器动作后APIConnectionError中断，未提交项目�
 ### 当前QQ：日常对话恢复，模拟验收保持暂停
 
 qq_chat.py复用原安装/身份/原生会话管线，只接Owner日常对话，不把“2条模拟任务已用完”回复给普通文字。新普通使用收据与测试账本区分，测试29/30及2/2冻结保留；无Owner消息的模型请求拒绝，保留进程节流与Agnes域名绕过HTTP代理。工具为空、不启旧cron/MCP/真实业务。入口gate需ordinary_owner_chat及Owner恢复授权，运行在原H/W，不创建profile。首条真实自然答复待观察，见[收据](evidence/ordinary-QQ-dialogue-restored-2026-10-25.json)。
+
+
+### 飞书R4：首次加载未就绪，已恢复原入口
+
+Owner改用飞书，仍是原员工/原W。原30次/1条授权不扩大；准备工具4新/2更新/2收据，4必要私有前像。首次原网关交接无浏览器READY，TypeError，已恢复原CLI入口。32相关本地检查（飞书15）及13工具模拟组件就绪不等于Agent验收。property接口错误及未标记启动流量放行已在分支修正，尚未重启验证。5条未归属启动HTTPX保守对账入额度，剩25次/1条，未arm；不能继续声称0/30或发送前护栏全部通过。普通飞书新答复未由Codex发消息测试。详见[本轮报告](reports/2026-10-25_FEISHU_HANDOFF_BLOCKED.md)。不要发旧URL任务；不自动进入真实后台。

@@ -1,0 +1,124 @@
+{
+  "timestamp_shanghai": "2026-10-25T21:39:16.808163+08:00",
+  "status": "NOT_READY; first process integration failed; original native CLI entry restored",
+  "Owner_decisions": {
+    "channel": "Feishu instead of QQ",
+    "one_formal_Hermes_only": true,
+    "new_trial_grant": {
+      "maximum_requests": 30,
+      "Owner_task_messages": 1
+    },
+    "two_readonly_protection_baseline_exceptions_explicitly_approved": true,
+    "one_original_gateway_restart_approved_and_attempted": true
+  },
+  "verified": {
+    "original_install": "I/hermes-agent/venv/Scripts/python.exe",
+    "home": "H",
+    "workspace": "W=H/company-workspace",
+    "original_gateway_entry_restored": true,
+    "original_identity_preserved": true,
+    "profiles_created": 0,
+    "current_transport_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "fresh_application_reply_after_restore": "not independently tested",
+    "isolated_browser_readiness": {
+      "SDK_tools": 13,
+      "synthetic_projects": 0,
+      "synthetic_tasks": 0,
+      "QA_refreshes": 0,
+      "only_component_snapshot": true,
+      "Agent_acceptance": false,
+      "fixture_now_closed": true
+    },
+    "local_component_tests": {
+      "total": 32,
+      "Feishu_specific": 15,
+      "shared_and_QQ_regressions": 17,
+      "passed": true,
+      "test_servers": "localhost synthetic only; no external generation requests"
+    },
+    "first_process_startup": {
+      "READY_receipt": false,
+      "exit_error_type": "TypeError",
+      "full_original_exception_trace": "not captured; no unique full root-cause claim",
+      "native_property_contract": "BasePlatformAdapter.is_connected is @property",
+      "candidate_incompatibility": "first entry called that bool as a method; fixed in repository only",
+      "long_startup_phase_exact_location": "unproven; added phase receipts and nonblocking bounded catalog check for next candidate",
+      "native_lifecycle_warning_after_exit": "restored CLI reported previous process unclean; no forced kill used"
+    },
+    "requests_and_admission": {
+      "Owner_exercise_tasks_admitted": 0,
+      "Codex_model_task_messages_sent": 0,
+      "generation_requests_confirmed_by_exercise_session_receipts": 0,
+      "unknown_startup_HTTPX_attempts": 5,
+      "conservative_trial_spend": 5,
+      "remaining_requests": 25,
+      "task_messages_remaining": 1,
+      "armed": false,
+      "post_send_reconciliation_explicit": true,
+      "before_wire_full_accounting_passed": false,
+      "remaining_quota_not_transferred_from_old_rounds": true,
+      "old_120_60_30_ledgers_byte_identical": true
+    },
+    "protected_files": {
+      "compared": 59,
+      "approved_readonly_baseline_exceptions": 2,
+      "other_original_records_unchanged": 57,
+      "Codex_writes_to_env_auth_identity_config_knowledge_memory": 0,
+      "current_differences_from_authorized_baseline": [],
+      "baseline_original_preserved": true,
+      "repeated_full_audit_or_R3_deployment": false,
+      "W_snapshot_manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c"
+    },
+    "tool_file_preparation": {
+      "new_files": [
+        "qq_browser_task.py",
+        "feishu_transport.py",
+        "feishu_meter.py",
+        "feishu_gateway.py"
+      ],
+      "existing_source_files_updated": [
+        "qq_runtime.py",
+        "traffic_guard.py"
+      ],
+      "own_receipts_updated": 2,
+      "necessary_private_preimages": 4,
+      "original_Hermes_install_files_updated": 0,
+      "operational_restore": "original native gateway command, without exercise environment markers",
+      "fixed_candidate_reactivated": false
+    }
+  },
+  "Owner_reports": {
+    "Feishu_channel_previously_connected": true
+  },
+  "not_proven": [
+    "Feishu Agent browser tool catalog active",
+    "Feishu recovery task success",
+    "all five startup HTTPX requests were communication only",
+    "absolute zero provider-side auxiliary generation during startup",
+    "ordinary fresh reply delivery after rollback",
+    "Weixin application session healthy"
+  ],
+  "separate_existing_service_findings": {
+    "wecom_callback": "was already disconnected; original CLI logs DNS error11001; not repaired",
+    "weixin": "transport says connected, original CLI logs Session expired; no login or credential change attempted"
+  },
+  "revisions_only_in_repository": {
+    "native_connection_property_use_fixed": true,
+    "catalog_check_off_event_loop_and_bounded_35_seconds": true,
+    "safe_phase_and_frame_metadata_no_error_bodies": true,
+    "explicit_native_cleanup_on_hook_failure": true,
+    "unknown_startup_requests_blocked_when_unarmed": true,
+    "reconciled_five_attempts_preserved_in_future_admission": true
+  },
+  "next_required": "Classify remaining native control traffic with pre-send blocking, verify corrected native ABI/cleanup, then request a fresh controlled-load approval. Same30-request grant has25 remaining and1 Owner task; do not send it yet.",
+  "no_real_Livsyn_access_or_business": true,
+  "no_automatic_model_retest": true,
+  "private_evidence_retained_outside_W": true,
+  "raw_logs_prompts_memory_credentials_databases_uploaded": false
+}

@@ -84,10 +84,12 @@ def acceptance_thread_id(runtime, slot):
     return "browser-" + Path(runtime).parent.name + "-" + str(slot)
 
 
-def verify_unused_thread(db, thread_id):
+def verify_unused_thread(db, thread_id, source='qqbot'):
+    if source not in ('qqbot', 'feishu'):
+        raise ValueError('Unsupported browser acceptance source')
     with contextlib.closing(sqlite3.connect(Path(db).resolve().as_uri() + "?mode=ro", uri=True)) as c:
-        if c.execute("SELECT 1 FROM sessions WHERE source='qqbot' AND thread_id=? LIMIT 1",
-                     (thread_id,)).fetchone():
+        if c.execute("SELECT 1 FROM sessions WHERE source=? AND thread_id=? LIMIT 1",
+                     (source, thread_id)).fetchone():
             raise RuntimeError("Acceptance thread already has a conversation; do not reuse it")
 
 

@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "ordinary_Owner_QQ_dialogue_restored_simulation_still_paused",
+      "status": "Feishu R4 NOT_READY; first process load failed; original native entry restored; fixed candidate not activated",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -180,7 +180,7 @@
         "current_message_grant_consumed",
         "rejected_unavailable_terminal_attempt"
       ],
-      "next_step": "Owner指出普通QQ问候被固定“验收已结束”拦住。已替换遗留测试状态入口：原安装QQAdapter/GatewayRunner/原H/W/原模型和原生会话路由接收Owner日常对话，不再套用模拟2条/30次上限；模型仅在Owner消息期间放行，保留节流和模型域名HTTP代理绕过。QQ协议READY，启动模型调用0，5项本地检查通过；首条实际答复待Owner自然聊天观察。普通对话不开放浏览器/业务工具、不启动旧cron；旧29/30、消息2/2和所有验收账本字节不变。",
+      "next_step": "先定点验证修订版启动控制流/护栏，再申请一次受控加载；不要发送飞书验收任务。原30次授权保守剩25次、1条任务。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -459,7 +459,33 @@
         "startup_model_attempts": 0,
         "browser_and_business_tools": false,
         "first_natural_reply": "not yet verified",
-        "evidence": "hermes/browser/evidence/ordinary-QQ-dialogue-restored-2026-10-25.json"
+        "evidence": "hermes/browser/evidence/ordinary-QQ-dialogue-restored-2026-10-25.json",
+        "current_state": "historical temporary QQ-only process no longer active; original native gateway currently hosts Feishu and other configured channels"
+      },
+      "feishu_R4_handoff": {
+        "evidence": "hermes/browser/evidence/feishu-R4-handoff-2026-10-25.json",
+        "report": "hermes/browser/reports/2026-10-25_FEISHU_HANDOFF_BLOCKED.md",
+        "status": "NOT_READY",
+        "same_employee": true,
+        "one_restart_authorization_consumed": true,
+        "original_entry_restored": true,
+        "local_tests": 32,
+        "Feishu_specific_tests": 15,
+        "component_browser_catalog": 13,
+        "Agent_acceptance": false,
+        "known_generation_requests": 0,
+        "startup_HTTPX_purpose_unknown": 5,
+        "conservatively_accounted": 5,
+        "remaining_requests": 25,
+        "Owner_task_messages_used": 0,
+        "Owner_task_messages_limit": 1,
+        "armed": false,
+        "post_send_reconciliation_not_pre_wire_success": true,
+        "protected_records_match_approved_baseline": 59,
+        "explicit_readonly_baseline_exceptions": 2,
+        "Codex_protected_file_writes": 0,
+        "fixed_code_reactivated": false,
+        "original_gateway_services_application_reply_not_tested": true
       }
     }
   },

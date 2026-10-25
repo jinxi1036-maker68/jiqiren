@@ -85,8 +85,15 @@ def install_traffic_guard(model_budget, audit, policy, add_network_audit=False, 
             model_budget.take(family)  # main, retries, auxiliary and unknown routes
         audit.reserve(category, family)
 
+    def should_pace(request):
+        # The Feishu integration preserves native, unrelated gateway traffic.
+        # Ordinary traffic must not inherit a simulation pause or hard quota.
+        selector = getattr(model_budget, 'requires_pacing', None)
+        return (pacer is not None and policy.category(request) == 'model'
+                and (selector is None or selector()))
+
     def send(transport, request):
-        paced = pacer is not None and policy.category(request) == 'model'
+        paced = should_pace(request)
         if paced:
             pacer.enter()
         token = _inside_metered_transport.set(True)
@@ -115,7 +122,7 @@ def install_traffic_guard(model_budget, audit, policy, add_network_audit=False, 
             _inside_metered_transport.reset(token)
 
     async def asend(transport, request):
-        paced = pacer is not None and policy.category(request) == 'model'
+        paced = should_pace(request)
         if paced:
             await pacer.aenter()
         token = _inside_metered_transport.set(True)
