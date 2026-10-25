@@ -343,7 +343,7 @@
     "paused": [
       "分拣中心（涉及收件人隐私）"
     ],
-    "next_gate": "Owner先下载审阅33任务Excel并提出修改，发灵生明确场景真实性、每任务SOP可采与录像/5小时计量口径；返回审核意见后才决定采购",
+    "next_gate": "Owner review client-facing concise 2-sheet V2 scene/task catalogue; detailed SOP to be revised after actual onsite tasks, no procurement before customer scene/task confirmation.",
     "non_consumable_material_rule": {
       "status": "owner_mandatory_design_requirement",
       "principle": "Every selected task, prop and packaging material must be reusable over many cycles; avoid tape, single-use labels/bags/film, destructive seals and one-off consumables; allow unavoidable wear only when documented, measured and minimized; do not buy before partner SOP approval.",
@@ -377,5 +377,22 @@
     "release_index": "knowledge/reports/2026-10-25_LINGJU_33_SOP_SUBMISSION_V1_RELEASE.md",
     "quality_rules": "every SOP has 6 sequenced actions, complete/restore/safety info; no personal parcel sorting or routine single-use tape/bags; no props purchased until partner approval",
     "next_step": "Owner to review Excel against real available props, then forward to LivSyn; capture scene-category recognition and task-level feedback, revise before any purchasing."
+  },
+  "client_facing_scene_workbook_20261025": {
+    "status": "V2_created_pending_owner_review_not_sent",
+    "source": "Owner criticism of V1 overlong document",
+    "report": "knowledge/reports/2026-10-25_CLIENT_SCENE_TASK_EXCEL_V2_SIMPLIFICATION.md",
+    "output_name": "凌矩_三类场景三级分类及拟采集任务_灵生沟通简版_V2.xlsx",
+    "format": "two tabs: 01_场景概览 and 02_三级分类与任务",
+    "content": "3 level-two scenes, 11 owner-drafted tertiary classes and 33 candidate tasks; titles and one-line descriptions only",
+    "exclude": [
+      "80 or 130 sqm residential layout",
+      "reusable props and materials lists",
+      "fixed detailed SOP sequences not yet observed onsite",
+      "client review feedback sheet",
+      "classification methodology page"
+    ],
+    "truthfulness": "do not claim actual operating commercial factory/supermarket/warehouse or approved tasks without evidence",
+    "next_step": "Owner reads V2; adjust names to real operating tasks, submit concise candidate list to LivSyn; derive task SOPs from genuine workflow when confirmed"
   }
 }
