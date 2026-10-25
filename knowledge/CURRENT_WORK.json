@@ -313,7 +313,7 @@
     "next_action": "select actually accessible factory/supermarket/warehouse scenes and independently draft 3–5 task families each for Owner review, then submit short scene-and-SOP catalogue for partner approval without waiting for partner to author actions"
   },
   "reusable_packaging_scene_20261025": {
-    "owner_decision": "no privacy-related parcel sorting for now per Owner's report of LivSyn guidance; prioritize reusable, no-consumable packaging tasks; no ongoing tape, disposable plastic bags, tear-off labels",
+    "owner_decision": "no privacy-related parcel sorting for now per Owner's report of LivSyn guidance; prioritize reusable, no-consumable packaging tasks; no ongoing tape, disposable plastic bags, tear-off labels; Owner reaffirmed mandatory reuse across ALL selected scene equipment and SOP designs, not just packaging",
     "status": "design_preference_not_partner_SOP_approved",
     "adr": "knowledge/decisions/ADR-REUSABLE-PACKAGING-AND-NO-PERSONAL-PARCEL-SORTING-2026-10-25.md",
     "space": "130 sqm apartment main bedroom as candidate reusable internal packaging, set/kitting, returnable tote station not parcel sorting",
@@ -326,7 +326,7 @@
     "acceptance_gate": "partner must approve real packaging task/category/SOP, privacy safety and per-task time restrictions; test true lifecycle material plus reset labor before equipment purchase"
   },
   "scene_selection_v1_20261025": {
-    "status": "owner_confirmation_pending",
+    "status": "owner_confirmed_for_sop_drafting_partner_approval_pending",
     "source": "Customer original Excel 34 observed names plus two apartment constraints",
     "proposal_ref": "knowledge/reports/2026-10-25_LINGJU_SCENE_SELECTION_PREAPPROVAL_V1.md",
     "primary": [
@@ -343,6 +343,20 @@
     "paused": [
       "分拣中心（涉及收件人隐私）"
     ],
-    "next_gate": "Owner确认后编写首轮3大类33个候选独立任务的完整SOP，每条包括真实操作序列、复位方式、隐私/耗材/质量标准，送灵生审核；严禁先装修/采购"
+    "next_gate": "Now draft detailed tertiary classes and candidate SOPs for selected 3 primary scenes with zero routine disposable consumables and demonstrated reset loop; Owner reviews then partner reviews; purchases only after approval.",
+    "non_consumable_material_rule": {
+      "status": "owner_mandatory_design_requirement",
+      "principle": "Every selected task, prop and packaging material must be reusable over many cycles; avoid tape, single-use labels/bags/film, destructive seals and one-off consumables; allow unavoidable wear only when documented, measured and minimized; do not buy before partner SOP approval.",
+      "sop_fields": [
+        "复用方式",
+        "预计和实测复用次数",
+        "每轮耗材损耗",
+        "复位操作和时间",
+        "磨损更换成本",
+        "真实工序与甲方审核"
+      ],
+      "disqualify": "If a task requires consuming new materials every cycle and no real reusable option, exclude or defer it.",
+      "category_scope": "工厂车间、零售购物空间、仓库及备选个人工作区的全部候选任务"
+    }
   }
 }
