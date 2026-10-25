@@ -68,14 +68,18 @@
       "对每一步操作和思考硬编码固定路线",
       "未经需要预先堆新业务"
     ],
-    "implementation_as_of": "2026-10-16",
-    "implementation_state": "owner_principle_documented_in_github_pending_original_hermes_migration",
+    "implementation_as_of": "2026-10-25",
+    "implementation_state": "PR#12 reports partial original Hermes role/workspace/tool file integration and PR#15 reports original Desktop simulation evidence; PR#20 reports subsequent QQ ordinary-chat repair attempt. Current device state and complete owner acceptance not checked in this knowledge round; not LivSyn production.",
     "evidence_prs": [
       "https://github.com/jinxi1036-maker68/jiqiren/pull/4",
       "https://github.com/jinxi1036-maker68/jiqiren/pull/6",
-      "https://github.com/jinxi1036-maker68/jiqiren/pull/8"
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/8",
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/12",
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/15",
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/19",
+      "https://github.com/jinxi1036-maker68/jiqiren/pull/20"
     ],
-    "caveat": "PR #6/#8的历史隔离模拟技术成果不等于已在原Hermes单身份正式部署，真实灵生后台尚未学习",
+    "caveat": "历史PR#6/#8隔离身份模拟不代表正式长期双身份部署。此后PR#12/#15/#20为单一原Hermes的分层证据，但均未合并且不等于正式灵生业务验收；以每次本机实际证据为准。",
     "next_execution_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/9",
     "latest_pr_audit": "2026-10-25 PR#4已合并，#2/#6/#8/#10~#20开放未合并。详见PR分流台账。",
     "lean_development_adr": "knowledge/decisions/ADR-HERMES-LEAN-DEVELOPMENT-2026-10-18.md",
