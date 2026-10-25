@@ -47,7 +47,9 @@
     "scene_choice_status": "Owner confirmed 2026-10-25: 工厂车间+零售购物空间+仓库 first SOP batch; 个人工作区 second batch; 灵生审核前不采购",
     "mandatory_reuse_rule": "所有场景任务、工具、物料必须优先循环复用、每轮可复位；不采用每次消耗胶带、一次性包装、撕毁标签等方案；不可避免磨损须量化并压低，不符合则暂停该任务。",
     "latest_33_sop_submission_index": "knowledge/reports/2026-10-25_LINGJU_33_SOP_SUBMISSION_V1_RELEASE.md",
-    "sop_draft_status": "2026-10-25 first .xlsx V1 compiled with 33 detailed candidate SOPs and 7 sheets, pending Owner review and LivSyn approval; file only conversation attachment, not yet stored as binary in GitHub"
+    "sop_draft_status": "2026-10-25 first .xlsx V1 compiled with 33 detailed candidate SOPs and 7 sheets, pending Owner review and LivSyn approval; file only conversation attachment, not yet stored as binary in GitHub",
+    "sop_33_candidate_review_report": "knowledge/reports/2026-10-25_LINGJU_33_TASK_SOP_REVIEW_WORKBOOK_V1.md",
+    "sop_progress": "工厂12/零售12/仓库9共33项候选详细SOP已生成可对外审核Excel，尚待Owner打开确认与灵生审核，不代表批准采购、正式采集或有效结算"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
