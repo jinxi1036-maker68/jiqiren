@@ -554,3 +554,18 @@ Owner报告“企业的”，随后在一次同任务续办/余额19的提议上
 本轮只读取现有记录，未探活/补发模型或扩大修复。原账本29/30、剩1，消息2/2，已暂停；关闭自有模拟fixture/Chrome并证实子进程退出，QQ保留在线拒绝新模型任务。59项保护/W37/R3 Manifest与旧60/120账本一致，未改配置/记忆/知识/权限，无回退。下一步先定位连接异常；如现有日志不足，应为未来批准的请求补充仅异常类型/链的脱敏记录，不靠重发业务任务排障。本次recovery验收失败，历史已通过与失败均保留。
 
 [结果证据](../browser/evidence/qq-round3-continuation-result-2026-10-25.json)。
+
+
+## 25. 零模型定点定位：本机HTTP代理路径TLS不稳定，最小绕过候选已验证
+
+Owner要求定位连接故障，未新增业务任务或模型调用。原H/.env的HTTPS_PROXY、Codex父环境均为本机127.0.0.1:7897，现有NO_PROXY不含模型域名；监听者Clash Verge的verge-mihomo。原run_agent/_build_keepalive_http_client及process_bootstrap代码显式采用该代理，原生构造器实际选HTTPProxy。只读取网络字段，不输出凭据或私人正文。19:15–19:20代理日志共20条同模型域名连接，与18次本轮请求启动时间均在2秒内吻合，但这些日志没有Hermes PID或TLS异常链，因此属于强关联证据，不能替代每次失败的根因。
+
+总计10次未认证GET（模型目录8、GitHub公共对照2），没有POST/提示词/生成/账号凭据。普通HTTPX的三组对比均为代理路径ConnectError←ConnectError←SSLEOFError、直连HTTP200。用原生build_keepalive_http_client再核对：代理池HTTPProxy一次401，诊断子进程为模型域名追加NO_PROXY后池为ConnectionPool、返回200，QQ仍走原代理。故代理路径时通时断；直接4次200只证明本次应用层绕过HTTP代理的元数据可达，不证明模型流式生成、配额或永久稳定，也未排除OS TUN/VPN。未认证401/403不能解释为Owner Key或真实业务授权失效。
+
+现有QQ包装禁用了logging，原request_dump仅落type/message；历史底层异常链缺失，不能反推所有APIConnectionError一定来自代理，也不认定模型商停服、企业限额不足或凭据失效。没有重装/升级包、关代理或改证书校验。
+
+最小修复候选：只在本轮临时原Hermes QQ进程对apihub.agnes-ai.com应用NO_PROXY精确例外，保留已有条目和QQ代理，不动全局代理、Clash、模型地址/凭据/正式配置。在未来实现中应在dotenv装载后、客户端创建前校验生效，错误即拒绝；退出该进程即可撤下。本轮仅在独立诊断子进程验证后恢复其环境，尚未应用到活动QQ或工具源码。原身份与自主方法不变，未来真实模型复验仍受消息/请求授权控制。
+
+29/30、消息2/2保持暂停，新增模型消息/请求0，59项保护/W37/R3及旧账本不变，无服务重启、私有备份、回退或生产访问。仓库只新增脱敏诊断证据及更新进展；不重复审计/浏览器旧验收。
+
+[诊断证据](../browser/evidence/model-connection-proxy-diagnosis-2026-10-25.json)。

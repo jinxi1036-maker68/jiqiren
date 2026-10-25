@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "QQ_continuation_failed_APIConnectionError_paused29of30_messages2of2",
+      "status": "proxy_TLS_instability_reproduced_child_only_bypass_verified_no_model_call",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -180,7 +180,7 @@
         "current_message_grant_consumed",
         "rejected_unavailable_terminal_attempt"
       ],
-      "next_step": "Owner本次QQ续办已结束，19:15:10–19:20:07（北京时间）。APIConnectionError连接错误，有5份HTTP200响应头，3个浏览器动作成功；未提交项目/未处理分页等剩余目标。尝试terminal一次但工具不存在被拒绝。累计29/30、消息2/2，已暂停且关闭自有模拟浏览器，QQ仍在线。不再让Owner盲目重发；先针对连接失败补充可脱敏的异常链依据，具体DNS/TLS/代理/服务商根因未证实，不假称端点停服或本次429。",
+      "next_step": "已定点复现模型域名经本机127.0.0.1:7897代理TLS断开3次；原生客户端代理另1次返回401，应用层绕过HTTP代理4次200。原H/.env/原生客户端代理选择及历史代理日志18/18请求时点吻合支持该方向，但旧APIConnectionError每次根因未留链，不能完全定论。仅诊断子进程追加模型域名NO_PROXY已零模型验证，QQ代理保留；未改活动QQ/安装代码/配置或全局代理。新增模型调用0，29/30、消息2/2暂停；不让Owner再盲目重发。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -420,6 +420,21 @@
         "messages_used": 2,
         "message_ceiling": 2,
         "evidence": "hermes/browser/evidence/qq-round3-continuation-result-2026-10-25.json"
+      },
+      "model_connection_diagnosis": {
+        "proxy_TLS_failures": 3,
+        "proxy_native_metadata_response": 401,
+        "direct_metadata_responses": [
+          200,
+          200,
+          200,
+          200
+        ],
+        "new_model_calls": 0,
+        "active_process_modified": false,
+        "minimal_fix": "temporary process NO_PROXY exact model host; not yet implemented in QQ launcher",
+        "historical_exact_root_cause": "not fully proven",
+        "evidence": "hermes/browser/evidence/model-connection-proxy-diagnosis-2026-10-25.json"
       }
     }
   },

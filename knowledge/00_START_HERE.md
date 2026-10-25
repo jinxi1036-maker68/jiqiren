@@ -57,4 +57,4 @@ Current 只保存“现在”；History 只保存“过去”；Evidence 只保�
 
 ## 2026-10-25 Hermes浏览器专项本地实施
 
-Owner本次QQ续办已结束，19:15:10–19:20:07（北京时间）。APIConnectionError连接错误，有5份HTTP200响应头，3个浏览器动作成功；未提交项目/未处理分页等剩余目标。尝试terminal一次但工具不存在被拒绝。累计29/30、消息2/2，已暂停且关闭自有模拟浏览器，QQ仍在线。不再让Owner盲目重发；先针对连接失败补充可脱敏的异常链依据，具体DNS/TLS/代理/服务商根因未证实，不假称端点停服或本次429。 59项保护/W/R3/旧账本不变。见[报告第24节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)及[本次证据](../hermes/browser/evidence/qq-round3-continuation-result-2026-10-25.json)。
+已定点复现模型域名经本机127.0.0.1:7897代理TLS断开3次；原生客户端代理另1次返回401，应用层绕过HTTP代理4次200。原H/.env/原生客户端代理选择及历史代理日志18/18请求时点吻合支持该方向，但旧APIConnectionError每次根因未留链，不能完全定论。仅诊断子进程追加模型域名NO_PROXY已零模型验证，QQ代理保留；未改活动QQ/安装代码/配置或全局代理。新增模型调用0，29/30、消息2/2暂停；不让Owner再盲目重发。 见[报告第25节](../hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md)及[诊断证据](../hermes/browser/evidence/model-connection-proxy-diagnosis-2026-10-25.json)。
