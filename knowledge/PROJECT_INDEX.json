@@ -51,7 +51,9 @@
     "sop_33_candidate_review_report": "knowledge/reports/2026-10-25_LINGJU_33_TASK_SOP_REVIEW_WORKBOOK_V1.md",
     "sop_progress": "工厂12/零售12/仓库9共33项候选详细SOP已生成可对外审核Excel，尚待Owner打开确认与灵生审核，不代表批准采购、正式采集或有效结算",
     "client_facing_scene_workbook_v2": "knowledge/reports/2026-10-25_CLIENT_SCENE_TASK_EXCEL_V2_SIMPLIFICATION.md",
-    "client_communication_latest": "V1 detailed 7-sheet SOP workbook superseded for external use; V2 two-sheet concise 3-scene 11-tertiary 33-task list drafted, awaiting Owner review, not sent or approved. Keep interior layouts and recurring-material constraints internal."
+    "client_communication_latest": "V1 detailed 7-sheet SOP workbook superseded for external use; V2 two-sheet concise 3-scene 11-tertiary 33-task list drafted, awaiting Owner review, not sent or approved. Keep interior layouts and recurring-material constraints internal.",
+    "latest_internal_sop_v3_handoff": "knowledge/reports/2026-10-25_LINGJU_INTERNAL_SOP_V3_HERMES_HANDOFF.md",
+    "internal_vs_external_scope": "External client V2 remains only scenes/tertiary names/brief tasks. Internal V3 maintains 33 six-step SOP drafts + completion/reset + onsite revision fields; not a partner-approved task spec and full binary/text not yet synced to repo."
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
