@@ -1,6 +1,6 @@
 {
   "timestamp_shanghai": "2026-10-25T21:39:16.808163+08:00",
-  "status": "READY_FOR_ONE_OWNER_FEISHU_RECOVERY_TASK; temporary entry, not permanent default",
+  "status": "CLOSED_PARTIAL_NOT_PASSED; request cap exhausted; continuation scope gap recorded",
   "Owner_decisions": {
     "channel": "Feishu instead of QQ",
     "one_formal_Hermes_only": true,
@@ -116,95 +116,327 @@
     "unknown_startup_requests_blocked_when_unarmed": true,
     "reconciled_five_attempts_preserved_in_future_admission": true
   },
-  "next_required": "Owner sends the single current-URL Feishu task; Codex reads actual receipts after response. Preserve all failures and quota; do not auto-merge or expand.",
+  "next_required": "Keep only partial verified result. No automatic A restart/recreation or B cron. Fix continuation routing and native lifecycle entry with zero-model tests first; any new Agent task/quota requires explicit Owner grant. Do not retest project creation.",
   "no_real_Livsyn_access_or_business": true,
   "no_automatic_model_retest": true,
   "private_evidence_retained_outside_W": true,
   "raw_logs_prompts_memory_credentials_databases_uploaded": false,
-  "historical_record_notice": "verified/revisions_only_in_repository describe first load; pause_after_second_load preserves the later stop; latest_observation is current.",
+  "historical_record_notice": "First-load, pause and READY records are historical and preserved; latest_observation is current post-task forensics.",
   "latest_observation": {
-    "observed_shanghai": "2026-10-26T00:44:08.033534+08:00",
-    "state": "READY_FOR_ONE_OWNER_FEISHU_RECOVERY_TASK; temporary entry, not permanent default",
-    "ready_receipt_utc": "2026-10-25T16:39:25.496380+00:00",
-    "gateway_pid": 19004,
-    "gateway_parent_pid": 16520,
-    "original_venv_parent_verified": true,
-    "original_venv": "I/venv/Scripts/python.exe",
-    "Windows_venv_redirector_physical_CPython": "3.11.15",
-    "H": "original H",
-    "W": "original H/company-workspace",
-    "active_browser_tools_in_native_catalog": 13,
-    "original_native_message_pipeline": true,
-    "profiles_created": 0,
-    "platform_transport_states": {
-      "wecom": "connected",
-      "wecom_callback": "disconnected",
-      "weixin": "connected",
-      "qqbot": "connected",
-      "feishu": "connected"
+    "observed_shanghai": "2026-10-26T21:50:28.654146+08:00",
+    "state": "CLOSED_PARTIAL_NOT_PASSED; request cap exhausted; continuation scope gap recorded",
+    "verdicts": {
+      "project_save_after_503_no_duplicate": "PASS for this synthetic run only",
+      "partial_read_and_unknown_reporting": "PARTIAL: pages1/3, page2 unknown",
+      "dynamic_employee_and_expired_login": "NOT_TESTED",
+      "whole_R4_goal": "NOT_PASSED",
+      "controlled_transport_hard_cap": "stopped at30,6 extra attempts denied before wire",
+      "whole_conversation_budget_and_tool_scope": "NOT_PASSED: unprefixed continuations routed outside this grant"
     },
-    "new_application_delivery_test_by_Codex": false,
-    "old_weixin_application_expiry_not_retested": true,
-    "old_wecom_callback_disconnection_not_repaired": true,
-    "config_baseline": {
-      "Owner_approval": "允许按此范围继续",
-      "current_config_sha256": "4209e370566538f86a5085c22ffd7ec0f25112e96fdb745270de3c7959a27128",
-      "original_config_sha256": "2a67fd3a5911898d3327b7a9de12e7b009cf231b9e179801bc19d011ee4ffa9d",
-      "old_baseline_preserved": true,
-      "protected_records_match": 59,
-      "explicit_readonly_baseline_exceptions": 3,
-      "config_or_other_protected_file_writes": 0
+    "controlled_session": {
+      "id": "20261026_070513_0b232c95",
+      "source": "feishu",
+      "SQLite_cwd": null,
+      "cwd_evidence": "admission receipt verifies W; SQLite cwd field is null, not independently populated",
+      "model": "agnes-3.0-flash",
+      "started_utc": "2026-10-25T23:05:13.867475+00:00",
+      "returned_utc": "2026-10-25T23:13:23.105931+00:00",
+      "native_force_new": true,
+      "original_source_and_delivery_preserved": true,
+      "SQLite_current_api_call_count": 28,
+      "SQLite_current_tool_call_count": 34,
+      "SQLite_current_message_count": 66,
+      "SQLite_counts_include_two_later_continuations_not_only_metered_turn": true,
+      "controlled_assistant_returns": 15,
+      "later_assistant_returns": 13,
+      "tool_receipts_by_phase": [
+        {
+          "phase": "controlled",
+          "tool": "rejected_unavailable",
+          "count": 1
+        },
+        {
+          "phase": "controlled",
+          "tool": "tool_search",
+          "count": 1
+        },
+        {
+          "phase": "controlled",
+          "tool": "tool_describe",
+          "count": 7
+        },
+        {
+          "phase": "controlled",
+          "tool": "mcp__company_browser_simulation__browser_navigate",
+          "count": 3
+        },
+        {
+          "phase": "controlled",
+          "tool": "mcp__company_browser_simulation__browser_click",
+          "count": 9
+        },
+        {
+          "phase": "controlled",
+          "tool": "mcp__company_browser_simulation__browser_fill_form",
+          "count": 1
+        },
+        {
+          "phase": "later",
+          "tool": "tool_call",
+          "count": 1
+        },
+        {
+          "phase": "later",
+          "tool": "tool_search",
+          "count": 5
+        },
+        {
+          "phase": "later",
+          "tool": "browser_exec",
+          "count": 1
+        },
+        {
+          "phase": "later",
+          "tool": "tool_describe",
+          "count": 1
+        },
+        {
+          "phase": "later",
+          "tool": "terminal",
+          "count": 3
+        },
+        {
+          "phase": "later",
+          "tool": "read_file",
+          "count": 1
+        }
+      ]
     },
-    "controlled_handoff": {
-      "native_original_H_gateway_PID_before_stop": 1048,
-      "program_directory_before_stop": "user-home/hermes-agent-v0.21.0",
-      "directory_name_not_used_as_independent_version_proof": true,
-      "observed_python_before_stop": "3.14.4",
-      "same_H_and_W_before_stop": true,
-      "active_agents_before_stop": 0,
-      "native_planned_stop_protocol_verified": true,
-      "worker_and_two_cli_wrappers_exited": true,
-      "forced_kills": 0,
-      "newer_program_files_modified_or_deleted": 0,
-      "previous_command_retained_privately_for_restore": true,
-      "preceding_prestart_attempt_had_no_READY_or_gateway_receipts": true,
-      "concurrent_native_CLI_was_observed_before_controlled_stop": true,
-      "original_Desktop_process_stopped": false
-    },
-    "budget": {
-      "cap": 30,
-      "used_conservatively": 5,
-      "remaining": 25,
-      "Owner_task_used": 0,
-      "Owner_task_cap": 1,
-      "armed": true,
-      "new_reserved_before_send_attempts": 0,
-      "new_Hermes_messages_sent_by_Codex": 0,
-      "old_120_60_30_ledgers_unchanged": true,
-      "unknown_five_not_refunded": true,
-      "cumulative_unarmed_denials_before_wire": 8
-    },
-    "fixture": {
-      "projects": 0,
-      "tasks": 0,
+    "browser": {
+      "Agent_tools": 13,
+      "readiness_snapshot_excluded": 1,
+      "Agent_tool_types": {
+        "browser_navigate": 3,
+        "browser_click": 9,
+        "browser_fill_form": 1
+      },
+      "project": {
+        "id": "PRJ-001",
+        "name": "恢复验收",
+        "code": "RECOVERY-20261026-R4"
+      },
+      "project_POSTs_allowed": 1,
+      "task_records": 0,
       "QA_refreshes": 0,
-      "new_isolated_no_login_browser_profile": true,
-      "current_origin": "http://127.0.0.1:64722",
-      "old_URLs_retired": true
+      "project_created_utc": "2026-10-25T23:09:06.364Z",
+      "project_query_snapshot_receipt_utc": "2026-10-25T23:09:20.293Z",
+      "server_response_after_save": 503,
+      "project_restart_persistence": "NOT_TESTED; do not recreate to manufacture persistence",
+      "partial_page_requests": [
+        {
+          "page": 1,
+          "status": 200,
+          "at": "2026-10-25T23:11:51.804Z"
+        },
+        {
+          "page": 2,
+          "status": 503,
+          "at": "2026-10-25T23:12:00.957Z"
+        },
+        {
+          "page": 3,
+          "status": 200,
+          "at": "2026-10-25T23:12:11.489Z"
+        },
+        {
+          "page": 2,
+          "status": 503,
+          "at": "2026-10-25T23:12:21.548Z"
+        },
+        {
+          "page": 1,
+          "status": 200,
+          "at": "2026-10-25T23:12:31.509Z"
+        },
+        {
+          "page": 1,
+          "status": 200,
+          "at": "2026-10-25T23:12:55.381Z"
+        },
+        {
+          "page": 2,
+          "status": 503,
+          "at": "2026-10-25T23:13:00.535Z"
+        },
+        {
+          "page": 3,
+          "status": 200,
+          "at": "2026-10-25T23:13:10.608Z"
+        }
+      ],
+      "actual_read_record_ids": [
+        "DEMO-001",
+        "DEMO-002",
+        "DEMO-003",
+        "DEMO-004",
+        "DEMO-009",
+        "DEMO-010",
+        "DEMO-011",
+        "DEMO-012"
+      ],
+      "missing_scope": "page2 four records; no binding or expired page visit",
+      "pagination_clicks": 6,
+      "pagination_503": 3,
+      "503_root_cause_as_observed_by_Hermes": "unknown",
+      "HTTP503_business_error_not_equal_to_MCP_isError": true,
+      "allowed_external_browser_requests": 0,
+      "denied_external_proxy_requests": 214,
+      "proxy_counts_include_hours_before_Owner_task_and_browser_background_traffic": true,
+      "no_accepted_external_navigation": true
     },
-    "validation_scope": {
-      "fresh_13_tool_catalog_and_component_snapshot": true,
-      "code_unchanged_since_15_Feishu_component_tests": true,
-      "no_repeat_business_matrix_or_R3_deployment": true,
-      "source_hashes_match": true,
-      "CLI_matcher_accepts_custom_entry": false,
-      "CLI_status_command_not_invoked": "Only the pure command-line matcher was checked; no status lookup that might prune a runtime record.",
-      "CLI_status_limitation": "Native CLI command-name matcher does not recognize this temporary wrapper. READY is based on verified live PID/parent, WSS and native tool catalog. Do not claim default-entry or long-term stability acceptance."
+    "accounting": {
+      "grant_cap": 30,
+      "initial_conservative_unknown": 5,
+      "controlled_new_wire_attempts": 25,
+      "controlled_families": {
+        "chat_completions": 17,
+        "generate_content": 1,
+        "other_httpx": 7
+      },
+      "response_status_by_family": [
+        {
+          "family": "other_httpx",
+          "HTTP_status": 403,
+          "count": 6
+        },
+        {
+          "family": "other_httpx",
+          "HTTP_status": 404,
+          "count": 1
+        },
+        {
+          "family": "chat_completions",
+          "HTTP_status": 200,
+          "count": 15
+        },
+        {
+          "family": "chat_completions",
+          "HTTP_status": 500,
+          "count": 1
+        },
+        {
+          "family": "chat_completions",
+          "HTTP_status": 429,
+          "count": 1
+        },
+        {
+          "family": "generate_content",
+          "HTTP_status": 400,
+          "count": 1
+        }
+      ],
+      "provider_429_seen": true,
+      "provider_429_root_cause_or_account_entitlement": "not established",
+      "fixture_503_separate_from_provider_429": true,
+      "ledger_used": 30,
+      "remaining_requests": 0,
+      "remaining_messages": 0,
+      "armed": false,
+      "denied_at_limit": 6,
+      "unprefixed_later_messages": [
+        {
+          "message_id": 107956,
+          "at_utc": "2026-10-25T23:22:32.533615+00:00",
+          "text_is_continue": true,
+          "prefixed_R4": false
+        },
+        {
+          "message_id": 107958,
+          "at_utc": "2026-10-26T13:26:06.823615+00:00",
+          "text_is_continue": true,
+          "prefixed_R4": false
+        }
+      ],
+      "later_HTTPX_exempted_as_normal_in_old_wrapper": 3,
+      "later_exempt_families": {
+        "other_httpx": 2,
+        "chat_completions": 1
+      },
+      "later_unwrapped_gateway_model_physical_attempts": "not measured by this ledger; not inferred from logical API count",
+      "ledger_not_reset_or_raised": true,
+      "old_ledgers_unchanged": true,
+      "whole_episode_30_request_guarantee": "not established; at least one chat-completion attempt after closed grant was outside ledger",
+      "Codex_new_model_messages": 0
     },
-    "Agent_acceptance": "not started; Owner sends exactly one prefixed goal; no automatic retries or follow-up messages",
-    "no_real_platform_login_or_business": true,
-    "no_model_or_account_configuration_changes_by_Codex": true,
-    "next": "Owner sends the single current-URL Feishu task; Codex reads actual receipts after response. Preserve all failures and quota; do not auto-merge or expand."
+    "tool_scope": {
+      "controlled_unavailable_terminal_attempt": {
+        "request_message": 107918,
+        "rejection_result_message": 107919,
+        "executed": false
+      },
+      "later_successful_terminal_results": 3,
+      "later_read_file_results": 1,
+      "read_file_target": "H/config.yaml, offset1520 limit60; content not published",
+      "later_native_browser_exec": 1,
+      "do_not_count_later_diagnostics_as_R4_browser_acceptance": true,
+      "persistent_write_tool_calls_observed": 0,
+      "shell_redirect_targets_observed": [
+        "/dev/null",
+        "&1"
+      ],
+      "protected_records_unchanged": 59,
+      "global_all_file_nonwrite_claim": "not established; no full-disk audit",
+      "cron_created": false
+    },
+    "shutdown": {
+      "fixture_reason": "authorized budget-stop rule",
+      "closed_utc": "2026-10-25T23:13:12.168523+00:00",
+      "children_exited": true,
+      "fixture_port_listening_now": false,
+      "exercise_gateway19004_alive": false,
+      "current_gateway_pid": 11884,
+      "current_gateway_H_same": true,
+      "current_gateway_cwd": "C:\\Users\\Administrator\\.hermes",
+      "current_gateway_TERMINAL_CWD": "C:\\Users\\Administrator",
+      "current_gateway_exercise_marker": false,
+      "gateway_replacement_exit_root_cause": "not established; separate from proven fixture budget stop"
+    },
+    "evidence_files_sha256": {
+      "fixture-events.jsonl": "7fbdd9a9e67455e4af6ee3968ac189743b4c52e420090905d772e09b1deeed35",
+      "fixture-truth.json": "570b8383b590b557416f807a8b3cf8c3cb9ac55c275d975528c68b5bd76e836d",
+      "tool-receipts.jsonl": "975cdfb955094c7114b68332357e7ffe1b39e2772d69e8e3d21fee8a12dda0d3",
+      "guard-events.jsonl": "c87269e8889f393ac89c5931e6eed8f74c1b11f4b8e42c1a3dc0a1839e37cb23",
+      "lifecycle.json": "af3cff660fc86e03f07c1c54c66b19e8f9220777af371e03e6e694ba78e8a825"
+    },
+    "receipt_anchors": {
+      "admission": "gateway-receipts/receipts.jsonl feishu_browser_admitted",
+      "returned": "feishu_browser_returned",
+      "browser_result_messages": [
+        107930,
+        107932,
+        107934,
+        107936,
+        107938,
+        107940,
+        107942,
+        107944,
+        107946,
+        107948,
+        107950,
+        107952,
+        107954
+      ],
+      "later_file_read": [
+        107975,
+        107976
+      ],
+      "later_terminal_results": [
+        107974,
+        107978,
+        107981
+      ]
+    },
+    "next": "Keep only partial verified result. No automatic A restart/recreation or B cron. Fix continuation routing and native lifecycle entry with zero-model tests first; any new Agent task/quota requires explicit Owner grant. Do not retest project creation."
   },
   "pause_after_second_load": {
     "observed_shanghai": "2026-10-26T00:29:59.152929+08:00",
@@ -313,5 +545,89 @@
       "all configuration changes fully authorized in detail"
     ],
     "next": "Owner reviews the four exact configuration differences; explicitly decide the new read-only protection baseline and a further controlled load before another exercise. Do not overwrite current config or silently consume another restart."
+  },
+  "ready_before_R4_execution": {
+    "observed_shanghai": "2026-10-26T00:44:08.033534+08:00",
+    "state": "READY_FOR_ONE_OWNER_FEISHU_RECOVERY_TASK; temporary entry, not permanent default",
+    "ready_receipt_utc": "2026-10-25T16:39:25.496380+00:00",
+    "gateway_pid": 19004,
+    "gateway_parent_pid": 16520,
+    "original_venv_parent_verified": true,
+    "original_venv": "I/venv/Scripts/python.exe",
+    "Windows_venv_redirector_physical_CPython": "3.11.15",
+    "H": "original H",
+    "W": "original H/company-workspace",
+    "active_browser_tools_in_native_catalog": 13,
+    "original_native_message_pipeline": true,
+    "profiles_created": 0,
+    "platform_transport_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "new_application_delivery_test_by_Codex": false,
+    "old_weixin_application_expiry_not_retested": true,
+    "old_wecom_callback_disconnection_not_repaired": true,
+    "config_baseline": {
+      "Owner_approval": "允许按此范围继续",
+      "current_config_sha256": "4209e370566538f86a5085c22ffd7ec0f25112e96fdb745270de3c7959a27128",
+      "original_config_sha256": "2a67fd3a5911898d3327b7a9de12e7b009cf231b9e179801bc19d011ee4ffa9d",
+      "old_baseline_preserved": true,
+      "protected_records_match": 59,
+      "explicit_readonly_baseline_exceptions": 3,
+      "config_or_other_protected_file_writes": 0
+    },
+    "controlled_handoff": {
+      "native_original_H_gateway_PID_before_stop": 1048,
+      "program_directory_before_stop": "user-home/hermes-agent-v0.21.0",
+      "directory_name_not_used_as_independent_version_proof": true,
+      "observed_python_before_stop": "3.14.4",
+      "same_H_and_W_before_stop": true,
+      "active_agents_before_stop": 0,
+      "native_planned_stop_protocol_verified": true,
+      "worker_and_two_cli_wrappers_exited": true,
+      "forced_kills": 0,
+      "newer_program_files_modified_or_deleted": 0,
+      "previous_command_retained_privately_for_restore": true,
+      "preceding_prestart_attempt_had_no_READY_or_gateway_receipts": true,
+      "concurrent_native_CLI_was_observed_before_controlled_stop": true,
+      "original_Desktop_process_stopped": false
+    },
+    "budget": {
+      "cap": 30,
+      "used_conservatively": 5,
+      "remaining": 25,
+      "Owner_task_used": 0,
+      "Owner_task_cap": 1,
+      "armed": true,
+      "new_reserved_before_send_attempts": 0,
+      "new_Hermes_messages_sent_by_Codex": 0,
+      "old_120_60_30_ledgers_unchanged": true,
+      "unknown_five_not_refunded": true,
+      "cumulative_unarmed_denials_before_wire": 8
+    },
+    "fixture": {
+      "projects": 0,
+      "tasks": 0,
+      "QA_refreshes": 0,
+      "new_isolated_no_login_browser_profile": true,
+      "current_origin": "http://127.0.0.1:64722",
+      "old_URLs_retired": true
+    },
+    "validation_scope": {
+      "fresh_13_tool_catalog_and_component_snapshot": true,
+      "code_unchanged_since_15_Feishu_component_tests": true,
+      "no_repeat_business_matrix_or_R3_deployment": true,
+      "source_hashes_match": true,
+      "CLI_matcher_accepts_custom_entry": false,
+      "CLI_status_command_not_invoked": "Only the pure command-line matcher was checked; no status lookup that might prune a runtime record.",
+      "CLI_status_limitation": "Native CLI command-name matcher does not recognize this temporary wrapper. READY is based on verified live PID/parent, WSS and native tool catalog. Do not claim default-entry or long-term stability acceptance."
+    },
+    "Agent_acceptance": "not started; Owner sends exactly one prefixed goal; no automatic retries or follow-up messages",
+    "no_real_platform_login_or_business": true,
+    "no_model_or_account_configuration_changes_by_Codex": true,
+    "next": "Owner sends the single current-URL Feishu task; Codex reads actual receipts after response. Preserve all failures and quota; do not auto-merge or expand."
   }
 }
