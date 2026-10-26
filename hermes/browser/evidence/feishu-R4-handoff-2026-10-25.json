@@ -721,5 +721,94 @@
       "real platform workflows"
     ],
     "rollback": "verify owned tool SHA before single-file restore from private preimages; new files removable only if still ours; leave current gateway/config/state.db/memory alone; no whole-directory restore"
+  },
+  "R5_controlled_ready": {
+    "timestamp_shanghai": "2026-10-26T22:57:33.557329+08:00",
+    "status": "READY_PENDING_OWNER_SINGLE_TASK_NOT_AGENT_PASSED",
+    "Owner_approval": {
+      "answer": "授权30次、1条补验及一次空闲重载",
+      "question_id": "call_307a120f607441e29f2a3b7dd19cb680"
+    },
+    "new_ledger": {
+      "limit": 30,
+      "used_at_READY": 0,
+      "armed_at_READY": false,
+      "Owner_task_limit": 1,
+      "Owner_tasks_used_at_READY": 0,
+      "denied_unarmed_at_READY": 4,
+      "denied_requests_sent": false
+    },
+    "native_entry": {
+      "command": "I/venv/Scripts/python.exe -B -u -m hermes_cli.main gateway run",
+      "actual_native_module_argv": true,
+      "original_venv_parent_verified": true,
+      "same_formal_employee_H": true,
+      "cwd": "H/company-workspace",
+      "gateway_state_code_version_self_report": "0.22.2",
+      "pid_at_READY": 5428,
+      "temporary_process_environment_only": true,
+      "default_entry_or_original_source_modified": false
+    },
+    "handoff": {
+      "old_pid": 11884,
+      "old_entry_directory_label": "hermes-agent-v0.21.0",
+      "idle_verified": true,
+      "native_planned_stop": true,
+      "old_exited": true,
+      "first_10_second_wait_timed_out": true,
+      "force_kill": false,
+      "one_reload_authorization_consumed": true,
+      "second_gateway_started_while_old_active": false
+    },
+    "browser": {
+      "tool_catalog_count": 13,
+      "origin": "http://127.0.0.1:64062",
+      "case": "recovery",
+      "task_scope": "remaining-readonly",
+      "allowed_mutation": "synthetic employee option reorder only",
+      "project_task_QA_login_POSTs_blocked": true,
+      "Agent_actions_before_Owner_task": 0,
+      "component_snapshot_excluded_from_Agent_count": 1,
+      "record_creation": 0
+    },
+    "channels": {
+      "native_transport_connected_at_READY": [
+        "feishu",
+        "qqbot",
+        "wecom",
+        "weixin"
+      ],
+      "wecom_callback": "existing retrying/needs_attention; not repaired",
+      "application_level_replies_after_reload": "not yet verified; connected is transport status only"
+    },
+    "session_fence": {
+      "active_in_live_common_handler": true,
+      "closed_R4_registry_retained": true,
+      "READY_arms_generation": false,
+      "one_admitted_Owner_task_gets_fresh_native_session": true,
+      "closed_session_continuation_live_Agent_validation": "not repeated; unit/native probe evidence only"
+    },
+    "protection": {
+      "records_match": 59,
+      "protected_file_writes_by_Codex": 0,
+      "old_ledger_files_unchanged": 4,
+      "identity_memory_R3_config_credentials_MCP_QQ_voice_cron_unchanged": true
+    },
+    "requests_sent_by_Codex": 0,
+    "Hermes_messages_sent_by_Codex": 0,
+    "remaining_goals": [
+      "dynamic employee options: unique ID/status before and after refresh",
+      "expired login: actual visible boundary and Owner action"
+    ],
+    "not_authorized_or_not_done": [
+      "recreate R4 project",
+      "create tasks or refresh QA",
+      "login or credentials",
+      "real Livsyn platform",
+      "long-term/default startup selection",
+      "declare remaining Agent goals passed"
+    ],
+    "private_receipts": "H/tools/company-browser/runs/authorized-feishu-round5-20261026T145003Z-ec2b2d/{controlled-handoff-before.json,controlled-handoff-ready.json,gateway-receipts/receipts.jsonl,requests.sqlite}",
+    "historical_R4_verdict_retained": "PARTIAL_NOT_PASSED; 30/30 closed, continuation gap not retroactively refunded or erased"
   }
 }

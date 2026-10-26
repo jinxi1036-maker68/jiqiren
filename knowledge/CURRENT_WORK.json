@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "R4_PARTIAL_CLOSED; zero-model session/native-CLI fixes prepared, not loaded; remaining-task approval pending",
+      "status": "R5_NATIVE_READY_PENDING_OWNER_SINGLE_TASK; R4 historical partial failure retained",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -178,9 +178,9 @@
         "historical_clean_session_failure_and_no_formal_driver_selection_retained",
         "current_APIConnectionError_root_cause_unknown",
         "rejected_unavailable_terminal_attempt",
-        "session_and_native_CLI_fixes_not_yet_live_or_Agent_validated"
+        "R5_remaining_Agent_goals_not_yet_executed; long_term_default_entry_not_accepted"
       ],
-      "next_step": "技术修复41项Python/1项Node及原CLI零模型探测已过；申请新30请求/1条Owner飞书剩余两页补验和一次空闲重载，未授权前不建账本/不发任务。",
+      "next_step": "Owner已批准并完成一次空闲原生加载；仅由Owner飞书发送R5剩余两页补验，30请求/1条任务，READY为0/30、0/1、unarmed。接入就绪不等于Agent验收通过。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -507,13 +507,30 @@
         "controlled_new_wire_attempts": 25
       },
       "zero_model_continuation_fix": {
-        "state": "ZERO_MODEL_FIX_PREPARED_NOT_ACTIVE; no new trial authorization",
+        "state": "R5_NATIVE_READY_NOT_AGENT_PASSED",
         "Python_tests": 41,
         "Node_tests": 1,
         "real_CLI_probe_passed": true,
-        "active_in_live_gateway": false,
-        "new_model_authorization": false,
+        "active_in_live_gateway": true,
+        "new_model_authorization": true,
         "source_evidence": "hermes/browser/evidence/feishu-R4-handoff-2026-10-25.json"
+      },
+      "feishu_R5_remaining_pages": {
+        "status": "READY_PENDING_OWNER",
+        "request_limit": 30,
+        "used_at_READY": 0,
+        "task_limit": 1,
+        "tasks_used_at_READY": 0,
+        "armed_at_READY": false,
+        "native_reload_used": 1,
+        "protected_records_match": 59,
+        "old_ledgers_unchanged": 4,
+        "scope": "dynamic employee options and expired-login page only; no project/task/QA/login writes",
+        "evidence": "hermes/browser/evidence/feishu-R4-handoff-2026-10-25.json",
+        "report": "hermes/browser/reports/2026-10-25_FEISHU_HANDOFF_BLOCKED.md",
+        "Codex_Hermes_messages": 0,
+        "Codex_model_requests": 0,
+        "real_platform_access": false
       }
     }
   },
