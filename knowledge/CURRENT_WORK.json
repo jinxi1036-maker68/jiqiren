@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "R5_NATIVE_READY_PENDING_OWNER_SINGLE_TASK; R4 historical partial failure retained",
+      "status": "R5_REMAINING_GOALS_PASSED_CLOSED; prior R4/clean-session failures retained; production/default not accepted",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -178,9 +178,9 @@
         "historical_clean_session_failure_and_no_formal_driver_selection_retained",
         "current_APIConnectionError_root_cause_unknown",
         "rejected_unavailable_terminal_attempt",
-        "R5_remaining_Agent_goals_not_yet_executed; long_term_default_entry_not_accepted"
+        "long_term_default_entry_and_real_platform_not_accepted; provider_500_429_and_auxiliary_failures_recorded"
       ],
-      "next_step": "Owner已批准并完成一次空闲原生加载；仅由Owner飞书发送R5剩余两页补验，30请求/1条任务，READY为0/30、0/1、unarmed。接入就绪不等于Agent验收通过。",
+      "next_step": "本轮R5两项补验已完成，11/30、1/1、unarmed，自有站已停。保留分项证据；下一阶段准备正式稳定入口及Owner带教真实平台只读范围，不自动登录或写业务。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -507,7 +507,7 @@
         "controlled_new_wire_attempts": 25
       },
       "zero_model_continuation_fix": {
-        "state": "R5_NATIVE_READY_NOT_AGENT_PASSED",
+        "state": "R5_NATIVE_LOADED; current task closed; no extra continuation test",
         "Python_tests": 41,
         "Node_tests": 1,
         "real_CLI_probe_passed": true,
@@ -516,7 +516,7 @@
         "source_evidence": "hermes/browser/evidence/feishu-R4-handoff-2026-10-25.json"
       },
       "feishu_R5_remaining_pages": {
-        "status": "READY_PENDING_OWNER",
+        "status": "CLOSED_REMAINING_TWO_GOALS_PASSED",
         "request_limit": 30,
         "used_at_READY": 0,
         "task_limit": 1,
@@ -530,7 +530,18 @@
         "report": "hermes/browser/reports/2026-10-25_FEISHU_HANDOFF_BLOCKED.md",
         "Codex_Hermes_messages": 0,
         "Codex_model_requests": 0,
-        "real_platform_access": false
+        "real_platform_access": false,
+        "requests_used": 11,
+        "tasks_used": 1,
+        "armed": false,
+        "browser_actions": 4,
+        "catalog_tool_calls": 3,
+        "SQLite_successful_API_count": 6,
+        "chat_HTTP_429": 1,
+        "chat_HTTP_500": 1,
+        "auxiliary_and_unknown_requests": 3,
+        "fixture_stopped": true,
+        "formal_default_entry_accepted": false
       }
     }
   },
