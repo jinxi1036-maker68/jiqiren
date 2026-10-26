@@ -16,6 +16,7 @@ from qq_browser_task import BrowserExercise, validate_browser_grant, AUTHORIZATI
 from qq_runtime import verify_unused_thread
 from request_budget import BudgetBlocked, RequestBudget
 from safety import sha256
+from feishu_session_fence import SessionFence
 
 
 class FeishuPreparationTests(unittest.TestCase):
@@ -23,6 +24,7 @@ class FeishuPreparationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d).resolve();run=root/'runs/fixture';grant_dir=root/'runs/grant'
             run.mkdir(parents=True);grant_dir.mkdir()
+            SessionFence(root/'runs/exercise-sessions.sqlite',create=True)
             ledger=grant_dir/'requests.sqlite';b=RequestBudget.create(ledger,30,armed=False)
             with contextlib.closing(sqlite3.connect(ledger)) as c,c:
                 c.execute('update state set used=5')

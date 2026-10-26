@@ -14,6 +14,20 @@ function via(g,origin,method,pathname,body){
  });
 }
 
+test('remaining-pages scope permits option refresh but blocks recreation, QA, tasks and login before upstream',async()=>{
+ const f=await startFixture(),g=await startGuard(f.origin,{caseId:'remaining-readonly'});
+ try{
+  for(const pathname of ['/api/projects','/api/tasks','/api/qa-refresh','/api/login']){
+   const r=await via(g,f.origin,'POST',pathname,{});
+   assert.equal(r.status,403);assert.equal(r.body.upstream_request_sent,false);
+  }
+  assert.equal((await via(g,f.origin,'GET','/api/options')).status,200);
+  assert.equal((await via(g,f.origin,'POST','/api/reorder',{})).status,200);
+  assert.equal(f.state.create_attempts,0);assert.equal(f.state.projects.length,0);
+  assert.equal(f.state.tasks.length,0);assert.equal(f.state.qa_refreshes,0);assert.equal(f.state.login_attempts,0);
+ }finally{await g.close();await f.close();}
+});
+
 test('explicit task grants preserve free reads, deny unknown writes and reject unknown scope',()=>{
  const a=requestScope('analysis'),b=requestScope('binding'),r=requestScope('recovery');
  for(const p of [a,b,r,requestScope()]){

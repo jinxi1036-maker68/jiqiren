@@ -25,6 +25,7 @@ from qq_runtime import (TOOLSETS, EXPECTED_BROWSER_TOOLS, verify_browser_catalog
 from safety import ordinary_path, sha256, check_snapshot
 from traffic_guard import install_traffic_guard
 from qq_chat import OrdinaryTrafficAudit
+from feishu_session_fence import resolve_native_session, local_session_command
 
 
 def validate_gateway_handoff(gate):
@@ -61,6 +62,7 @@ def check_fresh_session(db, entry):
 def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
     Runner=native.GatewayRunner
     old_primary=Runner._primary_message_handler
+    old_handle=Runner._handle_message
     old_tools=Runner._resolve_enabled_toolsets_for_source
     old_start=Runner.start
     old_adapter=Runner._create_adapter
@@ -78,6 +80,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
         turn=CURRENT_TURN.get()
         if turn and turn.get('browser') and turn['live'].is_set():
             if not is_owner(source,binding):raise RuntimeError('Browser source changed')
+            if turn.get('control'):return []
             return list(TOOLSETS)
         if getattr(source.platform,'value',source.platform)=='feishu':
             # Temporary exercise launcher: natural text replies continue, but
@@ -90,11 +93,28 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
                 if t!='company_browser_simulation']
 
     def primary(self):
-        native_handler=old_primary(self)
+        async def native_handler(msg):return await old_handle(self,msg)
         async def handle(msg):
             browser=exercise.matches(msg.text or '')
+            owner=is_owner(msg.source,binding)
+            # Native routing, not a language heuristic, determines whether this
+            # is still the old exercise. Persist across controlled restarts.
+            if owner and not self._is_user_authorized(msg.source):return None
+            if not browser and owner:
+                sid=resolve_native_session(self.session_store,msg.source)
+                phase=exercise.fence.phase(sid)
+                if phase:
+                    if local_session_command(msg):
+                        turn,token=meter.begin(True,control=True)
+                        try:return await native_handler(msg)
+                        finally:meter.finish(turn,token)
+                    event(out,'exercise_continuation_blocked_before_model',session_id=sid,phase=phase)
+                    return ('本次模拟会话正在执行或已经结束，不能用“继续”追加任务或绕过额度。'
+                            '旧结果已保留；日常聊天请在原界面新建会话或发送 /new。新的模拟任务需另行授权。')
+                if exercise.fence.mentions_protected_session(msg.text or ''):
+                    return '该会话属于已记录的模拟验收，不能在普通聊天中恢复执行；旧记录保留，新的任务需另行授权。'
             if browser:
-                if not is_owner(msg.source,binding) or not self._is_user_authorized(msg.source):
+                if not owner:
                     return None
                 if check_snapshot(baseline):
                     exercise.pause()
@@ -108,6 +128,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
                 try:
                     entry=self.session_store.get_or_create_session(msg.source,force_new=True)
                     sid=check_fresh_session(home/'state.db',entry)
+                    exercise.fence.bind(sid,exercise.ledger)
                 except Exception as exc:
                     exercise.pause()
                     event(out,'feishu_fresh_session_failed',error_type=type(exc).__name__,model_calls=0)
@@ -117,6 +138,10 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
             turn,token=meter.begin(browser)
             before=exercise.budget.status() if browser else None
             try:
+                # READY is not permission for idle/background generation.
+                # Arm only after the actual Owner task, new native session,
+                # durable fence and request context have all been established.
+                if browser:exercise.budget.arm()
                 try:result=await native_handler(msg)
                 except Exception:
                     if not browser or not newly_budget_blocked(before,exercise.budget.status()):raise
@@ -128,9 +153,13 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
                 meter.finish(turn,token)
                 if browser:
                     exercise.pause()
+                    exercise.fence.close(sid)
                     event(out,'feishu_browser_returned',budget=exercise.budget.status(),
                           protected_changes=check_snapshot(baseline))
         return handle
+
+    async def dispatch(self,msg):
+        return await primary(self)(msg)
 
     async def start(self):
         phase='native_start'
@@ -163,13 +192,13 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
             validate_websocket(conn)
             if check_snapshot(baseline):raise RuntimeError('Protected files changed during native startup')
             exercise.catalog_ready=True
-            if not exercise.intake.count():exercise.budget.arm()
+            exercise.pause()
             event(out,'original_feishu_browser_ready',pid=os.getpid(),home=str(home),cwd=os.getcwd(),
                   native_all_adapters_preserved=True,profile_created=False,browser_catalog_tools=len(expected),
                   native_ordinary_request_attempts=meter.ordinary_attempts,budget=exercise.budget.status(),
                   protected_changes=[],new_model_task_messages_sent_by_Codex=0)
             print(json.dumps({'event':'original_feishu_browser_ready','pid':os.getpid(),
-                              'task_prefix':PREFIX,'budget':exercise.budget.status()}),flush=True)
+                              'task_prefix':exercise.prefix,'budget':exercise.budget.status()}),flush=True)
             return success
         except BaseException as exc:
             exercise.pause()
@@ -183,7 +212,9 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
         turn=CURRENT_TURN.get()
         return 16 if turn and turn.get('browser') and turn['live'].is_set() else old_iterations()
 
-    Runner._primary_message_handler=primary
+    # Wrap the common native handler, not only the adapter's factory. Deferred
+    # or queued messages that call _handle_message directly keep the same fence.
+    Runner._handle_message=dispatch
     Runner._resolve_enabled_toolsets_for_source=tools
     Runner._create_adapter=create_adapter
     Runner.start=start
@@ -191,6 +222,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
 
     def restore():
         Runner._primary_message_handler=old_primary
+        Runner._handle_message=old_handle
         Runner._resolve_enabled_toolsets_for_source=old_tools
         Runner._create_adapter=old_adapter
         Runner.start=old_start
@@ -199,7 +231,9 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
     return restore
 
 
-async def serve(args):
+async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
+    if native_start is None:
+        raise RuntimeError('Direct wrapper retired; use the genuine native CLI bootstrap')
     root=ordinary_path(Path(__file__).parent)
     home=ordinary_path(Path.home()/'.hermes')
     install=ordinary_path(args.install)
@@ -227,7 +261,7 @@ async def serve(args):
     import gateway.run as native
     from gateway.status import get_running_pid
     if get_running_pid():raise RuntimeError('Existing gateway active; controlled handoff required')
-    config=native.load_gateway_config_for_runner()
+    config=cli_config if cli_config is not None else native.load_gateway_config_for_runner()
     if config.multiplex_profiles:raise RuntimeError('No alternate formal identities')
     from hermes_cli.config import load_config
     saved=load_config()
@@ -251,7 +285,7 @@ async def serve(args):
     restore_runner=install_runner_hooks(native,exercise,meter,out,baseline,gate['owner_binding'],home)
     try:
         if check_snapshot(baseline):raise RuntimeError('Protected files changed before native startup')
-        await native.start_gateway(config=config,replace=False,verbosity=0)
+        await native_start(config=config,replace=False,verbosity=verbosity)
     finally:
         exercise.pause()
         restore_runner();restore_titles();restore_http()

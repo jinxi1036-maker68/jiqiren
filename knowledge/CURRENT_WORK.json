@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "CLOSED_PARTIAL_NOT_PASSED; request cap exhausted; continuation scope gap recorded",
+      "status": "R4_PARTIAL_CLOSED; zero-model session/native-CLI fixes prepared, not loaded; remaining-task approval pending",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -178,10 +178,9 @@
         "historical_clean_session_failure_and_no_formal_driver_selection_retained",
         "current_APIConnectionError_root_cause_unknown",
         "rejected_unavailable_terminal_attempt",
-        "temporary_wrapper_native_CLI_status_identity_not_compatible",
-        "continuation_of_closed_exercise_can_bypass_prefix_meter"
+        "session_and_native_CLI_fixes_not_yet_live_or_Agent_validated"
       ],
-      "next_step": "先零模型修复已关闭验收的同会话继续分流与原生入口识别；只保留项目恢复局部证据。R4 30/30和1/1已结束，不重建、不补发、不cron；未来仅补未完成项且另行授权额度。",
+      "next_step": "技术修复41项Python/1项Node及原CLI零模型探测已过；申请新30请求/1条Owner飞书剩余两页补验和一次空闲重载，未授权前不建账本/不发任务。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -506,6 +505,15 @@
         "SQLite_cumulative_api_call_count": 28,
         "SQLite_counts_include_followups": true,
         "controlled_new_wire_attempts": 25
+      },
+      "zero_model_continuation_fix": {
+        "state": "ZERO_MODEL_FIX_PREPARED_NOT_ACTIVE; no new trial authorization",
+        "Python_tests": 41,
+        "Node_tests": 1,
+        "real_CLI_probe_passed": true,
+        "active_in_live_gateway": false,
+        "new_model_authorization": false,
+        "source_evidence": "hermes/browser/evidence/feishu-R4-handoff-2026-10-25.json"
       }
     }
   },

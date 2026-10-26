@@ -5,6 +5,7 @@ const grants={
  analysis:['/api/qa-refresh'],
  binding:['/api/projects','/api/tasks','/api/reorder'],
  recovery:['/api/projects','/api/reorder'],
+ 'remaining-readonly':['/api/reorder'],
 };
 
 export function requestScope(caseId='read-only'){

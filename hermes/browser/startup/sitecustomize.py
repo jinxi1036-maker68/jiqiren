@@ -1,7 +1,18 @@
 """Owner-approved temporary startup hook; no marker means no behavior change."""
 import os
 
-if os.environ.get("LINGJU_BROWSER_BUDGET") == "1":
+if os.environ.get('LINGJU_FEISHU_NATIVE') == '1':
+    try:
+        import importlib.util
+        from pathlib import Path
+        root=Path(__file__).resolve().parents[1]
+        spec=importlib.util.spec_from_file_location('_lingju_feishu_native_bootstrap',root/'feishu_native_bootstrap.py')
+        bootstrap=importlib.util.module_from_spec(spec);spec.loader.exec_module(bootstrap)
+        bootstrap.install(root)
+    except BaseException:
+        os.write(2,b'Lingju native Feishu startup validation failed; no gateway launch.\n')
+        os._exit(78)
+elif os.environ.get("LINGJU_BROWSER_BUDGET") == "1":
     try:
         import datetime
         import hashlib

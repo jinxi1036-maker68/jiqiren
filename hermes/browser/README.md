@@ -1,7 +1,7 @@
 # 原Hermes浏览器能力强化：本地B路线首轮
 
 状态（2026-10-26取证后）：R4项目保存恢复有局部实证，整体未通过；30/30及1/1结束，模拟站已按额度规则关闭。
-两条普通“继续”沿用旧验收会话并走到未计量路径，续办分流缺口需零模型修复；不补发、不重启重建、不排cron，旧URL不可用。
+续办与原生CLI候选已通过零模型检查，工具文件已准备；未在当前网关加载。新补验额度未授权，不发任务、不复用旧URL。
 最初停止原因和原证据保留，下文历史段落不能当作续办后的最新状态。
 禁止把本目录的组件测试当成Hermes自主完成任务或真实灵生上线证据。
 
@@ -306,3 +306,22 @@ Owner改用飞书，仍是原员工/原W。原30次/1条授权不扩大；准备
 ### 2026-10-26 飞书R4续查
 
 修订版曾在原H/W形成13工具READY，随后入口已退出；当前网关无验收标记。配置四字段变化已由哈希匹配旧备份精确核对，Owner报告曾让Hermes处理飞书限流；尚未证明改动有效。58/59保护项相同，暂停、不更新基线、不覆盖配置。仍剩25次/1条，任务0，旧URL不可用。详见上述报告最新段落；首轮未启用描述仅为历史。
+
+### 原生CLI修复候选：复现和边界（尚未激活）
+
+只在受控子进程设置`LINGJU_FEISHU_NATIVE=1`、`LINGJU_FEISHU_INSTALL=I`、
+`LINGJU_FEISHU_GATE=<owned gate.json>`、`LINGJU_FEISHU_BASELINE=<approved metadata snapshot>`、
+`LINGJU_FEISHU_OUTPUT=<owned receipts>`、`PYTHONPATH=H/tools/company-browser/startup`。
+执行真正的`I/venv/Scripts/python.exe -B -m hermes_cli.main gateway run`。
+零模型探测另设`LINGJU_FEISHU_ZERO_MODEL_PROBE=1`，它替换CLI运行函数为只读导入探测，
+不获取服务锁、不启适配器或模型。实际启用时须移除该探测标记，并有新的具体重载及模型授权；
+当前准备gate的重启许可为false，旧R4账本已结束，不能直接启动下一条。
+
+`feishu_session_fence.py`只保存会话ID/授权摘要/状态，不保存正文或身份数据。
+已关闭验收内的任何续办都不进入模型；通过原生/new建立普通会话后自然聊天可用，旧记录保留。
+共同_handle_message覆盖排队/延迟入口；若原生路由缓存为空，先解析真正的会话元数据。
+READY与生成arm分开，任何旧额度不重置。关闭状态的/new、/stop等本地命令无权请求模型。
+
+`remaining-readonly`只放行页面读取和`POST /api/reorder`模拟选项刷新。
+未来R5提案限30请求/1条Owner飞书消息；代码中的提案常量不代表Owner已批准。
+回退只针对有当前SHA证明的本轮工具文件/标记，不覆盖原配置、旧会话或目录。

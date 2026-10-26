@@ -116,7 +116,7 @@
     "unknown_startup_requests_blocked_when_unarmed": true,
     "reconciled_five_attempts_preserved_in_future_admission": true
   },
-  "next_required": "Keep only partial verified result. No automatic A restart/recreation or B cron. Fix continuation routing and native lifecycle entry with zero-model tests first; any new Agent task/quota requires explicit Owner grant. Do not retest project creation.",
+  "next_required": "New fixes and narrow remaining-pages grant are prepared; Owner must explicitly authorize30 requests/1 Feishu task and one idle controlled reload. Do not reopen R4 or send tasks yet.",
   "no_real_Livsyn_access_or_business": true,
   "no_automatic_model_retest": true,
   "private_evidence_retained_outside_W": true,
@@ -629,5 +629,97 @@
     "no_real_platform_login_or_business": true,
     "no_model_or_account_configuration_changes_by_Codex": true,
     "next": "Owner sends the single current-URL Feishu task; Codex reads actual receipts after response. Preserve all failures and quota; do not auto-merge or expand."
+  },
+  "zero_model_remediation_candidate": {
+    "at_shanghai": "2026-10-26T22:42:32.202704+08:00",
+    "state": "ZERO_MODEL_FIX_PREPARED_NOT_ACTIVE; no new trial authorization",
+    "fixes": {
+      "session_boundary": "native routing/session IDs, durable closed/running registry outside W; source factory and deferred common handler covered",
+      "routing_cache_miss": "resolve native metadata with touch_activity=False before deciding ordinary exemption; never read transcript bodies",
+      "closed_continuation": "no model for prose continuation in a fenced session; /new is native and retains old records; ordinary new session works",
+      "resume_guard": "explicit protected-session resume references blocked",
+      "registry_loss": "mode=rw/ro; missing history cannot silently recreate an empty registry",
+      "native_control_commands": "/new,/stop,/help,/status; unexpected generation always denied, even with another armed grant",
+      "READY_arm": "READY remains unarmed; only admitted Owner message plus fresh native session, fence and context can arm generation",
+      "real_native_entry": "I/venv/Scripts/python.exe -B -m hermes_cli.main gateway run; process-only PYTHONPATH startup hook; no fake argv",
+      "legacy_direct_wrapper": "retired; rejects before gateway startup",
+      "housekeeping": "temporary process only skips bundled Skills writes and plugin toolset cache persistence; plugin discovery stays active",
+      "remaining_scope": "GET/HEAD plus synthetic /api/reorder only; project/task/QA/login POSTs blocked before fixture"
+    },
+    "validation": {
+      "Python_unique_tests_passed": 41,
+      "groups": {
+        "Feishu_and_native_bootstrap": 33,
+        "QQ_regression": 6,
+        "remaining_scope": 2
+      },
+      "Node_new_scope_test_passed": 1,
+      "native_installed_CLI_probe": {
+        "native_CLI_probe_passed": true,
+        "real_native_argv_recognized": true,
+        "adapters_started": 0,
+        "model_requests": 0,
+        "gateway_PID_written": false,
+        "original_files_writable": false,
+        "native_session_peek_ABI": true,
+        "protected_changes": [],
+        "pid": 8816,
+        "probe_guard_counts": {
+          "blocked_network": 0,
+          "blocked_original_writes": 0,
+          "asyncio_selfpipe": 1
+        },
+        "native_common_message_handler_ABI": true
+      },
+      "actual_native_gateway_started_in_probe": false,
+      "probe_protection": "network/subprocess/original-file and metadata mutation denied; scratch redirected only inside probe; Windows asyncio internal socketpair explicitly scoped",
+      "probe_failures_preserved": "initial stalled probes stopped/bounded; PermissionError tempfile retry, tempdir placement and asyncio selfpipe handling corrected in probe; no Hermes-core failure claim",
+      "not_Agent_acceptance": true,
+      "no_repeated_R3_deployment_or_browser_business_matrix": true
+    },
+    "local_preparation": {
+      "owned_existing_sources_updated": 6,
+      "owned_new_sources": 2,
+      "owned_deployment_receipts": 2,
+      "private_preimages": 8,
+      "closed_R4_session_seeded": true,
+      "protected_records_match": 59,
+      "protected_file_writes": 0,
+      "current_live_gateway_restarted": false,
+      "original_install_or_venv_packages_changed": false,
+      "original_configuration_or_credentials_changed": false,
+      "registered_MCP_permissions_changed": false,
+      "temporary_source_files_alone_do_not_activate_live_gateway": true,
+      "model_requests": 0,
+      "Hermes_messages_sent_by_Codex": 0,
+      "R4_ledger_and_three_old_ledgers_byte_identical": true
+    },
+    "source_sha256": {
+      "feishu_gateway.py": "98b2a5d6b792916e2f794aee45c85a2da3bb387c60af26c625c50d7e50ef6b26",
+      "feishu_meter.py": "f4371679d69ef0501dd8218a4ec605f11b563d3e7330877e23789b8b171c8f59",
+      "qq_browser_task.py": "38e52bbb171275e761e0252ed056adbde0e00030e9f4ff63eb569a84c36ab785",
+      "startup/sitecustomize.py": "8ce0ebef41f44cd1fb3de25c0067638e0a69d8a3e2cdb684a5af469f093f8f24",
+      "feishu_native_bootstrap.py": "8ff4b49ea05e31267420866b6be8720ac09b2f77f9ccda32d5b2244267fabc39",
+      "feishu_session_fence.py": "a0a95a04c9f5ac34b782989b7c322b00cc57066818bf74119315a624f9214667",
+      "launch.py": "a48fb047e880ad88ff785f4f90864833b7af44d4dac270e91a0ac29800c0280e",
+      "request_scope.mjs": "08896c989b3e5eeda365b72a89a520e7cadc6b3dc4d4cdf6c37ab60b02ced613"
+    },
+    "next_authorization_proposal": {
+      "approved": false,
+      "new_requests_max": 30,
+      "Owner_Feishu_messages": 1,
+      "case": "remaining-pages",
+      "allowed": "synthetic employee options and expired-login page inspection; option refresh only; no recreation",
+      "new_idle_gateway_controlled_reload": 1,
+      "no_model_task_sent_by_Codex": true,
+      "real_business_access": false
+    },
+    "unverified": [
+      "live gateway loading of new native bootstrap and session fence",
+      "Hermes Agent remaining two goals",
+      "long-term/default entry stability",
+      "real platform workflows"
+    ],
+    "rollback": "verify owned tool SHA before single-file restore from private preimages; new files removable only if still ours; leave current gateway/config/state.db/memory alone; no whole-directory restore"
   }
 }

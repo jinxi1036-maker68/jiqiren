@@ -6,20 +6,30 @@ from pathlib import Path
 from qq_runtime import Intake, acceptance_thread_id, verify_unused_thread
 from request_budget import RequestBudget
 from safety import ordinary_path, sha256
+from feishu_session_fence import SessionFence
 
 AUTHORIZATION = '2026-10-25 Owner: new30 requests and1 QQ recovery task; ordinary chat separate'
 PREFIX = '【模拟浏览器验收R4】'
 FEISHU_TRANSFER = '2026-10-25 Owner: use Feishu instead of QQ; begin browser integration'
+# A proposal schema, not a record that permission has been granted. No ledger
+# or active gate is created for it until the human explicitly approves it.
+REMAINING_AUTHORIZATION = '2026-10-26 Owner: new30 requests and1 Feishu remaining-pages task; no project/task/QA/login writes'
+REMAINING_PREFIX = '【模拟浏览器补验R5】'
 
 
 def validate_browser_grant(value, channel='qqbot'):
-    if (not isinstance(value, dict) or value.get('owner_authorization') != AUTHORIZATION
+    remaining=isinstance(value,dict) and value.get('case')=='remaining-pages'
+    auth=REMAINING_AUTHORIZATION if remaining else AUTHORIZATION
+    case='remaining-pages' if remaining else 'recovery'
+    prefix=REMAINING_PREFIX if remaining else PREFIX
+    if (not isinstance(value, dict) or value.get('owner_authorization') != auth
             or value.get('request_limit') != 30 or value.get('task_limit') != 1
-            or value.get('case') != 'recovery' or value.get('message_prefix') != PREFIX
+            or value.get('case') != case or value.get('message_prefix') != prefix
             or value.get('zero_model_checks_passed') is not True):
         raise RuntimeError('Browser grant differs from Owner-approved30/1 recovery scope')
     if channel not in ('qqbot', 'feishu'):
         raise RuntimeError('Unsupported acceptance channel')
+    if remaining and channel!='feishu':raise RuntimeError('Remaining-pages grant is Feishu only')
     if channel == 'feishu' and (value.get('channel') != 'feishu'
             or value.get('channel_transfer_authorization') != FEISHU_TRANSFER):
         raise RuntimeError('Feishu needs the explicit channel transfer; no extra allowance')
@@ -31,6 +41,7 @@ class BrowserExercise:
     def __init__(self, value, root, state_db, channel='qqbot'):
         validate_browser_grant(value, channel)
         self.channel = channel
+        self.prefix=value['message_prefix']
         self.runtime = ordinary_path(value['runtime'])
         self.ledger = ordinary_path(value['ledger'])
         root = ordinary_path(root)
@@ -39,8 +50,9 @@ class BrowserExercise:
         if self.runtime.parent == self.ledger.parent or sha256(self.runtime) != value['runtime_sha256']:
             raise RuntimeError('Browser runtime changed or exercise/ledger directories mixed')
         self.cfg = json.loads(self.runtime.read_text('utf-8'))
+        expected_scope='remaining-readonly' if value['case']=='remaining-pages' else 'recovery'
         if (self.cfg.get('toolRoot') != str(root) or self.cfg.get('case') != 'recovery'
-                or self.cfg.get('taskScope') != 'recovery' or self.cfg.get('route') != 'playwright'
+                or self.cfg.get('taskScope') != expected_scope or self.cfg.get('route') != 'playwright'
                 or self.cfg.get('roundBudget') != str(self.ledger)):
             raise RuntimeError('Not the approved isolated recovery workplace')
         preflight = self.runtime.parent / 'continuation-preflight.json'
@@ -59,6 +71,7 @@ class BrowserExercise:
         # One admission for this grant even if a stale launcher is presented
         # with the same ledger under another communication channel.
         self.intake = Intake(self.ledger.parent / 'owner-intake.sqlite', cap=1)
+        self.fence = SessionFence(root / 'runs' / 'exercise-sessions.sqlite') if channel == 'feishu' else None
         self.thread_id = acceptance_thread_id(self.runtime, 1)
         self.state_db = state_db
         self.catalog_ready = False
@@ -82,11 +95,11 @@ class BrowserExercise:
             verify_unused_thread(self.state_db, self.thread_id, self.channel)
 
     def matches(self, text):
-        return text.lstrip().startswith(PREFIX)
+        return text.lstrip().startswith(getattr(self,'prefix',PREFIX))
 
     def admit(self, message_id):
         state = self.budget.status()
-        if (not self.catalog_ready or not state['armed']
+        if (not self.catalog_ready or (self.channel!='feishu' and not state['armed'])
                 or state['reserved_network_attempts'] >= state['limit'] or self.intake.count()):
             raise RuntimeError('This browser task is not open or its one message was consumed')
         verify_unused_thread(self.state_db, self.thread_id, self.channel)

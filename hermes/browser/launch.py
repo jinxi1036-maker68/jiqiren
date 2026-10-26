@@ -39,12 +39,21 @@ def arm_run(run):
     return budget.status()
 
 
+def task_scope_for(case, requested=None):
+    if case not in {'analysis','binding','recovery'}:raise ValueError('Unknown case')
+    scope=requested or case
+    if scope!=case and not (case=='recovery' and scope=='remaining-readonly'):
+        raise ValueError('Scope is not the case default or the narrower remaining-pages grant')
+    return scope
+
+
 class TrainingRun:
-    def __init__(self, root, route, case, chrome, node, headed=False, budget_ledger=None):
+    def __init__(self, root, route, case, chrome, node, headed=False, budget_ledger=None, task_scope=None):
         self.root = ordinary_path(root)
         if route not in {"native", "playwright"} or case not in {"analysis", "binding", "recovery"}:
             raise ValueError("Unknown route/case")
         self.route, self.case = route, case
+        self.task_scope=task_scope_for(case,task_scope)
         self.output = self.root / "runs" / (datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + route + "-" + case + "-" + uuid.uuid4().hex[:8])
         self.output.mkdir(parents=True)
         ordinary_path(self.output)
@@ -59,14 +68,14 @@ class TrainingRun:
         self.env["ANONYMIZED_TELEMETRY"] = "false"
         try:
             fixture_config = self.output / "fixture-config.json"
-            write_new_json(fixture_config, {"output": str(self.output), "visualCode": "47", "case": self.case})
+            write_new_json(fixture_config, {"output": str(self.output), "visualCode": "47", "case": self.task_scope})
             fixture = self.spawn([node, str(self.root / "fixture.mjs"), str(fixture_config)], stdout=subprocess.PIPE)
             ready_queue = queue.Queue()
             threading.Thread(target=lambda: ready_queue.put(fixture.stdout.readline()), daemon=True).start()
             ready = json.loads(ready_queue.get(timeout=15))
             if ready.get("event") != "fixture_ready":
                 raise RuntimeError("Fixture not ready")
-            if ready.get("task_scope") != self.case:
+            if ready.get("task_scope") != self.task_scope:
                 raise RuntimeError("Browser request scope missing or different from this task")
             self.origin = ready["origin"]
             profile = self.output / "chrome-profile"
@@ -218,13 +227,14 @@ def main():
     p.add_argument("--headed", action="store_true")
     p.add_argument("--acceptance", action="store_true")
     p.add_argument("--budget-ledger")
+    p.add_argument('--task-scope',choices=['remaining-readonly'])
     args = p.parse_args()
     root = Path(__file__).resolve().parent
     if args.acceptance:
         gate = json.loads((root / "acceptance-gate.json").read_text(encoding="utf-8"))
         if not gate.get("all_zero_model_gates_passed") or not gate.get("physical_api_budget_enforced"):
             raise RuntimeError("Model acceptance is blocked; do not send a Desktop task")
-    run = TrainingRun(root, args.route, args.case, args.chrome, args.node, args.headed, args.budget_ledger)
+    run = TrainingRun(root, args.route, args.case, args.chrome, args.node, args.headed, args.budget_ledger,args.task_scope)
     try:
         if args.desktop:
             run.start_desktop(args.desktop)

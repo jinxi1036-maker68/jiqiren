@@ -14,13 +14,17 @@ import unittest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from feishu_meter import GatewayMeter, CURRENT_TURN, propagate_title_threads
-from feishu_gateway import install_runner_hooks, is_owner, check_fresh_session, validate_gateway_handoff, native_connected
+from feishu_gateway import install_runner_hooks, is_owner, check_fresh_session, validate_gateway_handoff, native_connected, serve
 from qq_browser_task import BrowserExercise, PREFIX, FEISHU_TRANSFER
 from qq_runtime import Intake
 from request_budget import RequestBudget, BudgetBlocked
+from feishu_session_fence import SessionFence
 
 
 class FeishuGatewayTests(unittest.TestCase):
+    def test_old_direct_wrapper_cannot_launch_gateway_again(self):
+        with self.assertRaises(RuntimeError):asyncio.run(serve(types.SimpleNamespace()))
+
     def test_unadmitted_unknown_startup_requests_are_blocked_not_unlimited_normal_chat(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d);b=RequestBudget.create(p/'budget.sqlite',limit=3,armed=False);m=GatewayMeter(p,b)
@@ -142,21 +146,29 @@ class FeishuGatewayTests(unittest.TestCase):
             with contextlib.closing(sqlite3.connect(db)) as c,c:
                 c.execute('create table sessions(id text,source text,thread_id text,api_call_count integer,message_count integer,tool_call_count integer)')
                 c.execute("insert into sessions values('fresh','feishu',null,0,0,0)")
-            b=RequestBudget.create(p/'budget.sqlite',30)
+            b=RequestBudget.create(p/'budget.sqlite',30,armed=False)
             e=object.__new__(BrowserExercise);e.budget=b;e.intake=Intake(p/'intake.sqlite',cap=1)
             e.catalog_ready=True;e.thread_id='reserved-run';e.state_db=db;e.channel='feishu'
+            e.ledger=p/'budget.sqlite';e.fence=SessionFence(p/'fence.sqlite',create=True)
             m=GatewayMeter(p,b);observed=[];fresh=[]
             source=types.SimpleNamespace(platform=types.SimpleNamespace(value='feishu'),chat_type='dm',user_id='synthetic-owner',chat_id='synthetic-chat')
             binding={k:hashlib.sha256(v.encode()).hexdigest() for k,v in [('user_sha256',source.user_id),('chat_sha256',source.chat_id)]}
             class Runner:
-                def __init__(self):self.session_store=types.SimpleNamespace(get_or_create_session=self.new)
-                def new(self,src,force_new=False):fresh.append((src is source,force_new));return types.SimpleNamespace(session_id='fresh')
+                def __init__(self):
+                    self.current='ordinary'
+                    self.session_store=types.SimpleNamespace(get_or_create_session=self.new,
+                        _generate_session_key=lambda source:'native-key',peek_session_id=lambda key:self.current)
+                def new(self,src,force_new=False):
+                    fresh.append((src is source,force_new));self.current='fresh'
+                    return types.SimpleNamespace(session_id='fresh')
                 def _is_user_authorized(self,src):return True
                 def _primary_message_handler(self):
-                    async def native(msg):
-                        observed.append((CURRENT_TURN.get()['browser'],self._resolve_enabled_toolsets_for_source({},msg.source,'feishu')))
-                        m.take();return 'native reply'
-                    return native
+                    return self._handle_message
+                async def _handle_message(self,msg):
+                    if msg.text=='/new':
+                        self.current='new-ordinary';return 'native new session'
+                    observed.append((CURRENT_TURN.get()['browser'],self._resolve_enabled_toolsets_for_source({},msg.source,'feishu')))
+                    m.take();return 'native reply'
                 def _resolve_enabled_toolsets_for_source(self,*a):return ['files','company_browser_simulation']
                 def _create_adapter(self,*a):return None
                 async def start(self):return True
@@ -168,7 +180,12 @@ class FeishuGatewayTests(unittest.TestCase):
                     self.assertEqual(await handler(types.SimpleNamespace(text='你好',message_id='s0',source=source)),'native reply')
                     self.assertEqual(await handler(types.SimpleNamespace(text=PREFIX+'synthetic',message_id='s1',source=source)),'native reply')
                     self.assertIn('已接收',await handler(types.SimpleNamespace(text=PREFIX+'again',message_id='s2',source=source)))
-                    self.assertEqual(await handler(types.SimpleNamespace(text='还在线吗',message_id='s3',source=source)),'native reply')
+                    self.assertIn('新建会话',await handler(types.SimpleNamespace(text='还在线吗',message_id='s3',source=source)))
+                    self.assertIn('新建会话',await handler(types.SimpleNamespace(text='继续 R4',message_id='s4',source=source)))
+                    self.assertIn('新建会话',await runner._handle_message(types.SimpleNamespace(text='deferred continuation',message_id='queued',source=source)))
+                    self.assertEqual(await handler(types.SimpleNamespace(text='/new',message_id='s5',source=source)),'native new session')
+                    self.assertEqual(await handler(types.SimpleNamespace(text='还在线吗',message_id='s6',source=source)),'native reply')
+                    self.assertIn('不能',await handler(types.SimpleNamespace(text='/resume fresh',message_id='s7',source=source)))
                 asyncio.run(receive())
                 self.assertEqual(observed,[(False,[]),(True,['company_browser_simulation','vision']),(False,[])])
                 self.assertEqual(fresh,[(True,True)]);self.assertEqual(e.intake.count(),1)

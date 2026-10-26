@@ -21,13 +21,15 @@ class GatewayMeter:
         self.browser_turn = None
         self.ordinary_attempts = 0
 
-    def begin(self, browser=False):
-        turn = {'browser': bool(browser), 'live': threading.Event(), 'meter':self}
+    def begin(self, browser=False, *, control=False):
+        if control and not browser:
+            raise ValueError('Session controls must retain exercise accounting')
+        turn = {'browser': bool(browser), 'control': bool(control), 'live': threading.Event(), 'meter':self}
         with self.lock:
-            if browser and self.browser_turn is not None:
+            if browser and not control and self.browser_turn is not None:
                 raise BudgetBlocked('A browser task is already running')
             turn['live'].set()
-            if browser:self.browser_turn=turn
+            if browser and not control:self.browser_turn=turn
         return turn, CURRENT_TURN.set(turn)
 
     def finish(self, turn, token):
@@ -48,6 +50,11 @@ class GatewayMeter:
         return True
 
     def check(self):
+        turn=CURRENT_TURN.get()
+        if turn is not None and turn.get('control'):
+            # A local /new or /status is never authorization for generation,
+            # even when another newly approved exercise has unused budget.
+            raise BudgetBlocked('Local session controls cannot issue model requests')
         if self._browser():
             state=self.budget.status()
             if not state['armed'] or state['reserved_network_attempts']>=state['limit']:
