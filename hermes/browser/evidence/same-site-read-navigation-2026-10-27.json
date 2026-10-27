@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-27",
+  "status": "SAME_SITE_READ_NAVIGATION_READY",
+  "trigger": "Owner requires Hermes to independently find device management and read existing bindings, without Owner per-page URL/navigation",
+  "scope": {
+    "page_origin": "https://ldp.lingrobotics.com",
+    "paths": [
+      "*"
+    ],
+    "Owner_log_in_preserved": true,
+    "same_original_H": true,
+    "workspace": "W",
+    "same_native_conversation_routing": true,
+    "forced_new_session": false
+  },
+  "browser_tools": 10,
+  "capabilities": [
+    "same-site navigation",
+    "menu/detail/read-query clicks",
+    "query/filter text",
+    "filter selects",
+    "pagination",
+    "existing same-site tabs",
+    "scroll keys",
+    "snapshot",
+    "viewport/full-page screenshot",
+    "dismiss dialog only"
+  ],
+  "request_quota": null,
+  "task_quota": null,
+  "acceptance_prefix_required": false,
+  "daily_audit_preserved_without_reset": true,
+  "ready_audit": {
+    "limit": null,
+    "reserved_network_attempts": 4,
+    "armed": false,
+    "events": {
+      "denied_unarmed": 9,
+      "reserved_before_send": 4
+    },
+    "families": {
+      "chat_completions": 2,
+      "other_httpx": 2
+    },
+    "quota_enforced": false
+  },
+  "Codex_model_messages": 0,
+  "actual_device_binding_query": "not performed by Codex; employee must execute real work, no fabricated results",
+  "actual_device_data_or_employee_names_uploaded": false,
+  "read_controls": {
+    "fresh_actual_page_ref_check": true,
+    "write_intent_buttons_and_credentials_denied": true,
+    "same_site_URL_check_before_and_after": true,
+    "no_run_code_evaluate_upload": true,
+    "GET_HEAD_OPTIONS_only_network_guard": true,
+    "new_WebSockets_blocked": true,
+    "serviceworker_bypass_per_owned_page": true,
+    "production_guard_initialization": "lazy before first actual upstream page action",
+    "platform_server_enforced_readonly_role": "not verified",
+    "possible_POST_read_queries": "blocked until technically verified as read; never infer no data from a local block",
+    "absolute_zero_state_change_for_all_GET_or_existing_sockets": "not claimed"
+  },
+  "compatibility": {
+    "pinned_MCP": "0.0.83",
+    "SDK": "1.30.0",
+    "ref_to_upstream_target_adapter": true,
+    "wait_first_page_initialization_fixed": true
+  },
+  "local_checks": {
+    "Node_cases": 7,
+    "Python_scope_daily_finite_regressions": 9,
+    "actual_empty_Chrome_guard_initialization": true,
+    "real_platform_actions_during_checks": 0,
+    "Hermes_model_tests": 0
+  },
+  "handoff": {
+    "idle_native_controlled_reloads": 2,
+    "reason_for_second": "Pinned MCP target argument compatibility completed before exposing actions to real work",
+    "native_nonforce_exit_only": true,
+    "forced_tree_kill": false,
+    "new_profile_or_second_employee": false
+  },
+  "protected_records_match": 59,
+  "prior_six_sealed_ledgers_unchanged": true,
+  "owned_existing_tool_SHA256_changes": {
+    "readonly_task.py": {
+      "before": "09d90413a417993efe5799b2e75b6f0946664c1cb41134cce39709838fbabbed",
+      "after": "2c6b45586b47b761d4916073a890f2e32542daed1872b2eccc76a9ab140b7d32"
+    },
+    "readonly_bridge.mjs": {
+      "before": "8c60fc882e787be368e32b2fc3c469ed35c37f1dfdadbd95f137fc88e0ebaa4c",
+      "after": "f6aff1da90419632006e17d3583b00d756b639f3c8629121424e59d8ef3e7d90"
+    }
+  },
+  "new_tool_sha256": {
+    "read_browsing_policy.mjs": "27283268c6db38bfdbfac45038820ffea1d14c6fdb50486ffaa2310de9dfe722",
+    "read_browsing_init.cjs": "2abdbcd2b86eb580849ec2b1785191c7d79e4ab48c76986d25b6800bd6b8527f"
+  },
+  "necessary_existing_tool_preimages": 2,
+  "model_identity_memory_R3_config_credentials_MCP_registration_modified": false,
+  "permanent_default_entry_or_autostart_changed": false,
+  "next_usage": "Owner gives normal business goal; Hermes finds menus and pages itself. No per-button examination or page URL request."
+}

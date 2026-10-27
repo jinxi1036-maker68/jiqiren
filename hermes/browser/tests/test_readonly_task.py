@@ -54,7 +54,7 @@ class ReadonlyGrantTests(unittest.TestCase):
    policy={**self.grant(),'ledger':str(ledger)};pf=run/'policy.json';pf.write_text(json.dumps(policy),'utf-8')
    runtime=run/'runtime.json';runtime.write_text('{}','utf-8')
    grant={**policy,'runtime':str(runtime),'runtime_sha256':sha256(runtime),'old_ledger_sha256':old}
-   with mock.patch('readonly_task.validate_readonly_runtime',return_value=({'grant':str(pf),'grant_sha256':sha256(pf)},{})):
+   with mock.patch('readonly_task.validate_readonly_runtime',return_value=({'grant':str(pf),'grant_sha256':sha256(pf),'paths':['/statistics']},{})):
     e=ReadonlyExercise(grant,root,state_db);e.catalog_ready=True
     self.assertEqual(e.admit('one-real-owner-message'),1)
     with self.assertRaises(RuntimeError):e.admit('unapproved-followup')

@@ -13,7 +13,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from request_budget import RequestAudit,RequestBudget,BudgetBlocked
 from feishu_meter import GatewayMeter,CURRENT_TURN
 from feishu_gateway import install_runner_hooks
-from readonly_task import validate_continuous_grant,CONTINUOUS_KIND,ORIGIN
+from readonly_task import validate_continuous_grant,CONTINUOUS_KIND,ORIGIN,READ_NAVIGATION_TOOLS
 from qq_browser_task import FEISHU_TRANSFER
 
 
@@ -45,6 +45,10 @@ class DailyReadonlyTests(unittest.TestCase):
   validate_continuous_grant(g)
   for change in ({'Owner_removed_test_quotas':False},{'request_limit':30},{'task_limit':1},{'paths':['/']},{'origin':'https://unapproved.test'},{'approval_reference':''}):
    with self.assertRaises(RuntimeError):validate_continuous_grant({**g,**change})
+  wide={**g,'paths':['*'],'same_site_read_navigation':True,'Owner_read_navigation_authorization':'Owner asks employee to find device bindings in this same site'}
+  validate_continuous_grant(wide)
+  with self.assertRaises(RuntimeError):validate_continuous_grant({**wide,'Owner_read_navigation_authorization':''})
+  self.assertEqual(len(READ_NAVIGATION_TOOLS),10)
  def test_two_natural_messages_share_native_conversation_without_quota_or_prefix(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);db=root/'state.db'

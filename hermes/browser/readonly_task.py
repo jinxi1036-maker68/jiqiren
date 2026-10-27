@@ -18,6 +18,12 @@ CONTINUOUS_KIND='livsyn-readonly-daily'
 PREFIX='【灵生只读带教R1】'
 ORIGIN='https://ldp.lingrobotics.com'
 READ_TOOLS={'browser_snapshot','browser_take_screenshot','browser_tabs','browser_wait_for'}
+READ_NAVIGATION_TOOLS=READ_TOOLS|{'browser_navigate','browser_click','browser_type','browser_select_option','browser_press_key','browser_handle_dialog'}
+
+
+def same_site_read_scope(value):
+    wide=value.get('same_site_read_navigation') is True
+    return (value.get('paths')==['*'] and bool(value.get('Owner_read_navigation_authorization'))) if wide else value.get('paths')==['/statistics']
 
 
 def validate_continuous_grant(g):
@@ -25,7 +31,7 @@ def validate_continuous_grant(g):
             or g.get('channel_transfer_authorization')!=FEISHU_TRANSFER
             or g.get('request_limit') is not None or g.get('task_limit') is not None
             or g.get('Owner_removed_test_quotas') is not True
-            or g.get('origin')!=ORIGIN or g.get('paths')!=['/statistics']
+            or g.get('origin')!=ORIGIN or not same_site_read_scope(g)
             or g.get('zero_model_checks_passed') is not True
             or not isinstance(g.get('approval_reference'),str) or not g['approval_reference'].strip()):
         raise RuntimeError('Explicit removal of artificial test quotas required; business scope is unchanged')
@@ -48,7 +54,7 @@ def validate_readonly_runtime(path,root,*,live=False,require_ready=True):
     if root/'runs' not in path.parents:raise RuntimeError('Read-only runtime outside owned runs')
     r=json.loads(path.read_text('utf-8'))
     if (r.get('schema')!='lingju.readonly-browser.v1' or r.get('toolRoot')!=str(root)
-            or r.get('origin')!=ORIGIN or r.get('paths')!=['/statistics']):raise RuntimeError('Read-only scope differs')
+            or r.get('origin')!=ORIGIN or not same_site_read_scope(r)):raise RuntimeError('Read-only scope differs')
     prep=ordinary_path(r['preparation'])
     if root/'work-entry' not in prep.parents or not prep.parent.name.startswith('owner-training-'):
         raise RuntimeError('Not the owned Owner-operated training browser')
@@ -81,12 +87,15 @@ def observation_status(path,root):
     g=json.loads(gpath.read_text('utf-8'))
     continuous=g.get('kind')==CONTINUOUS_KIND
     (validate_continuous_grant if continuous else validate_readonly_grant)(g)
+    if r.get('paths')!=g.get('paths') or bool(r.get('same_site_read_navigation'))!=bool(g.get('same_site_read_navigation')):
+        raise RuntimeError('Runtime and approved read scope differ')
     ledger=ordinary_path(g['ledger'])
     if Path(root)/'runs' not in ledger.parents:raise RuntimeError('Ledger outside owned runs')
     with contextlib.closing(sqlite3.connect(ledger.as_uri()+'?mode=ro',uri=True)) as c:
         row=c.execute('select cap,used,armed from state where id=1').fetchone()
     return {'available':bool(row and row[2] and ((row[0]==0 and row[1]>=0) if continuous else (row[0]==30 and 0<=row[1]<30))),
-            'owner_login_confirmed':True,'cdp':p['cdp'],'origin':ORIGIN,'paths':['/statistics']}
+            'owner_login_confirmed':True,'cdp':p['cdp'],'origin':ORIGIN,'paths':r['paths'],
+            'same_site_read_navigation':r.get('same_site_read_navigation') is True}
 
 
 class ReadonlyExercise(BrowserExercise):
@@ -99,6 +108,7 @@ class ReadonlyExercise(BrowserExercise):
             raise RuntimeError('New teaching ledger/runtime must be owned')
         if sha256(self.runtime)!=g['runtime_sha256']:raise RuntimeError('Teaching runtime changed')
         self.cfg,_=validate_readonly_runtime(self.runtime,root,live=True)
+        if self.cfg.get('paths')!=g.get('paths'):raise RuntimeError('Finite exercise scope differs')
         policy_path=ordinary_path(self.cfg['grant'])
         if root/'runs' not in policy_path.parents or sha256(policy_path)!=self.cfg['grant_sha256']:
             raise RuntimeError('Pinned read-only policy differs')
@@ -129,11 +139,14 @@ class ContinuousReadonlyExercise(ReadonlyExercise):
         if root/'runs' not in self.ledger.parents or sha256(self.runtime)!=g['runtime_sha256']:
             raise RuntimeError('New daily runtime/audit identity differs')
         self.cfg,_=validate_readonly_runtime(self.runtime,root,live=True)
+        if self.cfg.get('paths')!=g.get('paths') or bool(self.cfg.get('same_site_read_navigation'))!=bool(g.get('same_site_read_navigation')):
+            raise RuntimeError('Daily runtime and approved navigation scope differ')
+        self.expected_tools=READ_NAVIGATION_TOOLS if g.get('same_site_read_navigation') else READ_TOOLS
         policy_path=ordinary_path(self.cfg['grant'])
         if root/'runs' not in policy_path.parents or sha256(policy_path)!=self.cfg['grant_sha256']:
             raise RuntimeError('Daily read-only policy changed')
         policy=json.loads(policy_path.read_text('utf-8'));validate_continuous_grant(policy)
-        for key in ('kind','origin','paths','request_limit','task_limit','approval_reference','ledger'):
+        for key in ('kind','origin','paths','same_site_read_navigation','Owner_read_navigation_authorization','request_limit','task_limit','approval_reference','ledger'):
             if policy.get(key)!=g.get(key):raise RuntimeError('Daily gateway and tool scope differ')
         if len(g.get('old_ledger_sha256',{}))<6:raise RuntimeError('All prior audit ledgers must be preserved')
         for name,digest in g['old_ledger_sha256'].items():

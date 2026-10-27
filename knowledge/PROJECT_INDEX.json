@@ -75,7 +75,7 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "DAILY_READONLY_ACTIVE_NO_ARTIFICIAL_TEST_QUOTAS",
+      "status": "SAME_SITE_READ_NAVIGATION_ACTIVE_NO_TEST_QUOTAS",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -88,7 +88,7 @@
         "current_message_grant_consumed",
         "rejected_unavailable_terminal_attempt"
       ],
-      "next_step": "Owner在原飞书自然交代工作、连续带教；不再以逐项验收/30次/单消息/前缀打断。技术故障按实需修复；当前仅统计页被动观察，真实写入仍需业务授权。",
+      "next_step": "原Hermes从同一已登录灵生站点自主找菜单、翻页、筛选、看详情，完成设备绑定等真实查询；Owner不用提供每页网址。按实际工作修故障，不做逐项考试。未开放真实创建/修改/删除。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -423,6 +423,18 @@
         "scope": "statistics passive observation only",
         "evidence": "hermes/browser/evidence/daily-readonly-mode-2026-10-27.json",
         "Owner_removed_artificial_test_limits": true
+      },
+      "same_site_read_navigation": {
+        "scope_origin": "https://ldp.lingrobotics.com",
+        "paths": [
+          "*"
+        ],
+        "tools": 10,
+        "Feishu_connected": true,
+        "request_quota": null,
+        "task_quota": null,
+        "device_query_actual_result": "not fabricated; pending employee natural execution",
+        "evidence": "hermes/browser/evidence/same-site-read-navigation-2026-10-27.json"
       }
     }
   }
