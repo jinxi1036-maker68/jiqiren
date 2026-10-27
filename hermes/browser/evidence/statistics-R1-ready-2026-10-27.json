@@ -1,6 +1,6 @@
 {
   "date": "2026-10-27",
-  "status": "READY_OWNER_TASK_NOT_SENT",
+  "status": "CLOSED_TEXT_READ_VERIFIED_REPORTING_PARTIAL",
   "approval": {
     "answer": "批准按上述范围开始",
     "reference": "2026-10-27 Owner direct approval following call_78aece75c4694157ba88169306fc1287",
@@ -39,7 +39,98 @@
     "qqbot": {},
     "feishu": {}
   },
-  "Agent_actual_page_read": "not yet verified",
+  "Agent_actual_page_read": "verified_main_table_text; visual charts unverified",
   "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
-  "other_channel_round_trips": "not separately tested; no additional messages sent"
+  "other_channel_round_trips": "not separately tested; no additional messages sent",
+  "current_status": "CLOSED_TEXT_READ_VERIFIED_REPORTING_PARTIAL",
+  "R1_actual_forensics": {
+    "session_id": "20261027_200645_bfe9a983",
+    "source": "feishu",
+    "model": "agnes-3.0-flash",
+    "native_fresh_session": true,
+    "admission_cwd": "W",
+    "database_cwd": null,
+    "database_ended_at": null,
+    "native_handler_returned_at_UTC": "2026-10-27T12:16:12.110788+00:00",
+    "session_fence": "closed",
+    "duration_seconds_approx": 566,
+    "tool_calls": 8,
+    "catalog_description_calls": 4,
+    "browser_calls": 4,
+    "browser_call_types": [
+      "tabs.list",
+      "wait_for.time3",
+      "snapshot",
+      "take_screenshot.viewport"
+    ],
+    "forbidden_tool_calls": 0,
+    "primary_table_rows": 9,
+    "primary_table_columns": 7,
+    "main_table_and_footer_match_report": true,
+    "displayed_row_sum_vs_total_difference_seconds": 1,
+    "row_sum_difference_cause": "unknown",
+    "read_only_action_discipline": "passed_with_normal_evidence_artifacts",
+    "text_reading": "passed_main_table_not_all_charts",
+    "reporting_accuracy": "partial; date alignment, unknown units, unsupported zero interval and stable-production claims",
+    "collection_QA_settlement_separation": "basically correct; no individual blame or settlement implied",
+    "physical_attempts": 11,
+    "limit": 30,
+    "chat_attempts": 9,
+    "chat_HTTP_status_counts": {
+      "200": 6,
+      "500": 3
+    },
+    "other_HTTPX_attempts": 2,
+    "other_HTTPX_status_counts": {
+      "403": 2
+    },
+    "other_request_purpose_and_cause": "unverified",
+    "HTTP429_observed": false,
+    "SQLite_successful_API_count": 6,
+    "Owner_messages_used": 1,
+    "Owner_message_limit": 1,
+    "budget_armed": false,
+    "remaining19_transferred": false,
+    "wait_error": "No open pages available; later snapshot/screenshot succeeded; root cause unknown",
+    "screenshot_generated": true,
+    "screenshot_sha256": "bfcedf4bed12a6581e2ada331bcab3442abcd9a5bc32d8f9be689adcdf61a138",
+    "native_media_cache_same_SHA256": true,
+    "model_visual_comprehension": "unverified",
+    "image_API_input_proof": "not present in inspected receipts",
+    "browser_read_receipts": [
+      {
+        "at": "2026-10-27T12:09:54.172Z",
+        "name": "browser_tabs",
+        "isError": false,
+        "content_sha256": "eb7a2273611d949dcb725884d746d742b6717259d720b31cca4ea1227f5fbc26"
+      },
+      {
+        "at": "2026-10-27T12:11:36.801Z",
+        "name": "browser_wait_for",
+        "isError": true,
+        "content_sha256": "4d83134f7b97e931781628e5d8557b8b3c7a724030df63e906eefb9db13dea79"
+      },
+      {
+        "at": "2026-10-27T12:13:38.485Z",
+        "name": "browser_snapshot",
+        "isError": false,
+        "content_sha256": "ba5cbc3791eb04df5c8e35cfb85186f9ff413e501c146bee92351585d698c13c"
+      },
+      {
+        "at": "2026-10-27T12:14:38.572Z",
+        "name": "browser_take_screenshot",
+        "isError": false,
+        "content_sha256": "45711cc2d2349963362bc52e20b72cb9c01a81bb6bf658a2295aa896c210ee6a"
+      }
+    ],
+    "protected_records_match": 59,
+    "old_five_ledgers_unchanged": true,
+    "Codex_new_Hermes_model_requests": 0,
+    "Codex_new_Hermes_messages": 0,
+    "private_memory_prompt_credentials_read": false,
+    "production_raw_snapshot_or_screenshot_uploaded": false,
+    "all_browser_background_network_proven_readonly": false,
+    "next_scope_recommendation": "same-page visual chart observation and evidence-accurate reporting; no new task or scope automatically granted"
+  },
+  "readiness_snapshot_status": "READY_OWNER_TASK_NOT_SENT"
 }
