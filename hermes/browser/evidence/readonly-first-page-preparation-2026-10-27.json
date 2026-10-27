@@ -1,0 +1,168 @@
+{
+  "schema": "lingju.browser.readonly-preparation.v1",
+  "date": "2026-10-27",
+  "status": "PREPARED_NOT_AGENT_VALIDATED",
+  "original_employee_only": true,
+  "company_workspace": "W",
+  "original_registration_changed": false,
+  "new_Hermes_messages": 0,
+  "new_model_requests": 0,
+  "new_gateway_starts_or_reloads": 0,
+  "new_model_ledger_created": false,
+  "business_page_body_reads": 0,
+  "production_browser_actions_by_Codex": 0,
+  "scope": {
+    "origin": "https://ldp.lingrobotics.com",
+    "paths": [
+      "/statistics"
+    ],
+    "Owner_scope_reply": "call_3e485dba917344819467ae0a95bc011c",
+    "last_target_metadata_path": "/data-collection",
+    "scope_expanded": false,
+    "Owner_login": "reported; no DOM or credential inspection"
+  },
+  "checks": {
+    "Python_distinct": 31,
+    "Node_distinct": 16,
+    "total_distinct": 47,
+    "repeated_historical_business_tests": 0,
+    "training_launcher": 7,
+    "readonly_grant": 5,
+    "work_entry": 9,
+    "feishu_common_handler": 10,
+    "node_broker": 8,
+    "node_policy": 8
+  },
+  "protocol": {
+    "at": "2026-10-27T11:39:08.439Z",
+    "passed": true,
+    "original_registered_entry": true,
+    "passive_tools": 4,
+    "unapproved_call_denied": true,
+    "page_body_reads": 0,
+    "model_requests": 0,
+    "Hermes_messages": 0,
+    "gateway_restarts": 0,
+    "stderr_bytes": 0
+  },
+  "synthetic_stable_protocol": {
+    "at": "2026-10-27T11:39:27.758Z",
+    "passed": true,
+    "original_registered_wrapper": true,
+    "tools_before": 13,
+    "tools_after": 13,
+    "closed_workplace_call": "WORKPLACE_CLOSED",
+    "no_browser_or_fixture_started": true,
+    "model_requests": 0,
+    "Hermes_messages": 0,
+    "gateway_restarts": 0,
+    "stderr_bytes": 0
+  },
+  "native_CLI_probe": {
+    "native_CLI_probe_passed": true,
+    "real_native_argv_recognized": true,
+    "adapters_started": 0,
+    "model_requests": 0,
+    "gateway_PID_written": false,
+    "original_files_writable": false,
+    "native_session_peek_ABI": true,
+    "protected_changes": [],
+    "probe_guard_counts": {
+      "blocked_network": 0,
+      "blocked_original_writes": 0,
+      "asyncio_selfpipe": 1
+    },
+    "native_common_message_handler_ABI": true
+  },
+  "native_probe_warning": {
+    "text": "Could not load config.yaml",
+    "exact_cause": "not established; import probe does not validate live gateway configuration",
+    "original_config_hash_unchanged": true
+  },
+  "protection": {
+    "records_match": 59,
+    "differences": 0,
+    "five_closed_ledgers_match": true,
+    "old_R5_used": 11,
+    "old_R5_cap": 30,
+    "old_R5_message_used": 1,
+    "old_R5_armed": false,
+    "remaining19_transferred": false,
+    "necessary_private_preimages": 2,
+    "preimages_for": [
+      "dispatch.py",
+      "feishu_gateway.py"
+    ],
+    "original_credentials_memory_or_knowledge_writes": 0
+  },
+  "network": {
+    "system_proxy_host": "127.0.0.1",
+    "system_proxy_port": 7897,
+    "VPN_app": "Clash Verge",
+    "active_engine_file_mode": "rule",
+    "live_controller_mode": "not verified",
+    "TUN_enabled_in_engine_file": false,
+    "lingrobotics_explicit_rule_in_file": false,
+    "lingrobotics_direct_TLS": true,
+    "lingrobotics_proxied_TLS": false,
+    "proxy_error_type": "SSLEOFError",
+    "target_HTTP_requests": 0,
+    "VPN_config_writes": 0,
+    "system_proxy_writes": 0,
+    "dedicated_browser_process_direct_flag_verified": true,
+    "Owner_after_direct_reply": "能打开，已登录并显示统计页",
+    "Owner_reply_reference": "call_6e50a7f2119b49899691c4ff3771bb5a",
+    "actual_full_page_load": "Owner reported, not inspected",
+    "proxy_specific_rule_or_node_cause": "unverified"
+  },
+  "computer_restarts_shanghai": [
+    "2026-10-27T15:27:03+08:00",
+    "2026-10-27T18:36:10+08:00"
+  ],
+  "installed_tool_source_sha256": {
+    "dispatch.py": "dccc6702b30a031c2851cb8b7a77eb75289ed0b2ec8b7c0eea0857768180a540",
+    "feishu_gateway.py": "8ae229b8cb327965a012d947e76ad998aba06448109e673c06b2c1800657e7dc",
+    "feishu_meter.py": "f4371679d69ef0501dd8218a4ec605f11b563d3e7330877e23789b8b171c8f59",
+    "feishu_native_bootstrap.py": "8ff4b49ea05e31267420866b6be8720ac09b2f77f9ccda32d5b2244267fabc39",
+    "feishu_session_fence.py": "a0a95a04c9f5ac34b782989b7c322b00cc57066818bf74119315a624f9214667",
+    "feishu_transport.py": "51a0ed25bd6b6db88f257e198182a56edfaeea0058e47e29e199accc7b1b0188",
+    "launch.py": "a48fb047e880ad88ff785f4f90864833b7af44d4dac270e91a0ac29800c0280e",
+    "provider_pacing.py": "40aa48b60bfbb2d85c9c1d2171adb6de257f773ba030fe9333a9a4bf4a8d16bb",
+    "qq_browser_task.py": "38e52bbb171275e761e0252ed056adbde0e00030e9f4ff63eb569a84c36ab785",
+    "qq_chat.py": "44082e538e43bf7113b95cd7be796de1ad68b41cc2c019c231bb3044ee88d43c",
+    "qq_runtime.py": "e01861b3ed9d00e93ee6b5ed1c4211c2865a9378aae820ff78cf590fc1a4ef48",
+    "readonly_bridge.mjs": "8c60fc882e787be368e32b2fc3c469ed35c37f1dfdadbd95f137fc88e0ebaa4c",
+    "readonly_policy.mjs": "75c8a5b058fb7ee3e8796821384ff0dc97226d56a307fde77cca8e4fca556150",
+    "readonly_task.py": "14057be6b0a75431ecc7584ae1e506207bc6ccf0731b2f375aea184f52909b31",
+    "request_budget.py": "245b5a0c5fc5121850b242e084abdd22bb7437f29e4caabf5eee34819458507e",
+    "request_scope.mjs": "08896c989b3e5eeda365b72a89a520e7cadc6b3dc4d4cdf6c37ab60b02ced613",
+    "safety.py": "37d2d0ddf38c59d9932e861c4a084322ef300c21f8ad78f7b166d94b648e1ba1",
+    "startup/sitecustomize.py": "8ce0ebef41f44cd1fb3de25c0067638e0a69d8a3e2cdb684a5af469f093f8f24",
+    "traffic_guard.py": "cf03cccb01b2fb2e4b524593b466617345168908990fadaa620c13a42910d7dc",
+    "training_browser.py": "f70557c059ca55fcb66e6d130b58fc465266ac3f64c7d29d40ea437c06385605",
+    "work_broker.mjs": "bb6f15bf124520f483173773c1e69f9226069ace82d4d6ff4d09f158b708abc6",
+    "work_broker_core.mjs": "82b472d873f97ea0f48c7b9b75ea9b68b4c1a4598f25e59aa7a589c274c2ba33",
+    "work_entry.py": "b6950df157a49f7c382f3de90b28d2fd3d122a5648d63654e5ef51051edc32a8"
+  },
+  "historical_installed_variant_retained": {
+    "file": "qq_chat.py",
+    "installed_sha256": "44082e538e43bf7113b95cd7be796de1ad68b41cc2c019c231bb3044ee88d43c",
+    "repository_sha256": "202c610b5e4c0c35231f56b66ae8e62b3189ee1d486f1c4d1667bf09eac4946a",
+    "changed_this_preparation": false
+  },
+  "next_required": [
+    "Owner places one tab on statistics",
+    "fresh max30/1 grant including all physical attempts",
+    "one original gateway start or idle reload approval",
+    "Owner sends one task only after READY"
+  ],
+  "not_claimed": [
+    "real Agent read",
+    "model visual comprehension",
+    "server enforced read-only role",
+    "permanent production entry",
+    "autostart",
+    "full A/B comparison accepted"
+  ],
+  "public_data": "no cookies, account IDs, production page bodies, full prompts, private memories or raw databases"
+}

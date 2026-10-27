@@ -81,7 +81,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
         if turn and turn.get('browser') and turn['live'].is_set():
             if not is_owner(source,binding):raise RuntimeError('Browser source changed')
             if turn.get('control'):return []
-            return list(TOOLSETS)
+            return list(getattr(exercise,'toolsets',TOOLSETS))
         if getattr(source.platform,'value',source.platform)=='feishu':
             # Temporary exercise launcher: natural text replies continue, but
             # a plain "continue" cannot reopen browser/business permissions.
@@ -172,10 +172,10 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
             def catalog():
                 from model_tools import get_tool_definitions
                 from tools import mcp_tool
-                definitions=get_tool_definitions(enabled_toolsets=TOOLSETS,quiet_mode=True,
+                definitions=get_tool_definitions(enabled_toolsets=getattr(exercise,'toolsets',TOOLSETS),quiet_mode=True,
                                                 skip_tool_search_assembly=True)
                 expected={mcp_tool.mcp_prefixed_tool_name('company_browser_simulation',name)
-                          for name in EXPECTED_BROWSER_TOOLS}
+                          for name in getattr(exercise,'expected_tools',EXPECTED_BROWSER_TOOLS)}
                 verify_browser_catalog(mcp_tool.get_mcp_status(),
                                        {t['function']['name'] for t in definitions},expected)
                 return expected
@@ -247,7 +247,11 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
     if check_snapshot(baseline):raise RuntimeError('Protected files changed')
     out=ordinary_path(args.output)
     if root/'runs' not in out.parents:raise RuntimeError('Receipts outside owned tool runtime')
-    exercise=BrowserExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
+    if gate['browser_exercise'].get('kind')=='livsyn-readonly-first-page':
+        from readonly_task import ReadonlyExercise
+        exercise=ReadonlyExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
+    else:
+        exercise=BrowserExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
     for path,digest in gate['browser_exercise']['old_ledger_sha256'].items():
         if sha256(path)!=digest:raise RuntimeError('Historical ledger changed')
     os.environ.update(HERMES_HOME=str(home),TERMINAL_CWD=str(home/'company-workspace'),

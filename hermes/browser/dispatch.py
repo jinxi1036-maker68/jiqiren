@@ -10,6 +10,26 @@ from safety import ordinary_path
 from owned_job import OwnedJob
 
 
+def dispatch_target(runtime, root):
+    """Explicit fixed entry or legacy finite runtime; never guess a fallback."""
+    cfg = json.loads(runtime.read_text(encoding="utf-8"))
+    if cfg.get('schema') == 'lingju.browser.work-entry.v1':
+        from work_entry import validate_entry
+        cfg, _ = validate_entry(runtime, root)
+        return cfg, 'work_broker.mjs'
+    if root / 'runs' not in runtime.parents:
+        raise RuntimeError("Runtime outside company browser runs")
+    if cfg.get('schema') == 'lingju.readonly-browser.v1':
+        from readonly_task import validate_readonly_runtime
+        # Keep the passive catalog when the browser stops. Every actual read
+        # separately requires a live owned browser, current login and new grant.
+        validate_readonly_runtime(runtime,root,require_ready=False)
+        return cfg, 'readonly_bridge.mjs'
+    if cfg.get("route") != "playwright" or cfg.get("toolRoot") != str(root):
+        raise RuntimeError("Runtime/route identity mismatch")
+    return cfg, 'bridge.mjs'
+
+
 def main():
     root = ordinary_path(Path(__file__).parent)
     direct = os.environ.get("LINGJU_BROWSER_EXERCISE") == "playwright"
@@ -18,11 +38,7 @@ def main():
         raise RuntimeError("Explicit B-route process metadata required")
     runtime = ordinary_path(os.environ.get("LINGJU_BROWSER_RUNTIME") if direct else alias)
     run = ordinary_path(root / "runs")
-    if run not in runtime.parents:
-        raise RuntimeError("Runtime outside company browser runs")
-    cfg = json.loads(runtime.read_text(encoding="utf-8"))
-    if cfg["route"] != "playwright" or cfg["toolRoot"] != str(root):
-        raise RuntimeError("Runtime/route identity mismatch")
+    cfg, target = dispatch_target(runtime, root)
     (runtime.parent / "dispatch-receipt.json").write_text(json.dumps({
         "route_marker_received": True, "runtime_validated": True,
         "activation_source": "direct_marker" if direct else "xdg_runtime_path",
@@ -30,13 +46,13 @@ def main():
         "original_home_unchanged": Path(os.environ.get("HERMES_HOME") or Path.home() / ".hermes").resolve() == (Path.home() / ".hermes").resolve(),
         "max_turns_received": os.environ.get("HERMES_TUI_MAX_TURNS"),
         "toolsets_received": os.environ.get("HERMES_TUI_TOOLSETS"),
-        "model_calls": 0}), encoding="utf-8")
+        "model_calls": 0, "target": target}), encoding="utf-8")
     env = {k: v for k, v in os.environ.items() if k.upper() in {
         "PATH", "PATHEXT", "SYSTEMROOT", "WINDIR", "COMSPEC", "USERPROFILE",
         "APPDATA", "LOCALAPPDATA", "TEMP", "TMP"}}
     job = OwnedJob()
     try:
-        child = subprocess.Popen([cfg["node"], str(root / "bridge.mjs"), str(runtime)],
+        child = subprocess.Popen([cfg["node"], str(root / target), str(runtime)],
                                  stdin=subprocess.PIPE, stdout=sys.stdout, stderr=sys.stderr,
                                  env=env, cwd=str(run), creationflags=subprocess.CREATE_NO_WINDOW)
         job.add(child)
