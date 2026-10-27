@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-27",
+  "status": "READY_OWNER_TASK_NOT_SENT",
+  "approval": {
+    "answer": "批准按上述范围开始",
+    "reference": "2026-10-27 Owner direct approval following call_78aece75c4694157ba88169306fc1287",
+    "scope": "max30 physical model attempts including retry/aux/unknown; one Owner Feishu message; one native gateway start or idle reload; observe statistics only",
+    "recorded_at": "2026-10-27T11:59:26.452482+00:00"
+  },
+  "same_original_H": true,
+  "admission_workspace": "W",
+  "original_native_cli_verified": true,
+  "original_config_read_through_native_start": "passed; prior restricted-probe warning is not evidence of configuration damage",
+  "Feishu_WSS_ready": true,
+  "passive_browser_tools": 4,
+  "actual_scope": [
+    "https://ldp.lingrobotics.com/statistics"
+  ],
+  "Owner_statistics_reply": "call_1263d7f17e654a55bb09e093894bc6de",
+  "statistics_target_metadata_verified_before_start": true,
+  "request_limit": 30,
+  "requests_used_at_READY": 0,
+  "task_limit": 1,
+  "tasks_used_at_READY": 0,
+  "armed_at_READY": false,
+  "gateway_load_used": 1,
+  "protected_records_match": 59,
+  "old_ledgers_unchanged": 5,
+  "Hermes_messages_by_Codex": 0,
+  "production_page_body_reads_by_Codex": 0,
+  "production_business_writes": 0,
+  "private_browser_route": "process-only direct; no VPN/system/model config changes",
+  "ready_receipt_at_UTC": "2026-10-27T12:00:23.357418+00:00",
+  "other_normal_channels_not_disabled": true,
+  "channel_snapshot": {
+    "wecom": {},
+    "wecom_callback": {},
+    "weixin": {},
+    "qqbot": {},
+    "feishu": {}
+  },
+  "Agent_actual_page_read": "not yet verified",
+  "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
+  "other_channel_round_trips": "not separately tested; no additional messages sent"
+}

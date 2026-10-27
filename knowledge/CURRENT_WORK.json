@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "R5_closed_passed_subgoals_readonly_real_page_prepared_not_Agent_validated",
+      "status": "STATISTICS_R1_NATIVE_READY_OWNER_TASK_NOT_SENT",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -180,7 +180,7 @@
         "rejected_unavailable_terminal_attempt",
         "long_term_default_entry_and_real_platform_not_accepted; provider_500_429_and_auxiliary_failures_recorded"
       ],
-      "next_step": "Owner亲自登录；专用Chrome进程直连与Codex代理分离。第一轮仍只统计页，当前/data-collection不扩权；新30/1及一次原网关加载待批准，READY后Owner发唯一飞书任务。",
+      "next_step": "Owner已批准独立30请求/1条飞书任务和一次原网关加载；原H/W/4被动工具/统计页URL已核实，READY为0/30、0/1、unarmed。等待Owner亲发目标任务，之后按收据验收。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -558,6 +558,19 @@
         "VPN_or_system_proxy_changed": false,
         "protected_records_match": 59,
         "old_ledgers_match": 5
+      },
+      "statistics_R1_ready": {
+        "evidence": "hermes/browser/evidence/statistics-R1-ready-2026-10-27.json",
+        "new_allowance_authorized": true,
+        "request_limit": 30,
+        "task_limit": 1,
+        "requests_used_at_READY": 0,
+        "tasks_used_at_READY": 0,
+        "gateway_load_used": 1,
+        "original_native_gateway_loaded": true,
+        "actual_Agent_page_read": false,
+        "protected_records_match": 59,
+        "old_ledgers_unchanged": 5
       }
     }
   },
