@@ -57,7 +57,7 @@ class GatewayMeter:
             raise BudgetBlocked('Local session controls cannot issue model requests')
         if self._browser():
             state=self.budget.status()
-            if not state['armed'] or state['reserved_network_attempts']>=state['limit']:
+            if not state['armed'] or (state['limit'] is not None and state['reserved_network_attempts']>=state['limit']):
                 self.budget.take('unclassified')
 
     def requires_pacing(self):

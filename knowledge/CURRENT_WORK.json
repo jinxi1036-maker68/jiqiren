@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "STATISTICS_R1_CLOSED_TEXT_READ_VERIFIED_REPORTING_PARTIAL",
+      "status": "DAILY_READONLY_ACTIVE_NO_ARTIFICIAL_TEST_QUOTAS",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -180,7 +180,7 @@
         "rejected_unavailable_terminal_attempt",
         "long_term_default_entry_and_real_platform_not_accepted; provider_500_429_and_auxiliary_failures_recorded"
       ],
-      "next_step": "真实统计页主表已读、只读动作通过；修正日期/单位/稳定性概括，后续只补同页图表视觉，未自动授权新任务或其他菜单。11/30、1/1、unarmed，余19不转用。",
+      "next_step": "Owner在原飞书自然交代工作、连续带教；不再以逐项验收/30次/单消息/前缀打断。技术故障按实需修复；当前仅统计页被动观察，真实写入仍需业务授权。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -585,6 +585,18 @@
         "armed": false,
         "protected_records_match": 59,
         "old_ledgers_unchanged": 5
+      },
+      "daily_readonly": {
+        "date": "2026-10-27",
+        "request_quota": null,
+        "message_quota": null,
+        "prefix_required": false,
+        "original_gateway_live": true,
+        "same_native_conversation_routing": true,
+        "real_business_write_tools": false,
+        "scope": "statistics passive observation only",
+        "evidence": "hermes/browser/evidence/daily-readonly-mode-2026-10-27.json",
+        "Owner_removed_artificial_test_limits": true
       }
     }
   },

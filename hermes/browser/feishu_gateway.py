@@ -94,7 +94,33 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
 
     def primary(self):
         async def native_handler(msg):return await old_handle(self,msg)
+        async def continuous_handle(msg):
+            owner=is_owner(msg.source,binding)
+            if not owner:
+                turn,token=meter.begin(False)
+                try:return await native_handler(msg)
+                finally:meter.finish(turn,token)
+            if not self._is_user_authorized(msg.source):return None
+            control=(msg.text or '').lstrip().startswith('/')
+            if not control:
+                if check_snapshot(baseline):
+                    exercise.pause()
+                    return '受保护文件发生变化，请交Codex核对；当前消息未提交模型。'
+                if not exercise.catalog_ready:return '浏览器入口尚未就绪，请稍后正常发送工作目标。'
+                if not exercise.session_initialized:
+                    sid=resolve_native_session(self.session_store,msg.source)
+                    exercise.session_initialized=True
+                    event(out,'daily_readonly_session_started',session_id=sid,cwd=os.getcwd(),native_force_new=False,native_conversation_continued=True)
+            turn,token=meter.begin(True,control=control)
+            try:
+                if not control:exercise.budget.arm()
+                return await native_handler(msg)
+            finally:
+                meter.finish(turn,token)
+                exercise.pause()
+                if not control:event(out,'daily_readonly_message_returned',audit=exercise.budget.status(),protected_changes=check_snapshot(baseline))
         async def handle(msg):
+            if getattr(exercise,'continuous',False):return await continuous_handle(msg)
             browser=exercise.matches(msg.text or '')
             owner=is_owner(msg.source,binding)
             # Native routing, not a language heuristic, determines whether this
@@ -198,7 +224,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
                   native_ordinary_request_attempts=meter.ordinary_attempts,budget=exercise.budget.status(),
                   protected_changes=[],new_model_task_messages_sent_by_Codex=0)
             print(json.dumps({'event':'original_feishu_browser_ready','pid':os.getpid(),
-                              'task_prefix':exercise.prefix,'budget':exercise.budget.status()}),flush=True)
+                              'task_prefix':getattr(exercise,'prefix',None),'budget':exercise.budget.status()}),flush=True)
             return success
         except BaseException as exc:
             exercise.pause()
@@ -210,7 +236,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
 
     def iterations():
         turn=CURRENT_TURN.get()
-        return 16 if turn and turn.get('browser') and turn['live'].is_set() else old_iterations()
+        return 16 if (not getattr(exercise,'continuous',False) and turn and turn.get('browser') and turn['live'].is_set()) else old_iterations()
 
     # Wrap the common native handler, not only the adapter's factory. Deferred
     # or queued messages that call _handle_message directly keep the same fence.
@@ -247,7 +273,10 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
     if check_snapshot(baseline):raise RuntimeError('Protected files changed')
     out=ordinary_path(args.output)
     if root/'runs' not in out.parents:raise RuntimeError('Receipts outside owned tool runtime')
-    if gate['browser_exercise'].get('kind')=='livsyn-readonly-first-page':
+    if gate['browser_exercise'].get('kind')=='livsyn-readonly-daily':
+        from readonly_task import ContinuousReadonlyExercise
+        exercise=ContinuousReadonlyExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
+    elif gate['browser_exercise'].get('kind')=='livsyn-readonly-first-page':
         from readonly_task import ReadonlyExercise
         exercise=ReadonlyExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
     else:

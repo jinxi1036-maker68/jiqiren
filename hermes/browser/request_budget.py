@@ -5,6 +5,7 @@ responses. No URL, headers, prompt, response or credentials are persisted.
 This is not an OS sandbox and does not cover independent child programs.
 """
 import contextvars
+import contextlib
 import datetime
 import ipaddress
 import os
@@ -87,6 +88,41 @@ class RequestBudget:
                     "events": events, "families": families}
         finally:
             c.close()
+
+
+class RequestAudit(RequestBudget):
+    """Owner-approved daily accounting, without a request quota.
+
+    A separate cap=0 ledger is deliberately incompatible with legacy budgets.
+    Armed means an actual Owner message is being handled, not a new quota.
+    """
+    @classmethod
+    def create(cls, path):
+        budget = super().create(path, limit=1, armed=False)
+        with contextlib.closing(budget._connection()) as c, c:
+            c.execute('UPDATE state SET cap=0 WHERE id=1')
+        return cls(path)
+
+    def take(self, family='unclassified'):
+        with contextlib.closing(self._connection()) as c, c:
+            c.execute('BEGIN IMMEDIATE')
+            row = c.execute('SELECT cap,used,armed FROM state WHERE id=1').fetchone()
+            if not row or row[0] != 0 or row[1] < 0:
+                raise BudgetBlocked('Daily audit identity differs; historical quotas are not reused')
+            allowed = bool(row[2])
+            if allowed:c.execute('UPDATE state SET used=used+1 WHERE id=1')
+            c.execute('INSERT INTO events(pid,at,outcome,family) VALUES(?,?,?,?)', (
+                os.getpid(), datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                'reserved_before_send' if allowed else 'denied_unarmed',
+                family if family in {'chat_completions','responses','messages','generate_content','audio','other_httpx','unclassified'} else 'unclassified'))
+        if not allowed:raise BudgetBlocked('No active Owner message; background generation not opened')
+        return row[1]+1
+
+    def status(self):
+        value = super().status()
+        if value['limit'] != 0:raise BudgetBlocked('Not the new daily audit ledger')
+        value.update(limit=None,quota_enforced=False)
+        return value
 
 
 _inside_metered_transport = contextvars.ContextVar("lingju_metered_transport", default=False)

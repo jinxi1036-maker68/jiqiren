@@ -10,13 +10,25 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from safety import ordinary_path,sha256
 from qq_browser_task import BrowserExercise,FEISHU_TRANSFER
 from qq_runtime import Intake,acceptance_thread_id,verify_unused_thread
-from request_budget import RequestBudget
+from request_budget import RequestBudget,RequestAudit
 from feishu_session_fence import SessionFence
 
 KIND='livsyn-readonly-first-page'
+CONTINUOUS_KIND='livsyn-readonly-daily'
 PREFIX='【灵生只读带教R1】'
 ORIGIN='https://ldp.lingrobotics.com'
 READ_TOOLS={'browser_snapshot','browser_take_screenshot','browser_tabs','browser_wait_for'}
+
+
+def validate_continuous_grant(g):
+    if (g.get('kind')!=CONTINUOUS_KIND or g.get('channel')!='feishu'
+            or g.get('channel_transfer_authorization')!=FEISHU_TRANSFER
+            or g.get('request_limit') is not None or g.get('task_limit') is not None
+            or g.get('Owner_removed_test_quotas') is not True
+            or g.get('origin')!=ORIGIN or g.get('paths')!=['/statistics']
+            or g.get('zero_model_checks_passed') is not True
+            or not isinstance(g.get('approval_reference'),str) or not g['approval_reference'].strip()):
+        raise RuntimeError('Explicit removal of artificial test quotas required; business scope is unchanged')
 
 
 def validate_readonly_grant(g):
@@ -66,12 +78,14 @@ def observation_status(path,root):
     gpath=ordinary_path(r['grant'])
     if Path(root)/'runs' not in gpath.parents or sha256(gpath)!=r['grant_sha256']:
         raise RuntimeError('Read-only model grant changed')
-    g=json.loads(gpath.read_text('utf-8'));validate_readonly_grant(g)
+    g=json.loads(gpath.read_text('utf-8'))
+    continuous=g.get('kind')==CONTINUOUS_KIND
+    (validate_continuous_grant if continuous else validate_readonly_grant)(g)
     ledger=ordinary_path(g['ledger'])
     if Path(root)/'runs' not in ledger.parents:raise RuntimeError('Ledger outside owned runs')
     with contextlib.closing(sqlite3.connect(ledger.as_uri()+'?mode=ro',uri=True)) as c:
         row=c.execute('select cap,used,armed from state where id=1').fetchone()
-    return {'available':bool(row and row[0]==30 and 0<=row[1]<30 and row[2]),
+    return {'available':bool(row and row[2] and ((row[0]==0 and row[1]>=0) if continuous else (row[0]==30 and 0<=row[1]<30))),
             'owner_login_confirmed':True,'cdp':p['cdp'],'origin':ORIGIN,'paths':['/statistics']}
 
 
@@ -105,6 +119,33 @@ class ReadonlyExercise(BrowserExercise):
         verify_unused_thread(state_db,self.thread_id,'feishu')
     def summary(self):
         return '灵生统计页只读带教：独立30次/1条，旧模拟额度不复用。'
+
+
+class ContinuousReadonlyExercise(ReadonlyExercise):
+    continuous=True
+    def __init__(self,g,root,state_db,channel='feishu'):
+        validate_continuous_grant(g);root=ordinary_path(root)
+        self.runtime=ordinary_path(g['runtime']);self.ledger=ordinary_path(g['ledger'])
+        if root/'runs' not in self.ledger.parents or sha256(self.runtime)!=g['runtime_sha256']:
+            raise RuntimeError('New daily runtime/audit identity differs')
+        self.cfg,_=validate_readonly_runtime(self.runtime,root,live=True)
+        policy_path=ordinary_path(self.cfg['grant'])
+        if root/'runs' not in policy_path.parents or sha256(policy_path)!=self.cfg['grant_sha256']:
+            raise RuntimeError('Daily read-only policy changed')
+        policy=json.loads(policy_path.read_text('utf-8'));validate_continuous_grant(policy)
+        for key in ('kind','origin','paths','request_limit','task_limit','approval_reference','ledger'):
+            if policy.get(key)!=g.get(key):raise RuntimeError('Daily gateway and tool scope differ')
+        if len(g.get('old_ledger_sha256',{}))<6:raise RuntimeError('All prior audit ledgers must be preserved')
+        for name,digest in g['old_ledger_sha256'].items():
+            old=ordinary_path(name)
+            if root/'runs' not in old.parents or old==self.ledger or sha256(old)!=digest:
+                raise RuntimeError('Historical audit changed or reused')
+        self.budget=RequestAudit(self.ledger);self.budget.status()
+        self.channel='feishu';self.state_db=state_db;self.catalog_ready=False
+        self.session_initialized=False
+
+    def summary(self):
+        return '原Hermes日常只读工作：请求仅记账，不设人为次数、单条名额或验收前缀。'
 
 
 if __name__=='__main__':

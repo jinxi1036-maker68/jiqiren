@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-27",
+  "status": "DAILY_READONLY_READY_NO_ARTIFICIAL_TEST_QUOTAS",
+  "Owner_instruction": "取消30次等人为验收次数限制，改为正常带教",
+  "request_quota": null,
+  "task_message_quota": null,
+  "acceptance_prefix_required": false,
+  "normal_native_session_routing": true,
+  "forced_new_session": false,
+  "artificial_16_iteration_override": false,
+  "native_engine_defaults_retained": true,
+  "audit_counts_not_quota": true,
+  "original_gateway_loaded": true,
+  "original_identity": "H",
+  "workspace": "W",
+  "Feishu_connected": true,
+  "browser_passive_tools": 4,
+  "scope": [
+    "https://ldp.lingrobotics.com/statistics"
+  ],
+  "production_write_tools": false,
+  "model_or_config_modified": false,
+  "permanent_default_or_autostart_changed": false,
+  "provider_pacing_and_RetryAfter_retained": true,
+  "ready_at_UTC": "2026-10-27T12:41:45.180724+00:00",
+  "physical_requests_at_READY": 0,
+  "Codex_model_messages": 0,
+  "idle_background_generation_opened": false,
+  "protected_records_match": 59,
+  "old_six_sealed_ledgers_match_finalized_hashes": true,
+  "prior_R1_shutdown_finalization": {
+    "before_shutdown_sha256": "9dcb5aa944db442b3e3f34dfeda84430bfdbbf50819ed81bf3b2b66ce333f3cb",
+    "after_shutdown_sha256": "daaad536eb8894ebafc94fea279b73577ece1009bbc9e645730b758e81b32bc3",
+    "prior_cap": 30,
+    "requests_used_unchanged": 11,
+    "armed": false,
+    "prior_reservations": 11,
+    "extra_pre_send_denials_during_shutdown": 3,
+    "denied_purpose": "unknown; never sent",
+    "manual_ledger_writes": 0,
+    "reason": "Prior R1 ledger was still owned by live gateway; during planned shutdown it recorded3 unarmed pre-send blocks. Sealed after actual process exit, without resetting original records.",
+    "prior_five_sealed_ledgers_byte_unchanged": true
+  },
+  "gateway_handoff": {
+    "old_gateway_planned_application_stop": true,
+    "residual_exit_original_API_force_false": true,
+    "forced_tree_kill": false,
+    "initial_new_load_failed": {
+      "type": "AttributeError",
+      "cause": "legacy READY log expected a test-only prefix; fixed optional field; zero model requests"
+    },
+    "repaired_load_running": true
+  },
+  "minimal_component_checks": {
+    "new_daily_cases": 4,
+    "affected_gateway_regressions": 10,
+    "finite_readonly_regressions": 5,
+    "new_business_tests": 0,
+    "new_model_tests": 0
+  },
+  "owned_tool_sha256_changes": {
+    "request_budget.py": {
+      "before": "245b5a0c5fc5121850b242e084abdd22bb7437f29e4caabf5eee34819458507e",
+      "after": "992cbba90a99fe5f9a1e6f5c6171575c90587e236297f9c7f20d66d93cef07e4"
+    },
+    "feishu_meter.py": {
+      "before": "f4371679d69ef0501dd8218a4ec605f11b563d3e7330877e23789b8b171c8f59",
+      "after": "21786b4ac5ec17dc68fb1886e38a27519e9300fc6d4273fb6f1940989d6bf0d2"
+    },
+    "readonly_task.py": {
+      "before": "14057be6b0a75431ecc7584ae1e506207bc6ccf0731b2f375aea184f52909b31",
+      "after": "09d90413a417993efe5799b2e75b6f0946664c1cb41134cce39709838fbabbed"
+    },
+    "feishu_gateway.py": {
+      "before": "8ae229b8cb327965a012d947e76ad998aba06448109e673c06b2c1800657e7dc",
+      "after": "a13f6285f83e0983a5eac8e317d43f03c355a1c4f8d16ac6acf769319720ce66"
+    }
+  },
+  "necessary_private_preimages": 4,
+  "channel_states": {
+    "wecom": "connected",
+    "wecom_callback": "disconnected",
+    "weixin": "connected",
+    "qqbot": "connected",
+    "feishu": "connected"
+  },
+  "current_real_daily_message": "not artificially sent; observe Owner natural use, no extra exam required",
+  "original_private_memories_credentials_or_production_content_uploaded": false
+}
