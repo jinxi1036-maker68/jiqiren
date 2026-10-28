@@ -621,7 +621,7 @@
       },
       "ego_integration": {
         "date": "2026-10-28",
-        "status": "native_components_and_original_catalog_ready_production_guard_blocked",
+        "status": "readonly_extension_candidate_prepared_pending_Owner_profile_and_permission",
         "same_original_employee": true,
         "browser_candidate": "Ego Lite Windows beta",
         "installer_version": "0.6.1.13",
@@ -641,11 +641,15 @@
         "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
         "plan": "hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md",
         "evidence": "hermes/browser/evidence/ego-install-preparation-2026-10-28.json",
-        "next": "Resolve proven related-target read-protection gap before any real Ego login/data; then load the same tools in original native gateway/Desktop and let Owner give one normal autonomous equipment-binding query. No artificial request/task quotas.",
+        "next": "Owner review of concrete prepared extension payload and per-company-browser-profile scope; no installation, profile creation, real login, original Hermes modification or production switch before confirmation.",
         "production_enabled": false,
         "native_catalog_tools": 8,
         "live_gateway_or_Desktop_loaded": false,
-        "read_guard": "main Page passed; related popup coverage failed in synthetic probes"
+        "read_guard": "main Page passed; related popup coverage failed in synthetic probes",
+        "extension_candidate_version": "0.1.0",
+        "extension_installed": false,
+        "company_browser_profile_created": false,
+        "new_static_checks": 4
       }
     }
   },

@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "priority": 100,
+    "action": {"type": "block"},
+    "condition": {
+      "regexFilter": "^https?://",
+      "excludedRequestMethods": ["get", "head", "options"],
+      "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "webtransport", "webbundle", "other"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 100,
+    "action": {"type": "block"},
+    "condition": {
+      "resourceTypes": ["websocket", "webtransport", "ping", "csp_report"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 10,
+    "action": {"type": "allow"},
+    "condition": {
+      "regexFilter": "^https://ldp[.]lingrobotics[.]com/",
+      "requestMethods": ["get", "head", "options"],
+      "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "media", "webbundle", "other"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 10,
+    "action": {"type": "allow"},
+    "condition": {
+      "regexFilter": "^http://(127[.]0[.]0[.]1|localhost):61987/",
+      "requestMethods": ["get", "head", "options"],
+      "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "media", "webbundle", "other"]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {"type": "block"},
+    "condition": {
+      "regexFilter": "^https?://",
+      "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "webtransport", "webbundle", "other"]
+    }
+  }
+]

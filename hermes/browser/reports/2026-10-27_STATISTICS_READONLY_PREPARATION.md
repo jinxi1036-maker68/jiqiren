@@ -2,6 +2,37 @@
 
 2026-10-27，Issue #9 / Draft PR #20。本报告保留接入准备、授权加载和首次真实统计页任务的取证记录。
 
+## 2026-10-28 20:38后续：响应保护定位完成，静态扩展候选待批准安装
+
+Owner要求继续解决保护缺口。本轮没有重新部署R3、全量审计或重跑Hermes模型任务。
+
+**定位结果（已证实）**：同一空白Space 1进行了一个集中的本机合成对照。服务器直接返回CSP时，默认和显式关闭CSP绕过两组均未发生POST/WebSocket/弹窗；通过响应阶段`Fetch.fulfillRequest`加入策略时则仍有模拟POST/WebSocket/弹窗。它与先前`continueResponse`失败一起说明：当前响应改写路径不能作为保护依据。具体为何没有执行安全策略仍未知，没有把它写成已确认Ego内核bug。主Page方法拦截依旧有效，但不足以补新窗口。测试服务均已退出，p1仍为空白。
+
+上游[#586](https://github.com/citrolabs/ego-lite/issues/586)有同Windows版本的OOPIF首请求拦截问题，当前open、无评论；[#461](https://github.com/citrolabs/ego-lite/issues/461)仍是资源策略提案。它们是公开报告和提案，不是维护者确认本机原因或已发布完整API。原生公开文档没有足以在本轮直接采用的全TaskSpace方法级策略。
+
+### 准备好的具体替代方案
+
+新增[只读保护扩展候选](../ego/readonly-extension/README.md)，安装载荷仅两份静态JSON（共2,138字节），不含后台脚本、内容脚本、远程代码或对外消息入口。单一新增权限为`declarativeNetRequest`，没有Cookie、页面内容、tabs、debugger、proxy、storage、scripting或host_permissions；根据[Chrome官方DNR规范](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)，浏览器按声明处理网络规则，无须扩展读取内容。该规范及其服务Worker限制已核对，不能用方法判断代替真实业务只读授权。
+
+5条规则的意图：阻止非GET/HEAD/OPTIONS的HTTP(S)请求（显式覆盖顶层表单与子框架）、WebSocket/WebTransport/ping/CSP report；只允许灵生精确HTTPS源和固定本机合成端点61987的读请求，其余HTTP(S)阻止。不放行所有localhost端口，不读取或复制Cookie，不安装证书/代理。真实查询若依赖POST或额外CDN，须核实，不能直接放开；GET写接口同样不在授权内，平台只读角色仍是优先的服务端保障。
+
+**尚未安装/尚未证明**：4项离线检查通过，覆盖最小权限、优先级/请求方法/顶层导航声明、伪域名/端口/Worker意图、零脚本载荷；不是Chrome Schema或Ego网络实测。空白页报告UA为Chrome/156.0.0.0，`Browser.getVersion`返回method not found，未反复探测，不将UA当独立证明的内核版本。manifest最低版本是否接受、真实跨框架/Worker/WebTransport覆盖、启用状态和资料隔离均待安装后的合成收据。
+
+### 必须先明确的新范围
+
+浏览器扩展是**整个浏览器资料级**，不能谎称只作用一个Space。需要Owner确认：
+
+1. 新建名为“凌矩工作”的独立Ego浏览器资料，不导入旧浏览器数据；不新建Hermes身份、不碰原H/profiles。
+2. 仅通过这个新资料的正常扩展管理界面安装候选0.1.0，并由Owner处理浏览器原生安装确认；不通过全局CDP安装冒充资料隔离。
+3. 在新资料中创建一个明确获准的新合成目标Space；保留当前空白Space仅作非敏感隔离对照。新Space是新资料的必要装载单位，不是隐藏失败或补发模型任务。
+4. 做一次集中的本机假页面验证，覆盖新窗口/框架/Worker及未准站点，旧资料仅用自己原有空白页上的假计数端点作对照；发现跨资料影响则停止并撤回新扩展。此轮仍不登录灵生、不调用Hermes模型、不启正式入口。
+
+扩展权限并未因本轮“继续”自行安装。候选文件已在本机输出目录备妥，并固定两份SHA256，见同一[证据](../evidence/ego-install-preparation-2026-10-28.json)的`extension_candidate`。固定端口在准备时没有监听；使用时须重新确认，已占用就停，不终止他人程序。
+
+获准并验证后，只需禁用/移除此新增扩展、保留旧驱动即可撤回；不删公司资料、记忆或工作区，不恢复整个旧环境。Owner真实登录须在明确的人工阶段处理，登录后重启用保护并复验，不能把安装成功当作真实工作验收。
+
+本轮**没有安装扩展、创建资料、改原Hermes文件或重启网关**。只在仓库/输出目录准备候选、在已有自有工具目录保存几份检查脚本/收据。59项既有保护记录匹配；原身份、配置/模型/凭据、MCP、R3/Manifest、QQ/语音/cron/旧profile不改。新增Hermes消息/模型、Computer Use、生产访问/写入均0。原生产开关仍拒绝，旧驱动保留。
+
 ## 2026-10-28 20:05最新：Ego原生操作及原Hermes目录接入通过，真实接入止于读保护缺口
 
 **已安装、能操作、尚未切换生产默认。** Owner随后通过普通安装入口完成安装及首次设置，并报告没有导入旧浏览器资料。原生程序实际位于`%PROGRAMFILES%/Citro Labs/ego lite/Application`，CLI为0.6.1.13，签名Valid / CITRO LABS PTE. LIMITED；下节安装失败仍保留为较早尝试，不再代表当前安装状态。文件版本及SHA256见[同一证据](../evidence/ego-install-preparation-2026-10-28.json)。

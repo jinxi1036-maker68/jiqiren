@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "native_components_and_original_catalog_ready_production_guard_blocked",
+  "status": "readonly_extension_candidate_prepared_pending_Owner_profile_and_permission",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -87,7 +87,7 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Resolve proven related-target read-protection gap before any real Ego login/data; then load the same tools in original native gateway/Desktop and let Owner give one normal autonomous equipment-binding query. No artificial request/task quotas.",
+  "next_action": "Owner review of concrete prepared extension payload and per-company-browser-profile scope; no installation, profile creation, real login, original Hermes modification or production switch before confirmation.",
   "Owner_desktop_handoff": "Owner confirmed installation and first-run completion; company login not requested because production guard is incomplete",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
   "upstream_root_cause_reused": false,
@@ -251,7 +251,113 @@
       "passed": false
     },
     "interpretation": "Both broader protection probes failed outcome checks. Their POSTs reached only isolated synthetic counters, not company records. CDP success did not prove protection. No complete root cause assigned. Current adapter rejects production in both Python and Node.",
-    "future_requirement": "A supported, scoped browser-level request boundary for new windows, frames, workers and WebSockets, or another proven enforcement layer; do not enable production by changing a flag."
+    "future_requirement": "A supported, scoped browser-level request boundary for new windows, frames, workers and WebSockets, or another proven enforcement layer; do not enable production by changing a flag.",
+    "followup_matrix": {
+      "at": "2026-10-28T12:28:46.661Z",
+      "actor": "Codex native component check",
+      "models": 0,
+      "stages": [
+        {
+          "mode": "server-default",
+          "posts": 0,
+          "reads": 0,
+          "websockets": 0,
+          "responsePolicies": 0,
+          "decisions": [],
+          "errors": [],
+          "observation": {
+            "violations": [
+              "connect-src",
+              "connect-src",
+              "connect-src"
+            ],
+            "loaded": "Non-sensitive policy control"
+          },
+          "popups": 0
+        },
+        {
+          "mode": "server-bypass-disabled",
+          "posts": 0,
+          "reads": 0,
+          "websockets": 0,
+          "responsePolicies": 0,
+          "decisions": [],
+          "errors": [],
+          "observation": {
+            "violations": [
+              "connect-src",
+              "connect-src",
+              "connect-src"
+            ],
+            "loaded": "Non-sensitive policy control"
+          },
+          "popups": 0
+        },
+        {
+          "mode": "fulfill-strict",
+          "posts": 1,
+          "reads": 2,
+          "websockets": 2,
+          "responsePolicies": 1,
+          "decisions": [
+            {
+              "method": "GET",
+              "allowed": true
+            },
+            {
+              "method": "POST",
+              "allowed": false
+            },
+            {
+              "method": "GET",
+              "allowed": true
+            },
+            {
+              "method": "GET",
+              "allowed": true
+            }
+          ],
+          "errors": [],
+          "observation": {
+            "violations": [],
+            "loaded": "Non-sensitive policy control"
+          },
+          "popups": 1
+        },
+        {
+          "mode": "read-mode",
+          "posts": 1,
+          "reads": 2,
+          "websockets": 2,
+          "responsePolicies": 1,
+          "decisions": [
+            {
+              "method": "GET",
+              "allowed": true
+            },
+            {
+              "method": "POST",
+              "allowed": false
+            },
+            {
+              "method": "GET",
+              "allowed": true
+            },
+            {
+              "method": "GET",
+              "allowed": true
+            }
+          ],
+          "errors": [],
+          "observation": {
+            "violations": [],
+            "loaded": "Non-sensitive policy control"
+          },
+          "popups": 1
+        }
+      ]
+    },
+    "followup_interpretation": "Server-supplied CSP works in two controls; response-stage CDP fulfillment policies did not enforce restrictions. Full root cause unknown. No further variants deployed."
   },
   "privacy_observation": {
     "welcome_page": "Default new tab surfaced personal browsing context; inspection stopped and owned Page was moved to about:blank. No raw content copied to GitHub or used for navigation.",
@@ -266,5 +372,50 @@
     "primary_page": "about:blank",
     "Space": "kept for same unfinished goal; not recreated",
     "normal_Ego_browser_kept": true
+  },
+  "extension_candidate": {
+    "version": "0.1.0",
+    "payload_files": {
+      "manifest.json": {
+        "bytes": 493,
+        "sha256": "e58141ae7c1659e141acc7d07b1652a69bd711710251d38f377ad5b79dd37365"
+      },
+      "rules.json": {
+        "bytes": 1645,
+        "sha256": "600db88118704dc4a44c7339ca9f9f56cd77fe9eae827e2ca40a1bd152a3d478"
+      }
+    },
+    "permission": [
+      "declarativeNetRequest"
+    ],
+    "static_rules": 5,
+    "host_permissions": [],
+    "scripts": [],
+    "installed": false,
+    "native_enforcement_verified": false,
+    "new_static_tests": 4,
+    "test_scope": "offline permission/declaration-intent checks, not Chrome schema/runtime acceptance",
+    "company_profile_created": false,
+    "Owner_approval_pending": [
+      "new independent company Ego browser profile without data import",
+      "install candidate extension in that new profile via normal UI",
+      "one concentrated synthetic enforcement check; no real platform login"
+    ],
+    "profile_blast_radius": "entire selected browser profile; not TaskSpace isolated",
+    "browser_reported_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "native_version_probe": "Browser.getVersion unsupported; no claim of independently proven Chromium version",
+    "canary_origins": [
+      "http://127.0.0.1:61987",
+      "http://localhost:61987"
+    ],
+    "canary_port_not_listening_at_check": true,
+    "sources": [
+      "https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest",
+      "https://github.com/citrolabs/ego-lite/issues/586",
+      "https://github.com/citrolabs/ego-lite/issues/461",
+      "https://github.com/citrolabs/ego-lite/issues/262",
+      "https://github.com/citrolabs/ego-lite/issues/591"
+    ],
+    "new_approved_installation_actions": 0
   }
 }

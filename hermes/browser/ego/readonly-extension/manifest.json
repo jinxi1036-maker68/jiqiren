@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "凌矩公司浏览器只读保护（候选）",
+  "version": "0.1.0",
+  "minimum_chrome_version": "150",
+  "description": "仅供独立公司Ego资料。静态阻止写请求及未批准站点；无脚本、Cookie或页面读取功能。未经Owner批准不要安装。",
+  "permissions": ["declarativeNetRequest"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {"id": "company_readonly", "enabled": true, "path": "rules.json"}
+    ]
+  }
+}

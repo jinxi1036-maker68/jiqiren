@@ -15,6 +15,9 @@ preserves the existing route.
   model message has been sent for this integration.
 - **Synthetic only. Production is rejected in both Python and Node.** Do not
   change this switch merely because a demonstration succeeded.
+- Follow-up: an uninstalled [static extension candidate](readonly-extension/README.md)
+  is prepared. Its one new browser permission and a new company browser profile
+  require Owner confirmation. Offline checks do not prove native enforcement.
 
 ## Why production is still closed
 
