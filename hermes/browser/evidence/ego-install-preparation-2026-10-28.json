@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "blocked_at_vendor_updater_task_registration",
+  "status": "native_components_and_original_catalog_ready_production_guard_blocked",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -14,7 +14,10 @@
     "publisher": "CITRO LABS PTE. LIMITED",
     "attempts_by_Codex": 1,
     "requested_scope": "current user",
-    "arguments": ["--prefers-user", "--silent"],
+    "arguments": [
+      "--prefers-user",
+      "--silent"
+    ],
     "logged_setup_scope": "User",
     "exit_code": 75003,
     "failing_operation": "RegisterTaskDefinition",
@@ -38,21 +41,40 @@
     "zip_paths_validated": true,
     "archive_symlinks_rejected": true,
     "index_js_syntax_check": "passed",
-    "native_browser_execution": "not_run",
+    "native_browser_execution": "staged ZIP not executed; installed official browser native runtime subsequently executed",
     "note": "Tool release is not the browser installer or proof of native integration"
   },
   "actual_changes": {
-    "owned_tool_staging": ["ego/installers/egoliteSetup.exe", "ego/vendor/ego-browser-v2.1.0.zip", "ego/vendor/release-v2.1.0/"],
+    "owned_tool_staging": [
+      "ego/installers/egoliteSetup.exe",
+      "ego/vendor/ego-browser-v2.1.0.zip",
+      "ego/vendor/release-v2.1.0/"
+    ],
     "vendor_user_directory_created": "%LOCALAPPDATA%/Citro Labs/EgoUpdater",
     "vendor_startup_entry_observed": "EgoUpdaterTaskUser0.6.1.13",
     "scheduled_task_query": "succeeded; no matching Ego/Citro task listed",
-    "existing_Hermes_bridge_modified": false,
+    "existing_Hermes_bridge_modified": true,
     "Hermes_skill_deployed": false,
     "browser_login_imported": false,
     "protected_changes_before_attempt": [],
     "protected_changes_after_attempt": [],
     "protected_baseline": "existing 2026-10-26 approved 59-file baseline",
-    "new_backup_created": false
+    "new_backup_created": true,
+    "backup_scope": "one necessary private preimage of existing owned dispatch.py; no full backup",
+    "existing_owned_tool_modified": "H/tools/company-browser/dispatch.py only; explicit opt-in route",
+    "original_MCP_registered_launcher_modified": false,
+    "new_owned_tool_files": [
+      "ego/bridge.mjs",
+      "ego/worker.mjs",
+      "ego/policy.mjs",
+      "ego/native_guard.mjs",
+      "ego_runtime.py"
+    ],
+    "dispatcher_before_sha256": "dccc6702b30a031c2851cb8b7a77eb75289ed0b2ec8b7c0eea0857768180a540",
+    "dispatcher_after_sha256": "8555bd10ac4b899bf4a4fc65b64203125ff2e39a84fd361e86f3f906db57d825",
+    "private_preimages": "one existing owned dispatcher file only; no full environment backup",
+    "protected_count": 59,
+    "protected_changes_latest": []
   },
   "boundaries": {
     "Hermes_messages_sent_by_Codex": 0,
@@ -65,8 +87,184 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Owner may run the selected official installer through the ordinary desktop entry; do not accept unexpected administrator changes or import private browser data. Resume actual CLI/Space checks only after installation succeeds.",
-  "Owner_desktop_handoff": "Explorer selection requested; actual visible state and manual installation not yet confirmed",
+  "next_action": "Resolve proven related-target read-protection gap before any real Ego login/data; then load the same tools in original native gateway/Desktop and let Owner give one normal autonomous equipment-binding query. No artificial request/task quotas.",
+  "Owner_desktop_handoff": "Owner confirmed installation and first-run completion; company login not requested because production guard is incomplete",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
-  "upstream_root_cause_reused": false
+  "upstream_root_cause_reused": false,
+  "initial_installer_attempt_is_historical": true,
+  "manual_installation": {
+    "Owner_report": "installed, first-run setup completed, no browser-data import selected",
+    "actual_browser_path": "%PROGRAMFILES%/Citro Labs/ego lite/Application/ego.exe",
+    "actual_cli_path": "%PROGRAMFILES%/Citro Labs/ego lite/Application/0.6.1.13/ego-browser.exe",
+    "version": "0.6.1.13",
+    "cli_sha256": "4118011628e01c0d382fc46163a79f0a272fb282a066ee49f468bb8e5806e963",
+    "browser_sha256": "09c919f8a517a5b2e27649e954208c2459b8ad2409950cfa9e57440eda0a248a",
+    "CLI_signature": "Valid / CITRO LABS PTE. LIMITED",
+    "scope_observed": "Program Files; installation performed by Owner",
+    "shell_PATH_changed_by_Codex": false
+  },
+  "native_integration": {
+    "checked_at_utc": "2026-10-28T12:07:29.082488+00:00",
+    "same_Space_across_calls": true,
+    "space_id": 1,
+    "native_component_checks": [
+      "pagination to page 2 confirmed by server event",
+      "dynamic employee option selection EMP-002",
+      "UTF-8 Chinese input",
+      "dialog dismissal",
+      "screenshot file and actual MCP image attachment"
+    ],
+    "source_sha256": {
+      "bridge.mjs": "3011903951a3a6f0cf20f650045bfd373c26b2c63e67a640ba834620e6e68ef6",
+      "worker.mjs": "16fee8120c6ef56114b5553ccaed44061380f868823634628266f3a493972a80",
+      "policy.mjs": "ced7a18b211be6dbb3dbdedab1bb6bc050e1821eeaff859620ed891b066855e1",
+      "native_guard.mjs": "57e0a9364210971f57bc4cd87e4ea551b592665ca55951db09c1b9ae756e3e76"
+    },
+    "official_guide_version": "2.1.0",
+    "official_guide_sha256": "08143f72b4a563b51911f211ec816adcd141cc274ada213fa03b164e4a3bfcfa",
+    "native_tool_catalog": {
+      "original_python": "I/venv/Scripts/python.exe",
+      "cwd": "W",
+      "original_registered_MCP": "company_browser_simulation",
+      "connected": true,
+      "tools": [
+        "mcp__company_browser_simulation__ego_browser_actions",
+        "mcp__company_browser_simulation__ego_browser_guide",
+        "mcp__company_browser_simulation__ego_browser_handoff",
+        "mcp__company_browser_simulation__ego_browser_observe",
+        "mcp__company_browser_simulation__ego_browser_pages",
+        "mcp__company_browser_simulation__ego_browser_screenshot",
+        "mcp__company_browser_simulation__ego_browser_status",
+        "mcp__company_browser_simulation__ego_browser_window"
+      ],
+      "model_calls": 0,
+      "live_Desktop_or_Feishu_loaded": false
+    },
+    "MCP_component_final": {
+      "passed": true,
+      "actor": "Codex component client, not Hermes Agent",
+      "actual_image_blocks": 1,
+      "mutation_blocked_visible": true
+    },
+    "local_checks": {
+      "Node": 5,
+      "Python": 4,
+      "passed": 9
+    },
+    "privately_recorded_failures": [
+      "initial one-time callback hook was overwritten by SDK; send-wrapper prototype corrected this",
+      "click reported form pointer interception; a subsequent observation proved window minimized, exact causal relationship remains unknown",
+      "keyboard recovery applied; initial exact wait text omitted the final punctuation and timed out; wait adapter changed to substring condition",
+      "abrupt parent close left one own lock; only after owner PID exit and worker stop was it removed; worker now also cleans its nonce-matched lock"
+    ],
+    "window_behavior": "screenshot fails while minimized; normal/maximized capture works; owned-window restore tool provided",
+    "Hermes_real_model_use": "not yet tested",
+    "Hermes_visual_understanding": "not yet tested"
+  },
+  "read_protection": {
+    "production_enabled": false,
+    "main_page_POST_denial_verified": true,
+    "main_fixture_final": {
+      "create_attempts": 0,
+      "login_attempts": 0,
+      "qa_refreshes": 0,
+      "projects": 0,
+      "tasks": 0
+    },
+    "related_target_probe": {
+      "at": "2026-10-28T12:01:13.466Z",
+      "mutationRequests": 1,
+      "requests": [
+        {
+          "method": "GET",
+          "allowed": true
+        },
+        {
+          "method": "GET",
+          "allowed": true
+        },
+        {
+          "method": "GET",
+          "allowed": false
+        },
+        {
+          "method": "GET",
+          "allowed": true
+        },
+        {
+          "method": "GET",
+          "allowed": true
+        }
+      ],
+      "attachments": [
+        {
+          "type": "page",
+          "waiting": false
+        },
+        {
+          "type": "page",
+          "waiting": false
+        }
+      ],
+      "guardErrors": [],
+      "scope": "only task p1 and related targets; no global discovery",
+      "modelCalls": 0,
+      "receiptPopupCount": 1,
+      "popupLabel": "p2",
+      "passed": false
+    },
+    "response_policy_probe": {
+      "at": "2026-10-28T12:02:56.251Z",
+      "mutationRequests": 1,
+      "websocketUpgrades": 1,
+      "requests": [
+        {
+          "method": "GET",
+          "allowed": true
+        },
+        {
+          "method": "GET",
+          "allowed": true
+        },
+        {
+          "method": "GET",
+          "allowed": false
+        },
+        {
+          "method": "POST",
+          "allowed": false
+        },
+        {
+          "method": "POST",
+          "allowed": false
+        },
+        {
+          "method": "GET",
+          "allowed": true
+        }
+      ],
+      "responsePolicies": 2,
+      "guardErrors": [],
+      "modelCalls": 0,
+      "pageCount": 2,
+      "popupCount": 1,
+      "passed": false
+    },
+    "interpretation": "Both broader protection probes failed outcome checks. Their POSTs reached only isolated synthetic counters, not company records. CDP success did not prove protection. No complete root cause assigned. Current adapter rejects production in both Python and Node.",
+    "future_requirement": "A supported, scoped browser-level request boundary for new windows, frames, workers and WebSockets, or another proven enforcement layer; do not enable production by changing a flag."
+  },
+  "privacy_observation": {
+    "welcome_page": "Default new tab surfaced personal browsing context; inspection stopped and owned Page was moved to about:blank. No raw content copied to GitHub or used for navigation.",
+    "private_data_import_by_Codex": false,
+    "Owner_no_import_statement": "Owner report, not independent cookie verification",
+    "profiles_listed_or_selected": false,
+    "company_login_in_Ego": false
+  },
+  "native_runtime_cleanup": {
+    "owned_fixture_stopped": true,
+    "own_probe_popup_closed": true,
+    "primary_page": "about:blank",
+    "Space": "kept for same unfinished goal; not recreated",
+    "normal_Ego_browser_kept": true
+  }
 }

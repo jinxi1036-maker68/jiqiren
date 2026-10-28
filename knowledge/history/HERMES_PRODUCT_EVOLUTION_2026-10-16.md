@@ -353,3 +353,7 @@ Owner以设备绑定查询指出员工仍要求Owner找网址，实质是Codex�
 ## 2026-10-28｜Ego融合预案获认可，当前用户安装在更新任务注册处受阻
 
 Owner要求先研究Ego与唯一原Hermes的完整联动，认可预案并在电脑清理后要求继续实施。官方签名Windows安装器0.6.1.13执行一次User安装；RegisterTaskDefinition报0x80070005，最终75003，浏览器/CLI未就绪。留下EgoUpdater用户目录及启动登记，未改原Hermes工具分派/身份/记忆/配置，也未伪称零环境变化。官方工具ZIP v2.1.0校验与语法检查通过，仅在vendor暂存，不等于原生接入。安装前后原保护基线匹配，Hermes模型/生产访问/网关重启均0。已交Owner从正常桌面入口处理安装，具体权限根因与人工结果未知。沿用[当前执行报告](../../hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md)、[实施预案](../../hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md)与[脱敏证据](../../hermes/browser/evidence/ego-install-preparation-2026-10-28.json)；未来需实证CLI/Space/截图/飞书及真实查询，不以Skill存在宣布能力完成，不恢复人为请求限额。
+
+### 同日后续｜Owner完成安装，原生组件接通；发现新弹窗读保护缺口
+
+Owner完成安装/首次设置并报告未导入资料。实际Program Files安装的Ego/CLI0.6.1.13、官方guide2.1.0就绪；同一Space跨调用、翻页、中文输入、EMP-002选择、弹窗取消、截图及MCP实际图片交付有据。新增8项通用Ego工具，经原Hermes Python/H/W与原登记MCP的零模型目录探测通过；不是运行中Desktop/飞书或Hermes自主任务已经通过。一次最小化截图失败、一次指针拦截及等待文字适配失误均保留，未全归因浏览器或网站。主页面POST拒绝有据，但两个独立合成探针在新弹窗等路径仍收到模拟写请求，协议成功不等于保护有效。因此生产参数保持拒绝，暂不交真实登录，不切默认；下一步先解决浏览器级完整边界。仅改自有dispatcher并加工具，保存一份必要私有前像，59保护完全匹配，原模型/身份/记忆/配置/服务不改，模型/生产访问/网关重启0。详见同一执行报告最新节与同一证据，保留上述安装失败为历史。

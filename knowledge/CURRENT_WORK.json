@@ -621,17 +621,19 @@
       },
       "ego_integration": {
         "date": "2026-10-28",
-        "status": "blocked_at_vendor_updater_task_registration",
+        "status": "native_components_and_original_catalog_ready_production_guard_blocked",
         "same_original_employee": true,
         "browser_candidate": "Ego Lite Windows beta",
         "installer_version": "0.6.1.13",
         "tool_release": "v2.1.0",
         "installer_signature": "Valid / CITRO LABS PTE. LIMITED",
         "installer_exit": 75003,
+        "installer_exit_scope": "historical Codex User attempt; later Owner installation succeeded",
         "observed_registration_error": "RegisterTaskDefinition 0x80070005",
-        "browser_and_cli_ready": false,
+        "browser_and_cli_ready": true,
         "Hermes_model_calls": 0,
-        "original_bridge_modified": false,
+        "original_bridge_modified": true,
+        "modified_scope": "owned dispatch.py only; original registered MCP launcher and saved config unchanged",
         "protected_changes": [],
         "vendor_user_startup_entry_created": "EgoUpdaterTaskUser0.6.1.13",
         "request_quota": null,
@@ -639,7 +641,11 @@
         "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
         "plan": "hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md",
         "evidence": "hermes/browser/evidence/ego-install-preparation-2026-10-28.json",
-        "next": "Owner ordinary-desktop installation confirmation; native/Feishu integration remains pending"
+        "next": "Resolve proven related-target read-protection gap before any real Ego login/data; then load the same tools in original native gateway/Desktop and let Owner give one normal autonomous equipment-binding query. No artificial request/task quotas.",
+        "production_enabled": false,
+        "native_catalog_tools": 8,
+        "live_gateway_or_Desktop_loaded": false,
+        "read_guard": "main Page passed; related popup coverage failed in synthetic probes"
       }
     }
   },

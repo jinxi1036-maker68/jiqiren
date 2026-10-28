@@ -13,6 +13,10 @@ from owned_job import OwnedJob
 def dispatch_target(runtime, root):
     """Explicit fixed entry or legacy finite runtime; never guess a fallback."""
     cfg = json.loads(runtime.read_text(encoding="utf-8"))
+    if cfg.get('schema') == 'lingju.ego-browser.v1':
+        from ego_runtime import validate_ego_runtime
+        cfg = validate_ego_runtime(runtime, root)
+        return cfg, 'ego/bridge.mjs'
     if cfg.get('schema') == 'lingju.browser.work-entry.v1':
         from work_entry import validate_entry
         cfg, _ = validate_entry(runtime, root)
