@@ -348,3 +348,8 @@ Owner以设备绑定查询指出员工仍要求Owner找网址，实质是Codex�
 ### 2026-10-28｜修复后台渲染停顿，恢复实际已退出的原网关
 
 菜单stable超时有据，但“持续动画导致所有按钮失效”无证据。现时受控页面hidden/rAF0，启用原Chrome页面focus emulation后visible/rAF32，断开会复原；将其加入现有CDP页面租约，保持后台交互，不force-click/代点菜单。当前零点击actionability成功但未独立复现旧失败，历史全部根因不外推。另发现旧原网关进程已不在、running状态过时，退出原因未知；以原H/W/原生CLI隐藏后台恢复，实际PID/飞书/10工具就绪。3必要工具前像复用，8受影响检查及元数据/零点击观察，模型0；59保护/6封存账本匹配，日常累计41不重置，无人工配额。设备名单不伪报，正常查询由Hermes继续，无新服务/自启/身份配置更改。见[证据](../../hermes/browser/evidence/background-render-repair-2026-10-28.json)。
+
+
+## 2026-10-28｜Ego融合预案获认可，当前用户安装在更新任务注册处受阻
+
+Owner要求先研究Ego与唯一原Hermes的完整联动，认可预案并在电脑清理后要求继续实施。官方签名Windows安装器0.6.1.13执行一次User安装；RegisterTaskDefinition报0x80070005，最终75003，浏览器/CLI未就绪。留下EgoUpdater用户目录及启动登记，未改原Hermes工具分派/身份/记忆/配置，也未伪称零环境变化。官方工具ZIP v2.1.0校验与语法检查通过，仅在vendor暂存，不等于原生接入。安装前后原保护基线匹配，Hermes模型/生产访问/网关重启均0。已交Owner从正常桌面入口处理安装，具体权限根因与人工结果未知。沿用[当前执行报告](../../hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md)、[实施预案](../../hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md)与[脱敏证据](../../hermes/browser/evidence/ego-install-preparation-2026-10-28.json)；未来需实证CLI/Space/截图/飞书及真实查询，不以Skill存在宣布能力完成，不恢复人为请求限额。

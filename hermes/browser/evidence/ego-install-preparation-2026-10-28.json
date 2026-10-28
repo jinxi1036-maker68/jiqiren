@@ -1,0 +1,72 @@
+{
+  "schema": "lingju.ego-install-preparation.v1",
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "status": "blocked_at_vendor_updater_task_registration",
+  "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
+  "identity": "original Hermes only; existing H and company W preserved",
+  "installer": {
+    "source": "https://cdn.ego.app/setup/windows/x64/egoliteSetup-Y7MbxKIuhzFB.exe",
+    "file_version": "0.6.1.13",
+    "bytes": 19195136,
+    "sha256": "dc1bcf9cb91d304a89ae087454a170ebb7e494e4151ebfe7bedd2022ddf5254d",
+    "authenticode_status": "Valid",
+    "publisher": "CITRO LABS PTE. LIMITED",
+    "attempts_by_Codex": 1,
+    "requested_scope": "current user",
+    "arguments": ["--prefers-user", "--silent"],
+    "logged_setup_scope": "User",
+    "exit_code": 75003,
+    "failing_operation": "RegisterTaskDefinition",
+    "operation_error": "0x80070005",
+    "later_observations": [
+      "COM activation returned 0x80040154",
+      "Updater registration failed with 75035",
+      "Metainstaller returned 75003"
+    ],
+    "root_cause": "unknown beyond observed access denial during updater task registration",
+    "browser_installed": false,
+    "browser_cli_ready": false
+  },
+  "vendor_tool_release": {
+    "tag": "v2.1.0",
+    "source": "https://github.com/citrolabs/ego-lite/releases/download/v2.1.0/ego-browser-v2.1.0.zip",
+    "sha256": "94640a420145d50c04d44ea2762496cec75df37e80d6469deee71c88c34e5610",
+    "published_digest_matched": true,
+    "archive_entries": 44,
+    "staged_files": 24,
+    "zip_paths_validated": true,
+    "archive_symlinks_rejected": true,
+    "index_js_syntax_check": "passed",
+    "native_browser_execution": "not_run",
+    "note": "Tool release is not the browser installer or proof of native integration"
+  },
+  "actual_changes": {
+    "owned_tool_staging": ["ego/installers/egoliteSetup.exe", "ego/vendor/ego-browser-v2.1.0.zip", "ego/vendor/release-v2.1.0/"],
+    "vendor_user_directory_created": "%LOCALAPPDATA%/Citro Labs/EgoUpdater",
+    "vendor_startup_entry_observed": "EgoUpdaterTaskUser0.6.1.13",
+    "scheduled_task_query": "succeeded; no matching Ego/Citro task listed",
+    "existing_Hermes_bridge_modified": false,
+    "Hermes_skill_deployed": false,
+    "browser_login_imported": false,
+    "protected_changes_before_attempt": [],
+    "protected_changes_after_attempt": [],
+    "protected_baseline": "existing 2026-10-26 approved 59-file baseline",
+    "new_backup_created": false
+  },
+  "boundaries": {
+    "Hermes_messages_sent_by_Codex": 0,
+    "Hermes_model_calls": 0,
+    "real_business_page_reads": 0,
+    "real_business_writes": 0,
+    "Computer_Use_calls": 0,
+    "gateway_restarts": 0,
+    "ACL_or_system_permission_changes": 0,
+    "security_software_changes": 0,
+    "private_browser_data_imports": 0
+  },
+  "next_action": "Owner may run the selected official installer through the ordinary desktop entry; do not accept unexpected administrator changes or import private browser data. Resume actual CLI/Space checks only after installation succeeds.",
+  "Owner_desktop_handoff": "Explorer selection requested; actual visible state and manual installation not yet confirmed",
+  "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
+  "upstream_root_cause_reused": false
+}

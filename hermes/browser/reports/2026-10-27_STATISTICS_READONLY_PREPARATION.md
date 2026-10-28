@@ -2,6 +2,20 @@
 
 2026-10-27，Issue #9 / Draft PR #20。本报告保留接入准备、授权加载和首次真实统计页任务的取证记录。
 
+## 2026-10-28：Ego融合开始实施，止于官方安装器的更新任务注册
+
+Owner认可Ego融合研究方案，并在电脑清理后要求继续原目标。本轮沿用唯一原Hermes、原H/W和同站只读业务范围，不恢复次数/单消息门槛，不改身份或另建员工。详细实施顺序见[已认可研究及预案](2026-10-28_EGO_INTEGRATION_PLAN.md)。下述是本轮实际执行，研究预案中的未来步骤尚未因此完成。
+
+- 官方Windows安装器版本0.6.1.13、19,195,136字节，Authenticode为Valid，签名发布者CITRO LABS PTE. LIMITED；SHA256固定在[安装证据](../evidence/ego-install-preparation-2026-10-28.json)。执行一次当前用户静默安装，日志明确Setup scope User。
+- **安装失败**：`RegisterTaskDefinition`返回`0x80070005`，后续COM激活`0x80040154`、Updater registration 75035，安装器最终75003。已证实的是更新组件任务注册被拒绝；具体权限来源未定位，不归因于模型、Hermes、VPN或安全软件。上游#524有相同最终退出码，但其报告的0xc0000005不是本机已证实根因。
+- 安装器实际留下EgoUpdater用户目录及`EgoUpdaterTaskUser0.6.1.13`用户启动登记；计划任务查询成功但未列出Ego/Citro任务。浏览器本体和CLI尚未就绪，不隐瞒部分安装，也不宣称“安装失败所以零环境变化”。未自行删目录、改权限、停服务或关闭安全软件。
+- GitHub工具发布v2.1.0的ZIP与官方SHA256匹配，44个条目路径/链接检查后仅在自有工具vendor目录展开24个文件；`node --check index.js`通过。工具ZIP与浏览器本体是不同组件，语法通过不是原生浏览器执行或真实Agent验收通过。原Hermes Skill及现有浏览器分派没有改动。
+- 按原保护基线安装前后均无差异；未生成新全量备份，未动SOUL/HERMES/MEMORY/USER/R3、原配置/模型/MCP/QQ/语音/cron或旧profile。原网关和浏览器本轮未启动/重启，Hermes消息/模型调用、生产读取/写入、Computer Use调用均0。
+
+已请求资源管理器选中官方安装包，向Owner说明从正常桌面入口安装；出现管理员提示/错误先报告，不要求绕过系统或导入私人浏览资料。窗口是否显示、人工安装是否成功尚未收到确认。本轮当前阻断是安装层，未开始Ego原生Space、后台截图或飞书调用验证；旧Playwright成果保留，不因下载了新SDK而称已切换成功。
+
+只对新驱动做必要差异验证的计划继续有效。Ego本体正常安装后，先核实实际版本、CLI、Space接续、网络与只读保护，再让同一Hermes在Owner正常任务中完成设备绑定查询；不让Owner代找菜单或逐项考试。
+
 ## 2026-10-28：后台渲染停顿修复与原网关恢复
 
 Owner转来Hermes报告：菜单点击stable超时，并断言所有按钮因持续动画而失败，要求Owner给网址或代点。定点收据证实locator已找到`aria-expanded=false`的菜单button，5000ms等待visible/enabled/stable超时；这些日志不足以证明持续动画/全部元素故障。

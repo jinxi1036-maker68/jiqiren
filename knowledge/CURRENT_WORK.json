@@ -618,6 +618,28 @@
         "request_quota": null,
         "task_quota": null,
         "real_business_query_completed_by_Codex": false
+      },
+      "ego_integration": {
+        "date": "2026-10-28",
+        "status": "blocked_at_vendor_updater_task_registration",
+        "same_original_employee": true,
+        "browser_candidate": "Ego Lite Windows beta",
+        "installer_version": "0.6.1.13",
+        "tool_release": "v2.1.0",
+        "installer_signature": "Valid / CITRO LABS PTE. LIMITED",
+        "installer_exit": 75003,
+        "observed_registration_error": "RegisterTaskDefinition 0x80070005",
+        "browser_and_cli_ready": false,
+        "Hermes_model_calls": 0,
+        "original_bridge_modified": false,
+        "protected_changes": [],
+        "vendor_user_startup_entry_created": "EgoUpdaterTaskUser0.6.1.13",
+        "request_quota": null,
+        "task_quota": null,
+        "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
+        "plan": "hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md",
+        "evidence": "hermes/browser/evidence/ego-install-preparation-2026-10-28.json",
+        "next": "Owner ordinary-desktop installation confirmation; native/Feishu integration remains pending"
       }
     }
   },
