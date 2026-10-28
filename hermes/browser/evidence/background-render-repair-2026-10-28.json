@@ -20,10 +20,10 @@
     },
     "override_resets_on_CDP_disconnect": true,
     "zero_click_actionability_trial": {
-      "before_new_Playwright_attachment": "visible and actionable",
       "after_explicit_focus_emulation": "visible and actionable",
       "actual_business_clicks": 0,
-      "historical_timeout_reproduced_in_trial": false
+      "historical_timeout_reproduced_in_trial": false,
+      "after_new_Playwright_attachment_before_explicit_emulation": "visible and actionable"
     }
   },
   "historical_all_clicks_exact_root_cause": "not fully proven; observed background render suspension is a concrete blocking condition matching stable-wait mechanism",
