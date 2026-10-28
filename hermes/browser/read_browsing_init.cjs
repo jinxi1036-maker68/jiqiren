@@ -28,6 +28,11 @@ exports.default=async({page})=>{
  }
  const session=await context.newCDPSession(page);
  await session.send('Network.setBypassServiceWorker',{bypass:true});
+ // An occluded/background Chrome can stop requestAnimationFrame entirely,
+ // starving Playwright's actionability checks. Keep only this controlled page
+ // active through its own CDP lease; do not force-click or change business DOM.
+ await session.send('Emulation.setFocusEmulationEnabled',{enabled:true});
+ receipt({event:'controlled_page_background_rendering_enabled',business_action:false});
  // Retain this page's CDP session until close; no Cookie/storage access.
  page.once('close',()=>session.detach().catch(()=>{}));
 };

@@ -2,6 +2,18 @@
 
 2026-10-27，Issue #9 / Draft PR #20。本报告保留接入准备、授权加载和首次真实统计页任务的取证记录。
 
+## 2026-10-28：后台渲染停顿修复与原网关恢复
+
+Owner转来Hermes报告：菜单点击stable超时，并断言所有按钮因持续动画而失败，要求Owner给网址或代点。定点收据证实locator已找到`aria-expanded=false`的菜单button，5000ms等待visible/enabled/stable超时；这些日志不足以证明持续动画/全部元素故障。
+
+实际Chrome元数据：窗口normal但页面visibility=hidden，hasFocus=true，约600ms内rAF回调0。原Chrome协议支持`Emulation.setFocusEmulationEnabled`；在同一页面启用后visibility=visible、回调32。关闭临时CDP连接后又恢复hidden，因此修复必须持有受控页面CDP租约，不能一次性激活后立刻断开。已把该设置加入既有工具初始化的页面租约中，不改OS/Chrome全局设置，不用force-click或业务DOM脚本。仅增加错误事实纪律，禁止由stable超时外推图表/账号/全系统根因或先要求Owner代找菜单。
+
+零点击actionability试探当前菜单成功，但新Playwright连接时页面已可见，未独立复现旧点击超时；故历史每次超时的确切根因仍未全部证实。所修的是当前已观察到的后台渲染停顿，真实设备查询仍交Hermes执行，不伪称设备菜单已展开或名单已读取。
+
+另查到旧网关PID已不存在，无其他原生网关进程；状态文件仍为running，最后更新时间2026-10-27 23:45。退出原因未知，不认定Hermes软件故障或模型商故障。已用同一原安装/原H/W/原模型的隐藏后台原生CLI恢复，核验实际PID、飞书及10项目录READY，未安装新服务/自启任务。
+
+3份必要自有工具前像，本轮首次准备因旧PID不存在而在改源码前停止，前像原样复用；未重做历史备份。8项受影响Node检查、当前浏览器渲染元数据及不派发点击的actionability观察，无新增Hermes模型测试、无真实业务点击/记录写入。59保护及6封存账本匹配，日常累计请求41保留，仍无人工配额/单消息门槛。原身份、记忆、R3、配置、凭据及MCP注册未改。[脱敏证据](../evidence/background-render-repair-2026-10-28.json)。
+
 ## 当前：同站自主查询，解除错误的统计页单页限制
 
 Owner反馈Hermes要求Owner先找设备管理网址，指出这违背自主工作要求。根因是Codex只在真实入口开放4项被动观察工具，并将URL钉死统计页；不能把此状态说成浏览器完整操作能力。按Owner当前设备绑定查询目标，扩展同一已登录灵生站点的只读查询范围，不猜菜单位置、不编固定点击流程。

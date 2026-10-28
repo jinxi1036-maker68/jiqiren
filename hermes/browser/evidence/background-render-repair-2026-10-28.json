@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-28",
+  "status": "SAME_SITE_READ_BACKGROUND_RENDER_REPAIRED",
+  "problem": "Menu click timed out waiting for visible/enabled/stable; Agent wrongly asserted ongoing charts explain all buttons",
+  "confirmed_evidence": {
+    "same_original_session": "20261027_200645_bfe9a983",
+    "click_locator_resolved_to_collapsed_menu_button": true,
+    "click_timeout_ms": 5000,
+    "current_owned_page_path": "/statistics",
+    "window_state": "normal",
+    "render_before": {
+      "visibility": "hidden",
+      "hasFocus": true,
+      "animationFramesIn600ms": 0
+    },
+    "render_after_focus_emulation": {
+      "visibility": "visible",
+      "hasFocus": true,
+      "animationFramesIn600ms": 32
+    },
+    "override_resets_on_CDP_disconnect": true,
+    "zero_click_actionability_trial": {
+      "before_new_Playwright_attachment": "visible and actionable",
+      "after_explicit_focus_emulation": "visible and actionable",
+      "actual_business_clicks": 0,
+      "historical_timeout_reproduced_in_trial": false
+    }
+  },
+  "historical_all_clicks_exact_root_cause": "not fully proven; observed background render suspension is a concrete blocking condition matching stable-wait mechanism",
+  "repair": {
+    "original_Chrome_CDP_method": "Emulation.setFocusEmulationEnabled",
+    "enabled": true,
+    "lease": "same controlled page until its close; no permanent Chrome/global setting",
+    "no_force_click": true,
+    "no_business_DOM_or_record_change": true,
+    "error_discipline": "stable wait timeout does not prove chart animation/all-system failure; employee should self-recover read queries or report concrete tooling fault, not require Owner menu location"
+  },
+  "native_gateway": {
+    "previous_pid_not_alive": true,
+    "old_runtime_state_stale_last_updated_UTC": "2026-10-27T15:45:19.639697Z",
+    "prior_exit_cause": "unknown",
+    "restored_original_native_CLI": true,
+    "hidden_background_process": true,
+    "scheduled_task_service_or_autostart_installed": false,
+    "current_pid_verified_alive": true,
+    "Feishu_connected": true,
+    "workspace": "W",
+    "browser_tools": 10,
+    "restored_ready_at_UTC": "2026-10-28T03:33:08.527806+00:00"
+  },
+  "request_quota": null,
+  "task_quota": null,
+  "prefix_required": false,
+  "cumulative_requests_before_repair": 41,
+  "cumulative_requests_at_READY": 41,
+  "Codex_new_model_messages": 0,
+  "Codex_device_binding_reads": 0,
+  "employee_device_result": "not fabricated; actual post-repair business query pending normal employee use",
+  "local_validation": {
+    "affected_Node_cases": 8,
+    "browser_metadata_checks": true,
+    "readiness_actual_native_gateway": true,
+    "additional_real_model_exams": 0
+  },
+  "owned_tool_changes": {
+    "read_browsing_init.cjs": {
+      "before": "2abdbcd2b86eb580849ec2b1785191c7d79e4ab48c76986d25b6800bd6b8527f",
+      "after": "89bec86a99a7484f7e840cdf9b958e9cc1ad4624f5c602773c5834b16918c946"
+    },
+    "read_browsing_policy.mjs": {
+      "before": "27283268c6db38bfdbfac45038820ffea1d14c6fdb50486ffaa2310de9dfe722",
+      "after": "019446f521ff423549140d47c454985cd5b5c1d67e0a6d63fc1354f9dd908a06"
+    },
+    "readonly_bridge.mjs": {
+      "before": "f6aff1da90419632006e17d3583b00d756b639f3c8629121424e59d8ef3e7d90",
+      "after": "b5bf0ce5e66ecfd10be52fefe60b7c5c4ee2a341158c4c9efd417fcace549e0c"
+    }
+  },
+  "necessary_preimages": 3,
+  "protected_records_match": 59,
+  "six_sealed_ledgers_unchanged": true,
+  "SOUL_MEMORY_USER_R3_config_credentials_modified": false,
+  "private_page_images_records_or_original_database_uploaded": false,
+  "channel_states": {
+    "wecom": "connected",
+    "wecom_callback": "disconnected",
+    "weixin": "connected",
+    "qqbot": "connected",
+    "feishu": "connected"
+  }
+}

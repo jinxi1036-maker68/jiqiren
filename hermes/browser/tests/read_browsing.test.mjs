@@ -44,3 +44,12 @@ test('read element references match the pinned MCP target schema without bypassi
  assert.deepEqual(upstreamReadArguments('browser_type',{ref:'e3',text:'synthetic'}),{target:'e3',text:'synthetic'});
  assert.deepEqual(upstreamReadArguments('browser_select_option',{ref:'e4',values:['available']}),{target:'e4',values:['available']});
 });
+test('controlled page retains render activity lease until close without business actions',async()=>{
+ const sent=[];let detached=false,onClose;
+ const session={send:async(name,args)=>sent.push({name,args}),detach:async()=>{detached=true;}};
+ const context={route:async()=>{},routeWebSocket:async()=>{},newCDPSession:async()=>session};
+ const page={context:()=>context,once:(name,fn)=>{assert.equal(name,'close');onClose=fn;}};
+ await network.default({page});
+ assert.ok(sent.some(x=>x.name==='Emulation.setFocusEmulationEnabled'&&x.args.enabled===true));
+ assert.equal(detached,false);await onClose();assert.equal(detached,true);
+});

@@ -76,6 +76,8 @@ async function execute(name,args){
    const guardBefore=fs.existsSync(guardFile)?fs.statSync(guardFile).size:0;
    let result=await client.callTool({name:n,arguments:r.same_site_read_navigation?upstreamReadArguments(n,a):a},undefined,{timeout:25000});
    result=await inlineOwnedSnapshot(result,r.browserOutput,started);
+   if(r.same_site_read_navigation&&n==='browser_click'&&result.isError&&/stable/i.test((result.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n')))
+    result.content.push({type:'text',text:'当前证据仅为点击等待稳定超时，不能认定持续动画、所有按钮故障或账号无权限。工具已对当前受控页面保持后台渲染；请重新观察实际页面状态后自主处理只读查询，必要时报具体工具故障，不要仅因技术超时要求Owner代找网址或代点菜单。'});
    if(!result.isError&&['browser_snapshot','browser_navigate'].includes(n))pageInitialized=true;
    if(n==='browser_take_screenshot')result=await attachScreenshot(result,a,r.browserOutput);
    if(automatic)fs.appendFileSync(path.join(r.browserOutput,'read-receipts.jsonl'),JSON.stringify({at:new Date().toISOString(),name:n,automatic_observation:true,isError:!!result.isError,content_sha256:crypto.createHash('sha256').update(JSON.stringify(result.content||[])).digest('hex')})+'\n');

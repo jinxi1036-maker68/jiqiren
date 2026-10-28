@@ -75,7 +75,7 @@
     "browser_capability_current": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "SAME_SITE_READ_NAVIGATION_ACTIVE_NO_TEST_QUOTAS",
+      "status": "SAME_SITE_READ_ACTIVE_BACKGROUND_RENDER_REPAIRED",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -88,7 +88,7 @@
         "current_message_grant_consumed",
         "rejected_unavailable_terminal_attempt"
       ],
-      "next_step": "原Hermes从同一已登录灵生站点自主找菜单、翻页、筛选、看详情，完成设备绑定等真实查询；Owner不用提供每页网址。按实际工作修故障，不做逐项考试。未开放真实创建/修改/删除。",
+      "next_step": "原Hermes正常承接设备绑定等只读查询，自主找菜单。已修复后台页面隐藏/rAF停顿的具体阻碍并恢复原飞书网关；历史所有点击超时根因仍未全部证实，实际名单据员工读取，不编造，不要求Owner代找页面。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -435,6 +435,15 @@
         "task_quota": null,
         "device_query_actual_result": "not fabricated; pending employee natural execution",
         "evidence": "hermes/browser/evidence/same-site-read-navigation-2026-10-27.json"
+      },
+      "background_render_repair": {
+        "date": "2026-10-28",
+        "evidence": "hermes/browser/evidence/background-render-repair-2026-10-28.json",
+        "actual_gateway_alive": true,
+        "scope": "same-site read navigation",
+        "request_quota": null,
+        "task_quota": null,
+        "real_business_query_completed_by_Codex": false
       }
     }
   }
