@@ -101,3 +101,20 @@ Owner在23:11截图中收到EGO_BUSY。定点检查确认原lease所属PID18036�
 本轮仅更新自有bridge/worker/ego_runtime/dispatch，新增lifecycle和ego_lease，更新自有runtime源码pin、gate和私有交接状态；8份必要自有前像私有保留，无回退。59项原保护、配置/凭据/身份/记忆/R3/Manifest/MCP/语音QQ/cron不变，账本101→101，无Codex模型/业务操作。失败探测后lease已清理，手动交接状态与待恢复项如实保留。
 
 **下一步只有恢复原扩展这项浏览器安装确认。** Owner确认卡片后，再接续同一Space1，先核对实际扩展/资料/只读保护，之后更新自有定位并在必要时空闲重载。不追加业务考试，不以绕过保护或复制登录态求通过。本节及同名JSON.browser_lease_repair覆盖此前“已可正常承接”的旧时间点描述，历史记录保留；当前browser_ready=false。
+
+
+## 2026-10-30当前：Owner恢复扩展后，原Hermes公司浏览器连接已恢复
+
+Owner确认正常界面已加载扩展。新一轮只读核对中，原公司Profile1的Secure Preferences已登记同一批准扩展，路径与固定文件相符；先前交Owner的Space1此时已不存在，native所有空间列表为空，消失原因未知，未自动claim其他资料。依Owner既有“恢复公司窗口”批准及本次继续指令，在**同一现有凌矩工作资料**恢复一个工作窗口Space2，未建新profile/员工、未导入或复制Cookie。完整修复跨两段共创建过2个先后窗口，仅保留当前Space2，未隐去第一次恢复未完成及其后来消失的事实。
+
+实际浏览器原生检查通过：真实资料目录正确、本扩展文件SHA匹配、company_readonly规则启用，获准/statistics URL导航成功。未读取业务正文/截图或凭据，所以未借URL单独宣称已验证账号权限/登录内容。自有runtime仅把失效Space4更新到现存Space2，gate只更新相应runtime SHA，原Owner登录确认/权限、原配置均未修改。
+
+使用原活动Python、自有dispatch和固定MCP SDK进行**一次零模型status连接检查**：8项目录，ego-native、company-readonly、Space2、正确H/W、guardHealthy=true、extensionEnabled=true、businessWritesEnabled=false；stderr0。检查关闭后active-worker.lock不存在，证明这一实际启停路径正常释放，而不是仅靠模拟断言修复。未调用observe/actions/screenshot，未执行新Hermes业务任务或声称名单已核实。
+
+原网关空闲正常停止/重载一次，使飞书加载新的locator；本段1次、完整修复合计2次重载，没有强杀或打断活Agent。新入口实际READY为2026-10-29 20:00:07Z（北京时间10月30日04:00:07），原H/W、8项工具及Feishu/微信/QQ/企业微信主通道connected；旧wecom_callback retrying问题独立保留。账本本段111→111，Codex新增模型消息/请求0。前一段101→101与本段111→111属于不同时间点，不混作连续不变。
+
+本段只写自有runtime定位、gate pin和私有交接记录，必要3份前像在已验证的私有恢复根下；上一段8份前像保留，无回退。59项原保护、基线、源码pin仍匹配，SOUL/HERMES/MEMORY/USER/R3/Manifest/原配置/凭据/模型/MCP/语音QQ/cron不变。沿用未再改动代码的28项本地检查，不重复旧业务测试。Ego提示有可用升级，未安装或升级。
+
+**当前结论是公司只读浏览器连接恢复，Hermes可承接Owner正常已授权的站内只读工作。** 这不是新的业务结果验收，不代表所有关闭窗口/崩溃都能自动恢复，也不代表获得创建/绑定/删除等真实写权限。原扩展及窗口之前消失原因仍未知，provider限流/时延问题另列；不将此次占用/失效定位归为模型思考能力问题。保持当前公司工作窗口供同一Hermes继续使用，不新增一轮考试。
+
+本节及同名JSON.browser_connection_restored为最新状态，上一节browser_ready=false是恢复前历史。后续若窗口确实关闭、用户接管或保护缺失，仍须如实报具体阻碍，不抢占、猜测或自动换路线。

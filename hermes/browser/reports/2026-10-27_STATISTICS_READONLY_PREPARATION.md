@@ -339,3 +339,8 @@ Owner在23:11截图中收到EGO_BUSY。定点检查确认原lease所属PID18036�
 本轮仅更新自有bridge/worker/ego_runtime/dispatch，新增lifecycle和ego_lease，更新自有runtime源码pin、gate和私有交接状态；8份必要自有前像私有保留，无回退。59项原保护、配置/凭据/身份/记忆/R3/Manifest/MCP/语音QQ/cron不变，账本101→101，无Codex模型/业务操作。失败探测后lease已清理，手动交接状态与待恢复项如实保留。
 
 **下一步只有恢复原扩展这项浏览器安装确认。** Owner确认卡片后，再接续同一Space1，先核对实际扩展/资料/只读保护，之后更新自有定位并在必要时空闲重载。不追加业务考试，不以绕过保护或复制登录态求通过。本节及同名JSON.browser_lease_repair覆盖此前“已可正常承接”的旧时间点描述，历史记录保留；当前browser_ready=false。
+
+
+## 2026-10-30最新：原公司只读连接恢复
+
+Owner已恢复原扩展；同一公司Profile1的Space2、实际扩展保护及/statistics URL通过零模型核验。原活动Python/MCP status实际通过，8工具、正确H/W、guardHealthy/extensionEnabled=true、businessWritesEnabled=false，关闭后无残留lease。自有runtime仅更新Space4→2及gate pin，原网关本段1次/整个连接修复2次空闲正常重载，飞书等主通道connected，59项保护不变，本段账本111→111。上一段交接Space1后来已不存在，原因未知，恢复的先后2窗口均如实计数。未发模型任务、未读业务正文/名单、未改权限；具体业务结果仍由Hermes承接Owner正常任务。[完整本轮记录](../../runtime/2026-10-29_FEISHU_PROGRESS.md)，同名JSON.browser_connection_restored为当前状态。

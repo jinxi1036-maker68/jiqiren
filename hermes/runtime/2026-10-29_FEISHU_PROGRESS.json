@@ -756,7 +756,7 @@
     }
   },
   "initial_deployment_state_scope": "Historical snapshot; current feedback follows status_feedback_correction/current_feedback_policy",
-  "latest_report_block": "browser_lease_repair",
+  "latest_report_block": "browser_connection_restored",
   "status_feedback_correction": {
     "at_utc": "2026-10-29T15:07:29.870984+00:00",
     "state": "unconditional_ack_removed_delayed_labelled_status_and_SDK_PUT_fix_loaded_real_edit_delivery_unverified",
@@ -1004,6 +1004,90 @@
       "Owner loads the unchanged previously approved extension in the existing company profile",
       "After Owner confirms, resume same recorded space; verify guard then update only owned locator/pins and idle-reload if needed",
       "No claim of restored Hermes browser business task execution; no new model test scheduled"
+    ]
+  },
+  "browser_connection_restored": {
+    "at_utc": "2026-10-29T20:00:26.775308+00:00",
+    "state": "company_readonly_browser_connection_restored",
+    "new_original_Hermes_models_or_messages_by_Codex": 0,
+    "business_page_contents_read_or_business_writes_by_Codex": 0,
+    "original_H_W_identity": true,
+    "MCP_status": {
+      "at": "2026-10-29T19:59:30.904Z",
+      "passed": true,
+      "actor": "Codex zero-model component; not Hermes Agent task",
+      "tool": "ego_browser_status",
+      "tool_count": 8,
+      "driver": "ego-native",
+      "mode": "company-readonly",
+      "spaceId": 2,
+      "profileId": "Profile 1",
+      "guardHealthy": true,
+      "extensionEnabled": true,
+      "original_H_matches": true,
+      "original_W_matches": true,
+      "businessWritesEnabled": false,
+      "new_model_calls": 0,
+      "business_page_snapshot_or_actions": 0,
+      "stderrBytes": 0,
+      "lease_exists_after_client_close": false
+    },
+    "native_CLI_zero_model_probe": true,
+    "actual_READY_utc": "2026-10-29T20:00:07.429861+00:00",
+    "gateway_launcher_pid": 28504,
+    "gateway_child_pid": 23300,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "retrying",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "protected_original_records_unchanged": 59,
+    "original_baseline_sha256": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
+    "runtime_sha256": "e8aa6af6cc40d7541b7b2c0b0717c38664fd659d97505007543aa08e918f2fbb",
+    "gate_sha256": "b6dfd189a7723052b62318f57aba32dd5611e6f6a247ab36cb3c70ad9d8b2e00",
+    "owned_locator_before": 4,
+    "owned_locator_after": 2,
+    "same_existing_profile": true,
+    "new_profiles_or_identities": 0,
+    "original_restoration_after_handoff_disappeared": true,
+    "spaces_created_across_full_repair": 2,
+    "current_company_space_id": 2,
+    "reconnect_idle_reloads": 1,
+    "total_idle_reloads_across_full_repair": 2,
+    "force_stop": false,
+    "private_preimages_this_reconnect": 3,
+    "private_preimages_previous_lease_repair": 8,
+    "original_config_memory_knowledge_credentials_MCP_voice_QQ_cron_unchanged": true,
+    "audit_before": [
+      0,
+      111,
+      0
+    ],
+    "audit_after": [
+      0,
+      111,
+      0
+    ],
+    "rollback_performed": false,
+    "tests_reused_without_code_changes": {
+      "node": 14,
+      "python": 14
+    },
+    "login_state_not_independently_proven_by_reading_business_contents": true,
+    "not_a_new_Hermes_business_task_acceptance": true,
+    "Ego_upgrade_notice_seen_no_upgrade_performed": true,
+    "private_evidence_sha256": {
+      "reconnect_operation": "6dfeb9bd1f2c6a51bf3697f5fb218b32e4e71789eadef2fce1602f1124572074",
+      "MCP_status": "ab14d1bfc5b88297a3292a5de7cb696903219bd352fd38e10a3f38d40306a365",
+      "window_after_install": "5c30df6ac08a9067a5e9b32f54a71ba478ced01f971d06ac67f0de9ff9a97345"
+    },
+    "remaining": [
+      "Specific device binding report not queried by Codex; Hermes may handle Owner normal authorized read work",
+      "Why the prior window and extension disappeared remains unknown",
+      "No claim of all browser failure self-healing or business write permissions; server-side read-only role remains separate",
+      "Provider quota/latency and old wecom_callback issue remain separate"
     ]
   }
 }

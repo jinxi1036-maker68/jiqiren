@@ -167,7 +167,7 @@
     "browser_local_b_round": {
       "owner_approval_date": "2026-10-24",
       "implementation_report_date": "2026-10-25",
-      "status": "EGO_LEASE_FIXED_GUARD_EXTENSION_MISSING_OWNER_HANDOFF",
+      "status": "EGO_COMPANY_READ_CONNECTION_RESTORED",
       "adr": "knowledge/decisions/ADR-HERMES-BROWSER-LOCAL-B-2026-10-24.md",
       "report": "hermes/reports/HERMES_BROWSER_LOCAL_B_IMPLEMENTATION_2026-10-25.md",
       "original_hermes_only": true,
@@ -180,7 +180,7 @@
         "rejected_unavailable_terminal_attempt",
         "long_term_default_entry_and_real_platform_not_accepted; provider_500_429_and_auxiliary_failures_recorded"
       ],
-      "next_step": "仅恢复同一公司资料的原保护扩展，然后核实同一Space1并更新自有定位；当前浏览器尚未恢复可用，不再安排业务重复测试。",
+      "next_step": "同一原Hermes使用现存公司工作窗口自主承接Owner正常站内只读任务；不追加验收模型任务、不扩张真实业务写权限。窗口/保护丢失时明确报具体技术阻碍。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -678,7 +678,7 @@
         "table_readback_Agent_accuracy_verified": false,
         "table_readback_live_statistics_mapping": "unresolved; do not invent column mappings"
       },
-      "latest_runtime_evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json#browser_lease_repair"
+      "latest_runtime_evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json#browser_connection_restored"
     },
     "memory_refocus": {
       "date": "2026-10-29",
@@ -774,16 +774,19 @@
       }
     },
     "browser_connection_repair": {
-      "date": "2026-10-29",
-      "status": "lease_lifecycle_repair_loaded_browser_blocked_missing_guard_and_owner_handoff",
-      "browser_ready": false,
+      "date": "2026-10-30",
+      "status": "company_readonly_browser_connection_restored",
+      "browser_ready": true,
       "gateway_ready": true,
       "report": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.md",
-      "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json#browser_lease_repair",
-      "stale_lease_fixed": true,
-      "remaining": "Original company guard extension missing; restored same-profile Space1 handed to Owner for normal UI load; no guard bypass",
+      "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json#browser_connection_restored",
+      "native_MCP_status_passed": true,
+      "no_lease_after_real_probe_close": true,
+      "company_space_id": 2,
       "new_Hermes_model_calls_by_Codex": 0,
-      "protected_records_unchanged": 59
+      "protected_records_unchanged": 59,
+      "business_task_acceptance_repeated": false,
+      "real_business_writes_authorized": false
     }
   },
   "admin_finance_track": {
