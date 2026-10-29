@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-29",
+  "completed_at_utc": "2026-10-29T06:47:21.219326+00:00",
+  "status": "512K_model_context_pin_and_50pct_compaction_configured_original_gateway_ready",
+  "Owner_authorization": "Owner: continue according to recommended 512K and adjusted early compression; implementation scope announced before editing, minimal private recovery/owned protection update/idle reload, zero model",
+  "same_original_employee": true,
+  "official_sources": [
+    {
+      "url": "https://wiki.agnes-ai.com/en/docs/agnes-30-flash",
+      "fact": "API docs state 512K context, 65536 max output; account/API key determines availability and rate limits"
+    },
+    {
+      "url": "https://huggingface.co/Agnes-AI/Agnes-3.0-Flash/blob/main/README.md",
+      "fact": "Model card distinguishes Preview 262144 from newer production/API 1M; conflicts with API doc; do not promise account 1M"
+    }
+  ],
+  "settings": {
+    "custom_providers.Agnes.ai.models.agnes-3.0-flash.context_length": {
+      "before": null,
+      "after": 524288
+    },
+    "compression.threshold": {
+      "before": 0.24,
+      "after": 0.5
+    }
+  },
+  "preserved": {
+    "model": "agnes-3.0-flash",
+    "provider": "custom:Agnes.ai",
+    "max_output_tokens": 32000,
+    "legacy_provider_level_context": 1048576,
+    "credentials_and_unrelated_config_values": true,
+    "memory_USER_SOUL_HERMES_R3_Manifest_MCP_voice_QQ_cron_profiles": true,
+    "browser_source_and_runtime": true
+  },
+  "config_before_sha256": "4209e370566538f86a5085c22ffd7ec0f25112e96fdb745270de3c7959a27128",
+  "config_after_sha256": "681836e12c2855386aad7898803199047650ae5731237d92fcf6d2b2d6cdae68",
+  "only_two_yaml_node_edits": true,
+  "native_zero_model_probe": {
+    "passed": true,
+    "actor": "Codex zero-model original config resolver and pure threshold calculation; no AIAgent/model/client request created",
+    "resolved_context_length": 524288,
+    "compression_threshold": 0.5,
+    "output_max_tokens_unchanged": 32000,
+    "effective_input_budget": 492288,
+    "calculated_compaction_threshold_tokens": 246144,
+    "legacy_provider_level_context_left_unchanged": 1048576,
+    "per_model_pin_honored": true,
+    "new_model_requests": 0,
+    "large_context_server_acceptance": "not tested; no synthetic long prompt or real task submitted",
+    "existing_Desktop_session_context": "not checked or restarted"
+  },
+  "derived_protection": {
+    "records": 59,
+    "only_config_hash_changed": true,
+    "other_58_records_unchanged": true,
+    "previous_baseline_file_unchanged": true,
+    "new_baseline_sha256": "0db9cf1047a1be2ad0e1b121d5f79be375291eb2bd10f472017822c959502cf1",
+    "owned_gate_changed_field_only": "protected_baseline_sha256"
+  },
+  "private_recovery": {
+    "necessary_preimages": 3,
+    "path_and_private_ACL_verified": true,
+    "raw_config_or_secrets_uploaded": false
+  },
+  "permission_correction": {
+    "difference_detected_after_replace": true,
+    "cause": "candidate moved from private recovery directory retained that directory inherited ACEs; final path did not automatically recalculate target-parent inheritance",
+    "action": "reapply inheritance on this config file only; parent and other file ACLs unchanged",
+    "matches_current_parent_derived_peer_DACL": true,
+    "initial_SDDL_not_persisted_so_exact_original_SDDL_equality_not_proven": true,
+    "no_credential_or_config_value_change_during_correction": true,
+    "private_receipt_sha256": "e8eab92ecc36e9bd7244fa274eacccaac4cc3a7e4a0bc869ee314f003b057986"
+  },
+  "config_payload_rollback": false,
+  "native_reload": {
+    "count": 1,
+    "old_idle_agents": 0,
+    "graceful_stop": true,
+    "old_launcher_and_child_exited": true,
+    "force_stop": false,
+    "launcher_pid": 23688,
+    "child_pid": 12972,
+    "actual_ready_at_utc": "2026-10-29T06:46:25.662145+00:00",
+    "H_and_W_preserved": true,
+    "browser_catalog_tools": 8,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "end_to_end_message_test": false
+  },
+  "audit_before": [
+    0,
+    64,
+    0
+  ],
+  "audit_after": [
+    0,
+    64,
+    0
+  ],
+  "new_Hermes_model_messages": 0,
+  "new_Hermes_model_requests": 0,
+  "live_business_actions": 0,
+  "remaining_unverified": [
+    "server-side long-prompt acceptance for this enterprise API key; no model prompt sent",
+    "context in any existing cached Desktop or Feishu model conversation; no new task or Desktop restart",
+    "latency/quality improvement from later compaction",
+    "exact equality with initial config SDDL, which was not persisted before the private-directory replacement; current inherited DACL matches existing same-directory policy"
+  ],
+  "existing_wecom_callback_issue": "retry/disconnected remains, not repaired",
+  "private_receipt_sha256": {
+    "preflight_stop": "9b3dae05ed5b4d6d7680db518cfc68c02c927d7ebcd88e41849827cfea79aa58",
+    "deployment": "eb30e23c87624587fe525db3571610008f6efdcffd4525359e164fa16fa295b2",
+    "native_context_probe": "141ed9a1832a444ed50ca7b1ac586356cb355e67f7502360e3f441d19dba2e26",
+    "native_start": "18fabaf36f075263c1f108efca895d3131e2bfb80732f58068f1e418cdb161ca"
+  }
+}

@@ -700,6 +700,22 @@
       "other_57_protected_records_unchanged": true,
       "native_loader_probe_passed": true,
       "gateway_ready": true
+    },
+    "context_tuning": {
+      "date": "2026-10-29",
+      "status": "512K_model_context_pin_and_50pct_compaction_configured_original_gateway_ready",
+      "report": "hermes/runtime/2026-10-29_CONTEXT_TUNING.md",
+      "evidence": "hermes/runtime/2026-10-29_CONTEXT_TUNING.json",
+      "model_context_length": 524288,
+      "compression_threshold": 0.5,
+      "max_output_tokens_unchanged": 32000,
+      "native_config_resolver_passed": true,
+      "server_long_context_acceptance_tested": false,
+      "new_Hermes_model_requests": 0,
+      "same_original_employee": true,
+      "other_58_protection_records_unchanged": true,
+      "permission_inheritance_correction_recorded": true,
+      "next": "Normal Owner work only; no automatic model test or extra permission expansion"
     }
   },
   "admin_finance_track": {
