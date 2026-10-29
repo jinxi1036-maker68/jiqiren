@@ -273,7 +273,10 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
     if check_snapshot(baseline):raise RuntimeError('Protected files changed')
     out=ordinary_path(args.output)
     if root/'runs' not in out.parents:raise RuntimeError('Receipts outside owned tool runtime')
-    if gate['browser_exercise'].get('kind')=='livsyn-readonly-daily':
+    if gate['browser_exercise'].get('kind')=='lingju-ego-readonly-daily':
+        from ego_task import EgoReadonlyExercise
+        exercise=EgoReadonlyExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
+    elif gate['browser_exercise'].get('kind')=='livsyn-readonly-daily':
         from readonly_task import ContinuousReadonlyExercise
         exercise=ContinuousReadonlyExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
     elif gate['browser_exercise'].get('kind')=='livsyn-readonly-first-page':

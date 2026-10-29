@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "extension_enabled_synthetic_enforcement_and_independent_profile_control_passed",
+  "status": "STOPPED_PENDING_ORIGINAL_EXTENSION_SOURCE_RECOVERY",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -91,7 +91,7 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Prepare same-original-Hermes explicit Ego runtime/lifecycle and authorized business handoff; current production remains rejected. No login/model calls in this phase.",
+  "next_action": "Only restore the approved two-file source after Owner confirmation, verify extension metadata, then complete one corrected native handoff; do not rerun canaries, send models or login automatically.",
   "Owner_desktop_handoff": "Owner replied installation can continue; actual enabled extension subsequently confirmed in normal profile UI and native rule API. Company result UI retained; independent control Space closed.",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
   "upstream_root_cause_reused": false,
@@ -539,6 +539,90 @@
       "synthetic_server_truth_sha256": "9db41c774018d1c2806d5f7671cad86f2eae59a1b5a037313fa6a411dc38dab8",
       "failed_UI_path": "normal directory drag returned No dragged path; cancelled through UI. No global CDP extension install or unsafe debug flag used.",
       "Windows_UIAutomation": "three read-only targeted picker inspections; no picker found, no input/control action performed, no Computer Use initialized"
+    },
+    "current_integrity": {
+      "checked_at_utc": "2026-10-29T00:40:26.750021+00:00",
+      "installed_source_exists": false,
+      "current_ready": false,
+      "prior_validation_remains_historical": true,
+      "cause": "unknown",
+      "restored": false
     }
+  },
+  "company_runtime_connection": {
+    "at_utc": "2026-10-29T00:40:26.750021+00:00",
+    "status": "STOPPED_PENDING_ORIGINAL_EXTENSION_SOURCE_RECOVERY",
+    "same_original_employee": true,
+    "runtime_schema": "lingju.ego-browser.v2",
+    "mode": "company-readonly",
+    "business_writes_enabled": false,
+    "artificial_request_quota": null,
+    "task_prefix_required": false,
+    "company_space": 1,
+    "company_profile": "Profile 1",
+    "workplace_state": "awaiting-owner-login",
+    "code_checks": {
+      "Node_affected_and_new": 10,
+      "Python_runtime": 6,
+      "shared_gateway": 10,
+      "actual_pause_interface": 1,
+      "total": 27
+    },
+    "zero_model_probes": {
+      "native_original_CLI_passed": true,
+      "original_registered_MCP_catalog": 8,
+      "own_extension_lifecycle_probe_passed_before_source_disappeared": true,
+      "waiting_login_MCP_status_passed": true,
+      "unconfirmed_page_read_rejected": true
+    },
+    "runtime_source_sha256": {
+      "dispatch.py": "2cb2607cc7801c25da50d9e2f95c9776504a036de56a133a5740c8e1cc558a45",
+      "ego_runtime.py": "a5ac38952389b9db64d5fbd1e947075ce7c592a8af7dd180381a33b14b609b6e",
+      "feishu_gateway.py": "818614c4e8c7cedb825342a93bd1b471d0d4e76156cf058e6dec5b6207709ee7",
+      "ego/bridge.mjs": "6131a83a59e62c7abcd936a206165dc7140147230b2263ab632884800828e68d",
+      "ego/worker.mjs": "91a6a6d405c5067da5a17994a681765c892833be5b0486063b2e1d9216ee514f",
+      "ego/policy.mjs": "1f75b8ad501f8cddf8ea43dc2ecd8dd2f0f2f6392f5d208eccba2a89d6b88344",
+      "ego/extension_guard.mjs": "7b4db44a055ae26e66098b7fe882d76b66ee1b10de4af5f2d4d0492dff8ffd8d",
+      "ego_task.py": "6e11a2b7c80a063e60fcdc29f62a1a9d270649b050941f7155848b1dccbbfa6e"
+    },
+    "actual_owned_file_changes": {
+      "existing": 6,
+      "new": 2,
+      "necessary_private_preimages": 6
+    },
+    "start_attempt": {
+      "native_gateway_launches": 1,
+      "launcher_pid": 27172,
+      "actual_child_pid": 16104,
+      "Windows_venv_launcher_child_relationship_verified": true,
+      "Feishu_connected_observed": true,
+      "full_Ego_READY_received": false,
+      "first_50_second_wait_expired": true,
+      "new_pause_interface_bug_found": true,
+      "pause_fix_test_passed": true,
+      "planned_stop_exact_own_idle_child": true,
+      "child_and_launcher_exited": true,
+      "force_stop": false,
+      "corrective_second_gateway_launched": false
+    },
+    "blocking_change": {
+      "installed_source": "%USERPROFILE%/Desktop/凌矩浏览器保护",
+      "directory_exists": false,
+      "cause": "unknown",
+      "approved_staging_copy_hashes_match": true,
+      "restored_or_relocated_by_Codex": false,
+      "Owner_confirmation_requested": true
+    },
+    "protected_records_matched": 59,
+    "daily_audit_used_before": 41,
+    "daily_audit_used_after": 41,
+    "model_calls_sent_by_Codex": 0,
+    "real_business_reads": 0,
+    "real_business_writes": 0,
+    "new_login": false,
+    "Computer_Use": 0,
+    "new_profile_or_space": false,
+    "current_gateway_ready": false,
+    "next": "Only restore the approved two-file source after Owner confirmation, verify extension metadata, then complete one corrected native handoff; do not rerun canaries, send models or login automatically."
   }
 }

@@ -29,5 +29,21 @@ class EgoRuntimeTests(unittest.TestCase):
         self.assertEqual(dispatch_target(self.runtime,self.root)[1],'bridge.mjs')
         self.c['route']='unknown';self.save()
         with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+    def company(self):
+        payload=self.root/'payload';payload.mkdir()
+        for name in ['manifest.json','rules.json']:(payload/name).write_bytes(b'approved fixture')
+        (self.root/'ego/extension_guard.mjs').write_bytes(b'fixture guard')
+        self.c.update(schema='lingju.ego-browser.v2',mode='company-readonly',origin='https://ldp.lingrobotics.com',businessWritesEnabled=False,approvalReference='Owner fixture',profileId='Profile 1',stateFile=str(self.runtime.parent/'workplace-state.json'),extension=dict(id='fpifglepgaacbbabakmcjmkinlpnconi',ruleset='company_readonly',directory=str(payload),manifestSha256=sha256(payload/'manifest.json'),rulesSha256=sha256(payload/'rules.json')))
+        self.c['sourceSha256']['extension_guard.mjs']=sha256(self.root/'ego/extension_guard.mjs')
+        Path(self.c['stateFile']).write_text('{}')
+        self.save()
+        return payload
+    def test_company_route_requires_installed_payload_pin(self):
+        payload=self.company();self.assertEqual(dispatch_target(self.runtime,self.root)[1],'ego/bridge.mjs')
+        (payload/'rules.json').write_bytes(b'changed')
+        with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+    def test_company_state_must_stay_in_this_run(self):
+        self.company();self.c['stateFile']=str(self.root/'guide.txt');self.save()
+        with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
 
 if __name__=='__main__':unittest.main()

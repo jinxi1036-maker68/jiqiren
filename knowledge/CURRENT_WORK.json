@@ -621,7 +621,7 @@
       },
       "ego_integration": {
         "date": "2026-10-29",
-        "status": "extension_enabled_synthetic_enforcement_and_independent_profile_control_passed",
+        "status": "STOPPED_PENDING_ORIGINAL_EXTENSION_SOURCE_RECOVERY",
         "same_original_employee": true,
         "browser_candidate": "Ego Lite Windows beta",
         "installer_version": "0.6.1.13",
@@ -641,7 +641,7 @@
         "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
         "plan": "hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md",
         "evidence": "hermes/browser/evidence/ego-install-preparation-2026-10-28.json",
-        "next": "Prepare the same original Hermes Ego runtime and extension/profile lifecycle checks, then authorized business handoff; no production enabled, login or Hermes model use in this phase.",
+        "next": "Only restore the approved two-file source after Owner confirmation, verify extension metadata, then complete one corrected native handoff; do not rerun canaries, send models or login automatically.",
         "production_enabled": false,
         "native_catalog_tools": 8,
         "live_gateway_or_Desktop_loaded": false,
@@ -658,7 +658,11 @@
         "independent_profile_control_passed": true,
         "synthetic_wire_write_blocking_passed": true,
         "actual_Agent_Ego_use_verified": false,
-        "protected_records_matched": 59
+        "protected_records_matched": 59,
+        "runtime_prepared": true,
+        "company_profile_lifecycle_checks_implemented": true,
+        "installed_extension_source_currently_missing": true,
+        "current_gateway_ready": false
       }
     }
   },

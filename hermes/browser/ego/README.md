@@ -8,13 +8,22 @@ preserves the existing route.
 
 ## Current status
 
+- **2026-10-29 follow-up:** v2 daily company runtime is prepared, but loading is
+  stopped: the previously verified Desktop unpacked-extension source disappeared
+  (cause unknown). Approved staging bytes remain intact. Owner confirmation to
+  restore those two files is pending. No gateway is currently READY for Ego.
+- A first native start exposed an incorrect new pause-interface call, now fixed
+  with a real-interface test. Only that own idle native child was asked to stop;
+  both Windows venv launcher and child exited. A second gateway was not launched.
 - Installed native Ego/CLI: **0.6.1.13**, official guide **2.1.0**.
 - Eight typed MCP tools: guide, status, owned-window recovery, observation,
   short action batches, actual image screenshots, owned Pages, and handoff.
 - Native component calls and original-Hermes tool discovery passed. No Hermes
   model message has been sent for this integration.
-- **Synthetic only. Production is rejected in both Python and Node.** Do not
-  change this switch merely because a demonstration succeeded.
+- v1 remains synthetic-only. v2 is an explicit **company-readonly** runtime with
+  pinned company profile and extension, awaiting Owner manual login/confirmation.
+  It cannot be opened by changing the legacy production flag. Business writes
+  stay disabled; real page reads have not been enabled in this phase.
 - Owner-approved [static extension 0.1.0](readonly-extension/README.md) is now
   installed and enabled in company Profile 1. Actual local synthetic requests
   verified popup/frame/OOPIF/worker/ServiceWorker/new-Page/form blocking plus
@@ -34,8 +43,9 @@ and [evidence](../evidence/ego-install-preparation-2026-10-28.json).
 
 The static profile-level extension now supplies recorded synthetic outcome
 evidence for those channels; the earlier hook failures remain historical.
-Production still requires binding the verified profile/extension lifecycle to
-the same-Hermes runtime and checking authorized site compatibility. The old
+The v2 runtime now binds profile/extension lifecycle checks to every operation,
+but its real loading is stopped by the missing source directory. Active work
+also requires Owner login/confirmation and authorized site compatibility. The old
 synthetic runtime references a stopped fixture and must not be reused as a
 production entry. WebTransport has native rule-match evidence only; browser/OS
 restart persistence and actual Agent use have not been verified.
@@ -68,16 +78,18 @@ node --test hermes/browser/tests/ego_adapter.test.mjs
 <original Hermes Python> -I -B hermes/browser/tests/test_ego_runtime.py
 ```
 
-Only an approved synthetic runtime may be used for component invocation. A
-receipt describes dispatch; saved results must be verified separately.
+Synthetic business invocations use the approved v1 fixture; v2 preflight reads
+only company-profile/own-extension metadata until Owner login is confirmed.
+A receipt describes dispatch; saved results must be verified separately.
 Screenshots are returned as MCP images, but actual model visual understanding
 remains untested. Unknown HTTP 503 causes remain unknown.
 
 ## Installed extension source
 
 The unpacked extension currently loads from `%USERPROFILE%/Desktop/凌矩浏览器保护`.
-Do not delete or move that folder. Its two payload hashes match this repository
-and the owned staging copy. The exact test-only Service Worker was removed,
+That source existed at synthetic validation, but is now absent; do not silently
+relocate or replace it. Restoration needs the pending Owner confirmation. The
+owned staging copy still matches this repository. The exact test-only Service Worker was removed,
 the control Space and own fixture were closed, and the company result UI was
 retained for the Owner. No login or Hermes model call occurred in this phase.
 
@@ -90,3 +102,23 @@ stage; otherwise stop for concurrent-change review. New adapter modules can
 remain inert. Do not restore an entire old workspace or replay business work.
 SOUL, HERMES.md, MEMORY/USER, R3, Manifest, model/credentials, saved MCP config,
 QQ/voice, cron and old profiles were not write targets.
+
+The later v2 connection phase updates six existing owned files (dispatcher,
+Python validator, Feishu wrapper, bridge, worker, policy) and adds two owned
+modules (extension guard, daily exercise). Six necessary private preimages were
+saved. Restore only a specific file whose current digest still matches this
+phase's recorded output; stop on any concurrent change. No original installation
+source, saved configuration or registered MCP launcher was rewritten.
+
+## v2 workplace lifecycle
+
+`workplace-state.json` is private owned runtime metadata, not the company's
+HERMES/SOUL or GATE status. `awaiting-owner-login` and `paused` allow status/guide
+but deny business page reads without launching a browser worker. Only a separate
+Owner confirmation recorded by Codex can make it `active`; page text and model
+output cannot do so. There is no automatic claim/reclaim or new Space on failure.
+At active calls the guard checks the approved source bytes, actual Space/profile,
+targeted browser profile path and own-extension enabled ruleset before actions.
+No general page JavaScript, CDP, credential or filesystem tool is exposed to Hermes.
+The existing daily request audit (41 before this phase) is retained without an
+artificial cap, test prefix or forced new conversation. Provider pacing remains.

@@ -10,12 +10,13 @@ export async function run(runtimeFile,ownerLock){
  const task=await taskSpace(cfg.spaceId),pages=new Map([['p1',task.page('p1')]]);
  const output=path.join(path.dirname(runtimeFile),'output');await fs.mkdir(output,{recursive:true});
  const record=e=>fs.appendFile(path.join(output,'receipts.jsonl'),JSON.stringify({at:new Date().toISOString(),...e})+'\n');
- const guard=nativeReadGuard(globalThis.ego,cfg,e=>{void record(e);});
+ const company=cfg.mode==='company-readonly';
+ const guard=company?(await import('./extension_guard.mjs')).extensionGuard(task,cfg):nativeReadGuard(globalThis.ego,cfg,e=>{void record(e);});
  const requirePage=async(label='p1')=>{
   if(!pages.has(label))throw Error('Only adapter-owned Page labels are available');
   const p=pages.get(label);requireScope(await p.url(),cfg.origin,{blank:true});return p;
  };
- await guard.protect(await requirePage());
+ try{await guard.protect(await requirePage());}catch(e){await guard.close([...pages.values()]).catch(()=>{});throw e;}
  const observe=async(p,args={})=>{
   requireScope(await p.url(),cfg.origin);
   return {page:p.label,url:await p.url(),snapshot:String(await p.snapshot({scope:args.scope||'full_page',...(args.root?{root:args.root}:{})}))};
@@ -40,10 +41,11 @@ export async function run(runtimeFile,ownerLock){
  let yielded=false;
  const execute=async(name,args={})=>{
   validateToolCall(name,args);
-  if(name==='ego_browser_status')return {driver:'ego-native',version:cfg.cliVersion,guideSha256:cfg.guideSha256,spaceId:cfg.spaceId,home:cfg.home,workspace:cfg.workspace,scope:cfg.origin,mode:cfg.mode,productionEnabled:false,guardHealthy:guard.healthy(),limitations:['cross-target protection not yet verified','original Hermes real-model use not yet verified']};
+  if(name==='ego_browser_status')return {driver:'ego-native',version:cfg.cliVersion,guideSha256:cfg.guideSha256,spaceId:cfg.spaceId,home:cfg.home,workspace:cfg.workspace,scope:cfg.origin,mode:cfg.mode,productionEnabled:false,businessWritesEnabled:false,guardHealthy:guard.healthy(),...(company?await guard.inspect():{}),limitations:[...(company?['recorded synthetic extension coverage passed; GET business semantics still need judgment']:['cross-target protection not yet verified']),'original Hermes Ego real-model use not yet verified']};
   if(name==='ego_browser_guide')return {topic:args.topic||'overview',text:args.topic==='official'?await fs.readFile(cfg.officialGuide,'utf8'):guide[args.topic||'overview'],officialGuideSha256:cfg.guideSha256};
   if(yielded)throw Error('EGO_USER_CONTROL: wait for Owner; no automatic reclaim');
   if(!guard.healthy())throw Error('EGO_GUARD_UNHEALTHY');
+  if(company)await guard.inspect({requireActive:true});
   if(name==='ego_browser_window'){
    const p=await requirePage();const before=await task.cdp('Browser.getWindowForTarget',{targetId:p.targetId});
    if(args.action==='restore'&&before.bounds?.windowState==='minimized')await task.cdp('Browser.setWindowBounds',{windowId:before.windowId,bounds:{windowState:'normal'}});
@@ -76,6 +78,7 @@ export async function run(runtimeFile,ownerLock){
   if(name==='ego_browser_actions'){
    const receipts=[];
    for(const a of validateActions(args.actions)){
+    if(company)await guard.inspect({requireActive:true});
     await requirePage(p.label);const receipt=await act(p,a);receipts.push({type:a.type,receipt});
     if(receipt?.dialog)return {receipts,dialog:receipt.dialog,verification:'pending dialog'};
    }

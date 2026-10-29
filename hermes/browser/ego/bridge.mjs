@@ -6,7 +6,7 @@ import crypto from 'node:crypto';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createRequire} from 'node:module';
 import {spawn} from 'node:child_process';
-import {tools,validateConfig,VERSION} from './policy.mjs';
+import {tools,validateConfig,validateToolCall,workplaceState,guide,VERSION} from './policy.mjs';
 import {attachScreenshot} from '../image_result.mjs';
 const egoRoot=path.dirname(fileURLToPath(import.meta.url)),root=path.dirname(egoRoot);
 if(root!==path.join(os.homedir(),'.hermes','tools','company-browser'))throw Error('Original owned tool root required');
@@ -16,10 +16,13 @@ const cfg=validateConfig(JSON.parse(await fs.readFile(runtimeFile,'utf8')));
 if(cfg.toolRoot!==root||cfg.home!==path.join(os.homedir(),'.hermes')||cfg.workspace!==path.join(cfg.home,'company-workspace'))throw Error('Original identity/workspace required');
 const digest=async file=>crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex');
 if(await digest(cfg.cli)!==cfg.cliSha256||await digest(cfg.officialGuide)!==cfg.guideSha256)throw Error('Vendor bytes changed');
+const expectedSources=['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs',...(cfg.mode==='company-readonly'?['extension_guard.mjs']:[])];
 for(const [name,sha] of Object.entries(cfg.sourceSha256||{})){
- if(!['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs'].includes(name)||await digest(path.join(egoRoot,name))!==sha)throw Error('Adapter bytes changed');
+ if(!expectedSources.includes(name)||await digest(path.join(egoRoot,name))!==sha)throw Error('Adapter bytes changed');
 }
-if(Object.keys(cfg.sourceSha256||{}).length!==4)throw Error('Complete adapter version required');
+if(Object.keys(cfg.sourceSha256||{}).length!==expectedSources.length)throw Error('Complete adapter version required');
+const checkExtensionPayload=cfg.mode==='company-readonly'?(await import('./extension_guard.mjs')).checkExtensionPayload:null;
+if(checkExtensionPayload)await checkExtensionPayload(cfg);
 const req=createRequire(path.join(root,'package.json'));
 const sdk=await fs.realpath(path.join(root,'node_modules','@modelcontextprotocol','sdk'));
 if(JSON.parse(await fs.readFile(path.join(sdk,'package.json'),'utf8')).version!=='1.30.0')throw Error('Pinned SDK required');
@@ -61,6 +64,16 @@ server.setRequestHandler(CallToolRequestSchema,async request=>{
   const name=request.params.name,args=request.params.arguments||{};
   if(!tools.some(t=>t.name===name))return {isError:true,content:[{type:'text',text:'Unknown Ego browser tool'}]};
   try{
+   validateToolCall(name,args);
+   if(cfg.mode==='company-readonly'){
+    await checkExtensionPayload(cfg);
+    const state=workplaceState(JSON.parse(await fs.readFile(cfg.stateFile,'utf8')));
+    if(name==='ego_browser_guide')return {content:[{type:'text',text:JSON.stringify({topic:args.topic||'overview',text:args.topic==='official'?await fs.readFile(cfg.officialGuide,'utf8'):guide[args.topic||'overview']})}]};
+    if(!state.ready){
+     const result={driver:'ego-native',mode:cfg.mode,...state,spaceId:cfg.spaceId,profileId:cfg.profileId,businessWritesEnabled:false,pageContentRead:false,liveGuardChecked:false,next:'Owner completes manual login in company Ego, then confirms to Codex; no automatic reclaim, alternate driver or model test.'};
+     return {isError:name!=='ego_browser_status',content:[{type:'text',text:JSON.stringify(result)}]};
+    }
+   }
    await ensureWorker();const result=await callWorker(name,args);
    let response={isError:!!result.error,content:[{type:'text',text:JSON.stringify(result)}]};
    if(result.screenshot)response=await attachScreenshot(response,{filename:result.screenshot},path.join(run,'output'));
