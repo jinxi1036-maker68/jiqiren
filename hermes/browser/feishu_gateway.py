@@ -26,6 +26,7 @@ from safety import ordinary_path, sha256, check_snapshot
 from traffic_guard import install_traffic_guard
 from qq_chat import OrdinaryTrafficAudit
 from feishu_session_fence import resolve_native_session, local_session_command
+from feishu_progress import FeishuProgress, approved_progress
 
 
 def validate_gateway_handoff(gate):
@@ -59,7 +60,7 @@ def check_fresh_session(db, entry):
     return entry.session_id
 
 
-def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
+def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, progress_options=None):
     Runner=native.GatewayRunner
     old_primary=Runner._primary_message_handler
     old_handle=Runner._handle_message
@@ -112,10 +113,29 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home):
                     exercise.session_initialized=True
                     event(out,'daily_readonly_session_started',session_id=sid,cwd=os.getcwd(),native_force_new=False,native_conversation_continued=True)
             turn,token=meter.begin(True,control=control)
+            progress=None
+            outcome='error'
             try:
-                if not control:exercise.budget.arm()
-                return await native_handler(msg)
+                if not control:
+                    exercise.budget.arm()
+                    if progress_options is not None:
+                        try:
+                            adapter=self._adapter_for_source(msg.source)
+                            if adapter is not None:
+                                progress=FeishuProgress(adapter,msg,out,
+                                    interval=progress_options['interval_seconds'],
+                                    io_timeout=progress_options['io_timeout_seconds']).start()
+                                turn['progress']=progress
+                        except Exception as exc:
+                            event(out,'owner_progress_unavailable',error_type=type(exc).__name__)
+                result=await native_handler(msg)
+                outcome='returned'
+                return result
+            except asyncio.CancelledError:
+                outcome='cancelled'
+                raise
             finally:
+                if progress is not None:progress.finish(outcome)
                 meter.finish(turn,token)
                 exercise.pause()
                 if not control:event(out,'daily_readonly_message_returned',audit=exercise.budget.status(),protected_changes=check_snapshot(baseline))
@@ -318,7 +338,8 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
                                      pacer=BrowserPacer(meter,out/'response-events.jsonl'))
     import agent.title_generator as titles
     restore_titles=propagate_title_threads(titles)
-    restore_runner=install_runner_hooks(native,exercise,meter,out,baseline,gate['owner_binding'],home)
+    restore_runner=install_runner_hooks(native,exercise,meter,out,baseline,gate['owner_binding'],home,
+                                       progress_options=approved_progress(gate))
     try:
         if check_snapshot(baseline):raise RuntimeError('Protected files changed before native startup')
         await native_start(config=config,replace=False,verbosity=verbosity)

@@ -1,0 +1,115 @@
+{
+  "checked_at_utc": "2026-10-29T14:10:53.935853+00:00",
+  "state": "owned_progress_hooks_installed_original_gateway_READY_Feishu_connected_no_Owner_roundtrip_test",
+  "scope": "Original sole Hermes; exact authorized Feishu Owner DM continuous route only",
+  "mechanism": {
+    "model_calls_for_progress": 0,
+    "acknowledgement": "best-effort native Feishu text reply before model result",
+    "update_interval_seconds": 30,
+    "one_owned_bubble_edited": true,
+    "events": "same live turn known model API request start / response headers; unknown HTTPX excluded",
+    "native_tool_progress_and_interim_messages": "preserved",
+    "final_answer": "native result unchanged, separate from processing status",
+    "thinking_prompts_arguments_or_personal_identifiers_logged": false,
+    "on_send_or_edit_failure": "no helper resend or duplicate fallback; does not block native answer",
+    "control_commands_other_users_and_other_platforms": "no new receipt feature"
+  },
+  "discovered_native_behavior": {
+    "Feishu_send_typing": "no-op; reaction is not visible status text",
+    "long_running_default_seconds": 180,
+    "display_streaming": false,
+    "interim_messages": true,
+    "tool_progress": "all"
+  },
+  "prior_wait_evidence": {
+    "first_confirmed_Owner_reply_elapsed_seconds": 256.031,
+    "first_successful_logical_API_calls": 1,
+    "first_tool_calls": 0,
+    "first_input_tokens": 4387,
+    "wire_sequence": "504 with Retry-After 120; 500; 200; auxiliary/unknown requests recorded separately",
+    "subsequent_owner_activity_before_reload": "known model routes also returned 503, 500 and 429; causes not diagnosed",
+    "network_or_account_or_global_provider_root_cause": "not proven",
+    "progress_does_not_shorten_generation_or_solve_provider_errors": true
+  },
+  "validation": {
+    "new_progress_tests": 11,
+    "existing_gateway_tests": 10,
+    "existing_daily_tests": 4,
+    "all_25_passed": true,
+    "native_original_CLI_zero_network_probe_passed": true,
+    "SDK_send_and_edit_mocked_not_real_end_to_end_delivery": true
+  },
+  "activation": {
+    "one_graceful_idle_reload": true,
+    "old_child": 21884,
+    "old_launcher": 10460,
+    "native_stop_exceeded_30s_then_exited_without_force": true,
+    "launcher_pid": 12044,
+    "child_pid": 21744,
+    "actual_READY_utc": "2026-10-29T14:09:50.786142+00:00",
+    "cwd": "C:\\Users\\Administrator\\.hermes\\company-workspace",
+    "same_original_H_W_identity": true,
+    "browser_catalog_tools": 8,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    }
+  },
+  "files": {
+    "owned_updates": [
+      "feishu_gateway.py",
+      "feishu_meter.py"
+    ],
+    "owned_new": [
+      "feishu_progress.py"
+    ],
+    "source_sha256": {
+      "feishu_gateway.py": "49959f253ca70963258eb020733fb1ef6671fcfd3c112e0caf15beb53247b5c1",
+      "feishu_meter.py": "7ecc90bf39587077d2edae98d083f4b8a0e319e8a2281ae5ee069ef37ffda0c9",
+      "feishu_progress.py": "cb0f312acdc5220041276e3885e12d7b313420becc26121fa4dc31baeeca8b6c"
+    },
+    "owned_gate_changes": [
+      "source_sha256 for these three modules",
+      "owner_progress"
+    ],
+    "owned_gate_sha256": "bfb887917375e7dad897e1e7a4a45deec55addd8672dcedeb2dc39ba666d1ea8",
+    "owned_handoff_metadata_updated": true,
+    "protected_record_count": 59,
+    "protected_changes": [],
+    "protected_baseline_unchanged": true,
+    "runtime_browser_permissions_unchanged": true,
+    "original_install_source_config_identity_memories_R3_credentials_unchanged": true
+  },
+  "recovery": {
+    "private_preimages": 4,
+    "private_final_path_and_current_user_SYSTEM_ACL_verified": true,
+    "rollback": "only if each owned file still matches its output SHA: restore the two prior owned modules and original owned gate; idle reload original entry. Newly added inert helper may remain. Never restore original config/memory or overwrite concurrent changes.",
+    "rollback_performed": false
+  },
+  "audit_before": [
+    0,
+    86,
+    0
+  ],
+  "audit_after": [
+    0,
+    86,
+    0
+  ],
+  "new_Hermes_messages_sent_by_Codex": 0,
+  "new_model_requests_sent_by_Codex": 0,
+  "live_business_operations": 0,
+  "unverified": [
+    "First Owner real Feishu acknowledgement/edit delivery and latency",
+    "Native tool progress delivery during actual work",
+    "End-to-end reply speed improvement (not claimed)",
+    "Status delivery during Feishu outage or blocked event loop; best-effort only"
+  ],
+  "private_evidence_sha256": {
+    "activation": "093f2e886c40c459ee623538bd892d9e738c335781fa810c41a89f92f4751d7a",
+    "native_CLI_probe": "052c1d7aa76432470ef74c0cb9b7c79c75b3ccf24cf0ace44fdc5d978c08f73c"
+  }
+}

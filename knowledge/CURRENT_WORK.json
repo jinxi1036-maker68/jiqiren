@@ -716,6 +716,20 @@
       "other_58_protection_records_unchanged": true,
       "permission_inheritance_correction_recorded": true,
       "next": "Normal Owner work only; no automatic model test or extra permission expansion"
+    },
+    "feishu_progress": {
+      "date": "2026-10-29",
+      "status": "owned_progress_hooks_installed_original_gateway_READY_Feishu_connected_no_Owner_roundtrip_test",
+      "report": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.md",
+      "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json",
+      "same_original_employee": true,
+      "asynchronous_ack": true,
+      "status_edit_interval_seconds": 30,
+      "native_final_reply_and_autonomous_work_preserved": true,
+      "new_model_requests_by_Codex": 0,
+      "protected_records_unchanged": 59,
+      "Owner_real_receipt_delivery_verified": false,
+      "model_request_latency_fixed": false
     }
   },
   "admin_finance_track": {

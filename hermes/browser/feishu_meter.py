@@ -74,9 +74,33 @@ class GatewayMeter:
 
 
 class BrowserPacer(ModelPacer):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._progress_family=threading.local()
+
     def check(self):
         self.budget.check()
         if self.frozen:raise BudgetBlocked('Provider wait exceeds automatic scope')
+
+    def _progress(self, state, **fields):
+        turn=CURRENT_TURN.get()
+        # A context copied into a late worker must not update a newer task.
+        # Unattributed requests retain their audit, but never guess a status.
+        if turn and turn.get('meter') is self.budget and turn['live'].is_set():
+            progress=turn.get('progress')
+            if progress is not None:
+                try:progress.note(state,**fields)
+                except Exception:pass
+
+    def started(self, family):
+        super().started(family)
+        self._progress_family.known=family in {'chat_completions','responses','messages','generate_content'}
+        if self._progress_family.known:self._progress('request_started')
+
+    def response(self, response):
+        super().response(response)
+        if getattr(self._progress_family,'known',False):
+            self._progress('response_headers',status=response.status_code)
 
 
 def propagate_title_threads(module):
