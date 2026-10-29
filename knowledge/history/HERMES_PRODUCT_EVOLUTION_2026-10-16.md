@@ -439,3 +439,8 @@ Owner指出每句都收到相同“收到”长模板。确认是Codex辅助层�
 ### 2026-10-30｜Owner恢复原扩展，公司浏览器连接恢复
 
 Owner在正常界面装回原批准保护扩展。旧交接窗口Space1已不存在，依既有批准恢复同公司Profile1工作窗口Space2；实际guard/URL与原活动Python的MCP status通过，客户端关闭无残留lease。仅更新自有locator及pin，原网关本段1次/全修复2次空闲重载，飞书等主通道恢复。59原保护不变，Codex模型/业务操作0，业务准确性未靠追加考试宣布通过。窗口及扩展此前消失原因未知，真实写权限未开放。[最新证据](../../hermes/runtime/2026-10-29_FEISHU_PROGRESS.json)。
+
+
+### 2026-10-30｜按Owner决定整体接通原Hermes浏览器业务UI能力
+
+Owner拒绝创建/分组/绑定逐项解锁，明确要求全部浏览器写入能力一起接通。显式v3 company-business已在原H/W/Profile1/Space2加载，8现有UI工具可按目标操作，Owner任务决定具体业务字段。原扩展仅同公司站点动态模式调整，静态文件和安装权限不改；浏览器原生方法匹配与真实MCP status/guide通过，46本地检查、一次空闲网关重载及59保护匹配，Codex新增模型/业务提交0。只读带教阶段已被新授权取代，唯一员工、自主方法、隐私、真实回读及高影响任务边界保持。[授权ADR](../decisions/ADR-HERMES-BROWSER-BUSINESS-2026-10-30.md)，[实施报告](../../hermes/browser/reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md)。

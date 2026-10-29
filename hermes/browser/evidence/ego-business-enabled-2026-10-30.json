@@ -1,0 +1,176 @@
+{
+  "at_utc": "2026-10-29T20:19:52.148122+00:00",
+  "state": "business_ui_capability_loaded",
+  "owner_authorization": "2026-10-30 Owner explicitly requested all browser business write capabilities together; no per-feature reopening",
+  "same_original_H_W_employee": true,
+  "company_profile_unchanged": true,
+  "company_space_id": 2,
+  "mode": "company-business",
+  "businessWritesEnabled": true,
+  "productionEnabled": true,
+  "browser_UI_scope": "All same-site browser UI create/edit/group/bind/save/submit and authorized confirmation controls; no business-specific action whitelist",
+  "execution_authority": "Owner task goals/fields; specific authority for high-impact actions; tools do not invent assignments or start unattended jobs",
+  "MCP_actual_status": {
+    "at": "2026-10-29T20:18:22.326Z",
+    "passed": true,
+    "driver": "ego-native",
+    "mode": "company-business",
+    "spaceId": 2,
+    "businessWritesEnabled": true,
+    "productionEnabled": true,
+    "guardHealthy": true,
+    "extensionEnabled": true,
+    "extensionModeMatched": true,
+    "dynamicRuleIds": [
+      10001,
+      10002
+    ],
+    "original_H_matches": true,
+    "original_W_matches": true,
+    "tool_count": 8,
+    "guide_authority_matches": true,
+    "guide_response_sha256": "44f925b618f0195a985ddddacfe3c9c06f0c9d9ff8bf3cef86563f5169ab65c8",
+    "model_requests": 0,
+    "real_business_UI_submissions": 0,
+    "stderrBytes": 0,
+    "lease_exists_after_client_close": false
+  },
+  "extension_actual_mode": {
+    "at": "2026-10-29T20:18:18.491Z",
+    "passed": true,
+    "models": 0,
+    "production_UI_submissions": 0,
+    "extension_payload_or_permissions_changed": false,
+    "company_profile_only": true,
+    "rolled_back": false,
+    "dynamic_rule_ids": [
+      10001,
+      10002
+    ],
+    "mode": "company-business",
+    "rule_matches": {
+      "available": true,
+      "network_requests_sent": 0,
+      "rows": [
+        {
+          "method": "post",
+          "company": true,
+          "matched": [
+            10001
+          ]
+        },
+        {
+          "method": "put",
+          "company": true,
+          "matched": [
+            10001
+          ]
+        },
+        {
+          "method": "patch",
+          "company": true,
+          "matched": [
+            10001
+          ]
+        },
+        {
+          "method": "delete",
+          "company": true,
+          "matched": [
+            10001
+          ]
+        },
+        {
+          "company": false,
+          "matched": [
+            1
+          ]
+        },
+        {
+          "company": false,
+          "matched": [
+            1
+          ]
+        }
+      ]
+    },
+    "guardHealthy": true,
+    "extensionEnabled": true,
+    "extensionModeMatched": true
+  },
+  "native_CLI_zero_model_probe": true,
+  "actual_READY_utc": "2026-10-29T20:18:49.940121+00:00",
+  "gateway_launcher_pid": 12732,
+  "gateway_child_pid": 1656,
+  "platform_states": {
+    "wecom": "connected",
+    "wecom_callback": "disconnected",
+    "weixin": "connected",
+    "qqbot": "connected",
+    "feishu": "connected"
+  },
+  "one_idle_graceful_reload": true,
+  "force_stop": false,
+  "protected_original_records_unchanged": 59,
+  "protected_baseline_sha256": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
+  "owned_sources_after_sha256": {
+    "ego/policy.mjs": "681df091084b94a0e11ee6825d1d4cd9799f59a9ec5e0ec14b05378d4812b9e2",
+    "ego/extension_guard.mjs": "f0cd701bc5c02732709cd35634c5883205937c0efdffa3006f4db863242e4553",
+    "ego/bridge.mjs": "84c8ef638b587b1514453659a81d8d9f25bc2004677ec33f50e434f4269a0b72",
+    "ego/worker.mjs": "f9b6c3971491dd7cbeb2dc96f248e23305a3eef9e021f07ca20ed16224daddce",
+    "ego_runtime.py": "f2f55fe6779cbc326fa12f2a6a8e2591d8661a9d43ae7f9403d783b14e198034",
+    "dispatch.py": "06267d15237031521835fbfa848f055db4bcfec2e105a15ddf6aea7590a818f3",
+    "ego_task.py": "105fdb05d1c27da5bf7d81696c9d87d3540a47f25f723a71166e5d3f91cc9aad",
+    "feishu_gateway.py": "50cf6d124a3d97cc205db54e52497c42e2f4bca2d6b6295306fad242c875489e"
+  },
+  "runtime_sha256": "385f64d598b60c2315ea1775f44bb67faa72f57a1c8a80131cf30d8690540c68",
+  "gate_sha256": "7591e54494c656688d5e2e90461946258e361694b8336353cc6ce240ee9f43fb",
+  "private_preimages": {
+    "owned_file_preimages": 11,
+    "own_extension_rules_before": 1,
+    "private_only": true
+  },
+  "original_identity_memory_R3_config_credentials_model_voice_QQ_cron_MCP_registration_unchanged": true,
+  "extension_install_payload_permissions_static_rules_unchanged": true,
+  "extension_dynamic_rule_ids": [
+    10001,
+    10002
+  ],
+  "rules_profile_scope_only": true,
+  "rollback_performed": false,
+  "new_profiles_or_spaces": 0,
+  "new_Hermes_model_calls_or_messages_by_Codex": 0,
+  "real_business_UI_submissions_by_Codex": 0,
+  "rule_match_checks_sent_no_network_requests": true,
+  "automatic_background_requests_of_existing_page_not_audited": true,
+  "audit_at_verification": [
+    0,
+    121,
+    0
+  ],
+  "artificial_request_or_task_limits_added": false,
+  "tests": {
+    "node": 19,
+    "python_ego": 17,
+    "python_gateway": 10,
+    "total": 46
+  },
+  "private_evidence_sha256": {
+    "operation": "1ca3dae75fed49f560829b19c08097cf998c0410f90f08e1bdf4ac68c17981fb",
+    "extension_mode": "8f924a23abe6f8353e850ccc7ba70cbc760deb372f241c19e0bddad96c100470",
+    "MCP_status": "ec5adc41c6927d82c83b1d454da6bbcc6706cadbc689371b3bc63f36479f13ea",
+    "native_CLI_probe": "846bf5ab2486419328b769c0a150d663b5605168e0edc60066df979beb8ea4a7"
+  },
+  "not_verified": [
+    "No real business record was created, updated, grouped, bound or deleted for testing",
+    "Platform server-side account permissions and individual business outcomes depend on real task execution",
+    "General file upload/download, credential access, arbitrary shell/JS and raw network APIs are not added by this browser UI capability change",
+    "Existing wecom_callback issue and model provider quota/latency remain separate"
+  ],
+  "existing_identity_permission_check": {
+    "scope": "Only permission-related SOUL/HERMES lines inspected, no private memory or complete system prompt",
+    "unconditional_real_business_write_ban_found": false,
+    "existing_rule_allows_Owner_decision_on_unauthorized_writes": true,
+    "identity_files_changed": false
+  }
+}

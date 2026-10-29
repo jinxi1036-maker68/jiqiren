@@ -11,14 +11,22 @@ def validate_ego_runtime(runtime, root):
         raise RuntimeError('Ego runtime outside owned runs')
     c = json.loads(runtime.read_text('utf-8'))
     home = Path.home() / '.hermes'
-    company = c.get('schema') == 'lingju.ego-browser.v2'
-    if (c.get('schema') not in ('lingju.ego-browser.v1', 'lingju.ego-browser.v2')
+    company = c.get('schema') in ('lingju.ego-browser.v2','lingju.ego-browser.v3')
+    business = c.get('schema') == 'lingju.ego-browser.v3'
+    if (c.get('schema') not in ('lingju.ego-browser.v1', 'lingju.ego-browser.v2','lingju.ego-browser.v3')
             or c.get('toolRoot') != str(root)
             or c.get('home') != str(home)
             or c.get('workspace') != str(home / 'company-workspace')
-            or c.get('mode') != ('company-readonly' if company else 'synthetic')
-            or c.get('productionEnabled') is not False):
+            or c.get('mode') != ('company-business' if business else 'company-readonly' if company else 'synthetic')
+            or c.get('productionEnabled') is not business):
         raise RuntimeError('Ego candidate identity/synthetic-only scope differs')
+    if business:
+        grant=c.get('businessAuthorization',{})
+        if (grant.get('schema')!='lingju.browser-business-grant.v1'
+                or grant.get('ownerApproved') is not True or grant.get('scopeOrigin')!=c.get('origin')
+                or grant.get('scope')!='all-company-browser-ui-business-actions'
+                or not grant.get('reference') or grant.get('highImpactRequiresSpecificOwnerTask') is not True):
+            raise RuntimeError('Explicit Owner browser business authorization required')
     for key, digest in [('cli', 'cliSha256'), ('officialGuide', 'guideSha256')]:
         if sha256(ordinary_path(c[key])) != c[digest]:
             raise RuntimeError('Pinned vendor artifact changed')
@@ -28,9 +36,9 @@ def validate_ego_runtime(runtime, root):
         required.add('extension_guard.mjs')
         required.add('table_readback.mjs')
         if (c.get('origin') != 'https://ldp.lingrobotics.com'
-                or c.get('businessWritesEnabled') is not False
+                or c.get('businessWritesEnabled') is not business
                 or not c.get('approvalReference') or not c.get('profileId')):
-            raise RuntimeError('Explicit company read-only scope required')
+            raise RuntimeError('Explicit company browser scope required')
         state = ordinary_path(c['stateFile'])
         if state != runtime.parent / 'workplace-state.json':
             raise RuntimeError('Owned workplace state required')

@@ -15,7 +15,7 @@ class EgoReadonlyExercise:
     expected_tools=EGO_TOOLS
     toolsets=['company_browser_simulation']
     def __init__(self,g,root,state_db,channel='feishu'):
-        if (g.get('kind')!='lingju-ego-readonly-daily' or channel!='feishu'
+        if (g.get('kind') not in ('lingju-ego-readonly-daily','lingju-ego-business-daily') or channel!='feishu'
                 or g.get('channel')!='feishu' or not g.get('approval_reference')
                 or g.get('request_limit') is not None or g.get('task_limit') is not None
                 or g.get('Owner_removed_test_quotas') is not True
@@ -24,7 +24,8 @@ class EgoReadonlyExercise:
         root=ordinary_path(root);self.runtime=ordinary_path(g['runtime'])
         if sha256(self.runtime)!=g['runtime_sha256']:raise RuntimeError('Ego runtime changed')
         self.cfg=validate_ego_runtime(self.runtime,root)
-        if self.cfg['mode']!='company-readonly':raise RuntimeError('Company read-only runtime required')
+        expected='company-business' if g['kind']=='lingju-ego-business-daily' else 'company-readonly'
+        if self.cfg['mode']!=expected:raise RuntimeError('Company runtime and daily authority differ')
         self.ledger=ordinary_path(g['ledger'])
         if root/'runs' not in self.ledger.parents:raise RuntimeError('Daily audit outside owned runs')
         self.budget=RequestAudit(self.ledger)
@@ -35,4 +36,6 @@ class EgoReadonlyExercise:
         with contextlib.closing(self.budget._connection()) as c, c:
             c.execute('BEGIN IMMEDIATE')
             c.execute('UPDATE state SET armed=0 WHERE id=1')
-    def summary(self):return '原Hermes公司Ego只读工具；无任务前缀或人为次数名额，登录由Owner完成。'
+    def summary(self):
+        mode='完整业务页面操作（含创建、编辑、分组、绑定及提交）；依Owner工作目标自主执行' if self.cfg['mode']=='company-business' else '只读'
+        return '原Hermes公司Ego'+mode+'；无任务前缀或人为次数名额，登录由Owner完成。'

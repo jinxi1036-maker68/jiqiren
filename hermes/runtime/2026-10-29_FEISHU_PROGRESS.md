@@ -118,3 +118,8 @@ Owner确认正常界面已加载扩展。新一轮只读核对中，原公司Pro
 **当前结论是公司只读浏览器连接恢复，Hermes可承接Owner正常已授权的站内只读工作。** 这不是新的业务结果验收，不代表所有关闭窗口/崩溃都能自动恢复，也不代表获得创建/绑定/删除等真实写权限。原扩展及窗口之前消失原因仍未知，provider限流/时延问题另列；不将此次占用/失效定位归为模型思考能力问题。保持当前公司工作窗口供同一Hermes继续使用，不新增一轮考试。
 
 本节及同名JSON.browser_connection_restored为最新状态，上一节browser_ready=false是恢复前历史。后续若窗口确实关闭、用户接管或保护缺失，仍须如实报具体阻碍，不抢占、猜测或自动换路线。
+
+
+## 2026-10-30最新：Owner批准整体浏览器业务操作，已加载company-business
+
+Owner明确要求所有浏览器写入能力一起接通。原Hermes同H/W、公司Profile1/Space2及既有8工具切换显式v3业务模式；status/guide均为company-business、businessWritesEnabled=true，创建/编辑/分组/绑定/保存/提交不再逐项解锁。原扩展静态文件/权限保留，仅同站动态规则放行业务方法，浏览器原生规则匹配与实际MCP检查通过。原网关一次空闲正常重载、04:18:49实际READY，飞书等主通道connected。46本地检查通过，59原保护不变，原身份/记忆/模型/配置/知识不改；SOUL/HERMES定点权限行核对未发现不可被Owner授权更新的无条件写入禁令。Codex模型0、真实业务UI提交0，不以权限接通冒称业务已保存。授权/执行/恢复详见[专门报告](../browser/reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md)和[脱敏证据](../browser/evidence/ego-business-enabled-2026-10-30.json)。此前只读状态是历史，不是当前模式。

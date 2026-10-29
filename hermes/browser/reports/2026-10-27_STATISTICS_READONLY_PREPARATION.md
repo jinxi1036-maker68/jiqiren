@@ -344,3 +344,8 @@ Owner在23:11截图中收到EGO_BUSY。定点检查确认原lease所属PID18036�
 ## 2026-10-30最新：原公司只读连接恢复
 
 Owner已恢复原扩展；同一公司Profile1的Space2、实际扩展保护及/statistics URL通过零模型核验。原活动Python/MCP status实际通过，8工具、正确H/W、guardHealthy/extensionEnabled=true、businessWritesEnabled=false，关闭后无残留lease。自有runtime仅更新Space4→2及gate pin，原网关本段1次/整个连接修复2次空闲正常重载，飞书等主通道connected，59项保护不变，本段账本111→111。上一段交接Space1后来已不存在，原因未知，恢复的先后2窗口均如实计数。未发模型任务、未读业务正文/名单、未改权限；具体业务结果仍由Hermes承接Owner正常任务。[完整本轮记录](../../runtime/2026-10-29_FEISHU_PROGRESS.md)，同名JSON.browser_connection_restored为当前状态。
+
+
+## 2026-10-30最新权限：只读带教阶段已被Owner整体业务授权取代
+
+原Hermes公司浏览器现为company-business/businessWritesEnabled=true，不再按功能逐项恢复。真实扩展模式、原生HTTP方法规则匹配、实际MCP状态/指南和原网关READY均已证实，未提交真实业务或追加模型考试。59保护和唯一身份保持。[本轮报告](2026-10-30_BUSINESS_UI_ENABLEMENT.md)，[Owner授权ADR](../../../knowledge/decisions/ADR-HERMES-BROWSER-BUSINESS-2026-10-30.md)。本文件此前company-readonly描述保留为历史。

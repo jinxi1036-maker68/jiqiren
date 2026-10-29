@@ -756,7 +756,7 @@
     }
   },
   "initial_deployment_state_scope": "Historical snapshot; current feedback follows status_feedback_correction/current_feedback_policy",
-  "latest_report_block": "browser_connection_restored",
+  "latest_report_block": "business_ui_enablement",
   "status_feedback_correction": {
     "at_utc": "2026-10-29T15:07:29.870984+00:00",
     "state": "unconditional_ack_removed_delayed_labelled_status_and_SDK_PUT_fix_loaded_real_edit_delivery_unverified",
@@ -1089,5 +1089,24 @@
       "No claim of all browser failure self-healing or business write permissions; server-side read-only role remains separate",
       "Provider quota/latency and old wecom_callback issue remain separate"
     ]
+  },
+  "business_ui_enablement": {
+    "date": "2026-10-30",
+    "status": "business_ui_capability_loaded",
+    "same_original_employee": true,
+    "company_profile_unchanged": true,
+    "mode": "company-business",
+    "businessWritesEnabled": true,
+    "productionEnabled": true,
+    "report": "hermes/browser/reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md",
+    "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json",
+    "authority": "knowledge/decisions/ADR-HERMES-BROWSER-BUSINESS-2026-10-30.md",
+    "actual_MCP_status_and_guide_passed": true,
+    "actual_extension_native_method_rule_matches_passed": true,
+    "per_feature_write_unlock_required": false,
+    "new_Hermes_models_by_Codex": 0,
+    "real_business_save_test_by_Codex": false,
+    "protected_original_records_unchanged": 59,
+    "unattended_business_or_cron_started": false
   }
 }

@@ -14,7 +14,7 @@ async function fixture(t){
  const c={schema:'lingju.ego-browser.v2',mode:'company-readonly',origin:'https://ldp.lingrobotics.com',productionEnabled:false,businessWritesEnabled:false,spaceId:1,profileId:'Profile 1',profileDirectory:path.join(dir,'Profile 1'),stateFile:path.join(dir,'state.json'),extension:{id:'fpifglepgaacbbabakmcjmkinlpnconi',directory:dir,ruleset:'company_readonly',manifestSha256:await hash('manifest.json'),rulesSha256:await hash('rules.json')},cliVersion:'0.6.1.13',cliSha256:'a'.repeat(64),guideSha256:'b'.repeat(64),approvalReference:'fixture only',home:'H',workspace:'W'};
  const save=()=>fs.writeFile(c.stateFile,JSON.stringify(state));await save();
  let url='about:blank',enabled=['company_readonly'],ownership='agent',profile='Profile 1',created=0,closed=0;
- const page={async goto(u){url=u;},async url(){return url;},async evaluate(){return url==='chrome://version/'?c.profileDirectory:{rules:enabled};},async close(){closed++;}};
+ const page={async goto(u){url=u;},async url(){return url;},async evaluate(){return url==='chrome://version/'?c.profileDirectory:{rules:enabled,dynamic:[],session:[]};},async close(){closed++;}};
  const task={async newPage(){created++;return page;}};
  const guard=extensionGuard(task,c,{spaces:async()=>[{id:1,profileId:profile,ownership}]});
  return {c,state,save,guard,dir,setEnabled(v){enabled=v;},setOwner(v){ownership=v;},setProfile(v){profile=v;},counts:()=>({created,closed})};

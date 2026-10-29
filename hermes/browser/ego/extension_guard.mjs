@@ -3,7 +3,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {workplaceState} from './policy.mjs';
+import {workplaceState,verifyExtensionMode} from './policy.mjs';
 const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 export async function checkExtensionPayload(c){
  const dir=path.resolve(c.extension.directory);
@@ -32,10 +32,11 @@ export function extensionGuard(task,c,{spaces=()=>listTaskSpaces()}={}){
    await metaPage.goto('chrome-extension://'+c.extension.id+'/manifest.json');
   }
   if(await metaPage.url()!=='chrome-extension://'+c.extension.id+'/manifest.json')throw Error('EGO_EXTENSION_INSPECTOR_CHANGED');
-  const enabled=await metaPage.evaluate(async()=>({rules:await chrome.declarativeNetRequest.getEnabledRulesets()}));
-  if(enabled.rules.length!==1||enabled.rules[0]!==c.extension.ruleset)throw Error('EGO_EXTENSION_NOT_ENABLED');
+  const enabled=await metaPage.evaluate(async()=>({rules:await chrome.declarativeNetRequest.getEnabledRulesets(),
+   dynamic:await chrome.declarativeNetRequest.getDynamicRules(),session:await chrome.declarativeNetRequest.getSessionRules()}));
+  verifyExtensionMode(enabled,c);
   healthy=true;
-  return {...state,profileId:c.profileId,spaceId:c.spaceId,extensionEnabled:true,extensionPayloadMatched:true};
+  return {...state,profileId:c.profileId,spaceId:c.spaceId,extensionEnabled:true,extensionPayloadMatched:true,extensionModeMatched:true,dynamicRuleIds:enabled.dynamic.map(r=>r.id)};
  };
  return {inspect,healthy:()=>healthy,protect:async()=>inspect(),async close(){closed=true;healthy=false;if(metaPage){await metaPage.close();metaPage=null;}}};
 }

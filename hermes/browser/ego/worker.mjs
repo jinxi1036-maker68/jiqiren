@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import http from 'node:http';
 import crypto from 'node:crypto';
-import {validateConfig,validateActions,validateToolCall,requireScope,guide} from './policy.mjs';
+import {validateConfig,validateActions,validateToolCall,requireScope,guide,isCompany,authority} from './policy.mjs';
 import {nativeReadGuard} from './native_guard.mjs';
 import {releaseOwnedLease} from './lifecycle.mjs';
 
@@ -14,7 +14,7 @@ export async function run(runtimeFile,ownerLock){
  const task=await taskSpace(cfg.spaceId);pages.set('p1',task.page('p1'));
  const output=path.join(path.dirname(runtimeFile),'output');await fs.mkdir(output,{recursive:true});
  record=e=>fs.appendFile(path.join(output,'receipts.jsonl'),JSON.stringify({at:new Date().toISOString(),...e})+'\n');
- const company=cfg.mode==='company-readonly';
+ const company=isCompany(cfg);
  const tableReader=company?await import('./table_readback.mjs'):null;
  guard=company?(await import('./extension_guard.mjs')).extensionGuard(task,cfg):nativeReadGuard(globalThis.ego,cfg,e=>{void record(e);});
  const requirePage=async(label='p1')=>{
@@ -47,7 +47,7 @@ export async function run(runtimeFile,ownerLock){
  };
  const execute=async(name,args={})=>{
   validateToolCall(name,args);
-  if(name==='ego_browser_status')return {driver:'ego-native',version:cfg.cliVersion,guideSha256:cfg.guideSha256,spaceId:cfg.spaceId,home:cfg.home,workspace:cfg.workspace,scope:cfg.origin,mode:cfg.mode,productionEnabled:false,businessWritesEnabled:false,guardHealthy:guard.healthy(),...(company?await guard.inspect():{}),limitations:[...(company?['recorded synthetic extension coverage passed; GET business semantics still need judgment']:['cross-target protection not yet verified']),'Readiness alone does not prove an accurate business report or visual interpretation; each actual task needs its own evidence.']};
+  if(name==='ego_browser_status')return {driver:'ego-native',version:cfg.cliVersion,guideSha256:cfg.guideSha256,spaceId:cfg.spaceId,home:cfg.home,workspace:cfg.workspace,scope:cfg.origin,mode:cfg.mode,productionEnabled:cfg.productionEnabled,authority:authority(cfg),...authority(cfg),guardHealthy:guard.healthy(),...(company?await guard.inspect():{}),limitations:[...(company?['Same-site tool capability is not server account authorization; business success needs actual saved-result verification.']:['cross-target protection not yet verified']),'Readiness alone does not prove an accurate business report or visual interpretation; each actual task needs its own evidence.']};
   if(name==='ego_browser_guide')return {topic:args.topic||'overview',text:args.topic==='official'?await fs.readFile(cfg.officialGuide,'utf8'):guide[args.topic||'overview'],officialGuideSha256:cfg.guideSha256};
   if(yielded)throw Error('EGO_USER_CONTROL: wait for Owner; no automatic reclaim');
   if(!guard.healthy())throw Error('EGO_GUARD_UNHEALTHY');

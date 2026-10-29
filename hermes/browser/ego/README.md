@@ -8,6 +8,16 @@ preserves the existing route.
 
 ## Current status
 
+**2026-10-30: company-business 0.4.0 is active.** Owner requested all browser UI
+business capability together, superseding the blanket read-only teaching scope.
+Original H/W/Profile1 and Space2 remain. Eight existing tools provide forms,
+create/edit/group/bind/save/submit controls under Owner tasks. Actual extension
+mode, native rule matching, MCP status/guide and idle native gateway reload
+passed with zero model/business submissions. Static payload/permissions remain;
+two higher-priority same-site dynamic rules allow business methods, with off-site
+protection retained. See [current report](../reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md).
+The following bullets describe earlier historical stages, not the present mode.
+
 - **Readback 0.3.0 loaded (2026-10-29):** Owner approved one restored company
   work Space and one idle original-gateway reload. Company Profile 1 now uses
   Space 4; native READY and eight tools are evidenced, with original H/W and
@@ -50,7 +60,7 @@ preserves the existing route.
   WebSocket and unapproved-port denial. A separately authorized Profile 2 control
   was unaffected. This is component evidence, not a Hermes Agent business result.
 
-## Real writes remain closed; historical guard failures are retained
+## Historical read-only stage; earlier guard failures are retained
 
 The main Page's GET requests were allowed and a project POST was denied before
 reaching the fixture. A separate related-popup probe nevertheless delivered a

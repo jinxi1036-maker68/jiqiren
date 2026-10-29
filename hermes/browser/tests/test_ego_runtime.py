@@ -47,5 +47,32 @@ class EgoRuntimeTests(unittest.TestCase):
     def test_company_state_must_stay_in_this_run(self):
         self.company();self.c['stateFile']=str(self.root/'guide.txt');self.save()
         with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+    def business(self):
+        self.company()
+        self.c.update(schema='lingju.ego-browser.v3',mode='company-business',productionEnabled=True,businessWritesEnabled=True,
+            businessAuthorization=dict(schema='lingju.browser-business-grant.v1',ownerApproved=True,
+                scopeOrigin=self.c['origin'],scope='all-company-browser-ui-business-actions',
+                reference='Owner 2026-10-30',highImpactRequiresSpecificOwnerTask=True))
+        self.save()
+    def test_business_runtime_uses_original_pinned_route_and_requires_owner_grant(self):
+        self.business();cfg,target=dispatch_target(self.runtime,self.root)
+        self.assertEqual(target,'ego/bridge.mjs');self.assertTrue(cfg['businessWritesEnabled'])
+        self.c['businessAuthorization']['ownerApproved']=False;self.save()
+        with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+    def test_business_origin_and_legacy_flag_cannot_expand_implicitly(self):
+        self.business();self.c['origin']='https://example.com';self.save()
+        with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+        self.c.update(origin='https://ldp.lingrobotics.com',schema='lingju.ego-browser.v2');self.save()
+        with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+    def test_daily_gateway_accepts_whole_business_capability_but_not_mismatched_readonly_gate(self):
+        from ego_task import EgoReadonlyExercise
+        from request_budget import RequestAudit
+        self.business();ledger=self.runtime.parent/'audit.sqlite';RequestAudit.create(ledger)
+        g=dict(kind='lingju-ego-business-daily',channel='feishu',approval_reference='Owner fixture',
+            request_limit=None,task_limit=None,Owner_removed_test_quotas=True,zero_model_checks_passed=True,
+            runtime=str(self.runtime),runtime_sha256=sha256(self.runtime),ledger=str(ledger))
+        e=EgoReadonlyExercise(g,self.root,self.root/'state.db')
+        self.assertTrue(e.continuous);self.assertIn('完整业务页面操作',e.summary())
+        with self.assertRaises(RuntimeError):EgoReadonlyExercise(dict(g,kind='lingju-ego-readonly-daily'),self.root,self.root/'state.db')
 
 if __name__=='__main__':unittest.main()

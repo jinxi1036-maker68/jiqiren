@@ -21,7 +21,7 @@ def wait_bridge_shutdown(child,job):
 def dispatch_target(runtime, root):
     """Explicit fixed entry or legacy finite runtime; never guess a fallback."""
     cfg = json.loads(runtime.read_text(encoding="utf-8"))
-    if cfg.get('schema') in ('lingju.ego-browser.v1', 'lingju.ego-browser.v2'):
+    if cfg.get('schema') in ('lingju.ego-browser.v1', 'lingju.ego-browser.v2', 'lingju.ego-browser.v3'):
         from ego_runtime import validate_ego_runtime
         cfg = validate_ego_runtime(runtime, root)
         return cfg, 'ego/bridge.mjs'
