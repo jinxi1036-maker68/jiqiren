@@ -447,7 +447,7 @@
       },
       "ego_integration": {
         "date": "2026-10-29",
-        "status": "Owner_login_confirmed_guard_restored_readonly_active",
+        "status": "first_Hermes_Ego_real_query_executed_reporting_accuracy_failed",
         "same_original_employee": true,
         "browser_candidate": "Ego Lite Windows beta",
         "installer_version": "0.6.1.13",
@@ -467,7 +467,7 @@
         "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
         "plan": "hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md",
         "evidence": "hermes/browser/evidence/ego-install-preparation-2026-10-28.json",
-        "next": "Owner sends a normal read-only business goal to the same Hermes through Feishu; Hermes independently finds menus and queries existing records. Codex does not send the message or introduce test quotas.",
+        "next": "Train reporting discipline: map each value to the actual table header, separate category/group, cross-check row totals and observation time, keep causes unknown without evidence, and use the available Ego browser tools. Preserve autonomous method choice; no fixed business click script.",
         "production_enabled": false,
         "native_catalog_tools": 8,
         "live_gateway_or_Desktop_loaded": true,
@@ -483,7 +483,7 @@
         "extension_enabled": true,
         "independent_profile_control_passed": true,
         "synthetic_wire_write_blocking_passed": true,
-        "actual_Agent_Ego_use_verified": false,
+        "actual_Agent_Ego_use_verified": true,
         "protected_records_matched": 59,
         "runtime_prepared": true,
         "company_profile_lifecycle_checks_implemented": true,
@@ -494,7 +494,10 @@
         "current_company_space_id": 2,
         "Owner_Ego_login_confirmed": true,
         "readonly_workplace_active": true,
-        "read_guard_restored": true
+        "read_guard_restored": true,
+        "first_real_device_query_execution": "passed",
+        "first_real_device_query_report_accuracy": "failed",
+        "first_real_device_query_readonly_execution": "passed with one denied terminal attempt"
       }
     }
   }

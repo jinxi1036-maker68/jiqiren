@@ -8,6 +8,12 @@ preserves the existing route.
 
 ## Current status
 
+- First Owner-issued real Feishu task is now evidenced: Hermes independently
+  clicked system/device management and read 19 device rows with two successful
+  menu actions. Observed read-only execution passed, but report accuracy failed:
+  collector-column numbers were labeled as device IDs and group/category totals
+  were mixed. See the living report; this does not validate every browser or
+  visual capability. An unavailable terminal attempt was rejected, not executed.
 - **2026-10-29 10:41 CST:** Owner-authorized recovery restored only the original
   two extension files (2,138 bytes, both hashes match). The original native
   Feishu gateway now emitted actual READY with eight Ego tools, original H/W,
