@@ -621,7 +621,7 @@
       },
       "ego_integration": {
         "date": "2026-10-29",
-        "status": "Owner_approved_company_profile_matched_pending_folder_confirmation",
+        "status": "extension_enabled_synthetic_enforcement_and_independent_profile_control_passed",
         "same_original_employee": true,
         "browser_candidate": "Ego Lite Windows beta",
         "installer_version": "0.6.1.13",
@@ -641,17 +641,24 @@
         "report": "hermes/browser/reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md",
         "plan": "hermes/browser/reports/2026-10-28_EGO_INTEGRATION_PLAN.md",
         "evidence": "hermes/browser/evidence/ego-install-preparation-2026-10-28.json",
-        "next": "Owner selects approved extension directory in company-profile UI; confirm actual profile mapping and extension state, then run only synthetic canary. No real login or model calls.",
+        "next": "Prepare the same original Hermes Ego runtime and extension/profile lifecycle checks, then authorized business handoff; no production enabled, login or Hermes model use in this phase.",
         "production_enabled": false,
         "native_catalog_tools": 8,
         "live_gateway_or_Desktop_loaded": false,
-        "read_guard": "main Page passed; related popup coverage failed in synthetic probes",
+        "read_guard": "static profile-level extension passed recorded local popup/frame/OOPIF/worker/ServiceWorker/newPage/form/WebSocket and off-origin checks; old main-page-only failures remain historical",
         "extension_candidate_version": "0.1.0",
-        "extension_installed": null,
+        "extension_installed": true,
         "company_browser_profile_created": true,
         "new_static_checks": 4,
         "extension_installation_authorized": true,
-        "new_company_space_id": 2
+        "new_company_space_id": 2,
+        "company_profile_verified": true,
+        "company_profile_id": "Profile 1",
+        "extension_enabled": true,
+        "independent_profile_control_passed": true,
+        "synthetic_wire_write_blocking_passed": true,
+        "actual_Agent_Ego_use_verified": false,
+        "protected_records_matched": 59
       }
     }
   },

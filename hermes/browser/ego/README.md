@@ -15,9 +15,11 @@ preserves the existing route.
   model message has been sent for this integration.
 - **Synthetic only. Production is rejected in both Python and Node.** Do not
   change this switch merely because a demonstration succeeded.
-- Follow-up: an uninstalled [static extension candidate](readonly-extension/README.md)
-  is prepared. Its one new browser permission and a new company browser profile
-  require Owner confirmation. Offline checks do not prove native enforcement.
+- Owner-approved [static extension 0.1.0](readonly-extension/README.md) is now
+  installed and enabled in company Profile 1. Actual local synthetic requests
+  verified popup/frame/OOPIF/worker/ServiceWorker/new-Page/form blocking plus
+  WebSocket and unapproved-port denial. A separately authorized Profile 2 control
+  was unaffected. This is component evidence, not a Hermes Agent business result.
 
 ## Why production is still closed
 
@@ -30,8 +32,13 @@ CDP acknowledgements are not proof of enforcement. See the latest section of
 the [living report](../reports/2026-10-27_STATISTICS_READONLY_PREPARATION.md)
 and [evidence](../evidence/ego-install-preparation-2026-10-28.json).
 
-Before real login/data, a browser-level boundary must cover popups, frames,
-workers, WebSockets and request methods, with actual outcome evidence.
+The static profile-level extension now supplies recorded synthetic outcome
+evidence for those channels; the earlier hook failures remain historical.
+Production still requires binding the verified profile/extension lifecycle to
+the same-Hermes runtime and checking authorized site compatibility. The old
+synthetic runtime references a stopped fixture and must not be reused as a
+production entry. WebTransport has native rule-match evidence only; browser/OS
+restart persistence and actual Agent use have not been verified.
 The current adapter is not a Python/Node execution sandbox and does not expose
 arbitrary Node, filesystem, shell, page JavaScript, CDP, raw requests, credentials,
 upload or download as Agent tools.
@@ -65,6 +72,14 @@ Only an approved synthetic runtime may be used for component invocation. A
 receipt describes dispatch; saved results must be verified separately.
 Screenshots are returned as MCP images, but actual model visual understanding
 remains untested. Unknown HTTP 503 causes remain unknown.
+
+## Installed extension source
+
+The unpacked extension currently loads from `%USERPROFILE%/Desktop/凌矩浏览器保护`.
+Do not delete or move that folder. Its two payload hashes match this repository
+and the owned staging copy. The exact test-only Service Worker was removed,
+the control Space and own fixture were closed, and the company result UI was
+retained for the Owner. No login or Hermes model call occurred in this phase.
 
 ## Recovery
 

@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "Owner_approved_company_profile_matched_pending_folder_confirmation",
+  "status": "extension_enabled_synthetic_enforcement_and_independent_profile_control_passed",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -74,7 +74,11 @@
     "dispatcher_after_sha256": "8555bd10ac4b899bf4a4fc65b64203125ff2e39a84fd361e86f3f906db57d825",
     "private_preimages": "one existing owned dispatcher file only; no full environment backup",
     "protected_count": 59,
-    "protected_changes_latest": []
+    "protected_changes_latest": [],
+    "new_extension_payload_locations": [
+      "H/tools/company-browser/ego/readonly-extension",
+      "%USERPROFILE%/Desktop/凌矩浏览器保护"
+    ]
   },
   "boundaries": {
     "Hermes_messages_sent_by_Codex": 0,
@@ -87,8 +91,8 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Owner selects approved extension folder in the company-profile UI; then verify actual Space/profile and extension state before running the synthetic canary.",
-  "Owner_desktop_handoff": "Owner confirmed installation and first-run completion; company login not requested because production guard is incomplete",
+  "next_action": "Prepare same-original-Hermes explicit Ego runtime/lifecycle and authorized business handoff; current production remains rejected. No login/model calls in this phase.",
+  "Owner_desktop_handoff": "Owner replied installation can continue; actual enabled extension subsequently confirmed in normal profile UI and native rule API. Company result UI retained; independent control Space closed.",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
   "upstream_root_cause_reused": false,
   "initial_installer_attempt_is_historical": true,
@@ -251,7 +255,7 @@
       "passed": false
     },
     "interpretation": "Both broader protection probes failed outcome checks. Their POSTs reached only isolated synthetic counters, not company records. CDP success did not prove protection. No complete root cause assigned. Current adapter rejects production in both Python and Node.",
-    "future_requirement": "A supported, scoped browser-level request boundary for new windows, frames, workers and WebSockets, or another proven enforcement layer; do not enable production by changing a flag.",
+    "future_requirement": "Static extension synthetic coverage is now proven for the recorded channels. Production remains closed until profile/extension lifecycle is bound to the same-Hermes runtime and actual authorized site compatibility is established.",
     "followup_matrix": {
       "at": "2026-10-28T12:28:46.661Z",
       "actor": "Codex native component check",
@@ -363,8 +367,9 @@
     "welcome_page": "Default new tab surfaced personal browsing context; inspection stopped and owned Page was moved to about:blank. No raw content copied to GitHub or used for navigation.",
     "private_data_import_by_Codex": false,
     "Owner_no_import_statement": "Owner report, not independent cookie verification",
-    "profiles_listed_or_selected": false,
-    "company_login_in_Ego": false
+    "profiles_listed_or_selected": true,
+    "company_login_in_Ego": false,
+    "profile_inspection_scope": "Owner-designated company profile and separately authorized synthetic-only control profile; unrelated profile names/pages/Cookies not reported."
   },
   "native_runtime_cleanup": {
     "owned_fixture_stopped": true,
@@ -391,8 +396,8 @@
     "static_rules": 5,
     "host_permissions": [],
     "scripts": [],
-    "installed": null,
-    "native_enforcement_verified": false,
+    "installed": true,
+    "native_enforcement_verified": true,
     "new_static_tests": 4,
     "test_scope": "offline permission/declaration-intent checks, not Chrome schema/runtime acceptance",
     "company_profile_created": true,
@@ -412,18 +417,128 @@
       "https://github.com/citrolabs/ego-lite/issues/262",
       "https://github.com/citrolabs/ego-lite/issues/591"
     ],
-    "new_approved_installation_actions": 0,
+    "new_approved_installation_actions": "normal UI installation observed complete; failed directory drag did not install",
     "Owner_approval": {
       "source": "Owner direct reply: approved, at computer; later confirmed company profile creation and requested continuation",
       "scope": "one separate company Ego profile, local extension installation, new synthetic target Space and existing blank-space isolation control; no real login or models"
     },
-    "company_profile_evidence": "Owner report plus native profile list suffix match; no import/login independently inspected",
-    "installation_state": "normal UI Load unpacked clicked and Space handed to Owner; directory selection/completion not yet confirmed",
+    "company_profile_evidence": "Space metadata plus chrome://version targeted profile_path confirmed Profile 1; no-import/no-login remains Owner report",
+    "installation_state": "enabled in company Profile 1; source is Desktop/凌矩浏览器保护; do not remove or move unpacked source",
     "requested_company_profile_id": "Profile 1",
     "new_space_id": 2,
-    "actual_space_profile_mapping_verified": false,
-    "native_extension_enabled_verified": false,
+    "actual_space_profile_mapping_verified": true,
+    "native_extension_enabled_verified": true,
     "new_staged_payload_files": 2,
-    "existing_protected_changes": []
+    "existing_protected_changes": [],
+    "extension_id": "fpifglepgaacbbabakmcjmkinlpnconi",
+    "enabled_rulesets": [
+      "company_readonly"
+    ],
+    "independent_control_profile_id": "Profile 2",
+    "independent_control_space_id": 3,
+    "existing_blank_space_control_valid": false,
+    "existing_blank_space_reason": "Space 1 also resolves to company Profile 1; historical relationship not inferred. Owner separately approved one new independent-profile control.",
+    "payload_rechecked_after_tests": true,
+    "validation": {
+      "completed_at_utc": "2026-10-29T00:17:37.138269+00:00",
+      "actor": "Codex local synthetic browser component check; not Hermes Agent",
+      "company_profile": "Profile 1",
+      "target_space": 2,
+      "independent_control_profile": "Profile 2",
+      "control_space": 3,
+      "company_read_allowed_write_blocked": [
+        "root",
+        "frame",
+        "crossframe",
+        "worker",
+        "serviceworker",
+        "popup",
+        "newpage",
+        "post_control"
+      ],
+      "actual_top_level_form": {
+        "errorText": "net::ERR_BLOCKED_BY_CLIENT",
+        "blockedReason": "other"
+      },
+      "cross_process_iframe_target_observed": true,
+      "actual_websocket_blocked": true,
+      "actual_unapproved_port_blocked": true,
+      "wire_counts": {
+        "candidate": {
+          "GET": 14
+        },
+        "control": {
+          "GET": 3,
+          "UPGRADE": 1,
+          "POST": 1
+        }
+      },
+      "independent_control": {
+        "read_allowed": true,
+        "synthetic_post_reached": true,
+        "websocket_opened": true,
+        "unapproved_for_company_port_reached": true
+      },
+      "control_scope": "one tested independent profile, not proof about every profile or historical ownership",
+      "native_match_cases": {
+        "local_read": [
+          4
+        ],
+        "write": [
+          1
+        ],
+        "offsite": [
+          5
+        ],
+        "websocket": [
+          2
+        ],
+        "webtransport": [
+          2
+        ],
+        "top_form": [
+          1
+        ]
+      },
+      "webtransport": "native testMatchOutcome rule 2 matched; no actual QUIC end-to-end test",
+      "service_worker_cleanup": "only new synthetic registration was unregistered by fixture; exact scope absent at final check; no pre-existing registrations or cache cleared",
+      "after_profile_switch": "company rules still enabled and POST denied in later CLI call",
+      "not_verified": [
+        "Hermes Agent use of Ego",
+        "Hermes visual understanding through Ego",
+        "real platform compatibility and read-only role",
+        "browser restart/OS restart/update persistence",
+        "all possible network channels or profiles"
+      ],
+      "protected_records_matched": 59,
+      "models": 0,
+      "real_business_reads": 0,
+      "real_business_writes": 0,
+      "cleanup": {
+        "control_space_finished": true,
+        "company_space_finished_result_ui_kept": true,
+        "test_popup_and_new_page_closed": true,
+        "fixture_stopped": true,
+        "ports_closed": [
+          61987,
+          61988
+        ],
+        "normal_Ego_kept": true,
+        "old_Space_1_untouched_at_cleanup": true
+      },
+      "private_receipt_root": "H/tools/company-browser/ego/runs/extension-20261029",
+      "private_receipt_sha256": {
+        "company-browser-result.json": "64848528761bfe368de83dc8d00aba540ae955f43e1ea4a19b70cd2ba146a80b",
+        "extra-channel-result.json": "f49d9bf09d2ad6885d042e8c641fca702dabc1fa841afd9fa1616ddd58123fa8",
+        "control-browser-result.json": "633c1890a6dfc1c596ded589c61897ab759c099ca338991e1d20af5d2cf0a908",
+        "native-rule-check.json": "e69f57e0923e8bf83d60d1e6e9dcd77ae80cf0d9a1d86a07a1e53117b49fb612",
+        "company-post-control-result.json": "1f8b0e659a5016ffb91f2f483eb2bac927837d51a5c7f9c3ad4928038b3c4b12",
+        "cleanup-pages-result.json": "1a7f83f052c9f582c058af3c54e89b26162b68abb6caeab4e489046c27870f85",
+        "final-local-verification.json": "825789634531f04581b9cebeb27f8f1539b7d4decc8cd58545680c0f17d7b23f"
+      },
+      "synthetic_server_truth_sha256": "9db41c774018d1c2806d5f7671cad86f2eae59a1b5a037313fa6a411dc38dab8",
+      "failed_UI_path": "normal directory drag returned No dragged path; cancelled through UI. No global CDP extension install or unsafe debug flag used.",
+      "Windows_UIAutomation": "three read-only targeted picker inspections; no picker found, no input/control action performed, no Computer Use initialized"
+    }
   }
 }
