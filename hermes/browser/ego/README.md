@@ -8,13 +8,16 @@ preserves the existing route.
 
 ## Current status
 
-- **2026-10-29 follow-up:** v2 daily company runtime is prepared, but loading is
-  stopped: the previously verified Desktop unpacked-extension source disappeared
-  (cause unknown). Approved staging bytes remain intact. Owner confirmation to
-  restore those two files is pending. No gateway is currently READY for Ego.
+- **2026-10-29 10:41 CST:** Owner-authorized recovery restored only the original
+  two extension files (2,138 bytes, both hashes match). The original native
+  Feishu gateway now emitted actual READY with eight Ego tools, original H/W,
+  unchanged 59 protection records and audit 41→41. Business work is still
+  awaiting Owner manual login; no model message or real page read was sent.
 - A first native start exposed an incorrect new pause-interface call, now fixed
   with a real-interface test. Only that own idle native child was asked to stop;
-  both Windows venv launcher and child exited. A second gateway was not launched.
+  both Windows venv launcher and child exited. The one corrected start after
+  source recovery is now READY; initial 50-second polling expiry did not cause
+  an extra restart. These earlier failures remain in the living evidence.
 - Installed native Ego/CLI: **0.6.1.13**, official guide **2.1.0**.
 - Eight typed MCP tools: guide, status, owned-window recovery, observation,
   short action batches, actual image screenshots, owned Pages, and handoff.
@@ -43,9 +46,9 @@ and [evidence](../evidence/ego-install-preparation-2026-10-28.json).
 
 The static profile-level extension now supplies recorded synthetic outcome
 evidence for those channels; the earlier hook failures remain historical.
-The v2 runtime now binds profile/extension lifecycle checks to every operation,
-but its real loading is stopped by the missing source directory. Active work
-also requires Owner login/confirmation and authorized site compatibility. The old
+The v2 runtime now binds profile/extension lifecycle checks to every operation
+and has loaded in the original Feishu gateway. Active work still requires Owner
+login/confirmation and authorized site compatibility. The old
 synthetic runtime references a stopped fixture and must not be reused as a
 production entry. WebTransport has native rule-match evidence only; browser/OS
 restart persistence and actual Agent use have not been verified.
@@ -87,8 +90,9 @@ remains untested. Unknown HTTP 503 causes remain unknown.
 ## Installed extension source
 
 The unpacked extension currently loads from `%USERPROFILE%/Desktop/凌矩浏览器保护`.
-That source existed at synthetic validation, but is now absent; do not silently
-relocate or replace it. Restoration needs the pending Owner confirmation. The
+That source disappeared after synthetic validation (cause unknown) and was
+restored at exactly that path after Owner approval. Do not delete, relocate or
+silently replace it. Its hashes and native enabled status were rechecked. The
 owned staging copy still matches this repository. The exact test-only Service Worker was removed,
 the control Space and own fixture were closed, and the company result UI was
 retained for the Owner. No login or Hermes model call occurred in this phase.
@@ -122,3 +126,9 @@ targeted browser profile path and own-extension enabled ruleset before actions.
 No general page JavaScript, CDP, credential or filesystem tool is exposed to Hermes.
 The existing daily request audit (41 before this phase) is retained without an
 artificial cap, test prefix or forced new conversation. Provider pacing remains.
+
+The earlier blank Space 1 was absent on resume. The approved retained company
+result Space 2 was reused and its actual Profile 1 path verified; no new Space
+was created. Its primary Page is blank and handed to Owner for the next manual
+login handoff. This is not proof of Desktop loading, end-to-end messaging or an
+Agent business result, and the original default entry was not permanently changed.

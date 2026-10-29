@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "STOPPED_PENDING_ORIGINAL_EXTENSION_SOURCE_RECOVERY",
+  "status": "original_gateway_Ego_catalog_ready_awaiting_Owner_manual_login",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -91,7 +91,7 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Only restore the approved two-file source after Owner confirmation, verify extension metadata, then complete one corrected native handoff; do not rerun canaries, send models or login automatically.",
+  "next_action": "Arrange Owner manual login handoff in company Ego, then explicitly confirm active read-only workplace and let the same Hermes perform a normal business query. No login or model message in this recovery phase.",
   "Owner_desktop_handoff": "Owner replied installation can continue; actual enabled extension subsequently confirmed in normal profile UI and native rule API. Company result UI retained; independent control Space closed.",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
   "upstream_root_cause_reused": false,
@@ -541,24 +541,26 @@
       "Windows_UIAutomation": "three read-only targeted picker inspections; no picker found, no input/control action performed, no Computer Use initialized"
     },
     "current_integrity": {
-      "checked_at_utc": "2026-10-29T00:40:26.750021+00:00",
-      "installed_source_exists": false,
-      "current_ready": false,
-      "prior_validation_remains_historical": true,
-      "cause": "unknown",
-      "restored": false
+      "checked_at_utc": "2026-10-29T02:41:45.809981+00:00",
+      "installed_source_exists": true,
+      "payload_hashes_match": true,
+      "restored_with_Owner_approval": true,
+      "extension_enabled_native_check_at_utc": "2026-10-29T02:38:41.412Z",
+      "current_gateway_catalog_ready": true,
+      "real_workplace_active": false,
+      "historical_failure_records_retained": true
     }
   },
   "company_runtime_connection": {
     "at_utc": "2026-10-29T00:40:26.750021+00:00",
-    "status": "STOPPED_PENDING_ORIGINAL_EXTENSION_SOURCE_RECOVERY",
+    "status": "original_gateway_Ego_catalog_ready_awaiting_Owner_manual_login",
     "same_original_employee": true,
     "runtime_schema": "lingju.ego-browser.v2",
     "mode": "company-readonly",
     "business_writes_enabled": false,
     "artificial_request_quota": null,
     "task_prefix_required": false,
-    "company_space": 1,
+    "company_space": 2,
     "company_profile": "Profile 1",
     "workplace_state": "awaiting-owner-login",
     "code_checks": {
@@ -622,7 +624,63 @@
     "new_login": false,
     "Computer_Use": 0,
     "new_profile_or_space": false,
-    "current_gateway_ready": false,
-    "next": "Only restore the approved two-file source after Owner confirmation, verify extension metadata, then complete one corrected native handoff; do not rerun canaries, send models or login automatically."
+    "current_gateway_ready": true,
+    "next": "Arrange Owner manual login handoff in company Ego, then explicitly confirm active read-only workplace and let the same Hermes perform a normal business query. No login or model message in this recovery phase.",
+    "recovery_and_corrected_start": {
+      "completed_at_utc": "2026-10-29T02:41:45.809981+00:00",
+      "Owner_authorization": "Direct reply: restore only the original two extension files and continue; no model calls or login",
+      "restored_original_path": "%USERPROFILE%/Desktop/凌矩浏览器保护",
+      "payload_files": [
+        "manifest.json",
+        "rules.json"
+      ],
+      "bytes": 2138,
+      "sha256": {
+        "manifest.json": "e58141ae7c1659e141acc7d07b1652a69bd711710251d38f377ad5b79dd37365",
+        "rules.json": "600db88118704dc4a44c7339ca9f9f56cd77fe9eae827e2ca40a1bd152a3d478"
+      },
+      "overwritten_files": 0,
+      "cause_of_previous_missing_source": "unknown",
+      "old_company_Space_1": "not found on resume; cause unknown; no automatic replacement Space created",
+      "existing_company_Space_2": "reused the previously authorized retained company result Space under Owner delegated extension UI/continued work; native actual profile path and extension verified; primary returned about:blank and handed off",
+      "new_profile_or_Space_created": false,
+      "native_extension_enabled": true,
+      "native_extension_checked_at_utc": "2026-10-29T02:38:41.412Z",
+      "corrected_start_real_READY": true,
+      "corrected_start_native_child_pid": 6232,
+      "venv_launcher_pid": 23480,
+      "parent_child_verified": true,
+      "home_correct": true,
+      "workspace_correct": true,
+      "tools": 8,
+      "channel_runtime": "same original Hermes native gateway / Feishu; not proof of Desktop loading or end-to-end message delivery",
+      "platform_state_at_final": {
+        "wecom": "connected",
+        "wecom_callback": "disconnected",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "wecom_callback": "existing callback channel disconnected/retrying observed; root cause uninvestigated, no settings change",
+      "startup_wait": "50-second helper wait expired first; native process later emitted actual READY without another restart",
+      "pause_compatibility_fix": "passed actual existing RequestAudit pause and corrected native startup",
+      "no_artificial_request_quota": true,
+      "audit_used_before": 41,
+      "audit_used_after": 41,
+      "new_model_requests": 0,
+      "protected_records_matched": 59,
+      "protected_changes": [],
+      "actual_business_reads": 0,
+      "actual_business_writes": 0,
+      "Owner_login_confirmed": false,
+      "Hermes_Agent_Ego_use_verified": false,
+      "Desktop_loading_verified": false,
+      "permanent_default_changed": false,
+      "private_receipt_sha256": {
+        "authorized-source-recovery.json": "ba847cc3d01244f4c595234a8e3a6172747687643ce2134e3eba307cc3eb7b44",
+        "restored-native-extension-check.json": "793d4c6315093c633eeab76e9dc7681c027ad5a31e44274860d63b91a336a96a",
+        "source-recovered-gateway-ready.json": "55ddfb9442b22382400c389162c57950317863ef337256452bd45174c96764ec"
+      }
+    }
   }
 }
