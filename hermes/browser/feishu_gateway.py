@@ -17,7 +17,7 @@ import sqlite3
 import sys
 import traceback
 
-from feishu_meter import CURRENT_TURN, GatewayMeter, BrowserPacer, propagate_title_threads
+from feishu_meter import CURRENT_TURN, GatewayMeter, gateway_pacer, propagate_title_threads
 from feishu_transport import FeishuTrafficPolicy, tag_sdk_transport, validate_websocket
 from qq_browser_task import BrowserExercise, FEISHU_TRANSFER, PREFIX
 from qq_runtime import (TOOLSETS, EXPECTED_BROWSER_TOOLS, verify_browser_catalog,
@@ -335,7 +335,8 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
     # retries/aux HTTPX and unknown HTTPX during the exercise remain metered.
     restore_http=install_traffic_guard(meter,OrdinaryTrafficAudit(out/'traffic.sqlite'),policy,
                                      add_network_audit=False,
-                                     pacer=BrowserPacer(meter,out/'response-events.jsonl'))
+                                     pacer=gateway_pacer(meter,out/'response-events.jsonl',gate,
+                                                        continuous=getattr(exercise,'continuous',False)))
     import agent.title_generator as titles
     restore_titles=propagate_title_threads(titles)
     restore_runner=install_runner_hooks(native,exercise,meter,out,baseline,gate['owner_binding'],home,

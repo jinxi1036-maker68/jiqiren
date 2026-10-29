@@ -545,7 +545,7 @@
     },
     "feishu_progress": {
       "date": "2026-10-29",
-      "status": "owned_progress_hooks_installed_original_gateway_READY_Feishu_connected_no_Owner_roundtrip_test",
+      "status": "local_fallback_and_fixed_delay_repaired_original_gateway_READY_provider_quota_and_real_speed_unverified",
       "report": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.md",
       "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json",
       "same_original_employee": true,
@@ -568,6 +568,21 @@
         "model_latency_fixed": false,
         "original_changes": 0,
         "new_Hermes_requests": 0
+      },
+      "latency_repair": {
+        "date": "2026-10-29",
+        "status": "local_fallback_and_fixed_delay_repaired_original_gateway_READY_provider_quota_and_real_speed_unverified",
+        "report": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.md",
+        "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json#latency_repair",
+        "failed_2_0_fallback_removed": true,
+        "healthy_fixed_interval_seconds": 0,
+        "concurrency": 1,
+        "429_backoff_preserved": true,
+        "reasoning_and_context_unchanged": true,
+        "original_gateway_READY": true,
+        "new_Hermes_requests_by_Codex": 0,
+        "real_latency_recovery_proven": false,
+        "enterprise_quota_verified": false
       }
     }
   }

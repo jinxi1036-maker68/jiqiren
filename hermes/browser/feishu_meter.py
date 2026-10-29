@@ -13,6 +13,21 @@ from provider_pacing import ModelPacer
 
 CURRENT_TURN = contextvars.ContextVar('lingju_gateway_turn', default=None)
 
+DAILY_PACING = {'kind':'adaptive-daily-v1','min_interval_seconds':0,
+                'concurrency':1,'cooldown_on_429_seconds':60,
+                'honor_retry_after_on':[429,500,502,503,504],
+                'max_single_wait_seconds':600}
+
+
+def gateway_pacer(meter, receipt, gate, *, continuous):
+    settings=gate.get('daily_pacing')
+    if settings is None:
+        return BrowserPacer(meter,receipt)  # Historical launches unchanged.
+    if not continuous or settings!=DAILY_PACING:
+        raise BudgetBlocked('Unreviewed daily pacing policy')
+    return BrowserPacer(meter,receipt,min_interval_seconds=0,
+                        retry_after_statuses=settings['honor_retry_after_on'])
+
 
 class GatewayMeter:
     def __init__(self, output, budget):

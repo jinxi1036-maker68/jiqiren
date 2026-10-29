@@ -600,5 +600,159 @@
       "provider-fallback-readonly-20261029.json": "f76d0a6e62a69427ed468ab6f996e0754366242c699ef4fe94d2eeb8567b9764"
     },
     "no_raw_config_database_request_headers_messages_prompts_or_credentials_uploaded": true
+  },
+  "latency_repair": {
+    "at_utc": "2026-10-29T14:45:12.819446+00:00",
+    "state": "local_fallback_and_fixed_delay_repaired_original_gateway_READY_provider_quota_and_real_speed_unverified",
+    "Owner_authorization": "Owner after reviewed diagnosis: find a way to restore maximum useful performance; scope announced: failed 2.0 fallback and healthy fixed pacing only",
+    "config": {
+      "changed_field": "fallback_providers",
+      "before": "one agnes-2.0-flash fallback",
+      "after": "empty list",
+      "primary_model": "agnes-3.0-flash unchanged",
+      "all_other_parsed_YAML_fields_unchanged": true,
+      "before_sha256": "ce24002db8f9fd5050e524eedb7fc4e3f0ddb8fa358a1a96e7475cd8d9f30aac",
+      "after_sha256": "5115085779f1ff574fab08def61549efaf733b5f00ba0401f9c247095694501f",
+      "ACL_exactly_preserved": true,
+      "credential_handling": "primary named environment credential and .env/auth unchanged; old fallback entry including its same-value inline duplicate removed as a unit, no key value changed/revoked/exported; preimage private"
+    },
+    "daily_request_policy": {
+      "kind": "adaptive-daily-v1",
+      "min_interval_seconds": 0,
+      "concurrency": 1,
+      "cooldown_on_429_seconds": 60,
+      "honor_retry_after_on": [
+        429,
+        500,
+        502,
+        503,
+        504
+      ],
+      "max_single_wait_seconds": 600
+    },
+    "daily_policy_meaning": {
+      "healthy_request_fixed_wait_removed": true,
+      "one_inflight_request_through_stream_close": true,
+      "429_without_Retry_After_still_waits_60s": true,
+      "5xx_with_Retry_After_honored": true,
+      "5xx_without_header": "native bounded retry/backoff retained; no guessed fixed cooldown",
+      "wait_over600_seconds": "freeze rather than shorten server wait",
+      "legacy_simulation_default": "unchanged at12s when new daily marker absent",
+      "new_artificial_total_request_cap": false,
+      "provider_quota_bypassed": false
+    },
+    "quality_and_autonomy": {
+      "reasoning_strength_unchanged": true,
+      "512K_context_unchanged": true,
+      "max_output_32000_unchanged": true,
+      "compression_unchanged": true,
+      "no_fixed_business_steps_or_second_employee": true,
+      "browser_permissions_unchanged": true,
+      "receipt_and_30s_status_feature_preserved": true
+    },
+    "validation": {
+      "new_daily_policy_tests": 5,
+      "legacy_provider_tests": 8,
+      "progress_tests": 11,
+      "native_gateway_integration_tests": 10,
+      "daily_route_tests": 4,
+      "all_38_passed": true,
+      "native_CLI_zero_network_probe": true,
+      "persisted_config_native_fallback_interpreter": {
+        "persisted_YAML_and_native_fallback_interpreter": true,
+        "parsed_fallback_chain_empty": true,
+        "primary_model": "agnes-3.0-flash",
+        "context_length": 524288,
+        "max_tokens": 32000,
+        "compression_threshold": 0.5,
+        "new_model_calls": 0,
+        "network_or_original_writes": {
+          "blocked_network": 0,
+          "blocked_original_writes": 0,
+          "asyncio_selfpipe": 0
+        },
+        "extra_full_loader_probe": "not passed: strict audit blocked Win32 platform-identification subprocess first, then ensure_hermes_home chmod attempt; did not relax audit or mutate original paths",
+        "live_Agent_request_after_repair": "not tested; no message sent"
+      },
+      "pacer_factory_zero_model_parameters": true,
+      "Desktop_static_path": "API server constructs a new AIAgent and loads current fallback chain per request, source gateway/platforms/api_server.py:2932-2978; Desktop not restarted or model-tested",
+      "extra_probe_limit": "full original config loader blocked by strict audit during Win32 metadata/ensure_home chmod; audit not relaxed; pure persisted-YAML + original fallback function passed",
+      "real_model_task_after_change": "not sent; unverified"
+    },
+    "native_gateway": {
+      "one_idle_graceful_reload": true,
+      "old_child_pid": 21744,
+      "old_launcher_pid": 12044,
+      "new_launcher_pid": 25456,
+      "new_child_pid": 25392,
+      "actual_READY_utc": "2026-10-29T14:41:45.091557+00:00",
+      "original_H_W_identity": true,
+      "browser_catalog_tools": 8,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "disconnected",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "force_stop_or_Desktop_restart": false
+    },
+    "protected": {
+      "original_baseline_preserved": true,
+      "derived_config_only_new_expected_hash": true,
+      "other_58_records_unchanged": true,
+      "all_59_match_derived_baseline": true,
+      "memory_SOUL_USER_HERMES_R3_Manifest_MCP_voice_QQ_cron_profiles_unchanged": true,
+      "browser_runtime_unchanged": true,
+      "new_baseline_sha256": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931"
+    },
+    "owned_files": {
+      "updated": [
+        "provider_pacing.py",
+        "feishu_meter.py",
+        "feishu_gateway.py"
+      ],
+      "source_sha256": {
+        "provider_pacing.py": "2c34004a8169719f8e08b9385a849f0e1997051f797a2c30a20c9d298091ba84",
+        "feishu_meter.py": "45c5d257ef381c9aea6932f810795894cb776883ff536c9f5e5c91ea484d68e1",
+        "feishu_gateway.py": "821fec55d17fc36bc1811850735b361f69f2aec04db28197d91cab6d9d9bd548"
+      },
+      "gate_fields": [
+        "daily_pacing",
+        "three source pins",
+        "protected baseline SHA"
+      ],
+      "handoff": "baseline/output/PID/state and evidence references"
+    },
+    "private_recovery": {
+      "preimages": 6,
+      "verified_handle_final_path_and_current_user_SYSTEM_full_private_ACL": true,
+      "rollback_performed": false,
+      "conditional_restore": "Only when each target still matches this output SHA; restore this config and these owned files from verified preimages, preserve ACL, idle reload. Never whole-directory restore or overwrite concurrent edits."
+    },
+    "audit_before": [
+      0,
+      86,
+      0
+    ],
+    "audit_after": [
+      0,
+      86,
+      0
+    ],
+    "new_Hermes_messages_by_Codex": 0,
+    "new_model_requests_by_Codex": 0,
+    "live_business_actions": 0,
+    "remaining": [
+      "Actual account key type/enterprise entitlement/current RPM and account-wide use not verified",
+      "No proof of restored end-to-end answer latency, primary model availability, or 429 cessation; ordinary Owner work needed",
+      "Desktop existing session-specific model overrides not changed or tested; no DB edits",
+      "Existing wecom callback issue unchanged"
+    ],
+    "private_evidence_sha256": {
+      "operation": "b86d9b71732b1b89858345d095b9faa156453f60c004ccf2b6f96a16b2460c13",
+      "native_CLI_probe": "11e2371479269fc9ed3282d58a0febf44cb06baf92e43d0c4304a46ffa1da656",
+      "settings_probe": "c63c69c715bf5269529c9b94e1d2299b47e5f5f9649175e6b92187e06976fbc6"
+    }
   }
 }

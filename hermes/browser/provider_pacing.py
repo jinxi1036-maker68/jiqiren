@@ -28,9 +28,14 @@ def approved_pacing(gate):
 
 class ModelPacer:
     def __init__(self, budget, receipt, *, clock=time.monotonic, sleep=time.sleep,
-                 utcnow=lambda: datetime.datetime.now(datetime.timezone.utc)):
+                 utcnow=lambda: datetime.datetime.now(datetime.timezone.utc),
+                 min_interval_seconds=12, retry_after_statuses=(429,)):
+        if not math.isfinite(min_interval_seconds) or min_interval_seconds < 0:
+            raise ValueError('Invalid request interval')
         self.budget, self.receipt = budget, Path(receipt)
         self.clock, self.sleep, self.utcnow = clock, sleep, utcnow
+        self.min_interval_seconds = min_interval_seconds
+        self.retry_after_statuses = frozenset(retry_after_statuses)
         self.lock = threading.Lock()
         self.next_start, self.frozen, self.ordinal = 0.0, False, 0
 
@@ -89,8 +94,9 @@ class ModelPacer:
 
     def started(self, family):
         self.ordinal += 1
-        self.next_start = self.clock() + 12
-        self.record('model_wire_start', family=family)
+        self.next_start = self.clock() + self.min_interval_seconds
+        self.record('model_wire_start', family=family,
+                    min_interval_seconds=self.min_interval_seconds)
 
     def response(self, response):
         status = response.status_code
@@ -115,14 +121,17 @@ class ModelPacer:
             raw = response.headers.get(name, '')
             if raw.isascii() and raw.isdigit() and len(raw) <= 12:
                 numeric[name] = int(raw)
-        if status == 429:
+        cooldown = None
+        if status == 429 or (status in self.retry_after_statuses and retry_after is not None):
             wait = retry_after if retry_after is not None else 60
+            cooldown = wait
             if wait > 600:
                 self.frozen = True  # Never shorten a server's long requested wait.
             else:
                 self.next_start = max(self.next_start, self.clock() + wait)
         self.record('model_response_headers', status=status, retry_after_seconds=retry_after,
                     numeric_rate_headers=numeric, admission_frozen=self.frozen,
+                    scheduled_cooldown_seconds=cooldown,
                     no_body_or_arbitrary_headers_recorded=True)
 
 
