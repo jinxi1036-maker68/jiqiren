@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "table_readback_candidate_tested_company_workplace_recovery_required",
+  "status": "readback_0.3.0_loaded_original_Feishu_gateway_readonly_active",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -91,7 +91,7 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Owner-approved new work Space in same company Profile 1 and one idle native gateway reload; no new identity, credential copy, model message or business write",
+  "next_action": "Owner can send a normal same-site read-only business goal through existing Feishu; no test quota/prefix, no automatic new model task by Codex",
   "Owner_desktop_handoff": "Owner replied installation can continue; actual enabled extension subsequently confirmed in normal profile UI and native rule API. Company result UI retained; independent control Space closed.",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
   "upstream_root_cause_reused": false,
@@ -554,15 +554,15 @@
     }
   },
   "company_runtime_connection": {
-    "at_utc": "2026-10-29T00:40:26.750021+00:00",
-    "status": "Owner_login_confirmed_guard_restored_readonly_active",
+    "at_utc": "2026-10-29T05:41:27.352177+00:00",
+    "status": "readback_0.3.0_loaded_original_Feishu_gateway_readonly_active",
     "same_original_employee": true,
     "runtime_schema": "lingju.ego-browser.v2",
     "mode": "company-readonly",
     "business_writes_enabled": false,
     "artificial_request_quota": null,
     "task_prefix_required": false,
-    "company_space": 2,
+    "company_space": 4,
     "company_profile": "Profile 1",
     "workplace_state": "active",
     "code_checks": {
@@ -618,14 +618,14 @@
       "Owner_confirmation_requested": true
     },
     "protected_records_matched": 59,
-    "daily_audit_used_before": 41,
-    "daily_audit_used_after": 41,
+    "daily_audit_used_before": 60,
+    "daily_audit_used_after": 60,
     "model_calls_sent_by_Codex": 0,
-    "real_business_reads": 0,
+    "real_business_reads": 1,
     "real_business_writes": 0,
     "new_login": false,
     "Computer_Use": 0,
-    "new_profile_or_space": false,
+    "new_profile_or_space": true,
     "current_gateway_ready": true,
     "next": "Owner sends a normal read-only business goal to the same Hermes through Feishu; Hermes independently finds menus and queries existing records. Codex does not send the message or introduce test quotas.",
     "recovery_and_corrected_start": {
@@ -895,11 +895,29 @@
         "activation credential configuration (no token values inspected)"
       ],
       "recommended_next_improvement": "Train reporting discipline: map each value to the actual table header, separate category/group, cross-check row totals and observation time, keep causes unknown without evidence, and use the available Ego browser tools. Preserve autonomous method choice; no fixed business click script."
-    }
+    },
+    "table_readback_activation": {
+      "at_utc": "2026-10-29T05:41:27.352177+00:00",
+      "status": "readback_0.3.0_loaded_original_Feishu_gateway_readonly_active",
+      "evidence_pointer": "table_readback_enhancement.activation",
+      "original_identity_preserved": true,
+      "new_model_requests": 0
+    },
+    "previous_phase_counters": {
+      "at_utc": "2026-10-29T00:40:26.750021+00:00",
+      "company_space": 2,
+      "daily_audit_used_before": 41,
+      "daily_audit_used_after": 41,
+      "real_business_reads": 0,
+      "new_profile_or_space": false
+    },
+    "new_browser_space": true,
+    "new_browser_profile": false,
+    "new_Hermes_identity": false
   },
   "table_readback_enhancement": {
-    "at_utc": "2026-10-29T05:18:25.107042+00:00",
-    "status": "candidate_tested_not_deployed",
+    "at_utc": "2026-10-29T05:41:27.352177+00:00",
+    "status": "readback_0.3.0_loaded_original_Feishu_gateway_readonly_active",
     "existing_owned_files": [
       "ego_runtime.py",
       "ego/bridge.mjs",
@@ -922,8 +940,6 @@
       "ego/policy.mjs": "957be9ffe718c83e943902927fb5d5b51090ec6f9922930e028590a5d0686f36",
       "ego/table_readback.mjs": "83afd54408c92e16c59ebf658410823755ed8d3994218d4c8499be0a980f90ff"
     },
-    "current_tools_paused_reason": "company Space 2 absent in native API; root cause unknown",
-    "current_native_gateway_not_stopped": true,
     "protected_records_match": 59,
     "model_calls": 0,
     "tests": {
@@ -933,7 +949,6 @@
       "total": 22
     },
     "private_record_replay": "passed; no raw record exported",
-    "required_activation": "Owner-approved new work Space in same company Profile 1 and one idle native gateway reload; no new identity, credential copy, model message or business write",
     "rollback": "Save only the four changed owned source files and owned runtime/gate metadata preimages; restore any individual file only if its current digest equals this deployment output; pause if concurrent change. Never restore original H/W wholesale.",
     "privacy": "No raw snapshots, names, device/contact IDs, private memory or credentials published",
     "replay_aggregates": {
@@ -984,6 +999,143 @@
       "whole-blank rows recorded separately; not silently treated as records",
       "readback suppression of sensitive-labeled columns does not claim to sanitize the original snapshot",
       "actual Hermes response accuracy after loading remains unverified"
-    ]
+    ],
+    "candidate_stage": {
+      "at_utc": "2026-10-29T05:18:25.107042+00:00",
+      "status": "candidate_tested_not_deployed",
+      "current_tools_paused_reason": "company Space 2 absent in native API; root cause unknown",
+      "current_native_gateway_not_stopped": true,
+      "required_activation": "Owner-approved new work Space in same company Profile 1 and one idle native gateway reload; no new identity, credential copy, model message or business write"
+    },
+    "activation": {
+      "at_utc": "2026-10-29T05:41:27.352177+00:00",
+      "status": "readback_0.3.0_loaded_original_Feishu_gateway_readonly_active",
+      "Owner_authorization": "Direct explicit approval: restore company window in existing Profile 1 and one idle reload",
+      "original_identity_preserved": true,
+      "original_home_preserved": true,
+      "actual_workspace": "W = original company-workspace",
+      "company_profile": "Profile 1",
+      "space_id": 4,
+      "old_space_2_missing_cause": "unknown",
+      "new_profiles_or_Hermes_identities": 0,
+      "native_reload": {
+        "count": 1,
+        "old_idle_agents": 0,
+        "graceful_stop": true,
+        "old_launcher_exited": true,
+        "old_child_exited": true,
+        "force_termination": false,
+        "new_launcher_pid": 10856,
+        "new_child_pid": 27636,
+        "actual_ready_at_utc": "2026-10-29T05:41:03.570957+00:00",
+        "actual_catalog_tools": 8,
+        "gateway_state": "running",
+        "platform_states": {
+          "wecom": "connected",
+          "wecom_callback": "retrying",
+          "weixin": "connected",
+          "qqbot": "connected",
+          "feishu": "connected"
+        },
+        "end_to_end_message_retest": false,
+        "initial_local_poll_expiry_triggered_restart": false
+      },
+      "owned_file_changes": {
+        "updated_source_files": [
+          "ego_runtime.py",
+          "ego/bridge.mjs",
+          "ego/worker.mjs",
+          "ego/policy.mjs"
+        ],
+        "new_source_files": [
+          "ego/table_readback.mjs"
+        ],
+        "node_pins": 6,
+        "necessary_private_preimages": 8,
+        "recovery_private_acl_verified": true,
+        "runtime_metadata_updated": [
+          "runtime.json",
+          "gate.json",
+          "workplace-state.json"
+        ],
+        "original_MCP_registration_changed": false,
+        "original_default_entry_rewritten": false,
+        "stale_own_lock_removed_after_shutdown_and_closed_endpoint": true,
+        "rollback_occurred": false
+      },
+      "zero_model_checks": {
+        "original_native_CLI": true,
+        "original_Python_MCP_tools": 8,
+        "formats": [
+          "snapshot",
+          "tables",
+          "both"
+        ],
+        "reporting_guide_autonomy_preserved": true,
+        "live_guard_and_profile_checked": true,
+        "component_tool_calls": 3,
+        "actual_time_output_timezone": "Asia/Shanghai",
+        "actual_statistics_mapping": {
+          "mapped_tables": 0,
+          "unresolved_table_fragments": 8,
+          "result": "ambiguous statistics structures explicitly unresolved; raw snapshot remains available. Do not claim automatic mapping coverage for every page."
+        },
+        "stderr_bytes": 0
+      },
+      "historical_checks_inherited_not_rerun": 22,
+      "historical_device_snapshot_replay": "passed; distinct source fields, 19 records, group counts 10/3/6; not a new live device query",
+      "real_page_access_by_Codex": {
+        "navigation_to_approved_statistics": 1,
+        "read_only_observations": 1,
+        "business_writes": 0,
+        "credential_or_Cookie_read_copy": false
+      },
+      "audit_before": [
+        0,
+        60,
+        0
+      ],
+      "audit_after": [
+        0,
+        60,
+        0
+      ],
+      "new_model_messages_sent_by_Codex": 0,
+      "new_model_requests": 0,
+      "protected_records_matched": 59,
+      "protected_changes": [],
+      "old_sealed_ledgers_matched": 6,
+      "autonomy": "Hermes selects menus, reading methods, investigation and judgments; tools only preserve source columns, count visible rows and provide factual/time/unknown standards. No business click order or priority scripted.",
+      "remaining_unverified": [
+        "Hermes Agent report accuracy after enhancement, including no future column/causality errors",
+        "automatic structured mapping of statistics page table fragments",
+        "Desktop loading and permanent default/startup persistence",
+        "real business writes/dispatch/patrol and platform account least-privilege role"
+      ],
+      "unchanged_known_issue": "wecom_callback disconnected; existing issue, cause uninvestigated, not repaired",
+      "next": "Owner can send a normal same-site read-only business goal through existing Feishu; no test quota/prefix, no automatic new model task by Codex",
+      "private_receipt_sha256": {
+        "readback-activation-preflight.json": "11539d96e1139b24cbf8e29af1e8f908ba82357cc59d276ced486f6bd60db4a4",
+        "readback-restored-space.json": "c385fe543e51a066561fc9fa21369a9867f0017286140162f1959662f376222f",
+        "readback-planned-stop.json": "4fd805d679ec52169626deed066c174b51a44521086ae44816e6557e2f1e827d",
+        "readback-deployment.json": "17a8b431192f0c39bdb4785e45fddc4fa0f4bb8b6de7f2c85a31aeaa2a99728f",
+        "readback-zero-model-MCP.json": "e3c8bb90d70a684a6a24cc37b5b5d007806f2e3612b9958e3327eaa4bbfff2ea",
+        "readback-native-start.json": "6c60c8c5bb8427b76b3c0d4b5263b3ce3917ee4fadcdf01a293f74de85f5871c"
+      },
+      "source_before": {
+        "ego_runtime.py": "a5ac38952389b9db64d5fbd1e947075ce7c592a8af7dd180381a33b14b609b6e",
+        "ego/bridge.mjs": "6131a83a59e62c7abcd936a206165dc7140147230b2263ab632884800828e68d",
+        "ego/worker.mjs": "91a6a6d405c5067da5a17994a681765c892833be5b0486063b2e1d9216ee514f",
+        "ego/policy.mjs": "1f75b8ad501f8cddf8ea43dc2ecd8dd2f0f2f6392f5d208eccba2a89d6b88344"
+      },
+      "source_after": {
+        "ego_runtime.py": "ee2fd301edb1c4c8c3cca4bc9761d7d9fbf4abb06634bfee8df0413bca784aec",
+        "ego/bridge.mjs": "85b1192e51d94284263c4c3f222f1c922d20d4964993a1259811b51f4fc2c05f",
+        "ego/worker.mjs": "d7ef531b028f20cbdf456b340022438a057c86c18992ebc8e9d6a568f6e47325",
+        "ego/policy.mjs": "957be9ffe718c83e943902927fb5d5b51090ec6f9922930e028590a5d0686f36",
+        "ego/table_readback.mjs": "83afd54408c92e16c59ebf658410823755ed8d3994218d4c8499be0a980f90ff"
+      },
+      "runtime_sha256": "744b864a4a6f9383428eab8b3e7e4b02f2dc7aad6b7fa9744e3bbc53eb835b38"
+    }
   }
 }

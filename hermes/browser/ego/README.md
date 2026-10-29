@@ -8,12 +8,15 @@ preserves the existing route.
 
 ## Current status
 
-- **Readback 0.3.0 candidate:** source-column records, visible-row frequency/blank
-  counts and Asia/Shanghai observation time are implemented, with 22 related
-  checks and the previous private device snapshot replay passing. Not deployed:
-  the native API currently cannot find old company Space 2. Page tools are
-  paused, the existing gateway/chat remains running. Activation needs one
-  explicitly approved company work Space and an idle native reload.
+- **Readback 0.3.0 loaded (2026-10-29):** Owner approved one restored company
+  work Space and one idle original-gateway reload. Company Profile 1 now uses
+  Space 4; native READY and eight tools are evidenced, with original H/W and
+  59 protection records intact. Source-column records, visible-row counts and
+  Asia/Shanghai observation time are available. The previous 22 checks and
+  private device snapshot replay are inherited, not rerun. A live statistics
+  observation returned eight ambiguous table fragments as unresolved, not
+  invented mappings. Post-enhancement Hermes report accuracy is still unverified.
+  Old Space 2 is missing for an unknown reason; no new profile/employee was made.
 - First Owner-issued real Feishu task is now evidenced: Hermes independently
   clicked system/device management and read 19 device rows with two successful
   menu actions. Observed read-only execution passed, but report accuracy failed:
@@ -34,19 +37,20 @@ preserves the existing route.
 - Installed native Ego/CLI: **0.6.1.13**, official guide **2.1.0**.
 - Eight typed MCP tools: guide, status, owned-window recovery, observation,
   short action batches, actual image screenshots, owned Pages, and handoff.
-- Native component calls and original-Hermes tool discovery passed. No Hermes
-  model message has been sent for this integration.
+- Native component calls and original-Hermes tool discovery passed. Codex sent
+  no model messages during activation; the earlier Owner-issued task is recorded
+  separately above.
 - v1 remains synthetic-only. v2 is an explicit **company-readonly** runtime with
-  pinned company profile and extension, awaiting Owner manual login/confirmation.
-  It cannot be opened by changing the legacy production flag. Business writes
-  stay disabled; real page reads have not been enabled in this phase.
+  pinned company profile and extension. Owner manual login was confirmed;
+  same-site reads/navigation are active. It cannot be opened by changing the
+  legacy production flag. Business writes remain disabled.
 - Owner-approved [static extension 0.1.0](readonly-extension/README.md) is now
   installed and enabled in company Profile 1. Actual local synthetic requests
   verified popup/frame/OOPIF/worker/ServiceWorker/new-Page/form blocking plus
   WebSocket and unapproved-port denial. A separately authorized Profile 2 control
   was unaffected. This is component evidence, not a Hermes Agent business result.
 
-## Why production is still closed
+## Real writes remain closed; historical guard failures are retained
 
 The main Page's GET requests were allowed and a project POST was denied before
 reaching the fixture. A separate related-popup probe nevertheless delivered a
@@ -61,18 +65,21 @@ The static profile-level extension now supplies recorded synthetic outcome
 evidence for those channels; the earlier hook failures remain historical.
 The v2 runtime now binds profile/extension lifecycle checks to every operation
 and has loaded in the original Feishu gateway. Owner login is confirmed and the
-workplace active; actual authorized site-query compatibility remains unverified. The old
+workplace active; the recorded device query proves that task's navigation,
+not every page's compatibility or report accuracy. The old
 synthetic runtime references a stopped fixture and must not be reused as a
 production entry. WebTransport has native rule-match evidence only; browser/OS
-restart persistence and actual Agent use have not been verified.
+restart persistence, Desktop loading and post-enhancement Agent report accuracy
+have not been verified. Earlier Agent use is evidenced above.
 The current adapter is not a Python/Node execution sandbox and does not expose
 arbitrary Node, filesystem, shell, page JavaScript, CDP, raw requests, credentials,
 upload or download as Agent tools.
 
 ## Runtime and lifecycle
 
-The private runtime lives under `H/tools/company-browser/runs/`, pins all four
-adapter modules plus CLI and official-guide SHA256, and names an existing Space.
+The private runtime lives under `H/tools/company-browser/runs/`, pins four
+modules for v1 or six for company v2, plus CLI and official-guide SHA256, and
+names an existing Space.
 The Node bridge launches the verified official CLI with a newly generated UTF-8
 bootstrap module. Inputs never depend on environment inheritance inside Ego.
 An authenticated loopback worker serializes operations. The browser remains
