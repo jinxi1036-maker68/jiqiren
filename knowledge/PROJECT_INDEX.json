@@ -507,7 +507,7 @@
     },
     "memory_refocus": {
       "date": "2026-10-29",
-      "status": "drafts_prepared_not_deployed",
+      "status": "approved_memory_refocus_deployed_native_loader_passed_gateway_ready",
       "same_original_employee": true,
       "report": "hermes/memory/2026-10-29_MEMORY_REFOCUS_PLAN.md",
       "plan": "hermes/memory/MEMORY_REFOCUS_PLAN.json",
@@ -515,12 +515,17 @@
         "hermes/memory/MEMORY.proposed.md",
         "hermes/memory/USER.proposed.md"
       ],
-      "local_memory_modified": false,
-      "private_memory_plaintext_read": false,
+      "local_memory_modified": true,
+      "private_memory_plaintext_read": true,
       "new_model_requests": 0,
       "protect_dependency": "approved replacement would also require derived baseline with only two expected hashes changed; remaining 57 preserved",
-      "autonomous_memory_write_capability": "not verified or enabled by this proposal",
-      "next": "Owner reviews exact two-store candidates and the scoped original-gateway protection/reload dependency before local writes"
+      "autonomous_memory_write_capability": "not enabled or verified by one-time memory refocus",
+      "next": "Owner uses normal same-employee workflow; actual conversation loading/accuracy need existing task receipts, no automatic test message",
+      "private_memory_plaintext_uploaded": false,
+      "only_approved_protection_hashes_changed": 2,
+      "other_57_protected_records_unchanged": true,
+      "native_loader_probe_passed": true,
+      "gateway_ready": true
     }
   }
 }

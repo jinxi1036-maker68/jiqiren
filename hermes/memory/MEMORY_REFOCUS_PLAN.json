@@ -1,12 +1,11 @@
 {
   "schema": "lingju.memory-refocus-preparation.v1",
   "prepared_at_utc": "2026-10-29T06:13:40.256946+00:00",
-  "status": "drafts_prepared_not_deployed",
-  "Owner_request": "Owner reports mixed memory and says continue next step; specific original-store replacement/reload not yet approved",
+  "status": "approved_memory_refocus_deployed_native_loader_passed_gateway_ready",
+  "Owner_request": "Direct explicit response: approve exact two-store candidates, private review/recovery, two protection hashes only, one idle gateway reload; no model messages",
   "scope": "two existing built-in memory stores, no second identity",
   "document": "hermes/memory/2026-10-29_MEMORY_REFOCUS_PLAN.md",
   "content_basis": "Owner-pasted Hermes self-report, authoritative company charter, and existing sanitized evidence; not a private file content diff",
-  "private_memory_plaintext_read_or_exported": false,
   "current_configuration_whitelist": {
     "memory_enabled": true,
     "user_profile_enabled": true,
@@ -52,10 +51,10 @@
       "strict_threat_scan_findings": 0
     }
   },
-  "local_memory_writes": 0,
+  "local_memory_writes": 2,
   "local_memory_deletions": 0,
   "Hermes_model_messages_or_requests": 0,
-  "gateway_reloads": 0,
+  "gateway_reloads": 1,
   "live_browser_actions": 0,
   "protected_records_matched": 59,
   "source_mechanism_evidence": [
@@ -175,5 +174,120 @@
     "protected_59_unchanged": true,
     "model_calls": 0
   },
-  "base_commit": "a38e3ee81e9f7801ee24540897e073e880c16174"
+  "base_commit": "a38e3ee81e9f7801ee24540897e073e880c16174",
+  "preparation_stage": {
+    "status": "drafts_prepared_not_deployed",
+    "Owner_request": "Owner reports mixed memory and says continue next step; specific original-store replacement/reload not yet approved",
+    "private_memory_plaintext_read_or_exported": false,
+    "local_memory_writes": 0,
+    "gateway_reloads": 0
+  },
+  "private_memory_plaintext_reviewed_locally": true,
+  "private_memory_plaintext_emitted_or_uploaded": false,
+  "execution": {
+    "completed_at_utc": "2026-10-29T06:26:34.751165+00:00",
+    "status": "approved_memory_refocus_deployed_native_loader_passed_gateway_ready",
+    "approved_source_commit": "1cff19869a40a4aee4adb887cac96f3c2c705c51",
+    "Owner_approval": "Direct explicit response: approve exact two-store candidates, private review/recovery, two protection hashes only, one idle gateway reload; no model messages",
+    "same_original_employee": true,
+    "original_H_and_W_preserved": true,
+    "local_memory_changes": {
+      "memories/MEMORY.md": {
+        "before_sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0",
+        "after_sha256": "d66531ddc2e8e6c73b365b380a5c7fbc4eb3533811724d7b57685f401e0ce77b",
+        "bytes_after": 2555
+      },
+      "memories/USER.md": {
+        "before_sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6",
+        "after_sha256": "b5a0f1bbdc5beddc63d6a29fc2ebc4586ef941f538213d8bd9aa89cb9e7fbce7",
+        "bytes_after": 1147
+      }
+    },
+    "new_memory_entries": 7,
+    "new_user_entries": 5,
+    "new_memory_characters": 997,
+    "new_user_characters": 417,
+    "old_entries_reviewed_locally": {
+      "MEMORY.md": 40,
+      "USER.md": 27
+    },
+    "review_scope": "Bounded local category/coverage review; no original text, personal details or credential values emitted. No company-specific omitted entry identified; not a claim of exhaustive semantic proof.",
+    "original_data_deleted": false,
+    "private_original_memory_text_uploaded": false,
+    "private_recovery": {
+      "necessary_preimages": 4,
+      "directory_final_path_and_private_acl_verified": true,
+      "retention_days": 14,
+      "automatic_cleanup_or_cron": false,
+      "raw_path_not_published": true
+    },
+    "original_file_ACLs_preserved": true,
+    "derived_protection": {
+      "records": 59,
+      "only_two_memory_expected_hashes_changed": true,
+      "other_records_unchanged": 57,
+      "old_baseline_file_unchanged": true,
+      "new_baseline_sha256": "12911dc65795065f7d57df7b819717114d36dcba4d2775765bec44e65943dfc1",
+      "owned_gate_change": "protected_baseline_sha256 only",
+      "process_uses_new_baseline": true
+    },
+    "native_loader_component_probe": {
+      "passed": true,
+      "both_approved_payloads_in_frozen_blocks": true,
+      "complete_system_prompt_read": false,
+      "actual_model_conversation": false
+    },
+    "native_reload": {
+      "count": 1,
+      "old_gateway_idle": true,
+      "graceful_stop": true,
+      "old_child_and_launcher_exited": true,
+      "force_stop": false,
+      "new_launcher_pid": 7192,
+      "new_child_pid": 19868,
+      "actual_ready_at_utc": "2026-10-29T06:26:26.565379+00:00",
+      "browser_catalog_tools": 8,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "retrying",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "channel_end_to_end_messages_tested": false
+    },
+    "browser_adapter_sources_and_runtime_unchanged": true,
+    "original_identity_SOUL_HERMES_R3_Manifest_config_model_MCP_voice_QQ_cron_profiles_unchanged": true,
+    "old_sealed_ledgers_match": 6,
+    "audit_before": [
+      0,
+      64,
+      0
+    ],
+    "audit_after": [
+      0,
+      64,
+      0
+    ],
+    "model_messages_sent_by_Codex": 0,
+    "new_model_requests": 0,
+    "business_platform_actions": 0,
+    "rollback_occurred": false,
+    "remaining_limits": [
+      "Existing conversation history/persisted prompts may still contain old background; no deletion or new message was sent",
+      "Actual Hermes model-conversation memory loading and improved reporting remain unverified by this zero-model operation",
+      "Autonomous persistent memory writes remain constrained by current read-only tool/protection policy; not enabled here",
+      "Known wecom_callback retry/disconnection retained without repair"
+    ],
+    "private_receipt_sha256": {
+      "local_entry_review": "fff1cb9bffd4318f96ed0ad01cf0dd1be6d65dd5eb523aa9f5712a15bf571100",
+      "preflight": "88182e075ad509885b333c1a7036ce63f065ec77ec7e19865b1d5b223d80846a",
+      "stop": "7de8d6e2e6442dcaab5fac3bc0b919a58622ac39b0fc7f5497355ac79f9a1fc4",
+      "deployment": "63247f83935426fefbcda8c47a3d0ff557a8716a20c2204472744f0219ae7512",
+      "native_loader": "b30a6f3207bf8aef7fb90ff5c8d96ca7a7c465479d068d29dbd9e59051a479a7",
+      "native_start": "6276501a642578e5fbad16ac45f0741549f3153a8a1fb660384cafd12c9cb44f"
+    }
+  },
+  "Owner_approval_granted": true,
+  "required_Owner_approval_status": "fulfilled by explicit direct Owner approval before local writes"
 }
