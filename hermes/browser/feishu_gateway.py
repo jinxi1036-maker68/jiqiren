@@ -123,6 +123,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
                             adapter=self._adapter_for_source(msg.source)
                             if adapter is not None:
                                 progress=FeishuProgress(adapter,msg,out,
+                                    initial_delay=progress_options['first_notice_after_seconds'],
                                     interval=progress_options['interval_seconds'],
                                     io_timeout=progress_options['io_timeout_seconds']).start()
                                 turn['progress']=progress

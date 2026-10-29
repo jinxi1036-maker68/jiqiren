@@ -719,11 +719,11 @@
     },
     "feishu_progress": {
       "date": "2026-10-29",
-      "status": "local_fallback_and_fixed_delay_repaired_original_gateway_READY_provider_quota_and_real_speed_unverified",
+      "status": "unconditional_ack_removed_delayed_labelled_status_and_SDK_PUT_fix_loaded_real_edit_delivery_unverified",
       "report": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.md",
       "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json",
       "same_original_employee": true,
-      "asynchronous_ack": true,
+      "asynchronous_ack": false,
       "status_edit_interval_seconds": 30,
       "native_final_reply_and_autonomous_work_preserved": true,
       "new_model_requests_by_Codex": 0,
@@ -757,6 +757,19 @@
         "new_Hermes_requests_by_Codex": 0,
         "real_latency_recovery_proven": false,
         "enterprise_quota_verified": false
+      },
+      "current_feedback_policy": {
+        "date": "2026-10-29",
+        "status": "unconditional_ack_removed_delayed_labelled_status_and_SDK_PUT_fix_loaded_real_edit_delivery_unverified",
+        "report": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.md",
+        "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json#status_feedback_correction",
+        "unconditional_ack_removed": true,
+        "first_system_status_seconds": 30,
+        "native_answer_preserved": true,
+        "actual_SDK_PUT_method_fixed": true,
+        "real_platform_edit_delivery_verified": false,
+        "protected_original_records_unchanged": 59,
+        "new_Hermes_model_calls_by_Codex": 0
       }
     }
   },

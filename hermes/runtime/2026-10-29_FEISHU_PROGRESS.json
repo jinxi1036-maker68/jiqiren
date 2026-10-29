@@ -754,5 +754,118 @@
       "native_CLI_probe": "11e2371479269fc9ed3282d58a0febf44cb06baf92e43d0c4304a46ffa1da656",
       "settings_probe": "c63c69c715bf5269529c9b94e1d2299b47e5f5f9649175e6b92187e06976fbc6"
     }
+  },
+  "initial_deployment_state_scope": "Historical snapshot; current feedback follows status_feedback_correction/current_feedback_policy",
+  "latest_report_block": "status_feedback_correction",
+  "status_feedback_correction": {
+    "at_utc": "2026-10-29T15:07:29.870984+00:00",
+    "state": "unconditional_ack_removed_delayed_labelled_status_and_SDK_PUT_fix_loaded_real_edit_delivery_unverified",
+    "problem_acknowledgement": "Codex-added per-message canned receipt was overbroad; not an autonomous Hermes answer",
+    "before_live_evidence": {
+      "actual_ack_send_successes": 2,
+      "actual_status_edit_failures": 2,
+      "formal_replies_generated": "22:56:47 and 22:59:46 Asia/Shanghai; second followed 22:57:12 user metadata",
+      "formal_reply_body_or_private_memory_read": false,
+      "second_reply_platform_delivery_independently_verified": false,
+      "chat_endpoint_429_still_seen": true,
+      "main_vs_auxiliary_identity_of_that_429": "not attributed"
+    },
+    "current_feedback_policy": {
+      "unconditional_received_template": false,
+      "first_status_after_seconds": 30,
+      "if_native_handler_returns_within_30_seconds": "no extra helper message",
+      "if_still_waiting": "labelled system status from real request/header state, then edit same message each30s",
+      "final_status": "processing ended/cancelled/error; never asserts business success or final answer delivery",
+      "original_Hermes_answer_and_tool_progress": "preserved, no second model prompt or thinking control"
+    },
+    "SDK_update_correction": {
+      "installed_SDK_builder": "lark_oapi/api/im/v1/model/update_message_request.py",
+      "actual_method": "PUT",
+      "same_route": "https://open.feishu.cn/open-apis/im/v1/messages/<id>",
+      "old_policy": "allowed PATCH but omitted PUT; actual native update could not pass this control guard",
+      "new_policy": "add only PUT on existing exact official message route; retain domain/path/query restrictions",
+      "new_account_permission_or_MCP_registration": false,
+      "host_wide_or_message_delete_bypass": false,
+      "actual_failed_SendResult_details_not_retained": true,
+      "live_end_to_end_edit_after_repair": "not tested; no real test message sent"
+    },
+    "validation": {
+      "progress_tests": 14,
+      "transport_tests": 7,
+      "gateway_tests": 10,
+      "daily_tests": 4,
+      "all35_passed": true,
+      "actual_installed_SDK_request_builder_sync_async_classification": true,
+      "SDK_network_mocked": true,
+      "SDK_test_import_unused_loop_warning": "test-only unused loop cleanup added; rerun passed without warning",
+      "native_CLI_zero_network_probe": true
+    },
+    "activation": {
+      "one_idle_graceful_reload": true,
+      "old_child": 25392,
+      "old_launcher": 25456,
+      "new_child": 152,
+      "new_launcher": 8140,
+      "actual_READY_utc": "2026-10-29T15:05:45.390244+00:00",
+      "original_H_W_identity": true,
+      "catalog_tools": 8,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "disconnected",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "force_stop": false,
+      "interrupted_active_Agent": false
+    },
+    "files": {
+      "owned_sources_updated": {
+        "feishu_progress.py": "87378caa2e334c02fd24a115e2144d45d8c4464f6b23ff2554f7446f189b8e01",
+        "feishu_gateway.py": "652fd0c65b9147a46779526a3efe1e1b224859c116cedc51c7f752ba0adeb823",
+        "feishu_transport.py": "bf6990e2a5d4d786d9d56525b1b9177bca6b16ea2d588d76aa09839bf6cc46a4"
+      },
+      "gate_changes": [
+        "three source pins",
+        "owner_progress first_notice_after_seconds"
+      ],
+      "handoff_metadata_updated": true,
+      "all59_original_protected_unchanged": true,
+      "baseline_browser_runtime_daily_pacing_unchanged": true,
+      "config_credentials_memory_identity_MCP_voice_QQ_R3_unchanged": true
+    },
+    "private_recovery": {
+      "preimages": 5,
+      "handle_final_path_and_current_user_SYSTEM_private_ACL_verified": true,
+      "rollback_performed": false,
+      "rule": "restore only these owned targets when still matching written SHA; never overwrite concurrent changes or restore original config/memory"
+    },
+    "audit_at_prepare": [
+      0,
+      97,
+      0
+    ],
+    "audit_before_reload": [
+      0,
+      97,
+      0
+    ],
+    "audit_after_reload": [
+      0,
+      97,
+      0
+    ],
+    "counter_changes_before_reload": "Owner natural messages only, no Codex model calls",
+    "new_Hermes_messages_or_model_calls_by_Codex": 0,
+    "real_business_operations": 0,
+    "remaining": [
+      "Owner future real delayed-status send/edit delivery not tested",
+      "Provider 429/latency still possible; template fix does not repair service quota"
+    ],
+    "private_evidence_sha256": {
+      "operation": "b204179d111026a81d1765f8c186d5384c2010432f4e0dd8e6c5420aaa2910fa",
+      "complaint_receipts": "43017684487adb7a712a5473bbbb4a30775d7612658174e9ec6351dc10d46419",
+      "native_CLI_probe": "ae01385b03df815d1ab7be881d7499518249d49c911014766222d55157fab27d"
+    }
   }
 }

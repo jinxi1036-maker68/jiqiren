@@ -24,6 +24,8 @@ _ROUTES = (
     ('GET', r'/open-apis/im/v1/messages', frozenset({'container_id_type', 'container_id', 'page_size', 'page_token', 'sort_type', 'start_time', 'end_time'})),
     ('GET', r'/open-apis/im/v1/messages/'+_ID, frozenset({'user_id_type'})),
     ('PATCH', r'/open-apis/im/v1/messages/'+_ID, frozenset()),
+    # Native Lark SDK Message.update uses PUT (not PATCH).
+    ('PUT', r'/open-apis/im/v1/messages/'+_ID, frozenset()),
     ('POST', r'/open-apis/im/v1/messages/'+_ID+r'/reply', frozenset()),
     ('POST', r'/open-apis/im/v1/messages/'+_ID+r'/reactions', frozenset()),
     ('GET', r'/open-apis/im/v1/messages/'+_ID+r'/reactions', frozenset({'reaction_type', 'page_size', 'page_token'})),

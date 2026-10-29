@@ -43,6 +43,7 @@ class ProgressTests(unittest.IsolatedAsyncioTestCase):
         self.tmp.cleanup()
 
     def create(self, **kw):
+        kw.setdefault('initial_delay', 0)
         return FeishuProgress(self.adapter, self.msg, self.root,
                               interval=.015, io_timeout=.05, **kw)
 
@@ -55,7 +56,8 @@ class ProgressTests(unittest.IsolatedAsyncioTestCase):
         p.finish('returned')
         await p.task
         self.assertEqual(len(self.adapter.sent), 1)
-        self.assertIn('不代表业务操作成功', self.adapter.edits[-1][2])
+        self.assertIn('处理已结束', self.adapter.edits[-1][2])
+        self.assertNotIn('成功', self.adapter.edits[-1][2])
         self.assertTrue(self.adapter.sent[0][2]['metadata']['_interim_send'])
 
     async def test_http_error_is_fact_not_cause_and_200_is_not_business_success(self):
@@ -65,7 +67,7 @@ class ProgressTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn('原因尚未确认', p.text())
         self.assertNotIn('瞬时', p.text())
         p.note('response_headers', status=200)
-        self.assertIn('响应头', p.text())
+        self.assertIn('开始响应', p.text())
         self.assertNotIn('成功', p.text())
 
     async def test_failed_send_is_not_retried_or_allowed_to_break_task(self):
@@ -99,6 +101,37 @@ class ProgressTests(unittest.IsolatedAsyncioTestCase):
         await p.task
         self.assertEqual(self.adapter.sent, [])
         self.assertEqual(p.state, 'accepted')
+
+    async def test_normal_reply_before_delay_has_no_extra_bubble(self):
+        p = self.create(initial_delay=.06).start()
+        await asyncio.sleep(.015)
+        self.assertEqual(self.adapter.sent, [])
+        p.finish('returned')
+        await p.task
+        self.assertEqual(self.adapter.sent, [])
+        self.assertEqual(self.adapter.edits, [])
+
+    async def test_slow_reply_first_notice_is_real_state_not_canned_ack(self):
+        p = self.create(initial_delay=.04).start()
+        p.note('request_started')
+        await asyncio.sleep(.015)
+        self.assertEqual(self.adapter.sent, [])
+        await self.adapter.ack.wait()
+        text = self.adapter.sent[0][1]
+        self.assertIn('【系统状态】', text)
+        self.assertIn('等待模型服务', text)
+        self.assertNotIn('收到', text)
+        self.assertNotIn('我会', text)
+        p.finish('returned')
+        await p.task
+        self.assertEqual(len(self.adapter.sent), 1)
+
+    async def test_error_before_delay_relies_on_native_error_without_canned_send(self):
+        p = self.create(initial_delay=.05).start()
+        await asyncio.sleep(.01)
+        p.finish('error')
+        await p.task
+        self.assertEqual(self.adapter.sent, [])
 
     async def test_cancelled_or_failed_turn_never_reports_completed_business(self):
         for outcome, phrase in [('error', '异常'), ('cancelled', '中断')]:
@@ -182,7 +215,7 @@ class ProgressTests(unittest.IsolatedAsyncioTestCase):
 
         native = types.SimpleNamespace(GatewayRunner=Runner, _current_max_iterations=lambda:32)
         restore = install_runner_hooks(native, exercise, meter, self.root, {'files': {}},
-            binding, self.root, progress_options=PROGRESS_OPTIONS)
+            binding, self.root, progress_options={**PROGRESS_OPTIONS,'first_notice_after_seconds':0})
         try:
             handler = Runner()._primary_message_handler()
             def msg(text, src=source):

@@ -81,6 +81,39 @@ class FeishuPreparationTests(unittest.TestCase):
             ('POST','https://user:secret@open.feishu.cn/open-apis/im/v1/messages')]:
             self.assertFalse(is_control_request(method,url))
 
+    def test_actual_installed_SDK_update_method_is_classified_as_control_sync_and_async(self):
+        from lark_oapi.api.im.v1 import UpdateMessageRequest, UpdateMessageRequestBody
+        from lark_oapi.core.http.transport import _build_url
+        request=UpdateMessageRequest.builder().message_id('om_synthetic').request_body(
+            UpdateMessageRequestBody.builder().msg_type('text').content('{"text":"synthetic"}').build()).build()
+        # The SDK import may allocate a default loop; asyncio.run below uses
+        # a separate loop. Close the unused one at test teardown only.
+        try:sdk_loop=asyncio.get_event_loop()
+        except RuntimeError:sdk_loop=None
+        if sdk_loop is not None and not sdk_loop.is_running():self.addCleanup(sdk_loop.close)
+        self.assertEqual(request.http_method.name,'PUT')
+        conf=types.SimpleNamespace(domain='https://open.feishu.cn')
+        policy=FeishuTrafficPolicy();seen=[]
+        class SDK:
+            @staticmethod
+            def execute(conf,req):
+                url=_build_url(conf.domain,req.uri,req.paths)
+                seen.append(policy.category(httpx.Request(req.http_method.name,url)))
+                return 'local-no-network'
+            @staticmethod
+            async def aexecute(conf,req):return SDK.execute(conf,req)
+        restore=tag_sdk_transport(SDK)
+        try:
+            self.assertEqual(SDK.execute(conf,request),'local-no-network')
+            self.assertEqual(asyncio.run(SDK.aexecute(conf,request)),'local-no-network')
+            self.assertEqual(seen,['feishu','feishu'])
+        finally:restore()
+        for method,url in [('PUT','https://open.feishu.cn/open-apis/drive/v1/files/x'),
+            ('PUT','https://open.feishu.cn/open-apis/im/v1/messages'),
+            ('PUT','https://open.feishu.cn/open-apis/im/v1/messages/om_synthetic?unexpected=x'),
+            ('DELETE','https://open.feishu.cn/open-apis/im/v1/messages/om_synthetic')]:
+            self.assertFalse(is_control_request(method,url))
+
     def test_websocket_only_expected_official_destination(self):
         validate_websocket('wss://msg-frontier.feishu.cn/ws/v2?device_id=synthetic&service_id=1')
         for url in ['wss://evil.example/ws/v2','wss://msg-frontier.feishu.cn/other',

@@ -11,7 +11,8 @@ import uuid
 from qq_runtime import event
 
 
-PROGRESS_OPTIONS = {'interval_seconds': 30, 'io_timeout_seconds': 4,
+PROGRESS_OPTIONS = {'first_notice_after_seconds': 30,
+                    'interval_seconds': 30, 'io_timeout_seconds': 4,
                     'one_status_bubble': True, 'reasoning_or_arguments': False}
 
 
@@ -23,10 +24,11 @@ def approved_progress(gate):
 
 
 class FeishuProgress:
-    def __init__(self, adapter, message, output, *, interval=30, io_timeout=4,
+    def __init__(self, adapter, message, output, *, initial_delay=30, interval=30, io_timeout=4,
                  clock=time.monotonic):
         self.adapter, self.message, self.output = adapter, message, output
         self.interval, self.io_timeout, self.clock = interval, io_timeout, clock
+        self.initial_delay = initial_delay
         self.started = clock()
         self.lock = threading.Lock()
         self.state, self.status, self.outcome = 'accepted', None, None
@@ -65,20 +67,20 @@ class FeishuProgress:
             state, status, outcome = self.state, self.status, self.outcome
         elapsed = max(0, int(self.clock() - self.started))
         if outcome == 'returned':
-            return '本次处理已返回，具体结果请看正式答复；这条状态不代表业务操作成功。'
+            return '【系统状态】本次处理已结束。'
         if outcome == 'cancelled':
-            return '本次处理已中断；尚未完成的事项不能当作已完成。'
+            return '【系统状态】本次处理已中断。'
         if outcome == 'error':
-            return '本次处理出现异常，具体原因以错误提示和日志为准；未确认的结果仍然未知。'
+            return '【系统状态】本次处理出现异常，请看错误提示。'
         if state == 'request_started':
             detail = '正在等待模型服务返回，尚未取得本次请求结果。'
         elif state == 'response_headers' and status is not None and status >= 400:
             detail = f'模型接口返回 HTTP {status}，原因尚未确认；原任务仍在处理。'
         elif state == 'response_headers':
-            detail = '模型服务已返回响应头，Hermes仍在继续处理；这还不是最终结果。'
+            detail = '模型接口已开始响应，尚未得到最终答复。'
         else:
             detail = '任务仍在处理中，暂时没有可确认的新结果。'
-        return f'已处理 {elapsed} 秒。{detail}'
+        return f'【系统状态】已等待 {elapsed} 秒。{detail}'
 
     async def _call(self, awaitable):
         try:
@@ -91,18 +93,24 @@ class FeishuProgress:
 
     async def _run(self):
         try:
-            # A very short native/control completion must not receive a stale
-            # "working" message after its final answer.
+            # No per-message canned acknowledgement. Let native replies and
+            # tool progress speak; only delayed waits get a labelled status.
+            if self.initial_delay > 0:
+                try:
+                    await asyncio.wait_for(self.done.wait(), self.initial_delay)
+                except asyncio.TimeoutError:
+                    pass
             if self.done.is_set():
                 return
             res = await self._call(self.adapter.send(
                 self.message.source.chat_id,
-                '收到，开始处理这条消息。需要较久时，我会更新这条状态；具体工具进展和最终结果另行回复。',
+                self.text(),
                 reply_to=self.message.message_id,
                 metadata={'_interim_send': True}))
             success = bool(res and getattr(res, 'success', False))
             mid = getattr(res, 'message_id', None) if success else None
-            self.record('owner_progress_ack', success=success, editable=bool(mid))
+            self.record('owner_progress_notice', success=success, editable=bool(mid),
+                        first_notice_after_seconds=self.initial_delay)
             if not mid:
                 return  # No resend: failed/ambiguous sends must not duplicate.
             while True:
