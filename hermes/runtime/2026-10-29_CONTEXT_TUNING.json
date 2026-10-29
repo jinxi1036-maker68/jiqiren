@@ -192,6 +192,106 @@
       "config_change_check": "97c55ee4358534162fe6d304c9f0ce8d9dae52f18ddf7fba122f0dc789d175fe",
       "approved_field_restore": "4463c633600566810dcb505053e853d2bbc70cbd146bec88f965e27af3a61558",
       "approved_payload_restore": "6caa6e435f4ee36883043facf90c7de59b19b88a7b451f388f3898e1e56cc295"
+    },
+    "Owner_message_roundtrip": {
+      "checked_at_utc": "2026-10-29T13:47:53.575620+00:00",
+      "session_metadata": {
+        "id": "20261029_214009_84e4de71",
+        "model": "agnes-3.0-flash",
+        "api_call_count": 1,
+        "tool_call_count": 0,
+        "input_tokens": 4387,
+        "output_tokens": 734
+      },
+      "user_record_at_Asia_Shanghai": "2026-10-29T21:40:39.607258+08:00",
+      "assistant_record_at_Asia_Shanghai": "2026-10-29T21:44:55.638129+08:00",
+      "user_to_assistant_record_seconds": 256.031,
+      "Owner_delivery_confirmation": "Owner explicitly confirmed received reply in original Feishu chat; no independent send-API receipt read",
+      "Feishu_state": "connected",
+      "active_agents": 1,
+      "model_wire_receipts": [
+        {
+          "at": "2026-10-29T13:40:47.923421+00:00",
+          "event": "model_wire_start",
+          "ordinal": 1,
+          "family": "other_httpx"
+        },
+        {
+          "at": "2026-10-29T13:40:49.129305+00:00",
+          "event": "model_response_headers",
+          "ordinal": 1,
+          "status": 403,
+          "retry_after_seconds": null
+        },
+        {
+          "at": "2026-10-29T13:40:59.958308+00:00",
+          "event": "model_wire_start",
+          "ordinal": 2,
+          "family": "chat_completions"
+        },
+        {
+          "at": "2026-10-29T13:42:43.176706+00:00",
+          "event": "model_response_headers",
+          "ordinal": 2,
+          "status": 504,
+          "retry_after_seconds": 120.0
+        },
+        {
+          "at": "2026-10-29T13:42:43.226329+00:00",
+          "event": "model_wire_start",
+          "ordinal": 3,
+          "family": "chat_completions"
+        },
+        {
+          "at": "2026-10-29T13:42:44.726636+00:00",
+          "event": "model_response_headers",
+          "ordinal": 3,
+          "status": 500,
+          "retry_after_seconds": null
+        },
+        {
+          "at": "2026-10-29T13:42:55.253774+00:00",
+          "event": "model_wire_start",
+          "ordinal": 4,
+          "family": "chat_completions"
+        },
+        {
+          "at": "2026-10-29T13:44:38.777231+00:00",
+          "event": "model_response_headers",
+          "ordinal": 4,
+          "status": 200,
+          "retry_after_seconds": null
+        },
+        {
+          "at": "2026-10-29T13:44:55.704335+00:00",
+          "event": "model_wire_start",
+          "ordinal": 5,
+          "family": "chat_completions"
+        },
+        {
+          "at": "2026-10-29T13:44:57.756732+00:00",
+          "event": "model_response_headers",
+          "ordinal": 5,
+          "status": 500,
+          "retry_after_seconds": null
+        },
+        {
+          "at": "2026-10-29T13:47:35.205010+00:00",
+          "event": "model_wire_start",
+          "ordinal": 6,
+          "family": "chat_completions"
+        }
+      ],
+      "audit_after_Owner_message": [
+        0,
+        70,
+        1
+      ],
+      "Codex_model_messages_or_requests": 0,
+      "new_gateway_restart_or_config_change": false,
+      "business_page_actions": 0,
+      "conclusion": "Message reached Hermes and Owner confirmed reply. Main-model 504 then 500 preceded successful 200; exact upstream failure/latency cause unproven. Other403 and later500 are recorded without inventing their purpose.",
+      "context_size_note": "Successful call recorded input4387/output734 tokens, not a 512K-size prompt; capacity setting alone is not evidence of this failure cause."
     }
   }
 }
