@@ -26,6 +26,7 @@ def validate_ego_runtime(runtime, root):
     required = {'bridge.mjs', 'worker.mjs', 'policy.mjs', 'native_guard.mjs'}
     if company:
         required.add('extension_guard.mjs')
+        required.add('table_readback.mjs')
         if (c.get('origin') != 'https://ldp.lingrobotics.com'
                 or c.get('businessWritesEnabled') is not False
                 or not c.get('approvalReference') or not c.get('profileId')):

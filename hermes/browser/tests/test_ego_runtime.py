@@ -33,8 +33,10 @@ class EgoRuntimeTests(unittest.TestCase):
         payload=self.root/'payload';payload.mkdir()
         for name in ['manifest.json','rules.json']:(payload/name).write_bytes(b'approved fixture')
         (self.root/'ego/extension_guard.mjs').write_bytes(b'fixture guard')
+        (self.root/'ego/table_readback.mjs').write_bytes(b'fixture reader')
         self.c.update(schema='lingju.ego-browser.v2',mode='company-readonly',origin='https://ldp.lingrobotics.com',businessWritesEnabled=False,approvalReference='Owner fixture',profileId='Profile 1',stateFile=str(self.runtime.parent/'workplace-state.json'),extension=dict(id='fpifglepgaacbbabakmcjmkinlpnconi',ruleset='company_readonly',directory=str(payload),manifestSha256=sha256(payload/'manifest.json'),rulesSha256=sha256(payload/'rules.json')))
         self.c['sourceSha256']['extension_guard.mjs']=sha256(self.root/'ego/extension_guard.mjs')
+        self.c['sourceSha256']['table_readback.mjs']=sha256(self.root/'ego/table_readback.mjs')
         Path(self.c['stateFile']).write_text('{}')
         self.save()
         return payload

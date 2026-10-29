@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "first_Hermes_Ego_real_query_executed_reporting_accuracy_failed",
+  "status": "table_readback_candidate_tested_company_workplace_recovery_required",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -91,7 +91,7 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Train reporting discipline: map each value to the actual table header, separate category/group, cross-check row totals and observation time, keep causes unknown without evidence, and use the available Ego browser tools. Preserve autonomous method choice; no fixed business click script.",
+  "next_action": "Owner-approved new work Space in same company Profile 1 and one idle native gateway reload; no new identity, credential copy, model message or business write",
   "Owner_desktop_handoff": "Owner replied installation can continue; actual enabled extension subsequently confirmed in normal profile UI and native rule API. Company result UI retained; independent control Space closed.",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
   "upstream_root_cause_reused": false,
@@ -896,5 +896,94 @@
       ],
       "recommended_next_improvement": "Train reporting discipline: map each value to the actual table header, separate category/group, cross-check row totals and observation time, keep causes unknown without evidence, and use the available Ego browser tools. Preserve autonomous method choice; no fixed business click script."
     }
+  },
+  "table_readback_enhancement": {
+    "at_utc": "2026-10-29T05:18:25.107042+00:00",
+    "status": "candidate_tested_not_deployed",
+    "existing_owned_files": [
+      "ego_runtime.py",
+      "ego/bridge.mjs",
+      "ego/worker.mjs",
+      "ego/policy.mjs"
+    ],
+    "new_owned_files": [
+      "ego/table_readback.mjs"
+    ],
+    "source_before": {
+      "ego_runtime.py": "a5ac38952389b9db64d5fbd1e947075ce7c592a8af7dd180381a33b14b609b6e",
+      "ego/bridge.mjs": "6131a83a59e62c7abcd936a206165dc7140147230b2263ab632884800828e68d",
+      "ego/worker.mjs": "91a6a6d405c5067da5a17994a681765c892833be5b0486063b2e1d9216ee514f",
+      "ego/policy.mjs": "1f75b8ad501f8cddf8ea43dc2ecd8dd2f0f2f6392f5d208eccba2a89d6b88344"
+    },
+    "source_after": {
+      "ego_runtime.py": "ee2fd301edb1c4c8c3cca4bc9761d7d9fbf4abb06634bfee8df0413bca784aec",
+      "ego/bridge.mjs": "85b1192e51d94284263c4c3f222f1c922d20d4964993a1259811b51f4fc2c05f",
+      "ego/worker.mjs": "d7ef531b028f20cbdf456b340022438a057c86c18992ebc8e9d6a568f6e47325",
+      "ego/policy.mjs": "957be9ffe718c83e943902927fb5d5b51090ec6f9922930e028590a5d0686f36",
+      "ego/table_readback.mjs": "83afd54408c92e16c59ebf658410823755ed8d3994218d4c8499be0a980f90ff"
+    },
+    "current_tools_paused_reason": "company Space 2 absent in native API; root cause unknown",
+    "current_native_gateway_not_stopped": true,
+    "protected_records_match": 59,
+    "model_calls": 0,
+    "tests": {
+      "Node_readback_new": 11,
+      "Node_affected": 5,
+      "Python_runtime": 6,
+      "total": 22
+    },
+    "private_record_replay": "passed; no raw record exported",
+    "required_activation": "Owner-approved new work Space in same company Profile 1 and one idle native gateway reload; no new identity, credential copy, model message or business write",
+    "rollback": "Save only the four changed owned source files and owned runtime/gate metadata preimages; restore any individual file only if its current digest equals this deployment output; pause if concurrent change. Never restore original H/W wholesale.",
+    "privacy": "No raw snapshots, names, device/contact IDs, private memory or credentials published",
+    "replay_aggregates": {
+      "mapping": "adjacent_split_header_body",
+      "rows": 19,
+      "raw_body_rows": 20,
+      "explicitly_separated_blank_rows": 1,
+      "unique_source_device_IDs": 19,
+      "device_IDs_11_digit_count": 0,
+      "collector_fields_with_11_digit_number": 19,
+      "category_blank": 19,
+      "group_value_counts": [
+        {
+          "display_parts": [],
+          "count": 6
+        },
+        {
+          "display_parts": [
+            "商超仓库类"
+          ],
+          "count": 3
+        },
+        {
+          "display_parts": [
+            "工厂组"
+          ],
+          "count": 10
+        }
+      ],
+      "group_count_sum": 19,
+      "group_count_verified": true,
+      "status_counts": [
+        {
+          "display_parts": [
+            "离线"
+          ],
+          "count": 19
+        }
+      ],
+      "model_calls": 0,
+      "live_browser_actions": 0
+    },
+    "autonomy": "No menu path, business priority, causal judgment or action order is scripted. Same eight tools; richer read output and factual standards only.",
+    "technical_limits": [
+      "split-header/body association is structural evidence and must be checked against visible headers",
+      "ambiguous layouts remain unresolved rather than inventing columns",
+      "counts cover returned nonempty rendered rows only, not unread pages or API null semantics",
+      "whole-blank rows recorded separately; not silently treated as records",
+      "readback suppression of sensitive-labeled columns does not claim to sanitize the original snapshot",
+      "actual Hermes response accuracy after loading remains unverified"
+    ]
   }
 }

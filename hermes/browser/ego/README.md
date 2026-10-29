@@ -8,6 +8,12 @@ preserves the existing route.
 
 ## Current status
 
+- **Readback 0.3.0 candidate:** source-column records, visible-row frequency/blank
+  counts and Asia/Shanghai observation time are implemented, with 22 related
+  checks and the previous private device snapshot replay passing. Not deployed:
+  the native API currently cannot find old company Space 2. Page tools are
+  paused, the existing gateway/chat remains running. Activation needs one
+  explicitly approved company work Space and an idle native reload.
 - First Owner-issued real Feishu task is now evidenced: Hermes independently
   clicked system/device management and read 19 device rows with two successful
   menu actions. Observed read-only execution passed, but report accuracy failed:
@@ -85,6 +91,7 @@ switch has been made.
 
 ```text
 node --test hermes/browser/tests/ego_adapter.test.mjs
+node --test hermes/browser/tests/ego_table_readback.test.mjs
 <original Hermes Python> -I -B hermes/browser/tests/test_ego_runtime.py
 ```
 
@@ -105,6 +112,18 @@ the control Space and own fixture were closed, and the company result UI was
 retained for the Owner. No login or Hermes model call occurred in this phase.
 
 ## Recovery
+
+The readback candidate transforms only an already-authorized snapshot. It adds
+source-header records, counts and time, not a business workflow. Hermes may
+choose observation `format: snapshot`, `tables` or `both`, and retains its
+choice of investigative methods, priorities, analysis and recommendations.
+Reporting guidance defines factual standards rather than a click order.
+Counts cover returned nonempty rendered rows; blank rows are listed separately.
+Split header/body association is structural evidence to check against the page,
+not a server schema claim. Ambiguous layouts remain unresolved. Sensitive-label
+suppression applies to structured output, without claiming the original snapshot
+is comprehensively sanitized. Future activation saves only four owned source
+preimages plus necessary runtime/gate metadata; no full H/W restore.
 
 Only `H/tools/company-browser/dispatch.py` was an existing file changed in this
 stage. Its private preimage and before/after hashes are in the local deployment

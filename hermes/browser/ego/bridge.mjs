@@ -16,7 +16,7 @@ const cfg=validateConfig(JSON.parse(await fs.readFile(runtimeFile,'utf8')));
 if(cfg.toolRoot!==root||cfg.home!==path.join(os.homedir(),'.hermes')||cfg.workspace!==path.join(cfg.home,'company-workspace'))throw Error('Original identity/workspace required');
 const digest=async file=>crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex');
 if(await digest(cfg.cli)!==cfg.cliSha256||await digest(cfg.officialGuide)!==cfg.guideSha256)throw Error('Vendor bytes changed');
-const expectedSources=['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs',...(cfg.mode==='company-readonly'?['extension_guard.mjs']:[])];
+const expectedSources=['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs',...(cfg.mode==='company-readonly'?['extension_guard.mjs','table_readback.mjs']:[])];
 for(const [name,sha] of Object.entries(cfg.sourceSha256||{})){
  if(!expectedSources.includes(name)||await digest(path.join(egoRoot,name))!==sha)throw Error('Adapter bytes changed');
 }
