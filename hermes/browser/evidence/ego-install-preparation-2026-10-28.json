@@ -2,7 +2,7 @@
   "schema": "lingju.ego-install-preparation.v1",
   "date": "2026-10-28",
   "timezone": "Asia/Shanghai",
-  "status": "original_gateway_Ego_catalog_ready_awaiting_Owner_manual_login",
+  "status": "Owner_login_confirmed_guard_restored_readonly_active",
   "authorization": "Owner accepted the Ego integration research/plan and requested resuming the original browser-capability goal after computer cleanup",
   "identity": "original Hermes only; existing H and company W preserved",
   "installer": {
@@ -91,7 +91,7 @@
     "security_software_changes": 0,
     "private_browser_data_imports": 0
   },
-  "next_action": "Arrange Owner manual login handoff in company Ego, then explicitly confirm active read-only workplace and let the same Hermes perform a normal business query. No login or model message in this recovery phase.",
+  "next_action": "Owner sends a normal read-only business goal to the same Hermes through Feishu; Hermes independently finds menus and queries existing records. Codex does not send the message or introduce test quotas.",
   "Owner_desktop_handoff": "Owner replied installation can continue; actual enabled extension subsequently confirmed in normal profile UI and native rule API. Company result UI retained; independent control Space closed.",
   "upstream_similar_exit_code": "https://github.com/citrolabs/ego-lite/issues/524",
   "upstream_root_cause_reused": false,
@@ -541,19 +541,21 @@
       "Windows_UIAutomation": "three read-only targeted picker inspections; no picker found, no input/control action performed, no Computer Use initialized"
     },
     "current_integrity": {
-      "checked_at_utc": "2026-10-29T02:41:45.809981+00:00",
+      "checked_at_utc": "2026-10-29T03:16:12.960991+00:00",
       "installed_source_exists": true,
       "payload_hashes_match": true,
       "restored_with_Owner_approval": true,
       "extension_enabled_native_check_at_utc": "2026-10-29T02:38:41.412Z",
       "current_gateway_catalog_ready": true,
-      "real_workplace_active": false,
-      "historical_failure_records_retained": true
+      "real_workplace_active": true,
+      "historical_failure_records_retained": true,
+      "Owner_login_confirmed": true,
+      "extension_reenabled_after_manual_login": true
     }
   },
   "company_runtime_connection": {
     "at_utc": "2026-10-29T00:40:26.750021+00:00",
-    "status": "original_gateway_Ego_catalog_ready_awaiting_Owner_manual_login",
+    "status": "Owner_login_confirmed_guard_restored_readonly_active",
     "same_original_employee": true,
     "runtime_schema": "lingju.ego-browser.v2",
     "mode": "company-readonly",
@@ -562,7 +564,7 @@
     "task_prefix_required": false,
     "company_space": 2,
     "company_profile": "Profile 1",
-    "workplace_state": "awaiting-owner-login",
+    "workplace_state": "active",
     "code_checks": {
       "Node_affected_and_new": 10,
       "Python_runtime": 6,
@@ -625,7 +627,7 @@
     "Computer_Use": 0,
     "new_profile_or_space": false,
     "current_gateway_ready": true,
-    "next": "Arrange Owner manual login handoff in company Ego, then explicitly confirm active read-only workplace and let the same Hermes perform a normal business query. No login or model message in this recovery phase.",
+    "next": "Owner sends a normal read-only business goal to the same Hermes through Feishu; Hermes independently finds menus and queries existing records. Codex does not send the message or introduce test quotas.",
     "recovery_and_corrected_start": {
       "completed_at_utc": "2026-10-29T02:41:45.809981+00:00",
       "Owner_authorization": "Direct reply: restore only the original two extension files and continue; no model calls or login",
@@ -681,6 +683,65 @@
         "restored-native-extension-check.json": "793d4c6315093c633eeab76e9dc7681c027ad5a31e44274860d63b91a336a96a",
         "source-recovered-gateway-ready.json": "55ddfb9442b22382400c389162c57950317863ef337256452bd45174c96764ec"
       }
-    }
+    },
+    "Owner_manual_login_handoff": {
+      "completed_at_utc": "2026-10-29T03:16:12.960991+00:00",
+      "status": "Owner_login_confirmed_guard_restored_readonly_active",
+      "Owner_login_evidence": "Owner direct confirmation; not independent authentication/token verification",
+      "primary_location": {
+        "origin": "https://ldp.lingrobotics.com",
+        "path": "/statistics"
+      },
+      "profile": "Profile 1",
+      "space": 2,
+      "manual_login_handoff": {
+        "temporarily_disabled_only_company_extension": true,
+        "Hermes_page_tools_remained_paused_during_login": true,
+        "Owner_completed_login": true,
+        "Codex_credential_read_or_entry": false,
+        "Cookie_or_session_copy": false
+      },
+      "protection_restoration": {
+        "normal_UI_enabled": true,
+        "native_enabled_ruleset_verified": true,
+        "actual_profile_path_verified": true,
+        "payload_sha256_match": true,
+        "temporary_metadata_Pages_closed": true
+      },
+      "workplace_state": "active",
+      "gateway": "same original native Hermes Feishu gateway",
+      "no_gateway_restart": true,
+      "original_home_workspace_retained": true,
+      "original_MCP_status_only_component_call": {
+        "calls": 1,
+        "state": "active",
+        "ready": true,
+        "guardHealthy": true,
+        "extensionEnabled": true,
+        "stderr_bytes": 0,
+        "worker_stopped_and_lock_released": true
+      },
+      "business_data_body_reads_by_Codex": 0,
+      "business_actions_by_Codex": 0,
+      "model_messages_sent_by_Codex": 0,
+      "new_model_requests": 0,
+      "daily_audit_before": 41,
+      "daily_audit_after": 41,
+      "protected_records_matched": 59,
+      "source_files_unchanged": 8,
+      "knowledge_identity_configuration_changes": 0,
+      "no_artificial_request_quota": true,
+      "Hermes_Agent_actual_Ego_business_task": "not yet observed; Owner sends a normal read-only work request next",
+      "still_not_authorized": [
+        "real business creation/binding/edit/delete/send/dispatch",
+        "automatic production patrol"
+      ],
+      "private_receipt_sha256": {
+        "owner-login-handoff-20261029.json": "3d597233550c34f85a2152208afa39a7dc19b24290cb95eb214315ac4ce54a67",
+        "owner-login-guard-restored-20261029.json": "41ed68fea0856399ca2da0071ad4198a28ffd4eeab32f07ed848277e45472666",
+        "Owner-login-active-MCP-status.json": "95ea1e6cca9b0c6885750923d0f7b87d4440de5510412832987eec54bcee075c"
+      }
+    },
+    "Owner_login_confirmed": true
   }
 }

@@ -11,8 +11,9 @@ preserves the existing route.
 - **2026-10-29 10:41 CST:** Owner-authorized recovery restored only the original
   two extension files (2,138 bytes, both hashes match). The original native
   Feishu gateway now emitted actual READY with eight Ego tools, original H/W,
-  unchanged 59 protection records and audit 41→41. Business work is still
-  awaiting Owner manual login; no model message or real page read was sent.
+  unchanged 59 protection records and audit 41→41. Owner manual login is now
+  confirmed, the guard re-enabled and the read-only workplace active. The MCP
+  status-only check passed; no model message or business body read was sent.
 - A first native start exposed an incorrect new pause-interface call, now fixed
   with a real-interface test. Only that own idle native child was asked to stop;
   both Windows venv launcher and child exited. The one corrected start after
@@ -47,8 +48,8 @@ and [evidence](../evidence/ego-install-preparation-2026-10-28.json).
 The static profile-level extension now supplies recorded synthetic outcome
 evidence for those channels; the earlier hook failures remain historical.
 The v2 runtime now binds profile/extension lifecycle checks to every operation
-and has loaded in the original Feishu gateway. Active work still requires Owner
-login/confirmation and authorized site compatibility. The old
+and has loaded in the original Feishu gateway. Owner login is confirmed and the
+workplace active; actual authorized site-query compatibility remains unverified. The old
 synthetic runtime references a stopped fixture and must not be reused as a
 production entry. WebTransport has native rule-match evidence only; browser/OS
 restart persistence and actual Agent use have not been verified.
@@ -129,6 +130,7 @@ artificial cap, test prefix or forced new conversation. Provider pacing remains.
 
 The earlier blank Space 1 was absent on resume. The approved retained company
 result Space 2 was reused and its actual Profile 1 path verified; no new Space
-was created. Its primary Page is blank and handed to Owner for the next manual
-login handoff. This is not proof of Desktop loading, end-to-end messaging or an
+was created. Its primary Page is now the Owner-reported logged-in statistics
+page, retained for the same Hermes after protection restoration. This is not
+proof of Desktop loading, end-to-end messaging or an
 Agent business result, and the original default entry was not permanently changed.
