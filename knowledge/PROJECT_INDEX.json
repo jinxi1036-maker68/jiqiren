@@ -555,7 +555,20 @@
       "new_model_requests_by_Codex": 0,
       "protected_records_unchanged": 59,
       "Owner_real_receipt_delivery_verified": false,
-      "model_request_latency_fixed": false
+      "model_request_latency_fixed": false,
+      "latency_investigation": {
+        "date": "2026-10-29",
+        "status": "read_only_diagnosis_complete_no_runtime_repair",
+        "report": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.md",
+        "evidence": "hermes/runtime/2026-10-29_FEISHU_PROGRESS.json#latency_investigation",
+        "enterprise_RPM_verified": false,
+        "official_enterprise_RPM": "dynamic, console governs",
+        "legacy_2_0_fallback_failures_confirmed": true,
+        "local_12s_pacing_confirmed": true,
+        "model_latency_fixed": false,
+        "original_changes": 0,
+        "new_Hermes_requests": 0
+      }
     }
   }
 }

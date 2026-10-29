@@ -111,5 +111,494 @@
   "private_evidence_sha256": {
     "activation": "093f2e886c40c459ee623538bd892d9e738c335781fa810c41a89f92f4751d7a",
     "native_CLI_probe": "052c1d7aa76432470ef74c0cb9b7c79c75b3ccf24cf0ace44fdc5d978c08f73c"
+  },
+  "latency_investigation": {
+    "checked_at_utc": "2026-10-29T14:28:27.850330+00:00",
+    "scope": "Targeted read-only diagnosis of actual API latency, fallback and quota; no repairs, probes or service restart",
+    "confirmed": {
+      "official_quota": {
+        "effective_date": "2026-10-29",
+        "enterprise_text_RPM": "dynamic; console current value governs",
+        "24_RPM_guarantee": "not supported by current public docs",
+        "same_type_keys_share_pool": true,
+        "enterprise_account_does_not_prove_this_request_key_type": true,
+        "source": "https://wiki.agnes-ai.com/zh-Hans/docs/tokenplan"
+      },
+      "observed_gateway_today": {
+        "observed_wire_attempts": 45,
+        "known_model_route_statuses": {
+          "500": 7,
+          "200": 18,
+          "429": 3,
+          "400": 1,
+          "503": 7,
+          "504": 1
+        },
+        "other_HTTPX_statuses_not_mislabelled_model": {
+          "403": 8
+        },
+        "max_rolling_60s_attempts_observed": 4,
+        "three_429_events": [
+          {
+            "at_utc": "2026-10-29T03:30:03.563156+00:00",
+            "inclusive_previous_60s_observed_all_requests": 4,
+            "known_model_routes": 3,
+            "retry_after_seconds": null,
+            "numeric_rate_headers": {}
+          },
+          {
+            "at_utc": "2026-10-29T13:58:38.693310+00:00",
+            "inclusive_previous_60s_observed_all_requests": 3,
+            "known_model_routes": 2,
+            "retry_after_seconds": null,
+            "numeric_rate_headers": {}
+          },
+          {
+            "at_utc": "2026-10-29T14:04:40.951467+00:00",
+            "inclusive_previous_60s_observed_all_requests": 4,
+            "known_model_routes": 3,
+            "retry_after_seconds": null,
+            "numeric_rate_headers": {}
+          }
+        ],
+        "not_an_account_wide_meter": true,
+        "other_Desktop_devices_and_auxiliary_requests_may_share_same_account_pool": true
+      },
+      "fallback": {
+        "configured_primary": "agnes-3.0-flash",
+        "configured_fallback": "agnes-2.0-flash",
+        "same_endpoint_settings": true,
+        "active_gateway_primary_env_equals_configured_fallback_inline": true,
+        "comparison_disclosed": "boolean equality only; no credential value/prefix/length/hash exported; no credential endpoint queried",
+        "Feishu_runtime_fallback_active": true,
+        "failed_final_error_dumps": [
+          {
+            "type": "AgnesAI_error",
+            "status_code": 500,
+            "response_status": 500,
+            "code": "get_channel_failed",
+            "provider_type": "AgnesAI_error",
+            "provider_code": "get_channel_failed",
+            "provider_error_message_redacted": "Model agnes-2.0-flash is temporarily unavailable. Please try again later (request id: [private receipt])",
+            "file": "request_dump_20261029_214009_84e4de71_20261029_215942_390457.json",
+            "request_model_parameter": "agnes-2.0-flash",
+            "error_tail_sha256": "54c7cdd3aad690495eecb6db145f619d2a55877b74dc373d94deec15c466e009",
+            "recognized_error_phrases": [],
+            "has_request_id": true,
+            "request_messages_tools_and_header_values_not_decoded": true
+          },
+          {
+            "type": "AgnesAI_error",
+            "status_code": 500,
+            "response_status": 500,
+            "code": "get_channel_failed",
+            "provider_type": "AgnesAI_error",
+            "provider_code": "get_channel_failed",
+            "provider_error_message_redacted": "Model agnes-2.0-flash is temporarily unavailable. Please try again later (request id: [private receipt])",
+            "file": "request_dump_20261029_214009_84e4de71_20261029_220545_311592.json",
+            "request_model_parameter": "agnes-2.0-flash",
+            "error_tail_sha256": "706f5d514a2f7755e678ddbfd637e49b8196d533c5d457e0a2e3772e26dd77b3",
+            "recognized_error_phrases": [],
+            "has_request_id": true,
+            "request_messages_tools_and_header_values_not_decoded": true
+          },
+          {
+            "type": "AgnesAI_error",
+            "status_code": 429,
+            "response_status": 429,
+            "code": "",
+            "provider_type": "AgnesAI_error",
+            "provider_error_message_redacted": "You’ve reached the API rate limit for free users. Upgrade to a Token Plan to unlock higher limits and continue using the API without interruption. (request id: [private receipt])",
+            "file": "request_dump_20261029_214009_84e4de71_20261029_220848_084245.json",
+            "request_model_parameter": "agnes-2.0-flash",
+            "error_tail_sha256": "18ee1b13364d28035afa8cd1df359e35e72492ff2d32ac92d66bfb7f3890dc2d",
+            "recognized_error_phrases": [],
+            "has_request_id": true,
+            "request_messages_tools_and_header_values_not_decoded": true
+          },
+          {
+            "type": "AgnesAI_error",
+            "status_code": 429,
+            "response_status": 429,
+            "code": "",
+            "provider_type": "AgnesAI_error",
+            "provider_error_message_redacted": "You’ve reached the API rate limit for free users. Upgrade to a Token Plan to unlock higher limits and continue using the API without interruption. (request id: [private receipt])",
+            "file": "request_dump_20261029_220859_76c126_20261029_221415_352733.json",
+            "request_model_parameter": "agnes-2.0-flash",
+            "error_tail_sha256": "6a7dbbeefce21bdb9518f055c300a5d3665456069860ab93c893941556338006",
+            "recognized_error_phrases": [],
+            "has_request_id": true,
+            "request_messages_tools_and_header_values_not_decoded": true
+          }
+        ],
+        "two_429_responses": "Server explicitly says free users; both corresponding request model parameters are agnes-2.0-flash",
+        "two_500_responses": "get_channel_failed; server says agnes-2.0-flash temporarily unavailable",
+        "latest_Desktop_fallback_metadata": [
+          {
+            "log": "agent.log",
+            "line": 29320,
+            "at_local": "2026-10-29 22:13:57,565",
+            "model_names": [],
+            "event": "fallback_mentioned",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29321,
+            "at_local": "2026-10-29 22:13:57,566",
+            "model_names": [
+              "agnes-3.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "API_failure",
+            "delay_seconds": null,
+            "attempt": [
+              1,
+              3
+            ],
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": "APIConnectionError"
+          },
+          {
+            "log": "agent.log",
+            "line": 29322,
+            "at_local": "2026-10-29 22:13:57,566",
+            "model_names": [
+              "agnes-3.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "retry",
+            "delay_seconds": 2.0420767987077695,
+            "attempt": [
+              1,
+              3
+            ],
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": "APIConnectionError"
+          },
+          {
+            "log": "agent.log",
+            "line": 29354,
+            "at_local": "2026-10-29 22:14:02,847",
+            "model_names": [],
+            "event": "fallback_mentioned",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29355,
+            "at_local": "2026-10-29 22:14:02,848",
+            "model_names": [
+              "agnes-3.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "API_failure",
+            "delay_seconds": null,
+            "attempt": [
+              2,
+              3
+            ],
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": "RateLimitError"
+          },
+          {
+            "log": "agent.log",
+            "line": 29358,
+            "at_local": "2026-10-29 22:14:04,301",
+            "model_names": [
+              "agnes-2.0-flash"
+            ],
+            "event": "fallback_mentioned",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29359,
+            "at_local": "2026-10-29 22:14:04,301",
+            "model_names": [
+              "agnes-2.0-flash",
+              "agnes-3.0-flash"
+            ],
+            "event": "fallback_mentioned",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29362,
+            "at_local": "2026-10-29 22:14:05,123",
+            "model_names": [
+              "agnes-2.0-flash"
+            ],
+            "event": "API_failure",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": true,
+            "free_users_error": false,
+            "HTTP_status": 500,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29391,
+            "at_local": "2026-10-29 22:14:05,128",
+            "model_names": [],
+            "event": "fallback_mentioned",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29392,
+            "at_local": "2026-10-29 22:14:05,131",
+            "model_names": [
+              "agnes-2.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "API_failure",
+            "delay_seconds": null,
+            "attempt": [
+              1,
+              3
+            ],
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": "InternalServerError"
+          },
+          {
+            "log": "agent.log",
+            "line": 29393,
+            "at_local": "2026-10-29 22:14:05,131",
+            "model_names": [
+              "agnes-2.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "retry",
+            "delay_seconds": 2.8360035927460467,
+            "attempt": [
+              1,
+              3
+            ],
+            "get_channel_failed": true,
+            "free_users_error": false,
+            "HTTP_status": 500,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29425,
+            "at_local": "2026-10-29 22:14:09,136",
+            "model_names": [],
+            "event": "fallback_mentioned",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29426,
+            "at_local": "2026-10-29 22:14:09,136",
+            "model_names": [
+              "agnes-2.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "API_failure",
+            "delay_seconds": null,
+            "attempt": [
+              2,
+              3
+            ],
+            "get_channel_failed": false,
+            "free_users_error": true,
+            "HTTP_status": null,
+            "error_class": "RateLimitError"
+          },
+          {
+            "log": "agent.log",
+            "line": 29427,
+            "at_local": "2026-10-29 22:14:09,136",
+            "model_names": [
+              "agnes-2.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "retry",
+            "delay_seconds": 5.177339955561163,
+            "attempt": [
+              2,
+              3
+            ],
+            "get_channel_failed": false,
+            "free_users_error": true,
+            "HTTP_status": 429,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29459,
+            "at_local": "2026-10-29 22:14:15,334",
+            "model_names": [],
+            "event": "fallback_mentioned",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": false,
+            "HTTP_status": null,
+            "error_class": null
+          },
+          {
+            "log": "agent.log",
+            "line": 29460,
+            "at_local": "2026-10-29 22:14:15,334",
+            "model_names": [
+              "agnes-2.0-flash",
+              "agnes-ai.com"
+            ],
+            "event": "API_failure",
+            "delay_seconds": null,
+            "attempt": [
+              3,
+              3
+            ],
+            "get_channel_failed": false,
+            "free_users_error": true,
+            "HTTP_status": null,
+            "error_class": "RateLimitError"
+          },
+          {
+            "log": "agent.log",
+            "line": 29461,
+            "at_local": "2026-10-29 22:14:15,352",
+            "model_names": [
+              "agnes-2.0-flash"
+            ],
+            "event": "API_failure",
+            "delay_seconds": null,
+            "attempt": null,
+            "get_channel_failed": false,
+            "free_users_error": true,
+            "HTTP_status": null,
+            "error_class": null
+          }
+        ],
+        "conclusion": "Real fallback into the failing old model increases attempts; do not mistake final 2.0 errors for proof the primary 3.0 key/account is default/free"
+      },
+      "local_pacing": {
+        "source": "hermes/browser/provider_pacing.py + feishu_gateway.py:serve",
+        "min_request_start_interval_seconds": 12,
+        "concurrency": 1,
+        "429_without_Retry_After_local_wait_seconds": 60,
+        "covers_unknown_HTTPX_also": true,
+        "not_a_delay_before_every_first_idle_message": true,
+        "current_gate_provider_pacing": null,
+        "actual_construction": "serve currently constructs BrowserPacer unconditionally, including daily Feishu mode; absent gate field does not disable it",
+        "additional_wait_is_real": true,
+        "responsibility": "Existing owned integration behavior, not a server-imposed 12-second rule",
+        "total_request_caps": "still absent; request audit remains unlimited with Owner task admission"
+      },
+      "latency": {
+        "first_confirmed_reply_wall_seconds": 256.031,
+        "three_chat_statuses": [
+          504,
+          500,
+          200
+        ],
+        "three_time_to_response_headers_seconds": [
+          103.218,
+          1.5,
+          103.523
+        ],
+        "sum_seconds": 208.241,
+        "remaining_gap_includes_native_processing_retry_pacing_and_body_read_not_uniquely_attributed": true,
+        "input_tokens_for_first_success": 4387,
+        "tool_calls_in_first_success": 0,
+        "one_Desktop_observed_reply_seconds": 60.958,
+        "Desktop_recorded_reasoning": {
+          "enabled": true,
+          "effort": "high",
+          "input_tokens": 26973,
+          "output_tokens": 1155,
+          "reasoning_tokens": 1041
+        },
+        "reasoning_cost_is_possible_not_proven_new_cause": true,
+        "512K_is_limit_not_actual_request_length": true
+      },
+      "network_route_difference": {
+        "gateway_child_model_host_in_NO_PROXY": true,
+        "Desktop_process_inherits_local_HTTP_proxy_and_no_model_bypass": true,
+        "actual_selected_route_for_every_Desktop_request_not_proven": true,
+        "proxy_failure_not_proven": true
+      },
+      "protected_hashes_match": 59,
+      "original_files_modified": 0,
+      "original_service_restarts": 0,
+      "new_Hermes_model_requests_or_messages": 0
+    },
+    "unconfirmed": [
+      "Actual active API key type and current enterprise RPM/remaining quota",
+      "Whether free-users text is accurate per-key entitlement or a generic response, particularly on deprecated fallback model",
+      "Account-wide concurrency/requests across Desktop, gateways and any other devices",
+      "Whether Agnes changed the actual allowance or service capacity for this account; current docs changed reference language only",
+      "Server generation vs network vs upstream queue decomposition; no new model call made",
+      "Current TPM limits, not supplied in retained numeric response headers or verified account quota"
+    ],
+    "recommended_order_without_implementation": [
+      "Resolve/retire the failing 2.0 fallback instead of retrying it with the same configured credential; preserve primary model and authorized identity",
+      "Confirm actual enterprise key pool and current limit using authenticated console/support with private request IDs; no key guessing or automatic purchase",
+      "Make owned pacing explicit for daily mode and calibrate to verified quota; preserve sensible 429/Retry-After/backoff and prevent fallback storms",
+      "Compare native Desktop and Feishu networking and high-reasoning behavior with later ordinary work; no synthetic pressure testing or silent thinking downgrade"
+    ],
+    "official_sources": [
+      {
+        "url": "https://wiki.agnes-ai.com/zh-Hans/docs/tokenplan",
+        "retrieved_sha256": "fea0daf0a98b16c9a58768ba45d47bf00614e3c260d420406fad1b5dfd6cf78d"
+      },
+      {
+        "url": "https://wiki.agnes-ai.com/en/docs/faqs",
+        "retrieved_sha256": "4eb5a707729e9c21bfc77a9300f745c74c2dbcf1ba9febc59b2702f506befa0c"
+      },
+      {
+        "url": "https://wiki.agnes-ai.com/en/docs/code",
+        "retrieved_sha256": "0b45ae5514398f7cdc766a3c6226161f0070e018162d33929d5fece7f845d04f"
+      }
+    ],
+    "private_readonly_evidence_sha256": {
+      "provider-latency-readonly-20261029.json": "0a03b5c53fa976969b87e8703970d27998a5413f3cdfb4d378453ab9328227c8",
+      "provider-error-tail-readonly-20261029.json": "73c74eb29a07037e32ec7585ea85d05cbbc81af69ece208ba7a2d7b5ab0d415c",
+      "provider-fallback-readonly-20261029.json": "f76d0a6e62a69427ed468ab6f996e0754366242c699ef4fe94d2eeb8567b9764"
+    },
+    "no_raw_config_database_request_headers_messages_prompts_or_credentials_uploaded": true
   }
 }
