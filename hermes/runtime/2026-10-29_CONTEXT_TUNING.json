@@ -118,5 +118,80 @@
     "deployment": "eb30e23c87624587fe525db3571610008f6efdcffd4525359e164fa16fa295b2",
     "native_context_probe": "141ed9a1832a444ed50ca7b1ac586356cb355e67f7502360e3f441d19dba2e26",
     "native_start": "18fabaf36f075263c1f108efca895d3131e2bfb80732f58068f1e418cdb161ca"
+  },
+  "post_reboot_Feishu_restore": {
+    "checked_at_utc": "2026-10-29T13:39:20.554778+00:00",
+    "status": "original_Feishu_gateway_restored_after_reboot_and_approved_component_recovery",
+    "observed_windows_boot_utc": "2026-10-29T13:22:51.204459+00:00",
+    "observed_windows_boot_Asia_Shanghai": "2026-10-29 21:22:51 +08:00",
+    "initial_observation": "recorded native PID12972 and launcher absent, no other original native gateway found; stored running/connected state stale",
+    "additional_start_blocker": "first recovery launch exited before adapter startup: FileNotFoundError for original approved Desktop extension folder",
+    "configuration_followup": {
+      "change_observed": "only prior-approved per-model context_length field absent; all other parsed values equal last approved configuration",
+      "writer": "unknown",
+      "restored_value": 524288,
+      "other_config_values_unchanged": true,
+      "config_ACL_exactly_preserved": true,
+      "only_known_approved_state_restored_not_arbitrary_rebaseline": true,
+      "model_or_credentials_changed": false
+    },
+    "extension_recovery": {
+      "original_two_files": [
+        "manifest.json",
+        "rules.json"
+      ],
+      "bytes": 2138,
+      "sha256": {
+        "manifest.json": "e58141ae7c1659e141acc7d07b1652a69bd711710251d38f377ad5b79dd37365",
+        "rules.json": "600db88118704dc4a44c7339ca9f9f56cd77fe9eae827e2ca40a1bd152a3d478"
+      },
+      "path": "same previously approved Desktop extension directory",
+      "source_disappearance_cause": "unknown",
+      "browser_profile_registration_or_permissions_changed": false
+    },
+    "native_gateway": {
+      "launcher_pid": 10460,
+      "child_pid": 21884,
+      "actual_READY_utc": "2026-10-29T13:38:57.543797+00:00",
+      "same_original_H_W_identity": true,
+      "catalog_tools": 8,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "retrying",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "Feishu_connected": true,
+      "end_to_end_Owner_message_reply_tested": false
+    },
+    "protected_records_match": 59,
+    "other_58_records_unchanged": true,
+    "autostart_or_permanent_entry_added": false,
+    "new_Hermes_messages_sent_by_Codex": 0,
+    "new_model_requests_sent_by_Codex": 0,
+    "audit_before": [
+      0,
+      64,
+      0
+    ],
+    "audit_after": [
+      0,
+      64,
+      0
+    ],
+    "browser_page_or_business_actions": 0,
+    "remaining_issues": [
+      "Repeated extension-source disappearance root cause unknown",
+      "Who removed prior approved context field is not proven",
+      "Recovery on later OS/browser restarts not implemented or verified",
+      "Browser live workspace/extension-enabled lifecycle not rechecked by a business task; catalog readiness is not business verification",
+      "Existing wecom callback connection problem unchanged"
+    ],
+    "private_receipt_sha256": {
+      "config_change_check": "97c55ee4358534162fe6d304c9f0ce8d9dae52f18ddf7fba122f0dc789d175fe",
+      "approved_field_restore": "4463c633600566810dcb505053e853d2bbc70cbd146bec88f965e27af3a61558",
+      "approved_payload_restore": "6caa6e435f4ee36883043facf90c7de59b19b88a7b451f388f3898e1e56cc295"
+    }
   }
 }
