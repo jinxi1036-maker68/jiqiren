@@ -10,6 +10,14 @@ from safety import ordinary_path
 from owned_job import OwnedJob
 
 
+def wait_bridge_shutdown(child,job):
+    """Allow lease cleanup before enforcing orphan prevention."""
+    try:return child.wait(timeout=12)
+    except subprocess.TimeoutExpired:
+        job.close()
+        return child.wait(timeout=10)
+
+
 def dispatch_target(runtime, root):
     """Explicit fixed entry or legacy finite runtime; never guess a fallback."""
     cfg = json.loads(runtime.read_text(encoding="utf-8"))
@@ -43,6 +51,9 @@ def main():
     runtime = ordinary_path(os.environ.get("LINGJU_BROWSER_RUNTIME") if direct else alias)
     run = ordinary_path(root / "runs")
     cfg, target = dispatch_target(runtime, root)
+    if target=='ego/bridge.mjs':
+        from ego_lease import recover_dead_ego_lease
+        recover_dead_ego_lease(runtime,root)
     (runtime.parent / "dispatch-receipt.json").write_text(json.dumps({
         "route_marker_received": True, "runtime_validated": True,
         "activation_source": "direct_marker" if direct else "xdg_runtime_path",
@@ -81,7 +92,9 @@ def main():
         while child.poll() is None and not closed.wait(.1):
             pass
         if closed.is_set():
-            job.close()
+            # Give Node stdin-end/worker-finally cleanup time to release its
+            # own lease before the Job Object enforces orphan prevention.
+            return wait_bridge_shutdown(child,job)
         return child.wait(timeout=10)
     finally:
         job.close()

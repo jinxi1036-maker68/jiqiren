@@ -4,20 +4,24 @@ import http from 'node:http';
 import crypto from 'node:crypto';
 import {validateConfig,validateActions,validateToolCall,requireScope,guide} from './policy.mjs';
 import {nativeReadGuard} from './native_guard.mjs';
+import {releaseOwnedLease} from './lifecycle.mjs';
 
 export async function run(runtimeFile,ownerLock){
+ let guard,server,watchdog,yielded=false,tail=Promise.resolve();
+ const pages=new Map();let record=async()=>{};
+ try{
  const cfg=validateConfig(JSON.parse(await fs.readFile(runtimeFile,'utf8')));
- const task=await taskSpace(cfg.spaceId),pages=new Map([['p1',task.page('p1')]]);
+ const task=await taskSpace(cfg.spaceId);pages.set('p1',task.page('p1'));
  const output=path.join(path.dirname(runtimeFile),'output');await fs.mkdir(output,{recursive:true});
- const record=e=>fs.appendFile(path.join(output,'receipts.jsonl'),JSON.stringify({at:new Date().toISOString(),...e})+'\n');
+ record=e=>fs.appendFile(path.join(output,'receipts.jsonl'),JSON.stringify({at:new Date().toISOString(),...e})+'\n');
  const company=cfg.mode==='company-readonly';
  const tableReader=company?await import('./table_readback.mjs'):null;
- const guard=company?(await import('./extension_guard.mjs')).extensionGuard(task,cfg):nativeReadGuard(globalThis.ego,cfg,e=>{void record(e);});
+ guard=company?(await import('./extension_guard.mjs')).extensionGuard(task,cfg):nativeReadGuard(globalThis.ego,cfg,e=>{void record(e);});
  const requirePage=async(label='p1')=>{
   if(!pages.has(label))throw Error('Only adapter-owned Page labels are available');
   const p=pages.get(label);requireScope(await p.url(),cfg.origin,{blank:true});return p;
  };
- try{await guard.protect(await requirePage());}catch(e){await guard.close([...pages.values()]).catch(()=>{});throw e;}
+ await guard.protect(await requirePage());
  const observe=async(p,args={})=>{
   requireScope(await p.url(),cfg.origin);
   const snapshot=String(await p.snapshot({scope:args.scope||'full_page',...(args.root?{root:args.root}:{})}));
@@ -41,7 +45,6 @@ export async function run(runtimeFile,ownerLock){
    case 'wait_text':return p.waitForFunction(value=>document.body.innerText.includes(value),a.text,{timeout:6000});
   }
  };
- let yielded=false;
  const execute=async(name,args={})=>{
   validateToolCall(name,args);
   if(name==='ego_browser_status')return {driver:'ego-native',version:cfg.cliVersion,guideSha256:cfg.guideSha256,spaceId:cfg.spaceId,home:cfg.home,workspace:cfg.workspace,scope:cfg.origin,mode:cfg.mode,productionEnabled:false,businessWritesEnabled:false,guardHealthy:guard.healthy(),...(company?await guard.inspect():{}),limitations:[...(company?['recorded synthetic extension coverage passed; GET business semantics still need judgment']:['cross-target protection not yet verified']),'Readiness alone does not prove an accurate business report or visual interpretation; each actual task needs its own evidence.']};
@@ -90,8 +93,8 @@ export async function run(runtimeFile,ownerLock){
   throw Error('Unknown browser tool');
  };
  const token=crypto.randomBytes(32).toString('hex');let finish;
- const stopped=new Promise(resolve=>{finish=resolve;});let tail=Promise.resolve(),lastContact=Date.now();
- const server=http.createServer(async(req,res)=>{
+ const stopped=new Promise(resolve=>{finish=resolve;});let lastContact=Date.now();
+ server=http.createServer(async(req,res)=>{
   if(req.headers.authorization!=='Bearer '+token||req.method!=='POST'){res.writeHead(403);res.end();return;}
   lastContact=Date.now();
   let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>65536){res.writeHead(413);res.end();return;}}
@@ -109,9 +112,13 @@ export async function run(runtimeFile,ownerLock){
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  await fs.writeFile(path.join(path.dirname(runtimeFile),'worker-private.json'),JSON.stringify({port:server.address().port,token,spaceId:cfg.spaceId,pid:process.pid}));
  console.log(JSON.stringify({workerReady:true,driver:'ego-native',spaceId:cfg.spaceId}));
- const watchdog=setInterval(()=>{if(Date.now()-lastContact>30000)finish();},5000);
- await stopped;clearInterval(watchdog);await tail;if(!yielded)await guard.close([...pages.values()]);
- server.closeAllConnections();await new Promise(resolve=>server.close(resolve));
- await record({kind:'worker_stopped',finishedSpace:false});
- if(ownerLock){const lock=JSON.parse(await fs.readFile(ownerLock.file,'utf8').catch(()=>'{}'));if(lock.nonce===ownerLock.nonce)await fs.unlink(ownerLock.file);}
+ watchdog=setInterval(()=>{if(Date.now()-lastContact>30000)finish();},5000);
+ await stopped;
+ }finally{
+  clearInterval(watchdog);await tail.catch(()=>{});
+  if(guard&&!yielded)await guard.close([...pages.values()]).catch(()=>{});
+  if(server?.listening){server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
+  await record({kind:'worker_stopped',finishedSpace:false}).catch(()=>{});
+  if(ownerLock)await releaseOwnedLease(ownerLock.file,ownerLock.nonce);
+ }
 }

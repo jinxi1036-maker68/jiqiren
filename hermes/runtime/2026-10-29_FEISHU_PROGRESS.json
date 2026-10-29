@@ -756,7 +756,7 @@
     }
   },
   "initial_deployment_state_scope": "Historical snapshot; current feedback follows status_feedback_correction/current_feedback_policy",
-  "latest_report_block": "status_feedback_correction",
+  "latest_report_block": "browser_lease_repair",
   "status_feedback_correction": {
     "at_utc": "2026-10-29T15:07:29.870984+00:00",
     "state": "unconditional_ack_removed_delayed_labelled_status_and_SDK_PUT_fix_loaded_real_edit_delivery_unverified",
@@ -867,5 +867,143 @@
       "complaint_receipts": "43017684487adb7a712a5473bbbb4a30775d7612658174e9ec6351dc10d46419",
       "native_CLI_probe": "ae01385b03df815d1ab7be881d7499518249d49c911014766222d55157fab27d"
     }
+  },
+  "browser_lease_repair": {
+    "at_utc": "2026-10-29T15:46:26.044946+00:00",
+    "state": "lease_lifecycle_repair_loaded_browser_blocked_missing_guard_and_owner_handoff",
+    "browser_ready": false,
+    "gateway_ready": true,
+    "proven_findings": {
+      "stale_lease": {
+        "owner_pid": 18036,
+        "owner_alive": false,
+        "worker_metadata_present": false,
+        "lease_sha256": "ed16abfb964b6ef11b290ac41665b43615f7bb730daf96c08f662d300fca6daf",
+        "same_runtime": true,
+        "no_matching_live_bootstrap": true,
+        "removed_after_private_preimage_and_recheck": true
+      },
+      "adapter_lifecycle": {
+        "rejected_initialization_promise_was_cached": true,
+        "startup_failure_could_skip_lease_cleanup": true,
+        "wrapper_killed_child_immediately_after_stdin_closed": true,
+        "exact_historical_owner_death_cause": "unknown; source defects support a mechanism, not proof of that historical event"
+      },
+      "saved_space": {
+        "old_id": 4,
+        "native_error": "task space not found: 4",
+        "company_spaces_found_before_restore": 0
+      },
+      "company_extension": {
+        "same_actual_profile_path_verified": true,
+        "payload_hashes_match": true,
+        "own_extension_present_in_Preferences": false,
+        "own_extension_present_in_Secure_Preferences": false,
+        "own_card_found_in_chrome_extensions": false,
+        "actual_failure": "net::ERR_BLOCKED_BY_CLIENT while navigating own chrome-extension manifest",
+        "uninstall_or_disappearance_reason": "unknown",
+        "no_claim_that_lingrobotics_website_blocked_this_navigation": true
+      }
+    },
+    "loaded_fix": {
+      "single_flight_initialization": true,
+      "failed_start_can_try_again": true,
+      "worker_finally_closes_own_guard_server_and_lease": true,
+      "wrapper_normal_EOF_grace_seconds": 12,
+      "startup_handshake_seconds": 30,
+      "automatic_stale_recovery": "same runtime, owner and recorded worker both proven dead, loopback port proven refused, nonce/bytes/mutex checks; unknown/live/foreign cases retained",
+      "does_not_retry_business_action_or_reclaim_user_control": true
+    },
+    "actual_component_results": {
+      "MCP_status_probe_passed": false,
+      "tool_catalog_count": 8,
+      "failed_probe_left_lease": false,
+      "native_missing_space_diagnostic": true,
+      "company_window_created_once_in_existing_profile": true,
+      "new_space_id": 1,
+      "restoration_complete": false,
+      "installation_attempted": false,
+      "handed_off_to_Owner_on_extensions_page": true,
+      "runtime_space_id_still_old_pending_Owner_handoff": true,
+      "new_login_not_verified": true,
+      "not_a_Hermes_Agent_business_task_acceptance": true
+    },
+    "validation": {
+      "node": 14,
+      "python": 14,
+      "total": 28,
+      "passed": true
+    },
+    "activation": {
+      "one_idle_graceful_reload": true,
+      "launcher_pid": 27180,
+      "child_pid": 17052,
+      "actual_catalog_READY_utc": "2026-10-29T15:30:47.875064+00:00",
+      "catalog_READY_does_not_prove_browser_guard_ready": true,
+      "same_original_H_W_identity": true,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "disconnected",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "existing_wecom_callback_issue_unchanged": true,
+      "forced_process_stop": false
+    },
+    "files": {
+      "owned_sources_after_sha256": {
+        "ego/bridge.mjs": "bb8e5eaadc77fcc769ba75c2feaadc9c4eb67b8e95f458a251f05d464fe0c5b3",
+        "ego/worker.mjs": "94c15df49fb6a406b5ef981955aa1da863b6e22f560582779a853a9731067428",
+        "ego_runtime.py": "f82c475a526467e2bf3907f08ca57eb1ea8307b22eddb5fa330634494851d2fb",
+        "ego/lifecycle.mjs": "9a82256d50a474055e4c7acdb4f5f3cbe4a257170a61c5667b386894450ce58b",
+        "dispatch.py": "ee9a035246078b30e3c87854f6c76df5de18c4ed515186ecc76032512d8841bc",
+        "ego_lease.py": "22d506973f0bb8df53c789356d89be3987017478ce2f093b658f3ea7704cc25a"
+      },
+      "owned_runtime_after_sha256": "ec8807e80c9ba74cf780b5eced7f5dfe87454bc8b97a8870eaeba89104bb4a74",
+      "modified_existing_owned_modules": [
+        "ego/bridge.mjs",
+        "ego/worker.mjs",
+        "ego_runtime.py",
+        "dispatch.py"
+      ],
+      "added_owned_modules": [
+        "ego/lifecycle.mjs",
+        "ego_lease.py"
+      ],
+      "owned_gate_source_and_runtime_pins_updated": true,
+      "private_handoff_updated": true,
+      "private_preimages": 8,
+      "all59_protected_unchanged": true,
+      "SOUL_HERMES_MEMORY_USER_config_credentials_R3_Manifest_MCP_voice_QQ_cron_unchanged": true,
+      "protected_baseline_sha256": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
+      "rollback_performed": false
+    },
+    "audit_before": [
+      0,
+      101,
+      0
+    ],
+    "audit_after": [
+      0,
+      101,
+      0
+    ],
+    "new_Hermes_messages_or_model_calls_by_Codex": 0,
+    "business_page_contents_read_or_business_actions": 0,
+    "new_profiles_or_Hermes_identities": 0,
+    "private_evidence_sha256": {
+      "operation-private.json": "0aa8250da6540f24e75dd6994ae32548c9305fd6a20bea0a8668dc6946870138",
+      "connection-probe-sanitized.json": "10b2c92c33e8985f028feb66d92d3a7917b8e192db5fa71702ad672e4a55b0cb",
+      "native-guard-probe-private.json": "cfa0cdb278fe02d7a1b164ec4708ea09f52380caaa571cbd341657e7e0210c48",
+      "window-restoration-private.json": "20b35ca6036e66b1816acc1152b293f65a4e7e46d5ec1a32c33f5bbe51f43ab7",
+      "restored-window-diagnostic.json": "9e8e87c4992fe577b3d051adc84764226169be5f237bb8455bace2596168ca26",
+      "extension-owner-handoff.json": "ed57226c7afacb645e915001f29aa465ba83000cdfc4e98bfe903697397e333d"
+    },
+    "remaining": [
+      "Owner loads the unchanged previously approved extension in the existing company profile",
+      "After Owner confirms, resume same recorded space; verify guard then update only owned locator/pins and idle-reload if needed",
+      "No claim of restored Hermes browser business task execution; no new model test scheduled"
+    ]
   }
 }

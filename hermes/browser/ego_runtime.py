@@ -23,7 +23,7 @@ def validate_ego_runtime(runtime, root):
         if sha256(ordinary_path(c[key])) != c[digest]:
             raise RuntimeError('Pinned vendor artifact changed')
     sources = c.get('sourceSha256', {})
-    required = {'bridge.mjs', 'worker.mjs', 'policy.mjs', 'native_guard.mjs'}
+    required = {'bridge.mjs', 'worker.mjs', 'policy.mjs', 'native_guard.mjs', 'lifecycle.mjs'}
     if company:
         required.add('extension_guard.mjs')
         required.add('table_readback.mjs')

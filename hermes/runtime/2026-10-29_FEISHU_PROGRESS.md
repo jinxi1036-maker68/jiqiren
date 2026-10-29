@@ -84,3 +84,20 @@ Owner提供飞书截图，指出每条消息都会收到相同长模板。该模
 本轮仅更新自有feishu_progress.py、feishu_gateway.py、feishu_transport.py及gate/交接元数据；5份必要前像私有保存，路径/ACL核对，无回退。59项原保护、原基线、配置/凭据、身份/记忆、R3、浏览器runtime与上一轮daily_pacing均不变。账本重载前后97→97，Codex新增模型/消息/业务动作0；准备期间Owner自然使用的增量单独列出。
 
 只读元数据显示22:57那轮在22:59:46生成了正式答复，但未独立核验送达；未读取记忆或回复正文。此时段仍有chat端点429，未确定主/辅助请求归属，不能把模板修复当作限流已解决。**新策略下真实状态发送/编辑尚待Owner正常工作观察**，不额外发模型测试。细节、哈希及时间见JSON.status_feedback_correction；恢复仅按匹配SHA恢复3源码/gate，交接记录按实际新进程重建，不盲目复写旧PID或原配置。
+
+
+## 当前：EGO_BUSY残留锁已处理，浏览器仍阻于缺失的公司保护扩展
+
+Owner在23:11截图中收到EGO_BUSY。定点检查确认原lease所属PID18036已不存在，同一runtime无worker元数据、无匹配活bootstrap；不是仅凭报错就抢占。保存必要私有前像并重核原字节/进程后，仅移除这一失效lease，未结束其他Desktop浏览器桥接或接管活任务。
+
+发现自有接入生命周期缺陷：失败的初始化Promise永久缓存，worker初始化异常可跳过lease释放，Python包装器收到stdin EOF即关闭Job Object，可能抢先结束Node清理。已加载的最小修复包括失败Promise复位、worker finally清理、nonce归属核对、正常退出12秒宽限、30秒有限握手；自动恢复仅在同runtime所有已记录owner/worker均死且端口确定拒绝时进行，不抢占活进程、未知端口、外来runtime或缺失worker元数据。**这些代码问题支持残留机制，但PID18036当时具体为何退出仍未知。** 不重试业务动作，不限制Hermes自主业务方法。
+
+真实零模型MCP目录8项可发现，但status探测未通过，随后分层定位到两项独立阻碍：原保存的Space4已不存在（native原文task space not found: 4）；公司原Profile1的保护扩展无法打开，实际失败在自有chrome-extension manifest导航，返回ERR_BLOCKED_BY_CLIENT，不能误写成灵生网站报错。chrome://version证明真实profile路径匹配，原扩展文件哈希匹配；仅核对本扩展的Preferences/Secure Preferences登记均无，正常扩展管理页也没有本扩展卡片。为何消失、是否谁卸载均未证实，未推断清理者。
+
+依此前Owner明确批准的“同一凌矩工作资料恢复公司窗口”，只恢复1个Space1，未新建profile或Hermes身份、未复制Cookie。保护核验未通过，因此**恢复未完成、未导航业务页面或读取业务数据**。将这一窗口打开到chrome://extensions并handOff给Owner，提示加载原桌面“凌矩浏览器保护”目录。未替Owner确认安装、未关闭保护；原runtime仍保留旧Space4，待Owner完成后才核实同一Space并更新自有定位。不能把新窗口创建或目录READY写成浏览器恢复可用。
+
+14项Node+14项Python共28项本地检查通过，含真实worker异常清理、失败初始化可重新建连、并发单次启动、活/外来锁保护和包装器退出宽限。原CLI零模型探测通过；原网关空闲正常重载1次，15:30:47Z取得原H/W、8项目录READY，飞书/微信/QQ/企业微信主通道connected。该READY证明入口/目录，不证明浏览器guard正常；既有企业微信callback问题未修。没有强杀、没有额外模型消息。
+
+本轮仅更新自有bridge/worker/ego_runtime/dispatch，新增lifecycle和ego_lease，更新自有runtime源码pin、gate和私有交接状态；8份必要自有前像私有保留，无回退。59项原保护、配置/凭据/身份/记忆/R3/Manifest/MCP/语音QQ/cron不变，账本101→101，无Codex模型/业务操作。失败探测后lease已清理，手动交接状态与待恢复项如实保留。
+
+**下一步只有恢复原扩展这项浏览器安装确认。** Owner确认卡片后，再接续同一Space1，先核对实际扩展/资料/只读保护，之后更新自有定位并在必要时空闲重载。不追加业务考试，不以绕过保护或复制登录态求通过。本节及同名JSON.browser_lease_repair覆盖此前“已可正常承接”的旧时间点描述，历史记录保留；当前browser_ready=false。

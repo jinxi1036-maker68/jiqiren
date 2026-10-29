@@ -10,11 +10,11 @@ class EgoRuntimeTests(unittest.TestCase):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.root=Path(self.tmp.name);(self.root/'runs/probe').mkdir(parents=True);(self.root/'ego').mkdir()
         self.runtime=self.root/'runs/probe/runtime.json'
-        for n in ['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs']:(self.root/'ego'/n).write_text('test fixture',encoding='utf-8')
+        for n in ['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs','lifecycle.mjs']:(self.root/'ego'/n).write_text('test fixture',encoding='utf-8')
         self.cli=self.root/'cli.exe';self.cli.write_bytes(b'verified fixture, never executed')
         self.guide=self.root/'guide.txt';self.guide.write_bytes(b'guide fixture')
         home=Path.home()/'.hermes'
-        self.c=dict(schema='lingju.ego-browser.v1',toolRoot=str(self.root),home=str(home),workspace=str(home/'company-workspace'),mode='synthetic',productionEnabled=False,cli=str(self.cli),cliSha256=sha256(self.cli),officialGuide=str(self.guide),guideSha256=sha256(self.guide),sourceSha256={n:sha256(self.root/'ego'/n) for n in ['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs']})
+        self.c=dict(schema='lingju.ego-browser.v1',toolRoot=str(self.root),home=str(home),workspace=str(home/'company-workspace'),mode='synthetic',productionEnabled=False,cli=str(self.cli),cliSha256=sha256(self.cli),officialGuide=str(self.guide),guideSha256=sha256(self.guide),sourceSha256={n:sha256(self.root/'ego'/n) for n in ['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs','lifecycle.mjs']})
     def save(self):self.runtime.write_text(json.dumps(self.c),encoding='utf-8')
     def test_explicit_candidate_route(self):
         self.save();cfg,target=dispatch_target(self.runtime,self.root);self.assertEqual(target,'ego/bridge.mjs')
