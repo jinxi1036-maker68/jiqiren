@@ -1,0 +1,179 @@
+{
+  "schema": "lingju.memory-refocus-preparation.v1",
+  "prepared_at_utc": "2026-10-29T06:13:40.256946+00:00",
+  "status": "drafts_prepared_not_deployed",
+  "Owner_request": "Owner reports mixed memory and says continue next step; specific original-store replacement/reload not yet approved",
+  "scope": "two existing built-in memory stores, no second identity",
+  "document": "hermes/memory/2026-10-29_MEMORY_REFOCUS_PLAN.md",
+  "content_basis": "Owner-pasted Hermes self-report, authoritative company charter, and existing sanitized evidence; not a private file content diff",
+  "private_memory_plaintext_read_or_exported": false,
+  "current_configuration_whitelist": {
+    "memory_enabled": true,
+    "user_profile_enabled": true,
+    "memory_char_limit": 10000,
+    "user_char_limit": 5000,
+    "provider": ""
+  },
+  "original_targets": {
+    "memories/MEMORY.md": {
+      "path": "H/memories/MEMORY.md",
+      "bytes": 14433,
+      "sha256": "572baff8b1946728d3aeb34bf548bf5d5f59b37207f69e3eac9b10e7ff6aa3d0"
+    },
+    "memories/USER.md": {
+      "path": "H/memories/USER.md",
+      "bytes": 10996,
+      "sha256": "04510b3d6a0630695e4a7fb6e92cac92330c2f78236927eea68ebf6e4c119ff6"
+    }
+  },
+  "drafts": {
+    "MEMORY.proposed.md": {
+      "target": "H/memories/MEMORY.md",
+      "source_sha256": "e8022cbd1357736dc38efde90dee460a9fbeddf179a712f108065f4f823e29a8",
+      "entries": 7,
+      "payload_characters": 997,
+      "configured_character_limit": 10000,
+      "payload_utf8_bytes": 2555,
+      "payload_sha256": "d66531ddc2e8e6c73b365b380a5c7fbc4eb3533811724d7b57685f401e0ce77b",
+      "native_delimiter": "\n§\n",
+      "payload_transform": "UTF-8-sig decode; normalize newlines to LF; split native delimiter, strip each nonempty entry, join with native delimiter; UTF-8 encode, no extra trailing newline",
+      "strict_threat_scan_findings": 0
+    },
+    "USER.proposed.md": {
+      "target": "H/memories/USER.md",
+      "source_sha256": "715b0ca53f2fdbd09a5168c3650fb1734bd5a2c3301f7403c23f6739e7927645",
+      "entries": 5,
+      "payload_characters": 417,
+      "configured_character_limit": 5000,
+      "payload_utf8_bytes": 1147,
+      "payload_sha256": "b5a0f1bbdc5beddc63d6a29fc2ebc4586ef941f538213d8bd9aa89cb9e7fbce7",
+      "native_delimiter": "\n§\n",
+      "payload_transform": "UTF-8-sig decode; normalize newlines to LF; split native delimiter, strip each nonempty entry, join with native delimiter; UTF-8 encode, no extra trailing newline",
+      "strict_threat_scan_findings": 0
+    }
+  },
+  "local_memory_writes": 0,
+  "local_memory_deletions": 0,
+  "Hermes_model_messages_or_requests": 0,
+  "gateway_reloads": 0,
+  "live_browser_actions": 0,
+  "protected_records_matched": 59,
+  "source_mechanism_evidence": [
+    {
+      "source": "I/tools/memory_tool.py",
+      "sha256": "767322196a25879a4f4f52b24437c20f4c4d19362e0f68d745278c1a1d519dcc",
+      "line_anchors": [
+        53,
+        69,
+        203,
+        223,
+        236,
+        731,
+        782
+      ],
+      "purpose": "exact memory paths, delimiter, frozen snapshot and parse/render"
+    },
+    {
+      "source": "I/agent/agent_init.py",
+      "sha256": "4d68ddf051c9f06ddd971da22d5a4039ccbce8954462e23253cc3d15a4d75887",
+      "line_anchors": [
+        1800,
+        1815,
+        1818,
+        1824
+      ],
+      "purpose": "configured built-in memory initialization"
+    },
+    {
+      "source": "I/agent/system_prompt.py",
+      "sha256": "1d1c1bfbfc3752576f8523bfc5029b8ab3a005a195b2abd10c85ccc9cd20164d",
+      "line_anchors": [
+        820,
+        821,
+        822,
+        826,
+        827
+      ],
+      "purpose": "built-in frozen blocks enter enabled system-prompt assembly"
+    },
+    {
+      "source": "I/gateway/run.py",
+      "sha256": "8c3694110d22f5453445f60c238dfe751afe244cb12f3b77b361028c552ec807",
+      "line_anchors": [
+        6962,
+        6963,
+        6967
+      ],
+      "purpose": "per-session Agent cache; do not assume immediate hot reload"
+    },
+    {
+      "source": "I/agent/conversation_compression.py",
+      "sha256": "1c75c79d6a940e4f88affa8a6d25f0bc7976a42d9e542aac390511bc7b255449",
+      "line_anchors": [
+        190,
+        219
+      ],
+      "purpose": "cached-prompt memory consistency handling is not proof of this session loading"
+    },
+    {
+      "source": "I/tools/threat_patterns.py",
+      "sha256": "e89579c9ddf038a6c1d3ac849f090af99d90352646b09de513c198aba78a030d",
+      "line_anchors": [
+        1
+      ],
+      "purpose": "only pure scanner imported for candidate entries"
+    }
+  ],
+  "proposed_owned_metadata_dependency": {
+    "why": "active original Feishu hook compares protected memory hashes before Owner text is sent to model",
+    "old_baseline_reference_sha256": "fa7c88ecec113a3d1108e6afd358ff8ea900605cd60de03e338ef74e8df31c54",
+    "baseline_records": 59,
+    "only_approved_hash_changes": [
+      "H/memories/MEMORY.md",
+      "H/memories/USER.md"
+    ],
+    "other_records_to_preserve": 57,
+    "new_baseline_proposed_path": "H/tools/company-browser/runs/<approved-memory-operation>/protected-baseline.json",
+    "gate_adjustment": "owned gate.protected_baseline_sha256 only for this dependency; original model/MCP/config permissions unchanged",
+    "startup_adjustment": "process-only baseline path + one separately approved idle reload; no permanent default change"
+  },
+  "private_recovery_proposal": {
+    "root": "%USERPROFILE%/.lingju-hermes-recovery",
+    "create_only_after_approval": true,
+    "preimages": "only two original memory files plus actually changed owned protection/launch metadata",
+    "proposed_retention_days": 14,
+    "retention_needs_Owner_decision": true,
+    "automatic_cleanup": false,
+    "raw_private_content_in_GitHub": false
+  },
+  "not_in_scope": [
+    "SOUL/HERMES identity editing",
+    "R3 knowledge/Manifest deployment",
+    "original config/model/credentials/MCP registration",
+    "Skills/cron/profile/archive/source deletion",
+    "existing sessions/database/system-prompt editing",
+    "new memory-write tool permissions",
+    "live business operations or messages to Hermes"
+  ],
+  "remaining_unverified": [
+    "entry-by-entry correspondence between pasted report and disk stores",
+    "whether other useful current-role entries need to be retained",
+    "actual frozen memory loading after any later deployment",
+    "old conversation context influence",
+    "autonomous persistent memory writes under present readonly protection"
+  ],
+  "required_Owner_approval": [
+    "local private scoped entry review and replacing the two stores with approved final payloads",
+    "necessary private preimages and their retention",
+    "derived two-hash-only protection baseline and owned gate/startup reference adjustment",
+    "one original idle gateway reload; no automatic model message"
+  ],
+  "validation": {
+    "draft_native_delimiter_and_character_limits": "passed",
+    "draft_existing_strict_threat_scanner": "passed",
+    "charter_unchanged": true,
+    "protected_59_unchanged": true,
+    "model_calls": 0
+  },
+  "base_commit": "a38e3ee81e9f7801ee24540897e073e880c16174"
+}

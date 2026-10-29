@@ -504,6 +504,23 @@
         "table_readback_Agent_accuracy_verified": false,
         "table_readback_live_statistics_mapping": "unresolved; do not invent column mappings"
       }
+    },
+    "memory_refocus": {
+      "date": "2026-10-29",
+      "status": "drafts_prepared_not_deployed",
+      "same_original_employee": true,
+      "report": "hermes/memory/2026-10-29_MEMORY_REFOCUS_PLAN.md",
+      "plan": "hermes/memory/MEMORY_REFOCUS_PLAN.json",
+      "drafts": [
+        "hermes/memory/MEMORY.proposed.md",
+        "hermes/memory/USER.proposed.md"
+      ],
+      "local_memory_modified": false,
+      "private_memory_plaintext_read": false,
+      "new_model_requests": 0,
+      "protect_dependency": "approved replacement would also require derived baseline with only two expected hashes changed; remaining 57 preserved",
+      "autonomous_memory_write_capability": "not verified or enabled by this proposal",
+      "next": "Owner reviews exact two-store candidates and the scoped original-gateway protection/reload dependency before local writes"
     }
   }
 }
