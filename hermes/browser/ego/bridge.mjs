@@ -8,7 +8,7 @@ import {createRequire} from 'node:module';
 import {spawn} from 'node:child_process';
 import {tools,validateConfig,validateToolCall,workplaceState,guide,VERSION,isCompany,authority} from './policy.mjs';
 import {attachScreenshot} from '../image_result.mjs';
-import {singleFlight,releaseStoppedStart} from './lifecycle.mjs';
+import {singleFlight,releaseStoppedStart,operationResult,invalidInputResult} from './lifecycle.mjs';
 const egoRoot=path.dirname(fileURLToPath(import.meta.url)),root=path.dirname(egoRoot);
 if(root!==path.join(os.homedir(),'.hermes','tools','company-browser'))throw Error('Original owned tool root required');
 const runtimeFile=path.resolve(process.argv[2]);
@@ -69,9 +69,9 @@ let tail=Promise.resolve();
 server.setRequestHandler(CallToolRequestSchema,async request=>{
  const work=async()=>{
   const name=request.params.name,args=request.params.arguments||{};
-  if(!tools.some(t=>t.name===name))return {isError:true,content:[{type:'text',text:'Unknown Ego browser tool'}]};
+  if(!tools.some(t=>t.name===name))return invalidInputResult('Unknown Ego browser tool');
+  try{validateToolCall(name,args);}catch(e){return invalidInputResult(e.message);}
   try{
-   validateToolCall(name,args);
    if(isCompany(cfg)){
     await checkExtensionPayload(cfg);
     const state=workplaceState(JSON.parse(await fs.readFile(cfg.stateFile,'utf8')));
@@ -82,7 +82,7 @@ server.setRequestHandler(CallToolRequestSchema,async request=>{
     }
    }
    await ensureWorker();const result=await callWorker(name,args);
-   let response={isError:!!result.error,content:[{type:'text',text:JSON.stringify(result)}]};
+   let response=operationResult(result);
    if(result.screenshot)response=await attachScreenshot(response,{filename:result.screenshot},path.join(run,'output'));
    return response;
   }catch(e){return {isError:true,content:[{type:'text',text:JSON.stringify({driver:'ego-native',mode:cfg.mode,error:'EGO_UNAVAILABLE',detail:String(e.message),outcome:'unknown; no automatic action retry, takeover or alternate driver'})}]};}

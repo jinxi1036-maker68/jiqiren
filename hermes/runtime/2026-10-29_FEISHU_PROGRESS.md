@@ -123,3 +123,18 @@ Owner确认正常界面已加载扩展。新一轮只读核对中，原公司Pro
 ## 2026-10-30最新：Owner批准整体浏览器业务操作，已加载company-business
 
 Owner明确要求所有浏览器写入能力一起接通。原Hermes同H/W、公司Profile1/Space2及既有8工具切换显式v3业务模式；status/guide均为company-business、businessWritesEnabled=true，创建/编辑/分组/绑定/保存/提交不再逐项解锁。原扩展静态文件/权限保留，仅同站动态规则放行业务方法，浏览器原生规则匹配与实际MCP检查通过。原网关一次空闲正常重载、04:18:49实际READY，飞书等主通道connected。46本地检查通过，59原保护不变，原身份/记忆/模型/配置/知识不改；SOUL/HERMES定点权限行核对未发现不可被Owner授权更新的无条件写入禁令。Codex模型0、真实业务UI提交0，不以权限接通冒称业务已保存。授权/执行/恢复详见[专门报告](../browser/reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md)和[脱敏证据](../browser/evidence/ego-business-enabled-2026-10-30.json)。此前只读状态是历史，不是当前模式。
+
+
+## 后续实际任务：页面操作错误误触发MCP不可达，已修正分类（0.4.1）
+
+Owner发来04:37截图。仅定位该轮必要工具收据，未读取私人记忆、完整提示词或查询生产表格。原会话20261029_223507_80eb1ab4中，04:36:23保存点击被div拦截；04:36:40目标不可见；04:36:46旧subtree根不存在；04:36:59返回“3 consecutive failures，~47s”。原安装tools/mcp_tool.py的_make_tool_handler把全部MCP isError累计成server错误，3次触发60秒熔断，47秒是剩余冷却；三次实际RPC错误响应已完成，不能拿此条提示当作网络掉线证据。初查原网关/worker/桥接进程活着、飞书connected、business模式/保护pin未变。
+
+同一轮已返回、初查active_agents=0。冷却只允许后续调用，不调度新任务；Hermes“等约半分钟会自行继续”的承诺没有运行依据。第一台是否实际保存仍未知，其余五台未操作只有Hermes自述，Codex没有独立查表或重复提交。
+
+修复只在自有接入：完成的worker RPC用正常MCP结果携带**结构化真实错误**，operationSucceeded=false、error/code保留、savedBusinessState=unverified；不把页面失败包装为服务器断线，也不把它当业务成功。结构化字段保证原Hermes错误显示和重复失败识别仍检测到失败；真实传输异常仍走原isError/熔断路径。缺参明确标记未派发且指出缺失字段，不再泛报EGO_UNAVAILABLE。新增浏览器使用说明：弹层变化后旧ref可能失效，可用不带root的全页观察重新选择方法；Escape可能关闭整个弹窗；保存不明先查结果，不盲目重提。不规定业务点击流程，不自动补发模型消息或创建定时任务。
+
+使用原安装实际_make_tool_handler/_bump/_reset、错误显示及重复失败分类函数做隔离I/O回放：复现旧三错误→~47s；修复后页面失败仍显示/识别为失败但不误开服务熔断；真正MCP错误仍熔断。原安装源码未改。24 Node+20 Python共44项检查通过，其中3项为这一原处理器兼容回放。实际MCP组件检查中，3次缺参均返回明确失败且未派发浏览器动作，随后status正常，业务模式/原H/W/实际扩展保持，关闭后无残留lease。该组件检查不是Hermes新模型任务。
+
+本轮自有3模块（lifecycle/bridge/policy）及相应runtime源码pin/gate/交接更新，必要6份前像私有保存，无回退。为补足原错误显示/重复失败识别兼容，完成结构化错误后第二次空闲正常重载，合计2次，无强杀或隐瞒中间版。最终READY/通道状态/SHA见同一证据JSON.page_error_classification_repair。59原保护、原安装MCP源码、既有业务授权/动态规则均保持；身份/记忆/R3/配置/模型/凭据/语音QQ/cron不改。Codex新增模型/消息/业务UI动作0、生产正文/截图读取0。
+
+**本轮修复的是错误分类和恢复说明，不能冒称分组已保存或具体弹窗操作已经成功。** 接续Owner正常目标时，Hermes应先核实第一项当前保存状态，再决定是否继续余项；依实际页面自主选方法，仍需报告已完成/未完成/未知。旧注册名company_browser_simulation保留，实际driver是ego-native/company-business，不能因旧名称说本次在模拟后台。

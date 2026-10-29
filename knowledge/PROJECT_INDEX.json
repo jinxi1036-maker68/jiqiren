@@ -88,7 +88,7 @@
         "current_message_grant_consumed",
         "rejected_unavailable_terminal_attempt"
       ],
-      "next_step": "原Hermes直接承接Owner正常业务目标，自主完成站内创建/编辑/分组/绑定/保存提交并回读，不再按功能逐项开权限；重大事项仍按具体任务授权，关键业务字段不可猜。",
+      "next_step": "原Hermes接续Owner分组目标时先核实第一项是否保存，再自主处理其余；业务能力仍开启。页面失败仍按失败处理，不再误报MCP断线；不得承诺冷却后无调度自动续跑。",
       "resume_scope_note": "Owner新增授权QQ远程接入；仅本轮临时原生QQ入口，不恢复QQ晨报、旧定时业务或生产自动化。",
       "zero_model_followup": {
         "date": "2026-10-25",
@@ -506,7 +506,7 @@
         "table_readback_Agent_accuracy_verified": false,
         "table_readback_live_statistics_mapping": "unresolved; do not invent column mappings"
       },
-      "latest_runtime_evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json"
+      "latest_runtime_evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#page_error_classification_repair"
     },
     "memory_refocus": {
       "date": "2026-10-29",
@@ -634,6 +634,19 @@
       "real_business_save_test_by_Codex": false,
       "protected_original_records_unchanged": 59,
       "unattended_business_or_cron_started": false
+    },
+    "browser_page_error_classification": {
+      "date": "2026-10-30",
+      "status": "page_error_classification_repair_loaded",
+      "adapter_version": "0.4.1",
+      "businessWritesEnabled": true,
+      "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#page_error_classification_repair",
+      "report": "hermes/browser/reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md",
+      "root_cause": "Page errors counted by native MCP as server failures; corrected own response classification without editing installed Hermes",
+      "native_failure_display_and_repeat_failure_detection_preserved": true,
+      "save_result": "unknown_not_retried",
+      "new_Hermes_models_by_Codex": 0,
+      "original59_protected_unchanged": true
     }
   }
 }

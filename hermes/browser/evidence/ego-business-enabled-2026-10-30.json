@@ -172,5 +172,150 @@
     "unconditional_real_business_write_ban_found": false,
     "existing_rule_allows_Owner_decision_on_unauthorized_writes": true,
     "identity_files_changed": false
+  },
+  "initial_activation_scope": "The top-level activation snapshot is historical; latest_phase selects subsequent runtime repair",
+  "latest_phase": "page_error_classification_repair",
+  "page_error_classification_repair": {
+    "at_utc": "2026-10-29T20:50:06.450457+00:00",
+    "state": "page_error_classification_repair_loaded",
+    "adapter_version": "0.4.1",
+    "related_session": "20261029_223507_80eb1ab4",
+    "necessary_tool_failures_only": [
+      {
+        "message_id": 108263,
+        "at_utc": "2026-10-29T20:36:23.922640+00:00",
+        "error": "page.click timed out after 6000ms: page.click failed: <div> intercepts pointer events",
+        "code": "EGO_OPERATION_FAILED"
+      },
+      {
+        "message_id": 108265,
+        "at_utc": "2026-10-29T20:36:40.907640+00:00",
+        "error": "page.click timed out after 6000ms: page.click failed: element is not visible",
+        "code": "EGO_OPERATION_FAILED"
+      },
+      {
+        "message_id": 108267,
+        "at_utc": "2026-10-29T20:36:46.651835+00:00",
+        "error": "snapshot: Snapshot subtree root was not found in the page content.",
+        "code": "EGO_INVALID_ARGUMENT"
+      },
+      {
+        "message_id": 108269,
+        "at_utc": "2026-10-29T20:36:59.318256+00:00",
+        "error": "MCP server 'company_browser_simulation' is unreachable after 3 consecutive failures. Auto-retry available in ~47s. Do NOT retry this tool yet — use alternative approaches or ask the user to check the MCP server.",
+        "code": null
+      }
+    ],
+    "confirmed_root_cause": "Original Hermes counts every MCP isError as a server failure; overlay/visibility/stale subtree errors crossed threshold3 then produced ~47s remaining of cooldown60, despite completed RPCs",
+    "installed_native_MCP_parameters": {
+      "threshold": 3,
+      "cooldown_seconds": 60
+    },
+    "current_save_outcome": "unknown; no successful save receipt or saved row was verified by Codex",
+    "other_five_devices": "Hermes screenshot self-report untouched; not independently queried",
+    "automatic_resume_claim": "Cooldown enables a later call, not a scheduled new turn; handler returned and active_agents was0 at diagnosis; no automatic continuation promise supported",
+    "fix": {
+      "completed_worker_failures_have_MCP_isError": false,
+      "error_and_code_retained_in_structuredContent": true,
+      "operationSucceeded_false_on_failure": true,
+      "saved_business_state_unverified": true,
+      "native_error_display_and_repeated_failure_detection_verified": true,
+      "genuine_MCP_error_breaker_preserved": true,
+      "bad_arguments_not_dispatched": true,
+      "fresh_full_page_omit_stale_subtree_guidance": true,
+      "no_silent_action_retry_or_resubmission": true
+    },
+    "MCP_component_probe": {
+      "at": "2026-10-29T20:49:09.145Z",
+      "passed": true,
+      "tool_count": 8,
+      "argument_failures": [
+        {
+          "type": "fill",
+          "isError": false,
+          "operationSucceeded": false,
+          "actionDispatched": false,
+          "code": "EGO_INVALID_ARGUMENT"
+        },
+        {
+          "type": "select",
+          "isError": false,
+          "operationSucceeded": false,
+          "actionDispatched": false,
+          "code": "EGO_INVALID_ARGUMENT"
+        },
+        {
+          "type": "wait_text",
+          "isError": false,
+          "operationSucceeded": false,
+          "actionDispatched": false,
+          "code": "EGO_INVALID_ARGUMENT"
+        }
+      ],
+      "status_after_three_explicit_argument_failures_passed": true,
+      "driver": "ego-native",
+      "mode": "company-business",
+      "businessWritesEnabled": true,
+      "original_H_matches": true,
+      "original_W_matches": true,
+      "spaceId": 2,
+      "guardHealthy": true,
+      "extensionModeMatched": true,
+      "new_model_calls": 0,
+      "browser_UI_actions_dispatched": 0,
+      "business_page_contents_read": 0,
+      "stderrBytes": 0,
+      "lease_exists_after_client_close": false
+    },
+    "tests": {
+      "node": 24,
+      "python": 20,
+      "total": 44,
+      "real_installed_handler_isolated_cases": 3
+    },
+    "installed_MCP_source_sha256": "1ed7ba9edd353ff6c1351efd8d766bf814cb1e6505926c01d50ef029008e04f8",
+    "original_installation_source_changed": false,
+    "owned_sources_after_sha256": {
+      "ego/lifecycle.mjs": "05e5aa0aa33804ecc57d0814ca0d06800d679bb4f2e95e191aaf5196d542bacc",
+      "ego/bridge.mjs": "72ea960b9dc1d960267229ad9bc06c68e0a7edd0e6302b8eb68df89bb8561bc1",
+      "ego/policy.mjs": "c0211ff78e9dc6ce7657a72ebe9ef1ea97939710b7f7d90e0e7dd3f3a190f550"
+    },
+    "runtime_sha256": "80354979eec9e81ef74083ee4a9fe291ceda7ccd4790e3b227a01ebcf0a814bc",
+    "gate_sha256": "66aad54172531ff7ab0090b1da287bfe723c443c8f6ef8e03861394b614bb771",
+    "same_original_H_W_identity": true,
+    "same_company_profile_and_space": true,
+    "businessWritesEnabled": true,
+    "mode": "company-business",
+    "extension_rules_and_authorization_unchanged": true,
+    "protected_original_records_unchanged": 59,
+    "idle_graceful_reloads": 2,
+    "intermediate_amendment": "Structured error added after compatibility check to preserve native error display/failure guard; second idle reload, not hidden",
+    "actual_READY_utc": "2026-10-29T20:49:38.928873+00:00",
+    "gateway_child_pid": 20360,
+    "gateway_launcher_pid": 23556,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "retrying",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "force_stop": false,
+    "private_preimages": 6,
+    "rollback_performed": false,
+    "new_profiles_or_spaces": 0,
+    "new_Hermes_model_calls_or_messages_by_Codex": 0,
+    "business_UI_actions_or_submissions_by_Codex": 0,
+    "production_page_body_or_screenshots_read": 0,
+    "private_evidence_sha256": {
+      "operation": "4a4e714888253d6a100da7759505b77181d8a54cff0de48cdc23941fea76c139",
+      "final_MCP_probe": "f8ad89153c33a3300d6525efaee0e58b4a21b9a2c675a322a9ddf70686e40215",
+      "native_CLI_probe": "7705a5cf032fab2c376e47a953e5711681da2e9d74c4677f9386ace7d9f82a2b"
+    },
+    "remaining": [
+      "No new Hermes Agent task tested; overlay/hidden dialog still requires fresh page observation and autonomous choice",
+      "Saved grouping must be queried before any repeat submission; not inferred from screenshot or permission flags",
+      "True transport failures, Owner control and permission problems remain real stop conditions"
+    ]
   }
 }

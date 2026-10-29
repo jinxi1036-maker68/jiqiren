@@ -8,7 +8,7 @@ preserves the existing route.
 
 ## Current status
 
-**2026-10-30: company-business 0.4.0 is active.** Owner requested all browser UI
+**2026-10-30: company-business 0.4.1 is active.** Owner requested all browser UI
 business capability together, superseding the blanket read-only teaching scope.
 Original H/W/Profile1 and Space2 remain. Eight existing tools provide forms,
 create/edit/group/bind/save/submit controls under Owner tasks. Actual extension
@@ -17,6 +17,14 @@ passed with zero model/business submissions. Static payload/permissions remain;
 two higher-priority same-site dynamic rules allow business methods, with off-site
 protection retained. See [current report](../reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md).
 The following bullets describe earlier historical stages, not the present mode.
+
+0.4.1 keeps completed page-operation failures in explicit structured errors,
+separate from MCP transport failure. Actual installed Hermes handler/display/
+failure-classifier isolation tests preserve failure detection without falsely
+opening its server-wide breaker after three hidden/stale targets. Genuine MCP
+errors still use the original breaker. No uncertain save is replayed, and a
+cooldown never promises automatic task resumption. See the current report's
+follow-up section for the real failed attempt and unknown saved state.
 
 - **Readback 0.3.0 loaded (2026-10-29):** Owner approved one restored company
   work Space and one idle original-gateway reload. Company Profile 1 now uses
