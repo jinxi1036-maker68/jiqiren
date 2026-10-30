@@ -132,6 +132,9 @@ class NativeGatewayHook(unittest.IsolatedAsyncioTestCase):
    root=Path(d);audit=RequestAudit.create(root/'audit.sqlite');meter=GatewayMeter(root,audit);called=[]
    class Exercise:
     continuous=True;catalog_ready=True;session_initialized=True;budget=audit;toolsets=['company_browser_simulation']
+    cfg=dict(schema='lingju.ego-browser.v3',mode='company-business',productionEnabled=True,businessWritesEnabled=True,
+      origin='https://ldp.lingrobotics.com',businessAuthorization=dict(schema='lingju.browser-business-grant.v1',ownerApproved=True,
+      scopeOrigin='https://ldp.lingrobotics.com',scope='all-company-browser-ui-business-actions',reference='synthetic approval',highImpactRequiresSpecificOwnerTask=True))
     def pause(self):
      import contextlib
      with contextlib.closing(self.budget._connection()) as c,c:c.execute('UPDATE state SET armed=0 WHERE id=1')
@@ -150,6 +153,7 @@ class NativeGatewayHook(unittest.IsolatedAsyncioTestCase):
     def _create_adapter(self,*a):return None
     async def start(self):return True
     async def _handle_message(self,msg):
+     if self._resolve_enabled_toolsets_for_source({},source,'feishu'):self_assert=msg.channel_prompt;assert '不是Gate1A本机模拟' in self_assert
      called.append(self._resolve_enabled_toolsets_for_source({},source,'feishu'))
      if not msg.internal:c.store.browser_event('ego_browser_actions',False,'EGO_UNAVAILABLE','receipt','digest')
      return 'native answer'

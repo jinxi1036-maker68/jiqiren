@@ -118,6 +118,9 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
                     exercise.pause()
                     return '受保护文件发生变化，请交Codex核对；当前消息未提交模型。'
                 if not exercise.catalog_ready:return '浏览器入口尚未就绪，请稍后正常发送工作目标。'
+                if getattr(exercise,'cfg',None):
+                    from company_support import apply_operating_authority
+                    apply_operating_authority(msg,exercise.cfg)
                 if not exercise.session_initialized:
                     sid=resolve_native_session(self.session_store,msg.source)
                     exercise.session_initialized=True

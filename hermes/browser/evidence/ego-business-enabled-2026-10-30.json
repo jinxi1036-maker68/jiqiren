@@ -174,7 +174,7 @@
     "identity_files_changed": false
   },
   "initial_activation_scope": "The top-level activation snapshot is historical; latest_phase selects subsequent runtime repair",
-  "latest_phase": "employee_recovery_and_tasks",
+  "latest_phase": "current_operating_authority",
   "page_error_classification_repair": {
     "at_utc": "2026-10-29T20:50:06.450457+00:00",
     "state": "page_error_classification_repair_loaded",
@@ -642,6 +642,95 @@
       "operation": "7403ad99792b072f0756a56cc2ea653494a831f1c1d9313eca12861762a2a03d",
       "MCP_probe": "743299ed64a200e4a7146f037a03182008d26c5f62098c78d8a3ebea98cd7de1",
       "native_CLI_probe": "9d2fb76108aa13c6d3660758ae8f8839ed5babcc26fe477e047c9bf26730fc46"
+    }
+  },
+  "current_operating_authority": {
+    "at_utc": "2026-10-30T03:23:35.676419+00:00",
+    "state": "current_authority_loaded",
+    "cause": "Immutable R3/HERMES historical simulation-only policy conflicted with later business authority; previous gateway lacked per-turn current authority context",
+    "observed_turn": {
+      "session_id": "20261030_110538_928a80b5",
+      "knowledge_tool_calls": 5,
+      "knowledge_files_read": [
+        "knowledge/28_FIRST_WEEK_3_TO_10_DEVICE_CAPACITY_AND_MARGIN_2026-10-17.md",
+        "knowledge/CURRENT_WORK.json",
+        "knowledge/PROJECT_INDEX.json",
+        "knowledge/SCENE_PIPELINE.json"
+      ],
+      "all32_files_content_read": false,
+      "browser_called": false,
+      "session_cumulative_api_calls_not_this_turn_count": 9,
+      "complete_knowledge_files": 2,
+      "partial_knowledge_files": 2,
+      "partial_paths": [
+        "knowledge/CURRENT_WORK.json",
+        "knowledge/SCENE_PIPELINE.json"
+      ]
+    },
+    "repair": {
+      "current_authority_in_native_ephemeral_channel_prompt": true,
+      "same_Owner_scope_only": true,
+      "preserve_native_channel_prompt": true,
+      "knowledge_result_separates_snapshot_from_current_authority": true,
+      "current_mode": "company-business",
+      "company_origin": "https://ldp.lingrobotics.com",
+      "real_company_browser_authorized": true,
+      "business_UI_writes_authorized": true,
+      "runtime_authority_not_live_connection_or_login_proof": true,
+      "authority_enlarged": false,
+      "protected_HERMES_or_Gate_status_rewritten": false,
+      "no_fixed_business_steps": true
+    },
+    "checks": {
+      "authority_tests": 5,
+      "company_task_and_native_hook_tests": 20,
+      "gateway_tests": 10,
+      "total": 35,
+      "native_CLI_zero_model_probe": true,
+      "actual_owned_source_pins_match": true,
+      "actual_knowledge_envelope_current_mode": true,
+      "live_model_response_after_repair": "not_tested"
+    },
+    "activation": {
+      "idle_graceful_reload": 1,
+      "READY_utc": "2026-10-30T03:23:06.093553+00:00",
+      "child_pid": 8124,
+      "launcher_pid": 26100,
+      "tool_count": 12,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "retrying",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "force_kill": false
+    },
+    "files": {
+      "owned_sources_updated_sha256": {
+        "company_support.py": "59b57f5333e318fa87474f1e20593561289cef386eae43e08dc48e368b3f8374",
+        "feishu_gateway.py": "cf1ec772fff1320d4784303fa85263f83c33b1c071ca127086c297ba961f94f6"
+      },
+      "runtime_sha256": "f8fdc9c5cbcd2eaf202534aa35731c44666d066e838b12faa89cbe51880161a3",
+      "gate_sha256": "4d6d21ac3e94ee20da099dfa60ffa2583937de442d0972c7978bea8608c22cd6",
+      "protected_original_records_unchanged": 59,
+      "private_preimages": 5,
+      "rollback": false,
+      "SOUL_HERMES_MEMORY_USER_R3_config_model_credentials_MCP_QQ_voice_cron_unchanged": true
+    },
+    "new_Hermes_messages_or_model_requests_by_Codex": 0,
+    "real_business_UI_operations": 0,
+    "production_page_content_read": 0,
+    "remaining": [
+      "No new model turn sent; actual future answer/action behavior still requires ordinary Owner task evidence",
+      "This repair is the approved Feishu Owner gateway entry, not proof that Desktop/other channels load the same ephemeral context",
+      "Browser connection/login and current device bindings were not queried in this repair; old business outcomes not inferred",
+      "Historical R3/HERMES/Gate files retained intact; runtime authority only supersedes their obsolete stage restrictions within existing granted scope"
+    ],
+    "private_evidence_sha256": {
+      "operation": "4bb82f72bc94ac86692ec15e20af08f8f52e84b689084fdc456566ae4e6803a8",
+      "conversation_metadata": "cada0d1ff8f259e6798c96eb840eabe460ed6c8702b4b7c17678f4a9ceaf6c80",
+      "CLI_probe": "66173bbbe5c2e61360ceb044a478f32a816c071d89f712f602eaeca91682ce38"
     }
   }
 }

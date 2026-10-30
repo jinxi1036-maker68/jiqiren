@@ -679,6 +679,16 @@
       "new_Hermes_models_by_Codex": 0,
       "real_business_actions_by_Codex": 0,
       "original59_protected_unchanged": true
+    },
+    "browser_current_authority": {
+      "date": "2026-10-30",
+      "status": "current_authority_loaded",
+      "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#current_operating_authority",
+      "real_company_browser_authorized": true,
+      "businessWritesEnabled": true,
+      "historical_Gate1A_is_not_current_browser_scope": true,
+      "new_model_calls": 0,
+      "actual_post_fix_model_behavior": "not_tested"
     }
   }
 }

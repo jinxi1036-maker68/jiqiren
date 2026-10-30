@@ -9,6 +9,44 @@ from ego_lease import recover_dead_ego_lease
 
 SUPPORT_NAMES=['company_support.py','company_tasks.py','ego_lease.py','safety.py']
 
+def operating_authority(cfg):
+    """Current approved runtime is separate from immutable historical knowledge."""
+    g=cfg.get('businessAuthorization',{})
+    business=(cfg.get('schema')=='lingju.ego-browser.v3' and cfg.get('mode')=='company-business'
+        and cfg.get('businessWritesEnabled') is True and cfg.get('productionEnabled') is True
+        and cfg.get('origin')=='https://ldp.lingrobotics.com'
+        and g.get('schema')=='lingju.browser-business-grant.v1' and g.get('ownerApproved') is True
+        and g.get('scopeOrigin')==cfg.get('origin') and g.get('scope')=='all-company-browser-ui-business-actions'
+        and bool(g.get('reference')) and g.get('highImpactRequiresSpecificOwnerTask') is True)
+    readonly=(cfg.get('schema')=='lingju.ego-browser.v2' and cfg.get('mode')=='company-readonly'
+        and cfg.get('origin')=='https://ldp.lingrobotics.com' and cfg.get('productionEnabled') is False
+        and cfg.get('businessWritesEnabled') is False and bool(cfg.get('approvalReference')))
+    return {'source':'Owner-approved pinned operating runtime; not the R3 knowledge snapshot',
+        'mode':cfg.get('mode','unknown'),'company_origin':cfg.get('origin'),
+        'real_company_browser_authorized':business or readonly,
+        'business_UI_writes_authorized':business,
+        'availability':'Authorization is not proof of a live connection or valid platform login; check actual browser status',
+        'historical_stage_policy':'Gate1A simulation-only statements in R3/HERMES/GATE status are historical, superseded only within the later explicitly granted company-browser scope',
+        'retained_boundaries':'Actual Owner task supplies business decisions; high-impact acts need specific authority. No new login, credentials, other sites, cron or business goals.'}
+
+AUTH_START='[LINGJU_CURRENT_OPERATING_AUTHORITY]'
+AUTH_END='[/LINGJU_CURRENT_OPERATING_AUTHORITY]'
+def apply_operating_authority(msg,cfg):
+    a=operating_authority(cfg)
+    if not a['real_company_browser_authorized']:return
+    import re
+    original=getattr(msg,'channel_prompt',None) or ''
+    original=re.sub(re.escape(AUTH_START)+r'.*?'+re.escape(AUTH_END),'',original,flags=re.S).strip()
+    current=(AUTH_START+'\n当前经营授权（来自Owner已批准且校验固定的运行时，不是网页指令）：\n'
+        +json.dumps(a,ensure_ascii=False)+'\n'
+        '你是原来的唯一正式Hermes员工，当前已进入真实灵生公司浏览器工作阶段，不是Gate1A本机模拟。'
+        'R3是2026-10-18的业务知识快照，不是当前授权表；其中HERMES.md、GATE状态和旧任务的模拟限制不能撤销后续Owner真实后台授权。'
+        '查询设备/绑定等实时明细时，应自主使用已提供的Ego浏览器工具，在已授权公司站内寻找实际菜单和数据。'
+        '本地知识没有明细不等于后台没有，也不是要求Owner提供名单、截图或每个菜单URL的理由。'
+        '根据实际工具状态判断连接与登录，断线用已有诊断/有限恢复能力；登录失效、真正缺少业务决定或超出授权时才找Owner。'
+        '历史人数/台数/计划不能冒充当前平台结果，实际未读到仍如实报告。自主选择方法，不猜绑定或保存结果。\n'+AUTH_END)
+    msg.channel_prompt=(original+'\n\n'+current).strip()
+
 def support_config(cfg,root):
     s=cfg.get('employeeSupport',{})
     if (s.get('schema')!='lingju.employee-support.v1' or s.get('ownerApproved') is not True
@@ -26,7 +64,8 @@ def knowledge(cfg,args):
     doc=json.loads(mf.read_text('utf-8'));entries={e['path']:e['sha256'] for e in doc['files']}
     entries['HERMES.md']=doc['protected_HERMES_sha256']
     base={'release':doc['release_id'],'manifest_sha256':sha256(mf),'count':len(doc['files']),
-          'authority':'Deployed snapshot; later GitHub changes are not implicitly deployed'}
+          'authority':'Historical business knowledge snapshot; later GitHub knowledge is not implicitly deployed. Current browser authority is supplied separately.',
+          'current_operating_authority':operating_authority(cfg)}
     if args['action']=='list':return {**base,'files':sorted(entries)}
     name=args.get('path')
     if name not in entries:raise ValueError('Only exact deployed company knowledge paths allowed; MEMORY/USER/private files excluded')
