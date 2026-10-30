@@ -58,6 +58,19 @@ class TaskStore:
             x={'generation':generation,'kind':'owner','open':True,'source':source,'route':route_key(source),
                'session_id':session_id,'message_id':message_id,'owner_text':text(owner_text),'task_id':None}
             self._putctx(c,x);return generation
+    def preempt_pending(self):
+        """Ingress invalidation, before the native adapter can queue a new Owner message.
+
+        Keep the active turn's context for its receipts; do not turn the new
+        message into a grant until the native runner actually dispatches it.
+        """
+        with self.connection() as c:
+            x=self._ctx(c)
+            if x:x['preempted']=True;self._putctx(c,x)
+            for row in c.execute('SELECT doc FROM tasks').fetchall():
+                t=json.loads(row[0])
+                if t.get('resume_requested') or t.get('ticket_hash'):
+                    t.update(resume_requested=False,ticket_hash=None,status='paused');self._put(c,t)
     def _active(self,c):
         x=self._ctx(c)
         if not x or not x.get('open'):raise ValueError('No active authorized Owner/resume turn')
@@ -97,7 +110,7 @@ class TaskStore:
             progress=json.dumps(sorted(i['key'] for i in clean if i['state']=='done'))
             if progress!=t.get('progress'):t['stalled_resumes']=0
             t.update(status=status,note=text(args.get('note',t['note']),12000),items=clean,progress=progress,
-                     resume_requested=bool(args.get('resume_after_recovery',False)) and status in {'active','blocked_tool'})
+                     resume_requested=bool(args.get('resume_after_recovery',False)) and not x.get('preempted') and status in {'active','blocked_tool'})
             if args.get('verification_ref'):
                 row=c.execute('SELECT task_id,doc FROM receipts WHERE id=?',(args['verification_ref'],)).fetchone()
                 if not row or row['task_id']!=t['id']:raise ValueError('Verification requires a real observation receipt for this task')
@@ -119,7 +132,7 @@ class TaskStore:
                 t['last_failure']={'code':str(code or 'EGO_OPERATION_FAILED'),'tool':tool,'receipt':receipt}
                 if tool=='ego_browser_actions':t.update(needs_verification=True,failure_revision=t.get('revision',0)+1)
                 if t['status'] not in {'needs_owner','paused','completed','cancelled'}:
-                    automatic=recoverable(code)
+                    automatic=recoverable(code) and not x.get('preempted')
                     owner_required=any(str(code).startswith(p) for p in OWNER_BLOCKERS)
                     t.update(status='blocked_tool' if automatic else 'needs_owner' if owner_required else 'active',resume_requested=automatic)
             elif t['status']=='blocked_tool':t.update(status='active',resume_requested=False,last_failure=None)
@@ -137,9 +150,15 @@ class TaskStore:
         with self.connection() as c:
             x=self._ctx(c)
             return [self._public(t) for t in (json.loads(row[0]) for row in c.execute('SELECT doc FROM tasks'))
-                    if t.get('resume_requested') and t['status'] in {'active','blocked_tool'} and x and t['generation']==x['generation']]
-    def list(self):
-        with self.connection() as c:return sorted([self._public(json.loads(r[0])) for r in c.execute('SELECT doc FROM tasks')],key=lambda t:t['updated_at'],reverse=True)[:30]
+                    if t.get('resume_requested') and t['status'] in {'active','blocked_tool'} and x and not x.get('preempted') and t['generation']==x['generation']]
+    def list(self,*,summaries=False):
+        with self.connection() as c:
+            rows=[self._public(json.loads(r[0])) for r in c.execute("SELECT doc FROM tasks ORDER BY json_extract(doc,'$.updated_at') DESC LIMIT 30")]
+        if not summaries:return rows
+        return [{'id':t['id'],'status':t['status'],'goal_excerpt':t['owner_request'][:500],
+                 'item_counts':{s:sum(i['state']==s for i in t['items']) for s in ['pending','done','unknown']},
+                 'needs_verification':t['needs_verification'],'resume_requested':t['resume_requested'],
+                 'last_failure_code':(t.get('last_failure') or {}).get('code'),'updated_at':t['updated_at']} for t in rows]
     def read(self,tid):
         with self.connection() as c:return self._public(self._get(c,tid))
     def _public(self,t):return {k:v for k,v in t.items() if k not in {'source','route','ticket_hash','ticket_expires'}}
@@ -148,7 +167,7 @@ class TaskStore:
     def ticket(self,tid):
         with self.connection() as c:
             x=self._ctx(c);t=self._get(c,tid)
-            if not x or t['generation']!=x['generation'] or not t.get('resume_requested') or t['status'] not in {'active','blocked_tool'}:return None
+            if not x or x.get('preempted') or t['generation']!=x['generation'] or not t.get('resume_requested') or t['status'] not in {'active','blocked_tool'}:return None
             if t.get('stalled_resumes',0)>=2 or t.get('total_resumes',0)>=2:
                 t.update(status='needs_owner',resume_requested=False,last_failure={'code':'NO_PROGRESS_AFTER_RECOVERY','tool':'task_resume'});self._put(c,t);return None
             token=secrets.token_urlsafe(32);t.update(ticket_hash=hashlib.sha256(token.encode()).hexdigest(),ticket_expires=self.clock()+120,
@@ -157,7 +176,7 @@ class TaskStore:
     def consume(self,tid,token,source):
         with self.connection() as c:
             x=self._ctx(c);t=self._get(c,tid)
-            if not x or t['generation']!=x['generation'] or t['route']!=route_key(source) or t.get('ticket_expires',0)<self.clock():return False
+            if not x or x.get('preempted') or t['generation']!=x['generation'] or t['route']!=route_key(source) or t.get('ticket_expires',0)<self.clock():return False
             if not secrets.compare_digest(t.get('ticket_hash') or '',hashlib.sha256(str(token).encode()).hexdigest()):return False
             t.update(ticket_hash=None,status='active');self._put(c,t)
             self._putctx(c,{'generation':t['generation'],'kind':'resume','open':True,'source':source,'route':t['route'],
@@ -171,7 +190,9 @@ class TaskStore:
             x=self._ctx(c)
             if x and x.get('open') and x.get('task_id'):
                 t=self._get(c,x['task_id'])
-                if t['status'] not in {'completed','cancelled','needs_owner','paused'}:
+                if x.get('preempted'):
+                    t.update(status='paused',resume_requested=False,ticket_hash=None);self._put(c,t)
+                elif t['status'] not in {'completed','cancelled','needs_owner','paused'}:
                     t.update(status='blocked_tool',resume_requested=True,needs_verification=True,last_failure={'code':'EGO_GATEWAY_INTERRUPTED','tool':'gateway'});self._put(c,t)
                 x['open']=False;self._putctx(c,x)
         return self.pending()

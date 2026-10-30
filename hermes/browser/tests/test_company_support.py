@@ -83,7 +83,9 @@ class Continuation(unittest.IsolatedAsyncioTestCase):
   self.c.store.begin_owner(SOURCE,'s','m','synthetic existing task')
   self.tid=self.c.store.browser_event('ego_browser_actions',False,'EGO_UNAVAILABLE','r','d')['task_id'];self.c.store.end_turn()
  async def test_recovery_probe_never_replays_clicks_or_creates_business_records(self):
-  await self.c.resume(types.SimpleNamespace(),self.tid)
+  runner=types.SimpleNamespace(_adapter_for_source=lambda s:types.SimpleNamespace(_active_sessions={},_pending_messages={}),_session_key_for_source=lambda s:'key')
+  await self.c.resume(runner,self.tid)
+  self.assertEqual(len(self.calls),6)
   self.assertTrue(all(name in {'ego_browser_diagnostics','ego_browser_recover'} for name,_ in self.calls))
   self.assertEqual(self.c.store.read(self.tid)['status'],'needs_owner')
  async def test_new_owner_stop_cancels_pending_before_any_probe(self):
@@ -95,7 +97,7 @@ class Continuation(unittest.IsolatedAsyncioTestCase):
   self.c.call=call;received=[]
   class Adapter:
    async def handle_message(_,msg):received.append(msg);self.assertTrue(self.c.admit_internal(msg))
-  runner=types.SimpleNamespace(_adapter_for_source=lambda s:Adapter())
+  runner=types.SimpleNamespace(_adapter_for_source=lambda s:Adapter(),_session_key_for_source=lambda s:'key')
   # Fake only native transport types; no original Agent/model is started.
   class Event:
    def __init__(self,**kwargs):self.__dict__.update(kwargs)
@@ -115,8 +117,9 @@ class Continuation(unittest.IsolatedAsyncioTestCase):
   self.c.schedule=lambda runner,tid:scheduled.append(tid)
   adapter=types.SimpleNamespace(_active_sessions={},register_post_delivery_callback=lambda key,callback,**kw:callbacks.append(callback))
   runner=types.SimpleNamespace(_adapter_for_source=lambda source:adapter,_session_key_for_source=lambda source:'key')
-  self.c.after_turn(runner,types.SimpleNamespace(source=None),'returned')
-  self.assertEqual(scheduled,[]);self.assertEqual(len(callbacks),1);callbacks[0]();self.assertEqual(scheduled,[self.tid])
+  msg=types.SimpleNamespace(source=None);self.c.after_turn(runner,msg,'returned')
+  self.assertEqual(scheduled,[]);self.assertEqual(len(callbacks),1)
+  self.c.delivery_outcome(msg,'success');callbacks[0]();self.assertEqual(scheduled,[self.tid])
  async def test_forged_internal_metadata_cannot_admit_a_model_turn(self):
   source=types.SimpleNamespace(to_dict=lambda:SOURCE)
   for meta in [{'lingju_task_resume':{'task_id':'absent','ticket':'fake'}},{'lingju_task_resume':{}},{}]:

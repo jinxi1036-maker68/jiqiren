@@ -24,6 +24,7 @@ class EgoReadonlyExercise:
         root=ordinary_path(root);self.runtime=ordinary_path(g['runtime'])
         if sha256(self.runtime)!=g['runtime_sha256']:raise RuntimeError('Ego runtime changed')
         self.cfg=validate_ego_runtime(self.runtime,root)
+        self.runtime_sha256=g['runtime_sha256']
         if self.cfg.get('employeeSupport',{}).get('ownerApproved') is True:
             self.expected_tools=EGO_TOOLS|{'ego_browser_diagnostics','ego_browser_recover','company_task_notes','company_knowledge'}
         expected='company-business' if g['kind']=='lingju-ego-business-daily' else 'company-readonly'
@@ -34,6 +35,9 @@ class EgoReadonlyExercise:
         self.budget.status()
         self.channel='feishu';self.state_db=state_db
         self.catalog_ready=False;self.session_initialized=False
+    def ensure_current(self):
+        if sha256(self.runtime)!=self.runtime_sha256:
+            raise RuntimeError('Running company runtime changed; use the fixed gateway entry to reload, do not continue with stale authority')
     def pause(self):
         with contextlib.closing(self.budget._connection()) as c, c:
             c.execute('BEGIN IMMEDIATE')

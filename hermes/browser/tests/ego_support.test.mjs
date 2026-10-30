@@ -39,3 +39,8 @@ test('numeric DOM timeout codes become explicit transport failures with late-eff
  await assert.rejects(workerCall({port:1,token:'synthetic'},'synthetic',{},async()=>{calls++;throw new DOMException('timed out','TimeoutError');}),e=>e.code==='EGO_TRANSPORT_FAILED'&&e.mayHaveLateEffects===true);
  assert.equal(calls,1);
 });
+test('failed readback after a successful dispatched save preserves receipt and never resubmits',async()=>{
+ let saves=0;const r=await actionBatch([{type:'click'}],async()=>{},async()=>{saves++;return {dispatched:true};},async()=>{throw Error('verification disconnected');});
+ assert.equal(saves,1);assert.equal(r.all_actions_dispatched,true);assert.equal(r.receipts.length,1);
+ assert.equal(r.savedBusinessState,'unverified');assert.equal(r.code,'EGO_VERIFICATION_READ_FAILED');
+});

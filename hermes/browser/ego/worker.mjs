@@ -87,7 +87,7 @@ export async function run(runtimeFile,ownerLock){
     if(args.page==='p1')throw Error('Keep the goal primary Page');
     const p=await requirePage(args.page);await p.close();pages.delete(args.page);return {closed:args.page};
    }
-   const result=[];for(const [label] of pages){const p=await requirePage(label);result.push({page:label,url:await p.url()});}return result;
+   const result=[];for(const [label] of pages){const p=await requirePage(label);result.push({page:label,url:await p.url()});}return {pages:result,count:result.length};
   }
   const p=await requirePage(args.page);
   if(name==='ego_browser_observe')return observe(p,args);

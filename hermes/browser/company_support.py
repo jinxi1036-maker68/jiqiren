@@ -22,6 +22,7 @@ def operating_authority(cfg):
         and cfg.get('origin')=='https://ldp.lingrobotics.com' and cfg.get('productionEnabled') is False
         and cfg.get('businessWritesEnabled') is False and bool(cfg.get('approvalReference')))
     return {'source':'Owner-approved pinned operating runtime; not the R3 knowledge snapshot',
+        'tool_namespace':'company_browser_simulation is a historical MCP registration name, not the current environment; mode and actual status define the active scope',
         'mode':cfg.get('mode','unknown'),'company_origin':cfg.get('origin'),
         'real_company_browser_authorized':business or readonly,
         'business_UI_writes_authorized':business,
@@ -41,6 +42,7 @@ def apply_operating_authority(msg,cfg):
         +json.dumps(a,ensure_ascii=False)+'\n'
         '你是原来的唯一正式Hermes员工，当前已进入真实灵生公司浏览器工作阶段，不是Gate1A本机模拟。'
         'R3是2026-10-18的业务知识快照，不是当前授权表；其中HERMES.md、GATE状态和旧任务的模拟限制不能撤销后续Owner真实后台授权。'
+        '工具前缀company_browser_simulation是历史注册名称，不表示当前仍为模拟；以当前mode和实际工具状态为准。Owner本轮最新要求和限制优先，工具可写不等于本轮允许任意写。'
         '查询设备/绑定等实时明细时，应自主使用已提供的Ego浏览器工具，在已授权公司站内寻找实际菜单和数据。'
         '本地知识没有明细不等于后台没有，也不是要求Owner提供名单、截图或每个菜单URL的理由。'
         '根据实际工具状态判断连接与登录，断线用已有诊断/有限恢复能力；登录失效、真正缺少业务决定或超出授权时才找Owner。'
@@ -74,7 +76,17 @@ def knowledge(cfg,args):
     raw=p.read_text('utf-8');offset=args.get('offset',0);limit=args.get('limit',12000)
     if not isinstance(offset,int) or isinstance(offset,bool) or offset<0 or not isinstance(limit,int) or isinstance(limit,bool) or not 1<=limit<=20000:raise ValueError('Invalid read range')
     return {**base,'path':name,'sha256':entries[name],'offset':offset,'total_characters':len(raw),
-            'text':raw[offset:offset+limit],'more':offset+limit<len(raw)}
+            'text':raw[offset:offset+limit],'more':offset+limit<len(raw),
+            'coverage':'This file range only; a directory listing does not prove all32 files were read'}
+
+def task_page(store,args):
+    offset=args.get('offset',0);limit=args.get('limit',12000)
+    if not isinstance(offset,int) or isinstance(offset,bool) or offset<0 or not isinstance(limit,int) or isinstance(limit,bool) or not 1<=limit<=20000:raise ValueError('Invalid task read range')
+    task=store.read(args['task_id']);body=json.dumps(task,ensure_ascii=False)
+    return {'task_id':task['id'],'status':task['status'],'offset':offset,'total_characters':len(body),
+            'text':body[offset:offset+limit],'more':offset+limit<len(body),
+            'next_offset':offset+limit if offset+limit<len(body) else None,
+            'basis':'Private Agent notes; paginated to avoid oversized tool failures. Item state is an Agent report.'}
 
 def dispatch(cfg,root,request):
     s=support_config(cfg,root);op=request['op'];args=request.get('args',{})
@@ -84,9 +96,11 @@ def dispatch(cfg,root,request):
     if op=='notes':
         # Reads are allowed only in the same authorized native turn as writes.
         with store.connection() as c:store._active(c)
-        if args['action']=='list':return {'tasks':store.list(),'basis':'Private operational notes; completion items are Agent reports, not independently verified business facts'}
-        if args['action']=='read':return store.read(args['task_id'])
-        if args['action']=='checkpoint':return store.checkpoint(args)
+        if args['action']=='list':return {'tasks':store.list(summaries=True),'range':'latest30 summaries; read a task by id with offset/limit for full notes','basis':'Private operational notes; completion items are Agent reports, not independently verified business facts'}
+        if args['action']=='read':return task_page(store,args)
+        if args['action']=='checkpoint':
+            t=store.checkpoint(args)
+            return {k:t[k] for k in ['id','status','revision','needs_verification','resume_requested','completion_basis']}
     if op=='knowledge':
         with store.connection() as c:store._active(c)
         return knowledge(cfg,args)
@@ -99,7 +113,9 @@ if __name__=='__main__':
         if root!=Path.home()/'.hermes/tools/company-browser' or root/'runs' not in runtime.parents:raise ValueError('Original owned runtime required')
         cfg=json.loads(runtime.read_text('utf-8'))
         if cfg['toolRoot']!=str(root) or cfg['workspace']!=str(Path.home()/'.hermes/company-workspace'):raise ValueError('Original company workspace required')
-        request=json.loads(sys.stdin.read(65537))
+        raw=sys.stdin.read(65537)
+        if len(raw)>65536:raise ValueError('Support request exceeds65536 characters; use smaller checkpoints')
+        request=json.loads(raw)
         result=dispatch(cfg,root,{**request,'runtime':str(runtime)})
         print(json.dumps({'ok':True,'result':result},ensure_ascii=False))
     except Exception as exc:

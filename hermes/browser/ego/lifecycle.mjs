@@ -17,7 +17,10 @@ export async function actionBatch(actions,before,act,observe){
     outcome:'No action replay. Use this fresh state or a current screenshot to choose your own next step; query any uncertain saved result first.'};
   }
  }
- return {receipts,...await observe()};
+ try{return {receipts,...await observe()};}
+ catch(e){return {error:String(e.message||e),code:e.error_code||e.code||'EGO_VERIFICATION_READ_FAILED',
+  receipts,all_actions_dispatched:true,remaining_actions_not_executed:0,savedBusinessState:'unverified',
+  outcome:'Actions were dispatched but the subsequent observation failed. Query saved state; never replay the batch merely because verification failed.'};}
 }
 
 export async function startupFailure(file,nonce){

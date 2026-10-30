@@ -174,7 +174,7 @@
     "identity_files_changed": false
   },
   "initial_activation_scope": "The top-level activation snapshot is historical; latest_phase selects subsequent runtime repair",
-  "latest_phase": "current_operating_authority",
+  "latest_phase": "chain_reliability",
   "page_error_classification_repair": {
     "at_utc": "2026-10-29T20:50:06.450457+00:00",
     "state": "page_error_classification_repair_loaded",
@@ -732,5 +732,102 @@
       "conversation_metadata": "cada0d1ff8f259e6798c96eb840eabe460ed6c8702b4b7c17678f4a9ceaf6c80",
       "CLI_probe": "66173bbbe5c2e61360ceb044a478f32a816c071d89f712f602eaeca91682ce38"
     }
+  },
+  "chain_reliability": {
+    "state": "prepared_waiting_original_active_task_idle",
+    "code_fixes_ready": true,
+    "live_activation_completed": false,
+    "scope": "same original employee and approved Feishu company browser entry; no new identity or business goals",
+    "observed_defect": {
+      "session_id": "20261030_110538_928a80b5",
+      "page_list_invalid_native_envelope_errors": 3,
+      "terminal_receipt_metadata_only": [],
+      "recent_model_headers": [
+        {
+          "at": "2026-10-30T08:58:41.459635+00:00",
+          "status": 503
+        },
+        {
+          "at": "2026-10-30T08:59:08.340663+00:00",
+          "status": 200
+        },
+        {
+          "at": "2026-10-30T09:01:27.812429+00:00",
+          "status": 200
+        },
+        {
+          "at": "2026-10-30T09:02:21.364789+00:00",
+          "status": 200
+        },
+        {
+          "at": "2026-10-30T09:02:46.441981+00:00",
+          "status": 429
+        },
+        {
+          "at": "2026-10-30T09:04:11.602826+00:00",
+          "status": 200
+        }
+      ],
+      "provider_429_cause": "unknown",
+      "original_private_memory_and_prompt_read": false,
+      "business_page_content_read": false
+    },
+    "fixes": [
+      "Worker page-list array caused3 Invalid native worker response errors; return typed object envelope",
+      "Use actual native delivery SUCCESS before internal continuation; post-delivery callback alone also fires on failed send",
+      "Invalidate old continuation at Owner ingress, before the native queue; no internal/human text merge; deduplicate scheduled resumes",
+      "Compact task summaries, paginated full notes and compact checkpoint acknowledgement prevent oversized helper failures",
+      "Keep dispatched action receipts when only the post-save observation fails; never replay the save batch",
+      "One fixed reproducible original CLI entry, same H/W and role, reject legacy simulation and duplicate/unrecognized live gateways",
+      "Observe only native auth.json byte lifecycle under explicit policy; other original protected files remain strict; no token parsing/writes",
+      "Daily provider long Retry-After cooldown can expire without a permanent frozen gateway; never retry earlier, no request-count quota"
+    ],
+    "checks": {
+      "native_chain": 12,
+      "task_support": 20,
+      "native_bootstrap": 8,
+      "gateway": 10,
+      "authority": 5,
+      "ego_python": 21,
+      "node": 56,
+      "provider_pacing": 8
+    },
+    "targeted_checks_passed": 140,
+    "native_adapter_integration": {
+      "actual_installed_delivery_queue_used": true,
+      "synthetic_model_and_business_results": true,
+      "uncertain_create_query_resume_completed_once": true,
+      "Owner_input_preempts_pending_resume": true,
+      "failed_delivery_prevents_resume": true,
+      "external_network_model_and_channel_calls_blocked_by_test_audit": true,
+      "original_private_home_reads_blocked_by_test_audit": true
+    },
+    "owned_sources_candidate_sha256": {
+      "company_support.py": "6858768ecf791ca51907da52d4bff5e203f1ede28a014352827d5fe207ea1885",
+      "company_tasks.py": "a2c905f7192139751c63f37afece37af75ee865075880df6a40f71884d5d32dc",
+      "task_continuation.py": "c967e9103499e23b419707b76ec55fe2e2094a7c161dbef2669151d651a4d753",
+      "feishu_gateway.py": "56871885630f58130e911a4d149da575d2047daaf7c36e155d0373c475991e23",
+      "feishu_native_bootstrap.py": "e4190db749cf9e08a6cb31fdb1f2ab65c844c21794b941e65588fc479f029107",
+      "ego_task.py": "3fd829946892aa7d4489dddd94f3fe346fe86359be6a52abcd0d552712959cab",
+      "ego/lifecycle.mjs": "41a53288d61fb405c8964514b2d2abb349720dfc7ff2e54b067a4f4bdf7c3672",
+      "ego/policy.mjs": "bfbe1eea5953f6f72688f67d55fdbc50e73b88acfe3bdb277ddefa04bde7fdf3",
+      "ego/worker.mjs": "6b8afd05271661b51ce317e8a522d3e431770abb2047ca200d9345396aa9ab28",
+      "feishu_meter.py": "faf5a162e79b37b4f6c2678238f13febd9c5368593fec432b43db6f8f9008485",
+      "provider_pacing.py": "02de4a4813fb058f8e29e2a147780099e9cfa2bb5a6176dfc346802b214348f2",
+      "runtime_guard.py": "5ffdcd4ea758a8b3db670879fc71a69158e392d662564ca963fbc9db08dd5100",
+      "company_gateway_entry.py": "7299b46468dae2d398906615ed86a33f824622a0a19ef02692ae3fa50b6075ec"
+    },
+    "private_preimages": 14,
+    "models_or_messages_by_Codex": 0,
+    "production_UI_actions": 0,
+    "live_scope": {
+      "original_runtime_not_yet_modified": true,
+      "active_task_not_interrupted": true
+    },
+    "remaining": [
+      "Wait for original task to finish or obtain explicit maintenance interruption approval before loading",
+      "Actual provider429/503 causes/quota not proven and cannot be eliminated by local driver fixes",
+      "No new real-model autonomy test or real business write; do not infer a saved device grouping outcome"
+    ]
   }
 }

@@ -38,6 +38,7 @@ class ModelPacer:
         self.retry_after_statuses = frozenset(retry_after_statuses)
         self.lock = threading.Lock()
         self.next_start, self.frozen, self.ordinal = 0.0, False, 0
+        self.frozen_until=None
 
     def check(self):
         state = self.budget.status()
@@ -127,6 +128,8 @@ class ModelPacer:
             cooldown = wait
             if wait > 600:
                 self.frozen = True  # Never shorten a server's long requested wait.
+                self.frozen_until=self.clock()+wait
+                self.next_start=max(self.next_start,self.frozen_until)
             else:
                 self.next_start = max(self.next_start, self.clock() + wait)
         self.record('model_response_headers', status=status, retry_after_seconds=retry_after,

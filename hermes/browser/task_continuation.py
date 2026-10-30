@@ -23,7 +23,7 @@ def unwrap(raw):
 class TaskContinuation:
     def __init__(self,database,out,check_protection,call=None,delays=(3,12,50)):
         self.store=TaskStore(database);self.out=out;self.check_protection=check_protection
-        self.call=call or self.native_call;self.delays=delays;self.jobs=set();self.runner=None;self.closed=False
+        self.call=call or self.native_call;self.delays=delays;self.jobs=set();self.scheduled={};self.deliveries={};self.runner=None;self.closed=False
     async def native_call(self,name,args):
         from tools.mcp_tool import _make_tool_handler
         result=await asyncio.to_thread(_make_tool_handler('company_browser_simulation',name,50),args)
@@ -44,12 +44,27 @@ class TaskContinuation:
             self.store.block(tid,'NATIVE_DELIVERY_CALLBACK_UNAVAILABLE');return
         active=getattr(adapter,'_active_sessions',{}).get(key)
         generation=getattr(active,'_hermes_run_generation',None)
-        # Delivery failure leaves the task pending, with no surprise immediate run.
-        adapter.register_post_delivery_callback(key,lambda:self.schedule(runner,tid),generation=generation)
+        # Native post-delivery callbacks also run after failed sends. Require
+        # the adapter's actual processing outcome, not callback timing alone.
+        event_key=id(msg);self.deliveries[event_key]=None
+        def after_delivery():
+            delivered=self.deliveries.pop(event_key,None)
+            if delivered is True:self.schedule(runner,tid)
+            else:
+                self.store.block(tid,'NATIVE_RESULT_DELIVERY_FAILED_OR_UNKNOWN')
+                event(self.out,'task_resume_not_delivered',task_id=tid)
+        adapter.register_post_delivery_callback(key,after_delivery,generation=generation)
         event(self.out,'task_resume_waiting_for_delivery',task_id=tid)
+    def delivery_outcome(self,msg,outcome):
+        if id(msg) in self.deliveries:
+            self.deliveries[id(msg)]=getattr(outcome,'value',outcome)=='success'
     def schedule(self,runner,tid):
-        if self.closed:return
-        job=asyncio.create_task(self.resume(runner,tid));self.jobs.add(job);job.add_done_callback(self.jobs.discard)
+        if self.closed or (tid in self.scheduled and not self.scheduled[tid].done()):return
+        job=asyncio.create_task(self.resume(runner,tid));self.jobs.add(job);self.scheduled[tid]=job
+        def done(j):
+            self.jobs.discard(j)
+            if self.scheduled.get(tid) is j:self.scheduled.pop(tid,None)
+        job.add_done_callback(done)
     async def resume(self,runner,tid):
         try:
             ready=False
@@ -57,6 +72,14 @@ class TaskContinuation:
                 await asyncio.sleep(delay)
                 if self.closed or not any(t['id']==tid for t in self.store.pending()):return
                 if self.check_protection():self.store.block(tid,'PROTECTED_FILE_CHANGED');return
+                from gateway.session import SessionSource
+                source=SessionSource.from_dict(self.store.source(tid));adapter=runner._adapter_for_source(source)
+                if adapter is None:self.store.block(tid,'NATIVE_ADAPTER_UNAVAILABLE');return
+                key=runner._session_key_for_source(source)
+                # Never let an internal notification merge into real Owner
+                # text in the native pending slot. Owner ingress invalidates
+                # tickets before queuing; otherwise wait for the original lane.
+                if key in getattr(adapter,'_active_sessions',{}) or key in getattr(adapter,'_pending_messages',{}):continue
                 # Same original MCP client/session. Never contend with another
                 # standalone bridge or replay a business action as a probe.
                 try:

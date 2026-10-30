@@ -26,6 +26,7 @@ def gateway_pacer(meter, receipt, gate, *, continuous):
     if not continuous or settings!=DAILY_PACING:
         raise BudgetBlocked('Unreviewed daily pacing policy')
     return BrowserPacer(meter,receipt,min_interval_seconds=0,
+                        daily_auto_unfreeze=True,
                         retry_after_statuses=settings['honor_retry_after_on'])
 
 
@@ -89,12 +90,16 @@ class GatewayMeter:
 
 
 class BrowserPacer(ModelPacer):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, daily_auto_unfreeze=False, **kwargs):
         super().__init__(*args, **kwargs)
+        self.daily_auto_unfreeze=daily_auto_unfreeze
         self._progress_family=threading.local()
 
     def check(self):
         self.budget.check()
+        if self.daily_auto_unfreeze and self.frozen and self.frozen_until is not None and self.clock()>=self.frozen_until:
+            self.frozen=False;self.frozen_until=None
+            self.record('provider_requested_cooldown_elapsed',no_early_retry=True)
         if self.frozen:raise BudgetBlocked('Provider wait exceeds automatic scope')
 
     def _progress(self, state, **fields):

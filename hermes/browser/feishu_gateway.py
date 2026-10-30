@@ -60,7 +60,8 @@ def check_fresh_session(db, entry):
     return entry.session_id
 
 
-def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, progress_options=None,continuation=None):
+def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, progress_options=None,continuation=None,protection=None,gate_sha256=None):
+    protected_changes=protection or (lambda:check_snapshot(baseline))
     Runner=native.GatewayRunner
     old_primary=Runner._primary_message_handler
     old_handle=Runner._handle_message
@@ -69,12 +70,33 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
     old_adapter=Runner._create_adapter
     old_iterations=native._current_max_iterations
     sdk_restores=[]
+    ingress_restores=[]
+
+    def attach_ingress(adapter):
+        if continuation is None or adapter is None or getattr(adapter,'_lingju_ingress_observer',False):return
+        original=adapter.handle_message
+        async def observed(msg):
+            if not getattr(msg,'internal',False) and is_owner(msg.source,binding):
+                continuation.store.preempt_pending()
+            return await original(msg)
+        original_complete=getattr(adapter,'on_processing_complete',None)
+        if callable(original_complete):
+            async def completed(msg,outcome):
+                continuation.delivery_outcome(msg,outcome)
+                return await original_complete(msg,outcome)
+            adapter.on_processing_complete=completed
+        adapter.handle_message=observed;adapter._lingju_ingress_observer=True
+        def undo():
+            adapter.handle_message=original;delattr(adapter,'_lingju_ingress_observer')
+            if callable(original_complete):adapter.on_processing_complete=original_complete
+        ingress_restores.append(undo)
 
     def create_adapter(self, platform, config):
         adapter=old_adapter(self,platform,config)
         if getattr(platform,'value',platform)=='feishu' and adapter is not None:
             from lark_oapi.core.http.transport import Transport
             if not sdk_restores:sdk_restores.append(tag_sdk_transport(Transport))
+            attach_ingress(adapter)
         return adapter
 
     def tools(self, user_config, source, platform_key):
@@ -114,10 +136,12 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
             if continuation is not None and not internal:
                 continuation.owner_arrived(msg,resolve_native_session(self.session_store,msg.source))
             if not control:
-                if check_snapshot(baseline):
+                if protected_changes():
                     exercise.pause()
                     return '受保护文件发生变化，请交Codex核对；当前消息未提交模型。'
                 if not exercise.catalog_ready:return '浏览器入口尚未就绪，请稍后正常发送工作目标。'
+                if callable(getattr(exercise,'ensure_current',None)):
+                    exercise.ensure_current()
                 if getattr(exercise,'cfg',None):
                     from company_support import apply_operating_authority
                     apply_operating_authority(msg,exercise.cfg)
@@ -155,7 +179,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
                 if continuation is not None:
                     try:continuation.after_turn(self,msg,outcome)
                     except Exception as exc:event(out,'task_checkpoint_or_delivery_callback_failed',error_type=type(exc).__name__)
-                if not control:event(out,'daily_readonly_message_returned',audit=exercise.budget.status(),protected_changes=check_snapshot(baseline))
+                if not control:event(out,'daily_readonly_message_returned',audit=exercise.budget.status(),protected_changes=protected_changes())
         async def handle(msg):
             if getattr(exercise,'continuous',False):return await continuous_handle(msg)
             browser=exercise.matches(msg.text or '')
@@ -249,16 +273,18 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
             event(out,'gateway_start_phase',phase=phase)
             from gateway.config import Platform
             feishu=self.adapters.get(Platform.FEISHU)
+            attach_ingress(feishu)
             if not native_connected(feishu):raise RuntimeError('Native Feishu did not connect')
             conn=getattr(getattr(feishu,'_ws_client',None),'_conn_url',None)
             if not conn:raise RuntimeError('Native Feishu has no WebSocket receipt')
             validate_websocket(conn)
-            if check_snapshot(baseline):raise RuntimeError('Protected files changed during native startup')
+            if protected_changes():raise RuntimeError('Protected files changed during native startup')
             exercise.catalog_ready=True
             exercise.pause()
             if continuation is not None:
                 for pending in continuation.store.restart_candidates():continuation.schedule(self,pending['id'])
             event(out,'original_feishu_browser_ready',pid=os.getpid(),home=str(home),cwd=os.getcwd(),
+                  runtime_sha256=sha256(exercise.runtime),gate_sha256=gate_sha256,authority_mode=getattr(exercise,'cfg',{}).get('mode'),
                   native_all_adapters_preserved=True,profile_created=False,browser_catalog_tools=len(expected),
                   native_ordinary_request_attempts=meter.ordinary_attempts,budget=exercise.budget.status(),
                   protected_changes=[],new_model_task_messages_sent_by_Codex=0)
@@ -293,6 +319,7 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
         Runner.start=old_start
         native._current_max_iterations=old_iterations
         for close in sdk_restores:close()
+        for close in ingress_restores:close()
     return restore
 
 
@@ -309,9 +336,12 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
     for name,digest in gate['source_sha256'].items():
         if sha256(root/name)!=digest:raise RuntimeError('Tool source changed')
     baseline=json.loads(Path(args.baseline).read_text('utf-8'))
-    if check_snapshot(baseline):raise RuntimeError('Protected files changed')
     out=ordinary_path(args.output)
     if root/'runs' not in out.parents:raise RuntimeError('Receipts outside owned tool runtime')
+    from runtime_guard import ProtectionView
+    protection=ProtectionView(baseline,home,gate.get('runtime_protection'),
+        notify=lambda data:event(out,'native_auth_bytes_observed',**data))
+    if protection.blocking():raise RuntimeError('Protected files changed')
     if gate['browser_exercise'].get('kind') in ('lingju-ego-readonly-daily','lingju-ego-business-daily'):
         from ego_task import EgoReadonlyExercise
         exercise=EgoReadonlyExercise(gate['browser_exercise'],root,home/'state.db',channel='feishu')
@@ -361,11 +391,11 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
     continuation=None
     if getattr(exercise,'cfg',{}).get('employeeSupport',{}).get('ownerApproved') is True:
         from task_continuation import TaskContinuation
-        continuation=TaskContinuation(exercise.cfg['employeeSupport']['taskDatabase'],out,lambda:check_snapshot(baseline))
+        continuation=TaskContinuation(exercise.cfg['employeeSupport']['taskDatabase'],out,protection.blocking)
     restore_runner=install_runner_hooks(native,exercise,meter,out,baseline,gate['owner_binding'],home,
-                                       progress_options=approved_progress(gate),continuation=continuation)
+                                       progress_options=approved_progress(gate),continuation=continuation,protection=protection.blocking,gate_sha256=sha256(args.gate))
     try:
-        if check_snapshot(baseline):raise RuntimeError('Protected files changed before native startup')
+        if protection.blocking():raise RuntimeError('Protected files changed before native startup')
         await native_start(config=config,replace=False,verbosity=verbosity)
     finally:
         exercise.pause()

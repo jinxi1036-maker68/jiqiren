@@ -99,13 +99,17 @@ def validate_context(root,env,argv,*,home=None,executable=None):
     if sha256(baseline_path)!=gate['protected_baseline_sha256']:
         raise RuntimeError('Protected baseline changed')
     baseline=json.loads(baseline_path.read_text('utf-8'))
-    if check_snapshot(baseline):raise RuntimeError('Protected files changed')
     required={'feishu_native_bootstrap.py','startup/sitecustomize.py','feishu_gateway.py','feishu_session_fence.py'}
     if not required<=set(gate['source_sha256']):raise RuntimeError('Bootstrap sources not pinned')
     for name,digest in gate['source_sha256'].items():
         candidate=ordinary_path(root/name)
         if root not in candidate.parents or sha256(candidate)!=digest:
             raise RuntimeError('Bootstrap source changed')
+    if gate.get('runtime_protection') is not None and 'runtime_guard.py' not in gate['source_sha256']:
+        raise RuntimeError('Native auth lifecycle guard source must be pinned')
+    from runtime_guard import ProtectionView
+    if ProtectionView(baseline,home/'.hermes',gate.get('runtime_protection')).blocking():
+        raise RuntimeError('Protected files changed')
     runtime=ordinary_path(gate['browser_exercise']['runtime'])
     if root/'runs' not in runtime.parents or sha256(runtime)!=gate['browser_exercise']['runtime_sha256']:
         raise RuntimeError('Runtime changed')

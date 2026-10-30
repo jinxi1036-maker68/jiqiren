@@ -689,6 +689,15 @@
       "historical_Gate1A_is_not_current_browser_scope": true,
       "new_model_calls": 0,
       "actual_post_fix_model_behavior": "not_tested"
+    },
+    "browser_chain_reliability": {
+      "date": "2026-10-30",
+      "status": "prepared_waiting_original_active_task_idle",
+      "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#chain_reliability",
+      "code_fixes_ready": true,
+      "live_activation_completed": false,
+      "active_original_task_not_interrupted": true,
+      "new_model_calls_by_Codex": 0
     }
   }
 }
