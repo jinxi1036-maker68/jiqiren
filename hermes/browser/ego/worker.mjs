@@ -4,7 +4,7 @@ import http from 'node:http';
 import crypto from 'node:crypto';
 import {validateConfig,validateActions,validateToolCall,requireScope,guide,isCompany,authority} from './policy.mjs';
 import {nativeReadGuard} from './native_guard.mjs';
-import {releaseOwnedLease} from './lifecycle.mjs';
+import {releaseOwnedLease,actionBatch} from './lifecycle.mjs';
 
 export async function run(runtimeFile,ownerLock){
  let guard,server,watchdog,yielded=false,tail=Promise.resolve(),phase='configuration',startupComplete=false;
@@ -99,29 +99,36 @@ export async function run(runtimeFile,ownerLock){
    return {screenshot:filename,page:p.label};
   }
   if(name==='ego_browser_actions'){
-   const receipts=[];
-   for(const a of validateActions(args.actions)){
+   return actionBatch(validateActions(args.actions),async()=>{
     if(company)await guard.inspect({requireActive:true});
-    await requirePage(p.label);const receipt=await act(p,a);receipts.push({type:a.type,receipt});
-    if(receipt?.dialog)return {receipts,dialog:receipt.dialog,verification:'pending dialog'};
-   }
-   return {receipts,...await observe(p)};
+    await requirePage(p.label);
+   },a=>act(p,a),()=>observe(p));
   }
   throw Error('Unknown browser tool');
  };
- const token=crypto.randomBytes(32).toString('hex');let finish;
+ const token=crypto.randomBytes(32).toString('hex');let finish,busy=false,pending=0;
  const stopped=new Promise(resolve=>{finish=resolve;});let lastContact=Date.now();
  server=http.createServer(async(req,res)=>{
   if(req.headers.authorization!=='Bearer '+token||req.method!=='POST'){res.writeHead(403);res.end();return;}
   lastContact=Date.now();
   let raw='';for await(const chunk of req){raw+=chunk;if(raw.length>65536){res.writeHead(413);res.end();return;}}
+  let parsed;try{parsed=JSON.parse(raw);}catch{res.writeHead(400);res.end();return;}
+  if(parsed.name==='__health'||parsed.name==='__ping'){
+   res.writeHead(200,{'content-type':'application/json'});res.end(JSON.stringify({alive:true,busy,pending}));return;
+  }
+  if(parsed.name==='__stop'&&(busy||pending)){
+   res.writeHead(200,{'content-type':'application/json'});res.end(JSON.stringify({error:'EGO_RECOVERY_IN_FLIGHT',code:'EGO_RECOVERY_IN_FLIGHT'}));return;
+  }
+  pending++;
   const job=async()=>{
+   pending--;busy=true;
    try{
-    const {name,args}=JSON.parse(raw);
+    const {name,args}=parsed;
     if(name==='__ping')return {alive:true};
     if(name==='__stop'){setTimeout(finish,30);return {stopping:true};}
-    const result=await execute(name,args);await record({tool:name,ok:true,resultSha256:crypto.createHash('sha256').update(JSON.stringify(result)).digest('hex')});return result;
+    const result=await execute(name,args);await record({tool:name,ok:!result.error,...(result.error?{errorCode:result.code}:{}),resultSha256:crypto.createHash('sha256').update(JSON.stringify(result)).digest('hex')});return result;
    }catch(e){await record({kind:'tool_error',errorCode:e.error_code||'EGO_OPERATION_FAILED'});return {error:String(e.message||e),code:e.error_code||'EGO_OPERATION_FAILED',outcome:'unknown; no automatic retry'};}
+   finally{busy=false;}
   };
   const result=tail.then(job,job);tail=result.catch(()=>{});
   res.writeHead(200,{'content-type':'application/json'});res.end(JSON.stringify(await result));

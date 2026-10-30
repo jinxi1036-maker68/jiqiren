@@ -174,7 +174,7 @@
     "identity_files_changed": false
   },
   "initial_activation_scope": "The top-level activation snapshot is historical; latest_phase selects subsequent runtime repair",
-  "latest_phase": "stable_company_workplace",
+  "latest_phase": "employee_recovery_and_tasks",
   "page_error_classification_repair": {
     "at_utc": "2026-10-29T20:50:06.450457+00:00",
     "state": "page_error_classification_repair_loaded",
@@ -482,5 +482,166 @@
       "Prior window disappearance cause and provider latency/quota remain unknown; old wecom_callback separate",
       "Ego upgrade notice observed; no upgrade performed"
     ]
+  },
+  "employee_recovery_and_tasks": {
+    "at_utc": "2026-10-30T02:57:35.940122+00:00",
+    "state": "original_Hermes_support_loaded_no_new_Agent_business_test",
+    "adapter_version": "0.6.0",
+    "same_original_H_W_employee": true,
+    "tool_count": 12,
+    "new_tools": [
+      "ego_browser_diagnostics",
+      "ego_browser_recover",
+      "company_task_notes",
+      "company_knowledge"
+    ],
+    "actual_MCP_probe": {
+      "passed": true,
+      "tool_count": 12,
+      "catalog": [
+        "ego_browser_guide",
+        "ego_browser_status",
+        "ego_browser_window",
+        "ego_browser_observe",
+        "ego_browser_actions",
+        "ego_browser_screenshot",
+        "ego_browser_pages",
+        "ego_browser_handoff",
+        "ego_browser_diagnostics",
+        "ego_browser_recover",
+        "company_task_notes",
+        "company_knowledge"
+      ],
+      "diagnostics_without_worker": {
+        "runtimeOwned": true,
+        "leasePresent": false,
+        "leaseSameRuntime": false,
+        "leaseOwnerAlive": false,
+        "endpointReachable": false,
+        "workerBusy": null,
+        "queuedOperations": null,
+        "next": "Use bounded recovery for an idle owned connection. Owner handles login/user-control/extension permission.",
+        "pageContentRead": false,
+        "businessActionDispatched": false,
+        "transportHealthy": true,
+        "operationSucceeded": true
+      },
+      "connected": true,
+      "idle_owned_reconnected": true,
+      "same_space_id": 4,
+      "configured_space_id": 2,
+      "mode": "company-business",
+      "businessWritesEnabled": true,
+      "guardHealthy": true,
+      "home": "C:\\Users\\Administrator\\.hermes",
+      "workspace": "C:\\Users\\Administrator\\.hermes\\company-workspace",
+      "idle_checkpoint_denied": true,
+      "model_messages": 0,
+      "model_requests": 0,
+      "production_page_content_reads": 0,
+      "business_UI_actions": 0,
+      "lease_exists_after_close": false,
+      "stderr_bytes": 0
+    },
+    "zero_model_tests": {
+      "node": 53,
+      "python": 51
+    },
+    "total_tests": 104,
+    "actual_gateway_READY_utc": "2026-10-30T02:57:14.920527+00:00",
+    "gateway_child": 23328,
+    "gateway_launcher": 21764,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "retrying",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "idle_graceful_reloads": 2,
+    "force_stop": false,
+    "task_journal": {
+      "schema": "private_sqlite_operational_notes",
+      "private_current_user_SYSTEM_ACL_verified": true,
+      "task_count": 0,
+      "pending": 0,
+      "historical_business_tasks_seeded": 0,
+      "not_MEMORY_or_USER": true
+    },
+    "continuation": {
+      "native_internal_MessageEvent": true,
+      "post_delivery_callback": true,
+      "same_session_source": true,
+      "single_use_route_generation_ticket": true,
+      "new_Owner_input_preempts": true,
+      "no_fake_Owner_message": true,
+      "max_recovery_probes": 3,
+      "max_internal_resumes_per_Owner_generation": 2,
+      "this_is_not_a_model_API_quota": true,
+      "automatic_business_action_replay": false,
+      "real_Agent_resume_after_fault_verified": false
+    },
+    "page_adaptation": {
+      "failure_returns_fresh_guarded_observation_if_available": true,
+      "completed_action_receipts_preserved": true,
+      "remaining_action_batch_stops": true,
+      "automatic_click_retry": false,
+      "UI_failure_stays_Agent_work_not_Owner_repair": true,
+      "uncertain_save_requires_later_observation_before_completed": true
+    },
+    "company_knowledge": {
+      "release": "LINGJU-KNOWLEDGE-2026-10-18-R3",
+      "manifest_sha256": "db4b44b0f75b2ced679183aa6fb7f3eca37e6dd56942a0af0361b8297c1cc70c",
+      "source_files": 32,
+      "plus_protected_HERMES": 1,
+      "exact_allowlisted_hashes_checked": 33,
+      "knowledge_tool_actual_Agent_read": false,
+      "MEMORY_USER_arbitrary_file_access": false
+    },
+    "helper_only_amendment": {
+      "before_sha256": "35a1ab0f78fe35dbc9dc01d2faf0ea2f72866f7ebaa9db963dd87b4ec45ecad0",
+      "after_sha256": "d73abded90f89521969fd51b9ba7bc938300c511ad32b3e482ee701c60ad8c93",
+      "reason": "UI failure stays active Agent work; only explicit login/user/profile/permission barriers need Owner",
+      "fresh_isolated_helper_process_loads_new_function_each_RPC": true,
+      "gateway_executed_methods_unchanged": true,
+      "additional_reload": false
+    },
+    "owned_sources_after_sha256": {
+      "ego/bridge.mjs": "f8894aaf06ebb64fc6897d90c31ac0400595e0c988bc182e9c97b09430be6a43",
+      "ego/lifecycle.mjs": "3f38d807624902332e3f7951accdb5e9c740de3c438e137b152a5d957a08b28f",
+      "ego/policy.mjs": "e362d4247b63dc78527dc4a77f651b898bc7a0f028413cbb53cce1b7af550bcb",
+      "ego/worker.mjs": "333422d9bf0daefd4dac6e5974d04bb558aed50b0a57c2182ef760fd3e3da1dc",
+      "ego_runtime.py": "2318c1382b028ecb8fea21b416251598e89c94edb71100997019ab71db139a1d",
+      "ego_task.py": "ecf3c40f029ea7dab8e033235817f4a785afe271c38150dfe1d8ce0cbadc3b49",
+      "feishu_gateway.py": "d86e0eed2be943bb2c2ad015ada967049b82962f8390c4c1b89d209bfc5a0359",
+      "ego/support.mjs": "139219ad2dfd4a5fc773dbd7e2fe8c0ed9465b4713521088393b8ce41dceb017",
+      "company_support.py": "ed579798c362e52ae7548dac4c945f07f0617f4964f4571949810ea8c37af409",
+      "company_tasks.py": "d73abded90f89521969fd51b9ba7bc938300c511ad32b3e482ee701c60ad8c93",
+      "task_continuation.py": "97d79d71e7349084e978790070f531be363e3c6e477271f60abbaafe00174973"
+    },
+    "runtime_sha256": "6c4d0ec43f1930d98267efadc916be563a148a5332183476f9a77f2a4799bc93",
+    "gate_sha256": "c6c757acdcb14ee05479664a1e948ba91047959b80080a39bcc130fac9ab87f7",
+    "protected_original_records_unchanged": 59,
+    "private_preimages": 10,
+    "rollback_performed": false,
+    "original_config_identity_memory_R3_model_credentials_MCP_voice_QQ_cron_unchanged": true,
+    "new_Hermes_model_requests_or_messages_by_Codex": 0,
+    "real_business_UI_actions_by_Codex": 0,
+    "production_page_content_reads_or_screenshots_by_Codex": 0,
+    "historical_audit_counter_unchanged_during_activation": true,
+    "audit_reserved_before": 189,
+    "audit_reserved_after": 189,
+    "remaining": [
+      "Real Owner task must demonstrate native internal continuation and correct business saved-state readback; not claimed from unit tests",
+      "Existing uncertain device grouping outcomes and missing business assignments not queried, inferred, migrated or executed",
+      "Owner still handles expired login, browser-owned permission prompts, user control, missing business authority and high-impact decisions",
+      "No Windows autostart/OS reboot guarantee; native restart recovery only if the original gateway is actually running",
+      "Provider rate/latency, old wecom_callback issue and old disappearing-window cause not proven or fixed by this change"
+    ],
+    "private_evidence_sha256": {
+      "operation": "7403ad99792b072f0756a56cc2ea653494a831f1c1d9313eca12861762a2a03d",
+      "MCP_probe": "743299ed64a200e4a7146f037a03182008d26c5f62098c78d8a3ebea98cd7de1",
+      "native_CLI_probe": "9d2fb76108aa13c6d3660758ae8f8839ed5babcc26fe477e047c9bf26730fc46"
+    }
   }
 }

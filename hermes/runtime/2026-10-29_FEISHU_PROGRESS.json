@@ -1137,5 +1137,14 @@
     "new_Hermes_models_by_Codex": 0,
     "real_grouping_saved_result": "not_verified",
     "original59_protected_unchanged": true
+  },
+  "employee_recovery_and_tasks": {
+    "state": "original_Hermes_support_loaded_no_new_Agent_business_test",
+    "tool_count": 12,
+    "actual_READY_utc": "2026-10-30T02:57:14.920527+00:00",
+    "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#employee_recovery_and_tasks",
+    "real_Agent_recovery_verified": false,
+    "original59_protected_unchanged": true,
+    "model_messages_by_Codex": 0
   }
 }

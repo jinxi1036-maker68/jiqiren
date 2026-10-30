@@ -60,7 +60,7 @@ def check_fresh_session(db, entry):
     return entry.session_id
 
 
-def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, progress_options=None):
+def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, progress_options=None,continuation=None):
     Runner=native.GatewayRunner
     old_primary=Runner._primary_message_handler
     old_handle=Runner._handle_message
@@ -97,12 +97,22 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
         async def native_handler(msg):return await old_handle(self,msg)
         async def continuous_handle(msg):
             owner=is_owner(msg.source,binding)
+            internal=getattr(msg,'internal',False)
+            if internal and not ((getattr(msg,'metadata',None) or {}).get('lingju_task_resume')):
+                # Other native notifications do not acquire company tools or a task grant.
+                turn,token=meter.begin(False)
+                try:return await native_handler(msg)
+                finally:meter.finish(turn,token)
+            if internal and (not owner or continuation is None or not continuation.admit_internal(msg)):
+                event(out,'task_internal_resume_denied');return None
             if not owner:
                 turn,token=meter.begin(False)
                 try:return await native_handler(msg)
                 finally:meter.finish(turn,token)
             if not self._is_user_authorized(msg.source):return None
             control=(msg.text or '').lstrip().startswith('/')
+            if continuation is not None and not internal:
+                continuation.owner_arrived(msg,resolve_native_session(self.session_store,msg.source))
             if not control:
                 if check_snapshot(baseline):
                     exercise.pause()
@@ -139,6 +149,9 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
                 if progress is not None:progress.finish(outcome)
                 meter.finish(turn,token)
                 exercise.pause()
+                if continuation is not None:
+                    try:continuation.after_turn(self,msg,outcome)
+                    except Exception as exc:event(out,'task_checkpoint_or_delivery_callback_failed',error_type=type(exc).__name__)
                 if not control:event(out,'daily_readonly_message_returned',audit=exercise.budget.status(),protected_changes=check_snapshot(baseline))
         async def handle(msg):
             if getattr(exercise,'continuous',False):return await continuous_handle(msg)
@@ -240,6 +253,8 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
             if check_snapshot(baseline):raise RuntimeError('Protected files changed during native startup')
             exercise.catalog_ready=True
             exercise.pause()
+            if continuation is not None:
+                for pending in continuation.store.restart_candidates():continuation.schedule(self,pending['id'])
             event(out,'original_feishu_browser_ready',pid=os.getpid(),home=str(home),cwd=os.getcwd(),
                   native_all_adapters_preserved=True,profile_created=False,browser_catalog_tools=len(expected),
                   native_ordinary_request_attempts=meter.ordinary_attempts,budget=exercise.budget.status(),
@@ -340,13 +355,18 @@ async def serve(args, *, native_start=None, cli_config=None, verbosity=0):
                                                         continuous=getattr(exercise,'continuous',False)))
     import agent.title_generator as titles
     restore_titles=propagate_title_threads(titles)
+    continuation=None
+    if getattr(exercise,'cfg',{}).get('employeeSupport',{}).get('ownerApproved') is True:
+        from task_continuation import TaskContinuation
+        continuation=TaskContinuation(exercise.cfg['employeeSupport']['taskDatabase'],out,lambda:check_snapshot(baseline))
     restore_runner=install_runner_hooks(native,exercise,meter,out,baseline,gate['owner_binding'],home,
-                                       progress_options=approved_progress(gate))
+                                       progress_options=approved_progress(gate),continuation=continuation)
     try:
         if check_snapshot(baseline):raise RuntimeError('Protected files changed before native startup')
         await native_start(config=config,replace=False,verbosity=verbosity)
     finally:
         exercise.pause()
+        if continuation is not None:await continuation.close()
         restore_runner();restore_titles();restore_http()
 
 

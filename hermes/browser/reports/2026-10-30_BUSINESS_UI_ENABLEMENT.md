@@ -1,5 +1,7 @@
 # 原Hermes浏览器业务UI能力整体接通
 
+> **最新0.6.0（2026-10-30）**：原网关已加载12工具，支持诊断、有限恢复、私有任务笔记、部署知识读取和原生内部续办。104项零模型检查及实际空闲MCP重连通过。尚未以新的真实Agent任务证明故障后续办或设备分组保存；下文早期8工具/无任务笔记为历史状态。
+
 Owner要求一次接通浏览器写入能力。原公司身份、H/W、Ego Profile1/现存Space2不变，切换至 **company-business / businessWritesEnabled=true / productionEnabled=true**。仅提供能力，由Hermes依Owner目标自主操作；没有替Owner分组、创建记录或发送业务消息。
 
 ## 已证实
@@ -27,6 +29,28 @@ Owner要求一次接通浏览器写入能力。原公司身份、H/W、Ego Profi
 - 浏览器/OS完全重启、工作窗口关闭后的持久接续未本轮重测；原provider时延/限流与wecom_callback独立保留。
 
 下一步直接由原Hermes承接Owner正常业务目标，在授权范围自主执行并报告实际保存结果，不另安排一轮模型验收。正式业务信息不入GitHub。
+
+## 0.6.0：页面适应、连接恢复与任务延续
+
+Owner要求按第一性原理开始修复。将问题拆成页面状态、工具连接、任务运行支撑；没有证据将全部故障归因浏览器或模型，仍由唯一原Hermes自己选择工作方法。
+
+1. 动作批次失败保留已派发收据、失败位置、未执行范围；权限允许时附当前全页新快照。没有自动强点/替换保存或重放提交。页面问题仍是Agent可处理的工作。桥接能响应而原生worker坏了时，明确报告`browser_connection`失败，避免MCP熔断连带隐藏诊断入口；真正桥接RPC故障仍走原生熔断。
+2. 新增`ego_browser_diagnostics`、`ego_browser_recover`。worker没起来也可诊断；只连接/重连自有空闲worker、释放有死亡和端口拒绝证据的本runtime锁。在途动作、活的其他通道、User控制、资料冲突、扩展权限、登录不绕过，重连不重放业务动作。
+3. `company_task_notes`用本机私有SQLite保留真实Owner请求、后续真实澄清、Agent计划/进度及工具收据引用，并非修改MEMORY/USER。完成项仍是Agent报告。失败保存必须有失败之后的真实观察收据才能解除未核实标记，旧快照不能冒充事后核验。
+4. `company_knowledge`只允许Manifest的32份知识源及受保护HERMES，核对SHA并返回实际读取范围。静态核对33个允许路径通过；没有开放任意目录、私人记忆、凭据、终端或隐藏网络API，不冒称Hermes已实际读过。
+5. 续办复用原安装`MessageEvent(internal=True)`、同source/session、投递后callback及原适配器队列。零模型技术检查恢复就绪后，一次性路由/代次票据才可激活原任务；明确是系统通知，不假冒新Owner消息、不增加授权。新Owner输入取消待续办，完成/暂停/需要Owner任务不继续。最多3次连接探测、同一Owner代次最多2次内部恢复轮次以防空转；没有恢复旧30/120次API额度，没有cron、第二Agent或新业务目标。
+
+### 实际加载、保护与未验证事项
+
+20项任务/续办Python、21项Ego Python、10项网关Python、53项Node，共**104项通过**。覆盖旧收据不能解除保存未知、伪造/重复/跨路由票据拒绝、新Owner优先、投递后才调度、原路由保留、有限恢复、页面失败后新状态和数字超时码分类。初次测试夹具未关闭SQLite导致清理报错，已修正并重跑通过。
+
+实际原Python→dispatch→MCP为12工具；无worker诊断、连接、自有空闲重连通过，重连仍为同一公司Space4（配置旧id2不改）、原H/W、company-business、实际扩展guard正常。关闭无lease、stderr0；无真实Owner上下文时checkpoint被拒绝，未伪造测试任务。原CLI零模型探测通过。共2次空闲正常重载，首次10:39:47北京时间READY；补超时码修正后的最终READY以JSON.employee_recovery_and_tasks为准，飞书/微信/QQ/企业微信主通道connected，旧wecom_callback问题不变。两次MCP收据均保留。
+
+更新7份自有源码、新增4份支撑源码，更新自有runtime/gate pin及交接。新任务目录经句柄最终路径和当前用户/SYSTEM私有ACL核验；10份必要既有文件前像私有保留，无全量备份/回退。隔离helper的UI失败分类修正无需重载；另补bridge/support将数字超时码归为EGO_TRANSPORT_FAILED并保留可能迟到生效的不确定性，为此第2次空闲正常重载。59项原保护保持，SOUL/HERMES/MEMORY/USER、R3/Manifest、模型凭据、原配置/MCP权限、QQ语音、cron和旧profile未改。
+
+Codex新增Hermes模型请求/消息、生产表单动作、生产页面正文/截图提取均为0。历史请求计数启动至核验保持189，任务库/待续办均0，不自动迁入或重做旧设备分组。真实Agent是否正确使用笔记、是否能故障后续办、具体业务保存仍需下一次正常Owner工作收据；没有宣称能自动登录、解决服务商限流、修复任意崩溃或关机工作。
+
+回退仅在空闲且当前SHA仍匹配时逐文件恢复本轮7源码/runtime/gate/交接前像，再正常重载；新增任务库保留私有，不删除笔记，不整份恢复W，不撤销后来真实业务。并发差异则停。最新脱敏证据为同一JSON的`employee_recovery_and_tasks`；未上传原数据库、私聊、员工数据、生产页面或恢复文件。
 
 
 ## 后续实际任务：页面操作错误误触发MCP不可达，已修正分类（0.4.1）

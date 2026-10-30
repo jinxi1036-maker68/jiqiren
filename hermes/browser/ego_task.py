@@ -24,6 +24,8 @@ class EgoReadonlyExercise:
         root=ordinary_path(root);self.runtime=ordinary_path(g['runtime'])
         if sha256(self.runtime)!=g['runtime_sha256']:raise RuntimeError('Ego runtime changed')
         self.cfg=validate_ego_runtime(self.runtime,root)
+        if self.cfg.get('employeeSupport',{}).get('ownerApproved') is True:
+            self.expected_tools=EGO_TOOLS|{'ego_browser_diagnostics','ego_browser_recover','company_task_notes','company_knowledge'}
         expected='company-business' if g['kind']=='lingju-ego-business-daily' else 'company-readonly'
         if self.cfg['mode']!=expected:raise RuntimeError('Company runtime and daily authority differ')
         self.ledger=ordinary_path(g['ledger'])

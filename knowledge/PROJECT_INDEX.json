@@ -663,6 +663,22 @@
       "new_Hermes_models_by_Codex": 0,
       "real_grouping_saved_result": "not_verified",
       "original59_protected_unchanged": true
+    },
+    "browser_recovery_and_tasks": {
+      "date": "2026-10-30",
+      "status": "original_Hermes_support_loaded_no_new_Agent_business_test",
+      "adapter_version": "0.6.0",
+      "tool_count": 12,
+      "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#employee_recovery_and_tasks",
+      "report": "hermes/browser/reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md",
+      "actual_idle_connection_recovery": true,
+      "real_Agent_resume_after_fault": "not_yet_verified",
+      "private_task_notes": "new_empty_operational_store_not_MEMORY_USER",
+      "deployed_knowledge_access": "manifest32_plus_HERMES_only",
+      "existing_business_goal_authority_only": true,
+      "new_Hermes_models_by_Codex": 0,
+      "real_business_actions_by_Codex": 0,
+      "original59_protected_unchanged": true
     }
   }
 }
