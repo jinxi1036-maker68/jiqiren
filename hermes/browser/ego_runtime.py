@@ -35,6 +35,7 @@ def validate_ego_runtime(runtime, root):
     if company:
         required.add('extension_guard.mjs')
         required.add('table_readback.mjs')
+        required.add('workplace.mjs')
         if (c.get('origin') != 'https://ldp.lingrobotics.com'
                 or c.get('businessWritesEnabled') is not business
                 or not c.get('approvalReference') or not c.get('profileId')):
@@ -43,6 +44,15 @@ def validate_ego_runtime(runtime, root):
         if state != runtime.parent / 'workplace-state.json':
             raise RuntimeError('Owned workplace state required')
         extension = c['extension']
+        binding=c.get('workplaceBinding')
+        if binding is not None:
+            if (binding.get('schema')!='lingju.ego-workplace-binding.v1'
+                    or not isinstance(binding.get('name'),str) or not binding['name'].strip() or len(binding['name'])>120
+                    or binding.get('profileId')!=c.get('profileId') or binding.get('profileName')!='凌矩工作'
+                    or binding.get('startUrl')!=c['origin']+'/statistics'
+                    or binding.get('restoreWhenMissing') is not True or binding.get('ownerRestorationApproved') is not True
+                    or not binding.get('approvalReference')):
+                raise RuntimeError('Explicit same-company workplace restoration approval required')
         if (extension.get('id') != 'fpifglepgaacbbabakmcjmkinlpnconi'
                 or extension.get('ruleset') != 'company_readonly'):
             raise RuntimeError('Approved extension identity required')

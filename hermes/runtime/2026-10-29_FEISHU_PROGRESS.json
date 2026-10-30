@@ -756,7 +756,7 @@
     }
   },
   "initial_deployment_state_scope": "Historical snapshot; current feedback follows status_feedback_correction/current_feedback_policy",
-  "latest_report_block": "page_error_classification_repair",
+  "latest_report_block": "stable_company_workplace",
   "status_feedback_correction": {
     "at_utc": "2026-10-29T15:07:29.870984+00:00",
     "state": "unconditional_ack_removed_delayed_labelled_status_and_SDK_PUT_fix_loaded_real_edit_delivery_unverified",
@@ -1120,6 +1120,22 @@
     "native_failure_display_and_repeat_failure_detection_preserved": true,
     "save_result": "unknown_not_retried",
     "new_Hermes_models_by_Codex": 0,
+    "original59_protected_unchanged": true
+  },
+  "stable_company_workplace": {
+    "date": "2026-10-30",
+    "status": "stable_company_workplace_loaded",
+    "adapter_version": "0.5.0",
+    "businessWritesEnabled": true,
+    "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#stable_company_workplace",
+    "report": "hermes/browser/reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md",
+    "actual_same_company_reconnection_proven": true,
+    "stored_id": 2,
+    "actual_id": 3,
+    "standing_same_profile_restoration_approval_applied": true,
+    "new_hermes_or_browser_profiles": 0,
+    "new_Hermes_models_by_Codex": 0,
+    "real_grouping_saved_result": "not_verified",
     "original59_protected_unchanged": true
   }
 }

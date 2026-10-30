@@ -1,6 +1,12 @@
 // Connection lifecycle only. Never reclaim another owner or retry a browser action.
 import fs from 'node:fs/promises';
 
+export async function startupFailure(file,nonce){
+ let data;try{data=JSON.parse(await fs.readFile(file,'utf8'));}catch(e){if(e.code==='ENOENT'||e instanceof SyntaxError)return null;throw e;}
+ if(!nonce||data.ownerNonce!==nonce||!/^EGO_[A-Z_]+$/.test(data.code||''))return null;
+ return Object.assign(Error(String(data.detail||data.code).slice(0,500)),{code:data.code,startupPhase:data.phase});
+}
+
 // A completed authenticated worker response proves RPC liveness, even when
 // the requested browser operation failed. Hermes counts MCP isError toward a
 // server-wide transport breaker. Preserve domain errors explicitly in content

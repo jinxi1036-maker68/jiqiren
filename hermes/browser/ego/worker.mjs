@@ -7,21 +7,38 @@ import {nativeReadGuard} from './native_guard.mjs';
 import {releaseOwnedLease} from './lifecycle.mjs';
 
 export async function run(runtimeFile,ownerLock){
- let guard,server,watchdog,yielded=false,tail=Promise.resolve();
+ let guard,server,watchdog,yielded=false,tail=Promise.resolve(),phase='configuration',startupComplete=false;
  const pages=new Map();let record=async()=>{};
  try{
- const cfg=validateConfig(JSON.parse(await fs.readFile(runtimeFile,'utf8')));
- const task=await taskSpace(cfg.spaceId);pages.set('p1',task.page('p1'));
+ let cfg=validateConfig(JSON.parse(await fs.readFile(runtimeFile,'utf8')));const configuredSpaceId=cfg.spaceId;
  const output=path.join(path.dirname(runtimeFile),'output');await fs.mkdir(output,{recursive:true});
  record=e=>fs.appendFile(path.join(output,'receipts.jsonl'),JSON.stringify({at:new Date().toISOString(),...e})+'\n');
  const company=isCompany(cfg);
+ phase='company-workplace';
+ let resolution,needsApprovedStart;
+ if(company){
+  const mod=await import('./workplace.mjs');
+  needsApprovedStart=mod.needsApprovedStart;
+  resolution=await mod.resolveCompanyWorkplace(cfg,{list:()=>listTaskSpaces(),open:(...args)=>taskSpace(...args),profiles:()=>profiles()});
+  cfg=resolution.cfg;
+ }else resolution={task:await taskSpace(cfg.spaceId),created:false,method:'synthetic-existing-space'};
+ const task=resolution.task;pages.set('p1',task.page('p1'));
+ await record({kind:'workplace_resolved',configuredSpaceId,resolvedSpaceId:cfg.spaceId,method:resolution.method,created:resolution.created,profileId:cfg.profileId});
  const tableReader=company?await import('./table_readback.mjs'):null;
  guard=company?(await import('./extension_guard.mjs')).extensionGuard(task,cfg):nativeReadGuard(globalThis.ego,cfg,e=>{void record(e);});
  const requirePage=async(label='p1')=>{
   if(!pages.has(label))throw Error('Only adapter-owned Page labels are available');
   const p=pages.get(label);requireScope(await p.url(),cfg.origin,{blank:true});return p;
  };
- await guard.protect(await requirePage());
+ phase='actual-profile-and-extension';await guard.protect(company&&cfg.workplaceBinding?task.page('p1'):await requirePage());
+ if(company&&needsApprovedStart(cfg,resolution,await task.page('p1').url())){
+  phase='approved-workplace-navigation';const p=task.page('p1');
+  await p.goto(cfg.workplaceBinding.startUrl,{timeout:15000});
+  const u=new URL(await p.url());
+  if(u.origin!==cfg.origin||u.pathname!=='/statistics')throw Object.assign(Error('Company page requires Owner login/navigation confirmation; no credentials read'),{code:'EGO_OWNER_LOGIN_REQUIRED'});
+ }
+ if(company)requireScope(await task.page('p1').url(),cfg.origin);
+ if(company&&/(^|\/)(login|signin|sign-in)(\/|$)/i.test(new URL(await task.page('p1').url()).pathname))throw Object.assign(Error('Company workplace is on a login page; Owner must log in personally'),{code:'EGO_OWNER_LOGIN_REQUIRED'});
  const observe=async(p,args={})=>{
   requireScope(await p.url(),cfg.origin);
   const snapshot=String(await p.snapshot({scope:args.scope||'full_page',...(args.root?{root:args.root}:{})}));
@@ -47,7 +64,7 @@ export async function run(runtimeFile,ownerLock){
  };
  const execute=async(name,args={})=>{
   validateToolCall(name,args);
-  if(name==='ego_browser_status')return {driver:'ego-native',version:cfg.cliVersion,guideSha256:cfg.guideSha256,spaceId:cfg.spaceId,home:cfg.home,workspace:cfg.workspace,scope:cfg.origin,mode:cfg.mode,productionEnabled:cfg.productionEnabled,authority:authority(cfg),...authority(cfg),guardHealthy:guard.healthy(),...(company?await guard.inspect():{}),limitations:[...(company?['Same-site tool capability is not server account authorization; business success needs actual saved-result verification.']:['cross-target protection not yet verified']),'Readiness alone does not prove an accurate business report or visual interpretation; each actual task needs its own evidence.']};
+  if(name==='ego_browser_status')return {driver:'ego-native',version:cfg.cliVersion,guideSha256:cfg.guideSha256,spaceId:cfg.spaceId,configuredSpaceId,workplaceResolution:resolution.method,workplaceRestored:resolution.created,workplaceName:cfg.workplaceBinding?.name,home:cfg.home,workspace:cfg.workspace,scope:cfg.origin,mode:cfg.mode,productionEnabled:cfg.productionEnabled,authority:authority(cfg),...authority(cfg),guardHealthy:guard.healthy(),...(company?await guard.inspect():{}),limitations:[...(company?['Same-site tool capability is not server account authorization; business success needs actual saved-result verification.']:['cross-target protection not yet verified']),'Readiness alone does not prove an accurate business report or visual interpretation; each actual task needs its own evidence.']};
   if(name==='ego_browser_guide')return {topic:args.topic||'overview',text:args.topic==='official'?await fs.readFile(cfg.officialGuide,'utf8'):guide[args.topic||'overview'],officialGuideSha256:cfg.guideSha256};
   if(yielded)throw Error('EGO_USER_CONTROL: wait for Owner; no automatic reclaim');
   if(!guard.healthy())throw Error('EGO_GUARD_UNHEALTHY');
@@ -110,10 +127,18 @@ export async function run(runtimeFile,ownerLock){
   res.writeHead(200,{'content-type':'application/json'});res.end(JSON.stringify(await result));
  });
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
- await fs.writeFile(path.join(path.dirname(runtimeFile),'worker-private.json'),JSON.stringify({port:server.address().port,token,spaceId:cfg.spaceId,pid:process.pid}));
+ await fs.writeFile(path.join(path.dirname(runtimeFile),'worker-private.json'),JSON.stringify({port:server.address().port,token,spaceId:cfg.spaceId,pid:process.pid,ownerNonce:ownerLock?.nonce}));
  console.log(JSON.stringify({workerReady:true,driver:'ego-native',spaceId:cfg.spaceId}));
- watchdog=setInterval(()=>{if(Date.now()-lastContact>30000)finish();},5000);
+ startupComplete=true;watchdog=setInterval(()=>{if(Date.now()-lastContact>30000)finish();},5000);
  await stopped;
+ }catch(e){
+  if(!startupComplete){
+   const raw=String(e.error_code||e.code||String(e).match(/EGO_[A-Z_]+/)?.[0]||'EGO_NATIVE_INITIALIZATION_FAILED');
+   const code=/^EGO_[A-Z_]+$/.test(raw)?raw:'EGO_NATIVE_INITIALIZATION_FAILED';
+   await fs.writeFile(path.join(path.dirname(runtimeFile),'worker-startup-error.json'),JSON.stringify({ownerNonce:ownerLock?.nonce,code,phase,detail:String(e.message||e).slice(0,500)})).catch(()=>{});
+   await record({kind:'worker_startup_failed',code,phase}).catch(()=>{});
+  }
+  throw e;
  }finally{
   clearInterval(watchdog);await tail.catch(()=>{});
   if(guard&&!yielded)await guard.close([...pages.values()]).catch(()=>{});

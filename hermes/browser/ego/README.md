@@ -8,7 +8,7 @@ preserves the existing route.
 
 ## Current status
 
-**2026-10-30: company-business 0.4.1 is active.** Owner requested all browser UI
+**2026-10-30: company-business 0.5.0 is active.** Owner requested all browser UI
 business capability together, superseding the blanket read-only teaching scope.
 Original H/W/Profile1 and Space2 remain. Eight existing tools provide forms,
 create/edit/group/bind/save/submit controls under Owner tasks. Actual extension
@@ -17,6 +17,16 @@ passed with zero model/business submissions. Static payload/permissions remain;
 two higher-priority same-site dynamic rules allow business methods, with off-site
 protection retained. See [current report](../reports/2026-10-30_BUSINESS_UI_ENABLEMENT.md).
 The following bullets describe earlier historical stages, not the present mode.
+
+0.5.0 binds the existing company profile to the fixed workplace name, not a
+temporary numeric Space id. Only under the recorded standing Owner window-restore
+approval, and only when no company window exists, the worker can restore that
+window and initialize its owned blank/new tab to the approved statistics URL.
+Profile/extension checks happen first; no new profile, Cookie copy, automatic
+login, user-window takeover or business submission is performed. Unknown existing
+company windows remain blocked. Actual missing-id evidence and two independent
+same-window reconnections are recorded in the current report. Startup errors
+carry an owner-nonce-bound phase/cause instead of only generic worker failure.
 
 0.4.1 keeps completed page-operation failures in explicit structured errors,
 separate from MCP transport failure. Actual installed Hermes handler/display/
@@ -95,9 +105,11 @@ upload or download as Agent tools.
 
 ## Runtime and lifecycle
 
-The private runtime lives under `H/tools/company-browser/runs/`, pins four
-modules for v1 or six for company v2, plus CLI and official-guide SHA256, and
-names an existing Space.
+The private runtime lives under `H/tools/company-browser/runs/`, pins five
+modules for v1 or eight for company v2/v3, plus CLI and official-guide SHA256.
+Legacy runtimes name an existing Space; an explicitly authorized current company
+runtime uses its profile/workplace binding and reports resolved/configured ids
+separately, without rewriting runtime files on each reconnection.
 The Node bridge launches the verified official CLI with a newly generated UTF-8
 bootstrap module. Inputs never depend on environment inheritance inside Ego.
 An authenticated loopback worker serializes operations. The browser remains

@@ -174,7 +174,7 @@
     "identity_files_changed": false
   },
   "initial_activation_scope": "The top-level activation snapshot is historical; latest_phase selects subsequent runtime repair",
-  "latest_phase": "page_error_classification_repair",
+  "latest_phase": "stable_company_workplace",
   "page_error_classification_repair": {
     "at_utc": "2026-10-29T20:50:06.450457+00:00",
     "state": "page_error_classification_repair_loaded",
@@ -316,6 +316,171 @@
       "No new Hermes Agent task tested; overlay/hidden dialog still requires fresh page observation and autonomous choice",
       "Saved grouping must be queried before any repeat submission; not inferred from screenshot or permission flags",
       "True transport failures, Owner control and permission problems remain real stop conditions"
+    ]
+  },
+  "stable_company_workplace": {
+    "at_utc": "2026-10-30T01:56:36.651486+00:00",
+    "state": "stable_company_workplace_loaded",
+    "adapter_version": "0.5.0",
+    "actual_cause": {
+      "saved_id": 2,
+      "inventory_spaces": 0,
+      "native_error": "task space not found: 2",
+      "reason_window_disappeared": "unknown",
+      "old_bridge_discarded_precise_initialization_error": true
+    },
+    "new_workplace_binding": {
+      "name": "凌矩工作-正式浏览器",
+      "profileId": "Profile 1",
+      "existing_profile_only": true,
+      "restoration_authority": "Standing explicit Owner approval to restore same company window; original company profile only; no user-control takeover",
+      "restore_only_if_no_company_window": true,
+      "never_take_over_user_or_ambiguous_window": true,
+      "approved_start_url": "https://ldp.lingrobotics.com/statistics",
+      "resolved_id": 3,
+      "stored_id_remains": 2,
+      "no_per_reconnect_runtime_file_rewrite": true
+    },
+    "actual_two_connections": {
+      "at": "2026-10-30T01:49:32.859Z",
+      "passed": true,
+      "rounds": [
+        {
+          "round": 1,
+          "spaceId": 3,
+          "configuredSpaceId": 2,
+          "method": "stable-company-name",
+          "restored": false,
+          "workplaceNameMatched": true,
+          "profileId": "Profile 1",
+          "mode": "company-business",
+          "businessWritesEnabled": true,
+          "original_H_matches": true,
+          "original_W_matches": true,
+          "guardHealthy": true,
+          "extensionModeMatched": true,
+          "stderrBytes": 0,
+          "lease_exists_after_close": false
+        },
+        {
+          "round": 2,
+          "spaceId": 3,
+          "configuredSpaceId": 2,
+          "method": "stable-company-name",
+          "restored": false,
+          "workplaceNameMatched": true,
+          "profileId": "Profile 1",
+          "mode": "company-business",
+          "businessWritesEnabled": true,
+          "original_H_matches": true,
+          "original_W_matches": true,
+          "guardHealthy": true,
+          "extensionModeMatched": true,
+          "stderrBytes": 0,
+          "lease_exists_after_close": false
+        }
+      ],
+      "company_windows_created": 1,
+      "profiles_created": 0,
+      "new_model_calls": 0,
+      "business_UI_actions": 0,
+      "page_contents_or_screenshots_read": 0,
+      "actual_restoration_then_same_window_reconnect_proven": true,
+      "initial_tab_scope_failure_preserved": true,
+      "prior_resolver_creation_receipt_verified": true,
+      "login_not_independently_proven_by_page_contents": true
+    },
+    "final_source_status_probe": {
+      "at": "2026-10-30T01:55:15.136Z",
+      "passed": true,
+      "spaceId": 3,
+      "configuredSpaceId": 2,
+      "method": "stable-company-name",
+      "restored": false,
+      "mode": "company-business",
+      "businessWritesEnabled": true,
+      "guardHealthy": true,
+      "extensionModeMatched": true,
+      "model_calls": 0,
+      "business_UI_submissions": 0,
+      "page_contents_read": 0,
+      "stderrBytes": 0,
+      "lease_exists_after_close": false
+    },
+    "first_default_new_tab_failure": {
+      "passed": false,
+      "code": "EGO_SCOPE_DENIED",
+      "page_metadata_only": "chrome://new-tab-page/",
+      "retained_initial_failure": true,
+      "fix": "Verify actual profile and extension first, then initialize only approved owned blank/new tab to approved URL; no default-tab content extraction"
+    },
+    "precise_startup_receipts": {
+      "nonce_bound": true,
+      "phase_and_code_preserved": true,
+      "known_workplace_control_login_scope_errors_are_not_MCP_transport_failure": true
+    },
+    "dead_connection_cache_cleared": true,
+    "CLI_exit_alone_does_not_delete_live_native_worker_lease": true,
+    "mode": "company-business",
+    "businessWritesEnabled": true,
+    "same_original_H_W_identity": true,
+    "new_Hermes_profiles_or_browser_profiles": 0,
+    "company_windows_created": 1,
+    "no_cookie_credentials_copied_or_read": true,
+    "tests": {
+      "node": 32,
+      "python": 21,
+      "total": 53
+    },
+    "actual_READY_utc": "2026-10-30T01:55:42.780763+00:00",
+    "gateway_child_pid": 15088,
+    "gateway_launcher_pid": 22316,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "idle_graceful_reloads": 2,
+    "force_stop": false,
+    "protected_original_records_unchanged": 59,
+    "protected_baseline_sha256": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
+    "existing_config_memory_Soul_HERMES_R3_model_MCP_voice_QQ_cron_unchanged": true,
+    "business_authorization_and_extension_dynamic_rules_unchanged": true,
+    "owned_sources_after_sha256": {
+      "ego/worker.mjs": "9a765d0f7a28cd3977632231ae23115b9ba103b70863ea160ea1069b9609b81b",
+      "ego/bridge.mjs": "e1d4599f0f989be194e70f5e48a99e0b66404056e6e6cbadde6869b6c678b3e6",
+      "ego/lifecycle.mjs": "dfcc87d44db9e716bccd14b0c7e98edfbeca2f0549138e9c0ecd60c08b2a0959",
+      "ego/policy.mjs": "f5b517d1efd32f97ff33523921ef35673c53d984ad368bf5e02be06c1c190348",
+      "ego_runtime.py": "83b60187bdb11e8e1674f6536f9e0319798086d57d14711540bd23437a8aa2d9",
+      "ego/workplace.mjs": "320df56bbeb3a12e582ef78469d6149bed92e420c5b0aa222e497bdea297d10f"
+    },
+    "runtime_sha256": "dc69cde6a051aa4d02bbf796862a2b1994038aac1e51141b0efd4c11020ac081",
+    "gate_sha256": "1b0f71f9d14a5386c8e22a6655d1c039f72106c5cce817c0cb4eb1d12e42928f",
+    "private_file_preimages": 8,
+    "rollback_performed": false,
+    "new_Hermes_models_or_messages_by_Codex": 0,
+    "real_business_form_submissions_or_saves_by_Codex": 0,
+    "production_page_contents_or_screenshots_extracted": 0,
+    "approved_start_page_navigation_performed": true,
+    "already_loaded_page_background_requests_not_audited": true,
+    "private_evidence_sha256": {
+      "operation": "d3852fd701aa8f17cdd64d19eee9236cd7b7d9abf358974305f41c3f94a4753e",
+      "native_missing_id": "0a095b1af62a659cbd63d784f7738279eb560a240a51c909e4308627c78e9bc0",
+      "initial_failure": "0620e791d608a056cf580cd76f52dc5edc6103691332fa026720129725ce3f08",
+      "two_connections": "af3b957fb4786ca3a9af95c59d3a10dc20f143c6264e74f2dfae8f0ea1903eb5",
+      "final_source_probe": "2a7bf0090695ff1d5b7782de0015efdf896d6549063e3c5a23cb2469254566da",
+      "native_CLI_probe": "23ec52935c43def5505dcbad95e3d29f964f78757ad9e8cb62257648c976508d"
+    },
+    "remaining": [
+      "No new Agent business task or saved grouping outcome verified; do not infer completion",
+      "Remaining device destination groups are business task information, not a browser setting; do not invent them",
+      "Feishu still exposes eight browser tools; no new company-file or persistent task tool added in this repair",
+      "Owner still handles expired login, extension prompts and user-controlled/ambiguous windows",
+      "No OS reboot/startup service or unattended model/business task added; restoration occurs when an authorized tool is called",
+      "Prior window disappearance cause and provider latency/quota remain unknown; old wecom_callback separate",
+      "Ego upgrade notice observed; no upgrade performed"
     ]
   }
 }

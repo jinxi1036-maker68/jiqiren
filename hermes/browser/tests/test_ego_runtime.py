@@ -34,9 +34,11 @@ class EgoRuntimeTests(unittest.TestCase):
         for name in ['manifest.json','rules.json']:(payload/name).write_bytes(b'approved fixture')
         (self.root/'ego/extension_guard.mjs').write_bytes(b'fixture guard')
         (self.root/'ego/table_readback.mjs').write_bytes(b'fixture reader')
+        (self.root/'ego/workplace.mjs').write_bytes(b'fixture workplace')
         self.c.update(schema='lingju.ego-browser.v2',mode='company-readonly',origin='https://ldp.lingrobotics.com',businessWritesEnabled=False,approvalReference='Owner fixture',profileId='Profile 1',stateFile=str(self.runtime.parent/'workplace-state.json'),extension=dict(id='fpifglepgaacbbabakmcjmkinlpnconi',ruleset='company_readonly',directory=str(payload),manifestSha256=sha256(payload/'manifest.json'),rulesSha256=sha256(payload/'rules.json')))
         self.c['sourceSha256']['extension_guard.mjs']=sha256(self.root/'ego/extension_guard.mjs')
         self.c['sourceSha256']['table_readback.mjs']=sha256(self.root/'ego/table_readback.mjs')
+        self.c['sourceSha256']['workplace.mjs']=sha256(self.root/'ego/workplace.mjs')
         Path(self.c['stateFile']).write_text('{}')
         self.save()
         return payload
@@ -64,6 +66,15 @@ class EgoRuntimeTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
         self.c.update(origin='https://ldp.lingrobotics.com',schema='lingju.ego-browser.v2');self.save()
         with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+    def test_workplace_restoration_needs_exact_profile_origin_and_owner_approval(self):
+        self.business();self.c['workplaceBinding']=dict(schema='lingju.ego-workplace-binding.v1',name='凌矩工作-正式浏览器',
+            profileId='Profile 1',profileName='凌矩工作',startUrl=self.c['origin']+'/statistics',
+            restoreWhenMissing=True,ownerRestorationApproved=True,approvalReference='Standing Owner restore approval')
+        self.save();self.assertEqual(dispatch_target(self.runtime,self.root)[1],'ego/bridge.mjs')
+        for delta in [dict(profileId='Default'),dict(ownerRestorationApproved=False),dict(startUrl='https://example.com')]:
+            original=self.c['workplaceBinding'].copy();self.c['workplaceBinding'].update(delta);self.save()
+            with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+            self.c['workplaceBinding']=original
     def test_daily_gateway_accepts_whole_business_capability_but_not_mismatched_readonly_gate(self):
         from ego_task import EgoReadonlyExercise
         from request_budget import RequestAudit
