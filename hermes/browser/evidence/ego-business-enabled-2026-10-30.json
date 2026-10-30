@@ -734,9 +734,9 @@
     }
   },
   "chain_reliability": {
-    "state": "prepared_waiting_original_active_task_idle",
+    "state": "loaded_original_gateway_ready",
     "code_fixes_ready": true,
-    "live_activation_completed": false,
+    "live_activation_completed": true,
     "scope": "same original employee and approved Feishu company browser entry; no new identity or business goals",
     "observed_defect": {
       "session_id": "20261030_110538_928a80b5",
@@ -821,13 +821,90 @@
     "models_or_messages_by_Codex": 0,
     "production_UI_actions": 0,
     "live_scope": {
-      "original_runtime_not_yet_modified": true,
+      "owned_tools_loaded": true,
       "active_task_not_interrupted": true
     },
     "remaining": [
-      "Wait for original task to finish or obtain explicit maintenance interruption approval before loading",
-      "Actual provider429/503 causes/quota not proven and cannot be eliminated by local driver fixes",
-      "No new real-model autonomy test or real business write; do not infer a saved device grouping outcome"
-    ]
+      "No new real-model test; actual future autonomous recovery and business-save outcomes require ordinary Owner task receipts",
+      "Provider429/502/503 quota and service health remain unknown; local recovery does not remove provider limits",
+      "Original wecom_callback issue retained; no claim of all services error-free",
+      "Fixed entry is not an OS autostart service or replacement of every Desktop launch path",
+      "No inferred result for historical device-grouping saves"
+    ],
+    "at_utc": "2026-10-30T09:26:16.493847+00:00",
+    "activation": {
+      "one_idle_graceful_reload": true,
+      "force_kill": false,
+      "active_task_interrupted": false,
+      "READY_utc": "2026-10-30T09:26:09.043164+00:00",
+      "launcher_pid": 27684,
+      "native_child_pid": 25244,
+      "same_original_H_W": true,
+      "browser_catalog_tools": 12,
+      "mode": "company-business",
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "retrying",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "fixed_entry_status_and_two_starts_reused_same_gateway": true,
+      "autostart_or_original_shortcut_modified": false
+    },
+    "actual_zero_model_probes": {
+      "tool_count": 12,
+      "task_notes_pagination_schema": true,
+      "idle_owned_reconnection": true,
+      "actual_page_list_passed": true,
+      "page_count": 1,
+      "spaceId": 6,
+      "configuredSpaceId": 2,
+      "mode": "company-business",
+      "businessWritesEnabled": true,
+      "guardHealthy": true,
+      "idle_task_checkpoint_denied": true,
+      "new_model_requests_or_messages": 0,
+      "production_page_body_reads": 0,
+      "business_UI_actions": 0,
+      "lease_exists_after_close": false
+    },
+    "native_CLI_zero_model_probe_passed": true,
+    "owned_sources_loaded_sha256": {
+      "company_support.py": "6858768ecf791ca51907da52d4bff5e203f1ede28a014352827d5fe207ea1885",
+      "company_tasks.py": "a2c905f7192139751c63f37afece37af75ee865075880df6a40f71884d5d32dc",
+      "task_continuation.py": "c967e9103499e23b419707b76ec55fe2e2094a7c161dbef2669151d651a4d753",
+      "feishu_gateway.py": "56871885630f58130e911a4d149da575d2047daaf7c36e155d0373c475991e23",
+      "feishu_native_bootstrap.py": "e4190db749cf9e08a6cb31fdb1f2ab65c844c21794b941e65588fc479f029107",
+      "ego_task.py": "3fd829946892aa7d4489dddd94f3fe346fe86359be6a52abcd0d552712959cab",
+      "ego/lifecycle.mjs": "41a53288d61fb405c8964514b2d2abb349720dfc7ff2e54b067a4f4bdf7c3672",
+      "ego/policy.mjs": "bfbe1eea5953f6f72688f67d55fdbc50e73b88acfe3bdb277ddefa04bde7fdf3",
+      "ego/worker.mjs": "6b8afd05271661b51ce317e8a522d3e431770abb2047ca200d9345396aa9ab28",
+      "feishu_meter.py": "faf5a162e79b37b4f6c2678238f13febd9c5368593fec432b43db6f8f9008485",
+      "provider_pacing.py": "02de4a4813fb058f8e29e2a147780099e9cfa2bb5a6176dfc346802b214348f2",
+      "runtime_guard.py": "5ffdcd4ea758a8b3db670879fc71a69158e392d662564ca963fbc9db08dd5100",
+      "company_gateway_entry.py": "7299b46468dae2d398906615ed86a33f824622a0a19ef02692ae3fa50b6075ec"
+    },
+    "files": {
+      "updated_existing_sources": 11,
+      "added_source_files": 2,
+      "added_owned_entry_files": 2,
+      "owned_runtime_gate_and_private_handoff_updated": true,
+      "runtime_sha256": "85e4bf85eb494c46100483952cad19eb4e2282f0eed1b8fcbe86bfffc97156d8",
+      "gate_sha256": "7202e78bee542a13387353aa43c982300dd9d3d401726e4fba509c33a7ab5db2",
+      "protected_original_records": 59,
+      "protected_original_records_unchanged": 59,
+      "native_auth_observed_change_only": false,
+      "auth_config_or_baseline_written_by_Codex": false,
+      "private_preimages": 14,
+      "rollback": false
+    },
+    "production_UI_actions_by_Codex": 0,
+    "private_evidence_sha256": {
+      "final": "04cb7f9ba105e5c768d43778def8c6fe54c82effa0534004dd5f231e49c9b904",
+      "native_CLI": "1d30b646ae0474a6aa29b7e873477d7f1da6651c4817bc8c73e0cba6c9b8fbcd",
+      "actual_MCP": "c4db769c4f125ec9638e615d6c96afe71c8b63d98cedce365652b6106705a2a8",
+      "fixed_entry_reuse": "f92995af7d804cb0eb111df9259fba5affb4594145f3c808f5cc464ad5e63831"
+    }
   }
 }

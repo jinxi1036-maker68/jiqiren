@@ -866,10 +866,10 @@
     },
     "browser_chain_reliability": {
       "date": "2026-10-30",
-      "status": "prepared_waiting_original_active_task_idle",
+      "status": "loaded_original_gateway_ready",
       "evidence": "hermes/browser/evidence/ego-business-enabled-2026-10-30.json#chain_reliability",
       "code_fixes_ready": true,
-      "live_activation_completed": false,
+      "live_activation_completed": true,
       "active_original_task_not_interrupted": true,
       "new_model_calls_by_Codex": 0
     }
