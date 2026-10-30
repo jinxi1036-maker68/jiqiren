@@ -81,11 +81,11 @@
     {
       "id": "jinglianwen",
       "name": "景联文科技",
-      "status": "supplier_form_completed_submission_unverified",
+      "status": "wechat_procurement_contact_established_supplier_submission_unverified",
       "priority": "P1",
-      "current_path": "用户表示已将景联文供应商报名表全部填写完毕；截至当前没有单独的表单提交成功回执截图，尚不能断言系统已收到。景联文对接人要求先填表，后续有负责人联系。",
-      "evidence_level": "conversation_confirmed",
-      "next_gate": "核实表单是否成功提交；发微信告知已填写/已提交（按真实状态）；保留提交回执；等负责人联系后核实准入、首单、设备、审核及结算。",
+      "current_path": "此前Owner称已填完景联文供应商报名表，但提交成功回执仍未核实。2026-10-30 Owner微信截图确认已添加景联文采购及供应链负责人并收到回复：目前供应商数量很多，建议关注其朋友圈项目需求并按需报名；采购将依对应模块需求联系供应商。此为供应商储备沟通，不等于入库审核通过或实际订单。",
+      "evidence_level": "conversation_confirmed_with_owner_screenshot",
+      "next_gate": "关注采购负责人公开项目需求，仅当匹配我方真实场景、团队能力时进行针对性报名；留存表单提交回执；获得正式项目需求后再核验报价、设备、QA和结算。暂不追问订单，不以建立微信联系认定合作成功。",
       "research_verified": {
         "legal_entity": "杭州景联文科技有限公司",
         "established": "2012-04-24",
@@ -110,7 +110,16 @@
         "数据标注能力（多选：TTS、方言、小语种、GUI、智驾、视频、3D建模、具身智能等）"
       ],
       "form_guidance": "第12题数据采集能力若非必填，当前应留空；团队尚无正式EGO交付案例及自有设备，正在申请试采不能当作已验证采集能力。若系统强制选择，应先向对接人确认能否填写筹备中或暂不具备，不能虚报。",
-      "annotation_capability_form_guidance": "第13题数据标注能力：当前无对应标注项目经验或团队，如非必填应全部不选，不能因准备做EGO数据采集就勾选具身智能标注。若必填则咨询景联文能否以纯采集供应商身份报名，勿虚报。"
+      "annotation_capability_form_guidance": "第13题数据标注能力：当前无对应标注项目经验或团队，如非必填应全部不选，不能因准备做EGO数据采集就勾选具身智能标注。若必填则咨询景联文能否以纯采集供应商身份报名，勿虚报。",
+      "latest_contact_update": {
+        "date": "2026-10-30",
+        "channel": "wechat",
+        "source": "Owner提供的微信会话截图",
+        "contact_role": "采购及供应链负责人",
+        "reply_summary": "供应商较多；项目需求会通过朋友圈发布，采购模块按需联系",
+        "stage": "contact_established_no_order",
+        "note": "未核实供应商报名正式入库或分配项目"
+      }
     },
     {
       "id": "henan_airport_data",
