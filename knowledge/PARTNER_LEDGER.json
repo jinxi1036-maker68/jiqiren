@@ -1,6 +1,6 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-25",
+  "updated_at": "2026-10-30",
   "partners": [
     {
       "id": "livsyn",
@@ -111,6 +111,81 @@
       ],
       "form_guidance": "第12题数据采集能力若非必填，当前应留空；团队尚无正式EGO交付案例及自有设备，正在申请试采不能当作已验证采集能力。若系统强制选择，应先向对接人确认能否填写筹备中或暂不具备，不能虚报。",
       "annotation_capability_form_guidance": "第13题数据标注能力：当前无对应标注项目经验或团队，如非必填应全部不选，不能因准备做EGO数据采集就勾选具身智能标注。若必填则咨询景联文能否以纯采集供应商身份报名，勿虚报。"
+    },
+    {
+      "id": "henan_airport_data",
+      "name": "河南空港数据科技有限公司",
+      "status": "owner_phone_contacted_wechat_pending_no_open_order",
+      "priority": "P1",
+      "evidence_level": "conversation_confirmed_and_public_verified",
+      "current_path": "2026-10-14具身智能第一批询价（报名已截止），2026-09-29 Ropedia第一批（截止）；Owner报告已电话交流，对方表示近期可能暂无需求，建议先加微信，主动询问人员/场地/其他合作，好友尚待接受。",
+      "next_gate": "等待微信通过；有后续需求时先确认上游中标与新批次、准入业绩、是否允许分包、实际QA结算和设备责任；不把电话询问当订单",
+      "source_urls": [
+        "https://www.hnhxzx.com/index.php?a=index&aid=11975&c=View&m=home",
+        "https://www.365trade.com.cn/zfwzb/877880.jhtml"
+      ],
+      "risk": "上游中标前置、2024以来采集等业绩合同门槛、公告10月31日到期、联合体不接受；无成交回款证据"
+    },
+    {
+      "id": "kuizhuo",
+      "name": "魁卓科技",
+      "status": "public_supplier_recruitment_found_no_submission_evidence",
+      "priority": "P1",
+      "evidence_level": "public_verified",
+      "current_path": "2026-08-26官网向全国征集具身数据采集供应商，允许缺乏正式商业案例的团队如实参加调研；是否仍有效需核实。",
+      "next_gate": "检查官方登记入口，按真实人员和场景填写并保留回执；确认企业准入、任务单/场景、设备、审核、合同结算；未提交不得标记为已报名",
+      "source_urls": [
+        "https://kuizhuokj.com/index.php?a=index&aid=8804&c=View&lang=cn&m=home"
+      ]
+    },
+    {
+      "id": "ropedia_project_lead",
+      "name": "Ropedia（河南空港采购项目名称线索）",
+      "status": "lead_only_no_direct_relationship_or_contract_confirmed",
+      "priority": "P2",
+      "evidence_level": "public_verified_project_title_only",
+      "current_path": "2026-09-29河南空港Ropedia多模态项目第一批询价；并非已核实双方成交的合同。",
+      "next_gate": "核实上游项目及Ropedia对外企业供应商准入；勿与10月河南空港第一批合并成一份订单",
+      "source_urls": [
+        "https://www.365trade.com.cn/zfwzb/877880.jhtml"
+      ]
+    },
+    {
+      "id": "henan_airport_algorithm",
+      "name": "河南空港算法技术有限公司",
+      "status": "supplier_tender_plan_only_not_operational_order",
+      "priority": "P2",
+      "evidence_level": "public_verified_plan",
+      "current_path": "2026-09-24公开数据资源供应商招标计划涵盖具身智能数据，投资估算1000万元为多领域项目计划，不等于EGO数据订单。",
+      "next_gate": "核实正式招标文件、数据资源合规权属及供应商门槛",
+      "source_urls": [
+        "https://www.hnzbcg.cn/zhaobiao/190085.html"
+      ]
+    },
+    {
+      "id": "henan_embodied_industry",
+      "name": "河南具身智能产业发展有限公司",
+      "status": "ecosystem_lead_not_data_collection_procurement",
+      "priority": "P3",
+      "evidence_level": "public_verified",
+      "current_path": "2026-10-26招募的是场景解决方案开发供应商，范围偏机器人本体定制、算法/软件、系统集成，非普通EGO采集。",
+      "next_gate": "仅跟踪其是否另行采购真实场景采集/测试服务",
+      "source_urls": [
+        "https://www.hbtba.com/project/view.php?id=23400"
+      ]
+    },
+    {
+      "id": "zhongyuan_robot_training",
+      "name": "中原异构人形机器人训练场（平台线索）",
+      "status": "regional_platform_lead_no_supplier_order",
+      "priority": "P3",
+      "evidence_level": "government_public_verified",
+      "current_path": "郑州市工信局2026-09答复确认20余真实场景、数据采集—算法训练—场景验证闭环。",
+      "next_gate": "关注是否开放外部场景授权、任务执行与质检供应商服务",
+      "source_urls": [
+        "https://public.zhengzhou.gov.cn/D1102X/10226372.jhtml"
+      ]
     }
-  ]
+  ],
+  "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md"
 }
