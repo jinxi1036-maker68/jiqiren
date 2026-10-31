@@ -1,7 +1,7 @@
 {
   "date": "2026-10-31",
   "observed_at_utc": "2026-10-31T06:31:39.207211+00:00",
-  "state": "efficiency_sources_loaded_but_protected_config_drift_blocks_final_acceptance",
+  "state": "browser_efficiency_loaded_and_config_protection_restored",
   "same_original_employee_H_W": true,
   "rate_investigation": {
     "observed_gateway_physical_requests": 25,
@@ -70,47 +70,6 @@
     "additional_readonly_native_metadata_defect_reproduction": true,
     "candidate_metadata_fix_in_memory_check": true
   },
-  "activation": {
-    "idle_graceful_reload_count": 1,
-    "force_kill": false,
-    "READY_utc": "2026-10-31T06:17:32.027418+00:00",
-    "native_pid": 2512,
-    "launcher_pid": 18536,
-    "platform_states": {
-      "wecom": "connected",
-      "wecom_callback": "disconnected",
-      "weixin": "connected",
-      "qqbot": "connected",
-      "feishu": "connected"
-    },
-    "active_agents_at_inspection": 0,
-    "transport_connected_is_not_Owner_task_readiness": true,
-    "protected_config_guard_bypassed": false
-  },
-  "files": {
-    "owned_sources_updated": 7,
-    "source_sha256": {
-      "provider_pacing.py": "58a77bc1c93b93d77afb8977f4dc109320a592b93275c080fb0c41e32a7961c8",
-      "traffic_guard.py": "abc2709c040edb1e997cf0840d0beff7be8a288a5bca4c0d8584fab7cc43de0c",
-      "company_tasks.py": "e85a0ce5240391dc7ce390ba28dd83726d634678c6a41c6c691645398e70c336",
-      "company_support.py": "8206d326c72c4c65b49335ba57f340fd7ae3fd3a0c982a3b25a346aafe66bc07",
-      "ego/policy.mjs": "15e20292cb9a5090fd2fd05555bfd6ba089f7eab8e6a12c0427b9f1d1c4d898d",
-      "ego/worker.mjs": "789deeed6046c379633e05ed18d85a2e9380bbc2f586f5d81272139c77ae8a95",
-      "ego/lifecycle.mjs": "e71bf31f8f9ee2c74687c026ddc605f9887b2d0934dfe7a3f64d4234ccfdca28"
-    },
-    "runtime_sha256": "40fd2307f70c12143d18beb84842b50c29a716525f46a14c1258b60f7b6abd5e",
-    "gate_sha256": "8ceb4ae454557697ea7a021c5c157a01c9eaf74307c392bd274fd009f2cb1edc",
-    "private_preimages": 10,
-    "rollback": false,
-    "protected_records_total": 59,
-    "protected_records_matching": 58,
-    "protected_mismatch": [
-      "H/config.yaml"
-    ],
-    "original_config_written_by_Codex": false,
-    "protected_baseline_replaced": false,
-    "SOUL_HERMES_MEMORY_USER_R3_Manifest_credentials_model_MCP_voice_QQ_cron_old_profiles_written_by_Codex": false
-  },
   "configuration_drift": {
     "expected_sha256": "5115085779f1ff574fab08def61549efaf733b5f00ba0401f9c247095694501f",
     "current_sha256": "054652022a71c4339cbc6a5120e7f85a35ae009785ec62253ce222a7a17c077a",
@@ -145,15 +104,201 @@
       "I/tui_gateway/server.py:3294-3400",
       "I/apps/desktop/src/store/voice-prefs.ts:56-73"
     ],
-    "limits": "no historical writer PID/stack audit available in inspected existing logs; do not infer Desktop fault solely from timing; no original source patch/config restoration done"
+    "limits": "no historical writer PID/stack audit available in inspected existing logs; do not infer Desktop fault solely from timing; no original source patch/config restoration done",
+    "stage": "observed_before_authorized_repair; historical cause still unknown",
+    "resolution": "Owner-approved one-field context restoration; current voice on accepted as intended without writing voice; only config protection record changed"
   },
   "new_Hermes_model_messages_or_requests_by_Codex": 0,
   "production_business_writes_by_Codex": 0,
   "remaining": [
-    "final acceptance blocked by unapproved original config drift; baseline not silently changed",
-    "exact current enterprise entitlement/account pool use/provider429 cause unknown",
-    "Agent batching/experience reuse and end-to-end speed improvement not measured; no new model task",
-    "one sample tool payload9.8% smaller is not total latency gain; first body byte is not first model token",
-    "native catalog preservation patch and config-field reconciliation require specific approval; no repair applied"
-  ]
+    "Historical writer of the original two config changes remains unproved; voice source remains unknown despite Owner-approved current-on expectation",
+    "Original Desktop was not restarted or hot-patched; its already-imported function cache was not inspected. On-disk source and fresh gateway/interpreter are verified; existing Desktop live code reload is not claimed",
+    "Genuinely added/removed discovered models or other later config writes can still trigger protection; no automatic broad acceptance of config changes",
+    "Actual model provider entitlement/429 cause and end-to-end browser speed gain remain unverified",
+    "Existing ignored provider keys max_tokens/temperature/top_p warning and old wecom_callback retrying left unchanged; no expanded repairs"
+  ],
+  "before_authorized_repair": {
+    "state": "efficiency_sources_loaded_but_protected_config_drift_blocks_final_acceptance",
+    "activation": {
+      "idle_graceful_reload_count": 1,
+      "force_kill": false,
+      "READY_utc": "2026-10-31T06:17:32.027418+00:00",
+      "native_pid": 2512,
+      "launcher_pid": 18536,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "disconnected",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "active_agents_at_inspection": 0,
+      "transport_connected_is_not_Owner_task_readiness": true,
+      "protected_config_guard_bypassed": false
+    },
+    "files": {
+      "owned_sources_updated": 7,
+      "source_sha256": {
+        "provider_pacing.py": "58a77bc1c93b93d77afb8977f4dc109320a592b93275c080fb0c41e32a7961c8",
+        "traffic_guard.py": "abc2709c040edb1e997cf0840d0beff7be8a288a5bca4c0d8584fab7cc43de0c",
+        "company_tasks.py": "e85a0ce5240391dc7ce390ba28dd83726d634678c6a41c6c691645398e70c336",
+        "company_support.py": "8206d326c72c4c65b49335ba57f340fd7ae3fd3a0c982a3b25a346aafe66bc07",
+        "ego/policy.mjs": "15e20292cb9a5090fd2fd05555bfd6ba089f7eab8e6a12c0427b9f1d1c4d898d",
+        "ego/worker.mjs": "789deeed6046c379633e05ed18d85a2e9380bbc2f586f5d81272139c77ae8a95",
+        "ego/lifecycle.mjs": "e71bf31f8f9ee2c74687c026ddc605f9887b2d0934dfe7a3f64d4234ccfdca28"
+      },
+      "runtime_sha256": "40fd2307f70c12143d18beb84842b50c29a716525f46a14c1258b60f7b6abd5e",
+      "gate_sha256": "8ceb4ae454557697ea7a021c5c157a01c9eaf74307c392bd274fd009f2cb1edc",
+      "private_preimages": 10,
+      "rollback": false,
+      "protected_records_total": 59,
+      "protected_records_matching": 58,
+      "protected_mismatch": [
+        "H/config.yaml"
+      ],
+      "original_config_written_by_Codex": false,
+      "protected_baseline_replaced": false,
+      "SOUL_HERMES_MEMORY_USER_R3_Manifest_credentials_model_MCP_voice_QQ_cron_old_profiles_written_by_Codex": false
+    }
+  },
+  "latest_update_utc": "2026-10-31T06:43:08.913389+00:00",
+  "authorized_metadata_repair": {
+    "status": "authorized_minimal_repair_loaded_and_protection_restored",
+    "completed_at_utc": "2026-10-31T06:43:08.913389+00:00",
+    "authorization": "Owner explicit approval in this Codex chat; native one-function fix, restore prior512K, keep voice currently on, only config protection record, zero-model verification, one idle gateway reload",
+    "changes": {
+      "native_file": "I/hermes_cli/model_switch.py",
+      "native_function": "_save_discovered_models_to_config",
+      "native_behavior": "preserve per-model metadata on actual catalogue changes; do not save for catalogue-order-only changes",
+      "original_config_file": "H/config.yaml",
+      "config_only_semantic_write": "custom_providers[0].models.agnes-3.0-flash.context_length = 524288",
+      "voice_auto_tts_before_after": [
+        true,
+        true
+      ],
+      "voice_written": false,
+      "baseline": "one config file record only; other58 records unchanged",
+      "gate": "only protected_baseline_sha256 pin updated",
+      "runtime_changed": false
+    },
+    "sha256": {
+      "native_before": "90c0da5844c7fbedc704c0f72e8e989190ce8647c736f1ed7157686e314eb1a8",
+      "native_after": "a5a3659bcd8368576fa003e608f5172b95199d5b8d4af44c478cdddbd48aa38a",
+      "config_before": "054652022a71c4339cbc6a5120e7f85a35ae009785ec62253ce222a7a17c077a",
+      "config_after": "d664782e3fa797cf9b4d72325ac3c6bcb5233066a8db067b1416055b37e8a9c8",
+      "baseline_before": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
+      "baseline_after": "e6bd984a76ede81589d5092bc451fb1366c7f2c504285f2928158064559e305d",
+      "gate_before": "8ceb4ae454557697ea7a021c5c157a01c9eaf74307c392bd274fd009f2cb1edc",
+      "gate_after": "2b78eef03454ad7442d73f58a901b0093ed9b979b259e041f2db13b327e470ba"
+    },
+    "validation": {
+      "targeted_unit_tests": 7,
+      "actual_patched_native_AST_cases": 6,
+      "fresh_original_interpreter": {
+        "passed": true,
+        "fresh_original_venv_imported_patched_function": true,
+        "original_config_context_resolution": 524288,
+        "voice_auto_tts": true,
+        "network_or_subprocess_attempts_under_guard": 0,
+        "model_calls": 0,
+        "working_directory_is_W": true,
+        "SOUL_MEMORY_USER_read_for_test": false,
+        "Windows_version_metadata_prewarmed_before_guard": true,
+        "initial_checker_issue": "Subprocess-denying audit initially blocked standard-library Windows version detection; checker setup corrected, original software not changed for that issue"
+      },
+      "native_CLI_zero_model_probe": true,
+      "original_protected_records_matching": 59,
+      "unapproved_protection_changes_allowed": false,
+      "new_browser_or_model_business_tests": false
+    },
+    "activation": {
+      "READY": "2026-10-31T06:41:02.026614+00:00",
+      "native_pid": 30432,
+      "launcher": 7144,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "retrying",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "active_agents": 0,
+      "protected_matching": 59,
+      "observed_model_wire_starts_since_reload": 0,
+      "new_Codex_model_messages": 0
+    },
+    "private_recovery": {
+      "necessary_preimages": 5,
+      "local_only": true,
+      "user_and_SYSTEM_only_ACL_verified": true,
+      "handle_normalized_path_verified": true,
+      "original_files_written_through_existing_handles_without_ACL_change": true,
+      "rollback_performed": false
+    },
+    "original_files_updated": 2,
+    "owned_metadata_files_updated": [
+      "config protection record",
+      "gate baseline pin",
+      "private handoff"
+    ],
+    "new_Hermes_model_messages_or_requests_by_Codex": 0,
+    "observed_wire_starts_since_reload": 0,
+    "business_UI_writes": 0,
+    "unchanged": [
+      "SOUL",
+      "HERMES.md",
+      "MEMORY",
+      "USER",
+      "R3 knowledge",
+      "SNAPSHOT_MANIFEST",
+      "credentials",
+      "model selection/address",
+      "MCP permissions",
+      "QQ/voice settings",
+      "cron",
+      "old profiles"
+    ],
+    "remaining": [
+      "Historical writer of the original two config changes remains unproved; voice source remains unknown despite Owner-approved current-on expectation",
+      "Original Desktop was not restarted or hot-patched; its already-imported function cache was not inspected. On-disk source and fresh gateway/interpreter are verified; existing Desktop live code reload is not claimed",
+      "Genuinely added/removed discovered models or other later config writes can still trigger protection; no automatic broad acceptance of config changes",
+      "Actual model provider entitlement/429 cause and end-to-end browser speed gain remain unverified",
+      "Existing ignored provider keys max_tokens/temperature/top_p warning and old wecom_callback retrying left unchanged; no expanded repairs"
+    ]
+  },
+  "activation": {
+    "READY": "2026-10-31T06:41:02.026614+00:00",
+    "native_pid": 30432,
+    "launcher": 7144,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "retrying",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "active_agents": 0,
+    "protected_matching": 59,
+    "observed_model_wire_starts_since_reload": 0,
+    "new_Codex_model_messages": 0
+  },
+  "files": {
+    "original_files_updated_in_authorized_repair": 2,
+    "protected_records_matching": 59,
+    "protected_records_total": 59,
+    "protected_mismatch": [],
+    "source_and_config_sha256": {
+      "native_before": "90c0da5844c7fbedc704c0f72e8e989190ce8647c736f1ed7157686e314eb1a8",
+      "native_after": "a5a3659bcd8368576fa003e608f5172b95199d5b8d4af44c478cdddbd48aa38a",
+      "config_before": "054652022a71c4339cbc6a5120e7f85a35ae009785ec62253ce222a7a17c077a",
+      "config_after": "d664782e3fa797cf9b4d72325ac3c6bcb5233066a8db067b1416055b37e8a9c8",
+      "baseline_before": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
+      "baseline_after": "e6bd984a76ede81589d5092bc451fb1366c7f2c504285f2928158064559e305d",
+      "gate_before": "8ceb4ae454557697ea7a021c5c157a01c9eaf74307c392bd274fd009f2cb1edc",
+      "gate_after": "2b78eef03454ad7442d73f58a901b0093ed9b979b259e041f2db13b327e470ba"
+    },
+    "private_preimages_this_repair": 5,
+    "rollback_performed": false,
+    "scope": "latest authorized repair; previous efficiency installation retained in before_authorized_repair"
+  }
 }

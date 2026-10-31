@@ -1,0 +1,24 @@
+--- a/hermes_cli/model_switch.py
++++ b/hermes_cli/model_switch.py
+@@ -237,10 +237,19 @@
+                 isinstance(existing, dict)
+                 and entry_discovered
+                 and not legacy_discovered
+-                and list(existing) == model_ids
++                and set(existing) == set(model_ids)
+             ):
+                 continue
+-            entry["models"] = {model_id: {} for model_id in model_ids}
++            # Refresh the discovered catalogue without discarding user metadata.
++            entry["models"] = {
++                model_id: (
++                    dict(existing[model_id])
++                    if isinstance(existing, dict)
++                    and isinstance(existing.get(model_id), dict)
++                    else {}
++                )
++                for model_id in model_ids
++            }
+             entry["models_discovered"] = True
+             changed = True
+ 
