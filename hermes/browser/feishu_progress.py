@@ -32,6 +32,7 @@ class FeishuProgress:
         self.started = clock()
         self.lock = threading.Lock()
         self.state, self.status, self.outcome = 'accepted', None, None
+        self.error_category=None
         self.done = asyncio.Event()
         self.task = None
         self.key = uuid.uuid4().hex  # local correlation; no chat/user/message ID
@@ -46,14 +47,19 @@ class FeishuProgress:
         self.task = asyncio.create_task(self._run())
         return self
 
-    def note(self, state, *, status=None):
+    def note(self, state, *, status=None, category=None):
         # Called by the existing HTTP transport worker thread, not the model.
-        if state not in {'request_started', 'response_headers'}:
+        if state not in {'request_started', 'response_headers','provider_error'}:
             return
+        categories={'reported_connection_capacity_limit','reported_request_rate_limit','reported_token_rate_limit',
+                    'reported_rate_limit','explicit_quota_error','provider_reported_free_user_limit',
+                    'reported_model_channel_error','unclassified_429','unclassified_http_error'}
+        if state=='provider_error' and (not isinstance(category,str) or category not in categories or not isinstance(status,int) or status<400):return
         with self.lock:
             if self.outcome is None:
                 self.state = state
                 self.status = status if isinstance(status, int) else None
+                self.error_category=category if state=='provider_error' else None
 
     def finish(self, outcome):
         if outcome not in {'returned', 'error', 'cancelled'}:
@@ -64,7 +70,7 @@ class FeishuProgress:
 
     def text(self):
         with self.lock:
-            state, status, outcome = self.state, self.status, self.outcome
+            state, status, outcome,category = self.state, self.status, self.outcome,self.error_category
         elapsed = max(0, int(self.clock() - self.started))
         if outcome == 'returned':
             return '【系统状态】本次处理已结束。'
@@ -74,8 +80,13 @@ class FeishuProgress:
             return '【系统状态】本次处理出现异常，请看错误提示。'
         if state == 'request_started':
             detail = '正在等待模型服务返回，尚未取得本次请求结果。'
-        elif state == 'response_headers' and status is not None and status >= 400:
-            detail = f'模型接口返回 HTTP {status}，原因尚未确认；原任务仍在处理。'
+        elif state=='provider_error' and category=='reported_connection_capacity_limit':
+            detail = '模型接口报告连接数达到上限（HTTP 429），限制归属尚未确认；尚未取得本轮答复。'
+        elif state=='provider_error' and category in {'reported_request_rate_limit','reported_token_rate_limit','explicit_quota_error'}:
+            reason={'reported_request_rate_limit':'请求频率限制','reported_token_rate_limit':'Token速率限制','explicit_quota_error':'额度限制'}[category]
+            detail = f'模型接口报告{reason}（HTTP {status}）；尚未取得本轮答复。'
+        elif state in {'response_headers','provider_error'} and status is not None and status >= 400:
+            detail = f'模型接口返回 HTTP {status}，原因尚未确认；尚未取得本轮答复。'
         elif state == 'response_headers':
             detail = '模型接口已开始响应，尚未得到最终答复。'
         else:

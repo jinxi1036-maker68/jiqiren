@@ -13,20 +13,23 @@ from provider_pacing import ModelPacer
 
 CURRENT_TURN = contextvars.ContextVar('lingju_gateway_turn', default=None)
 
-DAILY_PACING = {'kind':'adaptive-daily-v1','min_interval_seconds':0,
+LEGACY_DAILY_PACING = {'kind':'adaptive-daily-v1','min_interval_seconds':0,
                 'concurrency':1,'cooldown_on_429_seconds':60,
                 'honor_retry_after_on':[429,500,502,503,504],
                 'max_single_wait_seconds':600}
+DAILY_PACING = {**LEGACY_DAILY_PACING,'kind':'native-retry-daily-v2',
+                'cooldown_on_429_seconds':0}
 
 
 def gateway_pacer(meter, receipt, gate, *, continuous):
     settings=gate.get('daily_pacing')
     if settings is None:
         return BrowserPacer(meter,receipt)  # Historical launches unchanged.
-    if not continuous or settings!=DAILY_PACING:
+    if not continuous or settings not in (DAILY_PACING,LEGACY_DAILY_PACING):
         raise BudgetBlocked('Unreviewed daily pacing policy')
     return BrowserPacer(meter,receipt,min_interval_seconds=0,
                         daily_auto_unfreeze=True,
+                        unknown_429_cooldown_seconds=settings['cooldown_on_429_seconds'],
                         retry_after_statuses=settings['honor_retry_after_on'])
 
 
@@ -121,6 +124,20 @@ class BrowserPacer(ModelPacer):
         super().response(response)
         if getattr(self._progress_family,'known',False):
             self._progress('response_headers',status=response.status_code)
+            turn=CURRENT_TURN.get()
+            if turn and turn.get('meter') is self.budget and turn['live'].is_set():
+                self.observation['progress_turn']=turn
+
+    def stream_finished(self, observation, fully_iterated):
+        if observation is None or observation['finished']:return
+        category,_=self.error_classification(observation['status'],observation['error_prefix'])
+        turn=observation.get('progress_turn')
+        super().stream_finished(observation,fully_iterated)
+        if category and turn and turn['live'].is_set():
+            progress=turn.get('progress')
+            if progress is not None:
+                try:progress.note('provider_error',status=observation['status'],category=category)
+                except Exception:pass
 
 
 def propagate_title_threads(module):

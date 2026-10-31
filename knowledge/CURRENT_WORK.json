@@ -885,7 +885,7 @@
     },
     "browser_efficiency": {
       "date": "2026-10-31",
-      "status": "browser_efficiency_loaded_and_config_protection_restored",
+      "status": "candidate_47_checks_passed_waiting_voice_protection_decision",
       "report": "hermes/browser/reports/2026-10-31_BROWSER_EFFICIENCY.md",
       "evidence": "hermes/browser/evidence/browser-efficiency-2026-10-31.json",
       "actual_end_to_end_speed_gain": "not measured",
@@ -893,10 +893,17 @@
       "current_enterprise_RPM": "unverified; official dynamic console value",
       "provider429_resolved": false,
       "new_model_calls_by_Codex": 0,
-      "protected_status": "59/59 match after Owner-approved one-field config restoration/current-voice expectation",
+      "protected_status": "58/59 match; voice true→false pending Owner preference; no baseline update",
       "context_length": 524288,
       "voice_auto_tts": true,
-      "native_catalogue_metadata_fix": "loaded in fresh interpreter/gateway; original Desktop live cache not claimed"
+      "native_catalogue_metadata_fix": "loaded in fresh interpreter/gateway; original Desktop live cache not claimed",
+      "native_retry": {
+        "status": "candidate_47_checks_passed_waiting_voice_protection_decision",
+        "checks": 47,
+        "installed": false,
+        "new_model_calls": 0,
+        "blocker": "voice preference changed; awaiting explicit reconciliation"
+      }
     }
   },
   "admin_finance_track": {

@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import httpx
-from feishu_meter import GatewayMeter, gateway_pacer, DAILY_PACING
+from feishu_meter import GatewayMeter, gateway_pacer, DAILY_PACING, LEGACY_DAILY_PACING
 from request_budget import RequestAudit, BudgetBlocked
 from traffic_guard import TrafficAudit, TrafficPolicy, install_traffic_guard
 
@@ -35,7 +35,7 @@ class DailyPacingTests(unittest.TestCase):
             self.assertEqual(gateway_pacer(meter,root/'old.jsonl',{},continuous=False).min_interval_seconds,12)
             for g,continuous in [({'daily_pacing':DAILY_PACING},False),
                 ({'daily_pacing':{**DAILY_PACING,'concurrency':2}},True),
-                ({'daily_pacing':{**DAILY_PACING,'cooldown_on_429_seconds':0}},True)]:
+                ({'daily_pacing':{**DAILY_PACING,'cooldown_on_429_seconds':1}},True)]:
                 with self.assertRaises(BudgetBlocked):gateway_pacer(meter,root/'bad.jsonl',g,continuous=continuous)
 
     def test_healthy_real_transport_calls_have_no_fixed_wait_and_quota_stays_unlimited(self):
@@ -53,13 +53,21 @@ class DailyPacingTests(unittest.TestCase):
             self.assertEqual(audit.status()['reserved_network_attempts'],4)
             self.assertIsNone(audit.status()['limit'])
 
-    def test_429_still_waits_60_without_header_and_explicit_header_wins(self):
+    def test_daily_429_delegates_to_native_without_header_and_explicit_header_wins(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);clock,meter,pacer,audit=self.create(root)
             pacer.enter();pacer.started('chat_completions');pacer.response(httpx.Response(429));pacer.leave()
-            pacer.enter();self.assertEqual(clock(),60)
+            pacer.enter();self.assertEqual(clock(),0)
             pacer.started('chat_completions');pacer.response(httpx.Response(429,headers={'Retry-After':'120'}));pacer.leave()
-            pacer.enter();self.assertEqual(clock(),180);pacer.leave()
+            pacer.enter();self.assertEqual(clock(),120);pacer.leave()
+
+    def test_legacy_daily_policy_still_has_its_old_60_second_cooldown(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);clock,meter,_,audit=self.create(root)
+            pacer=gateway_pacer(meter,root/'legacy.jsonl',{'daily_pacing':LEGACY_DAILY_PACING},continuous=True)
+            pacer.clock,pacer.sleep=clock,clock.sleep
+            pacer.enter();pacer.started('chat_completions');pacer.response(httpx.Response(429));pacer.leave()
+            pacer.enter();self.assertEqual(clock(),60);pacer.leave()
 
     def test_504_server_wait_is_honored_no_guess_on_503_without_header(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -30,12 +30,16 @@ def approved_pacing(gate):
 class ModelPacer:
     def __init__(self, budget, receipt, *, clock=time.monotonic, sleep=time.sleep,
                  utcnow=lambda: datetime.datetime.now(datetime.timezone.utc),
-                 min_interval_seconds=12, retry_after_statuses=(429,)):
+                 min_interval_seconds=12, retry_after_statuses=(429,),
+                 unknown_429_cooldown_seconds=60):
         if not math.isfinite(min_interval_seconds) or min_interval_seconds < 0:
             raise ValueError('Invalid request interval')
         self.budget, self.receipt = budget, Path(receipt)
         self.clock, self.sleep, self.utcnow = clock, sleep, utcnow
         self.min_interval_seconds = min_interval_seconds
+        if not isinstance(unknown_429_cooldown_seconds,(int,float)) or isinstance(unknown_429_cooldown_seconds,bool) or not math.isfinite(unknown_429_cooldown_seconds) or not 0<=unknown_429_cooldown_seconds<=600:
+            raise ValueError('Invalid unknown429 handling')
+        self.unknown_429_cooldown_seconds=unknown_429_cooldown_seconds
         self.retry_after_statuses = frozenset(retry_after_statuses)
         self.lock = threading.Lock()
         self.next_start, self.frozen, self.ordinal = 0.0, False, 0
@@ -119,15 +123,21 @@ class ModelPacer:
     def error_classification(status,raw):
         if status<400:return None,None
         try:
-            body=json.loads(raw);error=body.get('error',body)
-            if not isinstance(error,dict):return 'unclassified_http_error',None
-            code=error.get('code') or error.get('type');message=str(error.get('message','')).lower()
+            body=json.loads(raw)
+            error=body.get('error',body.get('detail',body)) if isinstance(body,dict) else body
+            code=(error.get('code') or error.get('type')) if isinstance(error,dict) else None
+            message=error.get('message','') if isinstance(error,dict) else error
+            message=message.lower() if isinstance(message,str) else ''
             known={'rate_limit_exceeded','rpm_limit_exceeded','insufficient_quota','quota_exceeded',
                    'subscription_quota_exceeded','get_channel_failed','AgnesAI_error'}
-            safe_code=code if code in known else None
+            safe_code=code if isinstance(code,str) and code in known else None
+            code=code if isinstance(code,str) else None
+            if status==429 and re.search(r'max connections reached\s*:\s*\d+',message):return 'reported_connection_capacity_limit',safe_code
             if status==429 and 'rate limit for free users' in message:return 'provider_reported_free_user_limit',safe_code
             if code in {'insufficient_quota','quota_exceeded','subscription_quota_exceeded'}:return 'explicit_quota_error',safe_code
-            if status==429 and (code in {'rate_limit_exceeded','rpm_limit_exceeded'} or 'requests per minute' in message or 'rpm limit' in message):return 'reported_request_rate_limit',safe_code
+            if status==429 and ('tokens per minute' in message or 'tpm limit' in message):return 'reported_token_rate_limit',safe_code
+            if status==429 and (code=='rpm_limit_exceeded' or 'requests per minute' in message or 'rpm limit' in message):return 'reported_request_rate_limit',safe_code
+            if status==429 and code=='rate_limit_exceeded':return 'reported_rate_limit',safe_code
             if code=='get_channel_failed':return 'reported_model_channel_error',safe_code
             return 'unclassified_429' if status==429 else 'unclassified_http_error',safe_code
         except (ValueError,TypeError,AttributeError,UnicodeError):return 'unclassified_429' if status==429 else 'unclassified_http_error',None
@@ -179,7 +189,7 @@ class ModelPacer:
                 numeric[name] = int(raw)
         cooldown = None
         if status == 429 or (status in self.retry_after_statuses and retry_after is not None):
-            wait = retry_after if retry_after is not None else 60
+            wait = retry_after if retry_after is not None else self.unknown_429_cooldown_seconds
             cooldown = wait
             if wait > 600:
                 self.frozen = True  # Never shorten a server's long requested wait.
@@ -190,6 +200,7 @@ class ModelPacer:
         self.record('model_response_headers', status=status, retry_after_seconds=retry_after,
                     numeric_rate_headers=numeric, admission_frozen=self.frozen,
                     scheduled_cooldown_seconds=cooldown,
+                    retry_policy='native_sdk' if status==429 and retry_after is None and self.unknown_429_cooldown_seconds==0 else 'server_header_or_legacy_policy',
                     no_body_or_arbitrary_headers_recorded=True)
 
 

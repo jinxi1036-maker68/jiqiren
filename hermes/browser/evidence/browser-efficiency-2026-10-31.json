@@ -1,7 +1,7 @@
 {
   "date": "2026-10-31",
   "observed_at_utc": "2026-10-31T06:31:39.207211+00:00",
-  "state": "browser_efficiency_loaded_and_config_protection_restored",
+  "state": "candidate_47_checks_passed_waiting_voice_protection_decision",
   "same_original_employee_H_W": true,
   "rate_investigation": {
     "observed_gateway_physical_requests": 25,
@@ -280,13 +280,16 @@
     "active_agents": 0,
     "protected_matching": 59,
     "observed_model_wire_starts_since_reload": 0,
-    "new_Codex_model_messages": 0
+    "new_Codex_model_messages": 0,
+    "Owner_task_protection_blocked_by_voice_drift": true
   },
   "files": {
     "original_files_updated_in_authorized_repair": 2,
-    "protected_records_matching": 59,
+    "protected_records_matching": 58,
     "protected_records_total": 59,
-    "protected_mismatch": [],
+    "protected_mismatch": [
+      "H/config.yaml"
+    ],
     "source_and_config_sha256": {
       "native_before": "90c0da5844c7fbedc704c0f72e8e989190ce8647c736f1ed7157686e314eb1a8",
       "native_after": "a5a3659bcd8368576fa003e608f5172b95199d5b8d4af44c478cdddbd48aa38a",
@@ -299,6 +302,100 @@
     },
     "private_preimages_this_repair": 5,
     "rollback_performed": false,
-    "scope": "latest authorized repair; previous efficiency installation retained in before_authorized_repair"
+    "scope": "current predeployment check: voice drift; prior successful59/59 retained in before_native_retry"
+  },
+  "before_native_retry": {
+    "state": "browser_efficiency_loaded_and_config_protection_restored",
+    "activation": {
+      "READY": "2026-10-31T06:41:02.026614+00:00",
+      "native_pid": 30432,
+      "launcher": 7144,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "retrying",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "active_agents": 0,
+      "protected_matching": 59,
+      "observed_model_wire_starts_since_reload": 0,
+      "new_Codex_model_messages": 0
+    },
+    "files": {
+      "original_files_updated_in_authorized_repair": 2,
+      "protected_records_matching": 59,
+      "protected_records_total": 59,
+      "protected_mismatch": [],
+      "source_and_config_sha256": {
+        "native_before": "90c0da5844c7fbedc704c0f72e8e989190ce8647c736f1ed7157686e314eb1a8",
+        "native_after": "a5a3659bcd8368576fa003e608f5172b95199d5b8d4af44c478cdddbd48aa38a",
+        "config_before": "054652022a71c4339cbc6a5120e7f85a35ae009785ec62253ce222a7a17c077a",
+        "config_after": "d664782e3fa797cf9b4d72325ac3c6bcb5233066a8db067b1416055b37e8a9c8",
+        "baseline_before": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
+        "baseline_after": "e6bd984a76ede81589d5092bc451fb1366c7f2c504285f2928158064559e305d",
+        "gate_before": "8ceb4ae454557697ea7a021c5c157a01c9eaf74307c392bd274fd009f2cb1edc",
+        "gate_after": "2b78eef03454ad7442d73f58a901b0093ed9b979b259e041f2db13b327e470ba"
+      },
+      "private_preimages_this_repair": 5,
+      "rollback_performed": false,
+      "scope": "latest authorized repair; previous efficiency installation retained in before_authorized_repair"
+    }
+  },
+  "feishu_native_retry": {
+    "state": "candidate_47_checks_passed_waiting_voice_protection_decision",
+    "date": "2026-10-31",
+    "new_Hermes_model_requests_by_Codex": 0,
+    "source_files": [
+      "provider_pacing.py",
+      "feishu_meter.py",
+      "feishu_progress.py"
+    ],
+    "candidate_sha256": {
+      "provider_pacing.py": "20b66cb5ef982ad11916c77d148b35076b2a764db34a39983ab9ec44ce94a5c2",
+      "feishu_meter.py": "fbb47804112a5c3f0a0415e13afb931720a0ac56f2686168f0186a87ea29ccc8",
+      "feishu_progress.py": "cff078a7f5d78eaa7cdabbb8a439d103a6f9fdf13ea26fac7d24d43b82d94385"
+    },
+    "installed": false,
+    "checks": {
+      "test_native_retry_parity": 6,
+      "test_daily_pacing": 6,
+      "test_feishu_progress": 14,
+      "test_provider_pacing": 8,
+      "test_speed_telemetry": 3,
+      "test_feishu_gateway": 10,
+      "distinct_total": 47
+    },
+    "changes": [
+      "explicit daily-v2 unknown429 delegates to existing native SDK retries without extra60s; legacy v1/default stay unchanged",
+      "honor explicit Retry-After numeric/date/long cooldown; concurrency1 and request accounting unchanged",
+      "classify capacity/RPM/TPM/quota or unknown from allowlisted error fields; no raw provider text logged",
+      "one delayed status bubble edited in place; typed error explains capacity versus frequency, no promise task will continue; clear prior error on next request, reject late-turn updates"
+    ],
+    "scope_unchanged": [
+      "model and credentials",
+      "proxy",
+      "512K",
+      "SOUL/HERMES/MEMORY/USER",
+      "R3/Manifest",
+      "MCP/cron/profiles",
+      "business permissions"
+    ],
+    "blocker": {
+      "file": "H/config.yaml",
+      "semantic_change_only": "voice.auto_tts true→false",
+      "observed_sha256": "bfade640c05e6d2c4472531a1a92f2e5f2511bc1116dd004420985c261ebe1b0",
+      "voice_last_write_utc": "2026-10-31T06:47:44.007397+00:00",
+      "context512K_still_present": true,
+      "other58_records_unchanged": true,
+      "baseline_not_updated": true,
+      "cause_unknown": true,
+      "Owner_preference_confirmation_pending": true
+    },
+    "remaining": [
+      "450 connection-capacity root layer/account pool not established",
+      "Desktop also had450 at14:49; proxy difference exists but is not established cause",
+      "no live model task or end-to-end speed improvement verified; no installation/reload yet"
+    ]
   }
 }
