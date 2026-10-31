@@ -43,7 +43,8 @@ export async function run(runtimeFile,ownerLock){
   requireScope(await p.url(),cfg.origin);
   const snapshot=String(await p.snapshot({scope:args.scope||'full_page',...(args.root?{root:args.root}:{})}));
   const format=args.format||'both';
-  return {page:p.label,url:await p.url(),...(tableReader?{observed_at:tableReader.observationTime()}:{}),...(format!=='tables'||!tableReader?{snapshot}:{}),...(tableReader&&format!=='snapshot'?{table_readback:tableReader.readTables(snapshot)}:{})};
+  return {page:p.label,url:await p.url(),observation:{scope:args.scope||'full_page',format,...(args.root?{root:args.root}:{})},
+   ...(tableReader?{observed_at:tableReader.observationTime()}:{}),...(format!=='tables'||!tableReader?{snapshot}:{}),...(tableReader&&format!=='snapshot'?{table_readback:tableReader.readTables(snapshot)}:{})};
  };
  const act=async(p,a)=>{
   const option={timeout:6000,label:(a.label||'Operate requested browser control').slice(0,80)};
@@ -99,10 +100,19 @@ export async function run(runtimeFile,ownerLock){
    return {screenshot:filename,page:p.label};
   }
   if(name==='ego_browser_actions'){
+   const desired={scope:'full_page',format:'snapshot',...args.observation};
+   const finalRead=async()=>{
+    try{return await observe(p,desired);}catch(e){
+     const code=String(e.error_code||e.code||'');
+     if(desired.scope!=='subtree'||/^EGO_(USER_CONTROL|SCOPE|OWNER_LOGIN|PROFILE|EXTENSION)/.test(code)
+      ||!/(root|reference|snapshot node).*(not found|no longer exists|missing|stale|does not exist)|(missing|stale).*root/i.test(String(e.message)))throw e;
+     return {...await observe(p,{format:'snapshot'}),observationFallback:'Requested subtree unavailable; actual current full-page read returned, no action replay'};
+    }
+   };
    return actionBatch(validateActions(args.actions),async()=>{
     if(company)await guard.inspect({requireActive:true});
     await requirePage(p.label);
-   },a=>act(p,a),()=>observe(p));
+   },a=>act(p,a),finalRead,()=>observe(p,{format:'snapshot'}));
   }
   throw Error('Unknown browser tool');
  };

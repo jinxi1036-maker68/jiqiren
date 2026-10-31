@@ -708,6 +708,18 @@
       "current_vendor_binding": "0.6.2.5",
       "actual_statistics_read_and_same_space_reconnect": true,
       "new_model_calls_by_Codex": 0
+    },
+    "browser_efficiency": {
+      "date": "2026-10-31",
+      "status": "efficiency_sources_loaded_but_protected_config_drift_blocks_final_acceptance",
+      "report": "hermes/browser/reports/2026-10-31_BROWSER_EFFICIENCY.md",
+      "evidence": "hermes/browser/evidence/browser-efficiency-2026-10-31.json",
+      "actual_end_to_end_speed_gain": "not measured",
+      "sample_payload_reduction_percent": 9.8,
+      "current_enterprise_RPM": "unverified; official dynamic console value",
+      "provider429_resolved": false,
+      "new_model_calls_by_Codex": 0,
+      "protected_status": "58/59 match; original config drift blocks; baseline unchanged"
     }
   }
 }

@@ -22,7 +22,7 @@ export async function acquireOwnedLease(file,runtime){
  return nonce;
 }
 
-export async function actionBatch(actions,before,act,observe){
+export async function actionBatch(actions,before,act,observe,observeFailure=observe){
  const receipts=[];
  for(let i=0;i<actions.length;i++){
   try{
@@ -31,7 +31,7 @@ export async function actionBatch(actions,before,act,observe){
   }catch(e){
    let currentState=null;
    // A fresh *read*, never an alternate click or hidden submit retry.
-   try{await before();currentState=await observe();}catch{}
+   try{await before();currentState=await observeFailure();}catch{}
    return {error:String(e.message||e),code:e.error_code||e.code||'EGO_PAGE_ACTION_FAILED',
     receipts,failed_action_index:i,remaining_actions_not_executed:actions.length-i-1,
     state_after_failure:currentState,savedBusinessState:'unverified',

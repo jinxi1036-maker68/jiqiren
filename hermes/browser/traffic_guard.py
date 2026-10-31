@@ -101,6 +101,7 @@ def install_traffic_guard(model_budget, audit, policy, add_network_audit=False, 
             reserve(transport, request)
             if paced:
                 pacer.started(request_family(request))
+                if callable(getattr(pacer,'observe_request',None)):pacer.observe_request(request)
             response = old_sync(transport, request)
             if paced:
                 try:
@@ -110,6 +111,9 @@ def install_traffic_guard(model_budget, audit, policy, add_network_audit=False, 
                     raise
                 from provider_pacing import paced_sync_stream
                 if response.is_closed:
+                    if getattr(pacer,'observation',None) is not None:
+                        pacer.body_piece(pacer.observation,response.content)
+                        pacer.stream_finished(pacer.observation,True)
                     pacer.leave()
                 else:
                     response.stream = paced_sync_stream(response.stream, pacer)
@@ -130,6 +134,7 @@ def install_traffic_guard(model_budget, audit, policy, add_network_audit=False, 
             reserve(transport, request)
             if paced:
                 pacer.started(request_family(request))
+                if callable(getattr(pacer,'observe_request',None)):pacer.observe_request(request)
             response = await old_async(transport, request)
             if paced:
                 try:
@@ -139,6 +144,9 @@ def install_traffic_guard(model_budget, audit, policy, add_network_audit=False, 
                     raise
                 from provider_pacing import paced_async_stream
                 if response.is_closed:
+                    if getattr(pacer,'observation',None) is not None:
+                        pacer.body_piece(pacer.observation,response.content)
+                        pacer.stream_finished(pacer.observation,True)
                     pacer.leave()
                 else:
                     response.stream = paced_async_stream(response.stream, pacer)

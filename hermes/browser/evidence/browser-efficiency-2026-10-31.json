@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-31",
+  "observed_at_utc": "2026-10-31T06:31:39.207211+00:00",
+  "state": "efficiency_sources_loaded_but_protected_config_drift_blocks_final_acceptance",
+  "same_original_employee_H_W": true,
+  "rate_investigation": {
+    "observed_gateway_physical_requests": 25,
+    "maximum_rolling_60s_requests": 5,
+    "response_statuses": {
+      "403": 1,
+      "429": 11,
+      "200": 13
+    },
+    "window_first_utc": "2026-10-31T05:47:59.525945+00:00",
+    "window_last_utc": "2026-10-31T06:03:23.201683+00:00",
+    "account_wide_usage_known": false,
+    "active_key_type_and_console_RPM_verified": false
+  },
+  "official_sources": [
+    {
+      "url": "https://wiki.agnes-ai.com/zh-Hans/docs/tokenplan",
+      "retrieved": "2026-10-31",
+      "document_sha256": "6d28b1d011d0be6feb29b7c3cda76f4ba4820e9b07a26d6a51eaf3ee4c26c481",
+      "finding": "enterprise/default RPM dynamic; console-specific; same-type keys share pools"
+    },
+    {
+      "url": "https://wiki.agnes-ai.com/en/docs/faqs",
+      "retrieved": "2026-10-31",
+      "finding": "429 can mean request rate or subscription quota; actual key entitlement not established"
+    }
+  ],
+  "changes": {
+    "observability": "opt-in sanitized timing/request sizes/model ID/allowlisted error category; no prompt, credentials or raw response/error logged",
+    "request_policy": "unchanged: normal min interval0, concurrency1, honor Retry-After, unknown429 fallback60; no new total cap",
+    "roundtrips": "known unambiguous actions may share existing1-8 batch; preserve decision/verification boundaries; not fixed business scripts",
+    "readback": "default full-page snapshot only; explicit table_readback/both available; opt-in viewport/subtree; stale subtree read fallback never replays actions or bypasses takeover",
+    "experience": "same-route existing task note search, latest10 excerpts/receipt counts; requires real Owner turn; no new memory/identity/database"
+  },
+  "validation": {
+    "Python": 53,
+    "Node": 46,
+    "distinct_checks": 99,
+    "native_CLI_zero_model_probe": true,
+    "actual_MCP": {
+      "passed": true,
+      "new_models_by_Codex": 0,
+      "business_UI_writes": 0,
+      "tool_count": 12,
+      "same_original_H_W": true,
+      "spaceId": 3,
+      "mode": "company-business",
+      "guardHealthy": true,
+      "full_page_ref_snapshot_preserved": true,
+      "explicit_table_readback_available": true,
+      "actions_default_full_page_snapshot_only": true,
+      "model_batch_limit_unchanged": 8,
+      "efficiency_guide_available": true,
+      "search_without_owner_turn_denied": true,
+      "sample_full_both_UTF8_bytes": 11751,
+      "sample_snapshot_UTF8_bytes": 10601,
+      "sample_reduction_percent": 9.8,
+      "same_snapshot_text_in_two_reads": true,
+      "production_observations": 3,
+      "non_mutating_wait_actions": 1,
+      "actual_model_latency_improvement": "not measured; no model task sent",
+      "lease_exists_after_close": false,
+      "stderr_bytes": 0
+    },
+    "initial_local_issues_corrected": "optional telemetry compatibility with old simplified Pacer; mistaken local test module name; affected suites rerun passed",
+    "additional_readonly_native_metadata_defect_reproduction": true,
+    "candidate_metadata_fix_in_memory_check": true
+  },
+  "activation": {
+    "idle_graceful_reload_count": 1,
+    "force_kill": false,
+    "READY_utc": "2026-10-31T06:17:32.027418+00:00",
+    "native_pid": 2512,
+    "launcher_pid": 18536,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    },
+    "active_agents_at_inspection": 0,
+    "transport_connected_is_not_Owner_task_readiness": true,
+    "protected_config_guard_bypassed": false
+  },
+  "files": {
+    "owned_sources_updated": 7,
+    "source_sha256": {
+      "provider_pacing.py": "58a77bc1c93b93d77afb8977f4dc109320a592b93275c080fb0c41e32a7961c8",
+      "traffic_guard.py": "abc2709c040edb1e997cf0840d0beff7be8a288a5bca4c0d8584fab7cc43de0c",
+      "company_tasks.py": "e85a0ce5240391dc7ce390ba28dd83726d634678c6a41c6c691645398e70c336",
+      "company_support.py": "8206d326c72c4c65b49335ba57f340fd7ae3fd3a0c982a3b25a346aafe66bc07",
+      "ego/policy.mjs": "15e20292cb9a5090fd2fd05555bfd6ba089f7eab8e6a12c0427b9f1d1c4d898d",
+      "ego/worker.mjs": "789deeed6046c379633e05ed18d85a2e9380bbc2f586f5d81272139c77ae8a95",
+      "ego/lifecycle.mjs": "e71bf31f8f9ee2c74687c026ddc605f9887b2d0934dfe7a3f64d4234ccfdca28"
+    },
+    "runtime_sha256": "40fd2307f70c12143d18beb84842b50c29a716525f46a14c1258b60f7b6abd5e",
+    "gate_sha256": "8ceb4ae454557697ea7a021c5c157a01c9eaf74307c392bd274fd009f2cb1edc",
+    "private_preimages": 10,
+    "rollback": false,
+    "protected_records_total": 59,
+    "protected_records_matching": 58,
+    "protected_mismatch": [
+      "H/config.yaml"
+    ],
+    "original_config_written_by_Codex": false,
+    "protected_baseline_replaced": false,
+    "SOUL_HERMES_MEMORY_USER_R3_Manifest_credentials_model_MCP_voice_QQ_cron_old_profiles_written_by_Codex": false
+  },
+  "configuration_drift": {
+    "expected_sha256": "5115085779f1ff574fab08def61549efaf733b5f00ba0401f9c247095694501f",
+    "current_sha256": "054652022a71c4339cbc6a5120e7f85a35ae009785ec62253ce222a7a17c077a",
+    "semantic_changed_paths": [
+      "custom_providers[0].models.agnes-3.0-flash.context_length",
+      "voice.auto_tts"
+    ],
+    "approved_model_context_before": 524288,
+    "custom_model_context_current": "absent; existing live Agent effective context not measured",
+    "voice_auto_tts_before": false,
+    "voice_auto_tts_current": true,
+    "credential_fields_changed": false,
+    "owner_confirmation": "Owner says no settings edited and no other Agent instructed",
+    "installed_source": "I/hermes_cli/model_switch.py::_save_discovered_models_to_config",
+    "installed_source_sha256": "90c0da5844c7fbedc704c0f72e8e989190ce8647c736f1ed7157686e314eb1a8",
+    "reproduced_defect": "models_discovered true + changed model catalog order/IDs rebuilds every model metadata as empty dict",
+    "production_catalog_discovered_marker": true,
+    "production_model_count_before_after": [
+      9,
+      9
+    ],
+    "production_catalog_order_changed": true,
+    "native_function_in_memory_replay_matches_current_model_map": true,
+    "native_function_does_not_change_voice": true,
+    "actual_writer_or_call_chain_proved": false,
+    "voice_writer_proved": false,
+    "Desktop_time_correlation_only": "two user rows06:18:42/06:18:54UTC; first Agent tools06:19:04; no explicit config path/auto_tts/context_length in inspected tool-call arguments",
+    "source_paths_inspected": [
+      "I/hermes_cli/model_switch.py:166-249",
+      "I/hermes_cli/web_server.py:7568-7680",
+      "I/hermes_cli/config.py:3422-3448,3629-3760,3847-3960",
+      "I/tui_gateway/server.py:3294-3400",
+      "I/apps/desktop/src/store/voice-prefs.ts:56-73"
+    ],
+    "limits": "no historical writer PID/stack audit available in inspected existing logs; do not infer Desktop fault solely from timing; no original source patch/config restoration done"
+  },
+  "new_Hermes_model_messages_or_requests_by_Codex": 0,
+  "production_business_writes_by_Codex": 0,
+  "remaining": [
+    "final acceptance blocked by unapproved original config drift; baseline not silently changed",
+    "exact current enterprise entitlement/account pool use/provider429 cause unknown",
+    "Agent batching/experience reuse and end-to-end speed improvement not measured; no new model task",
+    "one sample tool payload9.8% smaller is not total latency gain; first body byte is not first model token",
+    "native catalog preservation patch and config-field reconciliation require specific approval; no repair applied"
+  ]
+}

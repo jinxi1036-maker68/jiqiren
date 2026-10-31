@@ -161,6 +161,21 @@ class TaskStore:
                  'last_failure_code':(t.get('last_failure') or {}).get('code'),'updated_at':t['updated_at']} for t in rows]
     def read(self,tid):
         with self.connection() as c:return self._public(self._get(c,tid))
+    def search(self,query):
+        if not isinstance(query,str) or not query.strip() or len(query)>160:raise ValueError('Search query1-160 characters required')
+        with self.connection() as c:
+            x=self._active(c)
+            rows=c.execute("""SELECT id,doc FROM tasks WHERE json_extract(doc,'$.route')=?
+                AND instr(lower(coalesce(json_extract(doc,'$.owner_request'),'') || ' ' ||
+                 coalesce(json_extract(doc,'$.note'),'') || ' ' || coalesce(json_extract(doc,'$.items'),'')),lower(?))>0
+                ORDER BY json_extract(doc,'$.updated_at') DESC LIMIT 10""",(x['route'],query.strip())).fetchall()
+            found=[]
+            for row in rows:
+                t=json.loads(row['doc']);count=c.execute('SELECT count(*) FROM receipts WHERE task_id=?',(row['id'],)).fetchone()[0]
+                found.append({'id':t['id'],'status':t['status'],'goal_excerpt':t['owner_request'][:300],
+                    'lesson_excerpt':t.get('note','')[:1200],'receipt_count':count,'needs_verification':t['needs_verification'],
+                    'updated_at':t['updated_at']})
+            return found
     def _public(self,t):return {k:v for k,v in t.items() if k not in {'source','route','ticket_hash','ticket_expires'}}
     def source(self,tid):
         with self.connection() as c:return self._get(c,tid)['source']

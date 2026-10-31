@@ -8,6 +8,7 @@ import datetime
 from email.utils import parsedate_to_datetime
 import json
 import math
+import re
 from pathlib import Path
 import threading
 import time
@@ -39,6 +40,7 @@ class ModelPacer:
         self.lock = threading.Lock()
         self.next_start, self.frozen, self.ordinal = 0.0, False, 0
         self.frozen_until=None
+        self.request_started_at=None;self.observation=None
 
     def check(self):
         state = self.budget.status()
@@ -95,12 +97,65 @@ class ModelPacer:
 
     def started(self, family):
         self.ordinal += 1
+        self.request_started_at=self.clock()
         self.next_start = self.clock() + self.min_interval_seconds
         self.record('model_wire_start', family=family,
                     min_interval_seconds=self.min_interval_seconds)
 
+    def observe_request(self,request):
+        """Counts/model ID only: never record message bodies, URLs or headers."""
+        meta={'model_id':None,'request_body_bytes':None,'message_count':None,'tool_schema_count':None}
+        try:
+            raw=request.content;meta['request_body_bytes']=len(raw)
+            if len(raw)<=8*1024*1024:
+                body=json.loads(raw);model=body.get('model')
+                if isinstance(model,str) and re.fullmatch(r'agnes-[0-9][a-z0-9._-]{0,60}',model):meta['model_id']=model
+                if isinstance(body.get('messages'),list):meta['message_count']=len(body['messages'])
+                if isinstance(body.get('tools'),list):meta['tool_schema_count']=len(body['tools'])
+        except (ValueError,TypeError,AttributeError,RuntimeError):pass
+        self.record('model_request_metadata',**meta,raw_request_or_credentials_recorded=False)
+
+    @staticmethod
+    def error_classification(status,raw):
+        if status<400:return None,None
+        try:
+            body=json.loads(raw);error=body.get('error',body)
+            if not isinstance(error,dict):return 'unclassified_http_error',None
+            code=error.get('code') or error.get('type');message=str(error.get('message','')).lower()
+            known={'rate_limit_exceeded','rpm_limit_exceeded','insufficient_quota','quota_exceeded',
+                   'subscription_quota_exceeded','get_channel_failed','AgnesAI_error'}
+            safe_code=code if code in known else None
+            if status==429 and 'rate limit for free users' in message:return 'provider_reported_free_user_limit',safe_code
+            if code in {'insufficient_quota','quota_exceeded','subscription_quota_exceeded'}:return 'explicit_quota_error',safe_code
+            if status==429 and (code in {'rate_limit_exceeded','rpm_limit_exceeded'} or 'requests per minute' in message or 'rpm limit' in message):return 'reported_request_rate_limit',safe_code
+            if code=='get_channel_failed':return 'reported_model_channel_error',safe_code
+            return 'unclassified_429' if status==429 else 'unclassified_http_error',safe_code
+        except (ValueError,TypeError,AttributeError,UnicodeError):return 'unclassified_429' if status==429 else 'unclassified_http_error',None
+
+    def body_piece(self,observation,chunk):
+        if observation is None:return
+        if observation['first_body_at'] is None:observation['first_body_at']=self.clock()
+        observation['body_bytes']+=len(chunk)
+        if observation['status']>=400 and len(observation['error_prefix'])<8192:
+            observation['error_prefix'].extend(chunk[:8192-len(observation['error_prefix'])])
+
+    def stream_finished(self,observation,fully_iterated):
+        if observation is None or observation['finished']:return
+        observation['finished']=True;now=self.clock();start=observation['start']
+        category,code=self.error_classification(observation['status'],observation['error_prefix'])
+        self.record('model_stream_closed',status=observation['status'],
+            request_to_headers_seconds=round(observation['headers_at']-start,4),
+            request_to_first_body_bytes_seconds=None if observation['first_body_at'] is None else round(observation['first_body_at']-start,4),
+            total_request_seconds=round(now-start,4),response_body_bytes=observation['body_bytes'],
+            body_fully_iterated=bool(fully_iterated),provider_error_class=category,provider_error_code=code,
+            raw_response_or_request_id_recorded=False)
+        observation['error_prefix'].clear()
+
     def response(self, response):
         status = response.status_code
+        now=self.clock()
+        self.observation={'start':self.request_started_at if self.request_started_at is not None else now,
+            'headers_at':now,'first_body_at':None,'body_bytes':0,'error_prefix':bytearray(),'status':status,'finished':False}
         retry_after = None
         value = response.headers.get('retry-after')
         if value is not None:
@@ -140,11 +195,16 @@ class ModelPacer:
 
 def paced_sync_stream(stream, pacer):
     import httpx
+    observation=getattr(pacer,'observation',None)
     class HeldStream(httpx.SyncByteStream):
         closed = False
+        fully_iterated=False
 
         def __iter__(self):
-            yield from stream
+            for chunk in stream:
+                if observation is not None:pacer.body_piece(observation,chunk)
+                yield chunk
+            self.fully_iterated=True
 
         def close(self):
             if not self.closed:
@@ -152,18 +212,24 @@ def paced_sync_stream(stream, pacer):
                 try:
                     stream.close()
                 finally:
-                    pacer.leave()
+                    try:
+                        if observation is not None:pacer.stream_finished(observation,self.fully_iterated)
+                    finally:pacer.leave()
     return HeldStream()
 
 
 def paced_async_stream(stream, pacer):
     import httpx
+    observation=getattr(pacer,'observation',None)
     class HeldStream(httpx.AsyncByteStream):
         closed = False
+        fully_iterated=False
 
         async def __aiter__(self):
             async for chunk in stream:
+                if observation is not None:pacer.body_piece(observation,chunk)
                 yield chunk
+            self.fully_iterated=True
 
         async def aclose(self):
             if not self.closed:
@@ -171,5 +237,7 @@ def paced_async_stream(stream, pacer):
                 try:
                     await stream.aclose()
                 finally:
-                    pacer.leave()
+                    try:
+                        if observation is not None:pacer.stream_finished(observation,self.fully_iterated)
+                    finally:pacer.leave()
     return HeldStream()

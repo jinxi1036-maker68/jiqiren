@@ -47,6 +47,9 @@ def apply_operating_authority(msg,cfg):
         '查询设备/绑定等实时明细时，应自主使用已提供的Ego浏览器工具，在已授权公司站内寻找实际菜单和数据。'
         '本地知识没有明细不等于后台没有，也不是要求Owner提供名单、截图或每个菜单URL的理由。'
         '根据实际工具状态判断连接与登录，断线用已有诊断/有限恢复能力；登录失效、真正缺少业务决定或超出授权时才找Owner。'
+        '高效工作由你自主安排：当前观察足够时可将连续明确动作合并为短批次；遇到分支、未知或保存结果需核实时停下观察。'
+        '动作回读可选择局部范围，不能把局部未见当成不存在；需要表格统计时显式读取tables/both。'
+        '可用company_task_notes的search检索同类任务经验，核对收据和当前页面再复用；把有效方法及证据记入任务note，不写成固定业务脚本或新权限。'
         '历史人数/台数/计划不能冒充当前平台结果，实际未读到仍如实报告。自主选择方法，不猜绑定或保存结果。\n'+AUTH_END)
     msg.channel_prompt=(original+'\n\n'+current).strip()
 
@@ -113,6 +116,8 @@ def dispatch(cfg,root,request):
         # Reads are allowed only in the same authorized native turn as writes.
         with store.connection() as c:store._active(c)
         if args['action']=='list':return {'tasks':store.list(summaries=True),'range':'latest30 summaries; read a task by id with offset/limit for full notes','basis':'Private operational notes; completion items are Agent reports, not independently verified business facts'}
+        if args['action']=='search':return {'tasks':store.search(args.get('query')),'range':'up to10 matching tasks on this exact Owner route',
+            'basis':'Prior Agent notes/lessons with receipt counts, not current facts, new authority or mandatory steps; read exact task and check actual evidence before reuse'}
         if args['action']=='read':return task_page(store,args)
         if args['action']=='checkpoint':
             t=store.checkpoint(args)
