@@ -2,7 +2,6 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {spawn} from 'node:child_process';
-import net from 'node:net';
 
 export async function workerCall(endpoint,name,args,fetcher=fetch){
  try{
@@ -30,31 +29,37 @@ export async function verifySupport(cfg){
 export async function boundedRecovery(action,io){
  if(action==='release_dead_lease')return io.releaseDead();
  if(action==='reconnect'&&io.hasEndpoint()){
-  const health=await io.health(); // Must fail closed when outcome/ownership unknown.
+  let health;
+  try{health=await io.health();}catch(error){
+   // A timeout is not death evidence. Only the fixed local helper can prove
+   // this caller owns the lease AND its native worker died with no listener.
+   const proof=await io.releaseDead?.();
+   if(!proof?.released_proven_dead_lease)throw error;
+   await io.connect();return {recovered:true,provenDeadWorkerReleased:true,businessActionReplayed:false};
+  }
   if(health.busy||health.pending)throw Error('EGO_RECOVERY_IN_FLIGHT: action may still be running; no restart or business replay');
   await io.stop();
  }
  await io.releaseDead();
  await io.connect();return {recovered:true,businessActionReplayed:false};
 }
-export async function releaseDeadOwned(file,privateFile,nonce){
- if(!nonce)return false;
- let raw,lease,worker;
- try{raw=await fs.readFile(file,'utf8');lease=JSON.parse(raw);worker=JSON.parse(await fs.readFile(privateFile,'utf8'));}catch(e){if(e.code==='ENOENT')return false;throw e;}
- if(lease.nonce!==nonce||lease.pid!==process.pid||worker.ownerNonce!==nonce||!Number.isSafeInteger(worker.pid)||worker.pid<1||!Number.isInteger(worker.port)||worker.port<1||worker.port>65535)return false;
- try{process.kill(worker.pid,0);return false;}catch(e){if(e.code!=='ESRCH')return false;}
- const refused=await new Promise(resolve=>{const s=net.createConnection({host:'127.0.0.1',port:worker.port});s.setTimeout(400);s.once('connect',()=>{s.destroy();resolve(false);});s.once('timeout',()=>{s.destroy();resolve(false);});s.once('error',e=>{s.destroy();resolve(e.code==='ECONNREFUSED');});});
- if(!refused||await fs.readFile(file,'utf8')!==raw)return false;
- // Only this bridge can own this nonce; the dead native worker cannot be
- // in flight. A live foreign lease is never released by this path.
- await fs.unlink(file);return true;
-}
-export async function diagnostics(cfg,runtime,endpoint){
+export async function diagnostics(cfg,runtime,endpoint,nonce){
  let lease;try{lease=JSON.parse(await fs.readFile(path.join(cfg.toolRoot,'ego','active-worker.lock'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
  let ownerAlive=false;if(lease?.pid)try{process.kill(lease.pid,0);ownerAlive=true;}catch{}
+ let worker;try{worker=JSON.parse(await fs.readFile(path.join(path.dirname(runtime),'worker-private.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
+ const matches=!!(lease&&worker&&worker.ownerNonce===lease.nonce);
+ let workerAlive=null;if(matches&&Number.isSafeInteger(worker.pid)&&worker.pid>0){try{process.kill(worker.pid,0);workerAlive=true;}catch(e){if(e.code==='ESRCH')workerAlive=false;}}
+ const ours=!!(lease&&nonce&&lease.pid===process.pid&&lease.nonce===nonce&&lease.runtime===runtime);
+ let vendorPresent=true;try{await fs.access(cfg.cli);}catch{vendorPresent=false;}
  let health=null;if(endpoint)try{const r=await fetch('http://127.0.0.1:'+endpoint.port+'/tool',{method:'POST',headers:{authorization:'Bearer '+endpoint.token},body:JSON.stringify({name:'__health',args:{}}),signal:AbortSignal.timeout(1500)});if(r.ok)health=await r.json();}catch{}
  return {runtimeOwned:true,leasePresent:!!lease,leaseSameRuntime:lease?.runtime===runtime,leaseOwnerAlive:ownerAlive,
-  endpointReachable:!!health,workerBusy:health?.busy??null,queuedOperations:health?.pending??null,
-  next:ownerAlive&&!endpoint?'A live lease may belong to another native client; no takeover.':'Use bounded recovery for an idle owned connection. Owner handles login/user-control/extension permission.',
+  leaseOwnedByThisBridge:ours,workerMetadataMatchesLease:matches,
+  workerServiceProcessAlive:workerAlive,nativeWorkerAlive:health?true:workerAlive===false?false:null,
+  servicePIDAloneDoesNotProveWorkerLiveness:true,
+  vendorExecutablePresent:vendorPresent,endpointChecked:!!endpoint,endpointReachable:endpoint?!!health:null,workerBusy:health?.busy??null,queuedOperations:health?.pending??null,
+  next:!vendorPresent?'Pinned Ego executable is missing; technical vendor binding repair is required. Do not ask Owner to close ordinary web pages.'
+   :ours&&workerAlive===false?'Our bridge is alive but its native worker died. Use bounded recovery; exact ownership, worker death and closed-port proof are required. No business replay.'
+   :ownerAlive&&!ours?'A different bridge owns the lease. Do not take over; PID liveness alone does not prove who is using a page.'
+   :'Use bounded recovery for an idle owned connection. Owner handles login/user-control/extension permission.',
   pageContentRead:false,businessActionDispatched:false};
 }

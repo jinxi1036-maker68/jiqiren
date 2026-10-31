@@ -1,5 +1,6 @@
 """Fixed local support RPC. No model, shell, arbitrary path or private-memory reader."""
-import hashlib,json,sys
+import hashlib,json,sys,os
+import psutil
 from pathlib import Path
 # -I deliberately ignores startup hooks; only this pinned owned directory is added.
 sys.path.insert(0,str(Path(__file__).resolve().parent))
@@ -88,9 +89,24 @@ def task_page(store,args):
             'next_offset':offset+limit if offset+limit<len(body) else None,
             'basis':'Private Agent notes; paginated to avoid oversized tool failures. Item state is an Agent report.'}
 
+def requesting_bridge_pid(cfg,root,runtime):
+    """Windows venv redirector is allowed only with the exact helper command."""
+    try:
+        p=psutil.Process(os.getppid());args=p.cmdline()
+        if (args and Path(args[0])==Path(cfg['employeeSupport']['python'])
+                and args[1:]==['-I','-B',str(root/'company_support.py'),str(runtime)]):
+            p=p.parent()
+        if p is None:return -1
+        args=p.cmdline()
+        if (args and Path(p.exe())==Path(cfg['node']) and Path(args[0])==Path(cfg['node'])
+                and args[1:]==[str(root/'ego/bridge.mjs'),str(runtime)]):return p.pid
+    except (OSError,psutil.Error,KeyError):pass
+    return -1
+
 def dispatch(cfg,root,request):
     s=support_config(cfg,root);op=request['op'];args=request.get('args',{})
-    if op=='lease':return {'released_proven_dead_lease':recover_dead_ego_lease(Path(request['runtime']),root)}
+    if op=='lease':return {'released_proven_dead_lease':recover_dead_ego_lease(Path(request['runtime']),root,
+        owned_nonce=args.get('owner_nonce'),parent_pid=requesting_bridge_pid(cfg,root,request['runtime']))}
     store=TaskStore(s['taskDatabase'])
     if op=='event':return store.browser_event(**args)
     if op=='notes':

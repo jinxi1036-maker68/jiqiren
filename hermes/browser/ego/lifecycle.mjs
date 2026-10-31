@@ -1,5 +1,26 @@
 // Connection lifecycle only. Never reclaim another owner or retry a browser action.
 import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+
+export async function requireVendorArtifact(file,expected){
+ let bytes;try{bytes=await fs.readFile(file);}catch(e){
+  if(e.code==='ENOENT')throw Object.assign(Error('Ego executable is missing at the pinned path; technical vendor binding needs repair, not closing user pages'),{code:'EGO_VENDOR_CLI_MISSING'});
+  throw e;
+ }
+ if(crypto.createHash('sha256').update(bytes).digest('hex')!==expected)throw Object.assign(Error('Ego executable differs from the validated build; no automatic version acceptance'),{code:'EGO_VENDOR_CLI_CHANGED'});
+}
+
+export async function acquireOwnedLease(file,runtime){
+ const nonce=crypto.randomBytes(20).toString('hex');
+ const lock=await fs.open(file,'wx').catch(e=>{
+  if(e.code==='EEXIST')throw Object.assign(Error('A browser bridge lease exists; diagnose owner and worker separately. An open web page alone does not prove ownership.'),{code:'EGO_BUSY'});
+  throw e;
+ });
+ try{await lock.writeFile(JSON.stringify({pid:process.pid,nonce,runtime}));}finally{await lock.close();}
+ // Assignment in the caller happens only after successful exclusive creation.
+ // An EEXIST retry must never overwrite the nonce of our earlier live lease.
+ return nonce;
+}
 
 export async function actionBatch(actions,before,act,observe){
  const receipts=[];

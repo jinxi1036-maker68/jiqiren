@@ -24,6 +24,15 @@ class EgoRuntimeTests(unittest.TestCase):
     def test_tampered_source_stops_dispatch(self):
         self.save();(self.root/'ego/worker.mjs').write_bytes(b'changed')
         with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
+    def test_missing_vendor_keeps_diagnostics_route_without_accepting_an_unpinned_build(self):
+        self.save();self.cli.unlink()
+        with self.assertRaises((RuntimeError,OSError)):validate_ego_runtime(self.runtime,self.root)
+        self.assertEqual(dispatch_target(self.runtime,self.root)[1],'ego/bridge.mjs')
+        self.cli.write_bytes(b'unapproved replacement')
+        with self.assertRaises(RuntimeError):validate_ego_runtime(self.runtime,self.root)
+        self.assertEqual(dispatch_target(self.runtime,self.root)[1],'ego/bridge.mjs')
+        (self.root/'ego/worker.mjs').write_bytes(b'tampered adapter')
+        with self.assertRaises(RuntimeError):dispatch_target(self.runtime,self.root)
     def test_legacy_route_remains_explicit(self):
         self.c=dict(route='playwright',toolRoot=str(self.root));self.save()
         self.assertEqual(dispatch_target(self.runtime,self.root)[1],'bridge.mjs')

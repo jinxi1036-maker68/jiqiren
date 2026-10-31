@@ -23,7 +23,7 @@ def dispatch_target(runtime, root):
     cfg = json.loads(runtime.read_text(encoding="utf-8"))
     if cfg.get('schema') in ('lingju.ego-browser.v1', 'lingju.ego-browser.v2', 'lingju.ego-browser.v3'):
         from ego_runtime import validate_ego_runtime
-        cfg = validate_ego_runtime(runtime, root)
+        cfg = validate_ego_runtime(runtime, root, require_vendor=False)
         return cfg, 'ego/bridge.mjs'
     if cfg.get('schema') == 'lingju.browser.work-entry.v1':
         from work_entry import validate_entry

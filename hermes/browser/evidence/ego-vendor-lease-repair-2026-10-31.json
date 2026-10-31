@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-31",
+  "completed_at_utc": "2026-10-31T05:45:24.842055+00:00",
+  "state": "vendor_binding_and_owned_dead_lease_repair_loaded",
+  "same_original_employee": true,
+  "confirmed_initial_evidence": {
+    "lease_owner_pid": 21996,
+    "lease_owner_was_descendant_of_original_gateway": true,
+    "registered_worker_pid": 14196,
+    "registered_worker_process_alive": false,
+    "old_port": 56311,
+    "OS_listener_present": false,
+    "old_cli_path_exists": false,
+    "old_pinned_version": "0.6.1.13",
+    "existing_installed_vendor_version": "0.6.2.5",
+    "who_initiated_vendor_version_change": "unknown",
+    "ordinary_open_page_holds_this_lease": "not supported; lease belongs to original bridge"
+  },
+  "fixes": [
+    "Acquire a new lease nonce only after exclusive lock creation succeeds; EEXIST cannot overwrite earlier ownership",
+    "Recover dead registered worker only with exact lease generation, same runtime, dead process and refused port or OS no-listener proof",
+    "A live bridge may release only its own dead worker: verified direct helper parent, including exact Windows venv redirector; no live foreign takeover",
+    "Health failure alone cannot justify recovery or business replay; own dead-worker proof is mandatory",
+    "Separate bridge PID, shared NodeService PID and authenticated worker endpoint in diagnostics; do not blame ordinary user pages",
+    "Keep diagnostics/notes/catalog available if vendor executable disappears; actual worker start still rejects missing/changed bytes",
+    "Bind current signed existing0.6.2.5 and installed v2.2.0 guide; do not silently install/upgrade or accept future versions"
+  ],
+  "checks": {
+    "Node": 40,
+    "Python": 56,
+    "distinct_total": 96,
+    "affected_Node_subset_repeated_after_label_fix": 15,
+    "native_CLI_zero_model_probe": true
+  },
+  "actual_MCP": {
+    "passed": true,
+    "new_models_by_Codex": 0,
+    "business_UI_actions": 0,
+    "version": "0.6.2.5",
+    "tool_count": 12,
+    "mode": "company-business",
+    "businessWritesEnabled": true,
+    "guardHealthy": true,
+    "spaceId": 3,
+    "configuredSpaceId": 2,
+    "original_H_W": true,
+    "actual_statistics_page_read": true,
+    "page_count": 1,
+    "page_list_passed": true,
+    "graceful_reconnect_same_space": true,
+    "actual_old_dead_lease_recovered": true,
+    "diagnostics_owned_bridge_and_worker_endpoint_distinguished": true,
+    "fault_injection": "not executed: safety check found shared Ego NodeService outside this bridge ancestry; did not terminate it",
+    "native_shared_service_killed": 0,
+    "production_page_body_reads_this_attempt": 1,
+    "production_page_body_reads_all_attempts": 2,
+    "Owner_welcome_window_closed_by_Codex": false,
+    "company_browser_app_upgraded_by_Codex": false,
+    "lease_exists_after_close": false,
+    "stderr_bytes": 0
+  },
+  "activation": {
+    "one_original_idle_graceful_reload": true,
+    "original_gateway_force_killed": false,
+    "READY_utc": "2026-10-31T05:44:42.756775+00:00",
+    "launcher_pid": 20164,
+    "native_child_pid": 19864,
+    "workspace": "%USERPROFILE%\\.hermes\\company-workspace",
+    "mode": "company-business",
+    "browser_tool_count": 12,
+    "platform_states": {
+      "wecom": "connected",
+      "wecom_callback": "disconnected",
+      "weixin": "connected",
+      "qqbot": "connected",
+      "feishu": "connected"
+    }
+  },
+  "files": {
+    "existing_owned_sources_updated": 9,
+    "sources_after_sha256": {
+      "company_support.py": "ca62424b2c46e4d54e9707e38160075f721bcc0972ef86a3121eed48e777cd7e",
+      "ego_lease.py": "7995359731d1530ff93c6a6e2eaf9f4b1e73f69af8e5a09f8f3512971e79f6d1",
+      "ego_runtime.py": "33a95071c947cd1e597a1a36d64749034e25bb303c8e04ad5006a990ffbbd39b",
+      "dispatch.py": "61240a0174df5f5e9f5ddb881d700606274a00976aa6a59f5db801cd96e3b3b3",
+      "ego_task.py": "2cc800ddda423168c980491ed0644f89d0194340484d46150dfc7c6d14d2f602",
+      "ego/bridge.mjs": "4af5b816696a6c79cf1aea1a25b469b82836fbb8d276912ba5cfe1062dff9476",
+      "ego/lifecycle.mjs": "96d76854b38dd0d83778cbce44e2027d80dad6b487908816ccf17c3e4cf0d0ea",
+      "ego/support.mjs": "4f13f77a06b7bfbae1c965f29cbf23be3690a2828dc5e18f3fef25229b98cda7",
+      "ego/policy.mjs": "4c0b423edc29e5f89117b23420175b6649d96a07b259c4860d320c1656e9aa4b"
+    },
+    "new_owned_guide_files": 1,
+    "vendor_executable_sha256": "ca4dfdbc0418d5dee71f48a4c6a8177143bfdccb040278ac6bbbe2745d9e069d",
+    "official_guide_sha256": "64dac3635d4df83e188aa7d91c59b2e663b35e4f87247b3f4878553764f463a3",
+    "runtime_sha256": "81c27594eaedb56680b0ca77f709b40d38ec8b82ed1edc97dd51d9b4d6e9af12",
+    "gate_sha256": "a64249f39fc14aafb63771eecf28d0e78c74c1c71dde7f55d0b97edc8ceda368",
+    "original_protected_unchanged": 59,
+    "private_preimages": 12,
+    "rollback": false,
+    "identity_memory_R3_config_credentials_model_MCP_voice_QQ_cron_old_profiles_written": false,
+    "Ego_app_installed_or_upgraded_by_Codex": false
+  },
+  "new_Hermes_messages_or_model_calls_by_Codex": 0,
+  "real_business_UI_writes_by_Codex": 0,
+  "limits": [
+    "Real Agent future task and live same-bridge crash recovery not newly model-tested",
+    "Extra crash injection aborted before termination because vendor worker runs in a shared NodeService; no shared service was killed",
+    "Read-only component checks did read the actual statistics page twice; no production page/body/employee data uploaded",
+    "Owner approved welcome-only window handoff; that window had already disappeared before claim, so Codex closed no user page",
+    "Future vendor version changes still need artifact/compatibility validation; missing/changed builds fail explicitly instead of requesting ordinary pages be closed",
+    "No inferred saved outcome for prior business tasks; real SN/platform validation issue is separate",
+    "Provider limits and existing wecom_callback issue are not fixed by this browser repair"
+  ],
+  "private_evidence_sha256": {
+    "native_CLI": "c7ca795907ce1b9feb69dd04452b890ce950e2012ea4acfef2c29bd353436417",
+    "actual_MCP": "6e23e73ec9b89bc709f380c54c19520d6c41d0dac64de229d81e6184475aae6f",
+    "aborted_extra_probe": "09dd73f731f98f1f919e5e9b35ef2e9c0b5d25a5ace4eaaafcd4d81ca0767649",
+    "fixed_entry_status": "13ef7c3fdf1eb6172354b6017fab0245a7cbcdaf0774f049b1b1f4318058e308"
+  }
+}

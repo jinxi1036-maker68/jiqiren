@@ -4,7 +4,7 @@ from pathlib import Path
 from safety import ordinary_path, sha256
 
 
-def validate_ego_runtime(runtime, root):
+def validate_ego_runtime(runtime, root, *, require_vendor=True):
     root = ordinary_path(root)
     runtime = ordinary_path(runtime)
     if root / 'runs' not in runtime.parents:
@@ -27,7 +27,10 @@ def validate_ego_runtime(runtime, root):
                 or grant.get('scope')!='all-company-browser-ui-business-actions'
                 or not grant.get('reference') or grant.get('highImpactRequiresSpecificOwnerTask') is not True):
             raise RuntimeError('Explicit Owner browser business authorization required')
-    for key, digest in [('cli', 'cliSha256'), ('officialGuide', 'guideSha256')]:
+    # Keep diagnostics/notes available when an external browser update removes
+    # the pinned executable. Actual worker start still checks its exact bytes.
+    ordinary_path(c['cli'],allow_missing=not require_vendor)
+    for key, digest in ([('cli', 'cliSha256')] if require_vendor else [])+[('officialGuide', 'guideSha256')]:
         if sha256(ordinary_path(c[key])) != c[digest]:
             raise RuntimeError('Pinned vendor artifact changed')
     sources = c.get('sourceSha256', {})

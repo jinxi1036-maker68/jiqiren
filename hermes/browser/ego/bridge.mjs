@@ -7,9 +7,9 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createRequire} from 'node:module';
 import {spawn} from 'node:child_process';
 import {toolsFor,supportEnabled,validateConfig,validateToolCall,workplaceState,guide,VERSION,isCompany,authority} from './policy.mjs';
-import {helper,verifySupport,boundedRecovery,diagnostics,releaseDeadOwned,workerCall} from './support.mjs';
+import {helper,verifySupport,boundedRecovery,diagnostics,workerCall} from './support.mjs';
 import {attachScreenshot} from '../image_result.mjs';
-import {singleFlight,releaseStoppedStart,operationResult,invalidInputResult,startupFailure} from './lifecycle.mjs';
+import {singleFlight,releaseOwnedLease,operationResult,invalidInputResult,startupFailure,acquireOwnedLease,requireVendorArtifact} from './lifecycle.mjs';
 const egoRoot=path.dirname(fileURLToPath(import.meta.url)),root=path.dirname(egoRoot);
 if(root!==path.join(os.homedir(),'.hermes','tools','company-browser'))throw Error('Original owned tool root required');
 const runtimeFile=path.resolve(process.argv[2]);
@@ -17,7 +17,7 @@ if(!runtimeFile.startsWith(path.join(root,'runs')+path.sep))throw Error('Owned r
 const cfg=validateConfig(JSON.parse(await fs.readFile(runtimeFile,'utf8')));
 if(cfg.toolRoot!==root||cfg.home!==path.join(os.homedir(),'.hermes')||cfg.workspace!==path.join(cfg.home,'company-workspace'))throw Error('Original identity/workspace required');
 const digest=async file=>crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex');
-if(await digest(cfg.cli)!==cfg.cliSha256||await digest(cfg.officialGuide)!==cfg.guideSha256)throw Error('Vendor bytes changed');
+if(await digest(cfg.officialGuide)!==cfg.guideSha256)throw Error('Installed guide bytes changed');
 const expectedSources=['bridge.mjs','worker.mjs','policy.mjs','native_guard.mjs','lifecycle.mjs','support.mjs',...(isCompany(cfg)?['extension_guard.mjs','table_readback.mjs','workplace.mjs']:[])];
 for(const [name,sha] of Object.entries(cfg.sourceSha256||{})){
  if(!expectedSources.includes(name)||await digest(path.join(egoRoot,name))!==sha)throw Error('Adapter bytes changed');
@@ -37,10 +37,11 @@ async function callWorker(name,args){
  return workerCall(endpoint,name,args);
 }
 const startWorker=singleFlight(async()=>{
+ let acquired=false;
  try{
-  lockNonce=crypto.randomBytes(20).toString('hex');
-  const lock=await fs.open(lockFile,'wx').catch(e=>{if(e.code==='EEXIST')throw Error('EGO_BUSY: another channel or a stale worker lock exists; no silent takeover');throw e;});
-  await lock.writeFile(JSON.stringify({pid:process.pid,nonce:lockNonce,runtime:runtimeFile}));await lock.close();
+  await requireVendorArtifact(cfg.cli,cfg.cliSha256);
+  lockNonce=await acquireOwnedLease(lockFile,runtimeFile);
+  acquired=true;
   child=undefined;
   await fs.unlink(privateFile).catch(e=>{if(e.code!=='ENOENT')throw e;});
   const boot=path.join(run,'boot-'+crypto.randomUUID()+'.mjs');
@@ -62,23 +63,30 @@ const startWorker=singleFlight(async()=>{
   if(!endpoint||!Number.isInteger(endpoint.port)||!/^[a-f0-9]{64}$/.test(endpoint.token)||endpoint.ownerNonce!==lockNonce)throw await startupFailure(path.join(run,'worker-startup-error.json'),lockNonce)||Object.assign(Error('Native Ego handshake missing or not owned by this start'),{code:'EGO_NATIVE_HANDSHAKE_FAILED'});
   heartbeat=setInterval(()=>{void callWorker('__ping',{}).catch(()=>{});},5000);heartbeat.unref();
  }catch(e){
-  endpoint=undefined;clearInterval(heartbeat);
-  await releaseStoppedStart(lockFile,lockNonce,child).catch(()=>{});
+  if(acquired){
+   endpoint=undefined;clearInterval(heartbeat);
+   // CLI exit is not proof its native descendant died. Release only a
+   // never-spawned attempt, or the independent exact dead-worker proof.
+   if(!child?.pid)await releaseOwnedLease(lockFile,lockNonce).catch(()=>{});
+   else await releaseDead().catch(()=>{});
+  }
   throw e;
  }
 });
 async function ensureWorker(){
  if(endpoint)return;
+ if(lockNonce)await releaseDead();
  return startWorker();
+}
+async function releaseDead(){
+ const proof=await helper(cfg,runtimeFile,'lease',lockNonce?{owner_nonce:lockNonce}:{});
+ if(proof.released_proven_dead_lease){endpoint=undefined;clearInterval(heartbeat);}
+ return proof;
 }
 async function recover(action){
  return boundedRecovery(action,{
   hasEndpoint:()=>!!endpoint,health:()=>callWorker('__health',{}),
-  releaseDead:async()=>{
-   const owned=await releaseDeadOwned(lockFile,privateFile,lockNonce);
-   if(owned){endpoint=undefined;clearInterval(heartbeat);}
-   return {releasedOwnedDeadWorker:owned,...await helper(cfg,runtimeFile,'lease')};
-  },
+  releaseDead,
   connect:async()=>{await ensureWorker();await callWorker('__health',{});},
   stop:async()=>{
    const r=await callWorker('__stop',{});if(r.error)throw Error(r.code);
@@ -99,7 +107,7 @@ server.setRequestHandler(CallToolRequestSchema,async request=>{
   try{validateToolCall(name,args);}catch(e){return invalidInputResult(e.message);}
   try{
    if(supportEnabled(cfg)){
-    if(name==='ego_browser_diagnostics')return operationResult(await diagnostics(cfg,runtimeFile,endpoint));
+    if(name==='ego_browser_diagnostics')return operationResult(await diagnostics(cfg,runtimeFile,endpoint,lockNonce));
     if(name==='ego_browser_recover')return operationResult(await recover(args.action));
     if(name==='company_task_notes'||name==='company_knowledge')return operationResult(await helper(cfg,runtimeFile,name==='company_knowledge'?'knowledge':'notes',args));
    }
@@ -148,7 +156,10 @@ async function close(){
  if(endpoint)await callWorker('__stop',{}).catch(()=>{});
  if(child&&child.exitCode===null)await Promise.race([new Promise(resolve=>child.once('exit',resolve)),new Promise(resolve=>setTimeout(resolve,7000))]);
  // No kill of browser/other services. Worker heartbeat timeout releases itself.
- if(lockNonce)await releaseStoppedStart(lockFile,lockNonce,child).catch(()=>{});
+ if(lockNonce){
+  if(!child?.pid)await releaseOwnedLease(lockFile,lockNonce).catch(()=>{});
+  else await releaseDead().catch(()=>{});
+ }
  await server.close().catch(()=>{});process.exit(0);
 }
 process.stdin.on('end',close);process.on('SIGTERM',close);process.on('SIGINT',close);

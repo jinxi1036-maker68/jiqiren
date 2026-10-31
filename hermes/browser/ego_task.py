@@ -23,7 +23,7 @@ class EgoReadonlyExercise:
             raise RuntimeError('Explicit same-employee daily Ego handoff required')
         root=ordinary_path(root);self.runtime=ordinary_path(g['runtime'])
         if sha256(self.runtime)!=g['runtime_sha256']:raise RuntimeError('Ego runtime changed')
-        self.cfg=validate_ego_runtime(self.runtime,root)
+        self.cfg=validate_ego_runtime(self.runtime,root,require_vendor=False)
         self.runtime_sha256=g['runtime_sha256']
         if self.cfg.get('employeeSupport',{}).get('ownerApproved') is True:
             self.expected_tools=EGO_TOOLS|{'ego_browser_diagnostics','ego_browser_recover','company_task_notes','company_knowledge'}

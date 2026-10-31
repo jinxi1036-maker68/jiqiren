@@ -698,6 +698,16 @@
       "live_activation_completed": true,
       "active_original_task_not_interrupted": true,
       "new_model_calls_by_Codex": 0
+    },
+    "browser_vendor_lease_repair": {
+      "date": "2026-10-31",
+      "status": "vendor_binding_and_owned_dead_lease_repair_loaded",
+      "evidence": "hermes/browser/evidence/ego-vendor-lease-repair-2026-10-31.json",
+      "report": "hermes/browser/reports/2026-10-31_EGO_VENDOR_AND_LEASE_REPAIR.md",
+      "same_original_employee": true,
+      "current_vendor_binding": "0.6.2.5",
+      "actual_statistics_read_and_same_space_reconnect": true,
+      "new_model_calls_by_Codex": 0
     }
   }
 }

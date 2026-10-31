@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {singleFlight,releaseOwnedLease,releaseStoppedStart} from '../ego/lifecycle.mjs';
+import {singleFlight,releaseOwnedLease,releaseStoppedStart,acquireOwnedLease,requireVendorArtifact} from '../ego/lifecycle.mjs';
 import {run} from '../ego/worker.mjs';
 async function removeFixture(dir,prefix){
  const resolved=path.resolve(dir),parent=path.resolve(os.tmpdir());
@@ -31,6 +31,29 @@ test('lease cleanup is nonce-owned and never releases a still-running child',asy
   assert.equal(await releaseOwnedLease(file,'owner'),false);
   await fs.writeFile(file,'malformed');assert.equal(await releaseOwnedLease(file,'owner'),false);
   assert.equal(await fs.readFile(file,'utf8'),'malformed');
+ }finally{await removeFixture(dir,'ego-lease-');}
+});
+
+test('a failed duplicate start preserves our original nonce and does not release a foreign lease',async()=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'ego-lease-')),file=path.join(dir,'lock');
+ try{
+  let nonce=await acquireOwnedLease(file,'synthetic-runtime');const first=nonce;
+  await assert.rejects(async()=>{nonce=await acquireOwnedLease(file,'synthetic-runtime');},e=>e.code==='EGO_BUSY');
+  assert.equal(nonce,first);assert.equal(JSON.parse(await fs.readFile(file,'utf8')).nonce,first);
+  assert.equal(await releaseOwnedLease(file,nonce),true);
+  await fs.writeFile(file,JSON.stringify({pid:process.pid,nonce:'another-owner',runtime:'same-runtime'}));
+  await assert.rejects(async()=>{nonce=await acquireOwnedLease(file,'synthetic-runtime');},e=>e.code==='EGO_BUSY');
+  assert.equal(nonce,first);assert.equal(await releaseOwnedLease(file,nonce),false);
+ }finally{await removeFixture(dir,'ego-lease-');}
+});
+
+test('missing or changed vendor binaries fail before acquiring a browser lease',async()=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'ego-lease-')),file=path.join(dir,'vendor.exe');
+ try{
+  await assert.rejects(requireVendorArtifact(file,'a'.repeat(64)),e=>e.code==='EGO_VENDOR_CLI_MISSING');
+  await fs.writeFile(file,'different executable');
+  await assert.rejects(requireVendorArtifact(file,'a'.repeat(64)),e=>e.code==='EGO_VENDOR_CLI_CHANGED');
+  assert.deepEqual(await fs.readdir(dir),['vendor.exe']);
  }finally{await removeFixture(dir,'ego-lease-');}
 });
 test('real worker startup exception releases its own lease without finishing a space',async()=>{

@@ -2,6 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {boundedRecovery,workerCall} from '../ego/support.mjs';
 import {toolsFor,validateToolCall} from '../ego/policy.mjs';
 import {actionBatch,operationResult} from '../ego/lifecycle.mjs';
+import {diagnostics} from '../ego/support.mjs';
+import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';
 test('support tools require an explicit company grant and expose no arbitrary code',()=>{
  assert.equal(toolsFor({schema:'lingju.ego-browser.v1'}).length,8);
  const offered=toolsFor({schema:'lingju.ego-browser.v3',employeeSupport:{ownerApproved:true}});assert.equal(offered.length,12);
@@ -19,6 +21,35 @@ test('unknown health fails closed, healthy owned idle reconnect has bounded orde
  await boundedRecovery('reconnect',{hasEndpoint:()=>true,health:async()=>({busy:false,pending:0}),stop:async()=>order.push('stop'),releaseDead:async()=>order.push('proof'),connect:async()=>order.push('connect')});
  assert.deepEqual(order,['stop','proof','connect']);
  await assert.rejects(boundedRecovery('reconnect',{hasEndpoint:()=>true,health:async()=>{throw Error('unknown');}}),/unknown/);
+});
+
+test('unreachable health recovers only after independent dead-owned-worker proof',async()=>{
+ const actions=[];
+ const result=await boundedRecovery('reconnect',{hasEndpoint:()=>true,health:async()=>{throw Error('unreachable');},
+  releaseDead:async()=>{actions.push('death-proof');return {released_proven_dead_lease:true};},
+  connect:async()=>actions.push('connect'),stop:async()=>actions.push('stop')});
+ assert.deepEqual(actions,['death-proof','connect']);assert.equal(result.businessActionReplayed,false);
+ let connects=0;
+ await assert.rejects(boundedRecovery('reconnect',{hasEndpoint:()=>true,health:async()=>{throw Error('unknown health');},
+  releaseDead:async()=>({released_proven_dead_lease:false}),connect:async()=>connects++}),/unknown health/);
+ assert.equal(connects,0);
+});
+
+test('diagnostics distinguish a live bridge from dead worker and missing vendor without blaming user pages',async()=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'ego-diagnostics-'));
+ try{
+  await fs.mkdir(path.join(dir,'ego'));const runtime=path.join(dir,'runtime.json');
+  await fs.writeFile(path.join(dir,'ego/active-worker.lock'),JSON.stringify({pid:process.pid,nonce:'ours',runtime}));
+  await fs.writeFile(path.join(dir,'worker-private.json'),JSON.stringify({pid:2147483646,ownerNonce:'ours'}));
+  const result=await diagnostics({toolRoot:dir,cli:path.join(dir,'missing.exe')},runtime,undefined,'ours');
+  assert.equal(result.leaseOwnerAlive,true);assert.equal(result.leaseOwnedByThisBridge,true);
+  assert.equal(result.nativeWorkerAlive,false);assert.equal(result.endpointChecked,false);assert.equal(result.endpointReachable,null);
+  assert.equal(result.vendorExecutablePresent,false);assert.match(result.next,/technical vendor binding repair/);
+  assert.doesNotMatch(result.next,/another native client/);
+ }finally{
+  assert.equal(path.dirname(path.resolve(dir)),path.resolve(os.tmpdir()));assert.ok(path.basename(dir).startsWith('ego-diagnostics-'));
+  assert.ok(!(await fs.lstat(dir)).isSymbolicLink());await fs.rm(dir,{recursive:true,force:true});
+ }
 });
 test('overlay failure returns fresh state and partial receipts, never runs the remaining save',async()=>{
  const performed=[];
