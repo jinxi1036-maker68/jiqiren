@@ -1,7 +1,7 @@
 {
   "date": "2026-10-31",
   "observed_at_utc": "2026-10-31T06:31:39.207211+00:00",
-  "state": "candidate_47_checks_passed_waiting_voice_protection_decision",
+  "state": "browser_efficiency_and_native_retry_loaded",
   "same_original_employee_H_W": true,
   "rate_investigation": {
     "observed_gateway_physical_requests": 25,
@@ -111,11 +111,10 @@
   "new_Hermes_model_messages_or_requests_by_Codex": 0,
   "production_business_writes_by_Codex": 0,
   "remaining": [
-    "Historical writer of the original two config changes remains unproved; voice source remains unknown despite Owner-approved current-on expectation",
-    "Original Desktop was not restarted or hot-patched; its already-imported function cache was not inspected. On-disk source and fresh gateway/interpreter are verified; existing Desktop live code reload is not claimed",
-    "Genuinely added/removed discovered models or other later config writes can still trigger protection; no automatic broad acceptance of config changes",
-    "Actual model provider entitlement/429 cause and end-to-end browser speed gain remain unverified",
-    "Existing ignored provider keys max_tokens/temperature/top_p warning and old wecom_callback retrying left unchanged; no expanded repairs"
+    "No new live model request; real next-message latency/success not yet measured",
+    "Upstream/intermediary/account450 connection capacity and enterprise entitlement remain unverified; no promise all429 disappear",
+    "Original proxy route, native retry counts,512K and business permissions retained",
+    "Old wecom_callback retrying remains independent"
   ],
   "before_authorized_repair": {
     "state": "efficiency_sources_loaded_but_protected_config_drift_blocks_final_acceptance",
@@ -161,7 +160,7 @@
       "SOUL_HERMES_MEMORY_USER_R3_Manifest_credentials_model_MCP_voice_QQ_cron_old_profiles_written_by_Codex": false
     }
   },
-  "latest_update_utc": "2026-10-31T06:43:08.913389+00:00",
+  "latest_update_utc": "2026-10-31T07:24:00.835402+00:00",
   "authorized_metadata_repair": {
     "status": "authorized_minimal_repair_loaded_and_protection_restored",
     "completed_at_utc": "2026-10-31T06:43:08.913389+00:00",
@@ -267,9 +266,9 @@
     ]
   },
   "activation": {
-    "READY": "2026-10-31T06:41:02.026614+00:00",
-    "native_pid": 30432,
-    "launcher": 7144,
+    "READY_utc": "2026-10-31T07:22:38.246617+00:00",
+    "native_pid": 23604,
+    "launcher": 21616,
     "platform_states": {
       "wecom": "connected",
       "wecom_callback": "retrying",
@@ -278,31 +277,27 @@
       "feishu": "connected"
     },
     "active_agents": 0,
-    "protected_matching": 59,
-    "observed_model_wire_starts_since_reload": 0,
-    "new_Codex_model_messages": 0,
-    "Owner_task_protection_blocked_by_voice_drift": true
+    "protected_records_total": 59,
+    "protected_records_matching": 59,
+    "blocking_changes": 0,
+    "native_auth_lifecycle_observations": [],
+    "browser_tools": 12,
+    "unknown429_extra_wait_seconds": 0,
+    "server_Retry_After_retained": true,
+    "config_or_voice_written": false,
+    "wire_starts_observed_since_reload": 0,
+    "new_model_messages_by_Codex": 0
   },
   "files": {
-    "original_files_updated_in_authorized_repair": 2,
-    "protected_records_matching": 58,
+    "scope": "latest native retry activation",
+    "owned_sources_updated": 3,
+    "protected_records_matching": 59,
     "protected_records_total": 59,
-    "protected_mismatch": [
-      "H/config.yaml"
-    ],
-    "source_and_config_sha256": {
-      "native_before": "90c0da5844c7fbedc704c0f72e8e989190ce8647c736f1ed7157686e314eb1a8",
-      "native_after": "a5a3659bcd8368576fa003e608f5172b95199d5b8d4af44c478cdddbd48aa38a",
-      "config_before": "054652022a71c4339cbc6a5120e7f85a35ae009785ec62253ce222a7a17c077a",
-      "config_after": "d664782e3fa797cf9b4d72325ac3c6bcb5233066a8db067b1416055b37e8a9c8",
-      "baseline_before": "001675fe6b8c099cb872699873fb590250975765e63a86ee917bcf26e75c7931",
-      "baseline_after": "e6bd984a76ede81589d5092bc451fb1366c7f2c504285f2928158064559e305d",
-      "gate_before": "8ceb4ae454557697ea7a021c5c157a01c9eaf74307c392bd274fd009f2cb1edc",
-      "gate_after": "2b78eef03454ad7442d73f58a901b0093ed9b979b259e041f2db13b327e470ba"
-    },
-    "private_preimages_this_repair": 5,
-    "rollback_performed": false,
-    "scope": "current predeployment check: voice drift; prior successful59/59 retained in before_native_retry"
+    "protected_mismatch": [],
+    "config_or_voice_written": false,
+    "config_sha256": "bfade640c05e6d2c4472531a1a92f2e5f2511bc1116dd004420985c261ebe1b0",
+    "private_preimages_this_activation": 6,
+    "rollback_performed": false
   },
   "before_native_retry": {
     "state": "browser_efficiency_loaded_and_config_protection_restored",
@@ -343,7 +338,7 @@
     }
   },
   "feishu_native_retry": {
-    "state": "candidate_47_checks_passed_waiting_voice_protection_decision",
+    "state": "loaded_native_retries_without_added60s",
     "date": "2026-10-31",
     "new_Hermes_model_requests_by_Codex": 0,
     "source_files": [
@@ -356,7 +351,7 @@
       "feishu_meter.py": "fbb47804112a5c3f0a0415e13afb931720a0ac56f2686168f0186a87ea29ccc8",
       "feishu_progress.py": "cff078a7f5d78eaa7cdabbb8a439d103a6f9fdf13ea26fac7d24d43b82d94385"
     },
-    "installed": false,
+    "installed": true,
     "checks": {
       "test_native_retry_parity": 6,
       "test_daily_pacing": 6,
@@ -388,14 +383,83 @@
       "voice_last_write_utc": "2026-10-31T06:47:44.007397+00:00",
       "context512K_still_present": true,
       "other58_records_unchanged": true,
-      "baseline_not_updated": true,
+      "baseline_not_updated": false,
       "cause_unknown": true,
-      "Owner_preference_confirmation_pending": true
+      "Owner_preference_confirmation_pending": false,
+      "resolution": "Owner explicitly approved keep current voice off, reconcile only config protection record, load fix while idle; config bytes not written"
     },
     "remaining": [
-      "450 connection-capacity root layer/account pool not established",
-      "Desktop also had450 at14:49; proxy difference exists but is not established cause",
-      "no live model task or end-to-end speed improvement verified; no installation/reload yet"
-    ]
+      "No new live model request; real next-message latency/success not yet measured",
+      "Upstream/intermediary/account450 connection capacity and enterprise entitlement remain unverified; no promise all429 disappear",
+      "Original proxy route, native retry counts,512K and business permissions retained",
+      "Old wecom_callback retrying remains independent"
+    ],
+    "before_activation": {
+      "state": "candidate_47_checks_passed_waiting_voice_protection_decision",
+      "blocker": {
+        "file": "H/config.yaml",
+        "semantic_change_only": "voice.auto_tts true→false",
+        "observed_sha256": "bfade640c05e6d2c4472531a1a92f2e5f2511bc1116dd004420985c261ebe1b0",
+        "voice_last_write_utc": "2026-10-31T06:47:44.007397+00:00",
+        "context512K_still_present": true,
+        "other58_records_unchanged": true,
+        "baseline_not_updated": true,
+        "cause_unknown": true,
+        "Owner_preference_confirmation_pending": true
+      }
+    },
+    "completed_at_utc": "2026-10-31T07:24:00.835402+00:00",
+    "activation": {
+      "READY_utc": "2026-10-31T07:22:38.246617+00:00",
+      "native_pid": 23604,
+      "launcher": 21616,
+      "platform_states": {
+        "wecom": "connected",
+        "wecom_callback": "retrying",
+        "weixin": "connected",
+        "qqbot": "connected",
+        "feishu": "connected"
+      },
+      "active_agents": 0,
+      "protected_records_total": 59,
+      "protected_records_matching": 59,
+      "blocking_changes": 0,
+      "native_auth_lifecycle_observations": [],
+      "browser_tools": 12,
+      "unknown429_extra_wait_seconds": 0,
+      "server_Retry_After_retained": true,
+      "config_or_voice_written": false,
+      "wire_starts_observed_since_reload": 0,
+      "new_model_messages_by_Codex": 0
+    },
+    "deployment": {
+      "owned_sources_updated": 3,
+      "source_sha256": {
+        "provider_pacing.py": "20b66cb5ef982ad11916c77d148b35076b2a764db34a39983ab9ec44ce94a5c2",
+        "feishu_meter.py": "fbb47804112a5c3f0a0415e13afb931720a0ac56f2686168f0186a87ea29ccc8",
+        "feishu_progress.py": "cff078a7f5d78eaa7cdabbb8a439d103a6f9fdf13ea26fac7d24d43b82d94385"
+      },
+      "private_preimages": 6,
+      "private_recovery_ACL_current_user_SYSTEM_only_verified": true,
+      "ordinary_handle_paths_verified": true,
+      "existing_handle_CAS_writes": true,
+      "config_or_voice_written": false,
+      "config_sha256_before_after": [
+        "bfade640c05e6d2c4472531a1a92f2e5f2511bc1116dd004420985c261ebe1b0",
+        "bfade640c05e6d2c4472531a1a92f2e5f2511bc1116dd004420985c261ebe1b0"
+      ],
+      "baseline_sha256_before": "e6bd984a76ede81589d5092bc451fb1366c7f2c504285f2928158064559e305d",
+      "baseline_sha256_after": "668f3e1ba82710042dc460cdd95523dd29fd106ba6a807d127c499f82ceb796a",
+      "only_config_protection_record_updated": true,
+      "other58_protection_records_unchanged": true,
+      "gate_sha256_before": "2b78eef03454ad7442d73f58a901b0093ed9b979b259e041f2db13b327e470ba",
+      "gate_sha256_after": "edc587bebe7dc9bfeca28f558ecab247eea372f894206a5c777d9c13861fe2d8",
+      "gate_only_daily_policy_three_source_pins_baseline_pin_changed": true,
+      "runtime_unchanged": true,
+      "one_idle_graceful_reload": true,
+      "force_kill": false,
+      "rollback": false,
+      "Desktop_restarted": false
+    }
   }
 }

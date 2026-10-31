@@ -711,7 +711,7 @@
     },
     "browser_efficiency": {
       "date": "2026-10-31",
-      "status": "candidate_47_checks_passed_waiting_voice_protection_decision",
+      "status": "browser_efficiency_and_native_retry_loaded",
       "report": "hermes/browser/reports/2026-10-31_BROWSER_EFFICIENCY.md",
       "evidence": "hermes/browser/evidence/browser-efficiency-2026-10-31.json",
       "actual_end_to_end_speed_gain": "not measured",
@@ -719,16 +719,19 @@
       "current_enterprise_RPM": "unverified; official dynamic console value",
       "provider429_resolved": false,
       "new_model_calls_by_Codex": 0,
-      "protected_status": "58/59 match; voice true→false pending Owner preference; no baseline update",
+      "protected_status": "59/59 match; Owner approved current voice off; config not written",
       "context_length": 524288,
-      "voice_auto_tts": true,
+      "voice_auto_tts": false,
       "native_catalogue_metadata_fix": "loaded in fresh interpreter/gateway; original Desktop live cache not claimed",
       "native_retry": {
-        "status": "candidate_47_checks_passed_waiting_voice_protection_decision",
+        "status": "loaded_native_retries_without_added60s",
         "checks": 47,
-        "installed": false,
+        "installed": true,
+        "READY_utc": "2026-10-31T07:22:38.246617+00:00",
         "new_model_calls": 0,
-        "blocker": "voice preference changed; awaiting explicit reconciliation"
+        "extra_unknown429_wait_seconds": 0,
+        "server_Retry_After_retained": true,
+        "upstream450_resolved": false
       }
     }
   }
