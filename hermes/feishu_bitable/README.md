@@ -10,10 +10,10 @@
 - 新增使用稳定的 `operation_key` 生成飞书 `client_token`；不明结果不自动重试。更新要求刚读到的字段旧值；不匹配即拒绝。更新前检查不能代替平台原子并发控制，遇并发写入仍需回读核实。
 - 财务、付款、工资等决定继续受 Owner 岗位授权约束；API 权限已开通不等于授权 Hermes 自行改写每项业务数据。
 
-## 接入步骤（尚未部署原 Hermes）
+## 接入方式
 
 1. 将 `client.py`、`server.py` 放到原 Hermes 的单一工具目录。
-2. 在原 `config.yaml` 的 `mcp_servers` 下增加一个注册项，使用原活动 Python：`python.exe -I -B server.py`；只向该进程传入获准 Base 标识，写入开关初始为 `0`。凭据不放入命令行、配置或 GitHub。
+2. 在原 `config.yaml` 的 `mcp_servers` 下增加一个注册项，使用已核对的本机 Python：`python.exe -I -B server.py`；只向该进程传入获准 Base 标识。凭据不放入命令行、配置或 GitHub。默认写入开关为 `0`；Owner 本轮要求读写一起接入后，本机部署实例设为 `1`。
 3. 零模型检查 MCP `list_tools`，随后用原应用身份只读列出数据表、字段和一页记录；核对原配置其他项和现有通道不变。
 4. 如 Owner 明确授予该 Base 的记录写入范围，再将写入开关设为 `1`，先在单独测试记录执行一次新增或更新并回读。不得用费用台账中的既有记录做试写。
 
@@ -27,3 +27,5 @@
 - 对 Owner 给出的 Base：列出数据表成功，读取单页记录成功；未输出记录内容。
 - 本地 MCP 握手、4 个只读工具注册和真实只读 `list_tables` 调用成功；单元测试使用合成响应，没有生产写入。
 - 以上不等于原 Hermes 已加载这组工具，也不等于生产写操作通过。
+
+本机部署及网关复核见 [`../reports/2026-11-01_FEISHU_BITABLE_CONNECTOR.md`](../reports/2026-11-01_FEISHU_BITABLE_CONNECTOR.md)。
