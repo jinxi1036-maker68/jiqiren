@@ -14,7 +14,7 @@ Owner 在 GitHub 自行创建 **fine-grained PAT**：仅选择 `jinxi1036-maker6
 
 ## 接入和回退
 
-在原 Hermes `mcp_servers` 中仅注册 `company_github_knowledge`，命令为原活动 Python `-B -u .../server.py`；Feishu 网关路由只给 Owner 单聊开放，浏览器任务中也可同时查知识。必须在受保护源文件哈希和配置基线同步后、原网关空闲时重载。回退删除新 MCP 注册项并恢复本轮 Feishu 路由改动，清除该 WinCred 条目；不动 SOUL、HERMES.md、MEMORY、USER、R3/Manifest、语音、QQ、浏览器或 Bitable 配置。
+在原 Hermes `mcp_servers` 中仅注册 `company_github_knowledge`，命令为原活动 Python `-I -B .../server.py`；Feishu 网关路由只给 Owner 单聊开放，浏览器任务中也可同时查知识。**先核对实际运行入口**：2026-11-03 观察到当前 Feishu 网关由旧安装目录启动、cwd 为 `.hermes`，并未加载受保护公司网关入口；该状态不能直接部署或声称 Owner 单聊隔离已生效。现有保护基线也与若干运行文件不一致，不得静默重置。需查明并恢复原正式入口后，在空闲时受控重载，验证工具收据、工作区和通道。回退删除新 MCP 注册项并恢复本轮 Feishu 路由改动，清除该 WinCred 条目；不动 SOUL、HERMES.md、MEMORY、USER、R3/Manifest、语音、QQ、浏览器或 Bitable 配置。
 
 ## 验收
 

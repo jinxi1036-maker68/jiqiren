@@ -176,6 +176,12 @@ class FeishuGatewayTests(unittest.TestCase):
             restore=install_runner_hooks(native,e,m,p,{'files':{}},binding,p)
             try:
                 runner=Runner();handler=runner._primary_message_handler()
+                group=types.SimpleNamespace(platform='feishu',chat_type='group',
+                                            user_id=source.user_id,chat_id=source.chat_id)
+                other=types.SimpleNamespace(platform='qq',chat_type='dm',
+                                            user_id=source.user_id,chat_id=source.chat_id)
+                self.assertEqual(runner._resolve_enabled_toolsets_for_source({},group,'feishu'),[])
+                self.assertEqual(runner._resolve_enabled_toolsets_for_source({},other,'qq'),['files'])
                 async def receive():
                     self.assertEqual(await handler(types.SimpleNamespace(text='你好',message_id='s0',source=source)),'native reply')
                     self.assertEqual(await handler(types.SimpleNamespace(text=PREFIX+'synthetic',message_id='s1',source=source)),'native reply')

@@ -166,18 +166,29 @@ class GitHubKnowledge:
     def refresh(self, force=False):
         if not force and self.commit and self.clock() - self.checked_at < 60:
             return self.commit
-        ref = self.transport("/git/ref/heads/main")
-        commit = ref["object"]["sha"]
+        try:
+            ref = self.transport("/git/ref/heads/main")
+            commit = ref["object"]["sha"]
+        except (KeyError, TypeError):
+            raise KnowledgeError("Invalid GitHub ref response") from None
         if not re.fullmatch(r"[0-9a-f]{40}", commit):
             raise KnowledgeError("Invalid main commit")
-        record = self.transport("/git/commits/" + commit)
-        tree = record["tree"]["sha"]
-        listing = self.transport("/git/trees/" + tree + "?recursive=1")
+        try:
+            record = self.transport("/git/commits/" + commit)
+            tree = record["tree"]["sha"]
+            listing = self.transport("/git/trees/" + tree + "?recursive=1")
+        except (KeyError, TypeError):
+            raise KnowledgeError("Invalid GitHub tree response") from None
+        if not re.fullmatch(r"[0-9a-f]{40}", tree):
+            raise KnowledgeError("Invalid GitHub tree SHA")
         if listing.get("truncated"):
             raise KnowledgeError("GitHub tree truncated; search refused")
-        files = {x["path"]: x for x in listing["tree"]
-                 if x.get("type") == "blob" and x.get("mode") == "100644"
-                 and _valid_path(x.get("path", "")) and x.get("size", 0) <= MAX_BLOB}
+        try:
+            files = {x["path"]: x for x in listing["tree"]
+                     if x.get("type") == "blob" and x.get("mode") == "100644"
+                     and _valid_path(x.get("path", "")) and x.get("size", 0) <= MAX_BLOB}
+        except (KeyError, TypeError):
+            raise KnowledgeError("Invalid GitHub tree entries") from None
         self.commit, self.files, self.checked_at = commit, files, self.clock()
         return commit
 
@@ -193,7 +204,10 @@ class GitHubKnowledge:
             result = self.transport("/git/blobs/" + sha)
             if result.get("encoding") != "base64" or result.get("sha") != sha:
                 raise KnowledgeError("GitHub blob metadata mismatch")
-            data = base64.b64decode(result["content"], validate=False)
+            try:
+                data = base64.b64decode(result["content"], validate=False)
+            except (KeyError, ValueError, TypeError):
+                raise KnowledgeError("Invalid GitHub blob response") from None
             if len(data) > MAX_BLOB:
                 raise KnowledgeError("Knowledge file exceeds read limit")
             digest = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
