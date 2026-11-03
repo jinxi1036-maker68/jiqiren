@@ -1,15 +1,15 @@
 {
   "schema_version": "robot_data_current_work_v1",
   "work_item_id": "WI-2026-10-livsyn-first-trial-prep",
-  "kind": "pre_trial_preparation",
+  "kind": "trial_operations",
   "status": "active",
-  "context_profile": "pre_trial_preparation",
-  "objective": "按灵生对接人认可的自建真实作业场景方式，完善平顶山三分区具体任务SOP，先完成小批采集、上传及质检反馈，在真实有效小时和费用条款可核实后再扩大10台及人员规模。",
+  "context_profile": "trial_operations",
+  "objective": "以实际运营的采集/上传/QA/结算为主线，核验现有约30台设备的真实有效产能与现金流、周口项城5台试操进度，按Owner预期有条件争取2026-11月底50台、2027年初100台；避免以设备持有数冒充有效产能或已签约订单。",
   "now": {
-    "date": "2026-10-25",
-    "phase": "首批灵生采集与QA、签约、回款仍需正式证据；Owner确认先稳定采集业务。2026-10-17 PR记录三人18小时原始采集为Owner报告而非官方QA。行政税务/社保与未来AI业务另存并行事项，AI试验暂缓。",
+    "date": "2026-11-03",
+    "phase": "Owner报告公司已有约30台设备、日常持续采集上传、与灵生合同签署并快递寄出、项城5台由合作团长试操；正式QA有效时长/结算到账、合同原件签章签收未在本轮独立核验。",
     "first_batch_device_target": 10,
-    "actual_devices_received": null,
+    "actual_devices_received": 30,
     "actual_workers_deployed": null,
     "proposed_trial_date": "2026-10-16（Owner希望启动少量试采；SOP/上传/计费仍待确认）",
     "accepted_organization_mode": "吴启蒙以书面消息明确认可自建小型真实作业工位、真实物料真实工序、受训采集员操作（conversation_confirmed）",
@@ -33,9 +33,63 @@
       "note": "不替代设备交付单、灵生后台正式质检或回款记录"
     },
     "recording_efficiency_history": "knowledge/reports/2026-10-25_BACKFILL_RECORDING_EFFICIENCY_2026-10-17.md",
-    "next_primary_gate_note": "2026-10-25 meeting adds immediate actual scene coverage survey due by Thursday and forecast +20 devices; no actual acceptance/delivery/QA evidence. Keep no premature expansion assurance.",
+    "next_primary_gate_note": "Owner报告30台设备和项城5台试操为近期最新进展，历史10台/30台模拟测算不能覆盖现状。新增设备前按所在地点、稳定上传、QA有效小时、回款和团长结算证据逐项核对；50台与100台是目标而非已实现产能。",
     "owner_latest_scene_requirement": "工厂80平已布局；130平客厅做超市；原主卧分拣提案因灵生暂不接受隐私分拣而停止；改研究无胶带、免一次性耗材的可循环装盒和内部周转任务；客户审核前不采购/施工。",
-    "latest_sop_handoff": "2026-10-25 all scene spreadsheets and full 33-task Hermes-readable V3 Markdown archived on GitHub main; client-facing V2 only, internal V3 draft. No customer submission, approval or production Hermes integration observed."
+    "latest_sop_handoff": "2026-10-25 all scene spreadsheets and full 33-task Hermes-readable V3 Markdown archived on GitHub main; client-facing V2 only, internal V3 draft. No customer submission, approval or production Hermes integration observed.",
+    "actual_devices_received_basis": "2026-11-03 Owner口述约30台已在公司业务范围，不是设备交付/运营后台独立证据",
+    "current_reported_device_inventory": {
+      "date": "2026-11-03",
+      "count_approx": 30,
+      "status": "owner_reported_in_business_possession",
+      "currently_producing_count": null,
+      "device_ownership": null,
+      "remaining_25_locations": "not_reported"
+    },
+    "xiangcheng_partner_pilot": {
+      "date": "2026-11-03",
+      "location": "河南周口项城",
+      "equipment_count": 5,
+      "reported_status": "placed_with_another_team_lead_and_trial_operations_started",
+      "partner_agreement": "not_verified",
+      "uploaded_hours": null,
+      "QA_accepted_hours": null,
+      "settlement_received": null,
+      "source": "Owner spoken report",
+      "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+    },
+    "partner_visitors_recent": {
+      "visit_date": "2026-11-02",
+      "count": null,
+      "status": "visited_and_considering",
+      "signed_partnerships": null,
+      "source": "Owner spoken report"
+    },
+    "livsyn_signed_contract_update": {
+      "report_date": "2026-11-03",
+      "owner_statement": "与北京公司合同已经签完；当日通过快递寄往北京",
+      "status": "owner_reports_signed_and_dispatched",
+      "actual_signed_pages_checked": false,
+      "courier_receipt_verified": false,
+      "counterparty_signature_if_required": "not independently verified",
+      "reference": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+    },
+    "recent_daily_operations": {
+      "status": "owner_reports_continuous_collection_and_uploading",
+      "raw_hours": null,
+      "uploaded_hours": null,
+      "accepted_hours": null,
+      "receipt": null
+    },
+    "expansion_targets": {
+      "date": "2026-11-03",
+      "end_of_november_2026_device_count": 50,
+      "increment_from_current_approx": 20,
+      "early_2027_device_count": 100,
+      "type": "owner_aspirational_nonbinding",
+      "growth_mode": "own_collection_and/or_external_group_leads",
+      "actual_procurement_or_binding_orders": "not_reported"
+    },
+    "latest_owner_business_update_report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
   },
   "project_lead_mode": {
     "enabled": true,
@@ -84,7 +138,7 @@
     "不得虚构正在运营工厂订单、真实缺陷样品来源、工作场景授权或已有项目业绩。",
     "不得用影响工人安全的方式满足拍摄要求；不强迫省略必要的专业防护。"
   ],
-  "next_action": "先由Owner核看V2对外33任务目录及V3内部逐步动作草案，场景和真实工序报灵生确认；按现场实际操作修订V3，未经灵生确认不提前采购布置；未来Hermes仅在授权下据最新版SOP起草任务。",
+  "next_action": "先整理30台设备实际位置与在用状态，单列项城5台试点；验证日采集/上传/客户QA有效小时和首笔结算及到账；核对已寄灵生合同最终签章/收件；按周跟踪11月底50台非约束目标，只有合格产能与现金流支撑时再投入。",
   "must_read": [
     "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "knowledge/SCENE_PIPELINE.json",
@@ -435,7 +489,8 @@
       "owner_reported": "LivSyn contract negotiation discusses CNY40/accepted hour tax-inclusive, 3pct VAT special invoice, device loan applicable with rental waived; user requested checkboxes in latest edited copy",
       "final_signed_agreement": "not_verified",
       "settlement_and_cash_received": "not_verified",
-      "next_gate": "check actually signed contract and monthly settlement confirmation"
+      "next_gate": "check actually signed contract and monthly settlement confirmation",
+      "later_update": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
     },
     "tax_and_invoicing": {
       "observed": "Henan e-tax e-invoice blue invoice access and draft page; CNY100000 displayed available invoice limit; owner selected 3pct and tax-inclusive project, CNY40 per accepted hour",
@@ -471,5 +526,11 @@
     },
     "priority_boundary": "continue actual collection→QA→settlement→payment evidence; no purchase or team-scale assumption; keep SOP candidates provisional",
     "operational_knowledge_sync": "repository files updated, local Hermes device runtime not independently synced"
+  },
+  "owner_operational_update_20261103_followup": {
+    "date": "2026-11-03",
+    "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
+    "priority": "latest_over_previous_2026-11-03_sync",
+    "summary": "owner now reports ~30 actual devices (5 at Xiangcheng trial), daily collection/uploads, signed LivSyn contract couriered, new interested partners visited, 50 by Nov-end and 100 early 2027 as aspirations."
   }
 }
