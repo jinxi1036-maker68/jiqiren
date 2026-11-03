@@ -30,7 +30,7 @@
 ## 四、记录状态
 
 - `current_reported_devices: approximately_30`
-- `xi angcheng_pilot_devices: 5`（实际机器字段用`xiangcheng_pilot_devices`）
+- `xiangcheng_pilot_devices: 5`
 - `other_interested_visitors: visited_and_considering_2026-11-02`
 - `contract: owner_reported_signed_and_courier_dispatched_2026-11-03`
 - `collection_and_uploading: owner_reports_ongoing_daily`
