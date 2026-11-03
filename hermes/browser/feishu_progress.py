@@ -15,6 +15,27 @@ PROGRESS_OPTIONS = {'first_notice_after_seconds': 30,
                     'interval_seconds': 30, 'io_timeout_seconds': 4,
                     'one_status_bubble': True, 'reasoning_or_arguments': False}
 
+NATIVE_RATE_LIMIT_REPLY='⏱️ The model provider is rate-limiting requests. Please wait a moment and try again.'
+
+
+def explain_native_rate_failure(result, turn):
+    """Explain only an exact native error with this live turn's last wire evidence.
+
+    A successful model's answer quoting the same sentence must remain unchanged.
+    No raw provider message, retry, task replay or business-success inference.
+    """
+    if not isinstance(result,str) or result!=NATIVE_RATE_LIMIT_REPLY:return result
+    info=turn.get('model_last_result') or {}
+    if info.get('status')!=429:return result
+    reasons={'reported_connection_capacity_limit':'模型接口报告连接数达到上限',
+             'reported_request_rate_limit':'模型接口报告请求频率限制',
+             'reported_token_rate_limit':'模型接口报告Token速率限制',
+             'explicit_quota_error':'模型接口报告额度限制'}
+    reason=reasons.get(info.get('category'),'模型接口拒绝了本次请求')
+    unknown='具体限制归属尚未确认' if info.get('category')=='reported_connection_capacity_limit' else '具体限额或账号权益尚待核实'
+    return (f'{reason}（HTTP 429），{unknown}。'
+            '本轮未取得最终答复；如已执行保存或创建，需先核实结果，避免重复提交。')
+
 
 def approved_progress(gate):
     value = gate.get('owner_progress')

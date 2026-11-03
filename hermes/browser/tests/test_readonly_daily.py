@@ -83,7 +83,7 @@ class DailyReadonlyTests(unittest.TestCase):
       self.assertEqual(await handler(types.SimpleNamespace(text=text,source=source)),'natural native answer')
      self.assertEqual(await handler(types.SimpleNamespace(text='/status',source=source)),'native status')
     asyncio.run(receive())
-    self.assertEqual(fresh,[]);self.assertEqual(calls,[['company_browser_simulation']]*2)
+    self.assertEqual(fresh,[]);self.assertEqual(calls,[['company_browser_simulation','company_github_knowledge']]*2)
     self.assertEqual(budget.status()['reserved_network_attempts'],70);self.assertFalse(budget.status()['armed'])
     self.assertEqual(native._current_max_iterations(),32)
    finally:restore()

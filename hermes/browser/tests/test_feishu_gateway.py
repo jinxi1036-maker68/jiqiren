@@ -187,7 +187,9 @@ class FeishuGatewayTests(unittest.TestCase):
                     self.assertEqual(await handler(types.SimpleNamespace(text='还在线吗',message_id='s6',source=source)),'native reply')
                     self.assertIn('不能',await handler(types.SimpleNamespace(text='/resume fresh',message_id='s7',source=source)))
                 asyncio.run(receive())
-                self.assertEqual(observed,[(False,[]),(True,['company_browser_simulation','vision']),(False,[])])
+                self.assertEqual(observed,[(False,['company_github_knowledge']),
+                                           (True,['company_browser_simulation','vision','company_github_knowledge']),
+                                           (False,['company_github_knowledge'])])
                 self.assertEqual(fresh,[(True,True)]);self.assertEqual(e.intake.count(),1)
                 self.assertEqual(b.status()['reserved_network_attempts'],1)
                 self.assertFalse(b.status()['armed'])
