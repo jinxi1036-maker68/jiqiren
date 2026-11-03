@@ -1,0 +1,404 @@
+{
+  "engine": "Microsoft Excel",
+  "version": "12.0",
+  "read_only": true,
+  "isolated_directory": true,
+  "updates_disabled": true,
+  "native_shape_checks": [
+    {
+      "width_pt": 186.0,
+      "row": 8,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 1,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 9,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 2,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 10,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 3,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 11,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 4,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 12,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 5,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 13,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 6,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 14,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 7,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 15,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 8,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 16,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 9,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 17,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 10,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 18,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 11,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 19,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 12,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 20,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 13,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 21,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 14,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 22,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 15,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 23,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 16,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 24,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 17,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 25,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 18,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 26,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 19,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 27,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 20,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 28,
+      "column": 5,
+      "sheet": "完整采购表",
+      "height_pt": 129.0,
+      "id": 21,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 6,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 1,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 7,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 2,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 8,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 3,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 9,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 4,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 10,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 5,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 12,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 6,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 13,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 7,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 14,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 8,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 16,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 9,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 17,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 10,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 18,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 11,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 20,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 12,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 21,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 13,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 22,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 14,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 23,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 15,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 24,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 16,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 25,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 17,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 26,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 18,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 27,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 19,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 28,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 20,
+      "embedded": true
+    },
+    {
+      "width_pt": 186.0,
+      "row": 29,
+      "column": 2,
+      "sheet": "看图采购",
+      "height_pt": 129.0,
+      "id": 21,
+      "embedded": true
+    }
+  ],
+  "pdf_exports": [
+    {
+      "file": "完整采购表_Excel离线打开预览.pdf",
+      "sheet": "完整采购表",
+      "bytes": 725421
+    },
+    {
+      "file": "看图采购_Excel离线打开预览.pdf",
+      "sheet": "看图采购",
+      "bytes": 702864
+    }
+  ],
+  "budget_low": 502.0,
+  "budget_high": 1899.0,
+  "external_workbook_links": 0,
+  "connection_count": 0,
+  "status": "PASS"
+}
