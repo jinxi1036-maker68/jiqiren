@@ -103,7 +103,7 @@
     "decision": "先有小批有效数据、审核反馈、第一笔实际结算与资金测算，再决定设备、人力扩张"
   },
   "latest_owner_business_terms": {
-    "status": "conversation_confirmed_pricing_not_signed",
+    "status": "owner_reports_final_signed_contract_equipment_waivers_and_3pct_vat_original_not_reexamined",
     "reference": "knowledge/reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md",
     "livsyn_data_price_cny_per_accepted_hour_inclusive_of_vat": 40,
     "b_captain_proposal_cny_per_accepted_hour_inclusive_of_vat": 30,
@@ -120,7 +120,8 @@
       "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
       "loss_and_damage_liability": "not established as waived; inspect contract",
       "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
-    }
+    },
+    "latest_financial_calculation": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
   },
   "self_operated_30_devices_scenario": {
     "status": "owner_requested_hypothetical_2026-10-25_not_actual_production",
@@ -172,10 +173,193 @@
     "partner": "北京灵生科技有限公司",
     "device_rent_cny_per_device_day": 0,
     "device_deposit_cny_per_device": 0,
-    "status": "owner_conversation_confirmed_not_yet_verified_against_signed_contract",
+    "status": "owner_explicitly_confirms_in_final_signed_contract_not_independently_viewed",
     "scope": "Upstream LivSyn-to-Lingju equipment terms; does not decide external Xiangcheng team lead conditions",
-    "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
+    "signed_contract_conflict_check": "Owner states final signed contract includes BOTH zero deposit and zero rent; earlier draft had deposit CNY1000 per device, now superseded. Original signed pages not independently viewed.",
     "loss_and_damage_liability": "not established as waived; inspect contract",
     "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+  },
+  "current_signed_agreement_terms_owner_confirmed_20261103": {
+    "recorded_by_owner": "2026-11-03",
+    "source": "Owner direct statement",
+    "evidence_status": "owner_explicitly_confirms_clauses_in_final_signed_contract_original_not_reexamined",
+    "equipment_rent_cny_per_device_per_day": 0,
+    "equipment_deposit_cny_per_device": 0,
+    "special_invoice_vat_rate": 0.03,
+    "upstream_customer_effective_hour_inclusive_cny": 40,
+    "worker_rate_per_valid_recorded_hour_cny": 18,
+    "worker_rate_per_invalid_recorded_hour_cny": 6,
+    "worker_rates_status": "owner_proposed_for_recruitment; actual labor compliance and settlement method to verify",
+    "important": "waived deposit reduces working capital, does not increase monthly operating profit directly; waived rent does reduce monthly operating cost",
+    "reference": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
+  },
+  "current_scenario_80pct_20261103": {
+    "date": "2026-11-03",
+    "authority": "owner_confirmed_terms_plus_scenario_assumptions",
+    "terms": {
+      "recorded_by_owner": "2026-11-03",
+      "source": "Owner direct statement",
+      "evidence_status": "owner_explicitly_confirms_clauses_in_final_signed_contract_original_not_reexamined",
+      "equipment_rent_cny_per_device_per_day": 0,
+      "equipment_deposit_cny_per_device": 0,
+      "special_invoice_vat_rate": 0.03,
+      "upstream_customer_effective_hour_inclusive_cny": 40,
+      "worker_rate_per_valid_recorded_hour_cny": 18,
+      "worker_rate_per_invalid_recorded_hour_cny": 6,
+      "worker_rates_status": "owner_proposed_for_recruitment; actual labor compliance and settlement method to verify",
+      "important": "waived deposit reduces working capital, does not increase monthly operating profit directly; waived rent does reduce monthly operating cost",
+      "reference": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
+    },
+    "acceptance_rate": 0.8,
+    "working_days_assumptions": [
+      26,
+      30
+    ],
+    "daily_raw_hours_per_device": [
+      5,
+      6
+    ],
+    "device_counts": [
+      30,
+      50,
+      100
+    ],
+    "scenarios": [
+      {
+        "devices": 30,
+        "daily_raw_hours_per_device": 5,
+        "days": 26,
+        "total_raw_hours": 3900,
+        "approved_hours_assuming_80pct": 3120,
+        "gross_customer_revenue_incl_vat_cny": 124800,
+        "worker_pay_cny": 60840,
+        "vat_3pct_cny": 3634.95,
+        "pre_overhead_surplus_cny": 60325.05
+      },
+      {
+        "devices": 30,
+        "daily_raw_hours_per_device": 6,
+        "days": 26,
+        "total_raw_hours": 4680,
+        "approved_hours_assuming_80pct": 3744,
+        "gross_customer_revenue_incl_vat_cny": 149760,
+        "worker_pay_cny": 73008,
+        "vat_3pct_cny": 4361.94,
+        "pre_overhead_surplus_cny": 72390.06
+      },
+      {
+        "devices": 50,
+        "daily_raw_hours_per_device": 5,
+        "days": 26,
+        "total_raw_hours": 6500,
+        "approved_hours_assuming_80pct": 5200,
+        "gross_customer_revenue_incl_vat_cny": 208000,
+        "worker_pay_cny": 101400,
+        "vat_3pct_cny": 6058.25,
+        "pre_overhead_surplus_cny": 100541.75
+      },
+      {
+        "devices": 50,
+        "daily_raw_hours_per_device": 6,
+        "days": 26,
+        "total_raw_hours": 7800,
+        "approved_hours_assuming_80pct": 6240,
+        "gross_customer_revenue_incl_vat_cny": 249600,
+        "worker_pay_cny": 121680,
+        "vat_3pct_cny": 7269.9,
+        "pre_overhead_surplus_cny": 120650.1
+      },
+      {
+        "devices": 100,
+        "daily_raw_hours_per_device": 5,
+        "days": 26,
+        "total_raw_hours": 13000,
+        "approved_hours_assuming_80pct": 10400,
+        "gross_customer_revenue_incl_vat_cny": 416000,
+        "worker_pay_cny": 202800,
+        "vat_3pct_cny": 12116.5,
+        "pre_overhead_surplus_cny": 201083.5
+      },
+      {
+        "devices": 100,
+        "daily_raw_hours_per_device": 6,
+        "days": 26,
+        "total_raw_hours": 15600,
+        "approved_hours_assuming_80pct": 12480,
+        "gross_customer_revenue_incl_vat_cny": 499200,
+        "worker_pay_cny": 243360,
+        "vat_3pct_cny": 14539.81,
+        "pre_overhead_surplus_cny": 241300.19
+      },
+      {
+        "devices": 30,
+        "daily_raw_hours_per_device": 5,
+        "days": 30,
+        "total_raw_hours": 4500,
+        "approved_hours_assuming_80pct": 3600,
+        "gross_customer_revenue_incl_vat_cny": 144000,
+        "worker_pay_cny": 70200,
+        "vat_3pct_cny": 4194.17,
+        "pre_overhead_surplus_cny": 69605.83
+      },
+      {
+        "devices": 30,
+        "daily_raw_hours_per_device": 6,
+        "days": 30,
+        "total_raw_hours": 5400,
+        "approved_hours_assuming_80pct": 4320,
+        "gross_customer_revenue_incl_vat_cny": 172800,
+        "worker_pay_cny": 84240,
+        "vat_3pct_cny": 5033.01,
+        "pre_overhead_surplus_cny": 83526.99
+      },
+      {
+        "devices": 50,
+        "daily_raw_hours_per_device": 5,
+        "days": 30,
+        "total_raw_hours": 7500,
+        "approved_hours_assuming_80pct": 6000,
+        "gross_customer_revenue_incl_vat_cny": 240000,
+        "worker_pay_cny": 117000,
+        "vat_3pct_cny": 6990.29,
+        "pre_overhead_surplus_cny": 116009.71
+      },
+      {
+        "devices": 50,
+        "daily_raw_hours_per_device": 6,
+        "days": 30,
+        "total_raw_hours": 9000,
+        "approved_hours_assuming_80pct": 7200,
+        "gross_customer_revenue_incl_vat_cny": 288000,
+        "worker_pay_cny": 140400,
+        "vat_3pct_cny": 8388.35,
+        "pre_overhead_surplus_cny": 139211.65
+      },
+      {
+        "devices": 100,
+        "daily_raw_hours_per_device": 5,
+        "days": 30,
+        "total_raw_hours": 15000,
+        "approved_hours_assuming_80pct": 12000,
+        "gross_customer_revenue_incl_vat_cny": 480000,
+        "worker_pay_cny": 234000,
+        "vat_3pct_cny": 13980.58,
+        "pre_overhead_surplus_cny": 232019.42
+      },
+      {
+        "devices": 100,
+        "daily_raw_hours_per_device": 6,
+        "days": 30,
+        "total_raw_hours": 18000,
+        "approved_hours_assuming_80pct": 14400,
+        "gross_customer_revenue_incl_vat_cny": 576000,
+        "worker_pay_cny": 280800,
+        "vat_3pct_cny": 16776.7,
+        "pre_overhead_surplus_cny": 278423.3
+      }
+    ],
+    "formula": "before_overhead_margin = devices * raw_hours_per_device_per_day * working_days * (0.8*40 - 0.8*18 - 0.2*6 - (0.8*40*3/103))",
+    "cost_boundary": "not net profit: excludes team lead arrangement, area, power, transport, management pay, recruitment, insurance, city tax surcharges, corporate income tax, idle days and bad debt",
+    "report": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
   }
 }
