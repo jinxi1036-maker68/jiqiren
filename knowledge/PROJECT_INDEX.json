@@ -82,13 +82,28 @@
       "partner": "北京灵生科技有限公司",
       "device_rent_cny_per_device_day": 0,
       "device_deposit_cny_per_device": 0,
-      "status": "owner_conversation_confirmed_not_yet_verified_against_signed_contract",
+      "status": "owner_explicitly_confirms_in_final_signed_contract_not_independently_viewed",
       "scope": "Upstream LivSyn-to-Lingju equipment terms; does not decide external Xiangcheng team lead conditions",
-      "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
+      "signed_contract_conflict_check": "2026-11-03 Owner confirms both waivers in final signed agreement; older draft superseded; signed original not reexamined.",
       "loss_and_damage_liability": "not established as waived; inspect contract",
       "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
     },
-    "latest_operational_cost_note": "Owner 2026-11-03 confirms Beijing LivSyn waived both rental and deposit; old 20/day rent and 1000/device deposit model is outdated; verify against final signed contract/valid supplement."
+    "latest_operational_cost_note": "Owner 2026-11-03 confirms Beijing LivSyn waived both rental and deposit; old 20/day rent and 1000/device deposit model is outdated; verify against final signed contract/valid supplement.",
+    "latest_contract_term_confirmation": {
+      "recorded_by_owner": "2026-11-03",
+      "source": "Owner direct statement",
+      "evidence_status": "owner_explicitly_confirms_clauses_in_final_signed_contract_original_not_reexamined",
+      "equipment_rent_cny_per_device_per_day": 0,
+      "equipment_deposit_cny_per_device": 0,
+      "special_invoice_vat_rate": 0.03,
+      "upstream_customer_effective_hour_inclusive_cny": 40,
+      "worker_rate_per_valid_recorded_hour_cny": 18,
+      "worker_rate_per_invalid_recorded_hour_cny": 6,
+      "worker_rates_status": "owner_proposed_for_recruitment; actual labor compliance and settlement method to verify",
+      "important": "waived deposit reduces working capital, does not increase monthly operating profit directly; waived rent does reduce monthly operating cost",
+      "reference": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
+    },
+    "latest_monthly_financial_scenario": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
