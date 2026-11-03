@@ -89,7 +89,19 @@
       "growth_mode": "own_collection_and/or_external_group_leads",
       "actual_procurement_or_binding_orders": "not_reported"
     },
-    "latest_owner_business_update_report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+    "latest_owner_business_update_report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
+    "current_upstream_equipment_terms": {
+      "date": "2026-11-03",
+      "source": "Owner explicit correction in conversation",
+      "partner": "北京灵生科技有限公司",
+      "device_rent_cny_per_device_day": 0,
+      "device_deposit_cny_per_device": 0,
+      "status": "owner_conversation_confirmed_not_yet_verified_against_signed_contract",
+      "scope": "Upstream LivSyn-to-Lingju equipment terms; does not decide external Xiangcheng team lead conditions",
+      "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
+      "loss_and_damage_liability": "not established as waived; inspect contract",
+      "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+    }
   },
   "project_lead_mode": {
     "enabled": true,
@@ -138,7 +150,7 @@
     "不得虚构正在运营工厂订单、真实缺陷样品来源、工作场景授权或已有项目业绩。",
     "不得用影响工人安全的方式满足拍摄要求；不强迫省略必要的专业防护。"
   ],
-  "next_action": "先整理30台设备实际位置与在用状态，单列项城5台试点；验证日采集/上传/客户QA有效小时和首笔结算及到账；核对已寄灵生合同最终签章/收件；按周跟踪11月底50台非约束目标，只有合格产能与现金流支撑时再投入。",
+  "next_action": "先整理30台设备实际位置与在用状态，单列项城5台试点；验证日采集/上传/客户QA有效小时和首笔结算及到账；核对已寄灵生合同最终签章/收件；按周跟踪11月底50台非约束目标，只有合格产能与现金流支撑时再投入。 优先核对最终签署合同/补充协议是否明确设备免押金、免租金（旧合同草稿曾保留每台1000元押金条款）。",
   "must_read": [
     "knowledge/26_LIVSYN_CONTROLLED_SCENES_TRIAL_PROGRESS_2026-10-15.md",
     "knowledge/SCENE_PIPELINE.json",
@@ -490,7 +502,19 @@
       "final_signed_agreement": "not_verified",
       "settlement_and_cash_received": "not_verified",
       "next_gate": "check actually signed contract and monthly settlement confirmation",
-      "later_update": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+      "later_update": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
+      "latest_owner_device_terms": {
+        "date": "2026-11-03",
+        "source": "Owner explicit correction in conversation",
+        "partner": "北京灵生科技有限公司",
+        "device_rent_cny_per_device_day": 0,
+        "device_deposit_cny_per_device": 0,
+        "status": "owner_conversation_confirmed_not_yet_verified_against_signed_contract",
+        "scope": "Upstream LivSyn-to-Lingju equipment terms; does not decide external Xiangcheng team lead conditions",
+        "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
+        "loss_and_damage_liability": "not established as waived; inspect contract",
+        "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+      }
     },
     "tax_and_invoicing": {
       "observed": "Henan e-tax e-invoice blue invoice access and draft page; CNY100000 displayed available invoice limit; owner selected 3pct and tax-inclusive project, CNY40 per accepted hour",
@@ -531,6 +555,7 @@
     "date": "2026-11-03",
     "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
     "priority": "latest_over_previous_2026-11-03_sync",
-    "summary": "owner now reports ~30 actual devices (5 at Xiangcheng trial), daily collection/uploads, signed LivSyn contract couriered, new interested partners visited, 50 by Nov-end and 100 early 2027 as aspirations."
+    "summary": "owner now reports ~30 actual devices (5 at Xiangcheng trial), daily collection/uploads, signed LivSyn contract couriered, new interested partners visited, 50 by Nov-end and 100 early 2027 as aspirations.",
+    "latest_upstream_cost_status": "owner reports LivSyn charges no equipment rent and no equipment deposit; check signed agreement because prior rental-waiver-only template had CNY1000/device deposit clause"
   }
 }
