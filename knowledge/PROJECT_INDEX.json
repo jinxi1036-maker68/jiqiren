@@ -75,7 +75,20 @@
       "early_2027": 100,
       "kind": "aspirational_nonbinding",
       "basis": "Owner conversation 2026-11-03"
-    }
+    },
+    "latest_upstream_equipment_terms": {
+      "date": "2026-11-03",
+      "source": "Owner explicit correction in conversation",
+      "partner": "北京灵生科技有限公司",
+      "device_rent_cny_per_device_day": 0,
+      "device_deposit_cny_per_device": 0,
+      "status": "owner_conversation_confirmed_not_yet_verified_against_signed_contract",
+      "scope": "Upstream LivSyn-to-Lingju equipment terms; does not decide external Xiangcheng team lead conditions",
+      "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
+      "loss_and_damage_liability": "not established as waived; inspect contract",
+      "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+    },
+    "latest_operational_cost_note": "Owner 2026-11-03 confirms Beijing LivSyn waived both rental and deposit; old 20/day rent and 1000/device deposit model is outdated; verify against final signed contract/valid supplement."
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
