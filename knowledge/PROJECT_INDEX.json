@@ -58,7 +58,15 @@
     "client_workbook_github": "knowledge/sop/client/2026-10-25_三场景三级分类任务目录_V2.xlsx",
     "hermes_internal_sop_github": "knowledge/sop/internal/2026-10-25_LINGJU_33_TASK_SOPS_HERMES_V3.md",
     "hermes_internal_workbook_github": "knowledge/sop/internal/2026-10-25_三场景33项完整内部SOP_V3.xlsx",
-    "sop_archival_status": "2026-10-25 five exact Excel binary files and V3 33-task 198-step Markdown are on main and verified; client V2 not submitted, internal V3 pending real-site revisions"
+    "sop_archival_status": "2026-10-25 five exact Excel binary files and V3 33-task 198-step Markdown are on main and verified; client V2 not submitted, internal V3 pending real-site revisions",
+    "latest_incremental_sync": "2026-11-03",
+    "latest_incremental_sync_report": "knowledge/reports/2026-11-03_OPERATIONS_STATE_SYNC.md",
+    "latest_incremental_sync_summary": "Owner recent progress: LivSyn draft negotiated for 3% and device rent waiver but final signed contract unverified; Henan e-invoice issuance flow reached draft and 3% selected but no confirmed invoice or filed tax return; Feishu expense multi-dimensional ledger reportedly configured; Hermes Feishu pairing approved in owner terminal screenshot, live end-to-end test pending; BOSS recruiting planned with owner proposed valid/invalid data pricing 18/6 CNY per recorded hour; actual hiring not verified.",
+    "latest_tax_progress": "2026-11-03: owner observed e-tax blue e-invoice drafting interface, available invoice quota and selected 3%; issued invoice and tax filing not verified; classification and actual applicable rate require checking.",
+    "latest_contract_status": "2026-11-03: owner discussed LivSyn 3% special invoice and free equipment rental terms in revised draft; no final signature/seal or accepted hours/payment proof in this update.",
+    "latest_hermes_feishu_status": "2026-11-03: pairing approve confirmed by owner terminal screenshot; Feishu two-way messages and operational finance sync still pending.",
+    "latest_recruitment_status": "2026-11-03: owner plans BOSS recruitment, proposed accepted/invalid capture duration compensation 18/6 CNY per hour; actual posting and employment terms not verified.",
+    "latest_expense_ledger_status": "2026-11-03: owner reports Feishu table created and fields configured; no independently verified records or Hermes automated ledger workflow."
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
