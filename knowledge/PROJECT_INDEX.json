@@ -4,8 +4,8 @@
   "project_name": "平顶山具身智能 / EGO 数据采集经营项目",
   "authority_branch": "main",
   "current": {
-    "date": "2026-10-25",
-    "phase": "PRE_TRIAL_PREPARATION",
+    "date": "2026-11-03",
+    "phase": "TRIAL_OPERATIONS_OWNER_REPORTED",
     "active_work_item_id": "WI-2026-10-livsyn-first-trial-prep",
     "primary_upstream": "北京灵生科技有限公司（LivSyn）",
     "target_city": "河南平顶山",
@@ -13,8 +13,8 @@
     "target_trial_start": "2026-10-16（Owner目标：首轮样本；正式可结算采集尚待具体任务SOP与上传质检路径确认）",
     "latest_readiness_review": "knowledge/reports/PINGDINGSHAN_READINESS_REVIEW_2026-10-11.md",
     "latest_evidence_id": "EV-PDS-XLSX-20261011",
-    "readiness": "Owner报告2026-10-15三处受控工位已准备、10-16内部演练；PR #18载Owner口述10-17三人合计18原始采集小时、可用10台，但平台QA有效小时、全部上传完成、正式合同及首笔回款无独立证据。继续先落实灵生真实采集—QA—结算—到账闭环，再决定扩张；30台自营/团长网络均有假设或未签约阶段边界。",
-    "latest_operational_update": "knowledge/history/2026-10-16_TO_2026-10-25_RECOVERED_DECISION_TRAIL.md",
+    "readiness": "Owner于2026-11-03报告约30台设备（5台在周口项城由另一团长试操），每日持续采集上传，灵生合同已签并快递寄出；对方最终签章/收件、QA有效小时、结算到账均尚无本次独立凭证。11月底50台与2027年初100台为理想规模目标，须区分设备数量与真实合格产能。",
+    "latest_operational_update": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
     "latest_partner_decision": "对方业务联系人认可自建真实工位组织方式；不等于具体SOP、所有场景或正式验收一概批准",
     "expansion_boundary": "杜振成在群中建议月底达100人；Owner明确不承诺，先验证有效数据与结算；20-30人仅为交流中的争取方向，不是达成产能或签约计划",
     "latest_admin_update": "knowledge/reports/2026-10-25_ADMIN_HR_FINANCE_RECONCILIATION.md",
@@ -60,13 +60,22 @@
     "hermes_internal_workbook_github": "knowledge/sop/internal/2026-10-25_三场景33项完整内部SOP_V3.xlsx",
     "sop_archival_status": "2026-10-25 five exact Excel binary files and V3 33-task 198-step Markdown are on main and verified; client V2 not submitted, internal V3 pending real-site revisions",
     "latest_incremental_sync": "2026-11-03",
-    "latest_incremental_sync_report": "knowledge/reports/2026-11-03_OPERATIONS_STATE_SYNC.md",
+    "latest_incremental_sync_report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
     "latest_incremental_sync_summary": "Owner recent progress: LivSyn draft negotiated for 3% and device rent waiver but final signed contract unverified; Henan e-invoice issuance flow reached draft and 3% selected but no confirmed invoice or filed tax return; Feishu expense multi-dimensional ledger reportedly configured; Hermes Feishu pairing approved in owner terminal screenshot, live end-to-end test pending; BOSS recruiting planned with owner proposed valid/invalid data pricing 18/6 CNY per recorded hour; actual hiring not verified.",
     "latest_tax_progress": "2026-11-03: owner observed e-tax blue e-invoice drafting interface, available invoice quota and selected 3%; issued invoice and tax filing not verified; classification and actual applicable rate require checking.",
     "latest_contract_status": "2026-11-03: owner discussed LivSyn 3% special invoice and free equipment rental terms in revised draft; no final signature/seal or accepted hours/payment proof in this update.",
     "latest_hermes_feishu_status": "2026-11-03: pairing approve confirmed by owner terminal screenshot; Feishu two-way messages and operational finance sync still pending.",
-    "latest_recruitment_status": "2026-11-03: owner plans BOSS recruitment, proposed accepted/invalid capture duration compensation 18/6 CNY per hour; actual posting and employment terms not verified.",
-    "latest_expense_ledger_status": "2026-11-03: owner reports Feishu table created and fields configured; no independently verified records or Hermes automated ledger workflow."
+    "latest_recruitment_status": "BOSS招聘正在准备/投放计划，正式发布和实际招录未核验；11月2日来访合作意向人士仍在考虑，未成交。",
+    "latest_expense_ledger_status": "2026-11-03: owner reports Feishu table created and fields configured; no independently verified records or Hermes automated ledger workflow.",
+    "latest_reported_device_count": 30,
+    "latest_xiangcheng_pilot_devices": 5,
+    "latest_contract_owner_report": "signed_and_courier_dispatched_2026-11-03; formal document and counterparty confirmation pending independent check",
+    "latest_expansion_goal": {
+      "end_2026_11": 50,
+      "early_2027": 100,
+      "kind": "aspirational_nonbinding",
+      "basis": "Owner conversation 2026-11-03"
+    }
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
@@ -126,5 +135,5 @@
     "lean_principle": "Owner批准：像培养一名自主员工一样用已有工具和自然语言为主；确实有重复能力缺口才写尽可能少的代码，不先造第二套系统",
     "current_evidence_caveat": "PR#12有原Hermes最小接入的PR证据、PR#15有原Desktop部分模拟能力证据；PR#20有QQ接入恢复尝试。均非正式灵生生产验收，且这些PR未合并main；状态需要重新查看Owner机器"
   },
-  "strategic_sequence_status": "最初通用路线的历史性阶段规划，不是截至2026-10-25确定要自营20/30/50台的实施计划；Owner曾先后讨论自营50台上限、自营10台上限/周边合作团队、30台自营纯测算。实际本阶段只依据已验证灵生采集QA结算和回款推进。"
+  "strategic_sequence_status": "Owner于2026-11-03提出新扩张意向：现约30台，11月底争取50台、2027年初争取100台，自营与合作团长均可能；只是理想目标，实际采购/协议/回购与合格数据现金流需后续核实。原10台试采及30台假设属历史记录，不等于现有设备的真实有效产能。"
 }
