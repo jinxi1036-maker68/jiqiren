@@ -107,7 +107,7 @@ class NativeAdapterChain(unittest.IsolatedAsyncioTestCase):
         await self.drain(lambda:len(self.adapter.deliveries)==2 and not self.adapter._active_sessions)
         self.assertEqual(self.truth['creates'],1);self.assertEqual([t['internal'] for t in self.turns],[False,True])
         self.assertTrue(all('不是Gate1A本机模拟' in t['prompt'] for t in self.turns))
-        self.assertTrue(all(t['tools']==['company_browser_simulation'] for t in self.turns))
+        self.assertTrue(all(t['tools']==['company_browser_simulation','company_github_knowledge'] for t in self.turns))
         self.assertEqual(self.c.store.list()[0]['status'],'completed');self.assertEqual(self.c.store.pending(),[])
     async def test_new_owner_input_at_native_ingress_invalidates_resume_before_dispatch(self):
         self.c.delays=(.1,.1,.1)

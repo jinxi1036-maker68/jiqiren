@@ -26,7 +26,7 @@ from safety import ordinary_path, sha256, check_snapshot
 from traffic_guard import install_traffic_guard
 from qq_chat import OrdinaryTrafficAudit
 from feishu_session_fence import resolve_native_session, local_session_command
-from feishu_progress import FeishuProgress, approved_progress
+from feishu_progress import FeishuProgress, approved_progress, explain_native_rate_failure
 
 
 def validate_gateway_handoff(gate):
@@ -104,16 +104,17 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
         if turn and turn.get('browser') and turn['live'].is_set():
             if not is_owner(source,binding):raise RuntimeError('Browser source changed')
             if turn.get('control'):return []
-            return list(getattr(exercise,'toolsets',TOOLSETS))
+            return list(dict.fromkeys([*getattr(exercise,'toolsets',TOOLSETS),
+                                       'company_github_knowledge']))
         if getattr(source.platform,'value',source.platform)=='feishu':
-            # Temporary exercise launcher: natural text replies continue, but
-            # a plain "continue" cannot reopen browser/business permissions.
-            return []
+            # The original Owner's DM may consult GitHub on demand. Groups and
+            # other people cannot borrow this company capability.
+            return ['company_github_knowledge'] if is_owner(source,binding) else []
         # The temporary simulation cannot be invoked as unmetered normal chat.
         # Other platforms keep their native tools except this test-only MCP.
         # No saved tool configuration is changed.
         return [t for t in old_tools(self,user_config,source,platform_key)
-                if t!='company_browser_simulation']
+                if t not in ('company_browser_simulation','company_github_knowledge')]
 
     def primary(self):
         async def native_handler(msg):return await old_handle(self,msg)
@@ -167,6 +168,11 @@ def install_runner_hooks(native, exercise, meter, out, baseline, binding, home, 
                         except Exception as exc:
                             event(out,'owner_progress_unavailable',error_type=type(exc).__name__)
                 result=await native_handler(msg)
+                explained=explain_native_rate_failure(result,turn) if not control else result
+                if explained!=result:
+                    event(out,'native_provider_failure_explained',status=429,
+                          category=(turn.get('model_last_result') or {}).get('category'))
+                result=explained
                 outcome='returned'
                 return result
             except asyncio.CancelledError:

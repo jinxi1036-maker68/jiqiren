@@ -176,6 +176,12 @@ class FeishuGatewayTests(unittest.TestCase):
             restore=install_runner_hooks(native,e,m,p,{'files':{}},binding,p)
             try:
                 runner=Runner();handler=runner._primary_message_handler()
+                group=types.SimpleNamespace(platform='feishu',chat_type='group',
+                                            user_id=source.user_id,chat_id=source.chat_id)
+                other=types.SimpleNamespace(platform='qq',chat_type='dm',
+                                            user_id=source.user_id,chat_id=source.chat_id)
+                self.assertEqual(runner._resolve_enabled_toolsets_for_source({},group,'feishu'),[])
+                self.assertEqual(runner._resolve_enabled_toolsets_for_source({},other,'qq'),['files'])
                 async def receive():
                     self.assertEqual(await handler(types.SimpleNamespace(text='你好',message_id='s0',source=source)),'native reply')
                     self.assertEqual(await handler(types.SimpleNamespace(text=PREFIX+'synthetic',message_id='s1',source=source)),'native reply')
@@ -187,7 +193,9 @@ class FeishuGatewayTests(unittest.TestCase):
                     self.assertEqual(await handler(types.SimpleNamespace(text='还在线吗',message_id='s6',source=source)),'native reply')
                     self.assertIn('不能',await handler(types.SimpleNamespace(text='/resume fresh',message_id='s7',source=source)))
                 asyncio.run(receive())
-                self.assertEqual(observed,[(False,[]),(True,['company_browser_simulation','vision']),(False,[])])
+                self.assertEqual(observed,[(False,['company_github_knowledge']),
+                                           (True,['company_browser_simulation','vision','company_github_knowledge']),
+                                           (False,['company_github_knowledge'])])
                 self.assertEqual(fresh,[(True,True)]);self.assertEqual(e.intake.count(),1)
                 self.assertEqual(b.status()['reserved_network_attempts'],1)
                 self.assertFalse(b.status()['armed'])

@@ -171,6 +171,6 @@ class NativeGatewayHook(unittest.IsolatedAsyncioTestCase):
     bad=types.SimpleNamespace(text='resume',source=source,internal=True,metadata={'lingju_task_resume':{'task_id':pending['id'],'ticket':'wrong'}})
     self.assertIsNone(await runner._handle_message(bad));self.assertEqual(len(called),1)
     bad.metadata['lingju_task_resume']['ticket']=ticket
-    self.assertEqual(await runner._handle_message(bad),'native answer');self.assertEqual(called,[['company_browser_simulation']]*2)
+    self.assertEqual(await runner._handle_message(bad),'native answer');self.assertEqual(called,[['company_browser_simulation','company_github_knowledge']]*2)
     self.assertFalse(audit.status()['armed'])
    finally:restore();await c.close()

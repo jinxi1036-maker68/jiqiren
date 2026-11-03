@@ -118,7 +118,11 @@ class BrowserPacer(ModelPacer):
     def started(self, family):
         super().started(family)
         self._progress_family.known=family in {'chat_completions','responses','messages','generate_content'}
-        if self._progress_family.known:self._progress('request_started')
+        if self._progress_family.known:
+            turn=CURRENT_TURN.get()
+            if turn and turn.get('meter') is self.budget and turn['live'].is_set():
+                turn['model_last_result']={'request_ordinal':self.ordinal,'status':None,'category':None}
+            self._progress('request_started')
 
     def response(self, response):
         super().response(response)
@@ -127,13 +131,16 @@ class BrowserPacer(ModelPacer):
             turn=CURRENT_TURN.get()
             if turn and turn.get('meter') is self.budget and turn['live'].is_set():
                 self.observation['progress_turn']=turn
+                self.observation['model_request_ordinal']=self.ordinal
+                turn['model_last_result']={'request_ordinal':self.ordinal,'status':response.status_code,'category':None}
 
     def stream_finished(self, observation, fully_iterated):
         if observation is None or observation['finished']:return
         category,_=self.error_classification(observation['status'],observation['error_prefix'])
         turn=observation.get('progress_turn')
         super().stream_finished(observation,fully_iterated)
-        if category and turn and turn['live'].is_set():
+        if category and turn and turn['live'].is_set() and (turn.get('model_last_result') or {}).get('request_ordinal')==observation.get('model_request_ordinal'):
+            turn['model_last_result']['category']=category
             progress=turn.get('progress')
             if progress is not None:
                 try:progress.note('provider_error',status=observation['status'],category=category)
