@@ -202,7 +202,9 @@
     ],
     "enterprise_login_latest": "2026-10-24 Owner已确认成功进入河南电子税务局企业账户",
     "salary_and_veteran_track": "Owner confirms two eligible veteran-status claims; both say no previous preference use; plans real work contracts from 2026-10-25, roles operations lead and field lead, 5000 CNY gross/month each, salary on 10th of next month; contracts draft only, company social account not confirmed; Owner paused online setup pending offline inquiry",
-    "tax_savings_track": "Any veteran deduction and VAT/CIT scenarios remain estimates, no preferential deduction actually approved or claimed"
+    "tax_savings_track": "Any veteran deduction and VAT/CIT scenarios remain estimates, no preferential deduction actually approved or claimed",
+    "latest_status_update": "knowledge/reports/2026-11-03_OPERATIONS_STATE_SYNC.md",
+    "previous_snapshot_date": "2026-10-25"
   },
   "partner_contract_review": {
     "date": "2026-10-24",
@@ -210,7 +212,8 @@
     "first_question": "部分Episode只有Bad片段时仅扣Bad并保留合格时长结算？",
     "partner_answer": "not_observed",
     "negotiation_rule": "一条短消息一次只谈一个问题",
-    "report": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md"
+    "report": "knowledge/reports/2026-10-24_LIVSYN_CONTRACT_QA.md",
+    "latest_owner_status_update": "knowledge/reports/2026-11-03_OPERATIONS_STATE_SYNC.md"
   },
   "parallel_ai_ego_data_services": {
     "decision_date": "2026-10-25",
@@ -421,5 +424,52 @@
     "github_markdown": "knowledge/sop/internal/2026-10-25_LINGJU_33_TASK_SOPS_HERMES_V3.md",
     "workbook_storage": "GitHub main actual binary XLSX plus full MD source; ChatGPT Library separate backup; no production Hermes import/deployment implied",
     "next_gate": "Owner and on-site lead review V3 by F/S/W task ID, amend to match real task before Hermes uses it; client receives only V2 after Owner authorizes sending."
+  },
+  "owner_operational_update_20261103": {
+    "date": "2026-11-03",
+    "source": "Owner recent conversation and owner-shared screenshots; formal artifacts still needed",
+    "evidence_class": "owner_report_and_observed_screenshot_not_final_transaction_receipt",
+    "status": "partially_confirmed_pending_production_proof",
+    "report": "knowledge/reports/2026-11-03_OPERATIONS_STATE_SYNC.md",
+    "contract": {
+      "owner_reported": "LivSyn contract negotiation discusses CNY40/accepted hour tax-inclusive, 3pct VAT special invoice, device loan applicable with rental waived; user requested checkboxes in latest edited copy",
+      "final_signed_agreement": "not_verified",
+      "settlement_and_cash_received": "not_verified",
+      "next_gate": "check actually signed contract and monthly settlement confirmation"
+    },
+    "tax_and_invoicing": {
+      "observed": "Henan e-tax e-invoice blue invoice access and draft page; CNY100000 displayed available invoice limit; owner selected 3pct and tax-inclusive project, CNY40 per accepted hour",
+      "tax_code_and_tax_rate_classification": "requires_official_verification_for_actual_data_collection_service",
+      "issued_invoice": "not_verified",
+      "tax_return_filed": "not_verified",
+      "next_gate": "verify goods/services classification and applicable small taxpayer rate, then final issue receipt and filing period"
+    },
+    "expense_ledger": {
+      "chosen_solution": "Feishu multi-dimensional table",
+      "setup": "owner_reports_table_created_and_fields_configured",
+      "actual_expense_backfill": "not_verified",
+      "Hermes_automated_import": "not_verified",
+      "next_gate": "first authorized small-sample deduplication, evidence attachment and draft entry with human review"
+    },
+    "hermes_feishu": {
+      "observed": "owner supplied terminal screenshot showing Hermes feishu pairing approved",
+      "pairing_authorization": "observed_approved_in_terminal",
+      "live_message_exchange": "not_verified",
+      "continuous_bot_operations": "not_verified",
+      "financial_ledger_access": "not_verified",
+      "next_gate": "two-way Feishu message verification then authorized trial entry"
+    },
+    "recruitment": {
+      "channel": "BOSS Zhipin",
+      "status": "owner_preparing_publication_not_verified_published",
+      "role": "AI robot first-person data collection worker",
+      "owner_proposed_valid_data_pay_cny_per_recorded_hour": 18,
+      "owner_proposed_invalid_data_pay_cny_per_recorded_hour": 6,
+      "exact_terms": "recorded-data outcome pricing proposal, not a verified lawful hourly employment-wage arrangement",
+      "on_boarding_and_contracts": "not_verified",
+      "next_gate": "verify posting and clarify pay conditions/work relationship in advance"
+    },
+    "priority_boundary": "continue actual collection→QA→settlement→payment evidence; no purchase or team-scale assumption; keep SOP candidates provisional",
+    "operational_knowledge_sync": "repository files updated, local Hermes device runtime not independently synced"
   }
 }
