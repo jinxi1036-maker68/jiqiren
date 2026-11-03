@@ -1,6 +1,6 @@
 {
   "schema_version": "people_pipeline_v1",
-  "updated_at": "2026-10-11",
+  "updated_at": "2026-11-03",
   "target_before_training": {
     "adult_candidates": 15,
     "first_trial_collectors": 10,
@@ -199,5 +199,27 @@
       "basis": "两个工作表姓名及电话一致",
       "action": "核实场景联络与采集排班的时间兼容性"
     }
-  ]
+  ],
+  "owner_partnership_growth_20261103": {
+    "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
+    "observed_external_trial": {
+      "location": "河南周口项城",
+      "devices": 5,
+      "role": "other_cooperating_team_lead",
+      "status": "trial_started_owner_reported",
+      "identity_and_binding_agreement": "not_recorded"
+    },
+    "prospective_collaborators": {
+      "visit_date": "2026-11-02",
+      "count": null,
+      "status": "visited_and_considering",
+      "signed_count": null
+    },
+    "recruitment": {
+      "platform": "BOSS直聘",
+      "status": "advertising_recruitment_in_progress_per_owner; actual_posting_not_verified",
+      "worker_count_added_from_this_update": 0
+    },
+    "note": "不能将考虑合作、咨询、试操团长等同已签约团长或正式员工。原成人候选名单是历史记录，不能据此推定当前人员到岗。"
+  }
 }
