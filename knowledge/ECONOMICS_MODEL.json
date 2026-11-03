@@ -13,14 +13,21 @@
       "key": "device_rent_per_day",
       "value": 20,
       "unit": "CNY/device/day",
-      "status": "conversation_confirmed"
+      "status": "superseded_historical_earlier_terms",
+      "superseded_on": "2026-11-03",
+      "superseded_by": "current_upstream_device_terms_20261103",
+      "original_value_retained_for_history": true,
+      "note": "旧方案留档。Owner已明确报告北京灵生现在免租金且免押金，最终合同条文待核查。"
     },
     {
       "key": "device_deposit",
       "value": 1000,
       "unit": "CNY/device",
-      "status": "conversation_confirmed",
-      "note": "设备无损坏时全额退"
+      "status": "superseded_historical_earlier_terms",
+      "note": "设备无损坏时全额退；旧方案留档。Owner已明确报告北京灵生现在免租金且免押金，最终合同条文待核查。",
+      "superseded_on": "2026-11-03",
+      "superseded_by": "current_upstream_device_terms_20261103",
+      "original_value_retained_for_history": true
     },
     {
       "key": "daily_effective_hour_target",
@@ -52,7 +59,11 @@
     {
       "key": "rent_start",
       "value": "双方明确交付起始日后开始计租",
-      "status": "conversation_confirmed"
+      "status": "superseded_historical_earlier_terms",
+      "superseded_on": "2026-11-03",
+      "superseded_by": "current_upstream_device_terms_20261103",
+      "original_value_retained_for_history": true,
+      "note": "旧方案留档。Owner已明确报告北京灵生现在免租金且免押金，最终合同条文待核查。"
     },
     {
       "key": "task_dispatch",
@@ -97,7 +108,19 @@
     "livsyn_data_price_cny_per_accepted_hour_inclusive_of_vat": 40,
     "b_captain_proposal_cny_per_accepted_hour_inclusive_of_vat": 30,
     "b_captain_device_daily_rent_cny": 20,
-    "caveat": "B团长仅为未签约独立业务方案，不能混入自营方案；历史PR#17的25元日租是10/18版本提案，已不是10/24最新口头报价"
+    "caveat": "B团长仅为未签约独立业务方案，不能混入自营方案；历史PR#17的25元日租是10/18版本提案，已不是10/24最新口头报价",
+    "latest_equipment_terms": {
+      "date": "2026-11-03",
+      "source": "Owner explicit correction in conversation",
+      "partner": "北京灵生科技有限公司",
+      "device_rent_cny_per_device_day": 0,
+      "device_deposit_cny_per_device": 0,
+      "status": "owner_conversation_confirmed_not_yet_verified_against_signed_contract",
+      "scope": "Upstream LivSyn-to-Lingju equipment terms; does not decide external Xiangcheng team lead conditions",
+      "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
+      "loss_and_damage_liability": "not established as waived; inspect contract",
+      "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
+    }
   },
   "self_operated_30_devices_scenario": {
     "status": "owner_requested_hypothetical_2026-10-25_not_actual_production",
@@ -121,7 +144,15 @@
       63000,
       83250
     ],
-    "note": "情景假设全部设备每月运行30天；不代表实际生产、人员合法工资安排或实际有效率。未扣增值税/所得税、场地、管理、保险及其他成本。"
+    "note": "情景假设全部设备每月运行30天；不代表实际生产、人员合法工资安排或实际有效率。未扣增值税/所得税、场地、管理、保险及其他成本。 本模型所用设备租金已过时；应使用current_upstream_device_terms_20261103，不能将旧范围当现实预期。",
+    "historical_cost_warning_20261103": "2026-10-25 scenario used old CNY20 per device per day rent and CNY1000 deposit; do not use as live cash-flow estimate; on Owner's 2026-11-03 terms zero upstream rent and deposit, recompute other real costs when actual QA/receipts exist.",
+    "historical_device_rent_cny_month": 18000,
+    "historical_device_rent_cny_month_status": "superseded_by_owner_latest_upstream_rent_zero",
+    "historical_receipts_minus_labor_minus_rent_before_taxes_other_costs_cny_range": [
+      63000,
+      83250
+    ],
+    "historical_profit_range_status": "superseded_historical_simulation_not_current"
   },
   "latest_owner_inventory_and_scale_targets": {
     "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md",
@@ -134,5 +165,17 @@
     "verified_accepted_daily_hours": null,
     "verified_receipts": null,
     "model_safety": "Historical 30-device model remains hypothetical 6h/device/day, 75% accepted, 30 days/month; actual 30-device possession does NOT validate assumed production, costs or profitability."
+  },
+  "current_upstream_device_terms_20261103": {
+    "date": "2026-11-03",
+    "source": "Owner explicit correction in conversation",
+    "partner": "北京灵生科技有限公司",
+    "device_rent_cny_per_device_day": 0,
+    "device_deposit_cny_per_device": 0,
+    "status": "owner_conversation_confirmed_not_yet_verified_against_signed_contract",
+    "scope": "Upstream LivSyn-to-Lingju equipment terms; does not decide external Xiangcheng team lead conditions",
+    "signed_contract_conflict_check": "Earlier checkbox-only draft selected rental waiver but retained CNY1000/device equipment deposit clause; must inspect final signed/returned contract or written signed supplement before treating deposit waiver as legally documented",
+    "loss_and_damage_liability": "not established as waived; inspect contract",
+    "report": "knowledge/reports/2026-11-03_DEVICE_DEPLOYMENT_PARTNERSHIP_SCALE_TARGET.md"
   }
 }
