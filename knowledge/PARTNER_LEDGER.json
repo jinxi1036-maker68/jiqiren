@@ -274,17 +274,17 @@
         "other upstream projects sourced by peer for Lingju collection teams",
         "20 device site allocation proposed but not authorized"
       ],
-      "payment_terms": "owner confirms peer offers Lingju CNY50/hour to organize capture; still unknown whether per QA accepted hour, pre/post tax, settlement evidence. Peer reportedly settles prior-month production near end next month",
-      "next_gate": "Clarify 50 per approved QA hour vs recorded/uploaded hour; verify exact buyer, order validity, billing, contract, equipment and payment terms before accepting.",
+      "payment_terms": "Owner confirms CNY50 per customer QA-accepted effective hour to Lingju (not worker or upstream price); tax inclusive unknown; peer says prior-month production may pay near next month end",
+      "next_gate": "Confirm whether CNY50 per QA-accepted hour includes VAT, then inspect accepted QA process, devices, site, legal project and payment deadline before signing.",
       "owner_confirmed_quoted_rate": {
         "date": "2026-11-04",
         "amount": 50,
         "currency": "CNY",
         "basis": "paid_by_peer_to_lingju_for_lingju_organized_data_collection",
-        "qa_unit": "unknown",
+        "qa_unit": "customer_qa_accepted_effective_hour",
         "tax_included": "unknown",
         "signed_contract": "none",
-        "status": "owner_confirmed_verbal_quote",
+        "status": "owner_confirmed_verbal_quote_not_contract",
         "source": "Owner clarification in same conversation"
       }
     }
