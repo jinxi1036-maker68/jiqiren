@@ -63,29 +63,29 @@
     {
       "id": "taoding",
       "name": "淘丁数科",
-      "status": "supplier_onboarding",
-      "priority": "P1",
-      "current_path": "已填写EGO供应商调研并进入供应商平台沟通",
+      "status": "owner_rejected_due_to_reported_long_settlement",
+      "priority": "P3",
+      "current_path": "Owner 2026-11-04再次明确：淘丁合作结算约需两个月，无法接受这种现金周转；原供应商调研为历史，当前不作为第二上游优先推进。账期为Owner口述，正式合同条款需文件核实。",
       "evidence_level": "conversation_confirmed",
-      "next_gate": "采集经理联系 / 真实项目规则"
+      "next_gate": "仅在书面条款明确改善收款周期、QA和设备规则时重新考虑"
     },
     {
       "id": "maniformer",
       "name": "觅蜂科技 / 觅蜂派",
-      "status": "application_submitted_waiting",
-      "priority": "P2",
+      "status": "application_submitted_no_reply_owner_confirmed",
+      "priority": "P3",
       "current_path": "已提交合作伙伴信息，尚无实质项目推进",
       "evidence_level": "conversation_confirmed",
-      "next_gate": "正式商务政策和可执行项目"
+      "next_gate": "等正式商务回复或有效河南项目，不继续作为第二上游主线耗时跟进"
     },
     {
       "id": "jinglianwen",
       "name": "景联文科技",
       "status": "wechat_procurement_contact_established_supplier_submission_unverified",
-      "priority": "P1",
+      "priority": "P2",
       "current_path": "此前Owner称已填完景联文供应商报名表，但提交成功回执仍未核实。2026-10-30 Owner微信截图确认已添加景联文采购及供应链负责人并收到回复：目前供应商数量很多，建议关注其朋友圈项目需求并按需报名；采购将依对应模块需求联系供应商。此为供应商储备沟通，不等于入库审核通过或实际订单。",
       "evidence_level": "conversation_confirmed_with_owner_screenshot",
-      "next_gate": "关注采购负责人公开项目需求，仅当匹配我方真实场景、团队能力时进行针对性报名；留存表单提交回执；获得正式项目需求后再核验报价、设备、QA和结算。暂不追问订单，不以建立微信联系认定合作成功。",
+      "next_gate": "已加采购负责人微信，对方要求关注朋友圈按需报名；无具体订单，暂不等单。获得项目时先审付款周期、QA和设备条件",
       "research_verified": {
         "legal_entity": "杭州景联文科技有限公司",
         "established": "2012-04-24",
@@ -174,14 +174,27 @@
     {
       "id": "henan_embodied_industry",
       "name": "河南具身智能产业发展有限公司",
-      "status": "ecosystem_lead_not_data_collection_procurement",
-      "priority": "P3",
-      "evidence_level": "public_verified",
-      "current_path": "2026-10-26招募的是场景解决方案开发供应商，范围偏机器人本体定制、算法/软件、系统集成，非普通EGO采集。",
-      "next_gate": "仅跟踪其是否另行采购真实场景采集/测试服务",
+      "status": "2026_10_30_official_ego_supplier_tender_open_not_applied",
+      "priority": "P1_urgent_2026-11-05",
+      "evidence_level": "public_verified_official_procurement",
+      "current_path": "2026-10-26旧项目为场景解决方案开发；**2026-10-30新增不同的EGO第一视角数据采集供应商库正式采购，实施河南省内、竞争入围2年。无业绩可通过10h/≥60%试采取得资格。采购文件须2026-11-05 17:00前获取；11-13 09:00截止响应。未报名未签单。**",
+      "next_gate": "2026-11-05联系采购方确认是否可预约试采并赶本批；核实CA/招标文件获取要求及有效时长审核和正式回款账期（Owner拒绝两个月结算）；未确认短账期不投入新设备",
       "source_urls": [
         "https://www.hbtba.com/project/view.php?id=23400"
-      ]
+      ],
+      "ego_tender": {
+        "announcement_date": "2026-10-30",
+        "project_id": "M410100006510015194N",
+        "document_download_deadline": "2026-11-05T17:00:00+08:00",
+        "bid_deadline": "2026-11-13T09:00:00+08:00",
+        "scope": "EGO first-person data collection & QA in Henan",
+        "qualification": "past 2023+ performance OR purchaser trial >=10 hours with >=60% quality acceptance",
+        "trial_data_rights": "purchaser",
+        "settlement_terms": "not_disclosed_publicly",
+        "inclusion_term": "2_year_supplier_pool_not_guaranteed_orders",
+        "official": "https://www.zybtp.com/fcggg/415100.jhtml",
+        "mirror": "https://www.hbtba.com/project/view.php?id=24003"
+      }
     },
     {
       "id": "zhongyuan_robot_training",
@@ -291,5 +304,6 @@
   ],
   "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md",
   "latest_lightwheel_partner_investigation": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md",
-  "latest_peer_quote_clarification": "2026-11-04: peer is offering Lingju CNY50/hour for Lingju to organize capture; no agreed QA hour or tax basis yet."
+  "latest_peer_quote_clarification": "2026-11-04: peer is offering Lingju CNY50/hour for Lingju to organize capture; no agreed QA hour or tax basis yet.",
+  "latest_second_upstream_urgent_tender": "knowledge/reports/2026-11-04_SECOND_UPSTREAM_HENAN_EGO_TENDER_URGENT.md"
 }
