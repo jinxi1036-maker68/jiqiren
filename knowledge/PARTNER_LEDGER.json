@@ -274,10 +274,22 @@
         "other upstream projects sourced by peer for Lingju collection teams",
         "20 device site allocation proposed but not authorized"
       ],
-      "payment_terms": "reported other projects pay October work near end November; rate approx CNY50/hr meaning and tax/QA basis unknown",
-      "next_gate": "clarify meaning of 50/hr; verify legal contracting entity and upstream order; check LivSyn written authorization on subcontract and device handover; pilot 3-5 devices only after agreement"
+      "payment_terms": "owner confirms peer offers Lingju CNY50/hour to organize capture; still unknown whether per QA accepted hour, pre/post tax, settlement evidence. Peer reportedly settles prior-month production near end next month",
+      "next_gate": "Clarify 50 per approved QA hour vs recorded/uploaded hour; verify exact buyer, order validity, billing, contract, equipment and payment terms before accepting.",
+      "owner_confirmed_quoted_rate": {
+        "date": "2026-11-04",
+        "amount": 50,
+        "currency": "CNY",
+        "basis": "paid_by_peer_to_lingju_for_lingju_organized_data_collection",
+        "qa_unit": "unknown",
+        "tax_included": "unknown",
+        "signed_contract": "none",
+        "status": "owner_confirmed_verbal_quote",
+        "source": "Owner clarification in same conversation"
+      }
     }
   ],
   "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md",
-  "latest_lightwheel_partner_investigation": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md"
+  "latest_lightwheel_partner_investigation": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md",
+  "latest_peer_quote_clarification": "2026-11-04: peer is offering Lingju CNY50/hour for Lingju to organize capture; no agreed QA hour or tax basis yet."
 }
