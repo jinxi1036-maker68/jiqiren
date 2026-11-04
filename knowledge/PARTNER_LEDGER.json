@@ -256,6 +256,26 @@
         "web": "https://www.lumina-ai.com.cn/"
       },
       "next_gate": "Confirm any Henan/Huazhong local scene/field collection partner needs; avoid assuming parent-company partner status implies joint venture approval."
+    },
+    {
+      "id": "pingdingshan_peer_20261104",
+      "name": "平顶山当地具身数据采集同行（主体待核）",
+      "status": "owner_met_2026_11_04_bidirectional_cooperation_exploration_no_contract",
+      "priority": "P1_diligence_only",
+      "evidence_level": "owner_conversation",
+      "report": "knowledge/reports/2026-11-04_PINGDINGSHAN_PEER_PARTNERSHIP_STRATEGY.md",
+      "potential_capabilities": [
+        "reported factory and school scenario access",
+        "reported collection worker coordination",
+        "possibly Lightwheel upstream channel not independently verified"
+      ],
+      "proposals": [
+        "LivSyn authorized project subcontract to local venue",
+        "other upstream projects sourced by peer for Lingju collection teams",
+        "20 device site allocation proposed but not authorized"
+      ],
+      "payment_terms": "reported other projects pay October work near end November; rate approx CNY50/hr meaning and tax/QA basis unknown",
+      "next_gate": "clarify meaning of 50/hr; verify legal contracting entity and upstream order; check LivSyn written authorization on subcontract and device handover; pilot 3-5 devices only after agreement"
     }
   ],
   "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md",
