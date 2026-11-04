@@ -590,6 +590,8 @@
     "recommended_3_5_device_pilot": "proposal_not_approved",
     "customer_subcontract_written_approval": "not verified",
     "monthly_payment_lag_concern": "other partner projects reportedly settle October in late November",
-    "upstream_reported_approx_50cny_per_hour": "not comparable until recipient, tax, quality and payment basis clarified"
+    "upstream_reported_approx_50cny_per_hour": "clarified: peer would pay Lingju CNY50/hour for organizing collection, not peer's upstream selling rate; actual unit/tax/QA unknown",
+    "latest_next_question": "Does offered 50 CNY/hour pay per customer-accepted effective hour or every recorded/uploaded hour?",
+    "separate_business_lines": "A LivSyn-to-Lingju-to-peer site (subcontract permission needed), B peer project-to-Lingju (peer pays Lingju). Separate data, equipment, contracts, costs."
   }
 }
