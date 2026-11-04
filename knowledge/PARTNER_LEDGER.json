@@ -1,6 +1,6 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-10-30",
+  "updated_at": "2026-11-04",
   "partners": [
     {
       "id": "livsyn",
@@ -194,7 +194,70 @@
       "source_urls": [
         "https://public.zhengzhou.gov.cn/D1102X/10226372.jhtml"
       ]
+    },
+    {
+      "id": "lightwheel_ai",
+      "name": "光轮智能（北京）科技股份有限公司 / Lightwheel AI",
+      "priority": "P1",
+      "status": "public_supplier_recruitment_identified_not_contacted",
+      "evidence_level": "public_official_claim_plus_mainstream_news_reprint",
+      "research_date": "2026-11-04",
+      "report": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md",
+      "official_partner_program": {
+        "date": "2026-08-25",
+        "name": "光轮智能人类数据合作伙伴招募计划",
+        "partner_categories": [
+          "工业及专业场景拥有方",
+          "物流零售餐饮家政运动等渠道伙伴",
+          "具本地招募、采集运营和质量交付能力的服务商"
+        ],
+        "process": "申请→场景审核试采→正式规模采集→数据QA后约定结算",
+        "official_enrollment_link": "not_verified_direct_url; reported QR in original WeChat announcement",
+        "terms": "payment/device rental/deposit/minimum capacity/tax rates not publicly verified",
+        "recruitment_source": "https://news.10jqka.com.cn/20260825/c679267156.shtml",
+        "corroboration": "https://www.xinhuanet.com/tech/20260826/58c6c894d3ab480f9d6e1340227d3abc/c.html"
+      },
+      "outreach_channels": [
+        {
+          "channel": "global_company_public_email",
+          "value": "contact@lightwheel.ai",
+          "source": "https://huggingface.co/LightwheelAI",
+          "note": "general/research contact not dedicated procurement"
+        },
+        {
+          "channel": "official_company_contact_form",
+          "value": "https://www.lightwheel.ai/contact",
+          "note": "primarily buyer-facing; use Other for supplier request"
+        },
+        {
+          "channel": "affiliated_joint_venture_newhope_lumina",
+          "value": "marketing@lumina-ai.com.cn",
+          "phone": "18381658772",
+          "source": "https://www.lumina-ai.com.cn/",
+          "note": "joint venture separate legal entity and location; inquire regional vendor intake"
+        }
+      ],
+      "next_gate": "Ask if public human data partner recruitment remains open for Henan local collection providers, request official application link and trial requirements; no current contract/order/price evidence.",
+      "owner_fit": "Owner reports ~30 devices including Xiangcheng 5-device trial, organized field work and candidate SOPs; published program specifically seeks regional recruitment and QA delivery providers.",
+      "data_boundary": "No reusing or transferring LivSyn client-owned data/device recordings without express contractual consent."
+    },
+    {
+      "id": "newhope_lumina",
+      "name": "成都新光世界智能科技有限公司（新希望相关企业与光轮智能合资）",
+      "priority": "P2",
+      "status": "official_affiliate_business_contact_identified_not_contacted",
+      "evidence_level": "official_company_site_and_media",
+      "research_date": "2026-11-04",
+      "report": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md",
+      "current_path": "Official site mentions human activity, teleoperation, data capture and annotation; no confirmed Henan vendor program or procurement pricing",
+      "public_contact": {
+        "email": "marketing@lumina-ai.com.cn",
+        "phone": "18381658772",
+        "web": "https://www.lumina-ai.com.cn/"
+      },
+      "next_gate": "Confirm any Henan/Huazhong local scene/field collection partner needs; avoid assuming parent-company partner status implies joint venture approval."
     }
   ],
-  "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md"
+  "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md",
+  "latest_lightwheel_partner_investigation": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md"
 }
