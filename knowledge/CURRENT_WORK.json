@@ -577,7 +577,7 @@
   },
   "peer_cooperation_opportunity_20261104": {
     "date": "2026-11-04",
-    "status": "negotiation_only_no_device_transfer_agreed",
+    "status": "verbal_negotiation_not_signed",
     "report": "knowledge/reports/2026-11-04_PINGDINGSHAN_PEER_PARTNERSHIP_STRATEGY.md",
     "local_partner_entity": "not_reported",
     "partner_reported_scenarios": [
@@ -590,8 +590,9 @@
     "recommended_3_5_device_pilot": "proposal_not_approved",
     "customer_subcontract_written_approval": "not verified",
     "monthly_payment_lag_concern": "other partner projects reportedly settle October in late November",
-    "upstream_reported_approx_50cny_per_hour": "clarified: peer would pay Lingju CNY50/hour for organizing collection, not peer's upstream selling rate; actual unit/tax/QA unknown",
-    "latest_next_question": "Does offered 50 CNY/hour pay per customer-accepted effective hour or every recorded/uploaded hour?",
-    "separate_business_lines": "A LivSyn-to-Lingju-to-peer site (subcontract permission needed), B peer project-to-Lingju (peer pays Lingju). Separate data, equipment, contracts, costs."
+    "upstream_reported_approx_50cny_per_hour": "clarified: peer offers to pay Lingju 50 CNY per CLIENT QA-ACCEPTED EFFECTIVE HOUR to organize capture; tax inclusive unknown",
+    "latest_next_question": "Is CNY50 per customer-approved effective hour tax-inclusive or tax-exclusive?",
+    "separate_business_lines": "A LivSyn-to-Lingju-to-peer site (subcontract permission needed), B peer project-to-Lingju (peer pays Lingju). Separate data, equipment, contracts, costs.",
+    "price_basis_owner_confirmed": "customer_qa_accepted_effective_hour"
   }
 }
