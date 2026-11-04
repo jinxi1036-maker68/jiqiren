@@ -574,5 +574,22 @@
     "summary": "owner now reports ~30 actual devices (5 at Xiangcheng trial), daily collection/uploads, signed LivSyn contract couriered, new interested partners visited, 50 by Nov-end and 100 early 2027 as aspirations.",
     "latest_upstream_cost_status": "owner reports LivSyn charges no equipment rent and no equipment deposit; check signed agreement because prior rental-waiver-only template had CNY1000/device deposit clause",
     "finance_scenario_report": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
+  },
+  "peer_cooperation_opportunity_20261104": {
+    "date": "2026-11-04",
+    "status": "negotiation_only_no_device_transfer_agreed",
+    "report": "knowledge/reports/2026-11-04_PINGDINGSHAN_PEER_PARTNERSHIP_STRATEGY.md",
+    "local_partner_entity": "not_reported",
+    "partner_reported_scenarios": [
+      "factories",
+      "schools",
+      "other scenes"
+    ],
+    "partner_reported_possible_upstream": "Lightwheel channel not verified",
+    "possible_20_device_factory_placement": "proposal_only",
+    "recommended_3_5_device_pilot": "proposal_not_approved",
+    "customer_subcontract_written_approval": "not verified",
+    "monthly_payment_lag_concern": "other partner projects reportedly settle October in late November",
+    "upstream_reported_approx_50cny_per_hour": "not comparable until recipient, tax, quality and payment basis clarified"
   }
 }
