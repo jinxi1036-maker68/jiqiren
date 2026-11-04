@@ -103,7 +103,14 @@
       "important": "waived deposit reduces working capital, does not increase monthly operating profit directly; waived rent does reduce monthly operating cost",
       "reference": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
     },
-    "latest_monthly_financial_scenario": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md"
+    "latest_monthly_financial_scenario": "knowledge/reports/2026-11-03_30_50_100_DEVICES_PROFIT_MODEL_80PCT.md",
+    "latest_partner_research": {
+      "date": "2026-11-04",
+      "company": "Lightwheel AI 光轮智能",
+      "status": "public_field_collection_partner recruitment identified 2026-08-25; owner not contacted or onboarded",
+      "report": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md",
+      "affiliated_company": "成都新光世界，业务联系可查，但河南供应商准入及价格未知"
+    }
   },
   "long_term_goal": "建设平顶山市及周边可持续运营的真实世界数据供应企业：积累几十家可合法持续合作的真实场景、成熟团队与质控管理体系、跨设备交付能力，以及2-3个经订单和回款验证的上游；不以50名采集员规模本身为目标。",
   "strategic_sequence": [
