@@ -170,5 +170,14 @@
     "lean_principle": "Owner批准：像培养一名自主员工一样用已有工具和自然语言为主；确实有重复能力缺口才写尽可能少的代码，不先造第二套系统",
     "current_evidence_caveat": "PR#12有原Hermes最小接入的PR证据、PR#15有原Desktop部分模拟能力证据；PR#20有QQ接入恢复尝试。均非正式灵生生产验收，且这些PR未合并main；状态需要重新查看Owner机器"
   },
-  "strategic_sequence_status": "Owner于2026-11-03提出新扩张意向：现约30台，11月底争取50台、2027年初争取100台，自营与合作团长均可能；只是理想目标，实际采购/协议/回购与合格数据现金流需后续核实。原10台试采及30台假设属历史记录，不等于现有设备的真实有效产能。"
+  "strategic_sequence_status": "Owner于2026-11-03提出新扩张意向：现约30台，11月底争取50台、2027年初争取100台，自营与合作团长均可能；只是理想目标，实际采购/协议/回购与合格数据现金流需后续核实。原10台试采及30台假设属历史记录，不等于现有设备的真实有效产能。",
+  "future_business_direction_research_20261107": {
+    "date": "2026-11-07",
+    "owner_concept": "Robot-friendly controllable micro-retail store as realistic complete-operating-task training data system; target-application first, task/data backward design",
+    "proposal_status": "owner_interested_research_stage_not_customer_validated_or_funded",
+    "report": "knowledge/reports/2026-11-07_ROBOSTORE_TASK_ALIGNED_ACCEPTABLE_DATA_PRODUCT_STRATEGY.md",
+    "first_prototype": "RS-01 stationery store retail shelf/promotional display/stock/order-picking task modules",
+    "next_gate": "Ask customer model/data owner to co-design one task spec and decide if paid small pilot is possible",
+    "boundary": "No unauthorized reuse of LivSyn devices/customer-owned datasets; no new capital expansion budget"
+  }
 }
