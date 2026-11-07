@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Any, Callable
 
 import httpx
-import yaml
 from dotenv import dotenv_values
+from ruamel.yaml import YAML
 
 
 class CrossChatError(RuntimeError):
@@ -84,7 +84,7 @@ class CrossChat:
         path = self._policy_path()
         try:
             policy = json.loads(path.read_text(encoding="utf-8"))
-            config = yaml.safe_load((self._home() / "config.yaml").read_text(encoding="utf-8")) or {}
+            config = YAML(typ="safe").load((self._home() / "config.yaml").read_text(encoding="utf-8")) or {}
             allowed_now = set(config["platforms"]["feishu"]["extra"]["group_allowed_chats"])
         except (OSError, ValueError, KeyError, TypeError) as exc:
             raise CrossChatError("跨群策略或现有飞书群白名单不可读；停止操作") from exc
@@ -121,16 +121,20 @@ class CrossChat:
         return values["MESSAGE_ID"]
 
     @staticmethod
-    def _group(policy: dict[str, Any], target: str) -> dict[str, Any]:
+    def _group(policy: dict[str, Any], target: str,
+               joined: dict[str, str]) -> dict[str, Any]:
         query = str(target or "").strip().casefold()
         if not query:
             raise CrossChatError("请指定群名称或群 ID")
         matches = [g for g in policy["groups"] if query in {
-            str(v).strip().casefold() for v in [g.get("id"), g.get("name"), *(g.get("aliases") or [])]
+            str(v).strip().casefold() for v in [g.get("id"), g.get("name"),
+                                               joined.get(g["id"]), *(g.get("aliases") or [])]
         }]
         if len(matches) != 1:
             raise CrossChatError("目标群不在白名单中，或群名称不唯一")
-        return matches[0]
+        if matches[0]["id"] not in joined:
+            raise CrossChatError("当前飞书应用尚未加入目标群；没有读取或委派")
+        return {**matches[0], "name": joined[matches[0]["id"]] or matches[0]["name"]}
 
     def _credentials(self, policy: dict[str, Any]) -> tuple[str, str]:
         values = dotenv_values(self._home() / ".env")
@@ -177,12 +181,42 @@ class CrossChat:
                                   + "，code " + str(data.get("code")))
         return data.get("data") or {}
 
+    def _joined(self, client, headers: dict[str, str]) -> dict[str, str]:
+        """Read actual bot membership; a configured group is not proof of membership."""
+        joined: dict[str, str] = {}
+        page_token = ""
+        seen: set[str] = set()
+        for _ in range(10):
+            params: dict[str, Any] = {"page_size": 100}
+            if page_token:
+                params["page_token"] = page_token
+            data = self._get(client, headers, "chats", params)
+            items = data.get("items")
+            if not isinstance(items, list):
+                raise CrossChatError("飞书群列表响应不完整；不能认定所在群为零")
+            for item in items:
+                if isinstance(item, dict) and str(item.get("chat_id") or "").startswith("oc_"):
+                    joined[str(item["chat_id"])] = str(item.get("name") or "")
+            if not data.get("has_more"):
+                return joined
+            page_token = str(data.get("page_token") or "")
+            if not page_token or page_token in seen:
+                raise CrossChatError("飞书群列表分页不完整；停止操作")
+            seen.add(page_token)
+        raise CrossChatError("飞书群列表超过本轮读取上限；停止操作")
+
     def list_groups(self) -> dict[str, Any]:
         policy = self._policy()
         self._authorize(policy)
-        return {"ok": True, "groups": [{"name": g["name"], "id": g["id"],
-                                         "aliases": g.get("aliases") or []}
-                                        for g in policy["groups"]]}
+        client, headers = self._client(policy)
+        try:
+            joined = self._joined(client, headers)
+        finally:
+            client.close()
+        return {"ok": True, "joined_total": len(joined), "groups": [
+            {"name": joined.get(g["id"]) or g["name"], "id": g["id"],
+             "aliases": g.get("aliases") or [], "joined": g["id"] in joined}
+            for g in policy["groups"]]}
 
     def _recent(self, client, headers: dict[str, str], group: dict[str, Any],
                 page_size: int, page_token: str) -> dict[str, Any]:
@@ -209,9 +243,9 @@ class CrossChat:
     def read_group(self, target: str, page_size: int = 20, page_token: str = "") -> dict[str, Any]:
         policy = self._policy()
         self._authorize(policy)
-        group = self._group(policy, target)
         client, headers = self._client(policy)
         try:
+            group = self._group(policy, target, self._joined(client, headers))
             return self._recent(client, headers, group, page_size, page_token)
         finally:
             client.close()
@@ -219,7 +253,6 @@ class CrossChat:
     def delegate(self, target: str, task: str) -> dict[str, Any]:
         policy = self._policy()
         source_message_id = self._authorize(policy)
-        group = self._group(policy, target)
         task = str(task or "").strip()
         if not 8 <= len(task) <= 2000 or re.search(
             r"(?i)(?:sk-|wk-|disposable_login_token=)[A-Za-z0-9_.=-]{12,}", task
@@ -227,6 +260,7 @@ class CrossChat:
             raise CrossChatError("群任务摘要为空、过长或疑似含有凭据")
         client, headers = self._client(policy)
         try:
+            group = self._group(policy, target, self._joined(client, headers))
             source = self._get(client, headers, "messages/" + source_message_id)
             items = source.get("items") or []
             if len(items) != 1:

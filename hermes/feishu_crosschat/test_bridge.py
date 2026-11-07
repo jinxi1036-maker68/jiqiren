@@ -9,6 +9,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from hermes.feishu_crosschat.bridge import CrossChat, CrossChatError
+from hermes.feishu_crosschat import _feishu_guidance
 
 
 GROUP = "oc_group_example"
@@ -36,6 +37,10 @@ class HTTP:
 
     def get(self, url, **kwargs):
         self.calls.append(("GET", url))
+        if url.endswith("/chats"):
+            return Response({"code": 0, "data": {"items": [
+                {"chat_id": GROUP, "name": "合作群", "chat_mode": "group"},
+            ], "has_more": False}})
         if url.endswith("/" + MESSAGE):
             return Response({"code": 0, "data": {"items": [{
                 "chat_id": DM, "sender": {"id_type": "open_id", "id": "ou_owner",
@@ -80,7 +85,10 @@ class BridgeTests(unittest.TestCase):
                                 inject_message=lambda *a, **kw: self.injected.append((a, kw)) or True)
 
     def test_read_and_delegate_once_into_same_group_session(self):
-        self.assertEqual(self.bridge.list_groups()["groups"][0]["name"], "合作群")
+        groups = self.bridge.list_groups()
+        self.assertEqual(groups["joined_total"], 1)
+        self.assertEqual(groups["groups"][0]["name"], "合作群")
+        self.assertTrue(groups["groups"][0]["joined"])
         read = self.bridge.read_group("合作群")
         self.assertEqual(read["items"][0]["text"], "设备情况待核实")
         result = self.bridge.delegate("合作群", "核对群里的设备问题，查清后在群里回复。")
@@ -106,19 +114,21 @@ class BridgeTests(unittest.TestCase):
         self.assertFalse(self.http.calls)
 
     def test_forged_source_message_sender_refused(self):
+        original_get = self.http.get
         self.http.get = lambda url, **kw: Response({"code": 0, "data": {"items": [{
             "chat_id": DM, "sender": {"id_type": "open_id", "id": "ou_other", "sender_type": "user"},
             "msg_type": "text", "body": {"content": json.dumps({"text": "去合作群处理"})},
-        }]}})
+        }]}}) if url.endswith("/" + MESSAGE) else original_get(url, **kw)
         with self.assertRaisesRegex(CrossChatError, "原始消息"):
             self.bridge.delegate("合作群", "核对群里的设备问题，查清后在群里回复。")
         self.assertFalse(self.injected)
 
     def test_owner_must_name_target_in_actual_message(self):
+        original_get = self.http.get
         self.http.get = lambda url, **kw: Response({"code": 0, "data": {"items": [{
             "chat_id": DM, "sender": {"id_type": "open_id", "id": "ou_owner", "sender_type": "user"},
             "msg_type": "text", "body": {"content": json.dumps({"text": "在吗"})},
-        }]}})
+        }]}}) if url.endswith("/" + MESSAGE) else original_get(url, **kw)
         with self.assertRaisesRegex(CrossChatError, "未明确指定"):
             self.bridge.delegate("合作群", "核对群里的设备问题，查清后在群里回复。")
         self.assertFalse(self.injected)
@@ -138,6 +148,32 @@ class BridgeTests(unittest.TestCase):
         with self.assertRaisesRegex(CrossChatError, "未接受"):
             self.bridge.delegate("合作群", "核对群里的设备问题，查清后在群里回复。")
         self.assertFalse(list((self.home / "tools" / "company-feishu-crosschat" / "receipts").glob("*.json")))
+
+    def test_live_group_name_and_membership_override_stale_policy(self):
+        original_get = self.http.get
+        self.http.get = lambda url, **kw: Response({"code": 0, "data": {"items": [
+            {"chat_id": GROUP, "name": "协调群"}], "has_more": False}}) \
+            if url.endswith("/chats") else original_get(url, **kw)
+        groups = self.bridge.list_groups()
+        self.assertEqual(groups["groups"][0]["name"], "协调群")
+        self.assertEqual(self.bridge.read_group("协调群")["group"], "协调群")
+
+    def test_unjoined_or_malformed_group_list_is_not_zero_membership(self):
+        original_get = self.http.get
+        self.http.get = lambda url, **kw: Response({"code": 0, "data": {"items": [],
+                                                                          "has_more": False}}) \
+            if url.endswith("/chats") else original_get(url, **kw)
+        self.assertFalse(self.bridge.list_groups()["groups"][0]["joined"])
+        with self.assertRaisesRegex(CrossChatError, "尚未加入"):
+            self.bridge.read_group("合作群")
+        self.http.get = lambda url, **kw: Response({"code": 0, "data": {}}) \
+            if url.endswith("/chats") else original_get(url, **kw)
+        with self.assertRaisesRegex(CrossChatError, "响应不完整"):
+            self.bridge.list_groups()
+
+    def test_prompt_guidance_only_applies_to_feishu(self):
+        self.assertIn("company_feishu_crosschat", _feishu_guidance({"platform": "feishu"}))
+        self.assertEqual(_feishu_guidance({"platform": "desktop"}), "")
 
 
 if __name__ == "__main__":
