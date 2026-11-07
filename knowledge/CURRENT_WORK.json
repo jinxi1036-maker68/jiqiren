@@ -594,5 +594,23 @@
     "latest_next_question": "Is CNY50 per customer-approved effective hour tax-inclusive or tax-exclusive?",
     "separate_business_lines": "A LivSyn-to-Lingju-to-peer site (subcontract permission needed), B peer project-to-Lingju (peer pays Lingju). Separate data, equipment, contracts, costs.",
     "price_basis_owner_confirmed": "customer_qa_accepted_effective_hour"
+  },
+  "owner_confirmed_strategic_direction_20261107": {
+    "date": "2026-11-07",
+    "status": "owner_explicitly_approved_principle_only",
+    "choice": "two_parallel_business_tracks_not_equal_budget",
+    "track_A": {
+      "name": "多场景预训练EGO数据采集规模化",
+      "priority": "current_core_operations",
+      "gates": "real QA valid hours, labor and overhead costs, actual payment and cash cycle before scaling"
+    },
+    "track_B": {
+      "name": "面向具体商业部署的定制化后训练数据/店务任务体系",
+      "priority": "research_and_customer_consensus_only",
+      "first_actions": "understand model/robot buyers and seek industry validation of the concept, then ask what data they need",
+      "no_current_authorization_for": "significant capital expenditure, building retail lab, using LivSyn-exclusive videos/equipment across clients, speculative SOP production or launch"
+    },
+    "owner_alignment": "Owner said he agrees with the dual-track strategy; execution plan, budgets and metrics remain to discuss",
+    "reference": "knowledge/strategy/2026-11-07_ROBOSTORE_FIRST_PRINCIPLES_MASTERPLAN_DRAFT_V0_1.md"
   }
 }
