@@ -179,5 +179,14 @@
     "first_prototype": "RS-01 stationery store retail shelf/promotional display/stock/order-picking task modules",
     "next_gate": "Ask customer model/data owner to co-design one task spec and decide if paid small pilot is possible",
     "boundary": "No unauthorized reuse of LivSyn devices/customer-owned datasets; no new capital expansion budget"
+  },
+  "owner_confirmed_dual_track_strategy_20261107": {
+    "date": "2026-11-07",
+    "approved": "dual_track_principle_only",
+    "current_cash_flow_business": "multi-scene pretraining collection delivery and true cash-flow scaled conditionally",
+    "future_research_business": "post-training scene-specific robot applications, market recognition and customer-demand validation before data product",
+    "execution_budget_approved": false,
+    "project_plan_approved": false,
+    "report": "knowledge/strategy/2026-11-07_ROBOSTORE_FIRST_PRINCIPLES_MASTERPLAN_DRAFT_V0_1.md"
   }
 }
