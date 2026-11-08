@@ -38,6 +38,16 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner requested dedicated GitHub-only long-term design+code+test+evolution baseline for miniapp; this action creates scaffold, not executable app.",
-  "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model."
+  "latest_decision": "Owner confirmed two-button (merchant/collector) entry homepage, first-time role selection, returning user default role, switch role option. Docs updated; no runnable code yet.",
+  "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
+  "ui_design_approved_20261108": {
+    "source": "Owner explicit message: 可以，我同意这样设计。",
+    "decision_id": "DEC-2026-11-08-04",
+    "design_spec": "miniapp/knowledge/SCREEN_DESIGN.md",
+    "home_two_role_entry": true,
+    "remember_selected_role": true,
+    "allow_role_switch": true,
+    "actual_implementation": false,
+    "login_or_identity_verification_approved": false
+  }
 }
