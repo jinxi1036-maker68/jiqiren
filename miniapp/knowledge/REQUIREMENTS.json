@@ -319,6 +319,38 @@
       "status": "example_unconfirmed",
       "implemented": false,
       "source": "Owner proposed two hours as example, asked flexible max hours"
+    },
+    {
+      "id": "UI-C-006",
+      "role": "collector",
+      "name": "同一设备日期展示已预约不可选时段和剩余可选时段，确认新预约后动态更新剩余",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner explained train-ticket-like multiple individual sequential bookings; example 08-11 reserved then next sees 11/12 onwards"
+    },
+    {
+      "id": "S-007",
+      "role": "system",
+      "name": "一台设备允许多人按不同互不重叠时段连续预约，并按设备ID/日期/时间避免双重预约",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner explicit model: many people can reserve same equipment in succession, booked interval disappears"
+    },
+    {
+      "id": "S-008",
+      "role": "system",
+      "name": "多人同时尝试抢相同设备时段时仅容许一个确认成功，其他人刷新并重选剩余时段",
+      "status": "supporting_suggestion",
+      "implemented": false,
+      "source": "Implementation necessary for owner confirmed single-device occupancy"
+    },
+    {
+      "id": "UI-M-010",
+      "role": "merchant",
+      "name": "商家可查看每台设备当日按时间排序的接单排班",
+      "status": "supporting_suggestion",
+      "implemented": false,
+      "source": "Merchant view of train-ticket-like occupancy proposed for convenience"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
