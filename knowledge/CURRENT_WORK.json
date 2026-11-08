@@ -612,5 +612,19 @@
     },
     "owner_alignment": "Owner said he agrees with the dual-track strategy; execution plan, budgets and metrics remain to discuss",
     "reference": "knowledge/strategy/2026-11-07_ROBOSTORE_FIRST_PRINCIPLES_MASTERPLAN_DRAFT_V0_1.md"
+  },
+  "upstream_outreach_wave_20261108": {
+    "date": "2026-11-08",
+    "status": "actual_Gmail_SENT_no_replies_verified",
+    "emails_sent_today": 12,
+    "kuizhuo_sent_earlier": 1,
+    "new_image_company_henan_lightwheel_emails": 11,
+    "forms_submitted": 0,
+    "confirmed_orders": 0,
+    "reply_verified": false,
+    "report": "knowledge/reports/2026-11-08_EGO_UPSTREAM_OUTREACH_WAVE1_VERIFIED.md",
+    "ledger": "knowledge/PARTNER_LEDGER.json",
+    "next_step": "Review replies and bounces, focus Henan long-term trial and Lightwheel supplier registration, evaluate QA and payment, avoid over-contact; three screenshot companies still need proper official forms",
+    "codex_blockers_unresolved": true
   }
 }
