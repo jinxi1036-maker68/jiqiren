@@ -503,6 +503,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 replied 可以 to 100 point system, initial 100, verified violations, gradual recovery"
+    },
+    {
+      "id": "UI-M-011",
+      "role": "merchant",
+      "name": "商家场地收益仅在采集员实际完成采集并归还设备后确认，预约但未完成不产生已确认收益",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner responded 可以 2026-11-08 to complete collection and return before merchant earnings confirmation"
+    },
+    {
+      "id": "S-018",
+      "role": "system",
+      "name": "商家20元/次仍为示例单价，不得固定真实计费、付款；设备归还确认节点与收入结算细则待定",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner confirmed trigger concept not specific amount or exact return verification step"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
