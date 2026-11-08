@@ -607,6 +607,14 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner approved collector reporting issues directly to Lingju"
+    },
+    {
+      "id": "UI-C-018",
+      "role": "collector",
+      "name": "设备异常上报支持上传现场照片并关联对应订单及异常记录，供凌矩核查；是否必须提供及数量限制待定",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 replied 可以 to collector uploading onsite photos as equipment exception evidence"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
