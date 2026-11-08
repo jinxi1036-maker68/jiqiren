@@ -197,5 +197,19 @@
     "timeline": "knowledge/history/COMPANY_EVOLUTION_TIMELINE.md",
     "principle": "Preserve company vision, changes of mind, choices, incidents, real operational status, consequences, and pivots; history stays revisable but not silently rewritten. Maintain provenance and approved vs speculative status.",
     "tool_caveat": "updates only when project connection/tool permissions are available; no guaranteed background capture of all chats"
+  },
+  "owner_approved_real_operating_feedback_loop_20261108": {
+    "date": "2026-11-08",
+    "status": "owner_approved_principles_and_gradual_priority_only",
+    "priorities": [
+      "P0 verify actual EGO operating devices/recorded/uploaded/QA-accepted hours and costs and actual collections",
+      "P1 keep upperstream partner replies and supplier registration statuses current",
+      "P2 record company evolution, decisions, results and pivots"
+    ],
+    "implementation": "knowledge/operations/2026-11-08_REAL_OPERATIONS_FEEDBACK_LOOP.md",
+    "operating_facts_fully_populated": false,
+    "automation_deployed": false,
+    "financial_spend_approved": false,
+    "next_gate": "Ask Owner for one complete recent operating day's first-hand actual devices and quality/upload data and sources, not assumptions"
   }
 }
