@@ -331,7 +331,7 @@
     {
       "id": "S-007",
       "role": "system",
-      "name": "一台设备允许多人按不同互不重叠时段连续预约，并按设备ID/日期/时间避免双重预约；前后订单预留交接缓冲",
+      "name": "同一设备可多人分时预约，前后至少30分钟，不得重叠，无需商家交接",
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner explicit model: many people can reserve same equipment in succession, booked interval disappears"
@@ -355,10 +355,34 @@
     {
       "id": "S-009",
       "role": "system",
-      "name": "同一台设备前后接单预留至少约30分钟设备归还检查交接缓冲，时间不可预约，演示版先按30分钟模拟",
-      "status": "first_version_provisionally_approved",
+      "name": "同设备前后预约必须至少间隔30分钟不可预约的周转空档，无需商家人工交接",
+      "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 我建议是预留到大概至少半个小时吧"
+      "source": "Owner confirmed 2026-11-08: 设备交接至少中间要留半个小时三十分钟"
+    },
+    {
+      "id": "C-011",
+      "role": "collector",
+      "name": "接单成功后从采集员个人订单页查看设备箱的开箱密码，自主解锁领取设备",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner explicitly requested password box and order-visible password, no merchant handover"
+    },
+    {
+      "id": "S-010",
+      "role": "system",
+      "name": "商家不参与逐单取机/归还或保管交接确认，设备领用与订单和本人可追溯",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner explicitly rejects merchant handoff and prioritizes venue-only merchants"
+    },
+    {
+      "id": "S-011",
+      "role": "system",
+      "name": "设备自身故障与采集员损坏按凭证核实责任，不能自动将责任归于门店",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner differentiates inherent equipment problems, collector damage, merchant only venue"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
