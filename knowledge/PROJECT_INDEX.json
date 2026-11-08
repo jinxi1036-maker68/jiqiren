@@ -215,7 +215,7 @@
   "owner_miniprogram_concept_correction_20261108": {
     "date": "2026-11-08",
     "authority": "owner_explicit_correction",
-    "status": "owner_explained_product_model_scope_details_pending",
+    "status": "owner_explicitly_confirmed_two_sided_merchant_and_individual_collector_model",
     "source": "knowledge/strategy/2026-11-08_LINGJU_MERCHANT_COLLECTOR_MINIPROGRAM_VISION.md",
     "roles": [
       "merchant_apply_host_lingju_equipment_and_manage_available_time_revenue_reputation",
@@ -228,6 +228,8 @@
     "merchant_per_visit_subsidy_example_cny": 20,
     "payout_trigger_undecided": true,
     "code_started": false,
-    "product_scope_approved": false
+    "product_scope_approved": false,
+    "confirmation_quote": "对，这次理解的对的。符合我想要的。",
+    "confirmation_date": "2026-11-08"
   }
 }
