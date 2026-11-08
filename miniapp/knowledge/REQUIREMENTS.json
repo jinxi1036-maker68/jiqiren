@@ -447,6 +447,22 @@
       "status": "supporting_suggestion",
       "implemented": false,
       "source": "Clarifies Owner-approved earnings status display vs actual payments"
+    },
+    {
+      "id": "UI-C-010",
+      "role": "collector",
+      "name": "每笔订单质检反馈展示实际采集小时、有效小时、有效率、无效/拒收原因和改进建议",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以, after proposed complete order-level QA feedback"
+    },
+    {
+      "id": "S-015",
+      "role": "system",
+      "name": "质检结果须可追溯真实客户/授权审核来源，未出结果不得捏造有效率、拒收原因或客户建议",
+      "status": "supporting_suggestion",
+      "implemented": false,
+      "source": "Accuracy/privacy requirement for Owner-approved QA feedback UI"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
