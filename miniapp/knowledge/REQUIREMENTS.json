@@ -463,6 +463,22 @@
       "status": "supporting_suggestion",
       "implemented": false,
       "source": "Accuracy/privacy requirement for Owner-approved QA feedback UI"
+    },
+    {
+      "id": "UI-C-011",
+      "role": "collector",
+      "name": "单笔订单质检反馈提供申请复核按钮，支持采集员提交异议并查看凌矩核查反馈",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以 to proposed QA dispute and review feature"
+    },
+    {
+      "id": "S-016",
+      "role": "system",
+      "name": "申诉关联订单及原始质检结果，保留复核记录；未获客户授权不能由平台擅自改客户有效小时",
+      "status": "supporting_suggestion",
+      "implemented": false,
+      "source": "Controls needed to preserve QA auditability and customer authority"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
