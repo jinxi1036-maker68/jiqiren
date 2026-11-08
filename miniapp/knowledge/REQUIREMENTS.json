@@ -231,6 +231,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner approved post-review sequence 2026-11-08"
+    },
+    {
+      "id": "UI-M-007",
+      "role": "merchant",
+      "name": "商家设置每周固定开放采集的星期及多个日内时段",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以合适"
+    },
+    {
+      "id": "UI-M-008",
+      "role": "merchant",
+      "name": "商家可针对某个日期临时关店、关闭采集或调整当天开放时间",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以合适"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
