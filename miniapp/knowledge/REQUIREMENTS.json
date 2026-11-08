@@ -591,6 +591,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 said 可以 to notify Lingju backend; merchants do not chase equipment"
+    },
+    {
+      "id": "UI-C-017",
+      "role": "collector",
+      "name": "采集员订单内提供设备异常上报入口，可报告密码箱打不开、设备损坏故障、无法正常归还并向凌矩反馈",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 replied 可以 to device exception report button on collector order"
+    },
+    {
+      "id": "UI-A-002",
+      "role": "admin",
+      "name": "凌矩后台接收关联订单和设备的采集员异常报告并跟进；商家不承担设备维修、核查和追讨责任",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner approved collector reporting issues directly to Lingju"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
