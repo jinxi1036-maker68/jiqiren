@@ -8,7 +8,9 @@
     "current_is_not_history": true,
     "evidence_before_scale": true,
     "confirmed_vs_assumption_separated": true,
-    "owner_decision_is_highest_internal_authority": true
+    "owner_decision_is_highest_internal_authority": true,
+    "owner_company_evolution_continuity_mandate": true,
+    "record_hypotheses_decisions_and_reversals_separately": true
   },
   "bootstrap": {
     "human_entry": "knowledge/00_START_HERE.md",
@@ -17,7 +19,7 @@
       "knowledge/CURRENT_WORK.json"
     ],
     "freshness_protocol": "knowledge/FRESHNESS_PROTOCOL.md",
-    "rule": "先定位当前阶段和当前唯一工作项，再加载对应 profile；历史和证据按需读取。",
+    "rule": "先定位当前阶段和当前唯一工作项，再加载对应 profile；历史和证据按需读取。 公司战略/重大运营/外部反馈对话还必须先遵守COMPANY_EVOLUTION_CHARTER.md，新增重大事件有证据地追加公司发展史。",
     "hermes_governance_mandatory_on_topic": true,
     "hermes_governance_read_before_development": [
       "knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
@@ -25,7 +27,9 @@
       "AGENTS.md",
       "hermes/AGENTS.md"
     ],
-    "hermes_historical_context_on_first_onboarding": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md"
+    "hermes_historical_context_on_first_onboarding": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
+    "company_evolution_charter": "knowledge/COMPANY_EVOLUTION_CHARTER.md",
+    "company_evolution_timeline": "knowledge/history/COMPANY_EVOLUTION_TIMELINE.md"
   },
   "profiles": {
     "orientation": {
@@ -81,7 +85,9 @@
     "knowledge_maintenance": {
       "required": [
         "knowledge/10_UPDATE_PROTOCOL.md",
-        "knowledge/FRESHNESS_PROTOCOL.md"
+        "knowledge/FRESHNESS_PROTOCOL.md",
+        "knowledge/COMPANY_EVOLUTION_CHARTER.md",
+        "knowledge/history/COMPANY_EVOLUTION_TIMELINE.md"
       ],
       "purpose": "维护知识库本身。"
     },
@@ -105,6 +111,7 @@
     "close_rule": "阶段完成后，把结论写入 HISTORY_AND_MILESTONES.md / EVIDENCE_INDEX.json / decisions，再替换 CURRENT_WORK。",
     "evidence_rule": "扩张、付款、采购、长期承诺必须由对应证据支持。",
     "privacy_rule": "知识库不保存身份证、手机号、私人微信、银行卡、个人住址等敏感个人信息。",
-    "hermes_owner_decision_rule": "Owner修正数字员工理念时，先更新权威岗位宪章与机器索引、形成ADR、追加History，再同步hermes代码和测试；旧提案标SUPERSEDED，不冒充实施"
+    "hermes_owner_decision_rule": "Owner修正数字员工理念时，先更新权威岗位宪章与机器索引、形成ADR、追加History，再同步hermes代码和测试；旧提案标SUPERSEDED，不冒充实施",
+    "owner_company_evolution_rule": "Owner于2026-11-08明确要求记录凌矩每一阶段的发展愿景、真实进展、试错、外部意见、重大决策与推翻过程；按COMPANY_EVOLUTION_CHARTER路由到时间轴、ADR、证据、当前状态，不能混淆设想与实施；可用连接及授权时更新GitHub，不可用要说明。"
   }
 }
