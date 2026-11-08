@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner approves merchant activation lifecycle: approval -> install device -> merchant confirms installation -> merchant sets available time -> individual collectors may book. Design only; no implementation.",
+  "latest_decision": "Owner confirmed merchant weekly recurring opening slots plus one-off date closures/time overrides. Existing reservations conflict response pending.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -118,5 +118,15 @@
       "availability_schedule_editor",
       "existing_booking_cancellation_handling"
     ]
+  },
+  "merchant_schedule_first_version_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-08",
+    "weekly_recurring_slots": true,
+    "allow_multiple_daily_slots": true,
+    "date_specific_closure_or_override": true,
+    "example_hours_are_not_mandatory": true,
+    "existing_bookings_on_closure": "undecided",
+    "implementation_done": false
   }
 }
