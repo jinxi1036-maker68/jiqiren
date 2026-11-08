@@ -519,6 +519,14 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner confirmed trigger concept not specific amount or exact return verification step"
+    },
+    {
+      "id": "UI-M-012",
+      "role": "merchant",
+      "name": "采集员实际完成采集且设备归还核验到归还完成后才确认商家收益，已提交归还不能触发收益",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以 to require verified 归还完成 for merchant earnings"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
