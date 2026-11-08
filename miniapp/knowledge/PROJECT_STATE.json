@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed merchant weekly recurring opening slots plus one-off date closures/time overrides. Existing reservations conflict response pending.",
+  "latest_decision": "Owner agreed: merchant may request temporary slot closure; block new bookings, notify existing collectors, help rebook time or another store. Compensation and existing order statuses undecided; no code yet.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -128,5 +128,17 @@
     "example_hours_are_not_mandatory": true,
     "existing_bookings_on_closure": "undecided",
     "implementation_done": false
+  },
+  "merchant_booking_conflict_handling_20261108": {
+    "status": "owner_confirmed_product_direction",
+    "decision_id": "DEC-2026-11-08-09",
+    "merchant_may_request_temporary_closure": true,
+    "block_new_bookings_in_affected_slot": true,
+    "notify_collectors_with_existing_bookings": true,
+    "guide_reschedule_or_other_location": true,
+    "compensation_rule": "not_decided",
+    "cancellation_and_approval_state_machine": "not_decided",
+    "real_notifications_implemented": false,
+    "code_implemented": false
   }
 }
