@@ -1,0 +1,43 @@
+{
+  "schema_version": "lingju_miniapp_state_v1",
+  "project_id": "lingju-merchant-collector-miniapp",
+  "updated_at": "2026-11-08",
+  "home": "miniapp/knowledge/00_START_HERE.md",
+  "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
+  "phase": "knowledge_baseline_created",
+  "model": "merchant_host_device_plus_individual_collector_hourly_orders",
+  "model_confirmed_by_owner": true,
+  "mvp": {
+    "kind": "clickable_frontend_simulation",
+    "owner_approved": true,
+    "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/24",
+    "issue_number": 24,
+    "code_in_repo_verified": false,
+    "codex_actively_running_verified": false,
+    "pr_created_verified": false,
+    "tests_verified": false,
+    "publicly_deployed": false,
+    "real_payment": false,
+    "real_user_data": false
+  },
+  "technology": {
+    "wechat_mini_program_stack": "not_decided",
+    "backend": "not_decided",
+    "api": "not_decided",
+    "real_customer_integration": "not_authorized"
+  },
+  "canonical_code_paths": {
+    "demo": "miniapp/apps/demo/",
+    "wechat_if_authorized": "miniapp/apps/wechat/",
+    "tests": "miniapp/tests/"
+  },
+  "known_constraints": [
+    "no customer backend integration",
+    "no live payments or real users for demo",
+    "no unapproved real merchant equipment deployment",
+    "no claim of real QA without verified source",
+    "don't hardcode merchant 20 CNY trigger until owner specifies"
+  ],
+  "latest_decision": "Owner requested dedicated GitHub-only long-term design+code+test+evolution baseline for miniapp; this action creates scaffold, not executable app.",
+  "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model."
+}

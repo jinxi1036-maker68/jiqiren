@@ -1,0 +1,166 @@
+{
+  "schema_version": "lingju_miniapp_requirements_v1",
+  "created_at": "2026-11-08",
+  "product": "凌矩共享采集站（暂定）",
+  "owner_model_status": "two_roles_explicitly_confirmed",
+  "implementation_status": "docs_only",
+  "status_legend": {
+    "confirmed_concept": "Owner确认的产品方向，仍需设计界面/具体规则",
+    "example_unconfirmed": "Owner口述示例，计费触发和具体规则未确认",
+    "future_idea": "Owner表达未来要有，不代表首版必做",
+    "supporting_suggestion": "为流程可用性提出的内部辅助功能，待Owner确认",
+    "proposal_only": "AI技术建议，尚未获得产品范围批准"
+  },
+  "requirements": [
+    {
+      "id": "M-001",
+      "role": "merchant",
+      "name": "申请门店场景采集设备入驻",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "M-002",
+      "role": "merchant",
+      "name": "查看设备与部署状态",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "M-003",
+      "role": "merchant",
+      "name": "设置指定日期和每日允许采集时段",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "M-004",
+      "role": "merchant",
+      "name": "暂停接单、临时关店及不可用时间",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "M-005",
+      "role": "merchant",
+      "name": "查看到店接单记录和每日/累计收益",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "M-006",
+      "role": "merchant",
+      "name": "商家每次接单提成20元的示例方案（具体触发待定）",
+      "status": "example_unconfirmed",
+      "implemented": false
+    },
+    {
+      "id": "M-007",
+      "role": "merchant",
+      "name": "商家个人/经营资料、评分和信誉分",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-001",
+      "role": "collector",
+      "name": "查看地点、商家站点和可接任务",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-002",
+      "role": "collector",
+      "name": "查看任务详情和动作SOP",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-003",
+      "role": "collector",
+      "name": "查看时段、最少和最多可接小时以及小时报酬",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-004",
+      "role": "collector",
+      "name": "按可用时间接多个订单和查看接单详情",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-005",
+      "role": "collector",
+      "name": "采集记录、上传状态和后续审核状态",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-006",
+      "role": "collector",
+      "name": "按批次/订单查看有效率、质检问题与改进建议",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-007",
+      "role": "collector",
+      "name": "按合法确认的有效小时计价及每日收益、待结已结记录",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-008",
+      "role": "collector",
+      "name": "个人资料、评分和信誉分",
+      "status": "confirmed_concept",
+      "implemented": false
+    },
+    {
+      "id": "C-009",
+      "role": "collector",
+      "name": "未来接单补助、优惠券或激励券",
+      "status": "future_idea",
+      "implemented": false
+    },
+    {
+      "id": "O-001",
+      "role": "operator",
+      "name": "凌矩城市运营对场景、设备、任务和人员进行审核管理",
+      "status": "supporting_suggestion",
+      "implemented": false
+    },
+    {
+      "id": "O-002",
+      "role": "operator",
+      "name": "设备签领归还、模拟上游QA和商家/个人模拟结算链路",
+      "status": "supporting_suggestion",
+      "implemented": false
+    },
+    {
+      "id": "S-001",
+      "role": "system",
+      "name": "商家不可用时段禁止新预约；已有预约需有冲突处理",
+      "status": "supporting_suggestion",
+      "implemented": false
+    },
+    {
+      "id": "S-002",
+      "role": "system",
+      "name": "不同上游客户数据/设备/权限隔离",
+      "status": "supporting_suggestion",
+      "implemented": false
+    },
+    {
+      "id": "S-003",
+      "role": "system",
+      "name": "演示版不可真实交易、无支付、无客户数据、无真实设备联机",
+      "status": "confirmed_concept",
+      "implemented": false
+    }
+  ],
+  "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
+  "mvp_scope_approval": "Owner approved demo concept, individual implementation scope to be reconciled with updated two-sided charter before work",
+  "next_step": "Codex reads miniapp/AGENTS.md and issue #24, then creates isolated demo code PR after current owner prioritization"
+}
