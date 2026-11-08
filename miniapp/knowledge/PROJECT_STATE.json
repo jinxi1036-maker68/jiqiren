@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirms collector earnings screen has estimated, pending QA, and confirmed income sections; confirmed is not paid; design not coded.",
+  "latest_decision": "Owner confirms per-order QA view showing collected hours, customer-accepted valid hours, effective rate, rejection reasons and targeted guidance. Source must be verified, demo simulated, appeals undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -268,6 +268,23 @@
     "estimate_not_guaranteed": true,
     "real_qa_integration": false,
     "real_payout_integration": false,
+    "implemented": false
+  },
+  "collector_order_qa_feedback_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-18",
+    "fields": [
+      "actual_collection_hours",
+      "customer_accepted_valid_hours",
+      "data_validity_rate",
+      "specific_invalid_or_rejected_reasons",
+      "improvement_guidance"
+    ],
+    "qa_rate_formula": "only_example_accepted_hours_divided_by_actual_hours; real customer definition takes precedence",
+    "qa_source_required": true,
+    "unavailable_feedback_must_not_be_fabricated": true,
+    "appeal_workflow": "undecided",
+    "actual_upstream_qa_integration": false,
     "implemented": false
   }
 }
