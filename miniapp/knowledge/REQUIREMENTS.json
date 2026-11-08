@@ -247,6 +247,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08: 可以合适"
+    },
+    {
+      "id": "UI-M-009",
+      "role": "merchant",
+      "name": "商家可申请临时关闭/暂停某日或某时段，影响时段停止接受新预约",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以，合适"
+    },
+    {
+      "id": "C-010",
+      "role": "collector",
+      "name": "商家临时关店影响已有预约时，通知采集员并引导改约到其他时段或店铺",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以，合适"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
