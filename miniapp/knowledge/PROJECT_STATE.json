@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner agreed: merchant may request temporary slot closure; block new bookings, notify existing collectors, help rebook time or another store. Compensation and existing order statuses undecided; no code yet.",
+  "latest_decision": "Owner approved collector homepage nearby bookable merchants and task cards showing location, task, opening window, hourly reward and available hours; click for details. Design only.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -140,5 +140,29 @@
     "cancellation_and_approval_state_machine": "not_decided",
     "real_notifications_implemented": false,
     "code_implemented": false
+  },
+  "collector_home_first_version_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-10",
+    "design_spec": "miniapp/knowledge/SCREEN_DESIGN.md",
+    "primary_view": "nearby_bookable_merchants_and_tasks",
+    "task_card_fields": [
+      "store_location",
+      "capture_task",
+      "available_time",
+      "hourly_reward",
+      "bookable_duration"
+    ],
+    "tap_card_opens_detail": true,
+    "actual_implementation": false,
+    "live_location_permission": false,
+    "real_orders": false,
+    "details_undecided": [
+      "map_or_list_default",
+      "filter_and_sort",
+      "task_details_flow",
+      "booking_confirmation_steps",
+      "specific_hourly_rates"
+    ]
   }
 }

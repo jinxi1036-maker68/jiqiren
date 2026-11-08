@@ -263,6 +263,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08: 可以，合适"
+    },
+    {
+      "id": "UI-C-001",
+      "role": "collector",
+      "name": "采集员首页优先显示附近可接单商家场地及采集任务",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以合适"
+    },
+    {
+      "id": "UI-C-002",
+      "role": "collector",
+      "name": "任务卡展示场地位置、任务内容、开放时间、小时报酬和可接单时长，支持进入详情",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以合适"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
