@@ -211,5 +211,23 @@
     "automation_deployed": false,
     "financial_spend_approved": false,
     "next_gate": "Ask Owner for one complete recent operating day's first-hand actual devices and quality/upload data and sources, not assumptions"
+  },
+  "owner_miniprogram_concept_correction_20261108": {
+    "date": "2026-11-08",
+    "authority": "owner_explicit_correction",
+    "status": "owner_explained_product_model_scope_details_pending",
+    "source": "knowledge/strategy/2026-11-08_LINGJU_MERCHANT_COLLECTOR_MINIPROGRAM_VISION.md",
+    "roles": [
+      "merchant_apply_host_lingju_equipment_and_manage_available_time_revenue_reputation",
+      "individual_collector_see_location_tasks_hourly_rules_accept_bookings_review_quality_feedback_and_earnings"
+    ],
+    "not_roles": [
+      "collection_team_taking_upstream_orders",
+      "upstream_customer_publishing_in_twin_app"
+    ],
+    "merchant_per_visit_subsidy_example_cny": 20,
+    "payout_trigger_undecided": true,
+    "code_started": false,
+    "product_scope_approved": false
   }
 }
