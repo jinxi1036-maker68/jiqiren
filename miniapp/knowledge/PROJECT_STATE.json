@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner proposed at least ~30-minute equipment handover buffer between sequential collector bookings for the same device. First-version booking design reserves this non-bookable interval; no code yet.",
+  "latest_decision": "Owner requires min 30m per same-device turnover and collector self-service equipment unlock via order-displayed password; merchant must not confirm each handoff. Evidence-based damage accountability, hardware implementation undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -191,7 +191,7 @@
     "owner_example": {
       "device_opening": "08:00-18:00",
       "first_confirmed_booking": "08:00-11:00",
-      "remaining_start_after_booking": "11:00",
+      "remaining_start_after_booking": "11:30",
       "additional_person_can_book_remaining": true
     },
     "reservation_granularity": "equipment_id+local_date+start_time+end_time",
@@ -203,7 +203,24 @@
     "device_handover_buffer_minutes": 30,
     "cancel_and_release_rules": "undecided",
     "code_implemented": false,
-    "device_handover_buffer_status": "owner_proposed_at_least_approx_30_min_first_version_setting",
-    "same_device_next_booking_earliest": "prior_booking_end_plus_30_minutes_if_open_and_min_duration_allowed"
+    "device_handover_buffer_status": "owner_confirmed_minimum_30_minutes",
+    "same_device_next_booking_earliest": "previous_end_plus_30_minutes",
+    "handover_by_merchant": false
+  },
+  "self_service_password_box_20261108": {
+    "status": "owner_confirmed_product_model",
+    "decision_id": "DEC-2026-11-08-14",
+    "equipment_in_password_locked_box": true,
+    "order_shows_box_password_to_collector_after_successful_booking": true,
+    "collector_self_service_retrieval": true,
+    "merchant_per_order_handover_required": false,
+    "merchant_day_to_day_equipment_management_required": false,
+    "store_role": "venue_provider_and_opening_time_controller",
+    "operator_record_device_user_order_association": true,
+    "damage_and_fault_evidence_based": true,
+    "code_validity_details": "undecided",
+    "return_and_relock_workflow": "undecided",
+    "real_hardware_integration": false,
+    "implemented": false
   }
 }
