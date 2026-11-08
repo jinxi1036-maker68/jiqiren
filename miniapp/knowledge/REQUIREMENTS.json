@@ -215,6 +215,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner said 可以可以 to exact four statuses"
+    },
+    {
+      "id": "UI-M-006",
+      "role": "merchant",
+      "name": "审核通过后依次经历凌矩安排设备安装、商家确认设备到位、设置采集开放时间，才对个人采集员开放接单",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 合适，可以。"
+    },
+    {
+      "id": "S-004",
+      "role": "system",
+      "name": "商家审核通过与设备实际可接单为不同状态，未完成安装、商家确认与开放时段设置不得直接接单",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner approved post-review sequence 2026-11-08"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
