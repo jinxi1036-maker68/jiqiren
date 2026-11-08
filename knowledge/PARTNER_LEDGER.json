@@ -1,6 +1,6 @@
 {
   "schema_version": "partner_ledger_v1",
-  "updated_at": "2026-11-04",
+  "updated_at": "2026-11-08",
   "partners": [
     {
       "id": "livsyn",
@@ -76,7 +76,15 @@
       "priority": "P3",
       "current_path": "已提交合作伙伴信息，尚无实质项目推进",
       "evidence_level": "conversation_confirmed",
-      "next_gate": "等正式商务回复或有效河南项目，不继续作为第二上游主线耗时跟进"
+      "next_gate": "等正式商务回复或有效河南项目，不继续作为第二上游主线耗时跟进",
+      "codex_first_pass_20261108": {
+        "date": "2026-11-08",
+        "source": "owner_forwarded_codex_report_not_independently_verified",
+        "outbound_emails": 0,
+        "submitted_forms": 0,
+        "finding": "Owner applied earlier without reply; Codex reports business@maniformer.ai",
+        "next_action": "check old application and only one justified follow-up"
+      }
     },
     {
       "id": "jinglianwen",
@@ -119,6 +127,14 @@
         "reply_summary": "供应商较多；项目需求会通过朋友圈发布，采购模块按需联系",
         "stage": "contact_established_no_order",
         "note": "未核实供应商报名正式入库或分配项目"
+      },
+      "codex_first_pass_20261108": {
+        "date": "2026-11-08",
+        "source": "owner_forwarded_codex_report_not_independently_verified",
+        "outbound_emails": 0,
+        "submitted_forms": 0,
+        "finding": "Owner has procurement WeChat contact, Codex reports recruitment announcement is readable",
+        "next_action": "use existing contact, avoid duplicate registration"
       }
     },
     {
@@ -145,7 +161,15 @@
       "next_gate": "检查官方登记入口，按真实人员和场景填写并保留回执；确认企业准入、任务单/场景、设备、审核、合同结算；未提交不得标记为已报名",
       "source_urls": [
         "https://kuizhuokj.com/index.php?a=index&aid=8804&c=View&lang=cn&m=home"
-      ]
+      ],
+      "codex_first_pass_20261108": {
+        "date": "2026-11-08",
+        "source": "owner_forwarded_codex_report_not_independently_verified",
+        "outbound_emails": 0,
+        "submitted_forms": 0,
+        "finding": "Codex reports official announcement lists Feishu registration and bd@kuizhuokj.cn; form ERR_BLOCKED_BY_CLIENT",
+        "next_action": "verify official email and try approved business inquiry"
+      }
     },
     {
       "id": "ropedia_project_lead",
@@ -194,6 +218,14 @@
         "inclusion_term": "2_year_supplier_pool_not_guaranteed_orders",
         "official": "https://www.zybtp.com/fcggg/415100.jhtml",
         "mirror": "https://www.hbtba.com/project/view.php?id=24003"
+      },
+      "codex_first_pass_20261108": {
+        "date": "2026-11-08",
+        "source": "owner_forwarded_codex_report_not_independently_verified",
+        "outbound_emails": 0,
+        "submitted_forms": 0,
+        "finding": "Codex reports Nov 5 file deadline passed, third party repost suggests one-year long-term trial; official portal unviewed",
+        "next_action": "verify long-term trial via official procurement organizer"
       }
     },
     {
@@ -252,7 +284,15 @@
       ],
       "next_gate": "Ask if public human data partner recruitment remains open for Henan local collection providers, request official application link and trial requirements; no current contract/order/price evidence.",
       "owner_fit": "Owner reports ~30 devices including Xiangcheng 5-device trial, organized field work and candidate SOPs; published program specifically seeks regional recruitment and QA delivery providers.",
-      "data_boundary": "No reusing or transferring LivSyn client-owned data/device recordings without express contractual consent."
+      "data_boundary": "No reusing or transferring LivSyn client-owned data/device recordings without express contractual consent.",
+      "codex_first_pass_20261108": {
+        "date": "2026-11-08",
+        "source": "owner_forwarded_codex_report_not_independently_verified",
+        "outbound_emails": 0,
+        "submitted_forms": 0,
+        "finding": "Codex reports contact form is customer-facing, supplier intake unverified; browser ERR_BLOCKED_BY_CLIENT",
+        "next_action": "verify supplier partnership route"
+      }
     },
     {
       "id": "newhope_lumina",
@@ -305,5 +345,17 @@
   "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md",
   "latest_lightwheel_partner_investigation": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md",
   "latest_peer_quote_clarification": "2026-11-04: peer is offering Lingju CNY50/hour for Lingju to organize capture; no agreed QA hour or tax basis yet.",
-  "latest_second_upstream_urgent_tender": "knowledge/reports/2026-11-04_SECOND_UPSTREAM_HENAN_EGO_TENDER_URGENT.md"
+  "latest_second_upstream_urgent_tender": "knowledge/reports/2026-11-04_SECOND_UPSTREAM_HENAN_EGO_TENDER_URGENT.md",
+  "codex_first_pass_overview_20261108": {
+    "date": "2026-11-08",
+    "source": "owner-forwarded Codex report",
+    "emails_sent": 0,
+    "forms_submitted": 0,
+    "automation_deployed": false,
+    "github_in_codex": "readable_write_denied_approval_never",
+    "browser": "some pages ERR_BLOCKED_BY_CLIENT",
+    "local_runtime": "read_only",
+    "gmail": "jinxi1036@gmail.com connected per Codex, owner has not yet confirmed business outbound use",
+    "note": "ChatGPT connector writing this ledger does not change blocked Codex permissions."
+  }
 }
