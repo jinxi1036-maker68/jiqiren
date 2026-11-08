@@ -191,6 +191,30 @@
       "status": "first_version_provisionally_approved",
       "implemented": false,
       "source": "Owner 2026-11-08: 我感觉前期这样设计可以"
+    },
+    {
+      "id": "UI-M-003",
+      "role": "merchant",
+      "name": "设备入驻申请表：店名、地址、经营类型、联系人与联系电话",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "User accepted proposed first-version merchant application fields"
+    },
+    {
+      "id": "UI-M-004",
+      "role": "merchant",
+      "name": "设备入驻申请支持门头、店内环境与拟布置设备区域的场地/场景照片",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner explicitly requested scene photos; three photo types assistant-proposed; mandatory quantities not approved"
+    },
+    {
+      "id": "UI-M-005",
+      "role": "merchant",
+      "name": "展示申请状态：待审核、审核通过、需要补充资料、暂不通过",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner said 可以可以 to exact four statuses"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
