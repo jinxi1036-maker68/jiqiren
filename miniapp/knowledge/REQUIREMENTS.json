@@ -479,6 +479,22 @@
       "status": "supporting_suggestion",
       "implemented": false,
       "source": "Controls needed to preserve QA auditability and customer authority"
+    },
+    {
+      "id": "UI-C-012",
+      "role": "collector",
+      "name": "个人采集员展示信誉分与按时到店、按时归还设备、采集质量相关履约记录",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 said 可以可以 to proposed collector reputation system"
+    },
+    {
+      "id": "S-017",
+      "role": "system",
+      "name": "信誉较好采集员可优先获得部分任务机会，评分有争议时先核查不直接扣分",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner confirmed priority tasks for good standing and investigate contested events before penalties"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
