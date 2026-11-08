@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirms merchant earnings ledger has 待结算, 待打款, 已到账 statuses with per-order details; real settlement and payment integration not implemented.",
+  "latest_decision": "Owner rejected weekly merchant settlement due to possible longer data annotation timeline; minimum monthly settlement, exact billing cycle and payment date not specified. Merchant venue earning eligibility remains QA-independent.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -333,7 +333,7 @@
     "twenty_yuan_not_fixed_rate": true,
     "return_status_trigger": "归还完成_verified_return_only",
     "effect_of_upstream_qa": "does_not_affect_normal_merchant_venue_earnings",
-    "settlement_and_transfer": "undecided",
+    "settlement_and_transfer": "not_weekly_at_least_monthly_payment_day_undecided",
     "implemented": false,
     "confirmed_requires_verified_return": true,
     "self_report_return_is_insufficient": true,
@@ -353,7 +353,11 @@
     "verified_return_required_before_earnings_recognition": true,
     "received_requires_verified_payment_confirmation": true,
     "real_payment_integration": false,
-    "real_settlement_schedule": "undecided",
-    "implemented": false
+    "real_settlement_schedule": "not_weekly_at_least_monthly_exact_cycle_undecided",
+    "implemented": false,
+    "weekly_settlement_rejected": true,
+    "minimum_settlement_cycle": "monthly_or_longer",
+    "specific_payment_day": "undecided",
+    "additional_decision_id": "DEC-2026-11-08-26"
   }
 }
