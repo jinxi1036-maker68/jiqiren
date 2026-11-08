@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed reputation 100-point scale, new collector initial 100, verified infractions can deduct and positive performance may restore, exact amounts undecided. No code yet.",
+  "latest_decision": "Owner approves merchant earnings only after collector actually performs collection and returns device; booking only generates no confirmed earnings. CNY20 is example, precise verification and QA relationship open.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -321,5 +321,19 @@
     "max_score": 100,
     "score_rules": "undecided",
     "additional_decision_id": "DEC-2026-11-08-21"
+  },
+  "merchant_earnings_trigger_20261108": {
+    "status": "owner_confirmed_product_concept",
+    "decision_id": "DEC-2026-11-08-22",
+    "requires_actual_collection_completed": true,
+    "requires_equipment_return": true,
+    "booking_only_earns": false,
+    "merchant_handover_confirmation_required": false,
+    "example_yuan_per_person_or_order": 20,
+    "twenty_yuan_not_fixed_rate": true,
+    "return_status_trigger": "undecided_submitted_or_verified",
+    "effect_of_upstream_qa": "undecided",
+    "settlement_and_transfer": "undecided",
+    "implemented": false
   }
 }
