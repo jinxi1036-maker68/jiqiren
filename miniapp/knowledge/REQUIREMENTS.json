@@ -535,6 +535,14 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 replied 可以 to QA-independent venue earnings proposal"
+    },
+    {
+      "id": "UI-M-014",
+      "role": "merchant",
+      "name": "商家收益明细展示待结算、待打款、已到账三类状态，每笔关联对应采集订单；到账须依据真实支付凭证",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 replied 可以 to three merchant earnings statuses and per-order linked details"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
