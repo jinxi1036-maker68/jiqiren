@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed merchant venue earnings after actual collection and verified device return are independent of collector QA pass rate; failed QA cannot automatically reduce merchant income, exceptions and settlement remain undecided.",
+  "latest_decision": "Owner confirms merchant earnings ledger has 待结算, 待打款, 已到账 statuses with per-order details; real settlement and payment integration not implemented.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -340,5 +340,20 @@
     "additional_decision_id": "DEC-2026-11-08-23",
     "collector_data_quality_not_merchant_responsibility": true,
     "additional_qa_decision_id": "DEC-2026-11-08-24"
+  },
+  "merchant_earnings_detail_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-25",
+    "statuses": [
+      "待结算",
+      "待打款",
+      "已到账"
+    ],
+    "per_order_line_items": true,
+    "verified_return_required_before_earnings_recognition": true,
+    "received_requires_verified_payment_confirmation": true,
+    "real_payment_integration": false,
+    "real_settlement_schedule": "undecided",
+    "implemented": false
   }
 }
