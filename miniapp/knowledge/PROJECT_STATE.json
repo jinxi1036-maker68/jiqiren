@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner approved task-detail SOP pictures and explained flexible-duration booking in merchant windows: example min 2h, flexible longer, bounded by max per order and per-device daily capacity; precise values and authority undecided; not coded.",
+  "latest_decision": "Owner explained train-ticket-like sequential multi-user reservations for a single device: occupied interval disappears, remaining intervals remain selectable by other collectors, subject to no overlap and rules. Design only.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -182,5 +182,26 @@
     "prevent_device_double_booking": true,
     "respect_merchant_opening_hours": true,
     "actual_implementation": false
+  },
+  "device_train_ticket_scheduling_20261108": {
+    "status": "owner_explicitly_explained_core_booking_model",
+    "decision_id": "DEC-2026-11-08-12",
+    "same_device_multiple_people_sequentially": true,
+    "simultaneous_overlap_allowed": false,
+    "owner_example": {
+      "device_opening": "08:00-18:00",
+      "first_confirmed_booking": "08:00-11:00",
+      "remaining_start_after_booking": "11:00",
+      "additional_person_can_book_remaining": true
+    },
+    "reservation_granularity": "equipment_id+local_date+start_time+end_time",
+    "remaining_slots_recomputed_after_confirm": true,
+    "must_respect_merchant_schedule": true,
+    "must_respect_min_duration": true,
+    "must_respect_daily_device_limit": true,
+    "concurrent_claim_must_prevent_double_booking": true,
+    "device_handover_buffer_minutes": "undecided",
+    "cancel_and_release_rules": "undecided",
+    "code_implemented": false
   }
 }
