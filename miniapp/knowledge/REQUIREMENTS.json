@@ -279,6 +279,46 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08: 可以合适"
+    },
+    {
+      "id": "UI-C-003",
+      "role": "collector",
+      "name": "任务详情提供文字SOP和示范图片以供新手学习",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 approved image + step instructions"
+    },
+    {
+      "id": "UI-C-004",
+      "role": "collector",
+      "name": "采集员在商家开放时段内自主选择起止时间和订单小时数，支持多单，互不冲突",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 explicitly described flexible duration rather than rigid slots"
+    },
+    {
+      "id": "UI-C-005",
+      "role": "collector",
+      "name": "预约时展示最少采集小时、每单最多小时、早/下午或全天可用窗口及设备每日余量",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 offered example 2h minimum, morning/afternoon/day and daily machine maximum; precise values remain open"
+    },
+    {
+      "id": "S-005",
+      "role": "system",
+      "name": "每台设备预约不可重叠且不得超过日采集上限、商家开放窗口或任务限制",
+      "status": "supporting_suggestion",
+      "implemented": false,
+      "source": "Anti-double-booking and daily cap necessary for owner requested flexible slots"
+    },
+    {
+      "id": "S-006",
+      "role": "system",
+      "name": "最低采集时长示例2小时但应可配置，不能把示例硬编码为永久业务规则",
+      "status": "example_unconfirmed",
+      "implemented": false,
+      "source": "Owner proposed two hours as example, asked flexible max hours"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
