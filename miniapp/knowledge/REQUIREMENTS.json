@@ -9,7 +9,8 @@
     "example_unconfirmed": "Owner口述示例，计费触发和具体规则未确认",
     "future_idea": "Owner表达未来要有，不代表首版必做",
     "supporting_suggestion": "为流程可用性提出的内部辅助功能，待Owner确认",
-    "proposal_only": "AI技术建议，尚未获得产品范围批准"
+    "proposal_only": "AI技术建议，尚未获得产品范围批准",
+    "first_version_provisionally_approved": "Owner同意作为第一版设计方向，具体细节可在后续讨论或原型验收时调整"
   },
   "requirements": [
     {
@@ -174,6 +175,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 agrees to first-use selection and later easy switching; actual authentication undecided"
+    },
+    {
+      "id": "UI-M-001",
+      "role": "merchant",
+      "name": "商家尚未入驻时首页重点显示申请设备入驻",
+      "status": "first_version_provisionally_approved",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 我感觉前期这样设计可以"
+    },
+    {
+      "id": "UI-M-002",
+      "role": "merchant",
+      "name": "商家入驻并部署设备后首页显示设备状态、可采时间、今日订单与今日收益",
+      "status": "first_version_provisionally_approved",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 我感觉前期这样设计可以"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
