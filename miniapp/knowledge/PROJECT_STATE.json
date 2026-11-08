@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner explained train-ticket-like sequential multi-user reservations for a single device: occupied interval disappears, remaining intervals remain selectable by other collectors, subject to no overlap and rules. Design only.",
+  "latest_decision": "Owner proposed at least ~30-minute equipment handover buffer between sequential collector bookings for the same device. First-version booking design reserves this non-bookable interval; no code yet.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -200,8 +200,10 @@
     "must_respect_min_duration": true,
     "must_respect_daily_device_limit": true,
     "concurrent_claim_must_prevent_double_booking": true,
-    "device_handover_buffer_minutes": "undecided",
+    "device_handover_buffer_minutes": 30,
     "cancel_and_release_rules": "undecided",
-    "code_implemented": false
+    "code_implemented": false,
+    "device_handover_buffer_status": "owner_proposed_at_least_approx_30_min_first_version_setting",
+    "same_device_next_booking_earliest": "prior_booking_end_plus_30_minutes_if_open_and_min_duration_allowed"
   }
 }
