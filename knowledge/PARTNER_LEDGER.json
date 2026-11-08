@@ -446,9 +446,9 @@
       "id": "tobi",
       "name": "拓比科技 TOBI",
       "priority": "P1",
-      "status": "initial_business_inquiry_sent_awaiting_reply",
-      "evidence_level": "gmail_send_receipt_confirmed",
-      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "status": "initial_reply_supplier_registration_requested_not_yet_submitted",
+      "evidence_level": "gmail_received_reply_verified_sender_spf_pass",
+      "next_gate": "2026-11-08 10:34:43北京时间拓比原联系邮箱lk@langhuiai.com回复“w.tobi.cn 先入库”；Owner需自行核实网站官方性及具体供应商入库所需资料，确认后再决定是否填写；未授权自动填表、发送证照、报价、合同或设备承诺。无截止日期、报价、订单或已入库证据。",
       "business_outreach_20261108": {
         "date": "2026-11-08",
         "sender": "jinxi1036@gmail.com",
@@ -464,6 +464,24 @@
         "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
         "status": "sent_not_delivered_or_replied_verified",
         "form_submitted": false
+      },
+      "business_reply_20261108": {
+        "date": "2026-11-08",
+        "beijing_time": "2026-11-08 10:34:43 +08:00",
+        "gmail_message_id": "1a1b9024e34c4959",
+        "gmail_thread_id": "1a1b8d9a96f23541",
+        "sender": "lk@langhuiai.com",
+        "sender_verification": "original outbound recipient exact match, same Gmail thread, raw MIME SPF pass",
+        "subject": "回复：咨询河南地区EGO数据采集服务商合作｜凌矩信息科技",
+        "reply_text": "w.tobi.cn 先入库",
+        "action_type": "supplier_registration_invitation_or_direction",
+        "registration_site_mentioned": "w.tobi.cn",
+        "site_independently_verified": false,
+        "form_submitted": false,
+        "deadline": null,
+        "terms_or_order": null,
+        "owner_action_required": "verify official portal and registration material requirements; seek approval before any external submission",
+        "notification_baseline": "new substantive reply; report once by Gmail message ID"
       }
     },
     {
