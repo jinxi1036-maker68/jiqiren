@@ -193,11 +193,11 @@
     {
       "id": "ropedia_project_lead",
       "name": "Ropedia（河南空港采购项目名称线索）",
-      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "status": "outreach_email_bounced_address_invalid",
       "priority": "P2",
       "evidence_level": "public_verified_project_title_only",
       "current_path": "2026-09-29河南空港Ropedia多模态项目第一批询价；并非已核实双方成交的合同。",
-      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "next_gate": "Ropedia首封邮件收到Gmail退信，hello@ropedia.com收件地址无效；不得标记已联系成功，需核验新官方商务邮箱或申请表；不能重复发无效地址。",
       "source_urls": [
         "https://www.365trade.com.cn/zfwzb/877880.jhtml"
       ],
@@ -214,8 +214,18 @@
         "official_contact_source": "https://github.com/Ropedia",
         "why_targeted": "HOMIE人类数据采集；英文邮件；不混淆河南空港项目线索",
         "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
-        "status": "sent_not_delivered_or_replied_verified",
+        "status": "SENT_but_bounced_550_not_delivered",
         "form_submitted": false
+      },
+      "email_delivery_issue_20261108": {
+        "date": "2026-11-08",
+        "source": "Gmail inbox Delivery Status Notification (Failure)",
+        "bounce_message_id": "1a1b8da6872db1de",
+        "original_sent_message_id": "1a1b8da5947429b1",
+        "recipient": "hello@ropedia.com",
+        "smtp": "550 verify address failed, User not found hello@ropedia.com",
+        "result": "not_delivered",
+        "resolution": "Do not resend to same invalid address. Independently verify an official alternate contact or partnership form."
       }
     },
     {
@@ -689,5 +699,16 @@
     "no_supplier_forms_submitted": true,
     "none_reply_verified": true,
     "note": "12=previously approved Kuizhuo 1 + current wave 11; wave 11 is 9 of 12 image candidates plus Henan procurement and Lightwheel. Sent receipt means Gmail SENT, not delivered/accepted."
+  },
+  "email_monitor_20261108": {
+    "status": "automation_created_enabled",
+    "automation_id": "Automation_419642ead5608191912b7048205a79ad",
+    "name": "凌矩商务邮箱回信监控",
+    "frequency": "hourly",
+    "timing_mode": "condition_watch",
+    "timezone": "Asia/Shanghai",
+    "scope": "inbox meaningful business replies, bounces, trial invitations, supplier enrollment, deadlines, special terms; dedup message ID",
+    "known_baseline_bounce": "Ropedia hello@ropedia.com 550 User not found, msg 1a1b8da6872db1de",
+    "privacy": "no sending email or signing contracts autonomously"
   }
 }
