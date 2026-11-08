@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner provisionally approves merchant home with two states: pre-onboarding equipment application; post-deployment equipment status / open times / today's orders / today's earnings. Not final details; no code yet.",
+  "latest_decision": "Owner confirmed merchant application can include scene/venue photos and accepted four review states: pending, approved, supplementary information, not approved; all remains design only.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -69,5 +69,32 @@
       "earnings_trigger",
       "device real-time data"
     ]
+  },
+  "merchant_application_first_version_20261108": {
+    "status": "owner_confirmed_product_direction",
+    "design_spec": "miniapp/knowledge/SCREEN_DESIGN.md",
+    "form_fields": [
+      "store_name",
+      "store_address",
+      "business_type",
+      "contact_name",
+      "contact_phone",
+      "scene_photos"
+    ],
+    "suggested_photo_subjects": [
+      "storefront",
+      "overall_interior",
+      "proposed_device_location"
+    ],
+    "photo_required_count": "undecided",
+    "application_statuses": [
+      "pending_review",
+      "approved",
+      "additional_information_required",
+      "not_approved"
+    ],
+    "actual_upload_implemented": false,
+    "review_workflow_implemented": false,
+    "approval_not_equivalent_to_device_live": true
   }
 }
