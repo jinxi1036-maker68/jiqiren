@@ -154,11 +154,11 @@
     {
       "id": "kuizhuo",
       "name": "魁卓科技",
-      "status": "public_supplier_recruitment_found_no_submission_evidence",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
       "priority": "P1",
       "evidence_level": "public_verified",
       "current_path": "2026-08-26官网向全国征集具身数据采集供应商，允许缺乏正式商业案例的团队如实参加调研；是否仍有效需核实。",
-      "next_gate": "检查官方登记入口，按真实人员和场景填写并保留回执；确认企业准入、任务单/场景、设备、审核、合同结算；未提交不得标记为已报名",
+      "next_gate": "2026-11-08首封官方业务咨询邮件已从jinxi1036@gmail.com发送至bd@kuizhuokj.cn并获得Gmail SENT回执；等待回复、按对方要求核实飞书供应商登记表，未入库未签约",
       "source_urls": [
         "https://kuizhuokj.com/index.php?a=index&aid=8804&c=View&lang=cn&m=home"
       ],
@@ -168,7 +168,26 @@
         "outbound_emails": 0,
         "submitted_forms": 0,
         "finding": "Codex reports official announcement lists Feishu registration and bd@kuizhuokj.cn; form ERR_BLOCKED_BY_CLIENT",
-        "next_action": "verify official email and try approved business inquiry"
+        "next_action": "verify official email and try approved business inquiry",
+        "owner_approved_followup": "Actual email sent via connected ChatGPT Gmail on 2026-11-08 (not by Codex), id 1a1b8d32935ba493; form remains not submitted."
+      },
+      "business_outreach_20261108": {
+        "event": "owner_approved_first_email_sent",
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "bd@kuizhuokj.cn",
+        "subject": "河南EGO数据采集合作咨询｜凌矩信息科技",
+        "channel": "gmail",
+        "gmail_message_id": "1a1b8d32935ba493",
+        "gmail_thread_id": "1a1b8d32935ba493",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "attachment_count": 0,
+        "submission_status": "email_sent_not_form_submitted",
+        "reply_status": "no_reply_verified_yet",
+        "provenance": "Gmail send_email returned SENT; Owner approved on 2026-11-08",
+        "next_action": "Check reply and verify supplier form requirements; preserve any response, don't treat email sending as admission"
       }
     },
     {
@@ -356,6 +375,7 @@
     "browser": "some pages ERR_BLOCKED_BY_CLIENT",
     "local_runtime": "read_only",
     "gmail": "jinxi1036@gmail.com connected per Codex, owner has not yet confirmed business outbound use",
-    "note": "ChatGPT connector writing this ledger does not change blocked Codex permissions."
+    "note": "ChatGPT connector writing this ledger does not change blocked Codex permissions.",
+    "subsequent_chatgpt_gmail_action": "Owner approved an edited Kuizhuo message; ChatGPT Gmail connector sent 1 inquiry on 2026-11-08 with Gmail SENT id 1a1b8d32935ba493. Codex first run remained 0 emails/0 forms; no Codex environment changes."
   }
 }
