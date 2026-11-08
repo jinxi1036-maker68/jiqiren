@@ -551,6 +551,14 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 rejected weekly due to data labeling timeline and said 最起码得按月"
+    },
+    {
+      "id": "UI-M-016",
+      "role": "merchant",
+      "name": "商家收益按自然月展示统计及订单明细，具体财务结算和打款时间与自然月统计解耦并由实际业务周期另定",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 said 可以可以 to natural-calendar-month statistics, business-cycle settlement/payment TBD"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
