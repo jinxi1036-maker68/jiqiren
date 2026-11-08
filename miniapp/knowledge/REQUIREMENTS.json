@@ -559,6 +559,14 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 said 可以可以 to natural-calendar-month statistics, business-cycle settlement/payment TBD"
+    },
+    {
+      "id": "UI-C-014",
+      "role": "collector",
+      "name": "采集预约和实际任务只能在商家开放时段内完成，关店前采集和自助归还结束，不创建跨夜跨日连续采集订单",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner corrected unrealistic cross-month overnight collection example: stores close at night, collectors cannot continue after close"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
