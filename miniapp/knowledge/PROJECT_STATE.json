@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirms collector booking collection must end at least 15 minutes before store closing to return equipment; separate from 30-minute gap between consecutive orders.",
+  "latest_decision": "Owner confirms automatic overdue unreturned equipment reminder to collector and Lingju back-office alert for handling; merchant is not responsible for chasing equipment. Trigger timing and channels TBD.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -378,5 +378,18 @@
     "latest_end_time_rule": "booking_collection_end <= store_effective_closing_time_minus_15_minutes",
     "buffer_not_same_as_between_order_gap": true,
     "additional_decision_id": "DEC-2026-11-08-29"
+  },
+  "overdue_equipment_return_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-30",
+    "automatic_collector_reminder": true,
+    "lingju_admin_alert": true,
+    "merchant_has_chase_or_retrieval_duty": false,
+    "actual_return_verification_separate_from_self_report": true,
+    "trigger_threshold": "undecided",
+    "notification_channels": "undecided",
+    "emergency_followup": "undecided",
+    "auto_penalty_or_score_deduction_approved": false,
+    "implemented": false
   }
 }
