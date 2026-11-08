@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirms per-order QA view showing collected hours, customer-accepted valid hours, effective rate, rejection reasons and targeted guidance. Source must be verified, demo simulated, appeals undecided.",
+  "latest_decision": "Owner approved collector QA appeal / apply for review button on per-order QA detail; Lingju reviews and returns result; actual upstream permissions and response times undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -283,8 +283,21 @@
     "qa_rate_formula": "only_example_accepted_hours_divided_by_actual_hours; real customer definition takes precedence",
     "qa_source_required": true,
     "unavailable_feedback_must_not_be_fabricated": true,
-    "appeal_workflow": "undecided",
+    "appeal_workflow": "owner_confirmed_concept",
     "actual_upstream_qa_integration": false,
+    "implemented": false
+  },
+  "collector_qa_review_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-19",
+    "review_button_on_order_qa_detail": true,
+    "collector_can_submit_dispute_reason": true,
+    "lingju_reviews_and_reports_outcome": true,
+    "review_must_keep_original_qa_result": true,
+    "upstream_verification_and_update_permission": "undecided_requires_customer_authorization",
+    "screenshot_attachments": "undecided",
+    "review_deadline": "undecided",
+    "real_qa_or_dispute_api_implemented": false,
     "implemented": false
   }
 }
