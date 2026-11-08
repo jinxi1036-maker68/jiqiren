@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed merchant application can include scene/venue photos and accepted four review states: pending, approved, supplementary information, not approved; all remains design only.",
+  "latest_decision": "Owner approves merchant activation lifecycle: approval -> install device -> merchant confirms installation -> merchant sets available time -> individual collectors may book. Design only; no implementation.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -96,5 +96,27 @@
     "actual_upload_implemented": false,
     "review_workflow_implemented": false,
     "approval_not_equivalent_to_device_live": true
+  },
+  "merchant_activation_workflow_20261108": {
+    "status": "owner_confirmed_concept",
+    "owner_confirmation": "合适，可以。",
+    "decision_id": "DEC-2026-11-08-07",
+    "stages": [
+      "operator_approves_merchant_application",
+      "operator_arranges_equipment_installation",
+      "merchant_confirms_equipment_arrived_and_installed",
+      "merchant_configures_available_capture_slots",
+      "available_slots_published_for_individual_collectors"
+    ],
+    "approval_not_equal_live": true,
+    "implemented": false,
+    "device_integration": false,
+    "details_open": [
+      "installation_confirmation_authority",
+      "equipment_identifier",
+      "permission_documentation",
+      "availability_schedule_editor",
+      "existing_booking_cancellation_handling"
+    ]
   }
 }
