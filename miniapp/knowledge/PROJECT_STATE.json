@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner accepted two return statuses: '已提交归还' when collector self-reports, '归还完成' only after verified; no merchant handoff and no real IoT integration.",
+  "latest_decision": "Owner confirms collector earnings screen has estimated, pending QA, and confirmed income sections; confirmed is not paid; design not coded.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -254,6 +254,20 @@
     "merchant_confirmation_required": false,
     "actual_verification_method": "undecided",
     "demo_verification": "simulated_only",
+    "implemented": false
+  },
+  "collector_earnings_view_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-17",
+    "sections": [
+      "预计收入",
+      "待审核收入",
+      "已确认收入"
+    ],
+    "confirmed_income_not_same_as_paid": true,
+    "estimate_not_guaranteed": true,
+    "real_qa_integration": false,
+    "real_payout_integration": false,
     "implemented": false
   }
 }
