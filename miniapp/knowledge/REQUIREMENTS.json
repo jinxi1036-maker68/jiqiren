@@ -543,6 +543,14 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 replied 可以 to three merchant earnings statuses and per-order linked details"
+    },
+    {
+      "id": "UI-M-015",
+      "role": "merchant",
+      "name": "商家场地收益结算不采用周结，结算周期最短按月；具体月结方式和打款日后续确定",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 rejected weekly due to data labeling timeline and said 最起码得按月"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
