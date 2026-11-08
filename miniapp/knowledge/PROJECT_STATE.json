@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirms automatic overdue unreturned equipment reminder to collector and Lingju back-office alert for handling; merchant is not responsible for chasing equipment. Trigger timing and channels TBD.",
+  "latest_decision": "Owner confirmed equipment exception report button in collector orders (box cannot open, damaged/faulty equipment, unable to return), handled by Lingju, not store.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -390,6 +390,23 @@
     "notification_channels": "undecided",
     "emergency_followup": "undecided",
     "auto_penalty_or_score_deduction_approved": false,
+    "implemented": false
+  },
+  "collector_equipment_exception_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-31",
+    "report_button_in_collector_order": true,
+    "exception_types": [
+      "password_box_cannot_open",
+      "equipment_damaged_or_malfunctioning",
+      "cannot_complete_device_return"
+    ],
+    "report_to_lingju_ops": true,
+    "merchant_responsible_for_equipment_issues": false,
+    "photo_or_video_evidence": "undecided",
+    "escalation_and_acknowledgement": "undecided",
+    "impacted_booking_handling": "undecided",
+    "report_does_not_prove_culpability_or_verified_return": true,
     "implemented": false
   }
 }
