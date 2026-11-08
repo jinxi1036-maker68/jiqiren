@@ -24,3 +24,9 @@
 Owner最新明确决定优先，旧方案有冲突时标注`SUPERSEDED`并保留历史。每轮真实改动需要对应GitHub提交、脱敏测试和验收记录。对于会影响电脑上现有Hermes的删除、记忆重置、正式浏览器账号接入、自动派单及全局配置变更，先确认具体范围，不能因为文档写了“最终应清理”就擅自执行。
 
 **结束时核对**：是否依循宪章、是否保留Hermes自主性、是否未越权、是否同步了相应知识/代码/历史、是否对已做与待做做了诚实区分。
+
+## 凌矩双端小程序专属项目（Codex开发必读）
+
+- `miniapp/` 是商家版＋个人采集员版小程序的**唯一正式GitHub产品/代码专区**。所有小程序相关Agent必须额外先读 `miniapp/AGENTS.md`、`miniapp/knowledge/00_START_HERE.md`、`miniapp/knowledge/PRODUCT_CHARTER.md` 和 `miniapp/knowledge/PROJECT_STATE.json`，不得沿用早期误解的“采集团队接单”模型。
+- 每次Codex改版在同一仓库提交可追踪源码、测试、`miniapp/CHANGELOG.md`、相应需求/决策/发展历史，并走独立分支PR与Owner验收；不得在聊天临时文件或第二个仓库独立维护互相冲突的版本。
+- 原有Issue #24批准纯前端演示，但历史建议的 `demo/city-station/` 路径现被 `miniapp/apps/demo/` 取代。**资料底座已建立≠Codex开工、正式微信程序或生产后台已上线**。

@@ -19,3 +19,9 @@
 [**Owner唯一有效理念：Hermes数字员工岗位宪章**](knowledge/HERMES_DIGITAL_EMPLOYEE_CHARTER.md) · [正式决策记录](knowledge/decisions/ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md) · [完整演进历史](knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md) · [AI开发者入口](AGENTS.md)
 
 现在的方向是**电脑里原Hermes唯一正式员工身份，给目标/底线让其自主工作，当前专注灵生数采，未来按需拓展**。此前Phase02A/02B独立profile属模拟实验，不代表最终双员工架构；正式迁移及原记忆清理尚未执行。具体项目代码规则见`hermes/AGENTS.md`。
+
+## 商家版＋个人采集员版小程序（专属GitHub子项目）
+
+- [小程序项目总入口](miniapp/README.md) · [产品知识库](miniapp/knowledge/00_START_HERE.md) · [Codex开发规则](miniapp/AGENTS.md)。
+- 商家申请凌矩设备进店、控制可采时段、查看收益；个人采集员就近按任务/小时接单、查看QA有效率和改进、收益；凌矩负责城市运营。**Owner已确认此产品定位**，不是“采集团队接单”。
+- 2026-11-08已建立17份专属知识/代码目录说明；实际代码和正式应用仍待开发，详细可验收演示版任务见[Issue #24](https://github.com/jinxi1036-maker68/jiqiren/issues/24)。

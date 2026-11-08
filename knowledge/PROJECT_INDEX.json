@@ -231,5 +231,22 @@
     "product_scope_approved": false,
     "confirmation_quote": "对，这次理解的对的。符合我想要的。",
     "confirmation_date": "2026-11-08"
+  },
+  "miniapp_dedicated_git_project_20261108": {
+    "date": "2026-11-08",
+    "status": "knowledge_scaffold_committed_to_main",
+    "reason": "Owner explicitly requested a canonical GitHub base for all miniapp product knowledge, future code, QA/tests, changes and Codex iterative work",
+    "repo": "jinxi1036-maker68/jiqiren",
+    "canonical_root": "miniapp/",
+    "entry": "miniapp/knowledge/00_START_HERE.md",
+    "codex_rules": "miniapp/AGENTS.md",
+    "confirmed_business_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
+    "current_state": "miniapp/knowledge/PROJECT_STATE.json",
+    "code_directory_demo": "miniapp/apps/demo/",
+    "future_wechat_directory": "miniapp/apps/wechat/",
+    "mvp_issue": "https://github.com/jinxi1036-maker68/jiqiren/issues/24",
+    "source_code_verified": false,
+    "codex_running_verified": false,
+    "production_deployment_authorized": false
   }
 }

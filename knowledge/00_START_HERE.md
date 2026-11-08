@@ -2,6 +2,10 @@
 
 > 聊天记忆不是权威；旧截图不是当前事实；口头条件在写进正式协议前都只是“待合同确认”。
 
+## 2026-11-08 已建立凌矩双端小程序专属GitHub项目底座
+
+- **Owner明确要求**未来由Codex开发小程序时，全部产品理念、需求、源码、测试、改版决策和历史必须集中存放在GitHub，一次次基于旧版本迭代。**已实际建立 [miniapp/专属项目](../miniapp/README.md)，[小程序知识库唯一入口](../miniapp/knowledge/00_START_HERE.md)，[Codex强制开发说明](../miniapp/AGENTS.md)，以及demo/wechat/tests/releases代码和验收位置**；用户两端定位由Owner明确确认。详见[产品当前状态](../miniapp/knowledge/PROJECT_STATE.json)；目前只是知识底座，非已完成代码/已上线小程序。旧Issue #24建议的demo/city-station路径已由miniapp/apps/demo替代。
+
 ## 2026-11-08 凌矩双端小程序理念纠偏：商家＋个人采集员
 
 - **Owner明确否定**“采集团队接单平台”的旧解读。小程序面向**商家版（申请凌矩设备入驻、设允许采集时段、暂停营业、管理提成和信誉）**与**个人采集员版（按地点、任务、小时和有效数据收益接单，查看上传质检、效率与改进、补助/券、评分和资料）**。上游客户是后台商业关系，不是小程序两个面向用户的角色。**[经Owner口述纠正的产品构想与待定规则](strategy/2026-11-08_LINGJU_MERCHANT_COLLECTOR_MINIPROGRAM_VISION.md)**；尚未批准细化预算或Codex开工。
