@@ -188,5 +188,14 @@
     "execution_budget_approved": false,
     "project_plan_approved": false,
     "report": "knowledge/strategy/2026-11-07_ROBOSTORE_FIRST_PRINCIPLES_MASTERPLAN_DRAFT_V0_1.md"
+  },
+  "company_evolution_long_term_mandate_20261108": {
+    "date": "2026-11-08",
+    "source": "owner_explicit_instruction",
+    "status": "approved_permanent_knowledge_base_governance",
+    "charter": "knowledge/COMPANY_EVOLUTION_CHARTER.md",
+    "timeline": "knowledge/history/COMPANY_EVOLUTION_TIMELINE.md",
+    "principle": "Preserve company vision, changes of mind, choices, incidents, real operational status, consequences, and pivots; history stays revisable but not silently rewritten. Maintain provenance and approved vs speculative status.",
+    "tool_caveat": "updates only when project connection/tool permissions are available; no guaranteed background capture of all chats"
   }
 }
