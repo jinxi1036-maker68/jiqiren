@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner rejected weekly merchant settlement due to possible longer data annotation timeline; minimum monthly settlement, exact billing cycle and payment date not specified. Merchant venue earning eligibility remains QA-independent.",
+  "latest_decision": "Owner confirms merchant earnings statistics aggregated by calendar month, while exact actual settlement and payment dates will be decided according to business cycle; no promise of fixed day.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -358,6 +358,11 @@
     "weekly_settlement_rejected": true,
     "minimum_settlement_cycle": "monthly_or_longer",
     "specific_payment_day": "undecided",
-    "additional_decision_id": "DEC-2026-11-08-26"
+    "additional_decision_id": "DEC-2026-11-08-26",
+    "statistics_period": "calendar_month",
+    "calendar_month_statement_browsing": true,
+    "cross_month_order_attribution": "undecided",
+    "billing_and_payment_schedule": "business_cycle_tbd_not_implied_by_calendar_month_stats",
+    "additional_calendar_month_decision_id": "DEC-2026-11-08-27"
   }
 }
