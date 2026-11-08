@@ -193,14 +193,30 @@
     {
       "id": "ropedia_project_lead",
       "name": "Ropedia（河南空港采购项目名称线索）",
-      "status": "lead_only_no_direct_relationship_or_contract_confirmed",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
       "priority": "P2",
       "evidence_level": "public_verified_project_title_only",
       "current_path": "2026-09-29河南空港Ropedia多模态项目第一批询价；并非已核实双方成交的合同。",
-      "next_gate": "核实上游项目及Ropedia对外企业供应商准入；勿与10月河南空港第一批合并成一份订单",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
       "source_urls": [
         "https://www.365trade.com.cn/zfwzb/877880.jhtml"
-      ]
+      ],
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "hello@ropedia.com",
+        "subject": "Henan local EGO data collection partnership inquiry | Lingju",
+        "gmail_message_id": "1a1b8da5947429b1",
+        "gmail_thread_id": "1a1b8da5947429b1",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://github.com/Ropedia",
+        "why_targeted": "HOMIE人类数据采集；英文邮件；不混淆河南空港项目线索",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
     },
     {
       "id": "henan_airport_algorithm",
@@ -217,11 +233,11 @@
     {
       "id": "henan_embodied_industry",
       "name": "河南具身智能产业发展有限公司",
-      "status": "2026_10_30_official_ego_supplier_tender_open_not_applied",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
       "priority": "P1_urgent_2026-11-05",
       "evidence_level": "public_verified_official_procurement",
       "current_path": "2026-10-26旧项目为场景解决方案开发；**2026-10-30新增不同的EGO第一视角数据采集供应商库正式采购，实施河南省内、竞争入围2年。无业绩可通过10h/≥60%试采取得资格。采购文件须2026-11-05 17:00前获取；11-13 09:00截止响应。未报名未签单。**",
-      "next_gate": "2026-11-05联系采购方确认是否可预约试采并赶本批；核实CA/招标文件获取要求及有效时长审核和正式回款账期（Owner拒绝两个月结算）；未确认短账期不投入新设备",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
       "source_urls": [
         "https://www.hbtba.com/project/view.php?id=23400"
       ],
@@ -245,6 +261,22 @@
         "submitted_forms": 0,
         "finding": "Codex reports Nov 5 file deadline passed, third party repost suggests one-year long-term trial; official portal unviewed",
         "next_action": "verify long-term trial via official procurement organizer"
+      },
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "z.dw@qq.com",
+        "subject": "EGO数据采集长期试采咨询（项目M410100006510015194N）｜平顶山凌矩",
+        "gmail_message_id": "1a1b8d9999319e23",
+        "gmail_thread_id": "1a1b8d9999319e23",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://hbtba.com/project/view.php?id=24003",
+        "why_targeted": "官方招标公告采购人联系人，询问第4.4条长期试采",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
       }
     },
     {
@@ -263,7 +295,7 @@
       "id": "lightwheel_ai",
       "name": "光轮智能（北京）科技股份有限公司 / Lightwheel AI",
       "priority": "P1",
-      "status": "public_supplier_recruitment_identified_not_contacted",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
       "evidence_level": "public_official_claim_plus_mainstream_news_reprint",
       "research_date": "2026-11-04",
       "report": "knowledge/reports/2026-11-04_LIGHTWHEEL_PARTNER_DUE_DILIGENCE.md",
@@ -301,7 +333,7 @@
           "note": "joint venture separate legal entity and location; inquire regional vendor intake"
         }
       ],
-      "next_gate": "Ask if public human data partner recruitment remains open for Henan local collection providers, request official application link and trial requirements; no current contract/order/price evidence.",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
       "owner_fit": "Owner reports ~30 devices including Xiangcheng 5-device trial, organized field work and candidate SOPs; published program specifically seeks regional recruitment and QA delivery providers.",
       "data_boundary": "No reusing or transferring LivSyn client-owned data/device recordings without express contractual consent.",
       "codex_first_pass_20261108": {
@@ -311,6 +343,22 @@
         "submitted_forms": 0,
         "finding": "Codex reports contact form is customer-facing, supplier intake unverified; browser ERR_BLOCKED_BY_CLIENT",
         "next_action": "verify supplier partnership route"
+      },
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "contact@lightwheel.ai",
+        "subject": "河南EGO场景与采集合作伙伴申请咨询｜凌矩信息科技",
+        "gmail_message_id": "1a1b8dae1fe68418",
+        "gmail_thread_id": "1a1b8dae1fe68418",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://egosuite100k.lightwheel.ai/",
+        "why_targeted": "官方EgoSuite子站发布的联系地址，询问真实合作伙伴申请渠道",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
       }
     },
     {
@@ -359,6 +407,198 @@
         "status": "owner_confirmed_verbal_quote_not_contract",
         "source": "Owner clarification in same conversation"
       }
+    },
+    {
+      "id": "scaleforce",
+      "name": "元点科技 SCALEFORCE",
+      "priority": "P1",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "contact@scaleforce-agi.com",
+        "subject": "河南EGO采集场景与团队合作咨询｜凌矩信息科技",
+        "gmail_message_id": "1a1b8d9a16e9a853",
+        "gmail_thread_id": "1a1b8d9a16e9a853",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://www.scaleforce-agi.com/",
+        "why_targeted": "MatrixOS分布式数据生产网络",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
+    },
+    {
+      "id": "tobi",
+      "name": "拓比科技 TOBI",
+      "priority": "P1",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "lk@langhuiai.com",
+        "subject": "咨询河南地区EGO数据采集服务商合作｜凌矩信息科技",
+        "gmail_message_id": "1a1b8d9a96f23541",
+        "gmail_thread_id": "1a1b8d9a96f23541",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://www.tobi.cn/",
+        "why_targeted": "官网EGO采集和服务商招募线索",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
+    },
+    {
+      "id": "io_ai",
+      "name": "艾欧智能 IO AI",
+      "priority": "P1",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "io@io-ai.tech",
+        "subject": "河南第一视角采集场景合作咨询｜凌矩信息科技",
+        "gmail_message_id": "1a1b8d9b058b05bc",
+        "gmail_thread_id": "1a1b8d9b058b05bc",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://io-ai.tech/zh/",
+        "why_targeted": "SenseXperience人类真实数据采集",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
+    },
+    {
+      "id": "synapath",
+      "name": "枢途科技 Synapath",
+      "priority": "P2",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "bd@synapath.com",
+        "subject": "真实场景EGO数据采集协作咨询｜河南凌矩",
+        "gmail_message_id": "1a1b8d9b8021dad0",
+        "gmail_thread_id": "1a1b8d9b8021dad0",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://www.synapath.com/",
+        "why_targeted": "SynaData真实视频数据管线",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
+    },
+    {
+      "id": "originflow",
+      "name": "OriginFlow 渊澈太初",
+      "priority": "P2",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "contact@originflow.ai",
+        "subject": "河南真实场景数据采集合作咨询｜凌矩信息科技",
+        "gmail_message_id": "1a1b8da473cbaebe",
+        "gmail_thread_id": "1a1b8da473cbaebe",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://www.originflow.ai/contact",
+        "why_targeted": "OriginKitGen人类真实任务多模态采集",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
+    },
+    {
+      "id": "dexteleop",
+      "name": "灵御智能",
+      "priority": "P2",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "business@dexteleop.com",
+        "subject": "河南真实场景与具身数据采集合作咨询｜凌矩信息科技",
+        "gmail_message_id": "1a1b8da4ddb0da1f",
+        "gmail_thread_id": "1a1b8da4ddb0da1f",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://www.dexteleop.com/zh/about",
+        "why_targeted": "真实机器人数据、遥操作和采集平台，声明目前只做EGO",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
+    },
+    {
+      "id": "haitianruisheng",
+      "name": "海天瑞声",
+      "priority": "P2",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "contact@dataoceanai.com",
+        "subject": "河南具身智能EGO数据采集团队合作咨询｜凌矩信息科技",
+        "gmail_message_id": "1a1b8da60e90e53f",
+        "gmail_thread_id": "1a1b8da60e90e53f",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://www.haitianruisheng.com/aboutus/contactus/catid-41.htm",
+        "why_targeted": "AI训练数据企业官方通用联系邮箱",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
+    },
+    {
+      "id": "deltai",
+      "name": "德塔智能",
+      "priority": "P2",
+      "status": "initial_business_inquiry_sent_awaiting_reply",
+      "evidence_level": "gmail_send_receipt_confirmed",
+      "next_gate": "2026-11-08已发首封合作咨询邮件，Gmail SENT回执见business_outreach_20261108；待答复/正式供应商报名条件；严禁误记成已入库/已签约/订单。",
+      "business_outreach_20261108": {
+        "date": "2026-11-08",
+        "sender": "jinxi1036@gmail.com",
+        "recipient": "sales@deltai.com",
+        "subject": "河南第一视角数据采集场景协作咨询｜凌矩信息科技",
+        "gmail_message_id": "1a1b8da6904b568d",
+        "gmail_thread_id": "1a1b8da6904b568d",
+        "gmail_labels": [
+          "SENT"
+        ],
+        "official_contact_source": "https://deltai.com/",
+        "why_targeted": "Delta-0和D1采集方案；销售通道请求转交",
+        "sent_by": "ChatGPT Gmail tool on owner broad outreach instruction",
+        "status": "sent_not_delivered_or_replied_verified",
+        "form_submitted": false
+      }
     }
   ],
   "latest_industry_partner_review": "knowledge/reports/2026-10-30_EMBODIED_DATA_PARTNERS_MARKET_RISK_REVIEW.md",
@@ -377,5 +617,77 @@
     "gmail": "jinxi1036@gmail.com connected per Codex, owner has not yet confirmed business outbound use",
     "note": "ChatGPT connector writing this ledger does not change blocked Codex permissions.",
     "subsequent_chatgpt_gmail_action": "Owner approved an edited Kuizhuo message; ChatGPT Gmail connector sent 1 inquiry on 2026-11-08 with Gmail SENT id 1a1b8d32935ba493. Codex first run remained 0 emails/0 forms; no Codex environment changes."
+  },
+  "outreach_wave_20261108": {
+    "date": "2026-11-08",
+    "name": "user screenshot candidate #7-18 + Henan data buyer + Lightwheel",
+    "total_sent_today": 12,
+    "first_kuizhuo": "bd@kuizhuokj.cn, Gmail 1a1b8d32935ba493",
+    "new_sent_11": [
+      {
+        "id": "henan_embodied_industry",
+        "to": "z.dw@qq.com",
+        "gmail_message_id": "1a1b8d9999319e23"
+      },
+      {
+        "id": "scaleforce",
+        "to": "contact@scaleforce-agi.com",
+        "gmail_message_id": "1a1b8d9a16e9a853"
+      },
+      {
+        "id": "tobi",
+        "to": "lk@langhuiai.com",
+        "gmail_message_id": "1a1b8d9a96f23541"
+      },
+      {
+        "id": "io_ai",
+        "to": "io@io-ai.tech",
+        "gmail_message_id": "1a1b8d9b058b05bc"
+      },
+      {
+        "id": "synapath",
+        "to": "bd@synapath.com",
+        "gmail_message_id": "1a1b8d9b8021dad0"
+      },
+      {
+        "id": "originflow",
+        "to": "contact@originflow.ai",
+        "gmail_message_id": "1a1b8da473cbaebe"
+      },
+      {
+        "id": "dexteleop",
+        "to": "business@dexteleop.com",
+        "gmail_message_id": "1a1b8da4ddb0da1f"
+      },
+      {
+        "id": "ropedia_project_lead",
+        "to": "hello@ropedia.com",
+        "gmail_message_id": "1a1b8da5947429b1"
+      },
+      {
+        "id": "haitianruisheng",
+        "to": "contact@dataoceanai.com",
+        "gmail_message_id": "1a1b8da60e90e53f"
+      },
+      {
+        "id": "deltai",
+        "to": "sales@deltai.com",
+        "gmail_message_id": "1a1b8da6904b568d"
+      },
+      {
+        "id": "lightwheel_ai",
+        "to": "contact@lightwheel.ai",
+        "gmail_message_id": "1a1b8dae1fe68418"
+      }
+    ],
+    "user_images_count": 12,
+    "uncontacted_from_images": [
+      "真觉万象 PhysenAI：只有在线联系通道或招聘邮箱，暂无可靠对外业务邮箱",
+      "博登智能 Boden AI：官网联系页面业务通道未定位可核的官方业务邮箱",
+      "智域基石 Archebase：官网可填合作咨询表，尚未在本会话获浏览器表单提交"
+    ],
+    "no_supplier_forms_submitted": true,
+    "none_reply_verified": true,
+    "note": "12=previously approved Kuizhuo 1 + current wave 11; wave 11 is 9 of 12 image candidates plus Henan procurement and Lightwheel. Sent receipt means Gmail SENT, not delivered/accepted."
   }
 }
