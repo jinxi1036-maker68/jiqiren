@@ -331,7 +331,7 @@
     {
       "id": "S-007",
       "role": "system",
-      "name": "一台设备允许多人按不同互不重叠时段连续预约，并按设备ID/日期/时间避免双重预约",
+      "name": "一台设备允许多人按不同互不重叠时段连续预约，并按设备ID/日期/时间避免双重预约；前后订单预留交接缓冲",
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner explicit model: many people can reserve same equipment in succession, booked interval disappears"
@@ -351,6 +351,14 @@
       "status": "supporting_suggestion",
       "implemented": false,
       "source": "Merchant view of train-ticket-like occupancy proposed for convenience"
+    },
+    {
+      "id": "S-009",
+      "role": "system",
+      "name": "同一台设备前后接单预留至少约30分钟设备归还检查交接缓冲，时间不可预约，演示版先按30分钟模拟",
+      "status": "first_version_provisionally_approved",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 我建议是预留到大概至少半个小时吧"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
