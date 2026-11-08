@@ -431,6 +431,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner accepted return status separation"
+    },
+    {
+      "id": "UI-C-009",
+      "role": "collector",
+      "name": "收益首页分开显示预计收入、待审核收入、已确认收入三个状态",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 合适"
+    },
+    {
+      "id": "S-014",
+      "role": "system",
+      "name": "预计/待审核/已确认收入不可重复统计，已确认不等于已结算或已到账",
+      "status": "supporting_suggestion",
+      "implemented": false,
+      "source": "Clarifies Owner-approved earnings status display vs actual payments"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
