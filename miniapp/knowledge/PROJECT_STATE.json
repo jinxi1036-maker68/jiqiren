@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner requires min 30m per same-device turnover and collector self-service equipment unlock via order-displayed password; merchant must not confirm each handoff. Evidence-based damage accountability, hardware implementation undecided.",
+  "latest_decision": "Owner confirms self-return and lock box, then tap Equipment Returned in individual order; IoT WiFi box/server and machine health monitoring are future only. Demo must not conflate self-report with verified physical return.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -222,5 +222,24 @@
     "return_and_relock_workflow": "undecided",
     "real_hardware_integration": false,
     "implemented": false
+  },
+  "collector_self_return_and_future_iot_20261108": {
+    "status": "owner_confirmed_self_return_and_future_hardware_concept",
+    "decision_id": "DEC-2026-11-08-15",
+    "return_workflow": [
+      "collector_places_device_back_in_designated_box",
+      "collector_locks_box",
+      "collector_taps_equipment_returned_on_order"
+    ],
+    "merchant_return_confirmation_required": false,
+    "first_demo_status": "user_reported_return_only_not_physical_verification",
+    "future_smart_box_wifi": true,
+    "future_server_connectivity": true,
+    "future_box_lock_events": true,
+    "real_device_presence_detection": "future_requires_distinct_verification_method",
+    "real_device_health_check": "future_requires_actual_device_status_source",
+    "iot_hardware_implemented": false,
+    "server_integration_approved": false,
+    "actual_code_implemented": false
   }
 }
