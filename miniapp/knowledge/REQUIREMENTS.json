@@ -383,6 +383,38 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner differentiates inherent equipment problems, collector damage, merchant only venue"
+    },
+    {
+      "id": "C-012",
+      "role": "collector",
+      "name": "采集员使用后自行放回设备箱并锁好，在订单页点击设备已归还，商家无须确认",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 explicitly confirmed shared-bicycle-like self return and app return button"
+    },
+    {
+      "id": "S-012",
+      "role": "system",
+      "name": "第一版区分采集员自主申报已归还与真实设备已核验归还，归还记录能关联订单/设备/采集员",
+      "status": "supporting_suggestion",
+      "implemented": false,
+      "source": "Prevents false assertion that app button verifies physical device"
+    },
+    {
+      "id": "F-001",
+      "role": "future_hardware",
+      "name": "以后探索联网智能设备箱经WiFi等连接服务器，回传箱锁状态并向小程序反馈",
+      "status": "future_idea",
+      "implemented": false,
+      "source": "Owner said WiFi box/server connection is for later"
+    },
+    {
+      "id": "F-002",
+      "role": "future_hardware",
+      "name": "以后探索设备是否在箱及采集设备自身运行/故障状态检测，不能仅凭箱锁联网推断",
+      "status": "future_idea",
+      "implemented": false,
+      "source": "Owner future wish device health monitoring; actual device data sources not confirmed"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
