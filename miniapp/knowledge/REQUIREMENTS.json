@@ -158,6 +158,22 @@
       "name": "演示版不可真实交易、无支付、无客户数据、无真实设备联机",
       "status": "confirmed_concept",
       "implemented": false
+    },
+    {
+      "id": "UI-001",
+      "role": "shared",
+      "name": "首次访问展示我是商家/我是采集员的双入口页面",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 approves suggested home screen"
+    },
+    {
+      "id": "UI-002",
+      "role": "shared",
+      "name": "记住上次选中的身份，再次进入相应页面，并提供身份切换",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 agrees to first-use selection and later easy switching; actual authentication undecided"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
