@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner approved collector homepage nearby bookable merchants and task cards showing location, task, opening window, hourly reward and available hours; click for details. Design only.",
+  "latest_decision": "Owner approved task-detail SOP pictures and explained flexible-duration booking in merchant windows: example min 2h, flexible longer, bounded by max per order and per-device daily capacity; precise values and authority undecided; not coded.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -164,5 +164,23 @@
       "booking_confirmation_steps",
       "specific_hourly_rates"
     ]
+  },
+  "collector_task_detail_flexible_booking_20261108": {
+    "status": "owner_confirmed_concept_with_example_numbers",
+    "decision_id": "DEC-2026-11-08-11",
+    "design_spec": "miniapp/knowledge/SCREEN_DESIGN.md",
+    "sop_text_and_images": true,
+    "collector_selects_start_and_end": true,
+    "collector_selects_hours": true,
+    "merchant_can_offer_morning_afternoon_or_full_day": true,
+    "minimum_hours_example": 2,
+    "minimum_hours_is_fixed_rule": false,
+    "task_max_hours": "undecided",
+    "device_daily_max_hours": "undecided",
+    "who_sets_caps": "undecided",
+    "slot_step_minutes": "undecided",
+    "prevent_device_double_booking": true,
+    "respect_merchant_opening_hours": true,
+    "actual_implementation": false
   }
 }
