@@ -575,6 +575,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 said 可以 to reserve 15 minutes before store closes for device return"
+    },
+    {
+      "id": "UI-C-016",
+      "role": "collector",
+      "name": "超时未完成设备归还时系统自动提醒采集员，并支持查看归还与核验状态",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 said 可以 to overdue equipment return reminders"
+    },
+    {
+      "id": "UI-A-001",
+      "role": "admin",
+      "name": "采集员超时未归还设备时凌矩后台收到告警并负责跟进，商家无催还追讨责任",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08 said 可以 to notify Lingju backend; merchants do not chase equipment"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
