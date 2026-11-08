@@ -415,6 +415,22 @@
       "status": "future_idea",
       "implemented": false,
       "source": "Owner future wish device health monitoring; actual device data sources not confirmed"
+    },
+    {
+      "id": "C-013",
+      "role": "collector",
+      "name": "归还后订单先显示已提交归还，核验真实归还后才显示归还完成",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-08: 可以 to two-stage return status proposal"
+    },
+    {
+      "id": "S-013",
+      "role": "system",
+      "name": "不可将采集员点击归还视为设备真实核验，第一版仅模拟核验；商家无需逐单确认",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner accepted return status separation"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
