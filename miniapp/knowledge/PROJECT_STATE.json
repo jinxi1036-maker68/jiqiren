@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner approved collector reputation tracking for punctuality, timely equipment return and verified quality; higher reputation may receive priority on some tasks, while disputed events require investigation before penalties.",
+  "latest_decision": "Owner confirmed reputation 100-point scale, new collector initial 100, verified infractions can deduct and positive performance may restore, exact amounts undecided. No code yet.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -311,9 +311,15 @@
     ],
     "some_task_priority_possible_for_good_reputation": true,
     "disputed_event_requires_review_before_deduction": true,
-    "score_scale": "undecided",
+    "score_scale": "0_to_100",
     "weighting": "undecided",
     "priority_task_mechanics": "undecided",
-    "actual_implementation": false
+    "actual_implementation": false,
+    "new_collector_initial_score": 100,
+    "verified_violation_can_deduct": true,
+    "good_performance_can_restore_score": true,
+    "max_score": 100,
+    "score_rules": "undecided",
+    "additional_decision_id": "DEC-2026-11-08-21"
   }
 }
