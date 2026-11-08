@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirms merchant earnings statistics aggregated by calendar month, while exact actual settlement and payment dates will be decided according to business cycle; no promise of fixed day.",
+  "latest_decision": "Owner corrected implausible overnight/cross-month collection: merchant store closes at night; all collections and self-service equipment returns should occur within the day's merchant opening hours. Verification event could happen later and does not imply collection overnight.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -361,8 +361,18 @@
     "additional_decision_id": "DEC-2026-11-08-26",
     "statistics_period": "calendar_month",
     "calendar_month_statement_browsing": true,
-    "cross_month_order_attribution": "undecided",
+    "cross_month_order_attribution": "not_relevant_to_no_overnight_collection_while_later_verification_month_attribution_undecided",
     "billing_and_payment_schedule": "business_cycle_tbd_not_implied_by_calendar_month_stats",
     "additional_calendar_month_decision_id": "DEC-2026-11-08-27"
+  },
+  "collector_booking_operating_hours_20261108": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-08-28",
+    "within_merchant_open_hours_only": true,
+    "no_overnight_collection_orders": true,
+    "physical_return_before_merchant_closes": true,
+    "verified_return_event_can_happen_later": true,
+    "existing_between_orders_gap_minutes": 30,
+    "implemented": false
   }
 }
