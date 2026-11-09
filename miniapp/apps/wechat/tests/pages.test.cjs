@@ -18,6 +18,47 @@ function makeOrder(r, start = 540, end = 600) {
   return r.open('order', { id: store.read().orders[0].id });
 }
 
+test('采集员首页轮播切换和入口联动，关闭福利推荐时保留其他栏目', () => {
+  const r = runtime();
+  const collector = r.open('collector');
+  assert.deepEqual(collector.data.stories.map(item => item.id), ['story', 'benefits', 'promotion']);
+  collector.changeStory({ detail: { current: 1 } });
+  assert.equal(collector.data.storyIndex, 1);
+  collector.openStory(event({ id: 'benefits', view: 'benefits' }));
+  assert.equal(r.nav.pop(), '/pages/account/index?role=collector&view=benefits');
+  collector.selectStory(event({ index: '2' }));
+  collector.openStory(event({ id: 'promotion' }));
+  assert.match(r.dialogs.pop().content, /当前内容为演示/);
+  r.open('account', { view: 'settings' }).campaignSetting(event({}, false));
+  collector.onShow();
+  assert.deepEqual(collector.data.stories.map(item => item.id), ['story', 'promotion']);
+  assert.equal(collector.data.storyIndex, 1);
+  collector.openStory(event({ id: 'story' }));
+  assert.match(r.dialogs.pop().content, /有效文具分拣.*模拟记录/);
+});
+
+test('我的订单按进度筛选且继续打开同一笔订单', () => {
+  const r = runtime();
+  const order = makeOrder(r);
+  const collector = r.open('collector');
+  const id = order.data.order.id;
+  collector.section(event({ section: 'orders', filter: 'arrival' }));
+  assert.equal(collector.data.shownOrders[0].id, id);
+  collector.order(event({ id }));
+  assert.equal(r.nav.pop(), '/pages/order/index?id=' + id);
+  for (const action of ['travel', 'arrive', 'collect', 'stop']) order.perform(event({ action }));
+  collector.onShow();
+  assert.equal(collector.data.shownOrders.length, 0);
+  assert.equal(collector.data.orderTabs.find(tab => tab.id === 'return').count, 1);
+  collector.section(event({ section: 'orders', filter: 'return' }));
+  assert.equal(collector.data.shownOrders[0].id, id);
+  order.perform(event({ action: 'return' }));
+  collector.onShow();
+  assert.equal(collector.data.orderTabs.find(tab => tab.id === 'verify').count, 1);
+  collector.section(event({ section: 'orders' }));
+  assert.equal(collector.data.shownOrders[0].id, id);
+});
+
 test('首页冷启动恢复身份一次，原生返回首页后可切换且能重置演示数据', () => {
   const r = runtime();
   r.app.onLaunch({ path: 'pages/home/index', query: {} });

@@ -1,39 +1,49 @@
-<import src="../../templates/account-hub.wxml"/>
-<view class="screen with-dock">
+<view class="screen with-dock collector-d1">
   <view class="list-masthead" wx:if="{{section !== 'credit'}}">
     <view class="row split">
-      <view class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山</text><text class="badge">模拟体验</text></view>
-      <button class="ghost subtle-button" hover-class="control-pressed" bindtap="switchRole">切换身份</button>
+      <view class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山 · {{region ? regions[region] : '全城'}}</text></view>
+      <button class="d1-link" hover-class="d1-pressed" bindtap="switchRole">切换身份</button>
     </view>
-    <view class="row split action">
+    <view class="row split">
       <view class="grow">
-        <view class="title">{{section === 'tasks' ? (nextOrder && !replaceId ? '我的采集' : '找采集任务') : section === 'orders' ? '预约' : section === 'income' ? '收益' : section === 'messages' ? '消息' : '我的'}}</view>
-        <view class="muted">{{section === 'tasks' ? (nextOrder && !replaceId ? '预约进度和站点任务' : availableCount + ' 个站点有可约时段') : '模拟北京时间 ' + clock}}</view>
+        <view class="title">{{section === 'tasks' ? '今天去哪采集' : section === 'orders' ? '我的订单' : section === 'income' ? '我的收益' : '消息'}}</view>
+        <view class="muted">{{section === 'tasks' ? availableCount + ' 个站点有可约时段' : '模拟北京时间 ' + clock}}</view>
       </view>
       <text class="muted small">{{personas[persona]}}</text>
     </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">
-    <view class="panel next-order collector-next" wx:if="{{nextOrder && !replaceId}}">
-      <view class="row split"><view class="kicker">{{nextOrder.submitted ? '最近进度' : '下一单'}}</view><view class="status-pill status-{{nextOrder.stateTone}}">{{nextOrder.stateLabel}}</view></view>
-      <view class="subheading action">{{nextOrder.taskName}}</view>
-      <view class="muted">{{nextOrder.stationName}} · {{nextOrder.interval}}</view>
-      <view class="row split divider">
-        <view class="grow">{{nextOrder.hint}}</view>
-        <button class="primary order-link" hover-class="control-pressed" data-id="{{nextOrder.id}}" bindtap="order">{{nextOrder.submitted ? '查看结果' : '打开订单'}}</button>
+    <button wx:if="{{nextOrder && !replaceId}}" class="panel d1-next" hover-class="d1-pressed" data-id="{{nextOrder.id}}" bindtap="order">
+      <view class="d1-next-icon"><image class="icon icon-small" src="/assets/icons/calendar.svg" mode="aspectFit"/></view>
+      <view class="grow">
+        <view class="d1-next-title">{{nextOrder.submitted ? '最近进度' : '下一单'}} · {{nextOrder.stationName}}</view>
+        <view class="muted small d1-numeric">{{nextOrder.date === today ? nextOrder.time : nextOrder.interval}}</view>
       </view>
-    </view>
-    <button wx:if="{{account.showCampaign && !replaceId}}" class="campaign-banner campaign-entry" hover-class="control-pressed" data-view="benefits" bindtap="openAccount">
-      <view class="grow"><view class="campaign-label">新手采集计划 · 演示</view><view class="campaign-title">领取体验券，完成首单</view></view>
-      <view class="campaign-arrow">›</view>
+      <view class="d1-next-end"><text class="status-pill status-{{nextOrder.stateTone}}">{{nextOrder.stateLabel}}</text><text class="d1-next-link">{{nextOrder.link}} ›</text></view>
     </button>
+    <block wx:if="{{!replaceId && stories.length}}">
+      <view class="row split d1-block-head"><view class="heading">站内动态</view><text class="muted small">横滑看更多</text></view>
+      <swiper class="d1-stories" current="{{storyIndex}}" bindchange="changeStory">
+        <swiper-item wx:for="{{stories}}" wx:key="id">
+          <view class="d1-story d1-story-{{item.id}}">
+            <image class="d1-story-art" src="{{item.art}}" mode="aspectFit"/>
+            <view class="d1-story-copy">
+              <text class="d1-story-label">{{item.label}}</text>
+              <view class="d1-story-title">{{item.title}}</view>
+              <view wx:if="{{item.amount}}" class="d1-story-amount">{{item.amount}}</view>
+              <view class="d1-story-detail">{{item.detail}}</view>
+              <button class="d1-story-link" hover-class="d1-story-pressed" data-id="{{item.id}}" data-view="{{item.id}}" bindtap="openStory">{{item.action}} ›</button>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="d1-story-tabs">
+        <button wx:for="{{stories}}" wx:key="id" class="{{storyIndex === index ? 'd1-selected' : ''}}" data-index="{{index}}" hover-class="d1-pressed" bindtap="selectStory">{{item.tab}}</button>
+      </view>
+    </block>
     <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
     <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
-    <view class="row split discovery-heading">
-      <view class="account-heading">采集站点</view>
-      <button class="account-link" data-view="guide" bindtap="openAccount">采集怎么做 ›</button>
-    </view>
-    <view class="panel filter-panel">
+    <view class="d1-filter">
       <view class="field row filter-search">
         <image class="icon icon-small" src="/assets/icons/search.svg" mode="aspectFit"/>
         <input class="grow" placeholder="搜站点、地址或任务" value="{{search}}" bindinput="search"/>
@@ -44,25 +54,22 @@
         <picker range="{{sorts}}" value="{{sort}}" bindchange="sort"><view class="filter-chip">{{sorts[sort]}} ▾</view></picker>
       </view>
     </view>
-    <button class="panel site-card discovery-card" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="control-pressed" bindtap="task">
-      <view class="row">
-        <image class="site-thumb" src="{{item.art}}" mode="aspectFill"/>
-        <view class="grow">
-          <view class="row split"><text class="status-pill status-quiet">{{item.category}}</text><text class="muted small">{{item.district}}</text></view>
-          <view class="site-name">{{item.title}}</view>
-          <view class="muted">{{item.name}} · {{item.address}}</view>
+    <view class="row split d1-block-head">
+      <view class="heading">采集站点</view>
+      <button class="d1-link" data-view="guide" bindtap="openAccount">服务指南 ›</button>
+    </view>
+    <button class="panel d1-station" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="task">
+      <image class="site-thumb" src="{{item.art}}" mode="aspectFill"/>
+      <view class="grow">
+        <view class="subheading">{{item.title}}</view>
+        <view class="muted small">{{item.name}} · {{item.district}} · {{item.address}}</view>
+        <view class="row split d1-station-rate">
+          <view class="price">¥{{item.rate}}<text class="price-unit">/ 有效小时</text></view>
+          <text wx:if="{{item.openCount}}" class="muted small d1-numeric">{{item.earliest}} 可约</text>
         </view>
+        <view class="muted small">{{item.openCount ? item.min + '–' + item.max + ' 分钟 · 开放 ' + item.opening : item.availabilityReason}}</view>
       </view>
-      <view class="row split divider">
-        <view class="grow">
-          <view class="price">¥{{item.rate}}<text class="price-unit">/ 有效小时 · 示例</text></view>
-          <view class="availability {{item.openCount ? '' : 'availability-closed'}}">
-            <view class="availability-dot"/>{{item.openCount ? '最早 ' + item.earliest + ' 可约' : item.availabilityReason}}
-          </view>
-          <view class="muted small">{{item.min}}–{{item.max}} 分钟 · 开放 {{item.opening}}</view>
-        </view>
-        <view class="discovery-action">{{item.openCount ? '查看时段' : '查看详情'}} <text>›</text></view>
-      </view>
+      <text class="d1-arrow">›</text>
     </button>
     <view class="account-paper account-empty" wx:if="{{!cards.length}}">
       <view class="account-heading">当前条件下没有任务</view>
@@ -71,15 +78,19 @@
     </view>
   </block>
   <block wx:if="{{section === 'orders'}}">
-    <view class="section heading">我的预约</view>
-    <button class="panel discovery-card" wx:for="{{orders}}" wx:key="id" data-id="{{item.id}}" hover-class="control-pressed" bindtap="order">
+    <view wx:if="{{orderFilter}}" class="row split d1-block-head">
+      <view class="heading">{{orderFilterLabel}} · {{shownOrders.length}} 笔</view>
+      <button class="d1-link" data-section="orders" bindtap="section">全部订单 ›</button>
+    </view>
+    <button class="panel discovery-card d1-order-card" wx:for="{{shownOrders}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="order">
       <view class="row split"><view class="subheading grow">{{item.taskName}}</view><view class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</view></view>
       <view class="muted action">{{item.stationName}} · {{item.interval}}</view>
       <view class="row split divider"><text class="muted small">订单 {{item.id}}</text><text class="discovery-action">查看订单 ›</text></view>
     </button>
-    <view class="account-paper account-empty" wx:if="{{!orders.length}}">
-      <view class="account-heading">还没有预约</view><view class="account-copy">选好站点和时段后，订单会出现在这里。</view>
-      <button class="ghost account-button" data-section="tasks" bindtap="section">去找采集任务</button>
+    <view class="account-paper account-empty" wx:if="{{!shownOrders.length}}">
+      <view class="account-heading">{{orderFilter ? '暂无' + orderFilterLabel + '的订单' : '还没有预约'}}</view>
+      <view class="account-copy">{{orderFilter ? '可切回全部订单查看其他进度。' : '选好站点和时段后，订单会出现在这里。'}}</view>
+      <button wx:if="{{!orderFilter}}" class="ghost account-button" data-section="tasks" bindtap="section">去找采集任务</button>
     </view>
   </block>
   <block wx:if="{{section === 'income'}}">
@@ -122,7 +133,33 @@
     <view class="panel muted" wx:if="{{!messages.length}}">暂无站内消息。</view>
   </block>
   <block wx:if="{{section === 'credit'}}">
-    <template is="account-hub" data="{{account: account}}"/>
+    <view class="d1-profile-head">
+      <view class="row split"><view class="title">我的</view><button class="d1-link" hover-class="d1-pressed" bindtap="switchRole">切换身份 ›</button></view>
+      <view class="row d1-profile-id">
+        <view class="d1-avatar">采</view>
+        <view class="grow"><view class="subheading">{{account.name}}</view><view class="muted small">个人采集员 · {{account.loggedIn ? '演示账号' : '未登录'}}</view></view>
+        <button wx:if="{{!account.loggedIn}}" class="d1-link" data-view="login" bindtap="openAccount">点击登录 ›</button>
+      </view>
+    </view>
+    <view class="panel d1-profile-orders">
+      <view class="row split"><view class="heading">我的订单</view><button class="d1-link" data-section="orders" bindtap="section">全部订单 ›</button></view>
+      <view class="d1-order-tabs">
+        <button wx:for="{{orderTabs}}" wx:key="id" data-section="orders" data-filter="{{item.id}}" hover-class="d1-pressed" bindtap="section">
+          <view class="d1-order-icon"><image class="icon" src="{{item.icon}}" mode="aspectFit"/><text wx:if="{{item.count}}" class="d1-count">{{item.count > 99 ? '99+' : item.count}}</text></view>
+          <text>{{item.label}}</text>
+        </button>
+      </view>
+    </view>
+    <view class="panel d1-profile-group" wx:for="{{profileGroups}}" wx:key="id" wx:for-item="group">
+      <button class="d1-cell" wx:for="{{group.items}}" wx:key="label" data-view="{{item.view}}" data-section="{{item.section}}" hover-class="d1-pressed" bindtap="profileEntry">
+        <text class="grow">{{item.label}}</text>
+        <text wx:if="{{item.view === 'coupons' && account.coupons.length}}" class="muted">{{account.coupons.length}}</text>
+        <text class="d1-arrow">›</text>
+      </button>
+    </view>
+    <view class="panel d1-profile-group">
+      <button class="d1-cell" data-view="credit" hover-class="d1-pressed" bindtap="openAccount"><text class="grow">信誉记录</text><text class="d1-arrow">›</text></button>
+    </view>
     <view class="account-paper">
       <view class="row split"><view class="subheading">演示设置</view><button class="account-link touch-control" bindtap="toggleDemo">{{showDemo ? '收起' : '展开 ›'}}</button></view>
       <picker wx:if="{{showDemo}}" range="{{personas}}" value="{{persona}}" bindchange="persona">
@@ -132,7 +169,7 @@
   </block>
   <view class="tagline">演示数据 · 站内消息 · 虚构金额</view>
   <view class="dock dock-nav">
-    <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" bindtap="section">
+    <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" hover-class="d1-pressed" bindtap="section">
       <view class="dock-mark">
         <image class="icon" src="{{item.icon}}" mode="aspectFit"/>
         <view wx:if="{{item.section === 'messages' && unread}}" class="unread-dot">{{unread > 99 ? '99+' : unread}}</view>

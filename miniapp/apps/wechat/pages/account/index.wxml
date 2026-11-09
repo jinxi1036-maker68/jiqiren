@@ -1,4 +1,4 @@
-<view class="screen account-screen">
+<view class="screen account-screen {{role === 'collector' ? 'collector-d1' : ''}}">
   <block wx:if="{{view === 'login'}}">
     <view class="account-paper login-paper">
       <view class="brand-logo">凌</view>
@@ -105,7 +105,7 @@
     <view class="account-paper">
       <view class="account-heading">账号与偏好</view>
       <view class="row split account-setting"><view><view>当前演示身份</view><view class="account-note">{{account.name}}</view></view><text class="status-pill status-quiet">{{account.loggedIn ? '已登录' : '未登录'}}</text></view>
-      <view wx:if="{{!account.merchant}}" class="row split account-setting"><view class="grow"><view>首页推荐福利活动</view><view class="account-note">控制首页的新手活动入口</view></view><switch checked="{{account.showCampaign}}" color="#285d49" bindchange="campaignSetting"/></view>
+      <view wx:if="{{!account.merchant}}" class="row split account-setting"><view class="grow"><view>首页推荐福利活动</view><view class="account-note">控制首页轮播里的福利卡片</view></view><switch checked="{{account.showCampaign}}" color="#1e3d68" bindchange="campaignSetting"/></view>
       <button wx:if="{{account.loggedIn}}" class="ghost account-button" bindtap="logout">退出演示登录</button>
       <button wx:else class="primary account-button" data-role="{{role}}" data-view="login" bindtap="openAccount">点击登录</button>
     </view>

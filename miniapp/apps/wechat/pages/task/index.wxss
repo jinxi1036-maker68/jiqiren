@@ -1,0 +1,9 @@
+@import "../../styles/collector-d1.wxss";
+
+.collector-d1 .booking-overview .title { font-size: 52rpx; line-height: 68rpx; margin: 4rpx 0; }
+.d1-slot-heading { gap: 12rpx; }
+.collector-d1 .slot {
+  min-height: 88rpx; min-width: 112rpx; padding: 0 12rpx; background: #fbfcfe; border-color: #dce2e9;
+  color: #1e3d68; border-radius: 16rpx; font-size: 30rpx; font-variant-numeric: tabular-nums;
+}
+.collector-d1 button.slot-selected { background: #1e3d68; color: #fff; border-color: #1e3d68; font-weight: 600; }

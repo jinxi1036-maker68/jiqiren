@@ -1,5 +1,5 @@
 <import src="../../templates/site-guide.wxml"/>
-<view class="screen {{missing ? '' : 'with-booking-dock'}}">
+<view class="screen collector-d1 {{missing ? '' : 'with-booking-dock'}}">
   <view class="panel" wx:if="{{missing}}">此任务已不可用。</view>
   <block wx:else>
     <view class="panel booking-overview">
@@ -17,7 +17,6 @@
       </view>
       <view class="muted small action">只在示范区采集，避开顾客、未成年人和个人信息。</view>
     </view>
-    <template is="site-guide" data="{{guide: guide}}"/>
     <view class="panel">
       <view class="row split">
         <view class="heading">{{replaceId ? '选择改约时间' : '选择预约时间'}}</view>
@@ -27,7 +26,7 @@
       <view class="notice" wx:if="{{selectionLost}}">原选时段已不可用，请重新选择。</view>
       <block wx:if="{{starts.length}}">
         <view class="divider">
-          <view class="subheading">开始时间</view>
+          <view class="row d1-slot-heading"><text class="sop-step">1</text><view class="subheading">开始时间</view></view>
           <scroll-view class="slot-scroll" scroll-x enhanced show-scrollbar="{{false}}">
             <view class="slot-row">
               <button wx:for="{{starts}}" wx:key="minute" class="slot {{item.minute === selectedStart ? 'slot-selected' : ''}}" data-minute="{{item.minute}}" bindtap="start">{{item.label}}</button>
@@ -35,7 +34,7 @@
           </scroll-view>
         </view>
         <view class="divider">
-          <view class="subheading">结束时间</view>
+          <view class="row d1-slot-heading"><text class="sop-step">2</text><view class="subheading">结束时间</view></view>
           <view class="muted action" wx:if="{{selectedStart === null}}">选好开始时间后可选结束时间。</view>
           <scroll-view wx:else class="slot-scroll" scroll-x enhanced show-scrollbar="{{false}}">
             <view class="slot-row">
@@ -51,6 +50,7 @@
       <view class="muted small action">相邻预约至少间隔30分钟，闭店前至少15分钟结束。</view>
       <input wx:if="{{lateChange}}" placeholder="距原预约不足2小时，请填写改期原因" bindinput="reason" value="{{reason}}"/>
     </view>
+    <template is="site-guide" data="{{guide: guide}}"/>
     <view class="panel">
       <view class="row split"><view class="heading">采集 SOP</view><view class="badge">{{task.steps.length}} 步</view></view>
       <view class="row divider sop-row" wx:for="{{task.steps}}" wx:key="*this"><text class="sop-step">{{index + 1}}</text><view class="grow">{{item}}</view></view>
@@ -61,7 +61,7 @@
         <view class="muted small grow">{{date}} · {{station.name}}</view>
         <view class="subheading">{{selectionText}}</view>
       </view>
-      <button class="primary" disabled="{{!canConfirm}}" bindtap="submit">{{replaceId ? '确认模拟改约' : '确认模拟预约'}}</button>
+      <button class="primary" disabled="{{!canConfirm}}" hover-class="d1-primary-pressed" bindtap="submit">{{replaceId ? '确认模拟改约' : '确认模拟预约'}}</button>
     </view>
   </block>
 </view>

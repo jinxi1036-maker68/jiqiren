@@ -1334,6 +1334,21 @@
       "screenshot": "miniapp/apps/wechat/evidence/v0.1-merchant-d1.png",
       "desktop_simulator_interaction_verified": false,
       "real_device_visual_verified": false
+    },
+    "collector_d1_workspace": {
+      "status": "implemented_automated_tested",
+      "base_commit": "7802c82934d691edfc9a4d6f9ab5682e5304f864",
+      "scope": [
+        "D.1 discovery with fixed next order and native swipeable simulated stories, benefits and promotion",
+        "booking time selection and fixed confirmation control",
+        "four-step order progress, guidance, map and help with fixed next action",
+        "collector profile with order stage filtering and grouped account services"
+      ],
+      "automated_tests_passed": 43,
+      "offline_render": "seven WXML routes and WXSS compiled; layouts inspected at 320px and 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-d1.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
     }
   }
 }

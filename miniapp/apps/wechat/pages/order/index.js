@@ -5,11 +5,11 @@ const booking = require('../../lib/booking');
 const reviews = require('../../lib/reviews');
 const ui = require('../../lib/ui');
 
-const STEPS = ['预约确认', '到店采集', '提交归还', '设备核验'];
-const PROGRESS = { booked: 0, travel: 0, arrived: 1, collecting: 1, stopped: 2 };
+const STEPS = ['预约', '到店', '采集', '归还'];
+const PROGRESS = { booked: 1, travel: 1, arrived: 2, collecting: 2, stopped: 3, submitted: 3, done: 4 };
 
 const GUIDANCE = {
-  travel: { title: '准备前往站点', detail: '从上方「地图导航」查看目的地。到店后按订单指引签到、自助领机。' },
+  travel: { title: '准备前往站点', detail: '点「地图导航」查看目的地。到店后按订单指引签到、自助领机。' },
   arrive: { title: '到店签到', detail: '到达预约站点后签到。请在预约时间内领取设备。' },
   collect: { title: '自助领机并采集', detail: '打开本单密码箱，按采集 SOP 操作。只在门店授权的示范区采集。' },
   return: { title: '放回原箱并锁好', detail: '确认设备已放回，再提交归还和模拟上传。凌矩随后核验设备。' }
@@ -69,7 +69,7 @@ function orderTimeline(order) {
 }
 
 Page({
-  data: { reportPhoto: false, steps: STEPS, mainAction: null, showDemo: false, showIssue: false, showSop: false,
+  data: { reportPhoto: false, steps: STEPS, mainAction: null, showDemo: false, showIssue: false, showSop: false, showGuide: false,
     issueKind: 'device', issueDetails: '', canSendIssue: false, failUpload: false },
   onLoad(options) {
     this.id = options.id;
@@ -152,6 +152,9 @@ Page({
   },
   toggleSop() {
     this.setData({ showSop: !this.data.showSop });
+  },
+  toggleGuide() {
+    this.setData({ showGuide: !this.data.showGuide });
   },
   toggleIssue() {
     if (this.data.pendingReport) {
