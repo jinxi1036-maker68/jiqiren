@@ -5,7 +5,7 @@
 ## 开工前依次检查
 1. 读 `miniapp/knowledge/00_START_HERE.md`、`PRODUCT_CHARTER.md`、`PROJECT_STATE.json`、`REQUIREMENTS.json`。
 2. 读 `miniapp/knowledge/DECISION_LOG.md`、`OPEN_QUESTIONS.md`、`CHANGE_PROTOCOL.md`。
-3. 如果本轮对应演示版，阅读已获准的 GitHub Issue #24；若Issue与本目录最新版冲突，首先在Issue记录差异，**不默默沿用错误角色或旧代码位置**。
+3. **2026-11-09新主任务**：先读 [Issue #25](https://github.com/jinxi1036-maker68/jiqiren/issues/25)，Owner已授权原生微信小程序模拟体验版；再看旧Issue #24的历史背景。若旧任务的网页方案、角色流程、路径与最新Owner决定冲突，必须遵从#25与最新版知识库，并记录差异。
 4. 核对当前主分支、已有代码、测试及未合并PR；避免覆盖其他Agent或上一版成果。
 
 ## 不可改变的产品底线
@@ -19,11 +19,15 @@
 
 ## 开发与交付规则
 1. **每次功能迭代都留在GitHub**：产品需求编号→本次任务→代码修改→测试及截图/说明→更新知识库`PROJECT_STATE.json`、`CHANGELOG.md`及必要的决策/历史→独立分支PR→人工验收。不能只交会话里的零散代码。
-2. 除非Owner另行批准，Codex只可做**模拟数据的独立前端演示**；不得接入真实灵生后台/采集设备/收费/支付/企业客户视频/个人身份证等，不得公网发布或擅自合并生产主分支。
-3. **代码目录：**演示应用统一 `miniapp/apps/demo/`，正式微信版本以后如获批准放 `miniapp/apps/wechat/`；不要沿用旧Issue里提议的 `demo/city-station/` 作为第二个代码真源。迁移已有代码时需有对应PR和保留版本记录。
+2. **Owner已于2026-11-09明确授权原生微信小程序体验版的代码开发**，但内容必须仍为模拟数据和演示流程；不得接入真实灵生后台/采集设备/收费/支付/企业客户视频/个人身份证等，不得未经授权上传体验版、发布公众版本或合并生产主分支。
+3. **代码目录最新约束：**原生微信小程序模拟体验版**现在直接开发于 `miniapp/apps/wechat/`**，这是Owner已批准的新路径；此前 `miniapp/apps/demo/` 和更早 `demo/city-station/` 只保留历史，**不得再先开发独立网页版或形成第二套代码真源**。已有代码迁移须PR、测试和保留版本记录。
 4. 每次修改明确区分 `PROPOSED` / `APPROVED_CONCEPT` / `IMPLEMENTED` / `TESTED` / `DEPLOYED` / `SUPERSEDED`，不得把创建文件写成应用已上线。
 5. 维护可回滚的提交：独立分支、Draft PR及变更记录，Owner验收后才合并。不得删掉决策史、老版本理由；有冲突时追加纠错。
-6. 不泄漏密钥、Cookie、真实人员信息、未授权客户数据；安全校验、时段冲突、设备归还、审核和收益状态不可绕过。
+6. 不泄漏密钥、Cookie、AppSecret、真实开锁密码、真实人员信息、未授权客户数据；微信AppID由Owner自己通过微信开发者工具完成账号配置，不要把授权与平台审核当成已完成。安全校验、时段冲突、设备归还、审核和收益状态不可绕过。
 
 ## 工作结束向Owner用简短语言说明
 本轮改了什么、GitHub分支/PR/提交在哪里、演示怎么用、测了什么、哪些尚未完成或权限阻止。
+
+## Codex当前第一入口（2026-11-09）
+- [Issue #25：原生微信小程序体验版 V0.1](https://github.com/jinxi1036-maker68/jiqiren/issues/25)，批量业务细则 `miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md`。
+- 优先把原生工程创建到可在微信开发者工具导入/编译的状态，后续逐步实现业务页；所有测试结果都要有实际执行证据。
