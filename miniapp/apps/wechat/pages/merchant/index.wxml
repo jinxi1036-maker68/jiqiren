@@ -1,0 +1,99 @@
+<view class="screen">
+  <view class="row split">
+    <view class="kicker">商家端 · 模拟体验</view>
+    <button class="ghost" bindtap="switchRole">切换身份</button>
+  </view>
+  <view class="hero">
+    <view class="kicker">场地工作台</view>
+    <view class="title">{{station.name}}</view>
+    <view class="muted">{{stage}}　·　北京时间 {{now}}</view>
+  </view>
+  <picker mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
+    <view class="field row split"><text>演示门店身份</text><text>{{station.name}} ›</text></view>
+  </picker>
+  <block wx:if="{{!deployed}}">
+    <view class="panel">
+      <view class="heading">设备入驻进度</view>
+      <view class="notice">{{stage}}</view>
+      <view class="muted" wx:if="{{station.note}}">{{station.note}}</view>
+      <view class="muted">提交场地 → 凌矩审核 → 安装登记 → 商家确认 → 设置开放时段</view>
+      <button wx:if="{{station.stage === 'installed'}}" class="primary action" bindtap="confirm">确认模拟设备到位</button>
+    </view>
+    <view class="panel" wx:if="{{canApply}}">
+      <view class="heading">申请设备入驻</view>
+      <view class="notice">请使用预填的虚构资料。以下照片仅为本地占位。</view>
+      <block wx:for="{{fields}}" wx:key="key">
+        <view class="muted">{{item.label}}</view>
+        <input value="{{form[item.key]}}" maxlength="45" data-key="{{item.key}}" bindinput="field"/>
+      </block>
+      <picker range="{{categories}}" value="{{taskIndex}}" bindchange="category">
+        <view class="field">经营类型　{{categories[taskIndex]}} ›</view>
+      </picker>
+      <view class="row wrap">
+        <button wx:for="{{photos}}" wx:key="id" data-id="{{item.id}}" bindtap="photo">{{added[item.id] ? '已添加' : '+ 模拟'}}{{item.title}}</button>
+      </view>
+      <button class="primary action" bindtap="apply">提交模拟入驻申请</button>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="row tabs">
+      <button class="{{section === 'home' ? 'primary' : ''}}" data-section="home" bindtap="section">设备与排班</button>
+      <button class="{{section === 'schedule' ? 'primary' : ''}}" data-section="schedule" bindtap="section">开放时间</button>
+      <button class="{{section === 'income' ? 'primary' : ''}}" data-section="income" bindtap="section">场地收益</button>
+    </view>
+    <block wx:if="{{section === 'home'}}">
+      <view class="panel">
+        <view class="row split"><view class="subheading">{{station.device.id}}</view><view class="badge">{{deviceLabel}}</view></view>
+        <view class="muted">采集员在订单内自助领还。归还核验由凌矩处理。</view>
+        <view class="row divider">
+          <view class="grow tile"><view class="metric">{{todayOrders}}</view><view class="muted">今日预约</view></view>
+          <view class="grow tile"><view class="metric">{{daily}}</view><view class="muted">今日确认收益笔数</view></view>
+        </view>
+      </view>
+      <view class="panel">
+        <view class="heading">设备排班</view>
+        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="selectDate">
+          <view class="field">{{date}}　{{windowLabel}} ›</view>
+        </picker>
+        <view class="muted">相邻预约预留30分钟，采集结束距当段闭店至少15分钟。</view>
+        <view class="divider" wx:for="{{orders}}" wx:key="id">
+          <view class="row split"><text>{{item.interval}}</text><text class="badge">{{item.stateLabel}}</text></view>
+          <view class="muted">{{item.id}} · {{item.taskName}}</view>
+        </view>
+        <view wx:if="{{!orders.length}}" class="divider muted">该日暂无预约。</view>
+      </view>
+    </block>
+    <block wx:if="{{section === 'schedule'}}">
+      <view class="panel">
+        <view class="heading">每周开放计划</view>
+        <view class="muted">可填写最多四段。用逗号分隔，留空表示该星期几暂停。</view>
+        <picker range="{{days}}" value="{{weekday}}" bindchange="weekday"><view class="field">{{days[weekday]}} ›</view></picker>
+        <input value="{{ranges}}" bindinput="editRanges" placeholder="09:00-12:00, 14:00-18:00"/>
+        <button class="primary" bindtap="saveWeek">保存该星期几的计划</button>
+      </view>
+      <view class="panel">
+        <view class="heading">指定日期调整</view>
+        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="selectDate">
+          <view class="field">{{date}}　{{windowLabel}} ›</view>
+        </picker>
+        <input value="{{dateRanges}}" bindinput="editDateRanges" placeholder="如 10:00-16:00"/>
+        <button class="primary" bindtap="saveDate">保存单日时段</button>
+        <view class="row action">
+          <button class="grow danger" bindtap="pauseDate">暂停当日</button>
+          <button class="grow ghost" bindtap="restoreDate">恢复周计划</button>
+        </view>
+      </view>
+    </block>
+    <view class="panel" wx:if="{{section === 'income'}}">
+      <view class="heading">自然月场地账目</view>
+      <picker mode="date" fields="month" value="{{period}}" bindchange="selectPeriod"><view class="field">{{period}} ›</view></picker>
+      <view class="muted">模拟实际采集且核验归还后计入待结算。金额及结算日待协议确认。</view>
+      <view class="divider" wx:for="{{currentEarnings}}" wx:key="id">
+        <view class="row split"><text>{{item.orderId}} · {{item.kindLabel}}</text><text class="badge">{{item.state}}</text></view>
+        <view class="muted">{{item.amount}}</view>
+      </view>
+      <view wx:if="{{!currentEarnings.length}}" class="divider muted">本月暂无确认账目。</view>
+    </view>
+  </block>
+  <view class="tagline">演示数据 · 仅保存在当前设备</view>
+</view>

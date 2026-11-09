@@ -1,0 +1,37 @@
+<view class="screen">
+  <view class="panel" wx:if="{{missing}}">此任务已不可用。</view>
+  <block wx:else>
+    <view class="kicker">任务详情 · 虚构站点</view>
+    <view class="title">{{task.title}}</view>
+    <view class="muted">{{station.name}} · {{station.district}} {{station.address}}</view>
+    <image class="illustration" src="{{task.art}}" mode="aspectFill"/>
+    <view class="panel">
+      <view class="row split"><view class="subheading">¥{{card.rate}} / 有效小时</view><view class="badge">演示参数</view></view>
+      <view class="muted">单次 {{task.min}}–{{task.max}} 分钟 · 设备每日上限 {{task.daily}} 分钟</view>
+      <view class="muted">设备 {{station.device.id}}</view>
+    </view>
+    <view class="panel">
+      <view class="heading">采集 SOP</view>
+      <view class="notice">只在示范区按指定动作采集。避开顾客、未成年人、姓名标签和敏感区域。</view>
+      <view class="divider" wx:for="{{task.steps}}" wx:key="*this"><text class="badge">{{index + 1}}</text>　{{item}}</view>
+      <view class="divider muted">订单内签到并自助领机，停采后放回原箱并锁好，再提交归还。由凌矩模拟核验。</view>
+    </view>
+    <view class="panel">
+      <view class="heading">{{replaceId ? '选择改约时间' : '选择预约时间'}}</view>
+      <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="field">{{date}} ›</view></picker>
+      <view class="muted">门店开放 {{card.opening}}</view>
+      <view class="muted">已占用时段</view>
+      <view class="row wrap">
+        <text class="badge" wx:for="{{reserved}}" wx:key="id">{{item.interval}}</text>
+        <text class="muted" wx:if="{{!reserved.length}}">暂无</text>
+      </view>
+      <view class="notice">同设备相邻预约至少间隔30分钟，闭店前至少15分钟结束。</view>
+      <view class="row" wx:if="{{starts.length}}">
+        <picker class="grow" range="{{starts}}" value="{{startIndex}}" bindchange="start"><view class="field">开始 {{starts[startIndex]}} ›</view></picker>
+        <picker class="grow" range="{{ends}}" value="{{endIndex}}" bindchange="end"><view class="field">结束 {{ends[endIndex]}} ›</view></picker>
+      </view>
+      <input wx:if="{{lateChange}}" placeholder="距原预约不足2小时，请填写改期原因" bindinput="reason" value="{{reason}}"/>
+      <button class="primary action" disabled="{{!starts.length}}" bindtap="submit">{{!starts.length ? '该日暂无合规档位' : replaceId ? '确认模拟改约' : '确认模拟预约'}}</button>
+    </view>
+  </block>
+</view>

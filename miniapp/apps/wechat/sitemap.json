@@ -1,0 +1,4 @@
+{
+  "desc": "本地模拟工程",
+  "rules": [{ "action": "disallow", "page": "*" }]
+}

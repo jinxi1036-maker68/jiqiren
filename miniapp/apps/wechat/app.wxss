@@ -1,0 +1,41 @@
+page {
+  background: #f5f7f5;
+  color: #172924;
+  font-size: 28rpx;
+  line-height: 1.55;
+}
+.screen { padding: 26rpx 32rpx calc(40rpx + env(safe-area-inset-bottom)); }
+.kicker { color: #27735a; font-size: 22rpx; font-weight: 700; letter-spacing: 2rpx; }
+.title { font-size: 51rpx; font-weight: 750; line-height: 1.17; margin: 10rpx 0 16rpx; }
+.heading { font-size: 34rpx; font-weight: 700; line-height: 1.25; }
+.subheading { font-size: 29rpx; font-weight: 700; }
+.muted { color: #4e655d; font-size: 25rpx; }
+.small { font-size: 22rpx; }
+.section { margin: 30rpx 0 14rpx; }
+.panel { background: #fff; border: 1rpx solid #dce8df; border-radius: 24rpx; padding: 24rpx; margin-bottom: 18rpx; }
+.hero { color: #fff; background: #143e35; padding: 34rpx 28rpx; border-radius: 28rpx; margin: 20rpx 0; }
+.hero .muted, .hero .kicker { color: #c4e7d4; }
+.row { display: flex; align-items: center; gap: 14rpx; }
+.split { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }
+.grow { flex: 1; min-width: 0; }
+.badge { display: inline-block; background: #e1f2e8; color: #1d5a47; padding: 5rpx 14rpx; border-radius: 30rpx; font-size: 23rpx; }
+.notice { padding: 16rpx 20rpx; background: #fff0d3; color: #69461d; border-radius: 16rpx; margin: 14rpx 0; font-size: 24rpx; }
+.divider { border-top: 1rpx solid #e4ede6; padding-top: 16rpx; margin-top: 16rpx; }
+.link { color: #176d50; font-weight: 650; padding: 10rpx 0; }
+button { margin: 0; padding: 0 18rpx; border-radius: 14rpx; font-size: 26rpx; line-height: 1.25; min-height: 72rpx; background: #e7f1eb; color: #1d5a47; display: flex; align-items: center; justify-content: center; }
+button::after { border: 0; }
+button[disabled] { color: #6a756f; background: #edf0ee; }
+.primary { background: #17634e; color: #fff; }
+.ghost { background: transparent; border: 1rpx solid #ccdcd1; }
+.danger { background: #fbe8e0; color: #793320; }
+.action { margin-top: 16rpx; }
+.field, input, textarea { box-sizing: border-box; background: #f2f6f3; border: 1rpx solid #dce7de; padding: 16rpx; border-radius: 12rpx; margin: 8rpx 0 16rpx; width: 100%; }
+input { height: 72rpx; }
+textarea { height: 134rpx; }
+.tabs { margin: 20rpx 0; }
+.tabs button { flex: 1; padding: 0 8rpx; }
+.metric { font-size: 44rpx; font-weight: 700; line-height: 1.2; }
+.tile { align-self: stretch; background: #f2f6f3; border-radius: 14rpx; padding: 14rpx; }
+.illustration { display: block; width: 100%; height: 208rpx; border-radius: 16rpx; margin: 14rpx 0; background: #e1eee6; }
+.tagline { margin-top: 26rpx; color: #5a7067; text-align: center; font-size: 23rpx; }

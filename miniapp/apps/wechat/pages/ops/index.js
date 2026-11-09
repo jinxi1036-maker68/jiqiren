@@ -1,0 +1,110 @@
+const store = require('../../lib/storage');
+const merchant = require('../../lib/merchant');
+const booking = require('../../lib/booking');
+const reviews = require('../../lib/reviews');
+const { TASKS, stamp, HOUR } = require('../../lib/catalog');
+const { preStart, byId, record } = require('../../lib/model');
+const ui = require('../../lib/ui');
+
+function quantity(value) {
+  if (!/^\d+$/.test(value)) throw new Error('请填写整数分钟');
+  return Number(value);
+}
+
+function pair(value) {
+  const boundary = value.indexOf('/');
+  if (boundary < 0) throw new Error('请以「分钟数 / 依据」的格式填写');
+  return [quantity(value.slice(0, boundary).trim()), value.slice(boundary + 1).trim()];
+}
+
+const ACTIONS = {
+  site: ['模拟场地审核', '填写审核结论及依据', (s, d, v) => merchant.reviewSite(s, d.id, d.result, v)],
+  install: ['登记模拟安装', '', (s, d) => merchant.install(s, d.id)],
+  task: ['修改模拟任务状态', '', (s, d) => {
+    const station = byId(s.stations, d.id);
+    station.taskEnabled = !station.taskEnabled;
+    record(s, '凌矩模拟运营', '修改模拟任务状态', d.id, station.taskEnabled ? '开放任务' : '暂停新预约');
+  }],
+  pause: ['核实故障并暂停设备', '填写虚构的设备故障核查依据', (s, d, v) => booking.pause(s, d.id, v, d.report)],
+  reopen: ['模拟核验设备可用', '填写修复或在箱且可用的模拟依据', (s, d, v) => booking.reopen(s, d.id, v)],
+  return: ['模拟核验归还', '填写设备在箱且可用的模拟核验记录', (s, d, v) => booking.verifyReturn(s, d.id, v)],
+  cancel: ['运营逐单无责取消', '填写已核查的设备安全或恶意违规依据', (s, d, v) => {
+    if (!v.trim()) throw new Error('请提供逐单核查依据');
+    booking.cancel(s, '凌矩模拟运营', d.id, v.trim(), true);
+  }],
+  qa: ['录入模拟QA', '格式：有效分钟 / 无效原因和改进建议', (s, d, v) => reviews.qaReview(s, d.id, ...pair(v))],
+  qaAppeal: ['模拟QA复核', '格式：新增有效分钟 / 复核依据。拒绝填0', (s, d, v) => reviews.resolveQA(s, d.id, ...pair(v))],
+  subsidy: ['审核模拟补贴', '记录故障和出行证据核查结果', (s, d, v) => reviews.reviewSubsidy(s, d.id, d.result === 'yes', v)],
+  price: ['配置虚构补贴金额', '填写人民币元，如 12.50', (s, d, v) => {
+    if (!/^\d+(\.\d{1,2})?$/.test(v.trim())) throw new Error('金额最多两位小数');
+    reviews.updateSubsidy(s, Math.round(Number(v) * 100), reviews.LEAD);
+  }],
+  credit: ['核实模拟逾期责任', '格式：逾期分钟 / 模拟核实依据', (s, d, v) => {
+    const [delay, reason] = pair(v);
+    reviews.evaluateViolation(s, d.id, { delay, reason, fault: d.result !== 'exempt', impact: d.result === 'impact' });
+  }],
+  creditAppeal: ['复核模拟信誉申诉', '填写凭证与复核结论', (s, d, v) => reviews.resolveCredit(s, d.id, d.result === 'yes', v)],
+  eligibility: ['模拟接单资格审核', '填写决定依据及恢复条件', (s, d, v) => reviews.reviewEligibility(s, d.id, d.result === 'yes', v)]
+};
+
+Page({
+  data: { section: 'sites', lead: false },
+  onLoad(options) {
+    this.allowed = getApp().opsMode && options.mode === 'mock-ops';
+    this.setData({ allowed: this.allowed });
+  },
+  onShow() {
+    if (this.allowed) this.refresh();
+  },
+  refresh() {
+    if (!this.allowed) return;
+    const state = store.read();
+    const orders = state.orders.map(order => {
+      const view = ui.presentOrder(state, order);
+      return { ...view, canOpsCancel: preStart(order) || order.status === 'missed',
+        qaPending: order.uploadedAt && order.actual > 0 && !order.qa,
+        creditPending: order.startedAt && state.now > view.endAt && (order.overdue || order.verifiedAt > view.endAt)
+          && !state.violations.some(item => item.orderId === order.id),
+        creditImpact: state.orders.some(item => item.cancellation && item.cancellation.outage
+          && item.cancellation.outage.sourceId === order.id),
+        subsidyPending: order.subsidy && ['pending', 'appealed'].includes(order.subsidy.status),
+        subsidyDue: order.subsidy ? stamp(order.subsidy.status === 'appealed' ? order.subsidy.appeal.at + 72 * HOUR : order.subsidy.at + 48 * HOUR) : '' };
+    });
+    const credits = state.violations.filter(item => item.appeal && item.appeal.status === 'pending')
+      .map(item => ({ ...item, due: stamp(item.appeal.at + 72 * HOUR) }));
+    this.setData({ now: stamp(state.now), orders, credits, qa: orders.filter(order => order.qaPending || (order.qaAppeal && order.qaAppeal.status === 'pending')),
+      subsidies: orders.filter(order => order.subsidyPending),
+      penalties: orders.filter(order => order.creditPending),
+      price: ui.money(state.subsidy.cents), priceVersion: state.subsidy.version,
+      people: state.collectors.map(item => {
+        const profile = ui.profile(state, item.id);
+        return { ...profile, id: item.id, name: item.name, due: profile.review ? stamp(profile.review.at + 48 * HOUR) : '' };
+      }),
+      reports: state.reports.filter(item => item.status === 'pending'),
+      messages: ui.inbox(state, 'ops').slice(0, 30),
+      audit: state.audit.slice(0, 50).map(event => ({ ...event, time: stamp(event.at) })),
+      sites: state.stations.map(station => ({ ...station, label: ui.STAGES[station.stage], taskName: TASKS[station.task].title,
+        paused: station.device && (station.device.fault || station.device.overdue.length) })) });
+  },
+  section(event) {
+    this.setData({ section: event.currentTarget.dataset.section });
+  },
+  lead(event) {
+    this.setData({ lead: event.detail.value });
+  },
+  act(event) {
+    if (!this.allowed) return;
+    const data = event.currentTarget.dataset;
+    if (data.action === 'price' && !this.data.lead) return;
+    const [title, placeholder, action] = ACTIONS[data.action];
+    if (placeholder) ui.inputPrompt(title, placeholder, value => ui.commit(this, state => action(state, data, value)));
+    else ui.commit(this, state => action(state, data));
+  },
+  jump(event) {
+    if (this.allowed) ui.jump.call(this, event);
+  },
+  viewRole(event) {
+    wx.navigateTo({ url: '/pages/' + event.currentTarget.dataset.role + '/index' });
+  },
+  home: ui.switchRole
+});

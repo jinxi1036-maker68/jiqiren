@@ -1,0 +1,109 @@
+<view class="screen">
+  <view class="row split">
+    <view class="kicker">个人采集员端 · 模拟体验</view>
+    <button class="ghost" bindtap="switchRole">切换身份</button>
+  </view>
+  <view class="hero">
+    <view class="kicker">平顶山 · 虚构站点</view>
+    <view class="title">找到下一次采集</view>
+    <view class="muted">北京时间 {{clock}} · {{personas[persona]}}</view>
+  </view>
+  <picker range="{{personas}}" value="{{persona}}" bindchange="persona">
+    <view class="field row split"><text>演示采集员</text><text>{{personas[persona]}} ›</text></view>
+  </picker>
+  <view class="row tabs">
+    <button class="{{section === 'tasks' ? 'primary' : ''}}" data-section="tasks" bindtap="section">找任务</button>
+    <button class="{{section === 'orders' ? 'primary' : ''}}" data-section="orders" bindtap="section">预约</button>
+    <button class="{{section === 'income' ? 'primary' : ''}}" data-section="income" bindtap="section">收益</button>
+    <button class="{{section === 'messages' ? 'primary' : ''}}" data-section="messages" bindtap="section">消息{{unread ? ' ' + unread : ''}}</button>
+    <button class="{{section === 'credit' ? 'primary' : ''}}" data-section="credit" bindtap="section">信誉</button>
+  </view>
+  <block wx:if="{{section === 'tasks'}}">
+    <view wx:if="{{replaceId}}" class="notice">正在为 {{replaceId}} 改约。新时段确认前保留原订单。</view>
+    <view wx:if="{{!profile.allowed}}" class="notice">新预约受限。可在信誉页查看依据，已有预约可按原安排履行。</view>
+    <view class="panel">
+      <view class="row">
+        <picker class="grow" mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="field">{{date}} ›</view></picker>
+        <picker class="grow" range="{{regions}}" value="{{region}}" bindchange="region"><view class="field">{{regions[region]}} ›</view></picker>
+      </view>
+      <view class="row">
+        <input class="grow" placeholder="搜索场景或任务" value="{{search}}" bindinput="search"/>
+        <picker range="{{sorts}}" value="{{sort}}" bindchange="sort"><view class="field">{{sorts[sort]}} ›</view></picker>
+      </view>
+      <view class="muted">手动选择区域 · 地点均为虚构</view>
+    </view>
+    <view class="panel" wx:for="{{cards}}" wx:key="id">
+      <view class="row split"><text class="badge">{{item.category}}</text><text class="muted">{{item.district}}</text></view>
+      <view class="section heading">{{item.title}}</view>
+      <view class="muted">{{item.name}} · {{item.address}}</view>
+      <view class="muted">开放 {{item.opening}}</view>
+      <view class="divider row split">
+        <view><view class="subheading">¥{{item.rate}} / 有效小时</view><view class="muted">虚构示例 · {{item.min}}–{{item.max}} 分钟</view></view>
+        <button class="primary" data-id="{{item.id}}" bindtap="task">查看任务</button>
+      </view>
+      <view class="muted small">所选日期 {{item.openCount ? '最早 ' + item.earliest : '无可预约时段'}}</view>
+    </view>
+    <view class="panel muted" wx:if="{{!cards.length}}">当前筛选没有任务。</view>
+  </block>
+  <block wx:if="{{section === 'orders'}}">
+    <view class="section heading">我的预约</view>
+    <view class="panel" wx:for="{{orders}}" wx:key="id">
+      <view class="row split"><view class="subheading">{{item.taskName}}</view><view class="badge">{{item.stateLabel}}</view></view>
+      <view class="muted">{{item.stationName}} · {{item.interval}}</view>
+      <button class="action" data-id="{{item.id}}" bindtap="order">查看 {{item.id}}</button>
+    </view>
+    <view class="panel muted" wx:if="{{!orders.length}}">暂无预约。可先在「找任务」选择时段。</view>
+  </block>
+  <block wx:if="{{section === 'income'}}">
+    <view class="panel">
+      <view class="heading">采集员月度收益</view>
+      <picker mode="date" fields="month" value="{{period}}" bindchange="period"><view class="field">{{period}} ›</view></picker>
+      <view class="row wrap">
+        <view class="grow tile"><view class="muted">预计</view><view class="subheading">¥{{income.estimated}}</view></view>
+        <view class="grow tile"><view class="muted">待审核</view><view class="subheading">¥{{income.pending}}</view></view>
+        <view class="grow tile"><view class="muted">已确认</view><view class="subheading">¥{{income.confirmed}}</view></view>
+      </view>
+      <view class="notice">以上为虚构金额。{{income.pendingCount}} 笔待审可跨期，审核确认后才进入月度账目。</view>
+    </view>
+    <view class="panel" wx:for="{{income.entries}}" wx:key="id">
+      <view class="row split"><view class="subheading">{{item.kindLabel}}</view><view class="badge">{{item.state}}</view></view>
+      <view class="row split"><view class="muted">{{item.orderId}} · {{item.period}}</view><view>{{item.amount}}</view></view>
+    </view>
+    <view class="panel muted" wx:if="{{!income.entries.length}}">该月暂无确认账目或待发放补贴。</view>
+  </block>
+  <block wx:if="{{section === 'messages'}}">
+    <view class="panel">
+      <view class="row split"><view class="heading">站内消息</view><view class="badge">{{unread}} 条未读</view></view>
+      <view class="row action">
+        <button class="grow" bindtap="readAll">全部已读</button>
+        <button class="grow ghost" bindtap="messageSettings">消息设置</button>
+      </view>
+      <view class="muted divider">推进模拟时钟后生成到期提醒。</view>
+      <view class="row action">
+        <button class="grow" data-delta="30" bindtap="jump">＋30 分钟</button>
+        <button class="grow" data-delta="1440" bindtap="jump">＋1 天</button>
+      </view>
+    </view>
+    <view wx:for="{{messages}}" wx:key="key" class="panel" data-key="{{item.key}}" data-id="{{item.orderId}}" bindtap="openMessage">
+      <view class="row split"><view class="subheading">{{item.title}}</view><view class="badge" wx:if="{{!item.read}}">未读</view></view>
+      <view>{{item.text}}</view><view class="muted">{{item.time}} {{item.orderId}}</view>
+    </view>
+    <view class="panel muted" wx:if="{{!messages.length}}">暂无站内消息。</view>
+  </block>
+  <block wx:if="{{section === 'credit'}}">
+    <view class="panel">
+      <view class="row split"><view class="heading">信誉分</view><view class="badge">{{profile.label}}</view></view>
+      <view class="metric section">{{profile.score}} / 100</view>
+      <view class="muted">每满30天无核实的本人违规恢复1分，最高100分。已确认订单可按原安排履行。</view>
+      <view class="notice" wx:if="{{profile.review.decision}}">{{profile.review.decision.reason}}</view>
+    </view>
+    <view class="panel" wx:for="{{profile.events}}" wx:key="id">
+      <view class="row split"><view class="subheading">{{item.fault ? '超时归还核实' : '非本人责任'}}</view><view class="badge">{{item.reversed ? '已纠正' : '扣 ' + item.points + ' 分'}}</view></view>
+      <view>{{item.reason}}</view><view class="muted">{{item.time}} · {{item.orderId}}</view>
+      <view wx:if="{{item.appeal}}" class="notice">{{item.appeal.status === 'pending' ? '申诉复核中' : item.appeal.decision.reason}}</view>
+      <button wx:if="{{item.canAppeal}}" class="action" data-id="{{item.id}}" bindtap="appeal">提交模拟申诉</button>
+    </view>
+    <view class="panel muted" wx:if="{{!profile.events.length}}">暂无经运营核实的信誉事件。</view>
+  </block>
+  <view class="tagline">演示数据 · 站内消息 · 虚构金额</view>
+</view>

@@ -1,0 +1,22 @@
+<view class="screen">
+  <view class="hero">
+    <view class="kicker">LINGJU · 模拟体验 V0.1</view>
+    <view class="title">凌矩共享采集站</view>
+    <view class="muted">在门店开放的时间里预约设备，按任务指引完成采集并自助归还。</view>
+  </view>
+  <view class="section heading">选择你的身份</view>
+  <view class="panel">
+    <view class="badge">场地合作</view>
+    <view class="section heading">我是商家</view>
+    <view class="muted">申请部署设备、设置开放时间，查看门店排班和场地收益。</view>
+    <button class="primary action" data-role="merchant" bindtap="choose">进入商家端</button>
+  </view>
+  <view class="panel">
+    <view class="badge">个人接单</view>
+    <view class="section heading">我是采集员</view>
+    <view class="muted">查看站点任务、选择可用时段，跟进订单、质检和收益。</view>
+    <button class="primary action" data-role="collector" bindtap="choose">进入采集员端</button>
+  </view>
+  <view class="notice">所有站点、订单及金额均为虚构。数据仅保存在当前设备。</view>
+  <button class="ghost" bindtap="reset">重置演示数据</button>
+</view>

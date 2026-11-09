@@ -1,0 +1,71 @@
+<view class="screen">
+  <view class="panel" wx:if="{{missing}}">
+    <view class="heading">无法打开预约</view>
+    <view class="muted">请核对演示采集员身份，或查看重置后的订单列表。</view>
+    <button class="action" bindtap="home">返回采集员端</button>
+  </view>
+  <block wx:else>
+    <view class="kicker">订单详情 · 模拟体验</view>
+    <view class="hero">
+      <view class="kicker">{{order.id}}　{{order.stateLabel}}</view>
+      <view class="title">{{order.taskName}}</view>
+      <view class="muted">{{order.stationName}} · {{order.interval}}</view>
+    </view>
+    <view wx:if="{{order.cancelText}}" class="notice">{{order.cancelText}} {{order.cancellation.exempt ? '· 无责取消' : ''}}</view>
+    <view wx:if="{{order.impact && !order.cancellation}}" class="notice">{{order.impact.reason}}。可无责取消或改约。</view>
+    <view wx:if="{{order.closed && !order.cancellation}}" class="notice">开放时段有变，请按凌矩通知处理。</view>
+    <view wx:if="{{order.overdue && order.status !== 'done'}}" class="notice">异常未归还，凌矩待核查。</view>
+    <view class="panel">
+      <view class="row split"><view class="heading">执行进度</view><view class="badge">{{order.device}}</view></view>
+      <view class="muted">模拟北京时间 {{now}}</view>
+      <view class="row wrap action" wx:if="{{canJumpStart || canJumpEnd || canJumpOverdue}}">
+        <button wx:if="{{canJumpStart}}" class="ghost" data-target="start" bindtap="jumpTo">时钟到预约开始</button>
+        <button wx:if="{{canJumpEnd}}" class="ghost" data-target="end" bindtap="jumpTo">时钟到预约结束</button>
+        <button wx:if="{{canJumpOverdue}}" class="ghost" data-target="overdue" bindtap="jumpTo">时钟到结束后30分钟</button>
+      </view>
+      <view wx:if="{{order.showCode}}" class="divider">
+        <view class="subheading">模拟密码箱 · 0427（虚构）</view>
+        <view class="muted">到店签到后按预约时间自助领机。归还时放回原箱并锁好。</view>
+      </view>
+      <button wx:if="{{order.firstStep}}" class="action" data-action="travel" bindtap="perform">模拟开始前往</button>
+      <button wx:if="{{order.arrive}}" class="primary action" data-action="arrive" bindtap="perform">模拟到店签到</button>
+      <button wx:if="{{order.startCollect}}" class="primary action" data-action="collect" bindtap="perform">模拟自助领机并开始采集</button>
+      <button wx:if="{{order.status === 'collecting'}}" class="primary action" data-action="stop" bindtap="perform">停止采集</button>
+      <button wx:if="{{order.status === 'stopped'}}" class="primary action" data-action="return" bindtap="perform">提交归还并模拟上传</button>
+      <view class="notice" wx:if="{{order.status === 'submitted'}}">已提交归还，等待凌矩模拟核验。</view>
+      <view class="notice" wx:if="{{order.status === 'done'}}">归还完成 · 凌矩模拟核验</view>
+      <view class="row action" wx:if="{{order.canCancel || order.canReschedule}}">
+        <button wx:if="{{order.canCancel}}" class="grow danger" bindtap="cancel">{{order.impact || order.closed ? '无责取消' : '取消预约'}}</button>
+        <button wx:if="{{order.canReschedule}}" class="grow ghost" bindtap="reschedule">选择其他时段</button>
+      </view>
+    </view>
+    <view class="panel" wx:if="{{order.canReport || report}}">
+      <view class="heading">设备异常</view>
+      <view wx:if="{{report}}" class="notice">{{report.details}} · {{report.status === 'pending' ? '待核查' : '已模拟核实'}}</view>
+      <block wx:if="{{order.canReport && report.status !== 'pending'}}">
+        <view class="row split divider"><view class="muted">附模拟现场照片占位</view><switch checked="{{reportPhoto}}" color="#17634e" bindchange="reportPhoto"/></view>
+        <button class="action" bindtap="reportIssue">上报设备异常</button>
+      </block>
+    </view>
+    <view class="panel" wx:if="{{order.uploadedAt}}">
+      <view class="row split"><view class="heading">模拟质检</view><view class="badge">{{order.qa ? '已审核' : order.actual ? '待审核' : '无有效采集记录'}}</view></view>
+      <view class="divider">实际采集 {{order.actual}} 分钟</view>
+      <block wx:if="{{order.qa}}">
+        <view>有效 {{order.valid}} 分钟 · 有效率 {{order.qaRate}}</view>
+        <view class="muted">来源 {{order.qa.source}} · {{order.qa.reason}}</view>
+        <view class="notice" wx:if="{{order.qaAppeal}}">{{order.qaAppeal.status === 'pending' ? '争议工时复核中，已确认工时照常入账。' : order.qaAppeal.result.reason}}</view>
+        <view class="muted" wx:if="{{order.qaAppeal.result.extra}}">复核新增 {{order.qaAppeal.result.extra}} 分钟，计入 {{order.qaAppeal.result.period}} 账期。</view>
+        <button wx:if="{{!order.qaAppeal && order.qa.valid < order.actual}}" class="action" bindtap="appealQA">申请模拟质检复核</button>
+      </block>
+    </view>
+    <view class="panel" wx:if="{{order.canApply || order.subsidy || order.cancellation.outage}}">
+      <view class="heading">交通补贴</view>
+      <view wx:if="{{order.subsidy}}" class="notice">{{order.subsidyStatus}} · ¥{{order.subsidyAmount}}（虚构）</view>
+      <view class="muted" wx:if="{{order.subsidyReason}}">{{order.subsidyReason}}</view>
+      <view class="muted">须在取消后48小时内提交出行凭证并由凌矩核查。审批通过进入待发放补贴。</view>
+      <button wx:if="{{order.canApply}}" class="primary action" bindtap="applySubsidy">提交模拟凭证并申请</button>
+      <button wx:if="{{order.canAppealSubsidy}}" class="action" bindtap="appealSubsidy">提交模拟补贴申诉</button>
+    </view>
+    <view class="tagline">演示数据 · 虚构凭证 · 非真实结算</view>
+  </block>
+</view>
