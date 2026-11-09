@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed month-end collector earning treatment: approved valid hours settle in the current cycle, pending QA hours remain pending (never presumed invalid), and verified results arriving next month enter the next settlement cycle. Order-level QA and earnings status remain visible; legal and contractual payment obligations still apply.",
+  "latest_decision": "Owner confirmed that undisputed accepted valid hours in a partly disputed QA order settle normally; disputed hours remain under review. Authorized, verified successful review creates additional income in next settlement period; failed review explains reasons and preserves original QA evidence. Actual upstream rights and accounting details remain undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -656,6 +656,20 @@
     "legal_contractual_payment_requirements_apply": true,
     "batch_cutoff_time": "undecided",
     "adjustment_for_appeals": "undecided",
+    "implemented": false
+  },
+  "collector_partial_qa_dispute_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-17",
+    "undisputed_confirmed_valid_hours": "settle_normally",
+    "disputed_hours_status": "复核中",
+    "successful_appeal": "authorized_verified_extra_valid_hours_paid_in_following_cycle",
+    "failed_appeal": "show_reason_and_preserve_original_qa",
+    "keep_original_qa_and_appeal_history": true,
+    "prevent_duplicate_settlement": true,
+    "upstream_qa_modification_authority": "requires_contractual_or_authorized_verification",
+    "reassessment_deadline": "undecided",
+    "legal_contract_payment_requirements_apply": true,
     "implemented": false
   }
 }
