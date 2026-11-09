@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed progressive reputation handling for verified collector-caused late equipment return: first minor offense warning only, repeat unjustified offenses may deduct points after verification, actual downstream harm may warrant a higher tier, non-collector failures exempt, and appeal and reason visibility required. Specific point values remain undecided.",
+  "latest_decision": "Owner confirmed reputation deductions for overdue device return: first minor verified incident warning with 0-point deduction; repeated unjustified return deducts 2 points after Lingju verification; verified harm to next booked collector deducts 5 points. Apply only highest tier per incident, no stacking; non-collector causes exempt; appeals available.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -927,27 +927,56 @@
     "compensation_or_recovery_demand_while_unverified": false,
     "downstream_collector_subsidy_not_automatically_charged_to_previous_collector": true,
     "preserve_audit_trail": true,
-    "penalty_tiers": "first_minor_warning_no_points; repeat_verified_unjustified_deduct_points; proven_downstream_impact_higher_tier; numeric_values_undecided",
+    "penalty_tiers": "0 first minor warning; 2 repeated unjustified; 5 verified disruption to next booking; highest one per incident; no automatic deduction",
     "compensation_conditions": "undecided",
     "collector_appeal_procedure": "undecided",
     "applicable_contract_and_law_required": true,
     "implemented": false,
-    "reputation_tier_decision_id": "DEC-2026-11-09-32"
+    "reputation_tier_decision_id": "DEC-2026-11-09-32",
+    "penalty_points_decision_id": "DEC-2026-11-09-33"
   },
   "overdue_equipment_return_reputation_tiers_20261109": {
     "status": "owner_confirmed_concept",
     "decision_id": "DEC-2026-11-09-32",
-    "first_minor_verified_personal_lateness": "warning_without_point_deduction",
-    "repeated_unjustified_lateness": "deduction_possible_only_after_lingju_verification",
-    "impacts_next_booked_collector": "higher_tier_if_real_impact_verified",
+    "first_minor_verified_personal_lateness": "warning_0_points",
+    "repeated_unjustified_lateness": "2_points_after_lingju_verification",
+    "impacts_next_booked_collector": "5_points_only_if_verified_actual_disruption_due_to_personal_fault",
     "device_or_system_failure_exempt": true,
     "reason_visible_to_collector": true,
     "appeal_allowed": true,
     "unverified_case_automatic_deduction": false,
     "minor_threshold": "undecided",
     "repeated_offense_definition": "undecided",
-    "specific_deduction_points": "undecided",
-    "single_incident_stacking": "undecided",
+    "specific_deduction_points": {
+      "first_minor": 0,
+      "repeated_unjustified": 2,
+      "verified_disruption_to_next_collector": 5
+    },
+    "single_incident_stacking": "only_highest_applicable_tier_not_additive",
+    "appeal_deadline": "undecided",
+    "implemented": false,
+    "numeric_penalty_decision_id": "DEC-2026-11-09-33"
+  },
+  "overdue_equipment_return_reputation_points_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-33",
+    "first_minor": {
+      "points_deducted": 0,
+      "action": "warning"
+    },
+    "repeat_unjustified": {
+      "points_deducted": 2,
+      "requires_verification": true
+    },
+    "verified_blocks_next_collector": {
+      "points_deducted": 5,
+      "requires_personal_fault_and_impact_verification": true
+    },
+    "single_incident_deducts_only_highest_tier": true,
+    "non_collector_cause_points_deducted": 0,
+    "appeal_allowed": true,
+    "minor_overdue_minute_threshold": "undecided",
+    "repeat_count_lookback": "undecided",
     "appeal_deadline": "undecided",
     "implemented": false
   }
