@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed monthly settlement as the principle for collector collection earnings based on verified accepted effective hours, with approved transport subsidies itemized in the same settlement statement; actual payment day, pending QA cross-period treatment and legal/contractual terms remain undecided.",
+  "latest_decision": "Owner confirmed month-end collector earning treatment: approved valid hours settle in the current cycle, pending QA hours remain pending (never presumed invalid), and verified results arriving next month enter the next settlement cycle. Order-level QA and earnings status remain visible; legal and contractual payment obligations still apply.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -636,9 +636,26 @@
     "subsidy_displayed_separately": true,
     "exact_payment_date": "undecided",
     "settlement_period_boundaries": "undecided",
-    "pending_qa_at_month_end": "undecided",
+    "pending_qa_at_month_end": "preserve_pending_qa; not_invalid_or_zeroed",
     "contract_and_legal_payment_obligations": "must_be_verified_before_implementation",
     "real_payment_integrated": false,
+    "implemented": false,
+    "month_end_confirmed_valid_income": "included_in_current_cycle",
+    "later_confirmed_qa_income": "included_in_next_settlement_cycle",
+    "order_level_qa_and_earnings_visibility": true,
+    "pending_qa_carry_forward_decision_id": "DEC-2026-11-09-16"
+  },
+  "collector_pending_qa_carry_forward_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-16",
+    "current_month_verified_valid_earnings": "settle_in_current_cycle",
+    "pending_qa_at_month_end": "remain_pending_not_invalid",
+    "qa_confirmed_in_following_month": "settle_in_following_cycle",
+    "show_order_level_qa_and_income_status": true,
+    "require_no_lost_pending_records": true,
+    "legal_contractual_payment_requirements_apply": true,
+    "batch_cutoff_time": "undecided",
+    "adjustment_for_appeals": "undecided",
     "implemented": false
   }
 }
