@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed that collectors over 30 minutes late may check in and collect if the original booking is still valid and equipment remains available without conflict, but lateness never extends the end time or infringes the next booking. Lingju verifies the reason before reputation action.",
+  "latest_decision": "Owner confirmed earnings after late collector arrival are computed only from actual collected hours verified as accepted/valid by authorized QA, not the original reservation duration. Missed time earns nothing; other already-confirmed valid earnings remain unaffected. Measurement and rounding unresolved.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -791,7 +791,22 @@
     "device_fault_or_other_non_collector_cause_exempt": true,
     "booking_expired_handling": "undecided",
     "minimum_remaining_duration": "undecided",
-    "valid_work_time_calculation": "undecided",
+    "valid_work_time_calculation": "actual_collected_hours_accepted_by_authorized_qa_not_reserved_hours",
+    "implemented": false,
+    "earnings_decision_id": "DEC-2026-11-09-25"
+  },
+  "collector_late_arrival_earnings_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-25",
+    "earnings_hours_basis": "actual_collection_time_verified_as_valid_by_authorized_qa",
+    "original_booking_duration_not_payment_basis": true,
+    "missed_time_due_to_lateness_is_unpaid": true,
+    "qa_required_for_confirmed_earnings": true,
+    "other_verified_earnings_unaffected": true,
+    "monthly_settlement_rules_still_apply": true,
+    "measurement_source": "undecided",
+    "time_rounding": "undecided",
+    "partial_acceptance_method": "undecided",
     "implemented": false
   }
 }
