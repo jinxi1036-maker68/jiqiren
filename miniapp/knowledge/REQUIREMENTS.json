@@ -807,7 +807,7 @@
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
   "mvp_scope_approval": "Owner approved demo concept, individual implementation scope to be reconciled with updated two-sided charter before work",
-  "next_step": "Review the V0.1 Draft PR, compile in WeChat DevTools with a local authorized AppID, then check real-device preview.",
+  "next_step": "Review the V0.1 Draft PR and check real-device preview with the local authorized AppID.",
   "batch_default_document": "miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md",
   "native_wechat_mock_experience": {
     "status": "owner_confirmed_concept",
@@ -816,6 +816,6 @@
     "target_path": "miniapp/apps/wechat/",
     "scope": "native_miniprogram_fake_data_only",
     "implemented": true,
-    "verification": "offline_compiler_and_mock_flow_tests_passed_devtools_runtime_pending"
+    "verification": "offline_tests_and_desktop_simulator_smoke_passed_real_device_preview_pending"
   }
 }

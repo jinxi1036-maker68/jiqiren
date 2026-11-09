@@ -27,3 +27,4 @@
 - 微信开发者工具 2.02.2609250 识别工程信息。游客模式校验占位 AppID 时返回系统错误 1，模拟器和真机预览待使用有权限的本地 AppID 验收。
 - [导入说明与三个演示剧本](apps/wechat/README.md)。
 - 已创建 [Draft PR #26](https://github.com/jinxi1036-maker68/jiqiren/pull/26)。[验收记录和离线编译截图](apps/wechat/evidence/README.md)随分支交付。
+- 账号持有人配置本地 AppID 后，桌面模拟器编译并验证首页、采集员任务列表及任务详情。修正任务页空值警告，25 项测试复跑通过。

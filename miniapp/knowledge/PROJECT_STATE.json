@@ -4,7 +4,7 @@
   "updated_at": "2026-11-09",
   "home": "miniapp/knowledge/00_START_HERE.md",
   "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
-  "phase": "native_wechat_mock_v0_1_offline_tested_draft_pr",
+  "phase": "native_wechat_mock_v0_1_desktop_smoke_verified_draft_pr",
   "model": "merchant_host_device_plus_individual_collector_hourly_orders",
   "model_confirmed_by_owner": true,
   "mvp": {
@@ -21,9 +21,9 @@
     "real_user_data": false,
     "prior_issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/24",
     "prior_web_demo_direction": "superseded_by_owner_approval_of_native_wechat_miniprogram",
-    "local_wechat_devtools_import_verified": false,
+    "local_wechat_devtools_import_verified": true,
     "wechat_account_available_per_owner": true,
-    "app_id_configured_verified": false,
+    "app_id_configured_verified": true,
     "wechat_experience_uploaded_verified": false
   },
   "technology": {
@@ -46,7 +46,7 @@
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
   "latest_decision": "Owner approved the native WeChat mock for Issue #25, superseding the web-first delivery format. Local V0.1 code and offline tests are verified. Production systems and WeChat release remain outside this scope.",
-  "next_gate": "Review the Draft PR and compile the project in WeChat DevTools using an authorized local AppID. Preview on the owner device after a successful build.",
+  "next_gate": "Review the Draft PR and verify real-device preview with the authorized local AppID.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
     "decision_id": "DEC-2026-11-08-04",
@@ -1230,9 +1230,10 @@
       "node_automated_tests_passed": 25,
       "compiler": "miniprogram-compiler 0.2.3: six WXML routes compiled and rendered, WXSS compiled",
       "devtools_guest_import": "2.02.2609250 recognized project metadata, then system error 1 during placeholder AppID validation",
-      "desktop_simulator_verified": false,
+      "desktop_simulator_verified": true,
       "real_device_preview_verified": false,
-      "offline_render_screenshot": "miniapp/apps/wechat/evidence/v0.1-offline-render.png"
+      "offline_render_screenshot": "miniapp/apps/wechat/evidence/v0.1-offline-render.png",
+      "desktop_simulator_smoke": "DevTools 2.02.2609250 and base library 3.18.0 with a local AppID: compiled and interacted from home through collector task list to illustrated task detail and booking controls."
     },
     "draft_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/26"
   }

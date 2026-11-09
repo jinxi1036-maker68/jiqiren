@@ -32,7 +32,7 @@ Page({
     this.setData({ date, today, station, task, startIndex, endIndex: Math.min(this.data.endIndex, Math.max(0, ends.length - 1)),
       starts: slots.map(slot => timeLabel(slot.start)), ends: ends.map(timeLabel),
       card: ui.listing(state, station, date, state.collector, this.replaceId),
-      replaceId: this.replaceId, lateChange: previous && ui.presentOrder(state, previous).lateCancel,
+      replaceId: this.replaceId, lateChange: Boolean(previous && ui.presentOrder(state, previous).lateCancel),
       reserved: state.orders.filter(order => order.stationId === station.id && order.date === date && order.status !== 'cancelled')
         .sort((a, b) => a.start - b.start).map(order => ({ id: order.id, interval: timeLabel(order.start) + '–' + timeLabel(order.end) })) });
   },

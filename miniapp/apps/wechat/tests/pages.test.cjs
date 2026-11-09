@@ -51,6 +51,7 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   const task = r.open('task', { id: 's1', date: '2026-11-09' });
   assert.equal(task.data.starts[0], '09:00');
   assert.equal(task.data.ends[0], '10:00');
+  assert.equal(task.data.lateChange, false);
   task.submit();
   const id = new URL(r.nav.pop(), 'https://demo.invalid').searchParams.get('id');
   const order = r.open('order', { id });
