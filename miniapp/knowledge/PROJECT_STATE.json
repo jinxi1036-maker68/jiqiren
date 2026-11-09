@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed only authorized Lingju operations managers can change fixed transport subsidy amounts; audit old/new amount, operator and time; new values apply only to new applications submitted after the change, preserving previously submitted and approved applications.",
+  "latest_decision": "Owner confirmed approved equipment-fault transport subsidies are not paid immediately, but settled alongside collector's ordinary collection income while itemized separately. Approved subsidies still enter normal settlement when collector has no collection income. Actual collector pay cycle and payment rail remain undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -505,7 +505,11 @@
     "reject_requires_reason": true,
     "rejection_dispute_available": true,
     "overdue_action": "remind_lingju_ops_without_auto_approval",
-    "review_decision_id": "DEC-2026-11-09-09"
+    "review_decision_id": "DEC-2026-11-09-09",
+    "approved_payment_timing": "settled_with_collector_ordinary_income_not_instant",
+    "earnings_page_separate_line_item": true,
+    "no_collection_income_still_settle": true,
+    "disbursement_decision_id": "DEC-2026-11-09-14"
   },
   "device_fault_subsidy_deadline_20261109": {
     "status": "owner_confirmed_concept",
@@ -606,6 +610,20 @@
     "application_record_should_capture_amount_rule_version": true,
     "initial_amount": "undecided",
     "grant_and_revoke_permissions": "undecided",
+    "implemented": false
+  },
+  "device_fault_subsidy_disbursement_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-14",
+    "immediate_individual_payout": false,
+    "intended_settlement": "same_cycle_as_collector_ordinary_collection_income",
+    "separate_earnings_line_item": "交通补贴",
+    "no_collection_income_approved_subsidy_remains_payable": true,
+    "post_approval_status": "待发放补贴",
+    "actual_paid_requires_verified_payment_record": true,
+    "collector_settlement_cycle": "undecided",
+    "payment_method": "undecided",
+    "failed_payment_reconciliation": "undecided",
     "implemented": false
   }
 }
