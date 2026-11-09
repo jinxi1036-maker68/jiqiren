@@ -631,6 +631,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner approves suspension of new bookings for affected equipment; existing bookings handling pending"
+    },
+    {
+      "id": "UI-C-019",
+      "role": "collector",
+      "name": "设备故障影响已预约订单时采集员收到系统通知，并可在订单中选择取消或改约",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-09 replied 可以 to auto-notify collectors affected by device fault and offer cancel or reschedule"
+    },
+    {
+      "id": "S-020",
+      "role": "system",
+      "name": "故障暂停设备时识别受影响的已预约订单、通知相关采集员并提供取消改约入口；不无声删除订单",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner confirmed existing affected booking notification plus collector choice"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
