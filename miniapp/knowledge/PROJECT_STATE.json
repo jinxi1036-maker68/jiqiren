@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed collector booking thresholds: score >=80 normal bookings, 60-79 warning without booking restriction, <60 pause new bookings pending Lingju manual review. Booking access may resume after approved manual review or score >=60; existing confirmed bookings are not automatically canceled.",
+  "latest_decision": "Owner confirmed Lingju must finish manual eligibility review within 48 hours of reputation score falling below 60 and new bookings being paused. Approval resumes new bookings, rejection explains reasons and reinstatement conditions, overdue triggers manager reminder without automatic approval, and existing bookings are not automatically canceled.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -1124,8 +1124,29 @@
     "existing_bookings": "lingju_verifies_and_handles_individually",
     "reputation_deductions_require_verification_and_allow_appeal": true,
     "manual_review_requirements": "undecided",
-    "review_deadline": "undecided",
+    "review_deadline": "48_hours_after_low_score_restriction_trigger",
     "manual_reinstatement_validity": "undecided",
+    "implemented": false,
+    "review_pass_action": "resume_new_bookings",
+    "review_reject_action": "show_specific_reason_and_reinstatement_conditions",
+    "review_overdue_action": "remind_lingju_manager_no_auto_approval",
+    "manual_review_sla_decision_id": "DEC-2026-11-09-40"
+  },
+  "collector_low_reputation_eligibility_review_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-40",
+    "restriction_threshold_score_below": 60,
+    "review_due_hours_after_restriction": 48,
+    "reviewer": "凌矩",
+    "on_approval": "resume_new_booking_eligibility",
+    "on_rejection": "explain_specific_rejection_reason_and_reinstatement_conditions",
+    "overdue_action": "automatic_reminder_to_lingju_manager",
+    "auto_approve_on_timeout": false,
+    "existing_confirmed_bookings_automatically_canceled": false,
+    "existing_booking_handling": "lingju_individual_review_policy_undecided",
+    "exact_trigger_and_timekeeping": "undecided",
+    "submission_requirements": "undecided",
+    "manager_notification_channel": "undecided",
     "implemented": false
   }
 }
