@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed QA appeal outcomes are notified through in-app messages plus WeChat subscription messages only when collector-authorized and platform-permitted; unread count is visible on miniapp home, and QA results remain accessible in the order even if WeChat notifications fail. Actual delivery, retention and implementation details pending.",
+  "latest_decision": "Owner confirmed WeChat subscription-message permission is optional: do not prompt on first miniapp open; offer at first successful collector booking; permit user-triggered retry via message settings, subject to WeChat platform limits; declining never blocks booking, orders or earnings.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -705,7 +705,22 @@
     "notification_delivery_not_assumed": true,
     "retention": "long_term_traceable_subject_to_legal_privacy_requirements",
     "unread_definition": "undecided",
-    "we_chat_template_and_authorization_timing": "undecided",
+    "we_chat_template_and_authorization_timing": "first_successful_booking_optional_prompt; user_triggered_retry_from_message_settings; subject_to_wechat_template_limits",
+    "implemented": false,
+    "permission_prompt_decision_id": "DEC-2026-11-09-20"
+  },
+  "collector_wechat_message_permission_prompt_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-20",
+    "first_open_forced_permission_prompt": false,
+    "initial_optional_prompt_at": "first_successful_collector_booking",
+    "reentry_to_request_permission": "消息设置",
+    "re_request_must_be_user_triggered_and_platform_compliant": true,
+    "refusal_blocks_booking": false,
+    "refusal_blocks_order_or_earnings_access": false,
+    "in_app_qa_review_notifications_remain_available": true,
+    "wechat_subscription_scope_and_template_limits": "to_validate_on_actual_platform",
+    "reprompt_frequency": "undecided",
     "implemented": false
   }
 }
