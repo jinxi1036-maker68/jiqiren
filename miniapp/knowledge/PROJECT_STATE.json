@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed reputation deductions for overdue device return: first minor verified incident warning with 0-point deduction; repeated unjustified return deducts 2 points after Lingju verification; verified harm to next booked collector deducts 5 points. Apply only highest tier per incident, no stacking; non-collector causes exempt; appeals available.",
+  "latest_decision": "Owner confirmed first minor overdue equipment return means up to and including 15 minutes late with no actual impact on the next collector: warning and zero points. Longer delay requires investigation, and verified personal fault blocking next collector still incurs 5 points even within 15 minutes. Device/system causes exempt.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -945,7 +945,7 @@
     "reason_visible_to_collector": true,
     "appeal_allowed": true,
     "unverified_case_automatic_deduction": false,
-    "minor_threshold": "undecided",
+    "minor_threshold": "first_incident_lateness_up_to_and_including_15_minutes_without_downstream_harm",
     "repeated_offense_definition": "undecided",
     "specific_deduction_points": {
       "first_minor": 0,
@@ -955,7 +955,8 @@
     "single_incident_stacking": "only_highest_applicable_tier_not_additive",
     "appeal_deadline": "undecided",
     "implemented": false,
-    "numeric_penalty_decision_id": "DEC-2026-11-09-33"
+    "numeric_penalty_decision_id": "DEC-2026-11-09-33",
+    "minor_threshold_decision_id": "DEC-2026-11-09-34"
   },
   "overdue_equipment_return_reputation_points_20261109": {
     "status": "owner_confirmed_concept",
@@ -975,9 +976,29 @@
     "single_incident_deducts_only_highest_tier": true,
     "non_collector_cause_points_deducted": 0,
     "appeal_allowed": true,
-    "minor_overdue_minute_threshold": "undecided",
+    "minor_overdue_minute_threshold": 15,
     "repeat_count_lookback": "undecided",
     "appeal_deadline": "undecided",
+    "implemented": false,
+    "minor_threshold_inclusive": true,
+    "first_minor_requires_no_actual_downstream_harm": true,
+    "verified_downstream_harm_up_to_15_min_applies_5_point_tier": true,
+    "minor_threshold_decision_id": "DEC-2026-11-09-34"
+  },
+  "overdue_equipment_return_first_minor_threshold_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-34",
+    "first_minor_overdue_max_minutes": 15,
+    "inclusive": true,
+    "requires_first_occurrence": true,
+    "requires_no_actual_downstream_disruption": true,
+    "first_minor_action": "warning_0_points",
+    "over_15_minutes": "lingju_verify_cause_before_deciding; no_automatic_deduction",
+    "verified_collector_fault_harming_next_collector_even_within_15_minutes": "5_points_highest_tier",
+    "device_and_system_failures_exempt": true,
+    "verified_impact_required": true,
+    "repeat_lookback_period": "undecided",
+    "over_15_minutes_without_downstream_harm_penalty": "undecided",
     "implemented": false
   }
 }
