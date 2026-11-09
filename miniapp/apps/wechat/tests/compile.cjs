@@ -63,11 +63,16 @@ assert.match(pageText(renderOrder(order.data)), /准备前往站点/);
 assert.doesNotMatch(pageText(renderOrder(order.data)), /时钟到预约开始/);
 order.toggleDemo();
 assert.match(pageText(renderOrder(order.data)), /时钟到预约开始/);
-order.jumpTo(event({ target: 'start' }));
-order.perform(event({ action: 'arrive' }));
-order.perform(event({ action: 'collect' }));
-order.jumpTo(event({ target: 'end' }));
-order.perform(event({ action: 'return' }));
+order.toggleDemo();
+for (const [label, action] of [
+  ['模拟开始前往', 'travel'], ['模拟到店签到', 'arrive'], ['模拟自助领机并开始采集', 'collect'],
+  ['模拟完成采集', 'stop'], ['提交归还并模拟上传', 'return']
+]) {
+  const button = findButton(renderOrder(order.data), label);
+  assert.equal(button.attr['data-action'], action);
+  assert.equal(button.attr.bindtap, 'perform');
+  order.perform(event({ action }));
+}
 assert.match(pageText(renderOrder(order.data)), /已提交 · 待核验/);
 store.change(state => booking.verifyReturn(state, id, '模拟设备已放回原箱'));
 order.onShow();

@@ -1,5 +1,6 @@
 const store = require('../../lib/storage');
 const { stamp, MINUTE, TASKS } = require('../../lib/catalog');
+const { ownedOrder } = require('../../lib/model');
 const booking = require('../../lib/booking');
 const reviews = require('../../lib/reviews');
 const ui = require('../../lib/ui');
@@ -20,9 +21,17 @@ function instructions(order, mainAction) {
     return { title: '处理预约变更', detail: '请查看上方影响说明，可在此改期或无责取消。' };
   }
   if (order.status === 'collecting') {
-    return { title: '按 SOP 完成采集', detail: '请于 ' + order.endTime + ' 前停止采集，再将设备放回原箱。' };
+    const detail = mainAction.advanceTo
+      ? '点「模拟完成采集」会推进至 ' + order.endTime + '，记录模拟采集时长。随后可提交归还。'
+      : '请于 ' + order.endTime + ' 前停止采集，再将设备放回原箱。';
+    return { title: '按 SOP 完成采集', detail };
   }
-  if (mainAction) return GUIDANCE[mainAction.action];
+  if (mainAction) {
+    const guidance = GUIDANCE[mainAction.action];
+    return mainAction.advanceTo
+      ? { ...guidance, detail: '本次模拟操作会把时钟推进到预约开始 ' + order.startTime + '。' }
+      : guidance;
+  }
   if (!order.showCode) {
     return { title: '查看设备可用情况', detail: '当前尚不能领机。到店遇到问题，可向凌矩报告设备异常。' };
   }
@@ -75,7 +84,15 @@ Page({
   },
   perform(event) {
     const action = event.currentTarget.dataset.action;
-    ui.commit(this, state => booking.perform(state, state.collector, this.id, action));
+    ui.commit(this, state => {
+      const order = ownedOrder(state, state.collector, this.id);
+      const next = ui.nextAction(ui.presentOrder(state, order));
+      if (next && next.action === action && next.advanceTo) {
+        ui.advanceClock(state, next.advanceTo);
+        if (action === 'stop') return order;
+      }
+      return booking.perform(state, state.collector, this.id, action);
+    });
   },
   cancel() {
     if (this.data.order.lateCancel) {

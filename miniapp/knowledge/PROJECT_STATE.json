@@ -1257,8 +1257,9 @@
         "onsite guidance",
         "independent return and QA results"
       ],
-      "automated_tests_passed": 27,
-      "offline_render": "explicit booking, next order, arrival guidance and independent results"
+      "automated_tests_passed": 28,
+      "offline_render": "explicit booking, next order, arrival guidance and independent results",
+      "guided_order_actions": "early appointment to return through visible order actions, with on-demand simulation clock and device checks"
     }
   }
 }

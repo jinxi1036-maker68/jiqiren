@@ -52,6 +52,8 @@ function presentOrder(state, order) {
     firstStep: order.status === 'booked' && !order.impact && !order.closed && state.now < endAt,
     arrive: ['booked', 'travel'].includes(order.status) && canUse && state.now >= startAt - 15 * MINUTE && state.now < endAt,
     startCollect: order.status === 'arrived' && canUse && state.now >= startAt && state.now < endAt,
+    canSimulateStart: canUse && state.now < startAt,
+    canSimulateEnd: order.status === 'collecting' && state.now - order.startedAt < MINUTE && state.now < endAt,
     canCancel: before, canReschedule: !order.replacedBy && (before || order.status === 'cancelled'),
     canReport: active, active, canApply: !subsidy && reviews.eligibleSubsidy(state, order),
     showCode: ['booked', 'travel', 'arrived', 'collecting'].includes(order.status) && canUse && state.now < endAt,
@@ -65,10 +67,17 @@ function presentOrder(state, order) {
 }
 
 function nextAction(order) {
-  if (order.startCollect) return { action: 'collect', label: '模拟自助领机并开始采集' };
-  if (order.arrive) return { action: 'arrive', label: '模拟到店签到' };
+  if (order.startCollect || (order.status === 'arrived' && order.canSimulateStart)) {
+    return { action: 'collect', label: '模拟自助领机并开始采集', advanceTo: order.startCollect ? null : order.startAt };
+  }
+  if (order.arrive || (order.status === 'travel' && order.canSimulateStart)) {
+    return { action: 'arrive', label: '模拟到店签到', advanceTo: order.arrive ? null : order.startAt };
+  }
   if (order.firstStep) return { action: 'travel', label: '模拟开始前往' };
-  if (order.status === 'collecting') return { action: 'stop', label: '停止采集' };
+  if (order.status === 'collecting') {
+    return { action: 'stop', label: order.canSimulateEnd ? '模拟完成采集' : '停止采集',
+      advanceTo: order.canSimulateEnd ? order.endAt : null };
+  }
   if (order.status === 'stopped') return { action: 'return', label: '提交归还并模拟上传' };
   return null;
 }
@@ -141,11 +150,13 @@ function switchRole() {
   wx.reLaunch({ url: '/pages/home/index?choose=1' });
 }
 
+function advanceClock(state, target) {
+  booking.advance(state, target);
+  reviews.deadlineAlerts(state);
+}
+
 function advance(page, target) {
-  commit(page, state => {
-    booking.advance(state, target);
-    reviews.deadlineAlerts(state);
-  });
+  commit(page, state => advanceClock(state, target));
 }
 
 function jump(event) {
@@ -153,4 +164,4 @@ function jump(event) {
 }
 
 module.exports = { STAGES, money, rangeText, listing, presentOrder, nextAction, ledger, income, inbox, profile, errorToast, commit,
-  inputPrompt, switchRole, advance, jump };
+  inputPrompt, switchRole, advanceClock, advance, jump };

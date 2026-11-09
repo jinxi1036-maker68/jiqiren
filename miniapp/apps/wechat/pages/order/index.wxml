@@ -1,4 +1,4 @@
-<view class="screen {{mainAction ? 'with-dock' : ''}}">
+<view class="screen">
   <view class="panel" wx:if="{{missing}}">
     <view class="heading">无法打开预约</view>
     <view class="muted">请核对演示采集员身份，或查看重置后的订单列表。</view>
@@ -26,6 +26,10 @@
       <view class="kicker">现在要做</view>
       <view class="heading action">{{guidance.title}}</view>
       <view class="muted action">{{guidance.detail}}</view>
+      <view class="row action" wx:if="{{mainAction}}">
+        <button class="grow primary order-step-button" data-action="{{mainAction.action}}" bindtap="perform">{{mainAction.label}}</button>
+        <button wx:if="{{order.canReport && report.status !== 'pending'}}" class="ghost order-step-button" bindtap="toggleIssue">{{showIssue ? '收起异常' : '设备异常'}}</button>
+      </view>
       <view wx:if="{{order.showCode}}" class="divider">
         <view class="muted small">模拟密码箱 · {{order.device}}</view>
         <view class="subheading">{{order.status === 'arrived' ? '自助取机' : '到店取机说明'}}　0427（虚构）</view>
@@ -88,9 +92,5 @@
       </view>
     </view>
     <view class="tagline">演示数据 · 虚构凭证 · 非真实结算</view>
-    <view class="dock action-dock" wx:if="{{mainAction}}">
-      <button wx:if="{{order.canReport && report.status !== 'pending'}}" class="ghost issue-action" bindtap="toggleIssue">{{showIssue ? '收起异常' : '设备异常'}}</button>
-      <button class="primary" data-action="{{mainAction.action}}" bindtap="perform">{{mainAction.label}}</button>
-    </view>
   </block>
 </view>

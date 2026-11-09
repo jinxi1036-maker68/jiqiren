@@ -4,6 +4,7 @@ const { runtime, event } = require('./harness.cjs');
 const store = require('../lib/storage');
 const booking = require('../lib/booking');
 const merchant = require('../lib/merchant');
+const { MINUTE } = require('../lib/catalog');
 
 function select(task, start, end) {
   task.start(event({ minute: start }));
@@ -76,18 +77,22 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   const order = r.open('order', { id });
   assert.equal(order.data.mainAction.action, 'travel');
   assert.equal(order.data.showDemo, false);
-  order.toggleDemo();
-  assert.equal(order.data.showDemo, true);
   collector.onShow();
   assert.equal(collector.data.nextOrder.id, id);
   assert.match(collector.data.nextOrder.hint, /前往/);
   order.perform(event({ action: 'travel' }));
-  order.jumpTo(event({ target: 'start' }));
-  assert.equal(order.data.order.arrive, true);
+  assert.equal(order.data.order.arrive, false);
   assert.equal(order.data.mainAction.action, 'arrive');
+  assert.match(order.data.guidance.detail, /时钟推进/);
   order.perform(event({ action: 'arrive' }));
+  assert.equal(store.read().now, order.data.order.startAt);
+  assert.equal(order.data.mainAction.action, 'collect');
   order.perform(event({ action: 'collect' }));
-  order.jumpTo(event({ target: 'end' }));
+  assert.equal(order.data.mainAction.label, '模拟完成采集');
+  order.perform(event({ action: 'stop' }));
+  assert.equal(order.data.order.actual, 60);
+  assert.equal(order.data.mainAction.action, 'return');
+  assert.equal(order.data.showDemo, false);
   order.perform(event({ action: 'return' }));
   assert.equal(order.data.order.stateLabel, '已提交归还');
   assert.equal(order.data.result.deviceLabel, '已提交 · 待核验');
@@ -132,6 +137,11 @@ test('页面取消后显示无责状态，采集员提交证据后方有补贴�
   ops.act(event({ action: 'pause', id: 's1', report: ops.data.reports[0].id }));
   r.answer('现场模拟核实设备不可用');
   order.onShow();
+  assert.equal(order.data.mainAction, null);
+  const beforeBlockedArrival = store.read().now;
+  order.perform(event({ action: 'arrive' }));
+  assert.equal(store.read().now, beforeBlockedArrival);
+  assert.equal(order.data.order.status, 'travel');
   order.cancel();
   r.answer();
   assert.equal(order.data.order.cancellation.exempt, true);
@@ -183,4 +193,29 @@ test('采集员首页区分未开放和设备暂停，受影响预约有处理�
   const order = r.open('order', { id });
   assert.equal(order.data.guidance.title, '处理预约变更');
   assert.equal(order.data.mainAction, null);
+});
+
+test('提前签到后可等到开工，已有模拟时长时按当前时间停止', () => {
+  const r = runtime();
+  const task = r.open('task', { id: 's1' });
+  select(task, 540, 600);
+  task.submit();
+  const id = store.read().orders[0].id;
+  const order = r.open('order', { id });
+  const start = order.data.order.startAt;
+  store.change(state => booking.advance(state, start - 10 * MINUTE));
+  order.onShow();
+  order.perform(event({ action: 'arrive' }));
+  assert.equal(store.read().now, start - 10 * MINUTE);
+  assert.equal(order.data.mainAction.action, 'collect');
+  assert.match(order.data.guidance.detail, /时钟推进/);
+  order.perform(event({ action: 'collect' }));
+  assert.equal(store.read().now, start);
+  store.change(state => booking.advance(state, start + 20 * MINUTE));
+  order.onShow();
+  assert.equal(order.data.mainAction.label, '停止采集');
+  order.perform(event({ action: 'stop' }));
+  assert.equal(order.data.order.actual, 20);
+  assert.equal(store.read().now, start + 20 * MINUTE);
+  assert.equal(order.data.mainAction.action, 'return');
 });
