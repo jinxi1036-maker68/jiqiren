@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed a fixed-amount transport subsidy per verified fault-related no-collection order (normally at most once per order), centrally configurable by Lingju operations; specific amount, modification permissions and effective-date rules remain undecided. No actual payment or code implemented.",
+  "latest_decision": "Owner confirmed only authorized Lingju operations managers can change fixed transport subsidy amounts; audit old/new amount, operator and time; new values apply only to new applications submitted after the change, preserving previously submitted and approved applications.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -577,10 +577,35 @@
     "editable_after_initial_setup": true,
     "maximum_payments_per_fault_order": "one_normally",
     "repeat_claims_not_automatic_extra_payments": true,
-    "admin_change_permission": "undecided",
-    "change_effect_on_existing_claims": "undecided",
+    "admin_change_permission": "authorized_lingju_operations_manager_only",
+    "change_effect_on_existing_claims": "no_retroactive_change; application_amount_frozen_by_rule_version_at_submission",
     "verified_evidence_and_approval_required": true,
     "approval_not_equal_paid": true,
+    "implemented": false,
+    "change_audit_fields": [
+      "operator",
+      "modified_at",
+      "old_amount",
+      "new_amount"
+    ],
+    "policy_change_decision_id": "DEC-2026-11-09-13"
+  },
+  "device_fault_subsidy_amount_change_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-13",
+    "who_can_change": "authorized_lingju_operations_manager_only",
+    "audit_fields": [
+      "operator_id",
+      "change_timestamp",
+      "previous_amount",
+      "new_amount"
+    ],
+    "new_amount_applies_to": "applications_submitted_after_change_effective_at",
+    "existing_submitted_applications_keep_original_amount": true,
+    "approved_applications_unchanged": true,
+    "application_record_should_capture_amount_rule_version": true,
+    "initial_amount": "undecided",
+    "grant_and_revoke_permissions": "undecided",
     "implemented": false
   }
 }
