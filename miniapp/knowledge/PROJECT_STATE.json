@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed a collector may dispute a rejected transport subsidy within 72 hours of rejection with additional travel/on-site evidence; Lingju reviews and reports outcome; ordinarily one dispute per subsidy, with exceptional manual handling; appeal review SLA remains undecided.",
+  "latest_decision": "Owner confirmed subsidy appeal review must be completed within 72 hours after appeal submission; approval moves subsidy to pending disbursement, rejection requires final explanation, overdue reminders go to Lingju supervisor without automatic approval or payment.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -544,8 +544,25 @@
     "normal_appeal_limit_per_subsidy": 1,
     "exception_path": "manual_handling_by_lingju",
     "record_original_rejection_and_review_result": true,
-    "appeal_review_deadline": "undecided",
+    "appeal_review_deadline": "72_hours_after_appeal_submission",
     "paid_automatically": false,
+    "implemented": false,
+    "appeal_approved_state": "待发放补贴",
+    "appeal_rejected_requires_final_reason": true,
+    "overdue_action": "automatic_reminder_to_lingju_supervisor",
+    "auto_approval_on_timeout": false,
+    "review_sla_decision_id": "DEC-2026-11-09-11"
+  },
+  "device_fault_subsidy_appeal_review_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-11",
+    "review_within_hours_after_appeal_submitted": 72,
+    "approved_state": "待发放补贴",
+    "rejected_requires_final_reason": true,
+    "overdue_reminder_to": "凌矩负责人",
+    "auto_approval_if_overdue": false,
+    "automatic_payment": false,
+    "reminder_channel": "undecided",
     "implemented": false
   }
 }
