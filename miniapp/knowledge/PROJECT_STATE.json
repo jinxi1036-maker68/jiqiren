@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner asked to continue with the proposed return-overdue escalation: 5m collector reminder, 15m Lingju operations alert, 30m suspected abnormal non-return, with verification before reputation action and exemption for device/platform faults. A collector's self-report is not proof of verified return.",
+  "latest_decision": "Owner confirmed suspending new bookings on equipment whose return is overdue and not verified; notify subsequent affected booked collectors and allow penalty-free cancellation or compliant rescheduling; Lingju may reopen bookings after verified return and equipment readiness, not on collector self-report.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -865,8 +865,27 @@
     "non_collector_cause_exemption": true,
     "check_for_device_fault_and_sync_delay": true,
     "verification_source": "undecided",
-    "effect_on_future_booking": "undecided",
+    "effect_on_future_booking": "pause_new_bookings_on_affected_device_and_notify_existing_booked_collectors; allow_no_penalty_cancel_or_reschedule",
     "exact_penalty_and_appeal": "undecided",
+    "implemented": false,
+    "downstream_booking_decision_id": "DEC-2026-11-09-29"
+  },
+  "equipment_overdue_return_downstream_bookings_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-29",
+    "scope": "affected_equipment_only",
+    "pause_new_bookings_while_equipment_overdue_and_unverified": true,
+    "notify_affected_existing_booked_collectors": true,
+    "affected_collector_actions": [
+      "cancel_without_reputation_penalty",
+      "reschedule_using_standard_availability_rules_without_reputation_penalty"
+    ],
+    "auto_overwrite_existing_booking": false,
+    "reopen_after": "lingju_verifies_return_and_equipment_ready_for_collection",
+    "self_reported_return_not_sufficient_to_resume": true,
+    "exact_pause_trigger": "undecided",
+    "unanswered_bookings_policy": "undecided",
+    "affected_collector_transport_compensation": "undecided",
     "implemented": false
   }
 }
