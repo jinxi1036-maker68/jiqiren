@@ -1,27 +1,25 @@
 <import src="../../templates/range-editor.wxml"/>
 <import src="../../templates/account-hub.wxml"/>
-<view class="screen {{deployed ? 'with-dock' : ''}}">
-  <view class="row split" wx:if="{{section !== 'profile'}}">
-    <view class="row brand-lockup"><view class="brand-logo">凌</view><text>商家工作台</text></view>
+<view class="screen merchant-screen {{deployed ? 'with-dock' : ''}} {{deployed && section === 'schedule' ? 'merchant-with-editor' : ''}}">
+  <view class="row split merchant-masthead">
+    <view class="row merchant-context-label">
+      <image class="icon icon-small" src="{{deployed && section === 'home' ? '/assets/icons/guide.svg' : '/assets/icons/store.svg'}}" mode="aspectFit"/>
+      <text>{{deployed && section === 'home' ? overview.device.label + ' · 模拟' : deployed ? station.name : '场地合作 · 模拟'}}</text>
+    </view>
     <view class="row">
       <button wx:if="{{!deployed}}" class="ghost subtle-button" data-section="profile" bindtap="section">我的</button>
-      <button class="ghost subtle-button" hover-class="control-pressed" bindtap="switchRole">切换身份</button>
+      <button wx:if="{{section === 'home' || section === 'profile'}}" class="merchant-link" hover-class="merchant-link-pressed" bindtap="switchRole">切换身份</button>
+      <picker mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
+        <view class="merchant-link">切换门店⌄</view>
+      </picker>
     </view>
   </view>
-  <picker wx:if="{{section !== 'profile'}}" mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
-    <view class="panel row split action merchant-site">
-      <view class="row grow">
-        <image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/>
-        <view class="grow"><view class="subheading">{{station.name}}</view><view wx:if="{{station.address}}" class="muted small">{{station.district}} · {{station.address}}</view></view>
-      </view>
-      <text class="muted small">切换门店 ›</text>
-    </view>
-  </picker>
-  <template wx:if="{{section === 'profile'}}" is="account-hub" data="{{account: account, deployed: deployed}}"/>
+  <template wx:if="{{!deployed && section === 'profile'}}" is="account-hub" data="{{account: account, deployed: deployed}}"/>
   <block wx:elif="{{!deployed}}">
     <view class="hero">
       <view class="row split"><view class="kicker">场地合作 · 模拟体验</view><view class="badge">{{stage}}</view></view>
       <view class="title">设备入驻</view>
+      <view class="muted">{{station.name}}</view>
       <view class="muted">申请一台设备，让采集员在你开放的时间到店采集。</view>
       <view class="stage-grid">
         <view wx:for="{{steps}}" wx:key="*this" class="stage-item {{index === step ? 'stage-current' : index < step ? 'stage-past' : ''}}">
@@ -60,113 +58,263 @@
   </block>
   <block wx:else>
     <block wx:if="{{section === 'home'}}">
-      <view class="panel merchant-overview">
+      <view class="merchant-heading">
         <view class="row split">
-          <view class="kicker">今日概览 · 模拟</view>
+          <view class="merchant-title grow">{{station.name}}</view>
           <text class="status-pill status-{{overview.opening.tone}}">{{overview.opening.label}}</text>
         </view>
-        <view class="merchant-visit">
-          <block wx:if="{{overview.next}}">
-            <view class="kicker">{{overview.nextLabel}}</view>
-            <view class="merchant-time">{{overview.next.startTime}}<text class="merchant-time-end">–{{overview.next.endTime}}</text></view>
-            <view class="muted">{{overview.next.taskName}} · {{overview.next.stateLabel}}</view>
-          </block>
-          <view wx:else class="heading">{{overview.nextLabel}}</view>
+        <view class="muted">{{station.district}} · {{station.address}}</view>
+      </view>
+      <view class="panel merchant-visit">
+        <view class="row split">
+          <view class="heading">{{overview.nextLabel}}</view>
+          <text wx:if="{{overview.next}}" class="status-pill status-{{overview.next.stateTone === 'ready' ? 'wait' : overview.next.stateTone}}">{{overview.nextStatus}}</text>
         </view>
-        <view class="merchant-context">
-          <view class="row split"><view class="muted">设备状态</view><text class="status-pill status-{{overview.device.tone}}">{{overview.device.label}}</text></view>
-          <view class="row split"><view class="muted">今日开放时段</view><view class="merchant-hours">{{overview.hours}}</view></view>
+        <block wx:if="{{overview.next}}">
+          <view class="merchant-time">{{overview.next.startTime}}–{{overview.next.endTime}}</view>
+          <view class="muted">{{overview.next.taskName}}</view>
+        </block>
+        <view wx:else class="muted merchant-window">今日开放时段 · {{overview.hours}}</view>
+        <view wx:if="{{overview.device.note || overview.affected}}" class="notice merchant-warning">
+          <view wx:if="{{overview.device.note}}">{{overview.device.note}}</view>
+          <view wx:if="{{overview.affected}}">今日 {{overview.affected}} 笔预约受影响，可在下方排班查看。</view>
         </view>
-        <view wx:if="{{overview.device.note || overview.affected}}" class="notice">
-          {{overview.device.note}}<view wx:if="{{overview.affected}}">今日 {{overview.affected}} 笔预约受影响，可在下方排班查看。</view>
-        </view>
-        <view class="row action merchant-actions">
-          <button class="grow primary touch-control" hover-class="control-pressed" bindtap="showTodaySchedule">查看今日排班</button>
-          <button class="grow ghost touch-control" hover-class="control-pressed" data-section="schedule" bindtap="section">调整开放时间</button>
+        <view class="row merchant-actions">
+          <button class="grow primary touch-control" hover-class="merchant-primary-pressed" bindtap="showTodaySchedule">查看今日排班</button>
+          <button class="grow touch-control" hover-class="merchant-link-pressed" bindtap="editSchedule">调整开放时间</button>
         </view>
       </view>
-      <view class="panel row merchant-totals">
-        <view class="grow"><view class="metric">{{todayOrders}}<text class="merchant-unit"> 笔</text></view><view class="muted">今日预约</view></view>
-        <view class="grow"><view class="metric">{{daily}}<text class="merchant-unit"> 笔</text></view><view class="muted">今日确认场地收益</view></view>
+      <view class="panel merchant-totals">
+        <view><view class="metric">{{todayOrders}}</view><view class="small muted">今日预约</view></view>
+        <view><view class="metric">{{todayReturned}}</view><view class="small muted">归还已核验</view></view>
+        <button class="merchant-total-link" data-section="income" hover-class="merchant-link-pressed" bindtap="section">
+          <view class="metric {{dayIncome.amount === '金额待定' ? 'merchant-price-unknown' : ''}}">{{dayIncome.amount}}</view>
+          <view class="small muted">今日确认收益</view>
+          <view wx:if="{{dayIncome.unpriced}}" class="small muted">{{dayIncome.unpriced}} 笔待定</view>
+        </button>
       </view>
-      <view class="panel" id="merchant-schedule">
-        <view class="row split"><view class="heading">设备排班</view><view class="muted small">{{orders.length}} 笔记录</view></view>
-        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="selectDate">
-          <view class="field row split touch-control"><text>{{date === today ? '今天 · ' : ''}}{{date}}</text><text class="muted small">切换日期 ›</text></view>
-        </picker>
-        <view class="muted small">开放 {{windowLabel}}</view>
+      <view class="panel merchant-calendar" id="merchant-schedule">
+        <view class="row split">
+          <view class="heading">设备排班</view>
+          <picker mode="date" value="{{date}}" bindchange="selectDate">
+            <view class="merchant-link">{{date === today ? '今天 · ' : ''}}{{date}}⌄</view>
+          </picker>
+        </view>
+        <view class="muted">开放 {{windowLabel}}</view>
         <block wx:if="{{track}}">
-          <view class="schedule-track action">
+          <view class="schedule-track">
             <view wx:for="{{track.segments}}" wx:key="id" class="schedule-segment schedule-{{item.tone}}" style="flex-grow: {{item.minutes}}"/>
           </view>
           <view class="row split muted small"><text>{{track.start}}</text><text>{{track.end}}</text></view>
           <view class="row wrap schedule-legend">
-            <view class="row"><view class="schedule-key schedule-open"/>开放</view>
             <view class="row"><view class="schedule-key schedule-booked"/>已预约</view>
             <view class="row"><view class="schedule-key schedule-buffer"/>缓冲</view>
+            <view class="row"><view class="schedule-key schedule-open"/>开放</view>
             <view class="row"><view class="schedule-key schedule-closed"/>未开放</view>
-            <view class="row"><view class="schedule-key schedule-affected"/>受影响</view>
+            <view class="row" wx:if="{{track.segments.length}}"><view class="schedule-key schedule-affected"/>受影响</view>
           </view>
-          <view class="muted small action">相邻预约间隔 {{deviceBuffer}} 分钟，闭店前预留 {{closingBuffer}} 分钟。</view>
         </block>
-        <view class="divider merchant-order" wx:for="{{orders}}" wx:key="id">
-          <view class="row split"><text class="merchant-order-time">{{item.startTime}}–{{item.endTime}}</text><text class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</text></view>
-          <view class="muted small">{{item.taskName}} · {{item.id}}</view>
-        </view>
-        <view wx:if="{{!orders.length}}" class="divider muted">{{track ? '当天还没有预约。' : '当天未设置开放时段。'}}</view>
-        <view class="divider muted small">{{station.device.id}} · 归还由凌矩核验</view>
+        <button class="merchant-cell" wx:for="{{orders}}" wx:key="id" data-id="{{item.id}}" hover-class="merchant-link-pressed" bindtap="showVisit">
+          <view class="grow">
+            <view class="merchant-order-time">{{item.startTime}}–{{item.endTime}}</view>
+            <view class="muted small">{{item.taskName}}</view>
+          </view>
+          <text class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</text><text class="merchant-arrow">›</text>
+        </button>
+        <view wx:if="{{!orders.length}}" class="muted merchant-empty">{{track ? '当天还没有预约。' : '当天未设置开放时段。'}}</view>
       </view>
     </block>
+
     <block wx:if="{{section === 'schedule'}}">
-      <view class="panel">
-        <view class="heading">每周开放计划</view>
-        <view class="muted">每天最多四段。移除全部时段后，该星期几暂停。</view>
-        <picker range="{{days}}" value="{{weekday}}" bindchange="weekday"><view class="field">{{days[weekday]}} ›</view></picker>
-        <template is="range-editor" data="{{ranges: weekRanges, field: 'weekRanges'}}"/>
-        <button class="primary action" bindtap="saveWeek">预览周计划变更</button>
+      <view class="merchant-heading">
+        <view class="merchant-title">开放时段</view>
+        <view class="muted">决定采集员哪天、几点可以来店里。</view>
       </view>
-      <view class="panel">
-        <view class="heading">指定日期调整</view>
-        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="selectDate">
-          <view class="field">{{date}}　{{windowLabel}} ›</view>
-        </picker>
-        <template is="range-editor" data="{{ranges: dayRanges, field: 'dayRanges'}}"/>
-        <button class="primary action" bindtap="saveDate">预览单日变更</button>
-        <view class="row action">
-          <button class="grow danger" bindtap="pauseDate">暂停当日</button>
-          <button class="grow ghost" bindtap="restoreDate">恢复周计划</button>
+      <view class="merchant-segment">
+        <button class="{{scheduleMode === 'week' ? 'selected' : ''}}" data-mode="week" bindtap="scheduleMode">每周计划</button>
+        <button class="{{scheduleMode === 'date' ? 'selected' : ''}}" data-mode="date" bindtap="scheduleMode">单日调整</button>
+      </view>
+      <view class="panel" wx:if="{{scheduleMode === 'week'}}">
+        <view class="heading">选择星期</view>
+        <view class="muted">每周重复，单日调整优先生效。</view>
+        <view class="merchant-week">
+          <button wx:for="{{days}}" wx:key="*this" class="{{index === weekday ? 'primary' : 'ghost'}}" data-day="{{index}}" bindtap="weekday">{{item}}</button>
         </view>
       </view>
-      <view wx:if="{{scheduleReview}}" class="panel" id="schedule-review">
-        <view class="heading">{{scheduleReview.title}}</view>
-        <view class="muted">{{scheduleReview.site}} · {{scheduleReview.hours}}</view>
-        <view class="notice">将新增影响 {{scheduleReview.orders.length}} 笔预约</view>
-        <view class="divider" wx:for="{{scheduleReview.orders}}" wx:key="id">
-          <view class="row split"><text>{{item.id}} · {{item.interval}}</text><text class="badge">{{item.stateLabel}}</text></view>
-          <view class="muted">{{item.impactText}}</view>
+      <view class="panel" wx:else>
+        <view class="heading">选择日期</view>
+        <view class="muted">只改这一天，其他日期沿用周计划。</view>
+        <view class="row split merchant-date-row">
+          <picker class="grow" mode="date" value="{{editDate}}" start="{{today}}" bindchange="selectEditDate">
+            <view class="field">{{editDate}}⌄</view>
+          </picker>
+          <button wx:if="{{hasOverride}}" class="merchant-link" hover-class="merchant-link-pressed" bindtap="restoreDate">恢复周计划</button>
         </view>
-        <view class="row action">
-          <button class="grow ghost" bindtap="cancelSchedule">返回编辑</button>
-          <button class="grow primary" bindtap="confirmSchedule">确认变更</button>
+      </view>
+      <view class="panel">
+        <view class="row split">
+          <view class="heading">{{scheduleMode === 'week' ? days[weekday] : editDate}} · 可采时段</view>
+          <view class="small muted">{{scheduleMode === 'week' ? weekRanges.length : dayRanges.length}} / 4 段</view>
         </view>
+        <template wx:if="{{scheduleMode === 'week'}}" is="range-editor" data="{{ranges: weekRanges, field: 'weekRanges'}}"/>
+        <template wx:else is="range-editor" data="{{ranges: dayRanges, field: 'dayRanges'}}"/>
+      </view>
+      <view class="notice merchant-rules">
+        <view>同一设备相邻预约至少间隔 {{deviceBuffer}} 分钟。</view>
+        <view>每段开放结束前预留 {{closingBuffer}} 分钟归还。</view>
       </view>
     </block>
-    <view class="panel" wx:if="{{section === 'income'}}">
-      <view class="heading">自然月场地账目</view>
-      <picker mode="date" fields="month" value="{{period}}" bindchange="selectPeriod"><view class="field">{{period}} ›</view></picker>
-      <view class="muted">模拟实际采集且核验归还后计入待结算。金额及结算日待协议确认。</view>
-      <view class="divider" wx:for="{{currentEarnings}}" wx:key="id">
-        <view class="row split"><text>{{item.orderId}} · {{item.kindLabel}}</text><text class="badge">{{item.state}}</text></view>
-        <view class="muted">{{item.amount}}</view>
+
+    <block wx:if="{{section === 'income'}}">
+      <view class="merchant-heading">
+        <view class="merchant-title">场地收益</view>
+        <view class="muted">按自然月查账，每笔关联采集订单。</view>
       </view>
-      <view wx:if="{{!currentEarnings.length}}" class="divider muted">本月暂无确认账目。</view>
-    </view>
+      <view class="panel merchant-income-summary">
+        <view class="row split">
+          <view class="heading">当月已确认</view>
+          <picker mode="date" fields="month" value="{{period}}" bindchange="selectPeriod">
+            <view class="merchant-link merchant-month">{{period}}⌄</view>
+          </picker>
+        </view>
+        <view class="merchant-amount {{venue.amount === '金额待定' ? 'merchant-amount-unknown' : ''}}">{{venue.amount}}</view>
+        <view class="muted small">{{venue.count}} 笔已确认{{venue.unpriced ? ' · ' + venue.unpriced + ' 笔金额待定' : ''}} · 模拟账目</view>
+        <view class="merchant-totals merchant-ledger-stages">
+          <button class="merchant-total-link {{incomeFilter === item.label ? 'selected' : ''}}" wx:for="{{venue.stages}}" wx:key="label"
+            data-filter="{{item.label}}" hover-class="merchant-link-pressed" bindtap="filterIncome">
+            <view class="merchant-stage-amount">{{item.amount}}</view><view class="muted small">{{item.label}}</view>
+            <view wx:if="{{item.unpriced}}" class="muted small">{{item.unpriced}} 笔待定</view>
+          </button>
+        </view>
+      </view>
+      <view class="panel merchant-list" wx:if="{{venue.pending.length}}">
+        <button class="merchant-cell" data-kind="pending" hover-class="merchant-link-pressed" bindtap="showStoreDetail">
+          <view class="grow"><view class="merchant-cell-title">{{venue.pending.length}} 笔归还待核验</view>
+            <view class="muted small">核验前暂不计入已确认收益</view></view>
+          <text class="merchant-arrow">›</text>
+        </button>
+      </view>
+      <view class="panel merchant-list">
+        <view class="row split">
+          <view class="heading">{{incomeFilter || '订单明细'}}</view>
+          <button wx:if="{{incomeFilter}}" class="merchant-link" bindtap="filterIncome">看全部</button>
+          <button wx:else class="merchant-link" data-kind="rules" bindtap="showStoreDetail">结算说明 ›</button>
+        </view>
+        <button class="merchant-cell" wx:for="{{venue.entries}}" wx:key="id" data-id="{{item.id}}" hover-class="merchant-link-pressed" bindtap="showIncomeDetail">
+          <view class="grow"><view class="merchant-cell-title">订单 {{item.orderId}}</view><view class="muted small">{{item.date}} · 场地收益</view></view>
+          <view class="merchant-ledger-value"><view class="merchant-cell-title">{{item.displayAmount}}</view>
+            <text class="status-pill status-{{item.tone}}">{{item.state}}</text></view>
+          <text class="merchant-arrow">›</text>
+        </button>
+        <view wx:if="{{!venue.entries.length}}" class="muted merchant-empty">所选月份和状态暂无账目。</view>
+      </view>
+      <view class="muted small merchant-center">按自然月查询，到账时间以实际结算记录为准。</view>
+    </block>
+
+    <block wx:if="{{section === 'profile'}}">
+      <view class="merchant-heading">
+        <view class="merchant-title">门店</view>
+        <view class="muted">门店资料、设备进度和凌矩服务。</view>
+      </view>
+      <view class="panel row">
+        <view class="merchant-store-mark"><image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/></view>
+        <view class="grow"><view class="heading">{{station.name}}</view><view class="muted">{{station.district}} · {{station.address}}</view></view>
+        <text class="status-pill status-ready">已入驻</text>
+      </view>
+      <view class="panel">
+        <view class="row split"><view class="heading">采集设备</view><text class="status-pill status-{{overview.device.tone}}">{{overview.device.label}}</text></view>
+        <view class="muted merchant-window">{{station.device.id}} · 已确认安装到位</view>
+        <view class="muted small">采集员自助取还，异常由凌矩跟进。</view>
+        <view class="row merchant-actions">
+          <button class="grow touch-control" data-kind="device" hover-class="merchant-link-pressed" bindtap="showStoreDetail">查看设备记录</button>
+          <button class="grow ghost touch-control" data-role="merchant" data-view="feedback" hover-class="merchant-link-pressed" bindtap="openAccount">设备问题求助</button>
+        </view>
+      </view>
+      <view class="panel merchant-list">
+        <view class="heading merchant-list-title">门店管理</view>
+        <button class="merchant-cell" data-kind="guide" hover-class="merchant-link-pressed" bindtap="showStoreDetail">
+          <image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text class="grow">门店资料与到店指引</text><text class="merchant-arrow">›</text>
+        </button>
+        <button class="merchant-cell" data-kind="progress" hover-class="merchant-link-pressed" bindtap="showStoreDetail">
+          <image class="icon icon-small" src="/assets/icons/orders.svg" mode="aspectFit"/><text class="grow">设备入驻进度</text><text class="merchant-arrow">›</text>
+        </button>
+        <button class="merchant-cell" data-kind="messages" hover-class="merchant-link-pressed" bindtap="showStoreDetail">
+          <image class="icon icon-small" src="/assets/icons/bell.svg" mode="aspectFit"/><text class="grow">门店消息</text><text class="merchant-arrow">›</text>
+        </button>
+      </view>
+      <view class="panel merchant-list">
+        <view class="heading merchant-list-title">凌矩服务</view>
+        <button class="merchant-cell" data-role="merchant" data-view="feedback" hover-class="merchant-link-pressed" bindtap="openAccount">
+          <image class="icon icon-small" src="/assets/icons/feedback.svg" mode="aspectFit"/><text class="grow">联系凌矩 · 投诉建议</text><text class="merchant-arrow">›</text>
+        </button>
+        <button class="merchant-cell" data-kind="rules" hover-class="merchant-link-pressed" bindtap="showStoreDetail">
+          <image class="icon icon-small" src="/assets/icons/wallet.svg" mode="aspectFit"/><text class="grow">场地收益怎么确认</text><text class="merchant-arrow">›</text>
+        </button>
+        <button class="merchant-cell" data-role="merchant" data-view="guide" hover-class="merchant-link-pressed" bindtap="openAccount">
+          <image class="icon icon-small" src="/assets/icons/guide.svg" mode="aspectFit"/><text class="grow">商家服务指南</text><text class="merchant-arrow">›</text>
+        </button>
+      </view>
+      <view class="panel merchant-list">
+        <button class="merchant-cell" data-role="merchant" data-view="login" hover-class="merchant-link-pressed" bindtap="openAccount">
+          <image class="icon icon-small" src="/assets/icons/person.svg" mode="aspectFit"/><text class="grow">{{account.loggedIn ? account.name + ' · 演示账号' : '点击登录'}}</text><text class="merchant-arrow">›</text>
+        </button>
+        <button class="merchant-cell" data-role="merchant" data-view="settings" hover-class="merchant-link-pressed" bindtap="openAccount">
+          <image class="icon icon-small" src="/assets/icons/settings.svg" mode="aspectFit"/><text class="grow">设置</text><text class="merchant-arrow">›</text>
+        </button>
+        <button class="merchant-cell" data-role="merchant" data-view="about" hover-class="merchant-link-pressed" bindtap="openAccount">
+          <image class="icon icon-small" src="/assets/icons/store.svg" mode="aspectFit"/><text class="grow">关于我们</text><text class="merchant-arrow">›</text>
+        </button>
+      </view>
+    </block>
   </block>
-    <view class="dock dock-nav" wx:if="{{deployed}}">
-      <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" bindtap="section">
-        <view class="dock-mark"><image class="icon" src="{{item.icon}}" mode="aspectFit"/></view>
-        <text>{{item.label}}</text>
+
+  <view wx:if="{{deployed}}" class="dock merchant-dock">
+    <view wx:if="{{section === 'schedule'}}" class="row merchant-editor-actions">
+      <button wx:if="{{scheduleMode === 'week'}}" class="danger" data-mode="date" hover-class="merchant-link-pressed" bindtap="scheduleMode">暂停指定日期</button>
+      <button wx:else class="danger" hover-class="merchant-link-pressed" bindtap="pauseDate">暂停这一天</button>
+      <button class="primary grow" hover-class="merchant-primary-pressed" bindtap="previewCurrent">预览变更</button>
+    </view>
+    <view class="dock-nav">
+      <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" hover-class="merchant-link-pressed" bindtap="section">
+        <view class="dock-mark"><image class="icon" src="{{item.icon}}" mode="aspectFit"/></view><text>{{item.label}}</text>
       </button>
     </view>
+  </view>
+
+  <view wx:if="{{scheduleReview || detail}}" class="merchant-overlay">
+    <view wx:if="{{scheduleReview}}" class="merchant-scrim" bindtap="cancelSchedule"/>
+    <view wx:else class="merchant-scrim" bindtap="closeDetail"/>
+    <view class="merchant-sheet">
+      <view class="row split merchant-sheet-head">
+        <view class="merchant-sheet-title grow">{{scheduleReview ? '确认时段变更' : detail.title}}</view>
+        <button wx:if="{{scheduleReview}}" class="merchant-sheet-close" aria-label="关闭时段预览" bindtap="cancelSchedule">×</button>
+        <button wx:else class="merchant-sheet-close" aria-label="关闭详情" bindtap="closeDetail">×</button>
+      </view>
+      <scroll-view scroll-y class="merchant-sheet-scroll">
+        <block wx:if="{{scheduleReview}}">
+          <view class="muted">{{scheduleReview.site}} · {{scheduleReview.title}}</view>
+          <view class="panel merchant-sheet-card"><view class="heading">{{scheduleReview.hours}}</view></view>
+          <view class="notice {{scheduleReview.orders.length ? 'merchant-warning' : ''}}">将新增影响 {{scheduleReview.orders.length}} 笔预约</view>
+          <view class="merchant-cell merchant-review-row" wx:for="{{scheduleReview.orders}}" wx:key="id">
+            <view class="grow"><view class="merchant-cell-title">{{item.interval}}</view><view class="muted small">{{item.impactText}}</view></view>
+            <text class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</text>
+          </view>
+          <view wx:if="{{scheduleReview.orders.length}}" class="muted">确认后保留原订单，并在模拟站内消息通知采集员。已领用设备由凌矩协调归还。</view>
+        </block>
+        <block wx:else>
+          <view wx:if="{{detail.caption}}" class="muted">{{detail.caption}}</view>
+          <view wx:if="{{detail.amount}}" class="merchant-amount {{detail.amount === '金额待定' ? 'merchant-amount-unknown' : ''}}">{{detail.amount}}</view>
+          <view class="merchant-cell merchant-detail-row" wx:for="{{detail.rows}}" wx:key="label">
+            <view class="muted">{{item.label}}</view><view class="grow">{{item.value}}</view>
+          </view>
+          <view wx:if="{{detail.notice}}" class="notice">{{detail.notice}}</view>
+        </block>
+      </scroll-view>
+      <view wx:if="{{scheduleReview}}" class="row merchant-actions">
+        <button class="grow ghost" bindtap="cancelSchedule">返回编辑</button>
+        <button class="grow primary" hover-class="merchant-primary-pressed" bindtap="confirmSchedule">确认变更</button>
+      </view>
+    </view>
+  </view>
   <view class="tagline">演示数据 · 仅保存在当前设备</view>
 </view>

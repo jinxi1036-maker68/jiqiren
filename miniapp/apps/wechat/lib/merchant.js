@@ -1,5 +1,7 @@
 const { MINUTE, TASKS, DISTRICTS, at } = require('./catalog');
-const { requireThat, text, record, notify, stationFor, validDate, fits, preStart, holding } = require('./model');
+const { requireThat, byId, text, record, notify, stationFor, validDate, fits, preStart, holding } = require('./model');
+
+const VENUE_STATES = ['待结算', '待打款', '已到账'];
 
 function apply(state, id, form) {
   const station = stationFor(state, id);
@@ -98,4 +100,20 @@ function schedule(state, id, day, ranges) {
   record(state, id, '更新场地开放时段', id, JSON.stringify({ day, ranges: ranges === null ? null : sorted }));
 }
 
-module.exports = { apply, reviewSite, install, confirmInstallation, previewSchedule, schedule };
+function settleDemoVenue(state, id, expected) {
+  const entry = byId(state.earnings, id);
+  requireThat(entry.kind === 'venue', '只能处理场地收益');
+  const order = byId(state.orders, entry.orderId);
+  requireThat(order.stationId === entry.party && order.status === 'done' && order.verifiedAt && order.actual > 0,
+    '须实际采集且设备归还已核验');
+  const stage = VENUE_STATES.indexOf(expected);
+  requireThat(stage >= 0 && stage < VENUE_STATES.length - 1 && entry.state === expected,
+    '账目状态已变化，请刷新后再操作');
+  if (stage === 0 && entry.cents == null) entry.cents = 2000;
+  requireThat(Number.isInteger(entry.cents) && entry.cents >= 0, '先录入有效的模拟账目金额');
+  entry.state = VENUE_STATES[stage + 1];
+  if (entry.state === '已到账') entry.demoPaidAt = state.now;
+  record(state, '凌矩模拟运营', '更新场地账目（模拟）', id, entry.state);
+}
+
+module.exports = { apply, reviewSite, install, confirmInstallation, previewSchedule, schedule, VENUE_STATES, settleDemoVenue };

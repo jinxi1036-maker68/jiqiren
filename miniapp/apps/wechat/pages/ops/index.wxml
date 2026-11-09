@@ -90,6 +90,10 @@
         <view class="row split"><view class="subheading">{{item.id}} · {{item.collectorId}}</view><view class="badge">{{item.stateLabel}}</view></view>
         <view>{{item.stationName}}</view><view class="muted">{{item.interval}}</view>
         <button wx:if="{{item.status === 'submitted'}}" class="primary action" data-action="return" data-id="{{item.id}}" bindtap="act">模拟核验归还</button>
+        <view wx:if="{{item.venue}}" class="divider">
+          <view class="muted">场地收益 · {{item.venue.amount}} · {{item.venue.state}}（模拟）</view>
+          <button wx:if="{{item.venue.state !== '已到账'}}" class="ghost action touch-control" data-action="venue" data-id="{{item.venue.id}}" data-result="{{item.venue.state}}" bindtap="act">{{item.venue.state === '待结算' ? '模拟核账（金额待定时用示例 ¥20）' : '标记模拟到账'}}</button>
+        </view>
         <button wx:if="{{item.canOpsCancel}}" class="danger action" data-action="cancel" data-id="{{item.id}}" bindtap="act">核查风险并逐单取消</button>
       </view>
       <view class="panel muted" wx:if="{{!orders.length}}">等待采集员提交模拟预约。</view>

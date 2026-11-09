@@ -31,6 +31,7 @@ const ACTIONS = {
   feedback: ['回复模拟反馈', '填写给用户的处理结果', (s, d, v) => experience.replyFeedback(s, d.id, v)],
   reopen: ['模拟核验设备可用', '填写修复或在箱且可用的模拟依据', (s, d, v) => booking.reopen(s, d.id, v)],
   return: ['模拟核验归还', '填写设备在箱且可用的模拟核验记录', (s, d, v) => booking.verifyReturn(s, d.id, v)],
+  venue: ['更新场地账目（模拟）', '', (s, d) => merchant.settleDemoVenue(s, d.id, d.result)],
   cancel: ['运营逐单无责取消', '填写已核查的设备安全或恶意违规依据', (s, d, v) => {
     if (!v.trim()) throw new Error('请提供逐单核查依据');
     booking.cancel(s, '凌矩模拟运营', d.id, v.trim(), true);
@@ -90,6 +91,11 @@ Page({
     const late = orders.filter(order => holding(order) && state.now >= order.endAt + 15 * MINUTE)
       .sort((a, b) => a.endAt - b.endAt);
     const feedback = experience.feedbackList(state);
+    const venueByOrder = new Map(state.earnings.filter(item => item.kind === 'venue').map(item => [item.orderId, item]));
+    for (const order of orders) {
+      const venue = venueByOrder.get(order.id);
+      if (venue) order.venue = { ...venue, amount: venue.cents == null ? '金额待定' : '¥' + ui.money(venue.cents) + '（模拟）' };
+    }
     const work = [
       ...late.map(order => workItem('orders', 'order-' + order.id, '归还逾期',
         order.id + ' · ' + order.stationName + ' · ' + order.stateLabel)),

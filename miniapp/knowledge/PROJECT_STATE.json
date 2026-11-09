@@ -1319,6 +1319,21 @@
       "screenshot": "miniapp/apps/wechat/evidence/v0.1-account-experience.png",
       "real_device_visual_verified": false,
       "pending": ["real login and data storage", "cash reward rules and settlement", "cross-device referral attribution"]
+    },
+    "merchant_d1_workspace": {
+      "status": "implemented_automated_tested",
+      "base_commit": "40cac1d8004ce1964fb0b9234b6e6a6e06339346",
+      "scope": [
+        "D.1 workbench, opening hours, venue earnings and store management",
+        "weekly schedule and isolated single-date edits with impact preview and restore",
+        "venue earnings by month and stage, unpriced confirmation, pending return verification and linked receipts",
+        "explicit simulated operations steps for reconciliation and receipt"
+      ],
+      "automated_tests_passed": 41,
+      "offline_render": "seven WXML routes and WXSS compiled; four merchant sections, schedule preview and ledger details inspected at 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-merchant-d1.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
     }
   }
 }

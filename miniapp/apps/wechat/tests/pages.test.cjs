@@ -255,6 +255,77 @@ test('模拟上传失败后可先核验归还，重试不重复提交或入账',
   assert.equal(state.audit.filter(item => item.action === '重试模拟上传成功').length, 1);
 });
 
+test('商家独立编辑指定日期，暂停预览保留原单，恢复后重新开放', () => {
+  const r = runtime();
+  makeOrder(r);
+  const shop = r.open('merchant');
+  shop.persona(event({}, '0'));
+  const today = shop.data.today;
+  shop.editSchedule();
+  assert.equal(shop.data.scheduleMode, 'date');
+  shop.selectEditDate(event({}, '2026-11-10'));
+  assert.equal(shop.data.date, today);
+  shop.pauseDate();
+  assert.equal(shop.data.scheduleReview.orders.length, 0);
+  shop.cancelSchedule();
+  shop.selectEditDate(event({}, today));
+  shop.pauseDate();
+  assert.equal(shop.data.scheduleReview.orders.length, 1);
+  assert.equal(store.read().orders[0].closed, undefined);
+  shop.confirmSchedule();
+  assert.equal(shop.data.hasOverride, true);
+  assert.equal(store.read().orders[0].closed, true);
+  assert.equal(shop.data.orders.length, 1);
+  shop.restoreDate();
+  shop.confirmSchedule();
+  assert.equal(shop.data.hasOverride, false);
+  assert.equal(store.read().orders[0].closed, false);
+  assert.equal(shop.data.dayRanges[0].from, '09:00');
+});
+
+test('商家收益分开归还待核验、金额待定及模拟打款进度，按门店和月份查单', () => {
+  const r = runtime();
+  const order = makeOrder(r);
+  for (const action of ['travel', 'arrive', 'collect', 'stop', 'return']) order.perform(event({ action }));
+  const id = order.data.order.id;
+  const shop = r.open('merchant');
+  shop.persona(event({}, '0'));
+  assert.equal(shop.data.venue.pending[0].id, id);
+  assert.equal(shop.data.venue.count, 0);
+  r.app.onLaunch({ path: 'pages/ops/index', query: { mode: 'mock-ops' } });
+  const ops = r.open('ops', { mode: 'mock-ops' });
+  ops.act(event({ action: 'return', id }));
+  r.answer('模拟核验在箱可用');
+  shop.onShow();
+  assert.equal(shop.data.venue.pending.length, 0);
+  assert.equal(shop.data.venue.amount, '金额待定');
+  const entry = shop.data.venue.entries[0];
+  assert.equal(entry.state, '待结算');
+  ops.act(event({ action: 'venue', id: entry.id, result: '待结算' }));
+  ops.act(event({ action: 'venue', id: entry.id, result: '待结算' }));
+  assert.match(r.dialogs.pop().content, /刷新/);
+  shop.onShow();
+  assert.equal(shop.data.venue.amount, '¥20.00');
+  assert.equal(shop.data.venue.stages[1].count, 1);
+  shop.filterIncome(event({ filter: '待结算' }));
+  assert.deepEqual(shop.data.venue.entries, []);
+  assert.equal(shop.data.venue.amount, '¥20.00');
+  shop.filterIncome(event({ filter: '待打款' }));
+  shop.showIncomeDetail(event({ id: entry.id }));
+  assert.ok(shop.data.detail.rows.some(row => row.value === id));
+  assert.ok(shop.data.detail.rows.some(row => row.value === '待打款（模拟）'));
+  ops.act(event({ action: 'venue', id: entry.id, result: '待打款' }));
+  shop.onShow();
+  assert.equal(shop.data.venue.stages[2].count, 1);
+  shop.selectPeriod(event({}, '2026-10'));
+  assert.equal(shop.data.venue.count, 0);
+  shop.selectPeriod(event({}, '2026-11'));
+  assert.equal(shop.data.venue.entries[0].state, '已到账');
+  shop.persona(event({}, '1'));
+  assert.equal(shop.data.venue.count, 0);
+  assert.equal(shop.data.detail, null);
+});
+
 test('商家页面申请，运营审核部署，商家确认后排班才进入采集员列表', () => {
   const r = runtime();
   const m = r.open('merchant');
