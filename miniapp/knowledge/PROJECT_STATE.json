@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed travel subsidy evidence workflow: collector taps 开始前往, may check in on arrival, may submit trip screenshot/on-site evidence if verified device fault prevents collection; Lingju reviews; start-travel tap alone cannot trigger compensation. Amount and evidence specifics undecided.",
+  "latest_decision": "Owner confirmed fault-related travel subsidy requires collector-initiated application with proof after affected order cancellation; Lingju reviews; approved amount enters pending subsidy payout, not automatic payment. Amount, evidence and time limits remain undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -456,9 +456,11 @@
     "already_departed_or_arrived_and_cannot_collect_due_to_verified_device_fault": "eligible_after_lingju_review",
     "evidence": "order_start_travel_self_report_plus_optional_on_arrival_checkin_and_trip_screenshot_or_onsite_proof; verification_by_lingju; exact_evidence_standard_undecided",
     "amount": "undecided",
-    "approval_process": "lingju_verifies_device_fault_and_collector_departure_or_arrival; payment_not_automatic",
+    "approval_process": "collector_voluntarily_applies_with_proof_from_fault_cancelled_order; lingju_reviews_and_approves; approved_goes_to_pending_disbursement; no_auto_payment",
     "paid": false,
-    "implemented": false
+    "implemented": false,
+    "application_approved_by_owner": true,
+    "application_decision_id": "DEC-2026-11-09-07"
   },
   "device_fault_travel_evidence_20261109": {
     "status": "owner_confirmed_concept",
@@ -476,5 +478,23 @@
     "proof_rules": "undecided",
     "data_retention": "undecided",
     "actual_implementation": false
+  },
+  "device_fault_travel_subsidy_application_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-07",
+    "trigger": "fault_caused_order_cancelled_and_collector_preliminarily_eligible",
+    "application_initiator": "collector",
+    "application_action": "申请补贴",
+    "evidence_required": true,
+    "reviewer": "凌矩运营后台",
+    "approval_status": "待发放补贴",
+    "approved_does_not_mean_paid": true,
+    "automatic_money_transfer": false,
+    "unreviewed_claim_has_confirmed_subsidy": false,
+    "amount": "undecided",
+    "application_deadline": "undecided",
+    "review_time": "undecided",
+    "payment_method": "undecided",
+    "implemented": false
   }
 }
