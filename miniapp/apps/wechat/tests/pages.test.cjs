@@ -18,21 +18,43 @@ function makeOrder(r, start = 540, end = 600) {
   return r.open('order', { id: store.read().orders[0].id });
 }
 
-test('原生页面入口记住选择，默认不进入运营工作台且可一键重置', () => {
+test('首页冷启动恢复身份一次，原生返回首页后可切换且能重置演示数据', () => {
   const r = runtime();
   r.app.onLaunch({ path: 'pages/home/index', query: {} });
   const home = r.open('home');
   assert.deepEqual(r.nav, []);
   home.choose(event({ role: 'merchant' }));
   assert.equal(r.nav.pop(), '/pages/merchant/index');
+  r.app.onLaunch({ path: 'pages/home/index', query: {} });
   r.open('home');
   assert.equal(r.nav.pop(), '/pages/merchant/index');
+  const returnedHome = r.open('home');
+  assert.deepEqual(r.nav, []);
+  assert.equal(store.read().selection, 'merchant');
+  returnedHome.choose(event({ role: 'collector' }));
+  assert.equal(r.nav.pop(), '/pages/collector/index');
   r.open('home', { choose: '1' });
   assert.deepEqual(r.nav, []);
   assert.equal(r.open('ops', { mode: 'mock-ops' }).data.allowed, false);
   home.reset();
   r.answer();
   assert.equal(store.read().selection, '');
+});
+
+test('从体验码直达角色或显式选择页时，返回首页始终可选两个身份', () => {
+  const r = runtime();
+  store.change(state => { state.selection = 'collector'; });
+  for (const entry of [
+    { path: 'pages/merchant/index', query: {} },
+    { path: 'pages/home/index', query: { choose: '1' } }
+  ]) {
+    r.app.onLaunch(entry);
+    r.open(entry.path.split('/')[1], entry.query);
+    const home = r.open('home');
+    assert.deepEqual(r.nav, []);
+    home.choose(event({ role: 'merchant' }));
+    assert.equal(r.nav.pop(), '/pages/merchant/index');
+  }
 });
 
 test('搜地址、复制到店地址，切回采集员时保留筛选和原订单', () => {

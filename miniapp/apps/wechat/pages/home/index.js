@@ -2,8 +2,13 @@ const store = require('../../lib/storage');
 
 Page({
   onLoad(options) {
+    const app = getApp();
+    // Consume the cold-start resume once. The native home button opens this page without a query.
+    const resumeRole = app.resumeRoleOnLaunch && options.choose !== '1';
+    app.resumeRoleOnLaunch = false;
+    if (!resumeRole) return;
     const role = store.read().selection;
-    if (options.choose !== '1' && role) wx.redirectTo({ url: '/pages/' + role + '/index' });
+    if (role) wx.redirectTo({ url: '/pages/' + role + '/index' });
   },
   choose(event) {
     const role = event.currentTarget.dataset.role;

@@ -1286,6 +1286,13 @@
       "automated_tests_passed": 34,
       "offline_render": "six WXML routes and WXSS compiled; navigation, impacted order reschedule and help controls rendered",
       "real_device_map_verified": false
+    },
+    "role_home_return": {
+      "status": "implemented_automated_tested",
+      "base_commit": "c9d475f7d09e47a452fd6fda563531af279039d2",
+      "scope": "remember the role on a standard cold start; keep the role chooser on native return home and explicit switch",
+      "automated_tests_passed": 35,
+      "real_device_home_button_verified": false
     }
   }
 }

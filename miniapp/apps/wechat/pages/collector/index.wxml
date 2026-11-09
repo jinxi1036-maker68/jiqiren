@@ -2,13 +2,14 @@
   <view class="list-masthead">
     <view class="row split">
       <view class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山</text><text class="badge">模拟体验</text></view>
-      <text class="muted small">{{personas[persona]}}</text>
+      <button class="ghost subtle-button" bindtap="switchRole">切换身份</button>
     </view>
     <view class="row split action">
       <view class="grow">
         <view class="title">{{section === 'tasks' ? (nextOrder && !replaceId ? '我的采集' : '找采集任务') : section === 'orders' ? '预约' : section === 'income' ? '收益' : section === 'messages' ? '消息' : '我的'}}</view>
         <view class="muted">{{section === 'tasks' ? (nextOrder && !replaceId ? '预约进度和站点任务' : availableCount + ' 个站点有可约时段') : '模拟北京时间 ' + clock}}</view>
       </view>
+      <text class="muted small">{{personas[persona]}}</text>
     </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">

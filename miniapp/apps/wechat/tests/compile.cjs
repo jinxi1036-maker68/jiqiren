@@ -44,6 +44,13 @@ function findButton(node, label) {
   return null;
 }
 
+const homePage = r.open('home');
+const entryView = render('pages/home/index.wxml')(homePage.data);
+assert.match(pageText(entryView), /我是商家/);
+assert.match(pageText(entryView), /我是采集员/);
+const collectorEntry = render('pages/collector/index.wxml')(r.open('collector').data);
+assert.equal(findButton(collectorEntry, '切换身份').attr.bindtap, 'switchRole');
+
 const task = r.open('task', { id: 's1' });
 const renderTask = render('pages/task/index.wxml');
 assert.ok(findButton(renderTask(task.data), '复制地址'));
