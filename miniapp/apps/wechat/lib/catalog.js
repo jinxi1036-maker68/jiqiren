@@ -63,7 +63,7 @@ function seed() {
       station('s2', '方盒工坊（虚构）', '卫东区', '样例街 B-02', 'packing', 600, 1140),
       station('s3', '青枝花室（虚构）', '湛河区', '样例街 C-03', 'floral', 540, 1050),
       { id: 'new', name: '我的演示门店', district: '新华区', stage: 'draft', task: 'stationery',
-        taskEnabled: true, week: week(540, 1080), exceptions: {}, device: null }
+        taskEnabled: true, week: Array.from({ length: 7 }, () => []), exceptions: {}, device: null }
     ],
     collectors: [
       { id: 'c1', name: '采集员 A', eligibility: [] },

@@ -18,3 +18,11 @@
 - Owner说明已有微信小程序账号，明确同意直接做**微信小程序原生模拟体验版**，不先做独立网页。
 - 创建Codex开发任务 [Issue #25](https://github.com/jinxi1036-maker68/jiqiren/issues/25)，原生代码目标 `miniapp/apps/wechat/`，取代旧Issue #24网页优先方向但保留历史。
 - 更新ROADMAP、AGENTS、README、PROJECT_STATE、REQUIREMENTS、DECISION_LOG和入口文档；**本次仍只是文档和任务单变更，尚未验证Codex实际编写、运行、测试或上传任何微信小程序**。
+
+## 2026-11-09｜V0.1 原生微信模拟体验
+
+- [Issue #25](https://github.com/jinxi1036-maker68/jiqiren/issues/25)。在 `apps/wechat/` 交付商家、个人采集员双入口和隔离的凌矩运营工作台，提供三处虚构场景和重置入口。
+- 以本机模拟时钟和存储演示门店入驻、开放窗口、分时预约、密码箱自助领还、归还核验、QA 与月度账目、信誉和交通补贴复核。
+- 25 项 Node.js 流程及原生页面逻辑测试通过。微信离线编译器编译并渲染 6 个 WXML 页面，WXSS 编译通过。
+- 微信开发者工具 2.02.2609250 识别工程信息。游客模式校验占位 AppID 时返回系统错误 1，模拟器和真机预览待使用有权限的本地 AppID 验收。
+- [导入说明与三个演示剧本](apps/wechat/README.md)。

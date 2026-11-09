@@ -4,7 +4,7 @@
   "updated_at": "2026-11-09",
   "home": "miniapp/knowledge/00_START_HERE.md",
   "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
-  "phase": "native_wechat_experience_approved_development_not_yet_verified",
+  "phase": "native_wechat_mock_v0_1_offline_tested_pending_owner_review",
   "model": "merchant_host_device_plus_individual_collector_hourly_orders",
   "model_confirmed_by_owner": true,
   "mvp": {
@@ -12,10 +12,10 @@
     "owner_approved": true,
     "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/25",
     "issue_number": 25,
-    "code_in_repo_verified": false,
-    "codex_actively_running_verified": false,
+    "code_in_repo_verified": true,
+    "codex_actively_running_verified": true,
     "pr_created_verified": false,
-    "tests_verified": false,
+    "tests_verified": true,
     "publicly_deployed": false,
     "real_payment": false,
     "real_user_data": false,
@@ -27,7 +27,7 @@
     "wechat_experience_uploaded_verified": false
   },
   "technology": {
-    "wechat_mini_program_stack": "native_WXML_WXSS_JS_JSON_proposed_for_initial_mock_subject_to_repository_review",
+    "wechat_mini_program_stack": "native_WXML_WXSS_JS_JSON",
     "backend": "no_backend_for_initial_mock",
     "api": "local_fake_data_only",
     "real_customer_integration": "not_authorized"
@@ -45,8 +45,8 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner has WeChat Mini Program account and expressly approved Codex building a native WeChat Mini Program experience version directly instead of a standalone HTML demo. Issue #25 created. Scope remains fake data only; code, tests, account linkage, experience upload and public release unverified.",
-  "next_gate": "Issue #25: Codex should inspect current repository, build native WeChat Mini Program simulated experience in miniapp/apps/wechat, run verifiable build/tests, submit Draft PR for review. Owner later imports in WeChat DevTools and provides own AppID/preview authorization. No real server, upstream QA, device, payment or public release.",
+  "latest_decision": "Owner approved the native WeChat mock for Issue #25, superseding the web-first delivery format. Local V0.1 code and offline tests are verified. Production systems and WeChat release remain outside this scope.",
+  "next_gate": "Review the Draft PR and compile the project in WeChat DevTools using an authorized local AppID. Preview on the owner device after a successful build.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
     "decision_id": "DEC-2026-11-08-04",
@@ -54,7 +54,7 @@
     "home_two_role_entry": true,
     "remember_selected_role": true,
     "allow_role_switch": true,
-    "actual_implementation": false,
+    "actual_implementation": true,
     "login_or_identity_verification_approved": false
   },
   "merchant_home_first_version_20261108": {
@@ -1195,5 +1195,43 @@
     "implemented": false,
     "tests_verified": false,
     "experience_uploaded": false
+  },
+  "mock_v0_1": {
+    "scope": "local_mock_only",
+    "branch": "codex/wechat-mock-v0.1",
+    "code": "miniapp/apps/wechat/",
+    "readme": "miniapp/apps/wechat/README.md",
+    "base_commit": "e9ab0fc2b8e103bf2ac2471cd547c440860687f9",
+    "implemented": {
+      "merchant": [
+        "mock onboarding and installation confirmation",
+        "weekly windows, date exceptions and schedule",
+        "monthly venue ledger"
+      ],
+      "collector": [
+        "three fictional stations with illustrated SOPs",
+        "booking, reschedule and self-service pickup/return",
+        "QA and monthly earnings",
+        "credit, inbox and subsidy"
+      ],
+      "operations": [
+        "isolated debug launch",
+        "site, task and equipment controls",
+        "return verification, QA and appeals",
+        "eligibility, subsidy reviews and audit"
+      ],
+      "platform": [
+        "local state and reset",
+        "manual simulation clock",
+        "no network business integrations"
+      ]
+    },
+    "verified": {
+      "node_automated_tests_passed": 25,
+      "compiler": "miniprogram-compiler 0.2.3: six WXML routes compiled and rendered, WXSS compiled",
+      "devtools_guest_import": "2.02.2609250 recognized project metadata, then system error 1 during placeholder AppID validation",
+      "desktop_simulator_verified": false,
+      "real_device_preview_verified": false
+    }
   }
 }
