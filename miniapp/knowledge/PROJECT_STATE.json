@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed eligibility for fixed transport compensation if a previous collector's unreturned equipment prevents the next booked collector from collecting after genuine travel or arrival. No subsidy if the next collector was warned before departure. Lingju verifies and settles under the existing subsidy workflow, and merchant is not presumed liable; earlier collector fault requires separate investigation.",
+  "latest_decision": "Owner confirmed overdue equipment return liability requires Lingju evidence-based verification: device/system failures exempt the collector; personal-cause responsibility only after investigation, and no automatic reputation deduction or compensation claim before responsibility is established. Prior collector liability and downstream transport subsidies are handled separately.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -868,7 +868,9 @@
     "effect_on_future_booking": "pause_new_bookings_on_affected_device_and_notify_existing_booked_collectors; allow_no_penalty_cancel_or_reschedule",
     "exact_penalty_and_appeal": "undecided",
     "implemented": false,
-    "downstream_booking_decision_id": "DEC-2026-11-09-29"
+    "downstream_booking_decision_id": "DEC-2026-11-09-29",
+    "responsibility_decision_id": "DEC-2026-11-09-31",
+    "verification_before_fault_or_deduction": true
   },
   "equipment_overdue_return_downstream_bookings_20261109": {
     "status": "owner_confirmed_concept",
@@ -908,6 +910,27 @@
     "actual_payment": "with_collector_regular_income_settlement_not_immediate",
     "merchant_default_payment_liability": false,
     "previous_collector_fault_or_recovery": "separate_investigation_not_automatic",
+    "implemented": false
+  },
+  "overdue_equipment_return_responsibility_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-31",
+    "exempt_when": "device_fault_system_or_network_failure_or_other_non_collector_cause",
+    "collector_personal_fault": "must_be_verified_by_lingju_before_attribution",
+    "evidence_to_check": [
+      "device_and_lockbox_status",
+      "return_and_sync_logs",
+      "booking_history",
+      "collector_statement_and_supporting_evidence"
+    ],
+    "automatic_reputation_deduction_while_unverified": false,
+    "compensation_or_recovery_demand_while_unverified": false,
+    "downstream_collector_subsidy_not_automatically_charged_to_previous_collector": true,
+    "preserve_audit_trail": true,
+    "penalty_tiers": "undecided",
+    "compensation_conditions": "undecided",
+    "collector_appeal_procedure": "undecided",
+    "applicable_contract_and_law_required": true,
     "implemented": false
   }
 }
