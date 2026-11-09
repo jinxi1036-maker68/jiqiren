@@ -704,10 +704,26 @@
       "status": "ai_delegated_working_default",
       "implemented": false,
       "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+    },
+    {
+      "id": "S-WECHAT-EXPERIENCE-20261109",
+      "role": "system",
+      "name": "交付原生微信小程序可导入体验版（商家与采集员双端＋凌矩模拟后台），不先做独立网页演示",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-09 said 同意 to direct native WeChat Mini Program experience; DEC-2026-11-09-43; Issue #25"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
   "mvp_scope_approval": "Owner approved demo concept, individual implementation scope to be reconciled with updated two-sided charter before work",
   "next_step": "Codex reads miniapp/AGENTS.md and issue #24, then creates isolated demo code PR after current owner prioritization",
-  "batch_default_document": "miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md"
+  "batch_default_document": "miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md",
+  "native_wechat_mock_experience": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-43",
+    "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/25",
+    "target_path": "miniapp/apps/wechat/",
+    "scope": "native_miniprogram_fake_data_only",
+    "implemented": false
+  }
 }
