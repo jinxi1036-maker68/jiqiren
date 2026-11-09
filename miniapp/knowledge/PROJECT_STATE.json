@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed appeal window of 72 hours after collector notification of equipment overdue-return reputation deduction, with Lingju required to review within 72 hours after appeal submission. Accepted appeals restore wrongly deducted reputation points; rejected appeals must explain the outcome. Notification timing, appeal count, interim penalty state and long-term point recovery remain undecided.",
+  "latest_decision": "Owner confirmed collector reputation points regain 1 point per consecutive violation-free 30-day period until the balance reaches its 100-point cap; accepted appeals correct erroneously deducted points promptly, without waiting 30 days. Reputation recovery is distinct from the rolling 90-day repeat-offense counting window.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -1049,7 +1049,9 @@
     "appeal_and_credit_restoration": "undecided",
     "implemented": false,
     "first_over_15_minutes_no_downstream_harm_points": 2,
-    "long_overdue_decision_id": "DEC-2026-11-09-36"
+    "long_overdue_decision_id": "DEC-2026-11-09-36",
+    "point_balance_recovery_rule": "separate_1_point_per_30_clean_days_up_to_100",
+    "recovery_decision_id": "DEC-2026-11-09-38"
   },
   "overdue_equipment_return_first_over_15_minutes_20261109": {
     "status": "owner_confirmed_concept",
@@ -1086,7 +1088,24 @@
     "appeal_attempt_limit": "undecided",
     "review_overdue_handling": "undecided",
     "appeal_pending_reputation_status": "undecided",
-    "natural_reputation_points_recovery": "undecided",
+    "natural_reputation_points_recovery": "1_point_every_completed_consecutive_30_days_without_verified_infraction_up_to_100; appeals restore_wrong_deductions_without_waiting",
+    "implemented": false,
+    "recovery_decision_id": "DEC-2026-11-09-38"
+  },
+  "collector_reputation_point_recovery_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-38",
+    "no_verified_infraction_period_days": 30,
+    "points_recovered_per_completed_eligible_period": 1,
+    "repeat_each_subsequent_qualifying_30_day_period": true,
+    "maximum_reputation_points": 100,
+    "successful_appeal_restores_erroneously_deducted_points_without_waiting": true,
+    "infractions_count_only_after_verified_personal_fault": true,
+    "suspected_or_non_collector_fault_events_should_not_block_recovery": true,
+    "independent_of_90_day_violation_lookback": true,
+    "recovery_period_start": "undecided",
+    "reset_on_new_violation": "details_undecided",
+    "appeal_correction_and_prior_recovery_reconciliation": "undecided",
     "implemented": false
   }
 }
