@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed fault-related travel subsidy requires collector-initiated application with proof after affected order cancellation; Lingju reviews; approved amount enters pending subsidy payout, not automatic payment. Amount, evidence and time limits remain undecided.",
+  "latest_decision": "Owner confirmed device-fault travel subsidy collector application deadline of 48 hours after affected order cancellation, ordinary application closes after expiry, with exceptional manual handling through Lingju customer service; implementation and exception details pending.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -492,9 +492,23 @@
     "automatic_money_transfer": false,
     "unreviewed_claim_has_confirmed_subsidy": false,
     "amount": "undecided",
-    "application_deadline": "undecided",
+    "application_deadline": "48_hours_after_fault_related_order_cancellation",
     "review_time": "undecided",
     "payment_method": "undecided",
+    "implemented": false,
+    "after_deadline": "close_standard_application_entry",
+    "exception_path": "contact_lingju_customer_service_for_manual_handling",
+    "deadline_decision_id": "DEC-2026-11-09-08"
+  },
+  "device_fault_subsidy_deadline_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-08",
+    "start_event": "fault_related_order_cancellation",
+    "apply_within_hours": 48,
+    "normal_application_after_expiry": "closed",
+    "exception": "lingju_customer_service_manual_handling",
+    "exception_eligibility": "undecided",
+    "service_channel": "undecided",
     "implemented": false
   }
 }
