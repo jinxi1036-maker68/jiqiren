@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed verified device-fault affected bookings automatically cancel at the original start time if collector has not chosen cancellation/rescheduling, without reputation deduction; verified departed/arrived collectors may receive transport subsidy, amount and evidence remain undecided.",
+  "latest_decision": "Owner confirmed travel subsidy evidence workflow: collector taps 开始前往, may check in on arrival, may submit trip screenshot/on-site evidence if verified device fault prevents collection; Lingju reviews; start-travel tap alone cannot trigger compensation. Amount and evidence specifics undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -454,10 +454,27 @@
     "decision_id": "DEC-2026-11-09-05",
     "not_departed_and_notified_early": "no_subsidy",
     "already_departed_or_arrived_and_cannot_collect_due_to_verified_device_fault": "eligible_after_lingju_review",
-    "evidence": "undecided",
+    "evidence": "order_start_travel_self_report_plus_optional_on_arrival_checkin_and_trip_screenshot_or_onsite_proof; verification_by_lingju; exact_evidence_standard_undecided",
     "amount": "undecided",
-    "approval_process": "undecided",
+    "approval_process": "lingju_verifies_device_fault_and_collector_departure_or_arrival; payment_not_automatic",
     "paid": false,
     "implemented": false
+  },
+  "device_fault_travel_evidence_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-06",
+    "order_action": "开始前往",
+    "arrival_action": "到店签到",
+    "evidence_options": [
+      "行程截图",
+      "现场证明"
+    ],
+    "start_travel_self_report_sufficient_for_automatic_compensation": false,
+    "reviewer": "凌矩",
+    "merchant_review_required": false,
+    "real_location_collection_approved": false,
+    "proof_rules": "undecided",
+    "data_retention": "undecided",
+    "actual_implementation": false
   }
 }
