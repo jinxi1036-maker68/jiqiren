@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed overdue equipment return liability requires Lingju evidence-based verification: device/system failures exempt the collector; personal-cause responsibility only after investigation, and no automatic reputation deduction or compensation claim before responsibility is established. Prior collector liability and downstream transport subsidies are handled separately.",
+  "latest_decision": "Owner confirmed progressive reputation handling for verified collector-caused late equipment return: first minor offense warning only, repeat unjustified offenses may deduct points after verification, actual downstream harm may warrant a higher tier, non-collector failures exempt, and appeal and reason visibility required. Specific point values remain undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -927,10 +927,28 @@
     "compensation_or_recovery_demand_while_unverified": false,
     "downstream_collector_subsidy_not_automatically_charged_to_previous_collector": true,
     "preserve_audit_trail": true,
-    "penalty_tiers": "undecided",
+    "penalty_tiers": "first_minor_warning_no_points; repeat_verified_unjustified_deduct_points; proven_downstream_impact_higher_tier; numeric_values_undecided",
     "compensation_conditions": "undecided",
     "collector_appeal_procedure": "undecided",
     "applicable_contract_and_law_required": true,
+    "implemented": false,
+    "reputation_tier_decision_id": "DEC-2026-11-09-32"
+  },
+  "overdue_equipment_return_reputation_tiers_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-32",
+    "first_minor_verified_personal_lateness": "warning_without_point_deduction",
+    "repeated_unjustified_lateness": "deduction_possible_only_after_lingju_verification",
+    "impacts_next_booked_collector": "higher_tier_if_real_impact_verified",
+    "device_or_system_failure_exempt": true,
+    "reason_visible_to_collector": true,
+    "appeal_allowed": true,
+    "unverified_case_automatic_deduction": false,
+    "minor_threshold": "undecided",
+    "repeated_offense_definition": "undecided",
+    "specific_deduction_points": "undecided",
+    "single_incident_stacking": "undecided",
+    "appeal_deadline": "undecided",
     "implemented": false
   }
 }
