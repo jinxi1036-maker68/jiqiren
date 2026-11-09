@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed rolling 90-day counting for verified collector-caused overdue-return infractions: first minor incident gets a warning (0 points), next unjustified incident in the lookback deducts 2 points; after 90 consecutive infraction-free days a qualifying minor incident is again treated as first; verified disruption of the next collector carries 5 points, no stacking. Record reset does not automatically restore deducted points.",
+  "latest_decision": "Owner confirmed first verified collector-caused equipment return more than 15 minutes late incurs a 2-point reputation deduction even without disrupting the next collector. Repeated unjustified offenses in 90 days also incur 2 points per verified incident, no stacking within the same incident; verified actual downstream disruption incurs 5 points; non-collector causes exempt.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -990,7 +990,13 @@
     "infraction_free_reset_after_days": 90,
     "warning_counts_as_recorded_event": true,
     "record_count_reset_does_not_imply_point_restoration": true,
-    "repetition_decision_id": "DEC-2026-11-09-35"
+    "repetition_decision_id": "DEC-2026-11-09-35",
+    "first_over_15_minutes_without_disruption": {
+      "points_deducted": 2,
+      "requires_personal_fault_verification": true
+    },
+    "repeat_unjustified_in_rolling_90_days_points_deducted": 2,
+    "first_over_15_minutes_decision_id": "DEC-2026-11-09-36"
   },
   "overdue_equipment_return_first_minor_threshold_20261109": {
     "status": "owner_confirmed_concept",
@@ -1005,8 +1011,9 @@
     "device_and_system_failures_exempt": true,
     "verified_impact_required": true,
     "repeat_lookback_period": "undecided",
-    "over_15_minutes_without_downstream_harm_penalty": "undecided",
-    "implemented": false
+    "over_15_minutes_without_downstream_harm_penalty": "2_points_after_lingju_verification_even_on_first_occurrence",
+    "implemented": false,
+    "over_15_minutes_decision_id": "DEC-2026-11-09-36"
   },
   "overdue_equipment_return_repetition_window_20261109": {
     "status": "owner_confirmed_concept",
@@ -1034,6 +1041,24 @@
     "historical_deducted_points_auto_restored": false,
     "exact_window_boundary": "undecided",
     "appeal_and_credit_restoration": "undecided",
+    "implemented": false,
+    "first_over_15_minutes_no_downstream_harm_points": 2,
+    "long_overdue_decision_id": "DEC-2026-11-09-36"
+  },
+  "overdue_equipment_return_first_over_15_minutes_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-36",
+    "first_verified_personal_fault_overdue_more_than_minutes": 15,
+    "threshold_exclusive": true,
+    "points_even_without_next_collector_disruption": 2,
+    "repeated_unjustified_within_rolling_days": 90,
+    "repeated_incident_points": 2,
+    "verified_personal_fault_blocking_next_collector_points": 5,
+    "highest_tier_only_for_same_incident": true,
+    "non_collector_cause_points": 0,
+    "lingju_verification_before_penalty_required": true,
+    "collector_can_appeal": true,
+    "appeal_deadline": "undecided",
     "implemented": false
   }
 }
