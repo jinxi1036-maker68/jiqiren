@@ -10,7 +10,8 @@
     "future_idea": "Owner表达未来要有，不代表首版必做",
     "supporting_suggestion": "为流程可用性提出的内部辅助功能，待Owner确认",
     "proposal_only": "AI技术建议，尚未获得产品范围批准",
-    "first_version_provisionally_approved": "Owner同意作为第一版设计方向，具体细节可在后续讨论或原型验收时调整"
+    "first_version_provisionally_approved": "Owner同意作为第一版设计方向，具体细节可在后续讨论或原型验收时调整",
+    "ai_delegated_working_default": "Owner授权AI自主补全的非商业流程/演示工作默认方案；可作为模拟设计输入，但不是逐项Owner批准或生产授权"
   },
   "requirements": [
     {
@@ -655,9 +656,58 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-09 replied 可以 to no reputation deduction for equipment-failure-caused cancellation"
+    },
+    {
+      "id": "C-LOW60-EXISTING-20261109",
+      "role": "collector",
+      "name": "信誉低于60分时已确认普通预约原则上继续，涉及已核查安全风险时凌矩逐单暂停；取消不追加扣分",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-09 approved item 60; DEC-2026-11-09-41"
+    },
+    {
+      "id": "D-BATCH-MERCHANT",
+      "role": "merchant",
+      "name": "一揽子商家申请/状态/关店影响预约/设备和收益明细工作默认",
+      "status": "ai_delegated_working_default",
+      "implemented": false,
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+    },
+    {
+      "id": "D-BATCH-COLLECTOR",
+      "role": "collector",
+      "name": "一揽子任务列表、预约防冲突、取还设备、QA、月度收入和消息交互默认",
+      "status": "ai_delegated_working_default",
+      "implemented": false,
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+    },
+    {
+      "id": "D-BATCH-OPERATOR",
+      "role": "operator",
+      "name": "一揽子凌矩后台审核队列、设备异常、QA复核、审计与权限职责默认",
+      "status": "ai_delegated_working_default",
+      "implemented": false,
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+    },
+    {
+      "id": "D-BATCH-SYSTEM",
+      "role": "system",
+      "name": "一揽子状态机、时间、幂等、消息去重、数据隔离与异常验收默认",
+      "status": "ai_delegated_working_default",
+      "implemented": false,
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+    },
+    {
+      "id": "D-BATCH-DEMO",
+      "role": "shared",
+      "name": "演示版多角色可点击流程、虚构数据标识及场景验收默认",
+      "status": "ai_delegated_working_default",
+      "implemented": false,
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
   "mvp_scope_approval": "Owner approved demo concept, individual implementation scope to be reconciled with updated two-sided charter before work",
-  "next_step": "Codex reads miniapp/AGENTS.md and issue #24, then creates isolated demo code PR after current owner prioritization"
+  "next_step": "Codex reads miniapp/AGENTS.md and issue #24, then creates isolated demo code PR after current owner prioritization",
+  "batch_default_document": "miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md"
 }
