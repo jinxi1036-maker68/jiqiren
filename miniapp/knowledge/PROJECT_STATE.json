@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed first verified collector-caused equipment return more than 15 minutes late incurs a 2-point reputation deduction even without disrupting the next collector. Repeated unjustified offenses in 90 days also incur 2 points per verified incident, no stacking within the same incident; verified actual downstream disruption incurs 5 points; non-collector causes exempt.",
+  "latest_decision": "Owner confirmed appeal window of 72 hours after collector notification of equipment overdue-return reputation deduction, with Lingju required to review within 72 hours after appeal submission. Accepted appeals restore wrongly deducted reputation points; rejected appeals must explain the outcome. Notification timing, appeal count, interim penalty state and long-term point recovery remain undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -953,13 +953,15 @@
       "verified_disruption_to_next_collector": 5
     },
     "single_incident_stacking": "only_highest_applicable_tier_not_additive",
-    "appeal_deadline": "undecided",
+    "appeal_deadline": "72_hours_after_deduction_notification",
     "implemented": false,
     "numeric_penalty_decision_id": "DEC-2026-11-09-33",
     "minor_threshold_decision_id": "DEC-2026-11-09-34",
     "lookback_days": 90,
     "infraction_free_reset_days": 90,
-    "repetition_decision_id": "DEC-2026-11-09-35"
+    "repetition_decision_id": "DEC-2026-11-09-35",
+    "appeal_review_deadline": "72_hours_after_submission",
+    "appeal_decision_id": "DEC-2026-11-09-37"
   },
   "overdue_equipment_return_reputation_points_20261109": {
     "status": "owner_confirmed_concept",
@@ -981,7 +983,7 @@
     "appeal_allowed": true,
     "minor_overdue_minute_threshold": 15,
     "repeat_count_lookback": "rolling_90_days_for_verified_personal_fault_events",
-    "appeal_deadline": "undecided",
+    "appeal_deadline": "within_72_hours_after_deduction_notice",
     "implemented": false,
     "minor_threshold_inclusive": true,
     "first_minor_requires_no_actual_downstream_harm": true,
@@ -996,7 +998,11 @@
       "requires_personal_fault_verification": true
     },
     "repeat_unjustified_in_rolling_90_days_points_deducted": 2,
-    "first_over_15_minutes_decision_id": "DEC-2026-11-09-36"
+    "first_over_15_minutes_decision_id": "DEC-2026-11-09-36",
+    "appeal_review_deadline": "within_72_hours_after_appeal_submission",
+    "successful_appeal_restores_wrongly_deducted_points": true,
+    "rejected_appeal_explanation_required": true,
+    "appeal_decision_id": "DEC-2026-11-09-37"
   },
   "overdue_equipment_return_first_minor_threshold_20261109": {
     "status": "owner_confirmed_concept",
@@ -1059,6 +1065,28 @@
     "lingju_verification_before_penalty_required": true,
     "collector_can_appeal": true,
     "appeal_deadline": "undecided",
+    "implemented": false
+  },
+  "overdue_equipment_return_reputation_appeal_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-37",
+    "appeal_window_hours_after_deduction_notification": 72,
+    "appeal_review_hours_after_submission": 72,
+    "additional_evidence_allowed": [
+      "device_fault_evidence",
+      "equipment_return_records",
+      "other_relevant_documents"
+    ],
+    "reviewer": "凌矩",
+    "approved_appeal_action": "restore_wrongly_deducted_reputation_points",
+    "rejected_appeal_action": "explain_specific_reason",
+    "preserve_deduction_and_review_history": true,
+    "automatic_deduction_before_evidence_based_verification": false,
+    "notification_delivered_at_start_definition": "undecided",
+    "appeal_attempt_limit": "undecided",
+    "review_overdue_handling": "undecided",
+    "appeal_pending_reputation_status": "undecided",
+    "natural_reputation_points_recovery": "undecided",
     "implemented": false
   }
 }
