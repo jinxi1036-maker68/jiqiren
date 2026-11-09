@@ -5,6 +5,7 @@ const { runtime, event } = require('./harness.cjs');
 const store = require('../lib/storage');
 const booking = require('../lib/booking');
 const merchant = require('../lib/merchant');
+const { at } = require('../lib/catalog');
 
 const compiler = require(process.env.LINGJU_COMPILER || 'miniprogram-compiler');
 const r = runtime();
@@ -100,6 +101,7 @@ assert.match(merchantProfileText, /查看门店入驻进度/);
 assert.match(merchantProfileText, /投诉建议/);
 assert.doesNotMatch(merchantProfileText, /邀请好友/);
 
+store.change(state => booking.advance(state, at('2026-11-09', 525)));
 const task = r.open('task', { id: 's1' });
 const renderTask = render('pages/task/index.wxml');
 assert.equal(findButton(renderTask(task.data), '地图导航'), null);
@@ -131,6 +133,9 @@ assert.match(homeText, /下一单/);
 assert.match(homeText, /09:00–10:00/);
 const order = r.open('order', { id });
 const renderOrder = render('pages/order/index.wxml');
+assert.equal(order.data.order.arrive, true);
+assert.equal(findButton(renderOrder(order.data), '模拟开始前往').attr.bindtap, 'perform');
+assert.equal(findButton(renderOrder(order.data), '模拟到店签到'), null);
 assert.match(pageText(renderOrder(order.data)), /准备前往站点/);
 assert.doesNotMatch(pageText(renderOrder(order.data)), /设备箱位置|查看本单 SOP|放回原箱/);
 assert.match(pageText(renderOrder(order.data)), /✓ 预约 2 前往 3 取机 4 采集 5 归还/);

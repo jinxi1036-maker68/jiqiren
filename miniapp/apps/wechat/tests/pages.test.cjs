@@ -4,7 +4,7 @@ const { runtime, event } = require('./harness.cjs');
 const store = require('../lib/storage');
 const booking = require('../lib/booking');
 const merchant = require('../lib/merchant');
-const { MINUTE } = require('../lib/catalog');
+const { MINUTE, at } = require('../lib/catalog');
 
 function select(task, start, end) {
   task.start(event({ minute: start }));
@@ -401,6 +401,24 @@ test('商家页面申请，运营审核部署，商家确认后排班才进入�
   assert.ok(collector.data.cards.find(item => item.id === 'new').openCount > 0);
 });
 
+test('临近开始的预约仍先显示模拟开始前往，再显示到店签到', () => {
+  const r = runtime();
+  const now = at('2026-11-09', 530);
+  store.change(state => booking.advance(state, now));
+  const order = makeOrder(r);
+  assert.equal(order.data.order.status, 'booked');
+  assert.equal(order.data.order.arrive, true);
+  assert.equal(order.data.mainAction.label, '模拟开始前往');
+  assert.match(r.open('collector').data.nextOrder.hint, /模拟开始前往/);
+
+  order.perform(event({ action: 'travel' }));
+  assert.equal(order.data.order.status, 'travel');
+  assert.equal(order.data.mainAction.label, '模拟到店签到');
+  order.perform(event({ action: 'arrive' }));
+  assert.equal(order.data.order.status, 'arrived');
+  assert.equal(store.read().now, now);
+});
+
 test('任务页预约到订单归还，再通过独立运营入口核验和登记QA', () => {
   const r = runtime();
   const collector = r.open('collector');
@@ -552,6 +570,7 @@ test('提前签到后可等到开工，已有模拟时长时按当前时间停�
   const start = order.data.order.startAt;
   store.change(state => booking.advance(state, start - 10 * MINUTE));
   order.onShow();
+  order.perform(event({ action: 'travel' }));
   order.perform(event({ action: 'arrive' }));
   assert.equal(store.read().now, start - 10 * MINUTE);
   assert.equal(order.data.mainAction.action, 'collect');

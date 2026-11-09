@@ -1363,6 +1363,15 @@
       "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-step-guides.png",
       "desktop_simulator_interaction_verified": false,
       "real_device_visual_verified": false
+    },
+    "collector_departure_action_order": {
+      "status": "implemented_automated_tested",
+      "base_commit": "08ef53ef0e51e513d3f85c012662eeee300c96a1",
+      "scope": "Booked orders with available equipment show departure before check-in even after the check-in window opens.",
+      "automated_tests_passed": 44,
+      "offline_render": "seven WXML routes and WXSS compiled; verified departure and check-in controls at the 15-minute boundary",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
     }
   }
 }

@@ -104,13 +104,13 @@ function presentOrder(state, order) {
 }
 
 function nextAction(order) {
+  if (order.firstStep) return { action: 'travel', label: '模拟开始前往' };
   if (order.startCollect || (order.status === 'arrived' && order.canSimulateStart)) {
     return { action: 'collect', label: '模拟自助领机并开始采集', advanceTo: order.startCollect ? null : order.startAt };
   }
   if (order.arrive || (order.status === 'travel' && order.canSimulateStart)) {
     return { action: 'arrive', label: '模拟到店签到', advanceTo: order.arrive ? null : order.startAt };
   }
-  if (order.firstStep) return { action: 'travel', label: '模拟开始前往' };
   if (order.status === 'collecting') {
     return { action: 'stop', label: order.canSimulateEnd ? '模拟完成采集' : '停止采集',
       advanceTo: order.canSimulateEnd ? order.endAt : null };
