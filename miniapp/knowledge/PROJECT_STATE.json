@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed that Lingju must review fault-related travel subsidy applications within 48 hours of submission, approve to pending disbursement or reject with reasons and dispute option; overdue reviews trigger internal reminders, never automatic approval/payment.",
+  "latest_decision": "Owner confirmed a collector may dispute a rejected transport subsidy within 72 hours of rejection with additional travel/on-site evidence; Lingju reviews and reports outcome; ordinarily one dispute per subsidy, with exceptional manual handling; appeal review SLA remains undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -526,7 +526,26 @@
     "automatic_approval_on_timeout": false,
     "automatic_payment_on_timeout": false,
     "reminder_channel": "undecided",
-    "dispute_deadline": "undecided",
+    "dispute_deadline": "72_hours_after_rejection",
+    "implemented": false,
+    "dispute_count": "one_per_subsidy_normally; exceptional_manual_handling",
+    "dispute_decision_id": "DEC-2026-11-09-10"
+  },
+  "device_fault_subsidy_appeal_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-10",
+    "appeal_window_hours_after_rejection": 72,
+    "additional_evidence_allowed": [
+      "行程截图",
+      "现场证明"
+    ],
+    "reviewer": "凌矩",
+    "must_notify_outcome": true,
+    "normal_appeal_limit_per_subsidy": 1,
+    "exception_path": "manual_handling_by_lingju",
+    "record_original_rejection_and_review_result": true,
+    "appeal_review_deadline": "undecided",
+    "paid_automatically": false,
     "implemented": false
   }
 }
