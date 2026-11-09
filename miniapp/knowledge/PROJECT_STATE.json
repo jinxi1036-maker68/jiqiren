@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed earnings after late collector arrival are computed only from actual collected hours verified as accepted/valid by authorized QA, not the original reservation duration. Missed time earns nothing; other already-confirmed valid earnings remain unaffected. Measurement and rounding unresolved.",
+  "latest_decision": "Owner confirmed a late-arriving collector cannot continue collection after the original booked end time. Continuation requires a new valid booking in an available slot, respecting existing reservations, at least 30-minute spacing and store-closing rules. No automatic extension.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -789,11 +789,12 @@
     "keep_finish_before_store_close_minutes": 15,
     "reputation_effect": "only_after_lingju_verified_reason_and_existing_policy",
     "device_fault_or_other_non_collector_cause_exempt": true,
-    "booking_expired_handling": "undecided",
+    "booking_expired_handling": "must_stop_at_original_end; may_continue_only_under_new_valid_booking",
     "minimum_remaining_duration": "undecided",
     "valid_work_time_calculation": "actual_collected_hours_accepted_by_authorized_qa_not_reserved_hours",
     "implemented": false,
-    "earnings_decision_id": "DEC-2026-11-09-25"
+    "earnings_decision_id": "DEC-2026-11-09-25",
+    "booking_expiry_decision_id": "DEC-2026-11-09-26"
   },
   "collector_late_arrival_earnings_20261109": {
     "status": "owner_confirmed_concept",
@@ -807,6 +808,21 @@
     "measurement_source": "undecided",
     "time_rounding": "undecided",
     "partial_acceptance_method": "undecided",
+    "implemented": false
+  },
+  "collector_post_booking_expiry_continuation_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-26",
+    "continue_original_booking_after_end": false,
+    "automatic_end_extension": false,
+    "new_booking_required": true,
+    "new_booking_only_when": "device_has_eligible_available_slot_and_normal_reservation_rules_pass",
+    "existing_next_reservations_take_priority": true,
+    "min_gap_between_bookings_minutes": 30,
+    "store_close_buffer_minutes": 15,
+    "same_day_booking_rule_applies": true,
+    "expired_booking_automatic_stop_and_return_flow": "undecided",
+    "overrun_data_qa_and_earnings": "undecided",
     "implemented": false
   }
 }
