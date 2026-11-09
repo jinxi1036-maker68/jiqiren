@@ -4,32 +4,39 @@
   "updated_at": "2026-11-09",
   "home": "miniapp/knowledge/00_START_HERE.md",
   "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
-  "phase": "knowledge_baseline_created",
+  "phase": "native_wechat_experience_approved_development_not_yet_verified",
   "model": "merchant_host_device_plus_individual_collector_hourly_orders",
   "model_confirmed_by_owner": true,
   "mvp": {
-    "kind": "clickable_frontend_simulation",
+    "kind": "native_wechat_miniprogram_mock_experience",
     "owner_approved": true,
-    "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/24",
-    "issue_number": 24,
+    "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/25",
+    "issue_number": 25,
     "code_in_repo_verified": false,
     "codex_actively_running_verified": false,
     "pr_created_verified": false,
     "tests_verified": false,
     "publicly_deployed": false,
     "real_payment": false,
-    "real_user_data": false
+    "real_user_data": false,
+    "prior_issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/24",
+    "prior_web_demo_direction": "superseded_by_owner_approval_of_native_wechat_miniprogram",
+    "local_wechat_devtools_import_verified": false,
+    "wechat_account_available_per_owner": true,
+    "app_id_configured_verified": false,
+    "wechat_experience_uploaded_verified": false
   },
   "technology": {
-    "wechat_mini_program_stack": "not_decided",
-    "backend": "not_decided",
-    "api": "not_decided",
+    "wechat_mini_program_stack": "native_WXML_WXSS_JS_JSON_proposed_for_initial_mock_subject_to_repository_review",
+    "backend": "no_backend_for_initial_mock",
+    "api": "local_fake_data_only",
     "real_customer_integration": "not_authorized"
   },
   "canonical_code_paths": {
-    "demo": "miniapp/apps/demo/",
+    "demo": "miniapp/apps/demo/ (historical web-demo placeholder only; do not implement independent web first)",
     "wechat_if_authorized": "miniapp/apps/wechat/",
-    "tests": "miniapp/tests/"
+    "tests": "miniapp/tests/",
+    "wechat_current_target": "miniapp/apps/wechat/"
   },
   "known_constraints": [
     "no customer backend integration",
@@ -38,8 +45,8 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed existing bookings normally remain executable after collector score drops below 60, with case-by-case Lingju suspension for verified equipment safety or malicious misconduct risks; no extra reputation deduction merely because Lingju cancels. Owner also delegated the remaining ordinary UI/workflow details to AI batch defaults rather than per-item Q&A; commercial, legal and real integration gates stay unapproved.",
-  "next_gate": "For the already approved clickable mock DEMO, follow miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md and Issue #24, reconcile canonical miniapp/apps/demo path, and implement/test mock-only flows on a reviewable PR. Do not request one-by-one Owner confirmations for routine UI details. Hold true commercial prices, settlement/payment, upstream permissions, device security and launch for explicit external approval.",
+  "latest_decision": "Owner has WeChat Mini Program account and expressly approved Codex building a native WeChat Mini Program experience version directly instead of a standalone HTML demo. Issue #25 created. Scope remains fake data only; code, tests, account linkage, experience upload and public release unverified.",
+  "next_gate": "Issue #25: Codex should inspect current repository, build native WeChat Mini Program simulated experience in miniapp/apps/wechat, run verifiable build/tests, submit Draft PR for review. Owner later imports in WeChat DevTools and provides own AppID/preview authorization. No real server, upstream QA, device, payment or public release.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
     "decision_id": "DEC-2026-11-08-04",
@@ -1172,5 +1179,21 @@
     "real_app_release_authorized": false,
     "docs_created": true,
     "implemented": false
+  },
+  "owner_wechat_native_experience_approval_20261109": {
+    "status": "owner_confirmed",
+    "decision_id": "DEC-2026-11-09-43",
+    "owner_has_wechat_miniprogram_account": true,
+    "explicit_owner_reply": "同意",
+    "replaces": "standalone_web_demo_first_approach",
+    "target": "native_WeChat_Mini_Program_experience_with_mock_data",
+    "issue": 25,
+    "path": "miniapp/apps/wechat/",
+    "real_backend_or_payment_authorized": false,
+    "real_device_or_upstream_API_authorized": false,
+    "public_launch_authorized": false,
+    "implemented": false,
+    "tests_verified": false,
+    "experience_uploaded": false
   }
 }
