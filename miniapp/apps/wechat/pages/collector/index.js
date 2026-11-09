@@ -1,7 +1,7 @@
 const store = require('../../lib/storage');
 const { stamp, dateOf, HOUR, DISTRICTS } = require('../../lib/catalog');
 const { preStart } = require('../../lib/model');
-const reviews = require('../../lib/reviews');
+const experience = require('../../lib/experience');
 const ui = require('../../lib/ui');
 
 const REGIONS = ['全城', ...DISTRICTS];
@@ -36,7 +36,7 @@ function nextReservation(orders, now) {
   else if (order.impact || order.closed) hint = '预约有变，请查看处理方式';
   else if (order.handoffBlock) hint = order.handoffBlock;
   return { id: order.id, stationName: order.stationName, taskName: order.taskName, interval: order.interval,
-    stateLabel: order.stateLabel, hint, submitted: order.status === 'submitted' };
+    stateLabel: order.stateLabel, stateTone: order.stateTone, hint, submitted: order.status === 'submitted' };
 }
 
 Page({
@@ -70,7 +70,8 @@ Page({
       persona: state.collectors.findIndex(person => person.id === actor),
       unread: messages.filter(message => !message.read).length,
       orders, nextOrder: nextReservation(orders, state.now),
-      income: ui.income(state, actor, period), profile: ui.profile(state, actor) });
+      income: ui.income(state, actor, period), profile: ui.profile(state, actor),
+      account: experience.accountView(state, 'collector') });
   },
   persona(event) {
     this.replaceId = '';
@@ -95,16 +96,16 @@ Page({
   search(event) {
     this.saveFilters({ search: event.detail.value });
   },
+  clearFilters() {
+    this.saveFilters({ search: '', region: 0, sort: 0, date: this.data.today });
+  },
   saveFilters(changes) {
     ui.commit(this, state => {
       if (!state.collectorFilters) state.collectorFilters = {};
       state.collectorFilters[state.collector] = { ...state.collectorFilters[state.collector], ...changes };
     });
   },
-  help() {
-    wx.showModal({ title: '采集帮助', content: '预约后，从「预约」打开订单查看到店指引。现场或归还遇到困难，点订单里的「遇到问题」，凌矩的模拟回复会回到该订单和站内消息。',
-      showCancel: false });
-  },
+  openAccount: experience.openAccount,
   period(event) {
     this.setData({ period: event.detail.value });
     this.refresh();
@@ -130,11 +131,6 @@ Page({
     }, () => {
       if (id) wx.navigateTo({ url: '/pages/order/index?id=' + id });
     });
-  },
-  appeal(event) {
-    const id = event.currentTarget.dataset.id;
-    ui.inputPrompt('模拟信誉申诉', '填写模拟设备异常、归还记录等依据',
-      reason => ui.commit(this, state => reviews.appealCredit(state, state.collector, id, reason)));
   },
   messageSettings() {
     wx.showModal({ title: '消息设置', content: '当前模拟体验使用站内消息。微信订阅授权与推送尚未接入。',

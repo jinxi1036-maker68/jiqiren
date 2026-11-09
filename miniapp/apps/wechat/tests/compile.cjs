@@ -15,6 +15,7 @@ assert.ok(typeof wxml === 'string' && wxml.length > 0, String(wxml));
 assert.ok(typeof wxss === 'string' && wxss.length > 0, String(wxss));
 assert.match(wxss, /merchant-visit/);
 assert.match(wxss, /order-focus/);
+assert.match(wxss, /hub-identity/);
 const render = new Function('window', 'global', wxml)({}, {});
 
 for (const route of manifest.pages) {
@@ -52,6 +53,36 @@ assert.match(pageText(entryView), /我是商家/);
 assert.match(pageText(entryView), /我是采集员/);
 const collectorEntry = render('pages/collector/index.wxml')(r.open('collector').data);
 assert.equal(findButton(collectorEntry, '切换身份').attr.bindtap, 'switchRole');
+assert.match(pageText(collectorEntry), /新手采集计划/);
+const profilePage = r.open('collector');
+profilePage.section(event({ section: 'credit' }));
+const profileView = render('pages/collector/index.wxml')(profilePage.data);
+assert.equal(findButton(profileView, '我的订单').attr.bindtap, 'section');
+assert.match(pageText(profileView), /点击登录/);
+for (const label of ['我的券', '邀请好友', '投诉建议', '服务指南', '关于我们', '设置']) {
+  assert.ok(pageText(profileView).includes(label));
+}
+const renderAccount = render('pages/account/index.wxml');
+const benefits = r.open('account', { view: 'benefits' });
+assert.match(pageText(renderAccount(benefits.data)), /登录后参与/);
+const login = r.open('account', { view: 'login' });
+assert.equal(findButton(renderAccount(login.data), '一键演示登录').attr.bindtap, 'login');
+login.login();
+benefits.onShow();
+assert.equal(findButton(renderAccount(benefits.data), '领取演示券').attr.bindtap, 'claimCoupon');
+assert.equal(findButton(renderAccount(benefits.data), '去预约采集').attr.bindtap, 'findTasks');
+benefits.claimCoupon(event({ id: 'welcome' }));
+assert.match(pageText(renderAccount(r.open('account', { view: 'coupons' }).data)), /新人体验券/);
+const inviteView = renderAccount(r.open('account', { view: 'invite' }).data);
+assert.equal(findButton(inviteView, '复制演示邀请码').attr.bindtap, 'copyCode');
+const feedbackView = renderAccount(r.open('account', { view: 'feedback' }).data);
+assert.equal(findButton(feedbackView, '提交模拟反馈').attr.disabled, true);
+const merchantProfile = r.open('merchant');
+merchantProfile.section(event({ section: 'profile' }));
+const merchantProfileText = pageText(render('pages/merchant/index.wxml')(merchantProfile.data));
+assert.match(merchantProfileText, /查看门店入驻进度/);
+assert.match(merchantProfileText, /投诉建议/);
+assert.doesNotMatch(merchantProfileText, /邀请好友/);
 
 const task = r.open('task', { id: 's1' });
 const renderTask = render('pages/task/index.wxml');

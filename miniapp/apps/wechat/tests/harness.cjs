@@ -13,12 +13,14 @@ function runtime() {
     getStorageSync(key) { return structuredClone(state.get(key)); },
     setStorageSync(key, value) { state.set(key, structuredClone(value)); },
     showToast() {},
+    setNavigationBarTitle() {},
     pageScrollTo() {},
     setClipboardData({ data }) { clipboard.push(data); },
     openLocation(options) { mapCalls.push(options); },
     showModal(options) { dialogs.push(options); },
     showActionSheet(options) { dialogs.push(options); },
     navigateTo(options) { nav.push(options.url); },
+    navigateBack() { nav.push('back'); },
     redirectTo(options) { nav.push(options.url); if (options.complete) options.complete(); },
     reLaunch(options) { nav.push(options.url); }
   };

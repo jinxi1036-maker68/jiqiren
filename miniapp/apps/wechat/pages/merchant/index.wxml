@@ -1,10 +1,14 @@
 <import src="../../templates/range-editor.wxml"/>
+<import src="../../templates/account-hub.wxml"/>
 <view class="screen {{deployed ? 'with-dock' : ''}}">
-  <view class="row split">
+  <view class="row split" wx:if="{{section !== 'profile'}}">
     <view class="row brand-lockup"><view class="brand-logo">凌</view><text>商家工作台</text></view>
-    <button class="ghost subtle-button" hover-class="control-pressed" bindtap="switchRole">切换身份</button>
+    <view class="row">
+      <button wx:if="{{!deployed}}" class="ghost subtle-button" data-section="profile" bindtap="section">我的</button>
+      <button class="ghost subtle-button" hover-class="control-pressed" bindtap="switchRole">切换身份</button>
+    </view>
   </view>
-  <picker mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
+  <picker wx:if="{{section !== 'profile'}}" mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
     <view class="panel row split action merchant-site">
       <view class="row grow">
         <image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/>
@@ -13,7 +17,8 @@
       <text class="muted small">切换门店 ›</text>
     </view>
   </picker>
-  <block wx:if="{{!deployed}}">
+  <template wx:if="{{section === 'profile'}}" is="account-hub" data="{{account: account, deployed: deployed}}"/>
+  <block wx:elif="{{!deployed}}">
     <view class="hero">
       <view class="row split"><view class="kicker">场地合作 · 模拟体验</view><view class="badge">{{stage}}</view></view>
       <view class="title">设备入驻</view>
@@ -156,12 +161,12 @@
       </view>
       <view wx:if="{{!currentEarnings.length}}" class="divider muted">本月暂无确认账目。</view>
     </view>
-    <view class="dock dock-nav">
+  </block>
+    <view class="dock dock-nav" wx:if="{{deployed}}">
       <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" bindtap="section">
         <view class="dock-mark"><image class="icon" src="{{item.icon}}" mode="aspectFit"/></view>
         <text>{{item.label}}</text>
       </button>
     </view>
-  </block>
   <view class="tagline">演示数据 · 仅保存在当前设备</view>
 </view>

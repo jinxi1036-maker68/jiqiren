@@ -1,5 +1,6 @@
 const store = require('../../lib/storage');
 const merchant = require('../../lib/merchant');
+const experience = require('../../lib/experience');
 const booking = require('../../lib/booking');
 const reviews = require('../../lib/reviews');
 const { TASKS, stamp, HOUR, MINUTE } = require('../../lib/catalog');
@@ -27,6 +28,7 @@ const ACTIONS = {
   }],
   pause: ['核实故障并暂停设备', '填写虚构的设备故障核查依据', (s, d, v) => booking.pause(s, d.id, v, d.report)],
   resolve: ['回复并结案', '填写核查结论、处理建议或无故障依据', (s, d, v) => booking.resolveReport(s, d.id, v)],
+  feedback: ['回复模拟反馈', '填写给用户的处理结果', (s, d, v) => experience.replyFeedback(s, d.id, v)],
   reopen: ['模拟核验设备可用', '填写修复或在箱且可用的模拟依据', (s, d, v) => booking.reopen(s, d.id, v)],
   return: ['模拟核验归还', '填写设备在箱且可用的模拟核验记录', (s, d, v) => booking.verifyReturn(s, d.id, v)],
   cancel: ['运营逐单无责取消', '填写已核查的设备安全或恶意违规依据', (s, d, v) => {
@@ -87,6 +89,7 @@ Page({
     }).sort((a, b) => a.at - b.at);
     const late = orders.filter(order => holding(order) && state.now >= order.endAt + 15 * MINUTE)
       .sort((a, b) => a.endAt - b.endAt);
+    const feedback = experience.feedbackList(state);
     const work = [
       ...late.map(order => workItem('orders', 'order-' + order.id, '归还逾期',
         order.id + ' · ' + order.stationName + ' · ' + order.stateLabel)),
@@ -101,9 +104,10 @@ Page({
       ...sites.filter(site => ['review', 'supplement', 'approved'].includes(site.stage))
         .map(site => workItem('sites', 'site-' + site.id, site.label, site.name)),
       ...qa.map(order => workItem('reviews', 'qa-' + order.id, order.qaPending ? '待质检' : '质检待复核', order.id)),
-      ...subsidies.map(order => workItem('reviews', 'subsidy-' + order.id, order.subsidyStatus, order.id + ' · ' + order.subsidyDue))
+      ...subsidies.map(order => workItem('reviews', 'subsidy-' + order.id, order.subsidyStatus, order.id + ' · ' + order.subsidyDue)),
+      ...feedback.filter(item => !item.reply).map(item => workItem('feedback', 'feedback-' + item.id, item.topic, item.name + ' · ' + item.time))
     ];
-    this.setData({ now: stamp(state.now), orders, credits, qa, subsidies, sites, work,
+    this.setData({ now: stamp(state.now), orders, credits, qa, subsidies, sites, work, feedback,
       penalties: orders.filter(order => order.creditPending),
       price: ui.money(state.subsidy.cents), priceVersion: state.subsidy.version,
       people: state.collectors.map(item => {

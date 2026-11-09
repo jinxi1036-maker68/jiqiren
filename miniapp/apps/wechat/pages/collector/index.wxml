@@ -1,8 +1,9 @@
+<import src="../../templates/account-hub.wxml"/>
 <view class="screen with-dock">
-  <view class="list-masthead">
+  <view class="list-masthead" wx:if="{{section !== 'credit'}}">
     <view class="row split">
       <view class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山</text><text class="badge">模拟体验</text></view>
-      <button class="ghost subtle-button" bindtap="switchRole">切换身份</button>
+      <button class="ghost subtle-button" hover-class="control-pressed" bindtap="switchRole">切换身份</button>
     </view>
     <view class="row split action">
       <view class="grow">
@@ -13,17 +14,25 @@
     </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">
-    <view class="panel next-order" wx:if="{{nextOrder && !replaceId}}">
-      <view class="row split"><view class="kicker">{{nextOrder.submitted ? '最近进度' : '下一单'}}</view><view class="badge">{{nextOrder.stateLabel}}</view></view>
+    <view class="panel next-order collector-next" wx:if="{{nextOrder && !replaceId}}">
+      <view class="row split"><view class="kicker">{{nextOrder.submitted ? '最近进度' : '下一单'}}</view><view class="status-pill status-{{nextOrder.stateTone}}">{{nextOrder.stateLabel}}</view></view>
       <view class="subheading action">{{nextOrder.taskName}}</view>
       <view class="muted">{{nextOrder.stationName}} · {{nextOrder.interval}}</view>
       <view class="row split divider">
         <view class="grow">{{nextOrder.hint}}</view>
-        <button class="primary order-link" data-id="{{nextOrder.id}}" bindtap="order">{{nextOrder.submitted ? '查看结果' : '打开订单'}}</button>
+        <button class="primary order-link" hover-class="control-pressed" data-id="{{nextOrder.id}}" bindtap="order">{{nextOrder.submitted ? '查看结果' : '打开订单'}}</button>
       </view>
     </view>
+    <button wx:if="{{account.showCampaign && !replaceId}}" class="campaign-banner campaign-entry" hover-class="control-pressed" data-view="benefits" bindtap="openAccount">
+      <view class="grow"><view class="campaign-label">新手采集计划 · 演示</view><view class="campaign-title">领取体验券，完成首单</view></view>
+      <view class="campaign-arrow">›</view>
+    </button>
     <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
     <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
+    <view class="row split discovery-heading">
+      <view class="account-heading">采集站点</view>
+      <button class="account-link" data-view="guide" bindtap="openAccount">采集怎么做 ›</button>
+    </view>
     <view class="panel filter-panel">
       <view class="field row filter-search">
         <image class="icon icon-small" src="/assets/icons/search.svg" mode="aspectFit"/>
@@ -35,11 +44,11 @@
         <picker range="{{sorts}}" value="{{sort}}" bindchange="sort"><view class="filter-chip">{{sorts[sort]}} ▾</view></picker>
       </view>
     </view>
-    <view class="panel site-card" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" bindtap="task">
+    <button class="panel site-card discovery-card" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="control-pressed" bindtap="task">
       <view class="row">
         <image class="site-thumb" src="{{item.art}}" mode="aspectFill"/>
         <view class="grow">
-          <view class="row split"><text class="badge">{{item.category}}</text><text class="muted small">{{item.district}}</text></view>
+          <view class="row split"><text class="status-pill status-quiet">{{item.category}}</text><text class="muted small">{{item.district}}</text></view>
           <view class="site-name">{{item.title}}</view>
           <view class="muted">{{item.name}} · {{item.address}}</view>
         </view>
@@ -47,24 +56,31 @@
       <view class="row split divider">
         <view class="grow">
           <view class="price">¥{{item.rate}}<text class="price-unit">/ 有效小时 · 示例</text></view>
-          <view class="availability {{item.openCount ? '' : 'availability-closed'}} action">
+          <view class="availability {{item.openCount ? '' : 'availability-closed'}}">
             <view class="availability-dot"/>{{item.openCount ? '最早 ' + item.earliest + ' 可约' : item.availabilityReason}}
           </view>
           <view class="muted small">{{item.min}}–{{item.max}} 分钟 · 开放 {{item.opening}}</view>
         </view>
-        <button class="{{item.openCount ? 'primary' : 'ghost'}} subtle-button" data-id="{{item.id}}" catchtap="task">{{item.openCount ? '查看时段' : '查看详情'}}</button>
+        <view class="discovery-action">{{item.openCount ? '查看时段' : '查看详情'}} <text>›</text></view>
       </view>
+    </button>
+    <view class="account-paper account-empty" wx:if="{{!cards.length}}">
+      <view class="account-heading">当前条件下没有任务</view>
+      <view class="account-copy">可以换个区域、日期或关键词继续找。</view>
+      <button class="ghost account-button" wx:if="{{search || region || date !== today || sort}}" bindtap="clearFilters">清除筛选</button>
     </view>
-    <view class="panel muted" wx:if="{{!cards.length}}">当前筛选没有任务，可换个区域或关键词。</view>
   </block>
   <block wx:if="{{section === 'orders'}}">
     <view class="section heading">我的预约</view>
-    <view class="panel" wx:for="{{orders}}" wx:key="id">
-      <view class="row split"><view class="subheading">{{item.taskName}}</view><view class="badge">{{item.stateLabel}}</view></view>
-      <view class="muted">{{item.stationName}} · {{item.interval}}</view>
-      <button class="action" data-id="{{item.id}}" bindtap="order">查看 {{item.id}}</button>
+    <button class="panel discovery-card" wx:for="{{orders}}" wx:key="id" data-id="{{item.id}}" hover-class="control-pressed" bindtap="order">
+      <view class="row split"><view class="subheading grow">{{item.taskName}}</view><view class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</view></view>
+      <view class="muted action">{{item.stationName}} · {{item.interval}}</view>
+      <view class="row split divider"><text class="muted small">订单 {{item.id}}</text><text class="discovery-action">查看订单 ›</text></view>
+    </button>
+    <view class="account-paper account-empty" wx:if="{{!orders.length}}">
+      <view class="account-heading">还没有预约</view><view class="account-copy">选好站点和时段后，订单会出现在这里。</view>
+      <button class="ghost account-button" data-section="tasks" bindtap="section">去找采集任务</button>
     </view>
-    <view class="panel muted" wx:if="{{!orders.length}}">暂无预约。可先在「找任务」选择时段。</view>
   </block>
   <block wx:if="{{section === 'income'}}">
     <view class="panel">
@@ -106,33 +122,13 @@
     <view class="panel muted" wx:if="{{!messages.length}}">暂无站内消息。</view>
   </block>
   <block wx:if="{{section === 'credit'}}">
-    <view class="panel">
-      <view class="row split"><view class="heading">{{personas[persona]}}</view><text class="badge">演示资料</text></view>
-      <view class="muted action">当前身份　个人采集员</view>
-      <view class="row action">
-        <button class="grow ghost" bindtap="switchRole">切换身份</button>
-        <button class="grow ghost" bindtap="help">采集帮助</button>
-      </view>
-    </view>
-    <view class="panel">
-      <view class="row split"><view class="subheading">演示设置</view><button class="ghost subtle-button" bindtap="toggleDemo">{{showDemo ? '收起' : '展开'}}</button></view>
+    <template is="account-hub" data="{{account: account}}"/>
+    <view class="account-paper">
+      <view class="row split"><view class="subheading">演示设置</view><button class="account-link touch-control" bindtap="toggleDemo">{{showDemo ? '收起' : '展开 ›'}}</button></view>
       <picker wx:if="{{showDemo}}" range="{{personas}}" value="{{persona}}" bindchange="persona">
         <view class="field">切换演示采集员　{{personas[persona]}} ›</view>
       </picker>
     </view>
-    <view class="panel">
-      <view class="row split"><view class="heading">信誉分</view><view class="badge">{{profile.label}}</view></view>
-      <view class="metric section">{{profile.score}} / 100</view>
-      <view class="muted">每满30天无核实的本人违规恢复1分，最高100分。已确认订单可按原安排履行。</view>
-      <view class="notice" wx:if="{{profile.review.decision}}">{{profile.review.decision.reason}}</view>
-    </view>
-    <view class="panel" wx:for="{{profile.events}}" wx:key="id">
-      <view class="row split"><view class="subheading">{{item.fault ? '超时归还核实' : '非本人责任'}}</view><view class="badge">{{item.reversed ? '已纠正' : '扣 ' + item.points + ' 分'}}</view></view>
-      <view>{{item.reason}}</view><view class="muted">{{item.time}} · {{item.orderId}}</view>
-      <view wx:if="{{item.appeal}}" class="notice">{{item.appeal.status === 'pending' ? '申诉复核中' : item.appeal.decision.reason}}</view>
-      <button wx:if="{{item.canAppeal}}" class="action" data-id="{{item.id}}" bindtap="appeal">提交模拟申诉</button>
-    </view>
-    <view class="panel muted" wx:if="{{!profile.events.length}}">暂无经运营核实的信誉事件。</view>
   </block>
   <view class="tagline">演示数据 · 站内消息 · 虚构金额</view>
   <view class="dock dock-nav">

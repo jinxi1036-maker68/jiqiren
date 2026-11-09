@@ -19,6 +19,7 @@
       <button class="{{section === 'sites' ? 'primary' : ''}}" data-section="sites" bindtap="section">场地</button>
       <button class="{{section === 'orders' ? 'primary' : ''}}" data-section="orders" bindtap="section">设备订单</button>
       <button class="{{section === 'reviews' ? 'primary' : ''}}" data-section="reviews" bindtap="section">审核</button>
+      <button class="{{section === 'feedback' ? 'primary' : ''}}" data-section="feedback" bindtap="section">用户反馈</button>
       <button class="{{section === 'logs' ? 'primary' : ''}}" data-section="logs" bindtap="section">时钟审计</button>
     </view>
     <block wx:if="{{section === 'work'}}">
@@ -31,6 +32,17 @@
         <button class="ghost subtle-button" data-section="{{item.section}}" data-target="{{item.target}}" bindtap="openWork">查看</button>
       </view>
       <view class="panel muted" wx:if="{{!work.length}}">暂无需要处理的事项。</view>
+    </block>
+    <block wx:if="{{section === 'feedback'}}">
+      <view class="heading section">用户反馈</view>
+      <view class="panel" wx:for="{{feedback}}" wx:key="id" id="feedback-{{item.id}}">
+        <view class="row split"><view class="subheading">{{item.topic}}</view><text class="status-pill status-{{item.reply ? 'ready' : 'wait'}}">{{item.reply ? '已回复' : '待处理'}}</text></view>
+        <view class="muted">{{item.name}} · {{item.time}}</view>
+        <view class="account-copy">{{item.message}}</view>
+        <view wx:if="{{item.reply}}" class="account-reply">{{item.reply}}</view>
+        <button wx:else class="ghost action touch-control" data-id="{{item.id}}" data-action="feedback" bindtap="act">回复反馈</button>
+      </view>
+      <view wx:if="{{!feedback.length}}" class="panel muted">暂无用户反馈。</view>
     </block>
     <block wx:if="{{section === 'sites'}}">
       <view class="panel" wx:for="{{sites}}" wx:key="id" id="site-{{item.id}}">

@@ -1,5 +1,6 @@
 const store = require('../../lib/storage');
 const merchant = require('../../lib/merchant');
+const experience = require('../../lib/experience');
 const { TASKS, CITY, DISTRICTS, DEVICE_BUFFER, CLOSING_BUFFER, dateOf, clock, timeLabel, minutes } = require('../../lib/catalog');
 const { stationFor, windows, preStart, holding, requireThat } = require('../../lib/model');
 const ui = require('../../lib/ui');
@@ -25,7 +26,8 @@ const PROGRESS = {
 const NAV_ITEMS = [
   { section: 'home', label: '概览', icon: '/assets/icons/store.svg' },
   { section: 'schedule', label: '开放时间', icon: '/assets/icons/calendar.svg' },
-  { section: 'income', label: '场地收益', icon: '/assets/icons/wallet.svg' }
+  { section: 'income', label: '场地收益', icon: '/assets/icons/wallet.svg' },
+  { section: 'profile', label: '我的', icon: '/assets/icons/person.svg' }
 ];
 const SAMPLE = { name: '木尺文具（虚构）', address: '样例街 D-04', contact: '演示店主', phone: '示例-0000',
   entrance: '从木色门头下的正门进入。', locker: '进门后收纳柜旁的 D-04 演示箱。', area: '演示区内的文具整理台。' };
@@ -129,7 +131,7 @@ Page({
       deployed, overview: deployed ? todayOverview(state, station, stationOrders, today) : null,
       todayOrders: stationOrders.filter(order => order.date === today && order.status !== 'cancelled').length,
       track: scheduleTrack(ranges, orders), windowLabel: ui.rangeText(ranges), dayRanges: rangeFields(ranges),
-      currentEarnings, daily: daily.length });
+      currentEarnings, daily: daily.length, account: experience.accountView(state, 'merchant') });
     this.showWeek(this.data.weekday);
   },
   persona(event) {
@@ -245,5 +247,6 @@ Page({
   section(event) {
     this.setData({ section: event.currentTarget.dataset.section }, () => wx.pageScrollTo({ scrollTop: 0, duration: 0 }));
   },
+  openAccount: experience.openAccount,
   switchRole: ui.switchRole
 });

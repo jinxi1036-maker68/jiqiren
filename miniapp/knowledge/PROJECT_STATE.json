@@ -1305,6 +1305,20 @@
       "automated_tests_passed": 36,
       "offline_render": "six WXML routes and WXSS compiled; 375px layout verified for merchant board and two order states",
       "real_device_visual_verified": false
+    },
+    "account_and_campaign_experience": {
+      "status": "implemented_automated_tested",
+      "base_commit": "2597fa67a34f5bab5ab6fc23eb58c092ac59960b",
+      "scope": [
+        "collector discovery and role-specific account hubs",
+        "local demo login, campaign and coupon records, referral eligibility",
+        "service guides, settings, feedback and simulated ops reply"
+      ],
+      "automated_tests_passed": 39,
+      "offline_render": "seven WXML routes and WXSS compiled; four 375px screenshots inspected",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-account-experience.png",
+      "real_device_visual_verified": false,
+      "pending": ["real login and data storage", "cash reward rules and settlement", "cross-device referral attribution"]
     }
   }
 }

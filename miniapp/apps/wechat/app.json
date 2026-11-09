@@ -3,6 +3,7 @@
     "pages/home/index",
     "pages/merchant/index",
     "pages/collector/index",
+    "pages/account/index",
     "pages/task/index",
     "pages/order/index",
     "pages/ops/index"
