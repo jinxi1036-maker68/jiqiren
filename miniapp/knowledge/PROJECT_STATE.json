@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed a late-arriving collector cannot continue collection after the original booked end time. Continuation requires a new valid booking in an available slot, respecting existing reservations, at least 30-minute spacing and store-closing rules. No automatic extension.",
+  "latest_decision": "Owner confirmed collector reminders 15 minutes before booked collection end and again at the booked end to stop and return equipment. Continuation requires a separate valid booking, no automatic extension. Once equipment return is verified complete, suppress redundant end/return reminders; self-reported return submission alone does not equal verified return.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -821,8 +821,23 @@
     "min_gap_between_bookings_minutes": 30,
     "store_close_buffer_minutes": 15,
     "same_day_booking_rule_applies": true,
-    "expired_booking_automatic_stop_and_return_flow": "undecided",
+    "expired_booking_automatic_stop_and_return_flow": "remind_to_stop_and_return_at_end; physical_device_stop_not_implemented",
     "overrun_data_qa_and_earnings": "undecided",
+    "implemented": false,
+    "end_reminder_decision_id": "DEC-2026-11-09-27"
+  },
+  "collector_booking_end_reminders_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-27",
+    "minutes_before_booked_end": 15,
+    "at_booked_end": "remind_stop_collecting_and_return_equipment",
+    "auto_extend_booking": false,
+    "continuation": "new_booking_required_and_must_respect_reserved_slots",
+    "suppress_redundant_reminders_when": "verified_equipment_return_completed",
+    "self_reported_return_submission_not_verified_return": true,
+    "overdue_return_escalation": "undecided",
+    "notification_channels": "undecided",
+    "physical_device_stop_control": "undecided",
     "implemented": false
   }
 }
