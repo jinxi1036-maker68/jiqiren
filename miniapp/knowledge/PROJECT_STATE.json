@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed approved equipment-fault transport subsidies are not paid immediately, but settled alongside collector's ordinary collection income while itemized separately. Approved subsidies still enter normal settlement when collector has no collection income. Actual collector pay cycle and payment rail remain undecided.",
+  "latest_decision": "Owner confirmed monthly settlement as the principle for collector collection earnings based on verified accepted effective hours, with approved transport subsidies itemized in the same settlement statement; actual payment day, pending QA cross-period treatment and legal/contractual terms remain undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -621,9 +621,24 @@
     "no_collection_income_approved_subsidy_remains_payable": true,
     "post_approval_status": "待发放补贴",
     "actual_paid_requires_verified_payment_record": true,
-    "collector_settlement_cycle": "undecided",
+    "collector_settlement_cycle": "monthly_principle_confirmed; exact_period_and_payment_day_undecided",
     "payment_method": "undecided",
     "failed_payment_reconciliation": "undecided",
+    "implemented": false,
+    "monthly_collector_settlement_decision_id": "DEC-2026-11-09-15"
+  },
+  "collector_monthly_settlement_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-15",
+    "settlement_cycle": "monthly_principle",
+    "earnings_basis": "verified_customer_accepted_valid_collection_hours_subject_to_contract_and_law",
+    "approved_transport_subsidies_included_with_income": true,
+    "subsidy_displayed_separately": true,
+    "exact_payment_date": "undecided",
+    "settlement_period_boundaries": "undecided",
+    "pending_qa_at_month_end": "undecided",
+    "contract_and_legal_payment_obligations": "must_be_verified_before_implementation",
+    "real_payment_integrated": false,
     "implemented": false
   }
 }
