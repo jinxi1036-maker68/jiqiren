@@ -1,0 +1,38 @@
+.merchant-site { min-height: 88rpx; box-sizing: border-box; padding: 16rpx 20rpx; }
+.merchant-overview { padding: 26rpx; border-color: #d3e0d2; }
+.merchant-visit {
+  margin: 18rpx 0;
+  padding: 20rpx;
+  border-radius: 18rpx;
+  background: linear-gradient(110deg, #edf5e6, #f4f7ef);
+}
+.merchant-time {
+  margin: 4rpx 0 2rpx;
+  font-size: 64rpx;
+  font-weight: 760;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: #214c37;
+}
+.merchant-time-end { margin-left: 3rpx; font-size: 44rpx; font-weight: 650; color: #476252; }
+.merchant-context .row { min-height: 62rpx; gap: 20rpx; }
+.merchant-context .muted { flex-shrink: 0; }
+.merchant-hours { font-size: 25rpx; font-weight: 670; text-align: right; font-variant-numeric: tabular-nums; }
+.merchant-actions { gap: 14rpx; }
+.merchant-actions button { padding: 0 10rpx; }
+.merchant-totals { align-items: stretch; gap: 0; padding: 20rpx 24rpx; }
+.merchant-totals > view + view { margin-left: 22rpx; padding-left: 22rpx; border-left: 1rpx solid #e5ebe4; }
+.merchant-totals .metric { color: #243e32; }
+.merchant-unit { font-size: 22rpx; font-weight: 600; }
+.schedule-track { height: 26rpx; border-radius: 8rpx; overflow: hidden; display: flex; }
+.schedule-segment { flex-basis: 0; }
+.schedule-open { background: #c0d9b9; }
+.schedule-booked { background: #397557; }
+.schedule-buffer { background: #edd199; }
+.schedule-closed { background: #e3e7e2; }
+.schedule-affected { background: #ce7868; }
+.schedule-legend { margin-top: 10rpx; gap: 10rpx 20rpx; color: #526258; font-size: 22rpx; }
+.schedule-legend .row { gap: 7rpx; }
+.schedule-key { height: 14rpx; width: 14rpx; border-radius: 4rpx; }
+.merchant-order-time { font-size: 30rpx; font-weight: 720; font-variant-numeric: tabular-nums; }
+.merchant-order .muted { margin-top: 4rpx; }

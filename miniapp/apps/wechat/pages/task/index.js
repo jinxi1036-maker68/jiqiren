@@ -37,7 +37,8 @@ Page({
     const previous = state.orders.find(order => order.id === this.replaceId && order.collectorId === state.collector);
     this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd, guide: ui.siteGuide(station, date),
       selectionLost: selectionLost || this.data.selectionLost, canConfirm: selectedEnd !== null,
-      selectionText: selectedEnd === null ? '请选择开始和结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),
+      selectionText: selectedStart === null ? '先选开始时间'
+        : selectedEnd === null ? '再选结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),
       starts: slots.map(item => option(item.start)), ends: slot ? slot.ends.map(option) : [],
       card: ui.listing(state, station, date, state.collector, this.replaceId, slots),
       replaceId: this.replaceId, lateChange: Boolean(previous && ui.presentOrder(state, previous).lateCancel),

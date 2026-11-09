@@ -2,11 +2,14 @@
 <view class="screen {{deployed ? 'with-dock' : ''}}">
   <view class="row split">
     <view class="row brand-lockup"><view class="brand-logo">凌</view><text>商家工作台</text></view>
-    <button class="ghost subtle-button" bindtap="switchRole">切换身份</button>
+    <button class="ghost subtle-button" hover-class="control-pressed" bindtap="switchRole">切换身份</button>
   </view>
   <picker mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
-    <view class="panel row split action">
-      <view class="row grow"><image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/><view class="subheading">{{station.name}}</view></view>
+    <view class="panel row split action merchant-site">
+      <view class="row grow">
+        <image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/>
+        <view class="grow"><view class="subheading">{{station.name}}</view><view wx:if="{{station.address}}" class="muted small">{{station.district}} · {{station.address}}</view></view>
+      </view>
       <text class="muted small">切换门店 ›</text>
     </view>
   </picker>
@@ -51,32 +54,62 @@
     </view>
   </block>
   <block wx:else>
-    <view class="hero">
-      <view class="row split"><view class="kicker">门店运营 · 模拟体验</view><view class="badge">{{deviceLabel}}</view></view>
-      <view class="title">{{station.stage === 'schedule' ? '设置开放时间' : '今日概览'}}</view>
-      <view class="muted">{{station.device.id}} · 北京时间 {{now}}</view>
-    </view>
     <block wx:if="{{section === 'home'}}">
-      <view class="panel">
-        <view class="row split"><view class="subheading">{{station.device.id}}</view><view class="badge">{{deviceLabel}}</view></view>
-        <view class="muted">{{city}} · {{station.district}} · {{station.address}}</view>
-        <view class="muted">采集员在订单内自助领还。归还核验由凌矩处理。</view>
-        <view class="row divider">
-          <view class="grow tile"><view class="metric">{{todayOrders}}</view><view class="muted">今日预约</view></view>
-          <view class="grow tile"><view class="metric">{{daily}}</view><view class="muted">今日确认收益笔数</view></view>
+      <view class="panel merchant-overview">
+        <view class="row split">
+          <view class="kicker">今日概览 · 模拟</view>
+          <text class="status-pill status-{{overview.opening.tone}}">{{overview.opening.label}}</text>
+        </view>
+        <view class="merchant-visit">
+          <block wx:if="{{overview.next}}">
+            <view class="kicker">{{overview.nextLabel}}</view>
+            <view class="merchant-time">{{overview.next.startTime}}<text class="merchant-time-end">–{{overview.next.endTime}}</text></view>
+            <view class="muted">{{overview.next.taskName}} · {{overview.next.stateLabel}}</view>
+          </block>
+          <view wx:else class="heading">{{overview.nextLabel}}</view>
+        </view>
+        <view class="merchant-context">
+          <view class="row split"><view class="muted">设备状态</view><text class="status-pill status-{{overview.device.tone}}">{{overview.device.label}}</text></view>
+          <view class="row split"><view class="muted">今日开放时段</view><view class="merchant-hours">{{overview.hours}}</view></view>
+        </view>
+        <view wx:if="{{overview.device.note || overview.affected}}" class="notice">
+          {{overview.device.note}}<view wx:if="{{overview.affected}}">今日 {{overview.affected}} 笔预约受影响，可在下方排班查看。</view>
+        </view>
+        <view class="row action merchant-actions">
+          <button class="grow primary touch-control" hover-class="control-pressed" bindtap="showTodaySchedule">查看今日排班</button>
+          <button class="grow ghost touch-control" hover-class="control-pressed" data-section="schedule" bindtap="section">调整开放时间</button>
         </view>
       </view>
-      <view class="panel">
-        <view class="heading">设备排班</view>
+      <view class="panel row merchant-totals">
+        <view class="grow"><view class="metric">{{todayOrders}}<text class="merchant-unit"> 笔</text></view><view class="muted">今日预约</view></view>
+        <view class="grow"><view class="metric">{{daily}}<text class="merchant-unit"> 笔</text></view><view class="muted">今日确认场地收益</view></view>
+      </view>
+      <view class="panel" id="merchant-schedule">
+        <view class="row split"><view class="heading">设备排班</view><view class="muted small">{{orders.length}} 笔记录</view></view>
         <picker mode="date" value="{{date}}" start="{{today}}" bindchange="selectDate">
-          <view class="field">{{date}}　{{windowLabel}} ›</view>
+          <view class="field row split touch-control"><text>{{date === today ? '今天 · ' : ''}}{{date}}</text><text class="muted small">切换日期 ›</text></view>
         </picker>
-        <view class="muted">相邻预约预留30分钟，采集结束距当段闭店至少15分钟。</view>
-        <view class="divider" wx:for="{{orders}}" wx:key="id">
-          <view class="row split"><text>{{item.interval}}</text><text class="badge">{{item.stateLabel}}</text></view>
-          <view class="muted">{{item.id}} · {{item.taskName}}</view>
+        <view class="muted small">开放 {{windowLabel}}</view>
+        <block wx:if="{{track}}">
+          <view class="schedule-track action">
+            <view wx:for="{{track.segments}}" wx:key="id" class="schedule-segment schedule-{{item.tone}}" style="flex-grow: {{item.minutes}}"/>
+          </view>
+          <view class="row split muted small"><text>{{track.start}}</text><text>{{track.end}}</text></view>
+          <view class="row wrap schedule-legend">
+            <view class="row"><view class="schedule-key schedule-open"/>开放</view>
+            <view class="row"><view class="schedule-key schedule-booked"/>已预约</view>
+            <view class="row"><view class="schedule-key schedule-buffer"/>缓冲</view>
+            <view class="row"><view class="schedule-key schedule-closed"/>未开放</view>
+            <view class="row"><view class="schedule-key schedule-affected"/>受影响</view>
+          </view>
+          <view class="muted small action">相邻预约间隔 {{deviceBuffer}} 分钟，闭店前预留 {{closingBuffer}} 分钟。</view>
+        </block>
+        <view class="divider merchant-order" wx:for="{{orders}}" wx:key="id">
+          <view class="row split"><text class="merchant-order-time">{{item.startTime}}–{{item.endTime}}</text><text class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</text></view>
+          <view class="muted small">{{item.taskName}} · {{item.id}}</view>
         </view>
-        <view wx:if="{{!orders.length}}" class="divider muted">该日暂无预约。</view>
+        <view wx:if="{{!orders.length}}" class="divider muted">{{track ? '当天还没有预约。' : '当天未设置开放时段。'}}</view>
+        <view class="divider muted small">{{station.device.id}} · 归还由凌矩核验</view>
       </view>
     </block>
     <block wx:if="{{section === 'schedule'}}">

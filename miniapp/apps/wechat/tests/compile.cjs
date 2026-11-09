@@ -13,6 +13,8 @@ const wxml = compiler.wxmlToJs(r.root);
 const wxss = compiler.wxssToJs(r.root);
 assert.ok(typeof wxml === 'string' && wxml.length > 0, String(wxml));
 assert.ok(typeof wxss === 'string' && wxss.length > 0, String(wxss));
+assert.match(wxss, /merchant-visit/);
+assert.match(wxss, /order-focus/);
 const render = new Function('window', 'global', wxml)({}, {});
 
 for (const route of manifest.pages) {
@@ -59,11 +61,20 @@ assert.doesNotMatch(pageText(renderTask(task.data)), /设备箱位置/);
 assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
 task.start(event({ minute: 540 }));
 assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
+assert.match(pageText(renderTask(task.data)), /再选结束时间/);
 task.end(event({ minute: 600 }));
 assert.equal(Boolean(findButton(renderTask(task.data), '确认模拟预约').attr.disabled), false);
 task.submit();
 
 const { id } = store.read().orders[0];
+const previewShop = r.open('merchant');
+previewShop.persona(event({}, '0'));
+const renderMerchant = render('pages/merchant/index.wxml');
+const board = renderMerchant(previewShop.data);
+assert.match(pageText(board), /下一位到店/);
+assert.match(pageText(board), /设备可用/);
+assert.match(pageText(board), /缓冲/);
+assert.equal(findButton(board, '查看今日排班').attr.bindtap, 'showTodaySchedule');
 const collector = r.open('collector');
 const homeText = pageText(render('pages/collector/index.wxml')(collector.data));
 assert.match(homeText, /下一单/);
@@ -87,6 +98,8 @@ for (const [label, action] of [
   order.perform(event({ action }));
 }
 assert.match(pageText(renderOrder(order.data)), /已提交 · 待核验/);
+previewShop.onShow();
+assert.match(pageText(renderMerchant(previewShop.data)), /待凌矩核验/);
 store.change(state => booking.verifyReturn(state, id, '模拟设备已放回原箱'));
 order.onShow();
 const resultText = pageText(renderOrder(order.data));
@@ -108,10 +121,11 @@ assert.match(pageText(affectedView), /处理预约变更/);
 assert.equal(findButton(affectedView, '遇到问题').attr.bindtap, 'toggleIssue');
 assert.equal(findButton(affectedView, '选择其他时段').attr.bindtap, 'reschedule');
 affected.toggleIssue();
-assert.ok(findButton(renderOrder(affected.data), '提交模拟求助'));
+assert.equal(findButton(renderOrder(affected.data), '提交模拟求助').attr.disabled, true);
 assert.ok(findButton(renderOrder(affected.data), '地图导航'));
 assert.ok(findButton(renderOrder(affected.data), '选择其他时段'));
 affected.issueDetails(event({}, '模拟箱子打不开'));
+assert.equal(Boolean(findButton(renderOrder(affected.data), '提交模拟求助').attr.disabled), false);
 affected.reportIssue();
 
 r.app.onLaunch({ path: 'pages/ops/index', query: { mode: 'mock-ops' } });

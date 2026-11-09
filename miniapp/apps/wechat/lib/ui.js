@@ -8,6 +8,8 @@ const STAGES = { draft: '尚未申请', review: '待审核', supplement: '需要
   approved: '审核通过 · 待安装', installed: '待商家确认设备到位', schedule: '待设置开放时间', open: '已部署' };
 const STATUSES = { booked: '已确认', travel: '前往中', arrived: '已到店', collecting: '采集中', stopped: '已停采 · 待归还',
   submitted: '已提交归还', done: '归还完成', cancelled: '已取消', missed: '到期未采集' };
+const ORDER_TONES = { booked: 'ready', travel: 'active', arrived: 'active', collecting: 'active',
+  stopped: 'wait', submitted: 'wait', done: 'ready', cancelled: 'quiet', missed: 'quiet' };
 const KINDS = { venue: '场地收益', capture: '采集报酬', qaAdjustment: '质检复核补充', subsidy: '交通补贴' };
 const PROGRESS = { pending: '待审核', approved: '待发放补贴', rejected: '已拒绝 · 可申诉', appealed: '申诉待复核', final: '复核未通过' };
 
@@ -73,6 +75,7 @@ function presentOrder(state, order) {
   const before = preStart(order);
   const active = before || holding(order);
   const handoffBlock = before || order.status === 'collecting' ? booking.handoffBlock(state, order) : '';
+  const affected = before && Boolean(order.impact || order.closed);
   const canUse = !handoffBlock;
   const cancelled = order.cancellation;
   const subsidy = order.subsidy;
@@ -80,7 +83,9 @@ function presentOrder(state, order) {
   return { ...order, stationName: station.name, device: station.device.id, taskName: TASKS[order.task].title,
     interval: order.date + ' ' + timeLabel(order.start) + '–' + timeLabel(order.end), startAt, endAt,
     stationAddress: station.district + ' · ' + station.address, startTime: timeLabel(order.start), endTime: timeLabel(order.end),
-    stateLabel: before && (order.impact || order.closed) ? '待处理' : order.suspected && before && !order.arrivedAt ? '疑似爽约' : STATUSES[order.status],
+    stateLabel: affected ? '待处理' : order.suspected && before && !order.arrivedAt ? '疑似爽约' : STATUSES[order.status],
+    stateTone: affected || (order.overdue && holding(order)) ? 'risk' : before && (handoffBlock || order.suspected)
+      ? 'wait' : ORDER_TONES[order.status],
     handoffBlock, firstStep: order.status === 'booked' && canUse && state.now < endAt,
     arrive: ['booked', 'travel'].includes(order.status) && canUse && state.now >= startAt - 15 * MINUTE && state.now < endAt,
     startCollect: order.status === 'arrived' && canUse && state.now >= startAt && state.now < endAt,

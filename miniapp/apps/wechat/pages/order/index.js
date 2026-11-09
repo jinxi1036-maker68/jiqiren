@@ -70,7 +70,7 @@ function orderTimeline(order) {
 
 Page({
   data: { reportPhoto: false, steps: STEPS, mainAction: null, showDemo: false, showIssue: false, showSop: false,
-    issueKind: 'device', issueDetails: '', failUpload: false },
+    issueKind: 'device', issueDetails: '', canSendIssue: false, failUpload: false },
   onLoad(options) {
     this.id = options.id;
   },
@@ -176,12 +176,13 @@ Page({
     if (type) this.setData({ issueKind: type.id, issueIndex: Number(event.detail.value) });
   },
   issueDetails(event) {
-    this.setData({ issueDetails: event.detail.value });
+    const issueDetails = event.detail.value;
+    this.setData({ issueDetails, canSendIssue: Boolean(issueDetails.trim()) });
   },
   reportIssue() {
     const type = this.data.issueTypes[this.data.issueIndex];
     ui.commit(this, state => booking.report(state, state.collector, this.id, this.data.issueDetails, this.data.reportPhoto, type.id), () => {
-      this.setData({ showIssue: false, reportPhoto: false, issueDetails: '' });
+      this.setData({ showIssue: false, reportPhoto: false, issueDetails: '', canSendIssue: false });
       wx.showToast({ title: '求助已提交', icon: 'success' });
     });
   },

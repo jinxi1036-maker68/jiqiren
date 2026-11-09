@@ -1,0 +1,17 @@
+.order-overview { padding: 24rpx; border-color: #d7e0d6; }
+.order-focus { margin-top: 18rpx; padding: 20rpx; border-radius: 18rpx; background: #edf5e8; border-left: 6rpx solid #4e8662; }
+.order-focus-active { background: #ecf4f7; border-left-color: #5e8ca3; }
+.order-focus-wait { background: #faf3e2; border-left-color: #be8d3b; }
+.order-focus-risk { background: #faefeb; border-left-color: #bd7162; }
+.order-focus-quiet { background: #f1f3ef; border-left-color: #a4aea2; }
+.order-focus-title { font-size: 38rpx; line-height: 1.22; font-weight: 750; margin: 4rpx 0 8rpx; }
+.order-facts { display: flex; flex-direction: column; gap: 12rpx; margin-top: 20rpx; }
+.order-facts .row { align-items: flex-start; }
+.order-time { font-weight: 680; font-variant-numeric: tabular-nums; }
+.order-overview .order-shortcut { background: #f8faf6; border-color: #dce5da; }
+.order-kit { padding: 0 22rpx; }
+.order-code { padding: 20rpx 0; border-bottom: 1rpx solid #edf0e8; }
+.order-code-value { color: #2a4d38; font-size: 36rpx; font-weight: 750; font-variant-numeric: tabular-nums; }
+.order-sop { width: 100%; justify-content: space-between; padding: 0; background: transparent; }
+.order-kit .divider { margin: 0; padding-bottom: 20rpx; }
+.order-dock .ghost { color: #2e4c3a; font-weight: 680; }

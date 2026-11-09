@@ -137,3 +137,21 @@ textarea { height: 138rpx; }
 .photo-choice { min-height: 114rpx; flex-direction: column; font-size: 23rpx; gap: 6rpx; padding: 10rpx 4rpx; }
 .photo-sign { font-size: 33rpx; line-height: 1; font-weight: 700; }
 .money-line { font-variant-numeric: tabular-nums; font-weight: 720; }
+
+.touch-control { min-height: 88rpx; }
+.control-pressed { opacity: .75; }
+.filter-row .filter-chip { min-height: 84rpx; }
+.status-pill {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 6rpx 13rpx;
+  border-radius: 12rpx;
+  font-size: 22rpx;
+  font-weight: 680;
+  line-height: 1.4;
+}
+.status-ready { color: #27523c; background: #e8f2e8; }
+.status-active { color: #264c61; background: #e7f1f6; }
+.status-wait { color: #6e511c; background: #fff0cf; }
+.status-risk { color: #81372c; background: #f9e7e3; }
+.status-quiet { color: #4f5c57; background: #eef1ed; }

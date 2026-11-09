@@ -1,4 +1,4 @@
-const { MINUTE, HOUR, TASKS, at, dateOf } = require('./catalog');
+const { MINUTE, HOUR, DEVICE_BUFFER, CLOSING_BUFFER, TASKS, at, dateOf } = require('./catalog');
 const { requireThat, text, nextId, record, notify, stationFor, ownedOrder, validDate, windows, fits,
   preStart, holding, credit, byId } = require('./model');
 
@@ -27,7 +27,7 @@ function conflicts(state, collectorId, stationId, date, start, end, ignoreId) {
   }
   const orders = state.orders.filter(order => order.id !== ignoreId && order.date === date && order.status !== 'cancelled');
   const deviceOrders = orders.filter(order => order.stationId === stationId);
-  if (deviceOrders.some(order => start < order.end + 30 && end + 30 > order.start)) {
+  if (deviceOrders.some(order => start < order.end + DEVICE_BUFFER && end + DEVICE_BUFFER > order.start)) {
     return '设备时段冲突，相邻预约至少间隔30分钟';
   }
   if (orders.some(order => order.collectorId === collectorId && start < order.end && end > order.start)) {
@@ -45,9 +45,9 @@ function availability(state, collectorId, stationId, date, ignoreId) {
   if (!validDate(date)) return [];
   const slots = [];
   for (const [open, close] of windows(station, date)) {
-    for (let start = Math.ceil(open / 30) * 30; start + task.min <= close - 15; start += 30) {
+    for (let start = Math.ceil(open / 30) * 30; start + task.min <= close - CLOSING_BUFFER; start += 30) {
       const ends = [];
-      for (let end = start + task.min; end <= Math.min(start + task.max, close - 15); end += 30) {
+      for (let end = start + task.min; end <= Math.min(start + task.max, close - CLOSING_BUFFER); end += 30) {
         if (!conflicts(state, collectorId, stationId, date, start, end, ignoreId)) ends.push(end);
       }
       if (ends.length) slots.push({ start, ends });

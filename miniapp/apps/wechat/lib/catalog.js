@@ -1,6 +1,8 @@
 const MINUTE = 60000;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
+const DEVICE_BUFFER = 30;
+const CLOSING_BUFFER = 15;
 const OFFSET = 8 * HOUR;
 const START = Date.parse('2026-11-09T08:00:00+08:00');
 const CITY = '平顶山';
@@ -87,4 +89,5 @@ function seed() {
   };
 }
 
-module.exports = { MINUTE, HOUR, DAY, CITY, DISTRICTS, DEMO_MAP_POINTS, DEMO_GUIDES, TASKS, dateOf, clock, stamp, at, timeLabel, minutes, seed };
+module.exports = { MINUTE, HOUR, DAY, DEVICE_BUFFER, CLOSING_BUFFER, CITY, DISTRICTS, DEMO_MAP_POINTS, DEMO_GUIDES,
+  TASKS, dateOf, clock, stamp, at, timeLabel, minutes, seed };

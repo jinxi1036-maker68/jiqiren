@@ -1,7 +1,7 @@
 const store = require('../../lib/storage');
 const merchant = require('../../lib/merchant');
-const { TASKS, CITY, DISTRICTS, dateOf, stamp, timeLabel, minutes } = require('../../lib/catalog');
-const { stationFor, windows, holding, requireThat } = require('../../lib/model');
+const { TASKS, CITY, DISTRICTS, DEVICE_BUFFER, CLOSING_BUFFER, dateOf, clock, timeLabel, minutes } = require('../../lib/catalog');
+const { stationFor, windows, preStart, holding, requireThat } = require('../../lib/model');
 const ui = require('../../lib/ui');
 
 const TASK_KEYS = Object.keys(TASKS);
@@ -38,9 +38,69 @@ function affectedKey(orders) {
   return orders.map(order => order.id + ':' + order.status).join('|');
 }
 
+function deviceStatus(station, orders) {
+  if (station.device.fault) return { label: '暂停接单', tone: 'risk', note: station.device.fault.reason };
+  if (station.device.overdue.length) return { label: '逾期暂停', tone: 'risk', note: '凌矩核验设备后恢复。' };
+  const current = orders.find(holding);
+  if (current?.status === 'submitted') return { label: '待凌矩核验', tone: 'wait' };
+  if (current?.status === 'stopped') return { label: '待采集员归还', tone: 'wait' };
+  if (current) return { label: '采集中', tone: 'active' };
+  if (!station.taskEnabled) return { label: '暂停新预约', tone: 'quiet' };
+  return { label: '设备可用', tone: 'ready' };
+}
+
+function todayOverview(state, station, orders, today) {
+  const minute = minutes(clock(state.now));
+  const hours = windows(station, today);
+  const current = hours.find(([open, close]) => minute >= open && minute < close);
+  const upcoming = hours.find(([open]) => open > minute);
+  const next = orders.find(order => order.date === today && preStart(order) && order.endAt > state.now);
+  const nextLabel = !next ? '今日暂无后续预约' : next.impact || next.closed ? '下一笔预约受影响'
+    : next.status === 'arrived' ? '采集员已到店' : next.startAt <= state.now ? '本时段待到店' : '下一位到店';
+  return {
+    next, nextLabel,
+    device: deviceStatus(station, orders),
+    hours: ui.rangeText(hours),
+    opening: current ? { label: '开放至 ' + timeLabel(current[1]), tone: 'ready' }
+      : upcoming ? { label: timeLabel(upcoming[0]) + ' 开放', tone: 'quiet' }
+        : { label: hours.length ? '今日开放已结束' : '今日未开放', tone: 'quiet' },
+    affected: orders.filter(order => order.date === today && preStart(order)
+      && order.endAt > state.now && (order.impact || order.closed)).length
+  };
+}
+
+function scheduleTrack(ranges, orders) {
+  const reserved = orders.filter(order => order.status !== 'cancelled');
+  const ends = [...ranges.flat(), ...reserved.flatMap(order => [order.start, order.end])];
+  if (!ends.length) return null;
+  const first = Math.min(...ends);
+  const last = Math.max(...ends);
+  const buffers = [
+    ...ranges.map(([, close]) => [close - CLOSING_BUFFER, close]),
+    ...reserved.flatMap(order => [[order.start - DEVICE_BUFFER, order.start], [order.end, order.end + DEVICE_BUFFER]])
+  ];
+  const points = [...new Set([...ends, ...buffers.flat()])].filter(minute => minute >= first && minute <= last).sort((a, b) => a - b);
+  const segments = [];
+  for (let index = 1; index < points.length; index++) {
+    const from = points[index - 1];
+    const to = points[index];
+    const appointment = reserved.find(order => order.start <= from && order.end >= to);
+    let tone = 'closed';
+    if (appointment) tone = appointment.closed || appointment.impact ? 'affected' : 'booked';
+    else if (ranges.some(([open, close]) => open <= from && close >= to)) {
+      tone = buffers.some(([start, end]) => start <= from && end >= to) ? 'buffer' : 'open';
+    }
+    const previous = segments[segments.length - 1];
+    if (previous?.tone === tone) previous.minutes += to - from;
+    else segments.push({ id: from, tone, minutes: to - from });
+  }
+  return { start: timeLabel(first), end: timeLabel(last), segments };
+}
+
 Page({
   data: {
     fields: FIELDS, city: CITY, districts: DISTRICTS, form: SAMPLE, districtIndex: 0,
+    deviceBuffer: DEVICE_BUFFER, closingBuffer: CLOSING_BUFFER,
     taskIndex: 0, categories: TASK_KEYS.map(key => TASKS[key].category),
     photos: [{ id: 'front', title: '门头' }, { id: 'inside', title: '室内' }, { id: 'device', title: '设备位置' }],
     added: {}, days: DAYS, weekday: 0, weekRanges: [], dayRanges: [], section: 'home',
@@ -57,16 +117,18 @@ Page({
     const period = this.data.period || today.slice(0, 7);
     const currentEarnings = ui.ledger(state, station.id, period);
     const daily = state.earnings.filter(item => item.party === station.id && dateOf(item.at) === today);
-    const orders = state.orders.filter(order => order.stationId === station.id && order.date === date)
-      .sort((a, b) => a.start - b.start).map(order => ui.presentOrder(state, order));
+    const stationOrders = state.orders.filter(order => order.stationId === station.id)
+      .map(order => ui.presentOrder(state, order)).sort((a, b) => a.startAt - b.startAt);
+    const orders = stationOrders.filter(order => order.date === date);
+    const ranges = windows(station, date);
     const [step, nextTitle, nextHint] = PROGRESS[station.stage];
-    this.setData({ station, today, date, period, now: stamp(state.now), orders, step, nextTitle, nextHint,
+    const deployed = ['schedule', 'open'].includes(station.stage);
+    this.setData({ station, today, date, period, orders, step, nextTitle, nextHint,
       sites: state.stations.map(item => item.name), siteIndex: state.stations.indexOf(station),
       stage: ui.STAGES[station.stage], canApply: ['draft', 'supplement', 'rejected'].includes(station.stage),
-      deployed: ['schedule', 'open'].includes(station.stage),
-      todayOrders: state.orders.filter(order => order.stationId === station.id && order.date === today && order.status !== 'cancelled').length,
-      deviceLabel: station.device && (station.device.fault || station.device.overdue.length) ? '暂停接单' : '已登记',
-      windowLabel: ui.rangeText(windows(station, date)), dayRanges: rangeFields(windows(station, date)),
+      deployed, overview: deployed ? todayOverview(state, station, stationOrders, today) : null,
+      todayOrders: stationOrders.filter(order => order.date === today && order.status !== 'cancelled').length,
+      track: scheduleTrack(ranges, orders), windowLabel: ui.rangeText(ranges), dayRanges: rangeFields(ranges),
       currentEarnings, daily: daily.length });
     this.showWeek(this.data.weekday);
   },
@@ -131,6 +193,12 @@ Page({
   selectDate(event) {
     this.setData({ date: event.detail.value });
     this.refresh();
+  },
+  showTodaySchedule() {
+    this.setData({ date: this.data.today }, () => {
+      this.refresh();
+      wx.pageScrollTo({ selector: '#merchant-schedule', duration: 180 });
+    });
   },
   saveDate() {
     this.previewSchedule(this.data.date, this.data.dayRanges.map(item => [minutes(item.from), minutes(item.to)]), '更新 ' + this.data.date + ' 开放时段');

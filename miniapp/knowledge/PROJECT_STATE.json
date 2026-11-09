@@ -1293,6 +1293,18 @@
       "scope": "remember the role on a standard cold start; keep the role chooser on native return home and explicit switch",
       "automated_tests_passed": 35,
       "real_device_home_button_verified": false
+    },
+    "merchant_board_and_order_polish": {
+      "status": "implemented_automated_tested",
+      "base_commit": "63f32dd0152e46e494ed6da8ed25d8ea0d2b71d9",
+      "scope": [
+        "merchant overview with next visit, device state and opening hours",
+        "schedule rail with opening, reservations, buffers, closure and impact",
+        "order status hierarchy, primary and secondary controls and form feedback"
+      ],
+      "automated_tests_passed": 36,
+      "offline_render": "six WXML routes and WXSS compiled; 375px layout verified for merchant board and two order states",
+      "real_device_visual_verified": false
     }
   }
 }

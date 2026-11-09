@@ -1,4 +1,4 @@
-const { DAY, HOUR, at, dateOf } = require('./catalog');
+const { DAY, HOUR, CLOSING_BUFFER, at, dateOf } = require('./catalog');
 
 function requireThat(value, message) {
   if (!value) throw new Error(message);
@@ -47,7 +47,7 @@ function windows(station, date) {
 }
 
 function fits(station, order) {
-  return windows(station, order.date).some(([open, close]) => order.start >= open && order.end <= close - 15);
+  return windows(station, order.date).some(([open, close]) => order.start >= open && order.end <= close - CLOSING_BUFFER);
 }
 
 function preStart(order) {

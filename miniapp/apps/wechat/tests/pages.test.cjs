@@ -102,6 +102,45 @@ test('地图导航打开当前站点的微信示例坐标，并在地图失败�
   assert.equal(r.dialogs.at(-1).title, '无法打开地图');
 });
 
+test('商家概览区分设备状态，排班图保留占用和缓冲，换日期仍显示今日下一位', () => {
+  const r = runtime();
+  const first = makeOrder(r);
+  const date = first.data.order.date;
+  const next = store.change(state => booking.create(state, 'c2', { stationId: 's1', date, start: 630, end: 690 }));
+  const shop = r.open('merchant');
+  shop.persona(event({}, '0'));
+  assert.equal(shop.data.overview.next.id, first.data.order.id);
+  assert.equal(shop.data.overview.opening.label, '09:00 开放');
+  assert.equal(shop.data.overview.device.label, '设备可用');
+  const segments = shop.data.track.segments;
+  assert.deepEqual(segments.slice(0, 3).map(item => [item.tone, item.minutes]), [['booked', 60], ['buffer', 30], ['booked', 60]]);
+  assert.equal(segments.at(-1).minutes, 15);
+  assert.equal(segments.reduce((sum, item) => sum + item.minutes, 0), 540);
+
+  for (const action of ['travel', 'arrive', 'collect']) first.perform(event({ action }));
+  shop.onShow();
+  assert.equal(shop.data.overview.next.id, next.id);
+  assert.equal(shop.data.overview.device.label, '采集中');
+  for (const action of ['stop', 'return']) first.perform(event({ action }));
+  shop.onShow();
+  assert.equal(shop.data.overview.device.label, '待凌矩核验');
+
+  shop.selectDate(event({}, '2026-11-10'));
+  assert.equal(shop.data.orders.length, 0);
+  assert.equal(shop.data.overview.next.id, next.id);
+  shop.showTodaySchedule();
+  assert.equal(shop.data.date, date);
+  store.change(state => {
+    booking.verifyReturn(state, first.data.order.id, '模拟在箱');
+    booking.pause(state, 's1', '设备检修');
+  });
+  shop.onShow();
+  assert.equal(shop.data.overview.device.tone, 'risk');
+  assert.equal(shop.data.overview.nextLabel, '下一笔预约受影响');
+  assert.equal(shop.data.overview.affected, 1);
+  assert.ok(shop.data.track.segments.some(item => item.tone === 'affected'));
+});
+
 test('前单待核验时解释为何不能签到，刷新后可继续且求助不会锁住下一步', () => {
   const r = runtime();
   const later = makeOrder(r, 630, 690);
