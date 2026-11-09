@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed suspending new bookings on equipment whose return is overdue and not verified; notify subsequent affected booked collectors and allow penalty-free cancellation or compliant rescheduling; Lingju may reopen bookings after verified return and equipment readiness, not on collector self-report.",
+  "latest_decision": "Owner confirmed eligibility for fixed transport compensation if a previous collector's unreturned equipment prevents the next booked collector from collecting after genuine travel or arrival. No subsidy if the next collector was warned before departure. Lingju verifies and settles under the existing subsidy workflow, and merchant is not presumed liable; earlier collector fault requires separate investigation.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -885,7 +885,29 @@
     "self_reported_return_not_sufficient_to_resume": true,
     "exact_pause_trigger": "undecided",
     "unanswered_bookings_policy": "undecided",
-    "affected_collector_transport_compensation": "undecided",
+    "affected_collector_transport_compensation": "eligible_if_actually_departed_or_arrived_and_unable_to_collect_due_to_unreturned_device_after_lingju_verification; fixed_amount",
+    "implemented": false,
+    "compensation_decision_id": "DEC-2026-11-09-30"
+  },
+  "collector_blocked_by_previous_overdue_return_transport_subsidy_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-30",
+    "cause": "previous_collector_equipment_not_verified_returned_blocks_next_booking",
+    "not_departed_and_warned_before_departure": {
+      "transport_subsidy_eligible": false
+    },
+    "departed_or_arrived_and_unable_to_collect": {
+      "transport_subsidy_eligible": "after_lingju_verification_of_booking_equipment_status_and_travel_evidence",
+      "amount_rule": "fixed_admin_configured_existing_rule"
+    },
+    "claim_action": "collector_applies_proactively",
+    "click_departure_alone_is_sufficient_proof": false,
+    "ordinary_transport_subsidy_review_and_appeal_policy_applies": true,
+    "per_affected_order_subsidy_limit": "normally_once",
+    "approved_status": "待发放补贴",
+    "actual_payment": "with_collector_regular_income_settlement_not_immediate",
+    "merchant_default_payment_liability": false,
+    "previous_collector_fault_or_recovery": "separate_investigation_not_automatic",
     "implemented": false
   }
 }
