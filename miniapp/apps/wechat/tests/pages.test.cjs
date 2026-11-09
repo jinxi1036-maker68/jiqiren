@@ -23,6 +23,9 @@ test('原生页面入口记住选择，默认不进入运营工作台且可一�
 test('商家页面申请，运营审核部署，商家确认后排班才进入采集员列表', () => {
   const r = runtime();
   const m = r.open('merchant');
+  assert.equal(m.data.showApplication, false);
+  m.openApplication();
+  assert.equal(m.data.showApplication, true);
   for (const id of ['front', 'inside', 'device']) m.photo(event({ id }));
   m.apply();
   assert.equal(m.data.station.stage, 'review');
@@ -52,12 +55,18 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   assert.equal(task.data.starts[0], '09:00');
   assert.equal(task.data.ends[0], '10:00');
   assert.equal(task.data.lateChange, false);
+  task.start(event({ index: 1 }));
+  assert.equal(task.data.starts[task.data.startIndex], '09:30');
+  assert.equal(task.data.ends[task.data.endIndex], '10:30');
+  task.start(event({ index: 0 }));
   task.submit();
   const id = new URL(r.nav.pop(), 'https://demo.invalid').searchParams.get('id');
   const order = r.open('order', { id });
+  assert.equal(order.data.mainAction.action, 'travel');
   order.perform(event({ action: 'travel' }));
   order.jumpTo(event({ target: 'start' }));
   assert.equal(order.data.order.arrive, true);
+  assert.equal(order.data.mainAction.action, 'arrive');
   order.perform(event({ action: 'arrive' }));
   order.perform(event({ action: 'collect' }));
   order.jumpTo(event({ target: 'end' }));

@@ -6,9 +6,16 @@ const ui = require('../../lib/ui');
 
 const REGIONS = ['全城', '新华区', '卫东区', '湛河区'];
 const SORTS = ['最早可开工', '区域顺序'];
+const NAV_ITEMS = [
+  { section: 'tasks', label: '找任务', icon: '/assets/icons/radar.svg' },
+  { section: 'orders', label: '预约', icon: '/assets/icons/orders.svg' },
+  { section: 'income', label: '收益', icon: '/assets/icons/wallet.svg' },
+  { section: 'messages', label: '消息', icon: '/assets/icons/bell.svg' },
+  { section: 'credit', label: '我的', icon: '/assets/icons/person.svg' }
+];
 
 Page({
-  data: { section: 'tasks', regions: REGIONS, region: 0, sorts: SORTS, sort: 0, search: '' },
+  data: { section: 'tasks', navItems: NAV_ITEMS, regions: REGIONS, region: 0, sorts: SORTS, sort: 0, search: '' },
   onLoad(options) {
     this.replaceId = options.replace || '';
   },
@@ -29,7 +36,8 @@ Page({
       .map(station => ui.listing(state, station, date, actor, this.replaceId))
       .filter(card => (card.name + card.title + card.category).includes(this.data.search));
     if (this.data.sort === 0) cards.sort((a, b) => (a.openCount ? a.earliest : '99:99').localeCompare(b.openCount ? b.earliest : '99:99'));
-    this.setData({ today, date, period, clock: stamp(state.now), cards, messages,
+    this.setData({ today, date, dateLabel: date === today ? '今天 ' + date.slice(5).replace('-', '/') : date.slice(5).replace('-', '/'),
+      availableCount: cards.filter(card => card.openCount).length, period, clock: stamp(state.now), cards, messages,
       replaceId: this.replaceId, personas: state.collectors.map(person => person.name),
       persona: state.collectors.findIndex(person => person.id === actor),
       unread: messages.filter(message => !message.read).length,
@@ -41,7 +49,11 @@ Page({
     ui.commit(this, state => { state.collector = state.collectors[Number(event.detail.value)].id; });
   },
   section(event) {
-    this.setData({ section: event.currentTarget.dataset.section });
+    this.setData({ section: event.currentTarget.dataset.section }, () => wx.pageScrollTo({ scrollTop: 0, duration: 0 }));
+  },
+  exitReschedule() {
+    this.replaceId = '';
+    this.refresh();
   },
   date(event) {
     this.setData({ date: event.detail.value });

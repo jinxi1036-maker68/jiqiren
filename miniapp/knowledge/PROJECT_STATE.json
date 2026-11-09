@@ -1235,6 +1235,19 @@
       "offline_render_screenshot": "miniapp/apps/wechat/evidence/v0.1-offline-render.png",
       "desktop_simulator_smoke": "DevTools 2.02.2609250 and base library 3.18.0 with a local AppID: compiled and interacted from home through collector task list to illustrated task detail and booking controls."
     },
-    "draft_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/26"
+    "draft_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/26",
+    "interface_refresh": {
+      "status": "implemented_desktop_smoke_tested",
+      "scope": [
+        "role selection",
+        "collector navigation and task cards",
+        "booking controls",
+        "order progress",
+        "merchant onboarding and navigation"
+      ],
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-interface-refresh.png",
+      "desktop_smoke": "role entry, collector task list, slot selection and merchant onboarding landing",
+      "automated_tests_passed": 25
+    }
   }
 }

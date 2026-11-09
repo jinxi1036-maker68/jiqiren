@@ -1,4 +1,4 @@
-<view class="screen">
+<view class="screen {{mainAction ? 'with-dock' : ''}}">
   <view class="panel" wx:if="{{missing}}">
     <view class="heading">无法打开预约</view>
     <view class="muted">请核对演示采集员身份，或查看重置后的订单列表。</view>
@@ -7,9 +7,14 @@
   <block wx:else>
     <view class="kicker">订单详情 · 模拟体验</view>
     <view class="hero">
-      <view class="kicker">{{order.id}}　{{order.stateLabel}}</view>
+      <view class="row split"><view class="kicker">模拟订单 {{order.id}}</view><view class="badge">{{order.stateLabel}}</view></view>
       <view class="title">{{order.taskName}}</view>
       <view class="muted">{{order.stationName}} · {{order.interval}}</view>
+      <view class="stage-grid" wx:if="{{step >= 0}}">
+        <view wx:for="{{steps}}" wx:key="*this" class="stage-item {{index === step ? 'stage-current' : index < step ? 'stage-past' : ''}}">
+          <view class="stage-bar"/>{{item}}
+        </view>
+      </view>
     </view>
     <view wx:if="{{order.cancelText}}" class="notice">{{order.cancelText}} {{order.cancellation.exempt ? '· 无责取消' : ''}}</view>
     <view wx:if="{{order.impact && !order.cancellation}}" class="notice">{{order.impact.reason}}。可无责取消或改约。</view>
@@ -27,11 +32,6 @@
         <view class="subheading">模拟密码箱 · 0427（虚构）</view>
         <view class="muted">到店签到后按预约时间自助领机。归还时放回原箱并锁好。</view>
       </view>
-      <button wx:if="{{order.firstStep}}" class="action" data-action="travel" bindtap="perform">模拟开始前往</button>
-      <button wx:if="{{order.arrive}}" class="primary action" data-action="arrive" bindtap="perform">模拟到店签到</button>
-      <button wx:if="{{order.startCollect}}" class="primary action" data-action="collect" bindtap="perform">模拟自助领机并开始采集</button>
-      <button wx:if="{{order.status === 'collecting'}}" class="primary action" data-action="stop" bindtap="perform">停止采集</button>
-      <button wx:if="{{order.status === 'stopped'}}" class="primary action" data-action="return" bindtap="perform">提交归还并模拟上传</button>
       <view class="notice" wx:if="{{order.status === 'submitted'}}">已提交归还，等待凌矩模拟核验。</view>
       <view class="notice" wx:if="{{order.status === 'done'}}">归还完成 · 凌矩模拟核验</view>
       <view class="row action" wx:if="{{order.canCancel || order.canReschedule}}">
@@ -67,5 +67,9 @@
       <button wx:if="{{order.canAppealSubsidy}}" class="action" bindtap="appealSubsidy">提交模拟补贴申诉</button>
     </view>
     <view class="tagline">演示数据 · 虚构凭证 · 非真实结算</view>
+    <view class="dock action-dock" wx:if="{{mainAction}}">
+      <view class="dock-summary"><view class="muted small">当前进度</view><view class="subheading">{{order.stateLabel}}</view></view>
+      <button class="primary" data-action="{{mainAction.action}}" bindtap="perform">{{mainAction.label}}</button>
+    </view>
   </block>
 </view>

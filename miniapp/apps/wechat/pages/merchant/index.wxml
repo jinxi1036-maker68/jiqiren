@@ -1,45 +1,56 @@
-<view class="screen">
+<view class="screen {{deployed ? 'with-dock' : ''}}">
   <view class="row split">
-    <view class="kicker">商家端 · 模拟体验</view>
-    <button class="ghost" bindtap="switchRole">切换身份</button>
-  </view>
-  <view class="hero">
-    <view class="kicker">场地工作台</view>
-    <view class="title">{{station.name}}</view>
-    <view class="muted">{{stage}}　·　北京时间 {{now}}</view>
+    <view class="row brand-lockup"><view class="brand-logo">凌</view><text>商家工作台</text></view>
+    <button class="ghost subtle-button" bindtap="switchRole">切换身份</button>
   </view>
   <picker mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
-    <view class="field row split"><text>演示门店身份</text><text>{{station.name}} ›</text></view>
+    <view class="panel row split action">
+      <view class="row grow"><image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/><view class="subheading">{{station.name}}</view></view>
+      <text class="muted small">演示门店 ›</text>
+    </view>
   </picker>
   <block wx:if="{{!deployed}}">
-    <view class="panel">
-      <view class="heading">设备入驻进度</view>
-      <view class="notice">{{stage}}</view>
-      <view class="muted" wx:if="{{station.note}}">{{station.note}}</view>
-      <view class="muted">提交场地 → 凌矩审核 → 安装登记 → 商家确认 → 设置开放时段</view>
+    <view class="hero">
+      <view class="row split"><view class="kicker">场地合作 · 模拟体验</view><view class="badge">{{stage}}</view></view>
+      <view class="title">设备入驻</view>
+      <view class="muted">申请一台设备，让采集员在你开放的时间到店采集。</view>
+      <view class="stage-grid">
+        <view wx:for="{{steps}}" wx:key="*this" class="stage-item {{index === step ? 'stage-current' : index < step ? 'stage-past' : ''}}">
+          <view class="stage-bar"/>{{item}}
+        </view>
+      </view>
+    </view>
+    <view class="panel merchant-action">
+      <view class="eyebrow">下一步</view>
+      <view class="merchant-next">{{nextTitle}}</view>
+      <view class="muted">{{nextHint}}</view>
+      <view class="notice" wx:if="{{station.note}}">{{station.note}}</view>
+      <button wx:if="{{canApply && !showApplication}}" class="primary action" bindtap="openApplication">{{station.stage === 'draft' ? '开始申请' : '完善申请资料'}}</button>
       <button wx:if="{{station.stage === 'installed'}}" class="primary action" bindtap="confirm">确认模拟设备到位</button>
     </view>
-    <view class="panel" wx:if="{{canApply}}">
-      <view class="heading">申请设备入驻</view>
-      <view class="notice">请使用预填的虚构资料。以下照片仅为本地占位。</view>
+    <view class="panel" wx:if="{{canApply && showApplication}}" id="merchant-apply">
+      <view class="heading">场地申请</view>
+      <view class="notice">请使用预填的虚构资料。照片使用本地占位。</view>
       <block wx:for="{{fields}}" wx:key="key">
         <view class="muted">{{item.label}}</view>
         <input value="{{form[item.key]}}" maxlength="45" data-key="{{item.key}}" bindinput="field"/>
       </block>
       <picker range="{{categories}}" value="{{taskIndex}}" bindchange="category">
-        <view class="field">经营类型　{{categories[taskIndex]}} ›</view>
+        <view class="field row split"><text>经营类型</text><text>{{categories[taskIndex]}} ›</text></view>
       </picker>
-      <view class="row wrap">
-        <button wx:for="{{photos}}" wx:key="id" data-id="{{item.id}}" bindtap="photo">{{added[item.id] ? '已添加' : '+ 模拟'}}{{item.title}}</button>
+      <view class="row">
+        <button class="grow photo-choice {{added[item.id] ? 'slot-selected' : 'ghost'}}" wx:for="{{photos}}" wx:key="id" data-id="{{item.id}}" bindtap="photo">
+          <text class="photo-sign">{{added[item.id] ? '✓' : '+'}}</text><text>{{item.title}}</text>
+        </button>
       </view>
       <button class="primary action" bindtap="apply">提交模拟入驻申请</button>
     </view>
   </block>
   <block wx:else>
-    <view class="row tabs">
-      <button class="{{section === 'home' ? 'primary' : ''}}" data-section="home" bindtap="section">设备与排班</button>
-      <button class="{{section === 'schedule' ? 'primary' : ''}}" data-section="schedule" bindtap="section">开放时间</button>
-      <button class="{{section === 'income' ? 'primary' : ''}}" data-section="income" bindtap="section">场地收益</button>
+    <view class="hero">
+      <view class="row split"><view class="kicker">门店运营 · 模拟体验</view><view class="badge">{{deviceLabel}}</view></view>
+      <view class="title">{{station.stage === 'schedule' ? '设置开放时间' : '今日概览'}}</view>
+      <view class="muted">{{station.device.id}} · 北京时间 {{now}}</view>
     </view>
     <block wx:if="{{section === 'home'}}">
       <view class="panel">
@@ -93,6 +104,12 @@
         <view class="muted">{{item.amount}}</view>
       </view>
       <view wx:if="{{!currentEarnings.length}}" class="divider muted">本月暂无确认账目。</view>
+    </view>
+    <view class="dock dock-nav">
+      <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" bindtap="section">
+        <view class="dock-mark"><image class="icon" src="{{item.icon}}" mode="aspectFit"/></view>
+        <text>{{item.label}}</text>
+      </button>
     </view>
   </block>
   <view class="tagline">演示数据 · 仅保存在当前设备</view>

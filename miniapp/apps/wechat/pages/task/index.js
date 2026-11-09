@@ -41,7 +41,7 @@ Page({
     this.refresh();
   },
   start(event) {
-    this.setData({ startIndex: Number(event.detail.value), endIndex: 0 });
+    this.setData({ startIndex: Number(event.currentTarget.dataset.index), endIndex: 0 });
     this.refresh();
   },
   end(event) {

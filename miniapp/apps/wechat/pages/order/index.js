@@ -4,8 +4,20 @@ const booking = require('../../lib/booking');
 const reviews = require('../../lib/reviews');
 const ui = require('../../lib/ui');
 
+const STEPS = ['已确认', '到店采集', '归还核验', '已完成'];
+const PROGRESS = { booked: 0, travel: 0, arrived: 1, collecting: 1, stopped: 2, submitted: 2, done: 3 };
+
+function nextAction(order) {
+  if (order.startCollect) return { action: 'collect', label: '模拟自助领机并开始采集' };
+  if (order.arrive) return { action: 'arrive', label: '模拟到店签到' };
+  if (order.firstStep) return { action: 'travel', label: '模拟开始前往' };
+  if (order.status === 'collecting') return { action: 'stop', label: '停止采集' };
+  if (order.status === 'stopped') return { action: 'return', label: '提交归还并模拟上传' };
+  return null;
+}
+
 Page({
-  data: { reportPhoto: false },
+  data: { reportPhoto: false, steps: STEPS, mainAction: null },
   onLoad(options) {
     this.id = options.id;
   },
@@ -16,11 +28,12 @@ Page({
     const state = store.read();
     const order = state.orders.find(item => item.id === this.id && item.collectorId === state.collector);
     if (!order) {
-      this.setData({ missing: true, order: null });
+      this.setData({ missing: true, order: null, mainAction: null });
       return;
     }
     const view = ui.presentOrder(state, order);
     this.setData({ missing: false, order: view, now: stamp(state.now),
+      step: PROGRESS[order.status] ?? -1, mainAction: nextAction(view),
       canJumpStart: view.active && state.now < view.startAt,
       canJumpEnd: order.status === 'collecting',
       canJumpOverdue: ['stopped', 'submitted'].includes(order.status) && state.now < view.endAt + 30 * MINUTE,

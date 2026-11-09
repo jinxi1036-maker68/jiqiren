@@ -1,49 +1,54 @@
-<view class="screen">
-  <view class="row split">
-    <view class="kicker">个人采集员端 · 模拟体验</view>
-    <button class="ghost" bindtap="switchRole">切换身份</button>
-  </view>
-  <view class="hero">
-    <view class="kicker">平顶山 · 虚构站点</view>
-    <view class="title">找到下一次采集</view>
-    <view class="muted">北京时间 {{clock}} · {{personas[persona]}}</view>
-  </view>
-  <picker range="{{personas}}" value="{{persona}}" bindchange="persona">
-    <view class="field row split"><text>演示采集员</text><text>{{personas[persona]}} ›</text></view>
-  </picker>
-  <view class="row tabs">
-    <button class="{{section === 'tasks' ? 'primary' : ''}}" data-section="tasks" bindtap="section">找任务</button>
-    <button class="{{section === 'orders' ? 'primary' : ''}}" data-section="orders" bindtap="section">预约</button>
-    <button class="{{section === 'income' ? 'primary' : ''}}" data-section="income" bindtap="section">收益</button>
-    <button class="{{section === 'messages' ? 'primary' : ''}}" data-section="messages" bindtap="section">消息{{unread ? ' ' + unread : ''}}</button>
-    <button class="{{section === 'credit' ? 'primary' : ''}}" data-section="credit" bindtap="section">信誉</button>
+<view class="screen with-dock">
+  <view class="list-masthead">
+    <view class="row split">
+      <view class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山</text><text class="badge">模拟体验</text></view>
+      <button class="ghost subtle-button" bindtap="switchRole">切换身份</button>
+    </view>
+    <view class="row split action">
+      <view class="grow">
+        <view class="title">{{section === 'tasks' ? '附近采集任务' : section === 'orders' ? '预约' : section === 'income' ? '收益' : section === 'messages' ? '消息' : '我的'}}</view>
+        <view class="muted">{{section === 'tasks' ? availableCount + ' 个站点有可约时段' : '模拟北京时间 ' + clock}}</view>
+      </view>
+      <picker range="{{personas}}" value="{{persona}}" bindchange="persona">
+        <view class="filter-chip">{{personas[persona]}} ›</view>
+      </picker>
+    </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">
-    <view wx:if="{{replaceId}}" class="notice">正在为 {{replaceId}} 改约。新时段确认前保留原订单。</view>
-    <view wx:if="{{!profile.allowed}}" class="notice">新预约受限。可在信誉页查看依据，已有预约可按原安排履行。</view>
-    <view class="panel">
-      <view class="row">
-        <picker class="grow" mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="field">{{date}} ›</view></picker>
-        <picker class="grow" range="{{regions}}" value="{{region}}" bindchange="region"><view class="field">{{regions[region]}} ›</view></picker>
+    <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
+    <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
+    <view class="panel filter-panel">
+      <view class="field row filter-search">
+        <image class="icon icon-small" src="/assets/icons/search.svg" mode="aspectFit"/>
+        <input class="grow" placeholder="搜站点、任务或场景" value="{{search}}" bindinput="search"/>
       </view>
-      <view class="row">
-        <input class="grow" placeholder="搜索场景或任务" value="{{search}}" bindinput="search"/>
-        <picker range="{{sorts}}" value="{{sort}}" bindchange="sort"><view class="field">{{sorts[sort]}} ›</view></picker>
+      <view class="row filter-row">
+        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="filter-chip">{{dateLabel}} ▾</view></picker>
+        <picker range="{{regions}}" value="{{region}}" bindchange="region"><view class="filter-chip">{{regions[region]}} ▾</view></picker>
+        <picker range="{{sorts}}" value="{{sort}}" bindchange="sort"><view class="filter-chip">{{sorts[sort]}} ▾</view></picker>
       </view>
-      <view class="muted">手动选择区域 · 地点均为虚构</view>
     </view>
-    <view class="panel" wx:for="{{cards}}" wx:key="id">
-      <view class="row split"><text class="badge">{{item.category}}</text><text class="muted">{{item.district}}</text></view>
-      <view class="section heading">{{item.title}}</view>
-      <view class="muted">{{item.name}} · {{item.address}}</view>
-      <view class="muted">开放 {{item.opening}}</view>
-      <view class="divider row split">
-        <view><view class="subheading">¥{{item.rate}} / 有效小时</view><view class="muted">虚构示例 · {{item.min}}–{{item.max}} 分钟</view></view>
-        <button class="primary" data-id="{{item.id}}" bindtap="task">查看任务</button>
+    <view class="panel site-card" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" bindtap="task">
+      <view class="row">
+        <image class="site-thumb" src="{{item.art}}" mode="aspectFill"/>
+        <view class="grow">
+          <view class="row split"><text class="badge">{{item.category}}</text><text class="muted small">{{item.district}}</text></view>
+          <view class="site-name">{{item.title}}</view>
+          <view class="muted">{{item.name}} · {{item.address}}</view>
+        </view>
       </view>
-      <view class="muted small">所选日期 {{item.openCount ? '最早 ' + item.earliest : '无可预约时段'}}</view>
+      <view class="row split divider">
+        <view class="grow">
+          <view class="price">¥{{item.rate}}<text class="price-unit">/ 有效小时 · 示例</text></view>
+          <view class="availability {{item.openCount ? '' : 'availability-closed'}} action">
+            <view class="availability-dot"/>{{item.openCount ? '最早 ' + item.earliest + ' 可约' : '当天暂无空档'}}
+          </view>
+          <view class="muted small">{{item.min}}–{{item.max}} 分钟 · 开放 {{item.opening}}</view>
+        </view>
+        <button class="{{item.openCount ? 'primary' : 'ghost'}} subtle-button" data-id="{{item.id}}" catchtap="task">{{item.openCount ? '查看时段' : '查看详情'}}</button>
+      </view>
     </view>
-    <view class="panel muted" wx:if="{{!cards.length}}">当前筛选没有任务。</view>
+    <view class="panel muted" wx:if="{{!cards.length}}">当前筛选没有任务，可换个区域或关键词。</view>
   </block>
   <block wx:if="{{section === 'orders'}}">
     <view class="section heading">我的预约</view>
@@ -106,4 +111,13 @@
     <view class="panel muted" wx:if="{{!profile.events.length}}">暂无经运营核实的信誉事件。</view>
   </block>
   <view class="tagline">演示数据 · 站内消息 · 虚构金额</view>
+  <view class="dock dock-nav">
+    <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" bindtap="section">
+      <view class="dock-mark">
+        <image class="icon" src="{{item.icon}}" mode="aspectFit"/>
+        <view wx:if="{{item.section === 'messages' && unread}}" class="unread-dot">{{unread > 99 ? '99+' : unread}}</view>
+      </view>
+      <text>{{item.label}}</text>
+    </button>
+  </view>
 </view>
