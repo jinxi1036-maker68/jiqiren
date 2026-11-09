@@ -1349,6 +1349,20 @@
       "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-d1.png",
       "desktop_simulator_interaction_verified": false,
       "real_device_visual_verified": false
+    },
+    "collector_guided_steps": {
+      "status": "implemented_automated_tested",
+      "base_commit": "8bee1a924f0a89a595f6187ce301b05d93e333d5",
+      "scope": [
+        "less repetitive discovery and booking copy, optional visit and SOP details",
+        "native swiper with 5-second looping autoplay, manual swipe and tab selection",
+        "phase-specific illustrated travel, pickup, capture and return guidance with the existing primary actions"
+      ],
+      "automated_tests_passed": 43,
+      "offline_render": "seven WXML routes and WXSS compiled, 320px and 375px layouts inspected",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-step-guides.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
     }
   }
 }

@@ -22,10 +22,14 @@ test('采集员首页轮播切换和入口联动，关闭福利推荐时保留�
   const r = runtime();
   const collector = r.open('collector');
   assert.deepEqual(collector.data.stories.map(item => item.id), ['story', 'benefits', 'promotion']);
-  collector.changeStory({ detail: { current: 1 } });
+  collector.finishStory({ detail: { current: 1, source: 'autoplay' } });
   assert.equal(collector.data.storyIndex, 1);
   collector.openStory(event({ id: 'benefits', view: 'benefits' }));
   assert.equal(r.nav.pop(), '/pages/account/index?role=collector&view=benefits');
+  collector.finishStory({ detail: { current: 2, source: 'touch' } });
+  assert.equal(collector.data.storyIndex, 2);
+  collector.selectStory(event({ index: '0' }));
+  assert.equal(collector.data.storyIndex, 0);
   collector.selectStory(event({ index: '2' }));
   collector.openStory(event({ id: 'promotion' }));
   assert.match(r.dialogs.pop().content, /当前内容为演示/);
@@ -426,7 +430,7 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   order.perform(event({ action: 'travel' }));
   assert.equal(order.data.order.arrive, false);
   assert.equal(order.data.mainAction.action, 'arrive');
-  assert.match(order.data.guidance.detail, /时钟推进/);
+  assert.match(order.data.guidance.clockHint, /时钟推进/);
   order.perform(event({ action: 'arrive' }));
   assert.equal(store.read().now, order.data.order.startAt);
   assert.equal(order.data.mainAction.action, 'collect');
@@ -551,7 +555,7 @@ test('提前签到后可等到开工，已有模拟时长时按当前时间停�
   order.perform(event({ action: 'arrive' }));
   assert.equal(store.read().now, start - 10 * MINUTE);
   assert.equal(order.data.mainAction.action, 'collect');
-  assert.match(order.data.guidance.detail, /时钟推进/);
+  assert.match(order.data.guidance.clockHint, /时钟推进/);
   order.perform(event({ action: 'collect' }));
   assert.equal(store.read().now, start);
   store.change(state => booking.advance(state, start + 20 * MINUTE));

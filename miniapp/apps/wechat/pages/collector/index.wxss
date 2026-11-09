@@ -18,7 +18,7 @@
 .d1-story-benefits { background: linear-gradient(126deg,#f8e6d5,#f7dcc3); color: #3f2d20; }
 .d1-story-promotion { background: linear-gradient(126deg,#eef3f8,#dfe8f2); color: #1e344f; }
 .d1-story-copy { z-index: 1; width: calc(100% - 166rpx); }
-.d1-story-art { position: absolute; right: 10rpx; top: 50%; width: 226rpx; height: 226rpx; margin-top: -113rpx; }
+.d1-story-art { position: absolute; right: 10rpx; top: 50%; width: 226rpx; height: 226rpx; margin-top: -113rpx; pointer-events: none; }
 .d1-story-label { display: inline-block; padding: 2rpx 10rpx; border-radius: 8rpx; font-size: 24rpx; line-height: 34rpx; font-weight: 600; background: #dce6f1; }
 .d1-story-story .d1-story-label { color: #f0f6fd; background: #29466e; }
 .d1-story-benefits .d1-story-label { color: #863d19; background: #f5d3b8; }

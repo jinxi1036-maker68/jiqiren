@@ -15,11 +15,11 @@ const NAV_ITEMS = [
 ];
 const STORIES = [
   { id: 'story', tab: '采集故事', label: '采集故事 · 模拟', title: '小林的第一笔采集', amount: '¥60.00',
-    detail: '文具分拣 · 2 小时 · 报酬已确认', action: '查看这笔采集', art: '/assets/story-collection.svg' },
+    detail: '文具分拣 2 小时 · 已确认', action: '查看故事', art: '/assets/story-collection.svg' },
   { id: 'benefits', tab: '福利活动', label: '福利活动 · 模拟', title: '新手采集计划',
-    detail: '领体验券，完成有效首单后可领首单礼', action: '查看参与条件', art: '/assets/story-benefits.svg' },
+    detail: '新人券与首单礼', action: '查看参与条件', art: '/assets/story-benefits.svg' },
   { id: 'promotion', tab: '站点推广', label: '推广 · 示意', title: '门店合作推广位',
-    detail: '展示合作门店、采集场景或招募活动', action: '查看推广示例', art: '/assets/story-promotion.svg' }
+    detail: '合作门店与招募活动', action: '查看示例', art: '/assets/story-promotion.svg' }
 ];
 const ORDER_TABS = [
   { id: 'arrival', label: '待到店', icon: '/assets/icons/pin.svg' },
@@ -130,7 +130,7 @@ Page({
       shownOrders: this.data.orders.filter(order => !filter || order.group === filter)
     }, () => wx.pageScrollTo({ scrollTop: 0, duration: 0 }));
   },
-  changeStory(event) {
+  finishStory(event) {
     const { current } = event.detail;
     if (this.data.stories[current] && current !== this.data.storyIndex) this.setData({ storyIndex: current });
   },

@@ -5,39 +5,33 @@ const booking = require('../../lib/booking');
 const reviews = require('../../lib/reviews');
 const ui = require('../../lib/ui');
 
-const STEPS = ['预约', '到店', '采集', '归还'];
-const PROGRESS = { booked: 1, travel: 1, arrived: 2, collecting: 2, stopped: 3, submitted: 3, done: 4 };
+const STEPS = ['预约', '前往', '取机', '采集', '归还'];
+const PROGRESS = { booked: 1, travel: 1, arrived: 2, collecting: 3, stopped: 4, submitted: 4, done: 5 };
 
-const GUIDANCE = {
-  travel: { title: '准备前往站点', detail: '点「地图导航」查看目的地。到店后按订单指引签到、自助领机。' },
-  arrive: { title: '到店签到', detail: '到达预约站点后签到。请在预约时间内领取设备。' },
-  collect: { title: '自助领机并采集', detail: '打开本单密码箱，按采集 SOP 操作。只在门店授权的示范区采集。' },
-  return: { title: '放回原箱并锁好', detail: '确认设备已放回，再提交归还和模拟上传。凌矩随后核验设备。' }
-};
-
-function instructions(order, mainAction) {
+function instructions(order, mainAction, task) {
   if (order.submittedAt || !order.active) return null;
   if (order.canCancel && (order.impact || order.closed)) {
-    return { title: '处理预约变更', detail: '可以从底部选择其他时段，也可以无责取消或提交求助。' };
+    return { title: '处理预约变更', detail: order.impact?.reason || '门店已调整开放时间。' };
   }
+  if (order.status === 'stopped') {
+    return { phase: 'return', title: '归还设备', detail: '放回原箱，锁好后再提交归还。', art: '/assets/guide-return.svg' };
+  }
+  const clockHint = mainAction?.advanceTo
+    ? '模拟时钟推进至 ' + (order.status === 'collecting' ? order.endTime : order.startTime) : '';
   if (order.status === 'collecting') {
-    const detail = mainAction.advanceTo
-      ? '点「模拟完成采集」会推进至 ' + order.endTime + '，记录模拟采集时长。随后可提交归还。'
-      : '请于 ' + order.endTime + ' 前停止采集，再将设备放回原箱。';
-    return { title: '按 SOP 完成采集', detail };
-  }
-  if (mainAction) {
-    const guidance = GUIDANCE[mainAction.action];
-    return mainAction.advanceTo
-      ? { ...guidance, detail: '本次模拟操作会把时钟推进到预约开始 ' + order.startTime + '。' }
-      : guidance;
+    return { phase: 'capture', title: '按 SOP 完成采集', detail: task.cue, art: task.art, clockHint };
   }
   if (order.handoffBlock) {
-    return { title: '等待设备可用', detail: order.handoffBlock + ' 可以刷新订单查看进展，也可以改约或联系凌矩。' };
+    return { title: '等待设备可用', detail: order.handoffBlock };
   }
-  return order.status === 'arrived'
-    ? { title: '等待预约开始', detail: '预约于 ' + order.startTime + ' 开始，届时可自助领机。' }
-    : { title: '按预约时间到店', detail: '预约开始前15分钟可签到。请核对上方站点和时间。' };
+  if (order.status === 'arrived') {
+    return { phase: 'pickup', title: mainAction ? '自助取设备' : '等待预约开始',
+      detail: mainAction ? '用本单密码开箱，取出设备。' : order.startTime + ' 开始，届时可开箱取设备。',
+      art: '/assets/guide-pickup.svg', clockHint };
+  }
+  return { phase: 'travel', title: order.status === 'booked' ? '准备前往站点' : '到店签到',
+    detail: order.status === 'booked' ? '按地图导航到店。' : '到店后签到，可查看取机步骤。',
+    art: '/assets/guide-route.svg', clockHint };
 }
 
 function orderResult(state, order) {
@@ -70,6 +64,7 @@ function orderTimeline(order) {
 
 Page({
   data: { reportPhoto: false, steps: STEPS, mainAction: null, showDemo: false, showIssue: false, showSop: false, showGuide: false,
+    showReceipt: false, tutorialCollapsed: false,
     issueKind: 'device', issueDetails: '', canSendIssue: false, failUpload: false },
   onLoad(options) {
     this.id = options.id;
@@ -86,6 +81,9 @@ Page({
     }
     const view = ui.presentOrder(state, order);
     const mainAction = ui.nextAction(view);
+    const task = TASKS[order.task];
+    const guidance = instructions(view, mainAction, task);
+    const phaseChanged = guidance?.phase !== this.data.guidance?.phase;
     const issueTypes = booking.ISSUE_TYPES.filter(type => !type.device || view.canReport);
     const issueIndex = Math.max(0, issueTypes.findIndex(type => type.id === this.data.issueKind));
     const reports = state.reports.filter(item => item.orderId === order.id).map(item => ({
@@ -93,11 +91,12 @@ Page({
       statusLabel: item.status === 'pending' ? '待凌矩处理' : item.status === 'verified' ? '已核实设备异常' : '已回复'
     }));
     this.setData({ missing: false, order: view, now: stamp(state.now), mainAction,
-      step: PROGRESS[order.status] ?? -1, guidance: instructions(view, mainAction), result: orderResult(state, order),
+      step: PROGRESS[order.status] ?? -1, guidance, result: orderResult(state, order),
       guide: ui.siteGuide(stationFor(state, order.stationId), order.date, view.active),
       timeline: orderTimeline(order), issueTypes, issueIndex, reports,
       pendingReport: reports.some(item => item.status === 'pending'),
-      taskSteps: TASKS[order.task].steps,
+      taskSteps: task.steps,
+      ...(phaseChanged ? { tutorialCollapsed: false, showSop: false, showGuide: false } : {}),
       canJumpStart: view.active && state.now < view.startAt,
       canJumpEnd: order.status === 'collecting',
       canJumpOverdue: ['stopped', 'submitted'].includes(order.status) && state.now < view.endAt + 30 * MINUTE });
@@ -117,7 +116,7 @@ Page({
         if (action === 'stop') return order;
       }
       return booking.perform(state, state.collector, this.id, action, action === 'return' && this.data.failUpload);
-    });
+    }, () => wx.pageScrollTo({ scrollTop: 0, duration: 0 }));
     if (!saved) this.refresh();
   },
   refreshOrder() {
@@ -156,14 +155,16 @@ Page({
   toggleGuide() {
     this.setData({ showGuide: !this.data.showGuide });
   },
+  toggleTutorial() {
+    this.setData({ tutorialCollapsed: !this.data.tutorialCollapsed });
+  },
+  toggleReceipt() {
+    this.setData({ showReceipt: !this.data.showReceipt });
+  },
   toggleIssue() {
-    if (this.data.pendingReport) {
-      wx.pageScrollTo({ selector: '#order-issue', duration: 220 });
-      return;
-    }
     const showIssue = !this.data.showIssue;
     this.setData({ showIssue }, () => {
-      if (showIssue || this.data.reports.length) wx.pageScrollTo({ selector: '#order-issue', duration: 220 });
+      if (showIssue) wx.pageScrollTo({ selector: '#order-issue', duration: 220 });
     });
   },
   jumpTo(event) {

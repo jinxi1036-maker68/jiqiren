@@ -47,6 +47,15 @@ function findButton(node, label) {
   return null;
 }
 
+function findTag(node, tag) {
+  if (node.tag === tag) return node;
+  for (const child of node.children || []) {
+    const match = findTag(child, tag);
+    if (match) return match;
+  }
+  return null;
+}
+
 const homePage = r.open('home');
 const entryView = render('pages/home/index.wxml')(homePage.data);
 assert.match(pageText(entryView), /我是商家/);
@@ -56,6 +65,11 @@ assert.equal(findButton(collectorEntry, '切换身份').attr.bindtap, 'switchRol
 assert.match(pageText(collectorEntry), /新手采集计划/);
 assert.equal(findButton(collectorEntry, '查看参与条件 ›').attr.bindtap, 'openStory');
 assert.match(pageText(collectorEntry), /采集故事.*¥60.00.*推广 · 示意/);
+const storySwiper = findTag(collectorEntry, 'wx-swiper');
+assert.ok(storySwiper.attr.autoplay);
+assert.ok(storySwiper.attr.circular);
+assert.equal(Number(storySwiper.attr.interval), 5000);
+assert.equal(storySwiper.attr.bindanimationfinish, 'finishStory');
 const profilePage = r.open('collector');
 profilePage.section(event({ section: 'credit' }));
 const profileView = render('pages/collector/index.wxml')(profilePage.data);
@@ -88,9 +102,12 @@ assert.doesNotMatch(merchantProfileText, /邀请好友/);
 
 const task = r.open('task', { id: 's1' });
 const renderTask = render('pages/task/index.wxml');
+assert.equal(findButton(renderTask(task.data), '地图导航'), null);
+task.toggleGuide();
 assert.ok(findButton(renderTask(task.data), '复制地址'));
 assert.equal(findButton(renderTask(task.data), '地图导航').attr.bindtap, 'openMap');
 assert.doesNotMatch(pageText(renderTask(task.data)), /设备箱位置/);
+task.toggleGuide();
 assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
 task.start(event({ minute: 540 }));
 assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
@@ -115,23 +132,41 @@ assert.match(homeText, /09:00–10:00/);
 const order = r.open('order', { id });
 const renderOrder = render('pages/order/index.wxml');
 assert.match(pageText(renderOrder(order.data)), /准备前往站点/);
-assert.match(pageText(renderOrder(order.data)), /设备箱位置/);
-assert.match(pageText(renderOrder(order.data)), /✓ 预约 2 到店 3 采集 4 归还/);
+assert.doesNotMatch(pageText(renderOrder(order.data)), /设备箱位置|查看本单 SOP|放回原箱/);
+assert.match(pageText(renderOrder(order.data)), /✓ 预约 2 前往 3 取机 4 采集 5 归还/);
 order.toggleGuide();
 assert.ok(findButton(renderOrder(order.data), '复制地址'));
+assert.match(pageText(renderOrder(order.data)), /设备箱位置|0427/);
 order.toggleGuide();
 assert.equal(findButton(renderOrder(order.data), '地图导航').attr.bindtap, 'openMap');
 assert.doesNotMatch(pageText(renderOrder(order.data)), /时钟到预约开始/);
 order.toggleDemo();
 assert.match(pageText(renderOrder(order.data)), /时钟到预约开始/);
 order.toggleDemo();
-for (const [label, action] of [
-  ['模拟开始前往', 'travel'], ['模拟到店签到', 'arrive'], ['模拟自助领机并开始采集', 'collect'],
-  ['模拟完成采集', 'stop'], ['提交归还并模拟上传', 'return']
+for (const [label, action, phase] of [
+  ['模拟开始前往', 'travel', 'travel'], ['模拟到店签到', 'arrive', 'travel'],
+  ['模拟自助领机并开始采集', 'collect', 'pickup'], ['模拟完成采集', 'stop', 'capture'],
+  ['提交归还并模拟上传', 'return', 'return']
 ]) {
-  const button = findButton(renderOrder(order.data), label);
+  assert.equal(order.data.guidance.phase, phase);
+  const view = renderOrder(order.data);
+  const button = findButton(view, label);
   assert.equal(button.attr['data-action'], action);
   assert.equal(button.attr.bindtap, 'perform');
+  if (phase === 'pickup') assert.match(pageText(view), /设备箱位置.*开箱密码.*0427/);
+  if (phase === 'capture') {
+    assert.match(pageText(view), /按颜色分拣/);
+    assert.equal(findButton(view, '查看本单 SOP').attr.bindtap, 'toggleSop');
+    order.toggleSop();
+    assert.match(pageText(renderOrder(order.data)), /清点不同颜色/);
+    order.toggleTutorial();
+    assert.ok(findButton(renderOrder(order.data), '展开图解'));
+  }
+  if (phase === 'return') {
+    assert.match(pageText(view), /放回原箱，锁好后再提交归还/);
+    assert.equal(order.data.tutorialCollapsed, false);
+    assert.equal(findButton(view, '查看本单 SOP'), null);
+  }
   order.perform(event({ action }));
 }
 assert.match(pageText(renderOrder(order.data)), /已提交 · 待核验/);

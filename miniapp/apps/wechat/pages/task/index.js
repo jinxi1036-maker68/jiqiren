@@ -9,7 +9,8 @@ function option(minute) {
 }
 
 Page({
-  data: { selectedStart: null, selectedEnd: null, selectionLost: false, canConfirm: false, reason: '' },
+  data: { selectedStart: null, selectedEnd: null, selectionLost: false, canConfirm: false, reason: '',
+    showGuide: false, showSop: false },
   onLoad(options) {
     this.stationId = options.id;
     this.replaceId = options.replace || '';
@@ -17,6 +18,12 @@ Page({
   },
   onShow() {
     this.refresh();
+  },
+  toggleGuide() {
+    this.setData({ showGuide: !this.data.showGuide });
+  },
+  toggleSop() {
+    this.setData({ showSop: !this.data.showSop });
   },
   refresh() {
     const state = store.read();

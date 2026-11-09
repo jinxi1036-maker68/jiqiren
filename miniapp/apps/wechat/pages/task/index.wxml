@@ -5,7 +5,6 @@
     <view class="panel booking-overview">
       <view class="row">
         <view class="grow">
-          <view class="kicker">{{task.category}} · 模拟体验</view>
           <view class="title">{{task.title}}</view>
           <view class="muted">{{station.name}} · {{station.district}} {{station.address}}</view>
         </view>
@@ -15,7 +14,6 @@
         <view class="price">¥{{card.rate}}<text class="price-unit">/ 有效小时 · 示例</text></view>
         <view class="muted">{{task.min}}–{{task.max}} 分钟</view>
       </view>
-      <view class="muted small action">只在示范区采集，避开顾客、未成年人和个人信息。</view>
     </view>
     <view class="panel">
       <view class="row split">
@@ -35,7 +33,7 @@
         </view>
         <view class="divider">
           <view class="row d1-slot-heading"><text class="sop-step">2</text><view class="subheading">结束时间</view></view>
-          <view class="muted action" wx:if="{{selectedStart === null}}">选好开始时间后可选结束时间。</view>
+          <view class="muted small action" wx:if="{{selectedStart === null}}">先选开始时间</view>
           <scroll-view wx:else class="slot-scroll" scroll-x enhanced show-scrollbar="{{false}}">
             <view class="slot-row">
               <button wx:for="{{ends}}" wx:key="minute" class="slot {{item.minute === selectedEnd ? 'slot-selected' : ''}}" data-minute="{{item.minute}}" bindtap="end">{{item.label}}</button>
@@ -43,18 +41,23 @@
           </scroll-view>
         </view>
       </block>
-      <view class="notice" wx:else>{{card.availabilityReason}}。可切换日期或返回选择其他站点。</view>
+      <view class="notice" wx:else>{{card.availabilityReason}}，可切换日期。</view>
       <view class="row wrap divider" wx:if="{{reserved.length}}">
         <text class="muted small">已占用</text><text class="badge badge-muted" wx:for="{{reserved}}" wx:key="id">{{item.interval}}</text>
       </view>
-      <view class="muted small action">相邻预约至少间隔30分钟，闭店前至少15分钟结束。</view>
       <input wx:if="{{lateChange}}" placeholder="距原预约不足2小时，请填写改期原因" bindinput="reason" value="{{reason}}"/>
     </view>
-    <template is="site-guide" data="{{guide: guide}}"/>
-    <view class="panel">
-      <view class="row split"><view class="heading">采集 SOP</view><view class="badge">{{task.steps.length}} 步</view></view>
+    <view class="panel booking-reference">
+      <button class="d1-cell" hover-class="d1-pressed" bindtap="toggleGuide"><text class="grow">到店指引</text><text class="d1-arrow">{{showGuide ? '−' : '›'}}</text></button>
+      <button class="d1-cell" hover-class="d1-pressed" bindtap="toggleSop"><text class="grow">采集要求</text><text class="d1-arrow">{{showSop ? '−' : '›'}}</text></button>
+    </view>
+    <template wx:if="{{showGuide}}" is="site-guide" data="{{guide: guide}}"/>
+    <view wx:if="{{showSop}}" class="panel">
+      <view class="heading">采集 SOP</view>
+      <view class="muted small">只在示范区采集，避开顾客、未成年人和个人信息。</view>
       <view class="row divider sop-row" wx:for="{{task.steps}}" wx:key="*this"><text class="sop-step">{{index + 1}}</text><view class="grow">{{item}}</view></view>
       <view class="muted divider">设备 {{station.device.id}} · 每日上限 {{task.daily}} 分钟。按订单指引领机，结束后放回原箱并锁好。</view>
+      <view class="muted small">相邻预约至少间隔30分钟，闭店前至少15分钟结束。</view>
     </view>
     <view class="dock booking-dock">
       <view class="row split booking-summary">

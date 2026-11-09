@@ -7,3 +7,4 @@
   color: #1e3d68; border-radius: 16rpx; font-size: 30rpx; font-variant-numeric: tabular-nums;
 }
 .collector-d1 button.slot-selected { background: #1e3d68; color: #fff; border-color: #1e3d68; font-weight: 600; }
+.collector-d1 .booking-reference { padding: 0 26rpx; }

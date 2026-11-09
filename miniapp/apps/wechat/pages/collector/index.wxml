@@ -9,7 +9,7 @@
         <view class="title">{{section === 'tasks' ? '今天去哪采集' : section === 'orders' ? '我的订单' : section === 'income' ? '我的收益' : '消息'}}</view>
         <view class="muted">{{section === 'tasks' ? availableCount + ' 个站点有可约时段' : '模拟北京时间 ' + clock}}</view>
       </view>
-      <text class="muted small">{{personas[persona]}}</text>
+      <text wx:if="{{section !== 'tasks'}}" class="muted small">{{personas[persona]}}</text>
     </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">
@@ -22,8 +22,9 @@
       <view class="d1-next-end"><text class="status-pill status-{{nextOrder.stateTone}}">{{nextOrder.stateLabel}}</text><text class="d1-next-link">{{nextOrder.link}} ›</text></view>
     </button>
     <block wx:if="{{!replaceId && stories.length}}">
-      <view class="row split d1-block-head"><view class="heading">站内动态</view><text class="muted small">横滑看更多</text></view>
-      <swiper class="d1-stories" current="{{storyIndex}}" bindchange="changeStory">
+      <view class="row split d1-block-head"><view class="heading">站内动态</view></view>
+      <swiper class="d1-stories" current="{{storyIndex}}" autoplay="{{stories.length > 1}}" circular="{{stories.length > 1}}"
+        interval="{{5000}}" duration="{{350}}" bindanimationfinish="finishStory">
         <swiper-item wx:for="{{stories}}" wx:key="id">
           <view class="d1-story d1-story-{{item.id}}">
             <image class="d1-story-art" src="{{item.art}}" mode="aspectFit"/>
@@ -62,12 +63,12 @@
       <image class="site-thumb" src="{{item.art}}" mode="aspectFill"/>
       <view class="grow">
         <view class="subheading">{{item.title}}</view>
-        <view class="muted small">{{item.name}} · {{item.district}} · {{item.address}}</view>
+        <view class="muted small">{{item.name}} · {{item.district}}</view>
         <view class="row split d1-station-rate">
           <view class="price">¥{{item.rate}}<text class="price-unit">/ 有效小时</text></view>
           <text wx:if="{{item.openCount}}" class="muted small d1-numeric">{{item.earliest}} 可约</text>
         </view>
-        <view class="muted small">{{item.openCount ? item.min + '–' + item.max + ' 分钟 · 开放 ' + item.opening : item.availabilityReason}}</view>
+        <view wx:if="{{!item.openCount}}" class="muted small">{{item.availabilityReason}}</view>
       </view>
       <text class="d1-arrow">›</text>
     </button>
