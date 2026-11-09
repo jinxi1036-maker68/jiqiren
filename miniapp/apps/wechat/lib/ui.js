@@ -15,11 +15,20 @@ function money(cents) {
   return (cents / 100).toFixed(2);
 }
 
-function listing(state, station, date, actor, replaceId) {
+function listing(state, station, date, actor, replaceId, slots = booking.availability(state, actor, station.id, date, replaceId)) {
   const task = TASKS[station.task];
-  const slots = booking.availability(state, actor, station.id, date, replaceId);
-  return { ...station, ...task, rate: money(task.hourlyCents), opening: rangeText(windows(station, date)),
-    openCount: slots.length, earliest: slots.length ? timeLabel(slots[0].start) : '—' };
+  const ranges = windows(station, date);
+  let availabilityReason = '';
+  if (!slots.length) {
+    if (station.stage !== 'open' || !station.taskEnabled || !station.device) availabilityReason = '站点或任务尚未开放';
+    else if (station.device.fault) availabilityReason = '设备暂停检修';
+    else if (station.device.overdue.length) availabilityReason = '设备待核验归还';
+    else if (!ranges.length) availabilityReason = '门店当天未开放';
+    else if (!credit(state, actor).allowed) availabilityReason = '当前采集员暂不可预约';
+    else availabilityReason = '当天暂无合规空档';
+  }
+  return { ...station, ...task, rate: money(task.hourlyCents), opening: rangeText(ranges),
+    openCount: slots.length, earliest: slots.length ? timeLabel(slots[0].start) : '—', availabilityReason };
 }
 
 function rangeText(ranges) {
@@ -38,8 +47,9 @@ function presentOrder(state, order) {
   const valid = order.qa ? order.qa.valid + (order.qaAppeal && order.qaAppeal.result ? order.qaAppeal.result.extra : 0) : null;
   return { ...order, stationName: station.name, device: station.device.id, taskName: TASKS[order.task].title,
     interval: order.date + ' ' + timeLabel(order.start) + '–' + timeLabel(order.end), startAt, endAt,
+    stationAddress: station.district + ' · ' + station.address, startTime: timeLabel(order.start), endTime: timeLabel(order.end),
     stateLabel: before && (order.impact || order.closed) ? '待处理' : order.suspected && before && !order.arrivedAt ? '疑似爽约' : STATUSES[order.status],
-    firstStep: order.status === 'booked' && !order.impact && !order.closed,
+    firstStep: order.status === 'booked' && !order.impact && !order.closed && state.now < endAt,
     arrive: ['booked', 'travel'].includes(order.status) && canUse && state.now >= startAt - 15 * MINUTE && state.now < endAt,
     startCollect: order.status === 'arrived' && canUse && state.now >= startAt && state.now < endAt,
     canCancel: before, canReschedule: !order.replacedBy && (before || order.status === 'cancelled'),
@@ -52,6 +62,15 @@ function presentOrder(state, order) {
     subsidyReason: subsidy && subsidy.appeal && subsidy.appeal.decision ? subsidy.appeal.decision.reason
       : subsidy && subsidy.decision ? subsidy.decision.reason : '',
     canAppealSubsidy: subsidy && subsidy.status === 'rejected' && state.now <= subsidy.decision.at + 72 * HOUR };
+}
+
+function nextAction(order) {
+  if (order.startCollect) return { action: 'collect', label: '模拟自助领机并开始采集' };
+  if (order.arrive) return { action: 'arrive', label: '模拟到店签到' };
+  if (order.firstStep) return { action: 'travel', label: '模拟开始前往' };
+  if (order.status === 'collecting') return { action: 'stop', label: '停止采集' };
+  if (order.status === 'stopped') return { action: 'return', label: '提交归还并模拟上传' };
+  return null;
 }
 
 function ledger(state, actor, period) {
@@ -133,5 +152,5 @@ function jump(event) {
   advance(this, store.read().now + Number(event.currentTarget.dataset.delta) * MINUTE);
 }
 
-module.exports = { STAGES, money, rangeText, listing, presentOrder, ledger, income, inbox, profile, errorToast, commit,
+module.exports = { STAGES, money, rangeText, listing, presentOrder, nextAction, ledger, income, inbox, profile, errorToast, commit,
   inputPrompt, switchRole, advance, jump };

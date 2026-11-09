@@ -1,17 +1,20 @@
-<view class="screen {{missing ? '' : 'with-dock'}}">
+<view class="screen {{missing ? '' : 'with-booking-dock'}}">
   <view class="panel" wx:if="{{missing}}">此任务已不可用。</view>
   <block wx:else>
-    <view class="panel scene-panel">
-      <image class="scene-cover" src="{{task.art}}" mode="aspectFill"/>
-      <view class="scene-info">
-        <view class="row split"><text class="badge">{{task.category}}</text><text class="muted small">演示任务</text></view>
-        <view class="title">{{task.title}}</view>
-        <view class="row"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><view class="muted">{{station.name}} · {{station.district}} {{station.address}}</view></view>
-        <view class="row scene-meta">
-          <view class="grow tile"><view class="price">¥{{card.rate}}</view><view class="muted small">每有效小时 · 虚构</view></view>
-          <view class="grow tile"><view class="subheading">{{task.min}}–{{task.max}} 分钟</view><view class="muted small">单次预约时长</view></view>
+    <view class="panel booking-overview">
+      <view class="row">
+        <view class="grow">
+          <view class="kicker">{{task.category}} · 模拟体验</view>
+          <view class="title">{{task.title}}</view>
+          <view class="muted">{{station.name}} · {{station.district}} {{station.address}}</view>
         </view>
+        <image class="site-thumb" src="{{task.art}}" mode="aspectFill"/>
       </view>
+      <view class="row split divider">
+        <view class="price">¥{{card.rate}}<text class="price-unit">/ 有效小时 · 示例</text></view>
+        <view class="muted">{{task.min}}–{{task.max}} 分钟</view>
+      </view>
+      <view class="muted small action">只在示范区采集，避开顾客、未成年人和个人信息。</view>
     </view>
     <view class="panel">
       <view class="row split">
@@ -19,33 +22,44 @@
         <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="filter-chip">{{date}} ›</view></picker>
       </view>
       <view class="muted action">门店开放 {{card.opening}}</view>
-      <view wx:if="{{starts.length}}" class="divider">
-        <view class="subheading">开始时间</view>
-        <scroll-view class="slot-scroll" scroll-x enhanced show-scrollbar="{{false}}">
-          <view class="slot-row">
-            <button wx:for="{{starts}}" wx:key="*this" class="slot {{index === startIndex ? 'slot-selected' : ''}}" data-index="{{index}}" bindtap="start">{{item}}</button>
-          </view>
-        </scroll-view>
-        <picker range="{{ends}}" value="{{endIndex}}" bindchange="end">
-          <view class="field row split"><text>结束时间</text><text class="money-line">{{ends[endIndex]}} ›</text></view>
-        </picker>
-      </view>
-      <view class="notice" wx:else>该日暂无可预约时段，可换一天查看。</view>
+      <view class="notice" wx:if="{{selectionLost}}">原选时段已不可用，请重新选择。</view>
+      <block wx:if="{{starts.length}}">
+        <view class="divider">
+          <view class="subheading">开始时间</view>
+          <scroll-view class="slot-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+            <view class="slot-row">
+              <button wx:for="{{starts}}" wx:key="minute" class="slot {{item.minute === selectedStart ? 'slot-selected' : ''}}" data-minute="{{item.minute}}" bindtap="start">{{item.label}}</button>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="divider">
+          <view class="subheading">结束时间</view>
+          <view class="muted action" wx:if="{{selectedStart === null}}">选好开始时间后可选结束时间。</view>
+          <scroll-view wx:else class="slot-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+            <view class="slot-row">
+              <button wx:for="{{ends}}" wx:key="minute" class="slot {{item.minute === selectedEnd ? 'slot-selected' : ''}}" data-minute="{{item.minute}}" bindtap="end">{{item.label}}</button>
+            </view>
+          </scroll-view>
+        </view>
+      </block>
+      <view class="notice" wx:else>{{card.availabilityReason}}。可切换日期或返回选择其他站点。</view>
       <view class="row wrap divider" wx:if="{{reserved.length}}">
         <text class="muted small">已占用</text><text class="badge badge-muted" wx:for="{{reserved}}" wx:key="id">{{item.interval}}</text>
       </view>
-      <view class="muted small">相邻预约至少间隔30分钟，闭店前至少15分钟结束。</view>
+      <view class="muted small action">相邻预约至少间隔30分钟，闭店前至少15分钟结束。</view>
       <input wx:if="{{lateChange}}" placeholder="距原预约不足2小时，请填写改期原因" bindinput="reason" value="{{reason}}"/>
     </view>
     <view class="panel">
       <view class="row split"><view class="heading">采集 SOP</view><view class="badge">{{task.steps.length}} 步</view></view>
       <view class="row divider sop-row" wx:for="{{task.steps}}" wx:key="*this"><text class="sop-step">{{index + 1}}</text><view class="grow">{{item}}</view></view>
-      <view class="notice">只在示范区采集，避开顾客、未成年人、姓名标签和敏感区域。</view>
-      <view class="muted">设备 {{station.device.id}} · 每日上限 {{task.daily}} 分钟。按订单指引领机，结束后放回原箱并锁好。</view>
+      <view class="muted divider">设备 {{station.device.id}} · 每日上限 {{task.daily}} 分钟。按订单指引领机，结束后放回原箱并锁好。</view>
     </view>
-    <view class="dock action-dock">
-      <view class="dock-summary"><view class="muted small">已选时段</view><view class="subheading">{{starts.length ? starts[startIndex] + '–' + ends[endIndex] : '暂无空档'}}</view></view>
-      <button class="primary" disabled="{{!starts.length}}" bindtap="submit">{{replaceId ? '确认模拟改约' : '确认模拟预约'}}</button>
+    <view class="dock booking-dock">
+      <view class="row split booking-summary">
+        <view class="muted small grow">{{date}} · {{station.name}}</view>
+        <view class="subheading">{{selectionText}}</view>
+      </view>
+      <button class="primary" disabled="{{!canConfirm}}" bindtap="submit">{{replaceId ? '确认模拟改约' : '确认模拟预约'}}</button>
     </view>
   </block>
 </view>

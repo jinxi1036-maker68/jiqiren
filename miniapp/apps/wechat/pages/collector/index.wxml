@@ -6,8 +6,8 @@
     </view>
     <view class="row split action">
       <view class="grow">
-        <view class="title">{{section === 'tasks' ? '附近采集任务' : section === 'orders' ? '预约' : section === 'income' ? '收益' : section === 'messages' ? '消息' : '我的'}}</view>
-        <view class="muted">{{section === 'tasks' ? availableCount + ' 个站点有可约时段' : '模拟北京时间 ' + clock}}</view>
+        <view class="title">{{section === 'tasks' ? (nextOrder && !replaceId ? '我的采集' : '附近采集任务') : section === 'orders' ? '预约' : section === 'income' ? '收益' : section === 'messages' ? '消息' : '我的'}}</view>
+        <view class="muted">{{section === 'tasks' ? (nextOrder && !replaceId ? '预约进度和附近任务' : availableCount + ' 个站点有可约时段') : '模拟北京时间 ' + clock}}</view>
       </view>
       <picker range="{{personas}}" value="{{persona}}" bindchange="persona">
         <view class="filter-chip">{{personas[persona]}} ›</view>
@@ -15,6 +15,15 @@
     </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">
+    <view class="panel next-order" wx:if="{{nextOrder && !replaceId}}">
+      <view class="row split"><view class="kicker">{{nextOrder.submitted ? '最近进度' : '下一单'}}</view><view class="badge">{{nextOrder.stateLabel}}</view></view>
+      <view class="subheading action">{{nextOrder.taskName}}</view>
+      <view class="muted">{{nextOrder.stationName}} · {{nextOrder.interval}}</view>
+      <view class="row split divider">
+        <view class="grow">{{nextOrder.hint}}</view>
+        <button class="primary order-link" data-id="{{nextOrder.id}}" bindtap="order">{{nextOrder.submitted ? '查看结果' : '打开订单'}}</button>
+      </view>
+    </view>
     <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
     <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
     <view class="panel filter-panel">
@@ -41,7 +50,7 @@
         <view class="grow">
           <view class="price">¥{{item.rate}}<text class="price-unit">/ 有效小时 · 示例</text></view>
           <view class="availability {{item.openCount ? '' : 'availability-closed'}} action">
-            <view class="availability-dot"/>{{item.openCount ? '最早 ' + item.earliest + ' 可约' : '当天暂无空档'}}
+            <view class="availability-dot"/>{{item.openCount ? '最早 ' + item.earliest + ' 可约' : item.availabilityReason}}
           </view>
           <view class="muted small">{{item.min}}–{{item.max}} 分钟 · 开放 {{item.opening}}</view>
         </view>
@@ -83,11 +92,14 @@
         <button class="grow" bindtap="readAll">全部已读</button>
         <button class="grow ghost" bindtap="messageSettings">消息设置</button>
       </view>
-      <view class="muted divider">推进模拟时钟后生成到期提醒。</view>
-      <view class="row action">
-        <button class="grow" data-delta="30" bindtap="jump">＋30 分钟</button>
-        <button class="grow" data-delta="1440" bindtap="jump">＋1 天</button>
-      </view>
+      <button class="ghost action" bindtap="toggleDemo">{{showDemo ? '收起演示控制' : '展开演示控制'}}</button>
+      <block wx:if="{{showDemo}}">
+        <view class="muted divider">推进模拟时钟后生成到期提醒。</view>
+        <view class="row action">
+          <button class="grow" data-delta="30" bindtap="jump">＋30 分钟</button>
+          <button class="grow" data-delta="1440" bindtap="jump">＋1 天</button>
+        </view>
+      </block>
     </view>
     <view wx:for="{{messages}}" wx:key="key" class="panel" data-key="{{item.key}}" data-id="{{item.orderId}}" bindtap="openMessage">
       <view class="row split"><view class="subheading">{{item.title}}</view><view class="badge" wx:if="{{!item.read}}">未读</view></view>

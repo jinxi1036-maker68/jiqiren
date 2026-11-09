@@ -2,6 +2,13 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { runtime, event } = require('./harness.cjs');
 const store = require('../lib/storage');
+const booking = require('../lib/booking');
+const merchant = require('../lib/merchant');
+
+function select(task, start, end) {
+  task.start(event({ minute: start }));
+  task.end(event({ minute: end }));
+}
 
 test('原生页面入口记住选择，默认不进入运营工作台且可一键重置', () => {
   const r = runtime();
@@ -52,17 +59,28 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   collector.task(event({ id: 's1' }));
   assert.match(r.nav.pop(), /^\/pages\/task\/index\?id=s1/);
   const task = r.open('task', { id: 's1', date: '2026-11-09' });
-  assert.equal(task.data.starts[0], '09:00');
-  assert.equal(task.data.ends[0], '10:00');
+  assert.equal(task.data.starts[0].label, '09:00');
+  assert.deepEqual(task.data.ends, []);
   assert.equal(task.data.lateChange, false);
-  task.start(event({ index: 1 }));
-  assert.equal(task.data.starts[task.data.startIndex], '09:30');
-  assert.equal(task.data.ends[task.data.endIndex], '10:30');
-  task.start(event({ index: 0 }));
+  assert.equal(task.data.canConfirm, false);
+  task.submit();
+  assert.equal(store.read().orders.length, 0);
+  task.start(event({ minute: 570 }));
+  assert.equal(task.data.selectedStart, 570);
+  assert.equal(task.data.ends[0].label, '10:30');
+  assert.equal(task.data.canConfirm, false);
+  select(task, 540, 600);
+  assert.equal(task.data.selectionText, '09:00–10:00');
   task.submit();
   const id = new URL(r.nav.pop(), 'https://demo.invalid').searchParams.get('id');
   const order = r.open('order', { id });
   assert.equal(order.data.mainAction.action, 'travel');
+  assert.equal(order.data.showDemo, false);
+  order.toggleDemo();
+  assert.equal(order.data.showDemo, true);
+  collector.onShow();
+  assert.equal(collector.data.nextOrder.id, id);
+  assert.match(collector.data.nextOrder.hint, /前往/);
   order.perform(event({ action: 'travel' }));
   order.jumpTo(event({ target: 'start' }));
   assert.equal(order.data.order.arrive, true);
@@ -72,15 +90,27 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   order.jumpTo(event({ target: 'end' }));
   order.perform(event({ action: 'return' }));
   assert.equal(order.data.order.stateLabel, '已提交归还');
+  assert.equal(order.data.result.deviceLabel, '已提交 · 待核验');
+  assert.equal(order.data.result.qaLabel, '待审核');
+  assert.equal(order.data.result.earningsLabel, '质检后确认');
+  collector.onShow();
+  assert.equal(collector.data.nextOrder.submitted, true);
   r.app.onLaunch({ path: 'pages/ops/index', query: { mode: 'mock-ops' } });
   const ops = r.open('ops', { mode: 'mock-ops' });
   ops.act(event({ action: 'return', id }));
   r.answer('模拟设备在箱且可用');
+  order.onShow();
+  assert.equal(order.data.result.deviceLabel, '已核验归还');
+  assert.equal(order.data.result.qaLabel, '待审核');
+  assert.equal(order.data.result.earningsLabel, '质检后确认');
   ops.act(event({ action: 'qa', id }));
   r.answer('45 / 模拟末段遮挡，调整视角');
   order.onShow();
   assert.equal(order.data.order.stateLabel, '归还完成');
   assert.equal(order.data.order.qaRate, '75%');
+  assert.equal(order.data.result.qaLabel, '已审核');
+  assert.equal(order.data.result.earningsLabel, '已确认 · 待结算');
+  assert.equal(order.data.result.amount, '¥22.50（虚构）');
   collector.onShow();
   assert.equal(collector.data.income.confirmed, '22.50');
   collector.persona(event({}, '1'));
@@ -90,6 +120,7 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
 test('页面取消后显示无责状态，采集员提交证据后方有补贴审核待办', () => {
   const r = runtime();
   const task = r.open('task', { id: 's1' });
+  select(task, 540, 600);
   task.submit();
   const id = store.read().orders[0].id;
   const order = r.open('order', { id });
@@ -113,4 +144,43 @@ test('页面取消后显示无责状态，采集员提交证据后方有补贴�
   r.answer('模拟行程和故障均经核实');
   order.onShow();
   assert.equal(order.data.order.subsidyStatus, '待发放补贴');
+});
+
+test('已选时段被占后清空选择，重复点击不会预约替代时段', () => {
+  const r = runtime();
+  const task = r.open('task', { id: 's1' });
+  select(task, 540, 600);
+  store.change(state => booking.create(state, 'c2', { stationId: 's1', date: task.data.date, start: 540, end: 600 }));
+  task.submit();
+  assert.match(r.dialogs[0].content, /时段冲突/);
+  assert.equal(task.data.selectionLost, true);
+  assert.equal(task.data.selectedStart, null);
+  assert.equal(task.data.selectedEnd, null);
+  assert.equal(task.data.canConfirm, false);
+  assert.equal(task.data.starts[0].label, '10:30');
+  task.submit();
+  assert.equal(store.read().orders.filter(item => item.collectorId === 'c1').length, 0);
+  select(task, 630, 690);
+  task.submit();
+  assert.equal(store.read().orders.find(item => item.collectorId === 'c1').start, 630);
+});
+
+test('采集员首页区分未开放和设备暂停，受影响预约有处理入口', () => {
+  const r = runtime();
+  const task = r.open('task', { id: 's1' });
+  select(task, 540, 600);
+  task.submit();
+  const id = store.read().orders[0].id;
+  store.change(state => {
+    booking.pause(state, 's1', '设备检修');
+    merchant.schedule(state, 's2', task.data.date, []);
+  });
+  const collector = r.open('collector');
+  assert.equal(collector.data.cards.find(card => card.id === 's1').availabilityReason, '设备暂停检修');
+  assert.equal(collector.data.cards.find(card => card.id === 's2').availabilityReason, '门店当天未开放');
+  assert.equal(collector.data.nextOrder.id, id);
+  assert.equal(collector.data.nextOrder.hint, '预约有变，请查看处理方式');
+  const order = r.open('order', { id });
+  assert.equal(order.data.guidance.title, '处理预约变更');
+  assert.equal(order.data.mainAction, null);
 });

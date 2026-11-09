@@ -1248,6 +1248,17 @@
       "screenshot": "miniapp/apps/wechat/evidence/v0.1-interface-refresh.png",
       "desktop_smoke": "role entry, collector task list, slot selection and merchant onboarding landing",
       "automated_tests_passed": 25
+    },
+    "collector_flow_refresh": {
+      "status": "implemented_automated_tested",
+      "scope": [
+        "next reservation",
+        "explicit slot selection",
+        "onsite guidance",
+        "independent return and QA results"
+      ],
+      "automated_tests_passed": 27,
+      "offline_render": "explicit booking, next order, arrival guidance and independent results"
     }
   }
 }

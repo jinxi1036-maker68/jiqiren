@@ -4,8 +4,12 @@ const { validDate } = require('../../lib/model');
 const booking = require('../../lib/booking');
 const ui = require('../../lib/ui');
 
+function option(minute) {
+  return { minute, label: timeLabel(minute) };
+}
+
 Page({
-  data: { startIndex: 0, endIndex: 0, reason: '' },
+  data: { selectedStart: null, selectedEnd: null, selectionLost: false, canConfirm: false, reason: '' },
   onLoad(options) {
     this.stationId = options.id;
     this.replaceId = options.replace || '';
@@ -18,44 +22,51 @@ Page({
     const state = store.read();
     const station = state.stations.find(item => item.id === this.stationId);
     if (!station) {
-      this.setData({ missing: true });
+      this.setData({ missing: true, canConfirm: false });
       return;
     }
     const today = dateOf(state.now);
     const date = this.data.date < today ? today : this.data.date;
     const slots = booking.availability(state, state.collector, this.stationId, date, this.replaceId);
-    const startIndex = Math.min(this.data.startIndex, Math.max(0, slots.length - 1));
-    const ends = slots.length ? slots[startIndex].ends : [];
+    const slot = date === this.data.date ? slots.find(item => item.start === this.data.selectedStart) : null;
+    const selectedStart = slot ? slot.start : null;
+    const selectedEnd = slot && slot.ends.includes(this.data.selectedEnd) ? this.data.selectedEnd : null;
+    const selectionLost = (this.data.selectedStart !== null && selectedStart === null)
+      || (this.data.selectedEnd !== null && selectedEnd === null);
     const task = TASKS[station.task];
     const previous = state.orders.find(order => order.id === this.replaceId && order.collectorId === state.collector);
-    this.slots = slots;
-    this.setData({ date, today, station, task, startIndex, endIndex: Math.min(this.data.endIndex, Math.max(0, ends.length - 1)),
-      starts: slots.map(slot => timeLabel(slot.start)), ends: ends.map(timeLabel),
-      card: ui.listing(state, station, date, state.collector, this.replaceId),
+    this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd,
+      selectionLost: selectionLost || this.data.selectionLost, canConfirm: selectedEnd !== null,
+      selectionText: selectedEnd === null ? '请选择开始和结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),
+      starts: slots.map(item => option(item.start)), ends: slot ? slot.ends.map(option) : [],
+      card: ui.listing(state, station, date, state.collector, this.replaceId, slots),
       replaceId: this.replaceId, lateChange: Boolean(previous && ui.presentOrder(state, previous).lateCancel),
       reserved: state.orders.filter(order => order.stationId === station.id && order.date === date && order.status !== 'cancelled')
         .sort((a, b) => a.start - b.start).map(order => ({ id: order.id, interval: timeLabel(order.start) + '–' + timeLabel(order.end) })) });
   },
   date(event) {
-    this.setData({ date: event.detail.value, startIndex: 0, endIndex: 0 });
+    this.setData({ date: event.detail.value, selectedStart: null, selectedEnd: null, selectionLost: false });
     this.refresh();
   },
   start(event) {
-    this.setData({ startIndex: Number(event.currentTarget.dataset.index), endIndex: 0 });
+    const minute = Number(event.currentTarget.dataset.minute);
+    if (!this.data.starts.some(item => item.minute === minute) || minute === this.data.selectedStart) return;
+    this.setData({ selectedStart: minute, selectedEnd: null, selectionLost: false });
     this.refresh();
   },
   end(event) {
-    this.setData({ endIndex: Number(event.detail.value) });
+    const minute = Number(event.currentTarget.dataset.minute);
+    if (!this.data.ends.some(item => item.minute === minute)) return;
+    this.setData({ selectedEnd: minute, selectionLost: false });
+    this.refresh();
   },
   reason(event) {
     this.setData({ reason: event.detail.value });
   },
   submit() {
-    if (this.submitting) return;
-    const slot = this.slots[this.data.startIndex];
-    if (!slot) return;
-    const request = { stationId: this.stationId, date: this.data.date, start: slot.start,
-      end: slot.ends[this.data.endIndex], replaceId: this.replaceId, reason: this.data.reason };
+    if (this.submitting || !this.data.canConfirm) return;
+    const request = { stationId: this.stationId, date: this.data.date, start: this.data.selectedStart,
+      end: this.data.selectedEnd, replaceId: this.replaceId, reason: this.data.reason };
     this.submitting = true;
     const saved = ui.commit(this, state => booking.create(state, state.collector, request), order => {
       wx.redirectTo({ url: '/pages/order/index?id=' + order.id, complete: () => { this.submitting = false; } });

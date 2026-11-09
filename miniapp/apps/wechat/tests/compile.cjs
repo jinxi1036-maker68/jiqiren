@@ -1,7 +1,9 @@
 const assert = require('node:assert/strict');
 const { readFileSync, existsSync } = require('node:fs');
 const path = require('node:path');
-const { runtime } = require('./harness.cjs');
+const { runtime, event } = require('./harness.cjs');
+const store = require('../lib/storage');
+const booking = require('../lib/booking');
 
 const compiler = require(process.env.LINGJU_COMPILER || 'miniprogram-compiler');
 const r = runtime();
@@ -26,3 +28,51 @@ for (const route of manifest.pages) {
   console.log('WXML compiled and rendered:', route);
 }
 console.log('WXSS compiled:', wxss.length, 'characters');
+
+function pageText(node) {
+  if (typeof node === 'string') return node;
+  return (node.children || []).map(pageText).join(' ');
+}
+
+function findButton(node, label) {
+  if (node.tag === 'wx-button' && pageText(node).trim() === label) return node;
+  for (const child of node.children || []) {
+    const button = findButton(child, label);
+    if (button) return button;
+  }
+  return null;
+}
+
+const task = r.open('task', { id: 's1' });
+const renderTask = render('pages/task/index.wxml');
+assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
+task.start(event({ minute: 540 }));
+assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
+task.end(event({ minute: 600 }));
+assert.equal(Boolean(findButton(renderTask(task.data), '确认模拟预约').attr.disabled), false);
+task.submit();
+
+const { id } = store.read().orders[0];
+const collector = r.open('collector');
+const homeText = pageText(render('pages/collector/index.wxml')(collector.data));
+assert.match(homeText, /下一单/);
+assert.match(homeText, /09:00–10:00/);
+const order = r.open('order', { id });
+const renderOrder = render('pages/order/index.wxml');
+assert.match(pageText(renderOrder(order.data)), /准备前往站点/);
+assert.doesNotMatch(pageText(renderOrder(order.data)), /时钟到预约开始/);
+order.toggleDemo();
+assert.match(pageText(renderOrder(order.data)), /时钟到预约开始/);
+order.jumpTo(event({ target: 'start' }));
+order.perform(event({ action: 'arrive' }));
+order.perform(event({ action: 'collect' }));
+order.jumpTo(event({ target: 'end' }));
+order.perform(event({ action: 'return' }));
+assert.match(pageText(renderOrder(order.data)), /已提交 · 待核验/);
+store.change(state => booking.verifyReturn(state, id, '模拟设备已放回原箱'));
+order.onShow();
+const resultText = pageText(renderOrder(order.data));
+assert.match(resultText, /已核验归还/);
+assert.match(resultText, /待审核/);
+assert.match(resultText, /质检后确认/);
+console.log('WXML flow states rendered: explicit booking, next order, arrival guidance and independent results');
