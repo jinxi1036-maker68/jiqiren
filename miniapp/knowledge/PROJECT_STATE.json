@@ -38,8 +38,8 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed Lingju must finish manual eligibility review within 48 hours of reputation score falling below 60 and new bookings being paused. Approval resumes new bookings, rejection explains reasons and reinstatement conditions, overdue triggers manager reminder without automatic approval, and existing bookings are not automatically canceled.",
-  "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
+  "latest_decision": "Owner confirmed existing bookings normally remain executable after collector score drops below 60, with case-by-case Lingju suspension for verified equipment safety or malicious misconduct risks; no extra reputation deduction merely because Lingju cancels. Owner also delegated the remaining ordinary UI/workflow details to AI batch defaults rather than per-item Q&A; commercial, legal and real integration gates stay unapproved.",
+  "next_gate": "For the already approved clickable mock DEMO, follow miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md and Issue #24, reconcile canonical miniapp/apps/demo path, and implement/test mock-only flows on a reviewable PR. Do not request one-by-one Owner confirmations for routine UI details. Hold true commercial prices, settlement/payment, upstream permissions, device security and launch for explicit external approval.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
     "decision_id": "DEC-2026-11-08-04",
@@ -1147,6 +1147,30 @@
     "exact_trigger_and_timekeeping": "undecided",
     "submission_requirements": "undecided",
     "manager_notification_channel": "undecided",
+    "implemented": false
+  },
+  "collector_low_score_existing_bookings_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-41",
+    "ordinary_existing_confirmed_bookings": "normally_continue",
+    "new_booking_restriction_while_below_60": true,
+    "exception_to_existing_booking": "lingju_may_pause_individual_orders_for_verified_device_safety_or_malicious_misconduct_risks",
+    "mass_cancel_automatically": false,
+    "notify_collector_if_lingju_cancels": true,
+    "reputation_deduction_for_lingju_caused_cancellation": 0,
+    "independent_prior_verified_infraction_decision_not_automatically_reversed": true,
+    "implemented": false
+  },
+  "owner_delegated_batch_functional_detail_20261109": {
+    "status": "owner_confirmed_workflow_ai_generated_working_defaults",
+    "decision_id": "DEC-2026-11-09-42",
+    "document": "miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md",
+    "source_instruction": "Stop asking each rule one by one; AI should autonomously complete routine detail",
+    "decision_status_of_defaults": "AI_DELEGATED_WORKING_DEFAULT_not_individually_owner_confirmed",
+    "real_pricing_and_payments_authorized": false,
+    "real_customer_and_hardware_integrations_authorized": false,
+    "real_app_release_authorized": false,
+    "docs_created": true,
     "implemented": false
   }
 }
