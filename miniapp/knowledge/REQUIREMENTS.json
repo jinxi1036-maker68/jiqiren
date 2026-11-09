@@ -615,6 +615,22 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner 2026-11-08 replied 可以 to collector uploading onsite photos as equipment exception evidence"
+    },
+    {
+      "id": "UI-A-003",
+      "role": "admin",
+      "name": "凌矩后台人员可将故障设备暂停新采集订单预约，修复核验可用后恢复，并保留暂停和恢复记录",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-09 confirmed Lingju admin can pause faulty equipment new bookings until repaired/verified"
+    },
+    {
+      "id": "S-019",
+      "role": "system",
+      "name": "设备被凌矩暂停接单时屏蔽该设备的新预约时段；既有预约应另行妥善处理，不因故障报告直接自动判责",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner approves suspension of new bookings for affected equipment; existing bookings handling pending"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
