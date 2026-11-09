@@ -1,7 +1,7 @@
 {
   "schema_version": "lingju_miniapp_state_v1",
   "project_id": "lingju-merchant-collector-miniapp",
-  "updated_at": "2026-11-08",
+  "updated_at": "2026-11-09",
   "home": "miniapp/knowledge/00_START_HERE.md",
   "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
   "phase": "knowledge_baseline_created",
@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed device-failure-caused booking cancellations do not deduct collector reputation points; disputed causes require verification. Travel compensation and other cancellation policies remain unresolved.",
+  "latest_decision": "Owner confirmed verified device-fault affected bookings automatically cancel at the original start time if collector has not chosen cancellation/rescheduling, without reputation deduction; verified departed/arrived collectors may receive transport subsidy, amount and evidence remain undecided.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -429,11 +429,35 @@
       "reschedule"
     ],
     "no_silent_order_deletion": true,
-    "compensation": "undecided",
+    "compensation": "transport_subsidy_if_verified_device_fault_and_collector_departed_or_arrived; no_subsidy_if_not_departed_and_notified_early; amount_and_evidence_undecided",
     "cancellation_reputation_effect": "no_reputation_deduction_when_verified_device_fault_causes_cancellation",
-    "notification_channel_and_nonresponse": "undecided",
+    "notification_channel_and_nonresponse": "collector_unanswered_at_original_start_auto_cancel_without_reputation_penalty; notification_channels_delivery_failure_handling_undecided",
     "additional_decision_id": "DEC-2026-11-09-02",
     "cancellation_fault_verification_required": true,
     "additional_reputation_decision_id": "DEC-2026-11-09-03"
+  },
+  "equipment_fault_unanswered_booking_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-04",
+    "affected_order_interim_status": "待处理",
+    "collector_actions": [
+      "cancel",
+      "reschedule"
+    ],
+    "on_original_start_without_response": "auto_cancel_keep_audit_record_and_notify",
+    "collector_reputation_deduction": 0,
+    "notification_delivery_failure": "undecided",
+    "implemented": false
+  },
+  "device_fault_travel_subsidy_20261109": {
+    "status": "owner_confirmed_principle",
+    "decision_id": "DEC-2026-11-09-05",
+    "not_departed_and_notified_early": "no_subsidy",
+    "already_departed_or_arrived_and_cannot_collect_due_to_verified_device_fault": "eligible_after_lingju_review",
+    "evidence": "undecided",
+    "amount": "undecided",
+    "approval_process": "undecided",
+    "paid": false,
+    "implemented": false
   }
 }
