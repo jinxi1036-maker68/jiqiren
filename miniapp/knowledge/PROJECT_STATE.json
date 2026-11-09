@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed that collectors still not checked in 15 minutes after booked start receive a reminder; at 30 minutes without check-in the order is labeled suspected no-show, pending Lingju verification, not an automatic finding or reputation penalty. Equipment faults and other non-collector causes are exempt.",
+  "latest_decision": "Owner confirmed that collectors over 30 minutes late may check in and collect if the original booking is still valid and equipment remains available without conflict, but lateness never extends the end time or infringes the next booking. Lingju verifies the reason before reputation action.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -774,7 +774,24 @@
     ],
     "reputation_deduction_amount": "undecided",
     "order_release_after_no_show": "undecided",
-    "late_arrival_policy": "undecided",
+    "late_arrival_policy": "continue_only_if_equipment_available_and_original_time_window_valid; must_not_infringe_next_booking",
+    "implemented": false,
+    "late_arrival_decision_id": "DEC-2026-11-09-24"
+  },
+  "collector_late_arrival_continue_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-24",
+    "threshold_minutes_late": 30,
+    "can_check_in_and_collect_when": "original_booking_still_valid_and_device_free_without_conflicting_reserved_slots",
+    "override_next_collector_reservation": false,
+    "automatic_end_time_extension": false,
+    "keep_existing_buffer_between_bookings_minutes": 30,
+    "keep_finish_before_store_close_minutes": 15,
+    "reputation_effect": "only_after_lingju_verified_reason_and_existing_policy",
+    "device_fault_or_other_non_collector_cause_exempt": true,
+    "booking_expired_handling": "undecided",
+    "minimum_remaining_duration": "undecided",
+    "valid_work_time_calculation": "undecided",
     "implemented": false
   }
 }
