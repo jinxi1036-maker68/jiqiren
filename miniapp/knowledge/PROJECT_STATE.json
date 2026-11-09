@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner requested continuation following the proposed collector cancellation rule: free cancellations >=2h before start; reason required <2h; verified unjustified late cancellation may incur reputation deduction only under future defined standard; device-fault or other non-collector causes exempt.",
+  "latest_decision": "Owner confirmed that collectors still not checked in 15 minutes after booked start receive a reminder; at 30 minutes without check-in the order is labeled suspected no-show, pending Lingju verification, not an automatic finding or reputation penalty. Equipment faults and other non-collector causes are exempt.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -753,6 +753,28 @@
     "other_non_collector_cause_exempt": true,
     "unjustified_reason_definition": "undecided",
     "appeal_process": "undecided",
+    "implemented": false
+  },
+  "collector_suspected_no_show_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-23",
+    "reminder_minutes_after_start": 15,
+    "suspected_no_show_minutes_after_start": 30,
+    "suspected_no_show_status": "疑似爽约",
+    "based_on": "missing_verified_store_checkin",
+    "operator_verification_required": true,
+    "automatic_reputation_penalty": false,
+    "non_collector_caused_failures_exempt": true,
+    "verification_should_consider": [
+      "booking_status",
+      "device_faults",
+      "checkin_logs",
+      "collector_evidence",
+      "delayed_sync"
+    ],
+    "reputation_deduction_amount": "undecided",
+    "order_release_after_no_show": "undecided",
+    "late_arrival_policy": "undecided",
     "implemented": false
   }
 }
