@@ -1,6 +1,6 @@
 const store = require('../../lib/storage');
 const { stamp, MINUTE, TASKS } = require('../../lib/catalog');
-const { ownedOrder, stationFor } = require('../../lib/model');
+const { ownedOrder, stationFor, requireThat } = require('../../lib/model');
 const booking = require('../../lib/booking');
 const reviews = require('../../lib/reviews');
 const ui = require('../../lib/ui');
@@ -9,7 +9,7 @@ const STEPS = ['预约确认', '到店采集', '提交归还', '设备核验'];
 const PROGRESS = { booked: 0, travel: 0, arrived: 1, collecting: 1, stopped: 2 };
 
 const GUIDANCE = {
-  travel: { title: '准备前往站点', detail: '核对上方地址和预约时间。到店后按订单指引签到、自助领机。' },
+  travel: { title: '准备前往站点', detail: '从上方「地图导航」查看目的地。到店后按订单指引签到、自助领机。' },
   arrive: { title: '到店签到', detail: '到达预约站点后签到。请在预约时间内领取设备。' },
   collect: { title: '自助领机并采集', detail: '打开本单密码箱，按采集 SOP 操作。只在门店授权的示范区采集。' },
   return: { title: '放回原箱并锁好', detail: '确认设备已放回，再提交归还和模拟上传。凌矩随后核验设备。' }
@@ -18,7 +18,7 @@ const GUIDANCE = {
 function instructions(order, mainAction) {
   if (order.submittedAt || !order.active) return null;
   if (order.canCancel && (order.impact || order.closed)) {
-    return { title: '处理预约变更', detail: '请查看上方影响说明，可在此改期或无责取消。' };
+    return { title: '处理预约变更', detail: '可以从底部选择其他时段，也可以无责取消或提交求助。' };
   }
   if (order.status === 'collecting') {
     const detail = mainAction.advanceTo
@@ -32,8 +32,8 @@ function instructions(order, mainAction) {
       ? { ...guidance, detail: '本次模拟操作会把时钟推进到预约开始 ' + order.startTime + '。' }
       : guidance;
   }
-  if (!order.showCode) {
-    return { title: '查看设备可用情况', detail: '当前尚不能领机。到店遇到问题，可向凌矩报告设备异常。' };
+  if (order.handoffBlock) {
+    return { title: '等待设备可用', detail: order.handoffBlock + ' 可以刷新订单查看进展，也可以改约或联系凌矩。' };
   }
   return order.status === 'arrived'
     ? { title: '等待预约开始', detail: '预约于 ' + order.startTime + ' 开始，届时可自助领机。' }
@@ -70,7 +70,7 @@ function orderTimeline(order) {
 
 Page({
   data: { reportPhoto: false, steps: STEPS, mainAction: null, showDemo: false, showIssue: false, showSop: false,
-    issueKind: 'device', failUpload: false },
+    issueKind: 'device', issueDetails: '', failUpload: false },
   onLoad(options) {
     this.id = options.id;
   },
@@ -103,17 +103,29 @@ Page({
       canJumpOverdue: ['stopped', 'submitted'].includes(order.status) && state.now < view.endAt + 30 * MINUTE });
   },
   copyAddress: ui.copyAddress,
+  openMap: ui.openMap,
   perform(event) {
     const action = event.currentTarget.dataset.action;
-    ui.commit(this, state => {
+    const saved = ui.commit(this, state => {
       const order = ownedOrder(state, state.collector, this.id);
-      const next = ui.nextAction(ui.presentOrder(state, order));
+      const view = ui.presentOrder(state, order);
+      const next = ui.nextAction(view);
+      if (action !== 'upload') requireThat(next && next.action === action,
+        view.handoffBlock || '订单状态已更新，请按页面显示的步骤继续。');
       if (next && next.action === action && next.advanceTo) {
         ui.advanceClock(state, next.advanceTo);
         if (action === 'stop') return order;
       }
       return booking.perform(state, state.collector, this.id, action, action === 'return' && this.data.failUpload);
     });
+    if (!saved) this.refresh();
+  },
+  refreshOrder() {
+    this.refresh();
+    wx.showToast({ title: '订单状态已刷新', icon: 'none' });
+  },
+  openReplacement() {
+    wx.redirectTo({ url: '/pages/order/index?id=' + this.data.order.replacedBy });
   },
   failUpload(event) {
     this.setData({ failUpload: event.detail.value });
@@ -142,6 +154,10 @@ Page({
     this.setData({ showSop: !this.data.showSop });
   },
   toggleIssue() {
+    if (this.data.pendingReport) {
+      wx.pageScrollTo({ selector: '#order-issue', duration: 220 });
+      return;
+    }
     const showIssue = !this.data.showIssue;
     this.setData({ showIssue }, () => {
       if (showIssue || this.data.reports.length) wx.pageScrollTo({ selector: '#order-issue', duration: 220 });
@@ -159,11 +175,15 @@ Page({
     const type = this.data.issueTypes[Number(event.detail.value)];
     if (type) this.setData({ issueKind: type.id, issueIndex: Number(event.detail.value) });
   },
+  issueDetails(event) {
+    this.setData({ issueDetails: event.detail.value });
+  },
   reportIssue() {
     const type = this.data.issueTypes[this.data.issueIndex];
-    ui.inputPrompt('模拟求助 · ' + type.label, '说明现场情况和需要凌矩协助的事',
-      reason => ui.commit(this, state => booking.report(state, state.collector, this.id, reason, this.data.reportPhoto, type.id),
-        () => this.setData({ showIssue: false, reportPhoto: false })));
+    ui.commit(this, state => booking.report(state, state.collector, this.id, this.data.issueDetails, this.data.reportPhoto, type.id), () => {
+      this.setData({ showIssue: false, reportPhoto: false, issueDetails: '' });
+      wx.showToast({ title: '求助已提交', icon: 'success' });
+    });
   },
   applySubsidy() {
     const options = ['模拟行程凭证'];

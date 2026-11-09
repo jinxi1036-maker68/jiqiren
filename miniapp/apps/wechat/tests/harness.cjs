@@ -5,6 +5,7 @@ function runtime() {
   const nav = [];
   const dialogs = [];
   const clipboard = [];
+  const mapCalls = [];
   let app;
   global.App = options => { app = options; };
   global.getApp = () => app;
@@ -14,6 +15,7 @@ function runtime() {
     showToast() {},
     pageScrollTo() {},
     setClipboardData({ data }) { clipboard.push(data); },
+    openLocation(options) { mapCalls.push(options); },
     showModal(options) { dialogs.push(options); },
     showActionSheet(options) { dialogs.push(options); },
     navigateTo(options) { nav.push(options.url); },
@@ -51,7 +53,7 @@ function runtime() {
     dialogs.pop().success({ confirm: true, content: value, tapIndex: 0 });
   }
 
-  return { app, open, nav, dialogs, clipboard, answer, root };
+  return { app, open, nav, dialogs, clipboard, mapCalls, answer, root };
 }
 
 function event(dataset = {}, value) {

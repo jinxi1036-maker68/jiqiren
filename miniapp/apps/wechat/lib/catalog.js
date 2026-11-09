@@ -5,6 +5,12 @@ const OFFSET = 8 * HOUR;
 const START = Date.parse('2026-11-09T08:00:00+08:00');
 const CITY = '平顶山';
 const DISTRICTS = ['新华区', '卫东区', '湛河区'];
+// GCJ-02 sample pins for the map demo. These do not represent physical partner venues.
+const DEMO_MAP_POINTS = {
+  新华区: { latitude: 33.7374, longitude: 113.2896 },
+  卫东区: { latitude: 33.7372, longitude: 113.3292 },
+  湛河区: { latitude: 33.7228, longitude: 113.3065 }
+};
 const DEMO_GUIDES = {
   s1: { entrance: '从「松墨文具」深绿门头正门进入。', locker: '进门右侧的编号 A-01 演示箱。', area: '贴有采集标识的文具分拣台。' },
   s2: { entrance: '从「方盒工坊」蓝色卷帘门旁的人行门进入。', locker: '人行门内左侧的编号 B-02 演示箱。', area: '工作间内划线的周转盒装配台。' },
@@ -81,4 +87,4 @@ function seed() {
   };
 }
 
-module.exports = { MINUTE, HOUR, DAY, CITY, DISTRICTS, DEMO_GUIDES, TASKS, dateOf, clock, stamp, at, timeLabel, minutes, seed };
+module.exports = { MINUTE, HOUR, DAY, CITY, DISTRICTS, DEMO_MAP_POINTS, DEMO_GUIDES, TASKS, dateOf, clock, stamp, at, timeLabel, minutes, seed };

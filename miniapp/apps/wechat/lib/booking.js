@@ -104,10 +104,16 @@ function cancel(state, actor, id, reason, operator = false) {
   return order;
 }
 
-function usable(state, order) {
+function handoffBlock(state, order) {
   const device = stationFor(state, order.stationId).device;
-  return !order.closed && !order.impact && !device.fault && !device.overdue.length
-    && !state.orders.some(other => other.id !== order.id && other.stationId === order.stationId && holding(other));
+  if (order.closed) return '门店已调整开放时间。';
+  if (order.impact) return order.impact.reason;
+  if (device.fault) return '设备暂停检修，待凌矩核验。';
+  if (device.overdue.length) return '设备逾期未归还，待凌矩核查。';
+  if (state.orders.some(other => other.id !== order.id && other.stationId === order.stationId && holding(other))) {
+    return '前一单设备尚未核验归还。';
+  }
+  return '';
 }
 
 function perform(state, actor, id, action, failUpload = false) {
@@ -122,12 +128,12 @@ function perform(state, actor, id, action, failUpload = false) {
       break;
     case 'arrive':
       requireThat(['booked', 'travel'].includes(order.status) && state.now >= start - 15 * MINUTE
-        && state.now < end && usable(state, order), '请在预约开始前15分钟至结束前且设备可用时模拟签到');
+        && state.now < end && !handoffBlock(state, order), '请在预约开始前15分钟至结束前且设备可用时模拟签到');
       order.status = 'arrived';
       order.arrivedAt = state.now;
       break;
     case 'collect':
-      requireThat(order.status === 'arrived' && state.now >= start && state.now < end && usable(state, order),
+      requireThat(order.status === 'arrived' && state.now >= start && state.now < end && !handoffBlock(state, order),
         '须在预约时段内签到且设备可用');
       order.status = 'collecting';
       order.startedAt = state.now;
@@ -336,4 +342,4 @@ function advance(state, target) {
 }
 
 module.exports = { ISSUE_TYPES, conflicts, availability, create, cancel, perform, verifyReturn, report, issueType, resolveReport,
-  pause, reopen, advance, usable };
+  pause, reopen, advance, handoffBlock };

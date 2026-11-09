@@ -1274,6 +1274,18 @@
       "automated_tests_passed": 32,
       "offline_render": "six WXML routes and WXSS compiled, guide, help, receipts, operator queue and schedule preview rendered",
       "real_device_preview_verified": false
+    },
+    "map_and_order_actions": {
+      "status": "implemented_automated_tested",
+      "base_commit": "a66a1cdb830f396868829b9f4913ba1a0a9fc4e2",
+      "scope": [
+        "native WeChat map entry on task, order and help, with district demo pins",
+        "persistent order action with availability reason, refresh, reschedule or return to discovery",
+        "inline order help with submission feedback"
+      ],
+      "automated_tests_passed": 34,
+      "offline_render": "six WXML routes and WXSS compiled; navigation, impacted order reschedule and help controls rendered",
+      "real_device_map_verified": false
     }
   }
 }

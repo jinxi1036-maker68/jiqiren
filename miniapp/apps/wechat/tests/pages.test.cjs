@@ -63,6 +63,56 @@ test('搜地址、复制到店地址，切回采集员时保留筛选和原订�
   assert.equal(reopened.data.region, 1);
 });
 
+test('地图导航打开当前站点的微信示例坐标，并在地图失败时提示真机预览', () => {
+  const r = runtime();
+  r.open('task', { id: 's2' }).openMap();
+  const order = makeOrder(r);
+  order.openMap();
+  assert.equal(r.mapCalls.length, 2);
+  const [packingMap, orderMap] = r.mapCalls;
+  assert.match(packingMap.name, /方盒工坊.*导航示例点/);
+  assert.match(orderMap.name, /松墨文具.*导航示例点/);
+  assert.notEqual(packingMap.longitude, orderMap.longitude);
+  assert.equal(orderMap.latitude, order.data.guide.mapPoint.latitude);
+  assert.equal(orderMap.longitude, order.data.guide.mapPoint.longitude);
+  assert.equal(order.data.order.status, 'booked');
+  orderMap.fail();
+  assert.equal(r.dialogs.at(-1).title, '无法打开地图');
+});
+
+test('前单待核验时解释为何不能签到，刷新后可继续且求助不会锁住下一步', () => {
+  const r = runtime();
+  const later = makeOrder(r, 630, 690);
+  const earlier = store.change(state => {
+    const order = booking.create(state, 'c2', { stationId: 's1', date: later.data.order.date, start: 540, end: 600 });
+    booking.advance(state, later.data.order.startAt - 90 * MINUTE);
+    booking.perform(state, 'c2', order.id, 'arrive');
+    booking.perform(state, 'c2', order.id, 'collect');
+    booking.advance(state, later.data.order.startAt - 30 * MINUTE);
+    booking.perform(state, 'c2', order.id, 'return');
+    return order.id;
+  });
+  const initialTime = store.read().now;
+  // The button was rendered before the previous booking picked up the device.
+  later.perform(event({ action: 'travel' }));
+  assert.equal(store.read().now, initialTime);
+  assert.match(r.dialogs.at(-1).content, /前一单设备尚未核验归还/);
+  assert.equal(later.data.mainAction, null);
+  assert.match(later.data.guidance.detail, /前一单设备尚未核验归还/);
+  later.toggleIssue();
+  later.issueDetails(event({}, '请确认设备可领取时间'));
+  later.reportIssue();
+  assert.equal(later.data.pendingReport, true);
+  store.change(state => booking.verifyReturn(state, earlier, '模拟已在箱'));
+  later.refreshOrder();
+  assert.equal(later.data.mainAction.action, 'travel');
+  later.perform(event({ action: 'travel' }));
+  assert.equal(later.data.mainAction.action, 'arrive');
+  later.perform(event({ action: 'arrive' }));
+  assert.equal(later.data.mainAction.action, 'collect');
+  assert.equal(later.data.pendingReport, true);
+});
+
 test('补资料回显原申请的区、地址、到店说明及照片状态', () => {
   const r = runtime();
   const m = r.open('merchant');
@@ -103,8 +153,8 @@ test('停业先预览，预览之后新增的订单须重新确认；求助可�
   assert.equal(order.data.mainAction, null);
   order.toggleIssue();
   order.issueType(event({}, String(order.data.issueTypes.findIndex(item => item.id === 'closed'))));
+  order.issueDetails(event({}, '到店后门未开'));
   order.reportIssue();
-  r.answer('到店后门未开');
   assert.equal(order.data.pendingReport, true);
   r.app.onLaunch({ path: 'pages/ops/index', query: { mode: 'mock-ops' } });
   const ops = r.open('ops', { mode: 'mock-ops' });
@@ -250,8 +300,8 @@ test('页面取消后显示无责状态，采集员提交证据后方有补贴�
   const id = store.read().orders[0].id;
   const order = r.open('order', { id });
   order.perform(event({ action: 'travel' }));
+  order.issueDetails(event({}, '模拟箱锁打不开'));
   order.reportIssue();
-  r.answer('模拟箱锁打不开');
   r.app.onLaunch({ path: 'pages/ops/index', query: { mode: 'mock-ops' } });
   const ops = r.open('ops', { mode: 'mock-ops' });
   ops.act(event({ action: 'pause', id: 's1', report: ops.data.reports[0].id }));

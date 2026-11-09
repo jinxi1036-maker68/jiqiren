@@ -121,6 +121,8 @@ textarea { height: 138rpx; }
 .next-order { border-color: #c8d8c7; background: #f5f9f2; }
 .order-link { flex-shrink: 0; min-height: 88rpx; }
 .order-step-button { min-height: 88rpx; }
+.order-dock button { width: 100%; }
+.order-shortcut { min-height: 66rpx; gap: 8rpx; }
 .result-row { align-items: flex-start; }
 .result-row .muted { flex-shrink: 0; }
 .result-value { text-align: right; }

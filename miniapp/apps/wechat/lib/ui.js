@@ -1,4 +1,4 @@
-const { TASKS, CITY, DEMO_GUIDES, stamp, timeLabel, HOUR, MINUTE, at } = require('./catalog');
+const { TASKS, CITY, DEMO_MAP_POINTS, DEMO_GUIDES, stamp, timeLabel, HOUR, MINUTE, at } = require('./catalog');
 const { stationFor, preStart, holding, credit, windows } = require('./model');
 const booking = require('./booking');
 const reviews = require('./reviews');
@@ -37,11 +37,13 @@ function rangeText(ranges) {
 
 function siteGuide(station, date, booked = false) {
   const details = station.guide || DEMO_GUIDES[station.id] || {};
+  const pin = DEMO_MAP_POINTS[station.district];
   return {
     name: station.name, address: [CITY, station.district, station.address].filter(Boolean).join(' · '),
     opening: rangeText(windows(station, date)),
     entrance: details.entrance || '入口说明待凌矩补充。',
     area: details.area || '采集区域待凌矩补充。',
+    mapPoint: pin ? { ...pin, name: station.name + ' · 导航示例点', address: '平顶山地图演示坐标，请勿据此实际到店' } : null,
     locker: booked ? details.locker || '箱位待凌矩补充，请从本单求助。' : ''
   };
 }
@@ -51,13 +53,27 @@ function copyAddress() {
     fail: () => wx.showToast({ title: '复制失败，请查看上方地址', icon: 'none' }) });
 }
 
+function openMap() {
+  const { mapPoint } = this.data.guide;
+  if (!mapPoint) return;
+  const fail = () => wx.showModal({
+    title: '无法打开地图', content: '请在手机微信的预览中重试。到店指引仍可查看。', showCancel: false
+  });
+  if (typeof wx.openLocation !== 'function') {
+    fail();
+    return;
+  }
+  wx.openLocation({ ...mapPoint, scale: 17, fail });
+}
+
 function presentOrder(state, order) {
   const station = stationFor(state, order.stationId);
   const startAt = at(order.date, order.start);
   const endAt = at(order.date, order.end);
   const before = preStart(order);
   const active = before || holding(order);
-  const canUse = booking.usable(state, order);
+  const handoffBlock = before || order.status === 'collecting' ? booking.handoffBlock(state, order) : '';
+  const canUse = !handoffBlock;
   const cancelled = order.cancellation;
   const subsidy = order.subsidy;
   const valid = order.qa ? order.qa.valid + (order.qaAppeal && order.qaAppeal.result ? order.qaAppeal.result.extra : 0) : null;
@@ -65,14 +81,14 @@ function presentOrder(state, order) {
     interval: order.date + ' ' + timeLabel(order.start) + '–' + timeLabel(order.end), startAt, endAt,
     stationAddress: station.district + ' · ' + station.address, startTime: timeLabel(order.start), endTime: timeLabel(order.end),
     stateLabel: before && (order.impact || order.closed) ? '待处理' : order.suspected && before && !order.arrivedAt ? '疑似爽约' : STATUSES[order.status],
-    firstStep: order.status === 'booked' && !order.impact && !order.closed && state.now < endAt,
+    handoffBlock, firstStep: order.status === 'booked' && canUse && state.now < endAt,
     arrive: ['booked', 'travel'].includes(order.status) && canUse && state.now >= startAt - 15 * MINUTE && state.now < endAt,
     startCollect: order.status === 'arrived' && canUse && state.now >= startAt && state.now < endAt,
     canSimulateStart: canUse && state.now < startAt,
     canSimulateEnd: order.status === 'collecting' && state.now - order.startedAt < MINUTE && state.now < endAt,
     canCancel: before, canReschedule: !order.replacedBy && (before || order.status === 'cancelled'),
     canReport: active, active, canApply: !subsidy && reviews.eligibleSubsidy(state, order),
-    showCode: ['booked', 'travel', 'arrived', 'collecting'].includes(order.status) && canUse && state.now < endAt,
+    showCode: (before || order.status === 'collecting') && canUse && state.now < endAt,
     cancelText: cancelled ? cancelled.reason : '',
     lateCancel: before && !order.closed && !order.impact && startAt - state.now < 2 * HOUR,
     qaRate: valid === null ? '' : Math.round(valid * 100 / order.actual) + '%', valid,
@@ -179,5 +195,5 @@ function jump(event) {
   advance(this, store.read().now + Number(event.currentTarget.dataset.delta) * MINUTE);
 }
 
-module.exports = { STAGES, money, rangeText, siteGuide, copyAddress, listing, presentOrder, nextAction, ledger, income, inbox, profile, errorToast, commit,
+module.exports = { STAGES, money, rangeText, siteGuide, copyAddress, openMap, listing, presentOrder, nextAction, ledger, income, inbox, profile, errorToast, commit,
   inputPrompt, switchRole, advanceClock, advance, jump };

@@ -34,6 +34,7 @@ function nextReservation(orders, now) {
   if (action) hint = '下一步 · ' + action.label;
   else if (order.status === 'submitted') hint = '等待凌矩核验归还';
   else if (order.impact || order.closed) hint = '预约有变，请查看处理方式';
+  else if (order.handoffBlock) hint = order.handoffBlock;
   return { id: order.id, stationName: order.stationName, taskName: order.taskName, interval: order.interval,
     stateLabel: order.stateLabel, hint, submitted: order.status === 'submitted' };
 }

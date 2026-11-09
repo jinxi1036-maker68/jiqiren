@@ -45,6 +45,7 @@ Page({
         .sort((a, b) => a.start - b.start).map(order => ({ id: order.id, interval: timeLabel(order.start) + '–' + timeLabel(order.end) })) });
   },
   copyAddress: ui.copyAddress,
+  openMap: ui.openMap,
   date(event) {
     this.setData({ date: event.detail.value, selectedStart: null, selectedEnd: null, selectionLost: false });
     this.refresh();
