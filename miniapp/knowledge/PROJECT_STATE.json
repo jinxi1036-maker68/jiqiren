@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed device-fault travel subsidy collector application deadline of 48 hours after affected order cancellation, ordinary application closes after expiry, with exceptional manual handling through Lingju customer service; implementation and exception details pending.",
+  "latest_decision": "Owner confirmed that Lingju must review fault-related travel subsidy applications within 48 hours of submission, approve to pending disbursement or reject with reasons and dispute option; overdue reviews trigger internal reminders, never automatic approval/payment.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -493,12 +493,16 @@
     "unreviewed_claim_has_confirmed_subsidy": false,
     "amount": "undecided",
     "application_deadline": "48_hours_after_fault_related_order_cancellation",
-    "review_time": "undecided",
+    "review_time": "48_hours_after_application_submission",
     "payment_method": "undecided",
     "implemented": false,
     "after_deadline": "close_standard_application_entry",
     "exception_path": "contact_lingju_customer_service_for_manual_handling",
-    "deadline_decision_id": "DEC-2026-11-09-08"
+    "deadline_decision_id": "DEC-2026-11-09-08",
+    "reject_requires_reason": true,
+    "rejection_dispute_available": true,
+    "overdue_action": "remind_lingju_ops_without_auto_approval",
+    "review_decision_id": "DEC-2026-11-09-09"
   },
   "device_fault_subsidy_deadline_20261109": {
     "status": "owner_confirmed_concept",
@@ -509,6 +513,20 @@
     "exception": "lingju_customer_service_manual_handling",
     "exception_eligibility": "undecided",
     "service_channel": "undecided",
+    "implemented": false
+  },
+  "device_fault_subsidy_review_sla_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-09",
+    "review_within_hours_after_application_submission": 48,
+    "approved_state": "待发放补贴",
+    "rejected_requires_explanation": true,
+    "collector_can_dispute_rejection": true,
+    "overdue": "automatically_remind_lingju_ops",
+    "automatic_approval_on_timeout": false,
+    "automatic_payment_on_timeout": false,
+    "reminder_channel": "undecided",
+    "dispute_deadline": "undecided",
     "implemented": false
   }
 }
