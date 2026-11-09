@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner approves automatic notice to collectors with existing bookings affected by faulty equipment and choice to cancel or reschedule; do not silently delete orders; penalties/compensation unresolved.",
+  "latest_decision": "Owner confirmed device-failure-caused booking cancellations do not deduct collector reputation points; disputed causes require verification. Travel compensation and other cancellation policies remain unresolved.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -320,7 +320,8 @@
     "good_performance_can_restore_score": true,
     "max_score": 100,
     "score_rules": "undecided",
-    "additional_decision_id": "DEC-2026-11-08-21"
+    "additional_decision_id": "DEC-2026-11-08-21",
+    "device_fault_caused_cancel_penalty": 0
   },
   "merchant_earnings_trigger_20261108": {
     "status": "owner_confirmed_product_concept",
@@ -429,8 +430,10 @@
     ],
     "no_silent_order_deletion": true,
     "compensation": "undecided",
-    "cancellation_reputation_effect": "undecided",
+    "cancellation_reputation_effect": "no_reputation_deduction_when_verified_device_fault_causes_cancellation",
     "notification_channel_and_nonresponse": "undecided",
-    "additional_decision_id": "DEC-2026-11-09-02"
+    "additional_decision_id": "DEC-2026-11-09-02",
+    "cancellation_fault_verification_required": true,
+    "additional_reputation_decision_id": "DEC-2026-11-09-03"
   }
 }
