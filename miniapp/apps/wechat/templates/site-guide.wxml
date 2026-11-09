@@ -1,0 +1,16 @@
+<template name="site-guide">
+  <view class="panel">
+    <view class="row split"><view class="heading">到店指引</view><text class="badge">虚构站点</text></view>
+    <view class="row split divider">
+      <view class="grow">
+        <view class="subheading">{{guide.name}}</view>
+        <view class="muted">{{guide.address}}</view>
+      </view>
+      <button class="ghost subtle-button" bindtap="copyAddress">复制地址</button>
+    </view>
+    <view class="muted action">当日开放　{{guide.opening}}</view>
+    <view class="divider"><view class="subheading">门头与入口</view><view class="muted">{{guide.entrance}}</view></view>
+    <view class="divider" wx:if="{{guide.locker}}"><view class="subheading">设备箱位置</view><view class="muted">{{guide.locker}}</view></view>
+    <view class="divider"><view class="subheading">采集区域</view><view class="muted">{{guide.area}}</view></view>
+  </view>
+</template>

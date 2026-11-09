@@ -4,6 +4,18 @@
   "product": "凌矩共享采集站（暂定）",
   "owner_model_status": "two_roles_explicitly_confirmed",
   "implementation_status": "native_wechat_mock_v0_1_offline_tested",
+  "latest_mock_verification": {
+    "status": "mock_tested",
+    "requirements": {
+      "C-001 / UI-C-001 / UI-C-002": "站点和街道搜索、地址复制、预约前后展示对应的到店指引",
+      "UI-002": "切回采集员保留个人筛选和预约，测试身份从演示设置切换",
+      "UI-M-003 / UI-M-004 / UI-M-005": "区域及到店说明、退回补资料回显，照片继续使用占位",
+      "M-003 / UI-M-007 / UI-M-008 / UI-M-009": "点选时段、暂停及恢复前预览新增受影响订单",
+      "O-001 / UI-C-017 / UI-A-002": "订单求助独立于主按钮、运营待办、回复结案与核实暂停",
+      "C-005": "模拟上传失败与重试独立于归还核验，保留各环节回执"
+    },
+    "evidence": "miniapp/apps/wechat/evidence/README.md"
+  },
   "status_legend": {
     "confirmed_concept": "Owner确认的产品方向，仍需设计界面/具体规则",
     "example_unconfirmed": "Owner口述示例，计费触发和具体规则未确认",

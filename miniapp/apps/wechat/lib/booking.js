@@ -2,6 +2,15 @@ const { MINUTE, HOUR, TASKS, at, dateOf } = require('./catalog');
 const { requireThat, text, nextId, record, notify, stationFor, ownedOrder, validDate, windows, fits,
   preStart, holding, credit, byId } = require('./model');
 
+const ISSUE_TYPES = [
+  { id: 'directions', label: '找不到门店' },
+  { id: 'closed', label: '门店未开' },
+  { id: 'box', label: '箱子打不开', device: true },
+  { id: 'device', label: '设备故障', device: true },
+  { id: 'return', label: '归还遇到问题' },
+  { id: 'other', label: '其他订单问题' }
+];
+
 function conflicts(state, collectorId, stationId, date, start, end, ignoreId) {
   const station = stationFor(state, stationId);
   const task = TASKS[station.task];
@@ -101,7 +110,7 @@ function usable(state, order) {
     && !state.orders.some(other => other.id !== order.id && other.stationId === order.stationId && holding(other));
 }
 
-function perform(state, actor, id, action) {
+function perform(state, actor, id, action, failUpload = false) {
   const order = ownedOrder(state, actor, id);
   const start = at(order.date, order.start);
   const end = at(order.date, order.end);
@@ -128,17 +137,25 @@ function perform(state, actor, id, action) {
       stop(state, order, state.now);
       break;
     case 'return':
-      if (order.status === 'submitted') return order;
+      if (order.submittedAt) return order;
       requireThat(order.status === 'stopped', '请先结束采集');
       order.status = 'submitted';
       order.submittedAt = state.now;
+      if (failUpload) order.uploadFailed = true;
+      else order.uploadedAt = state.now;
+      break;
+    case 'upload':
+      if (order.uploadedAt) return order;
+      requireThat(order.submittedAt && order.uploadFailed, '该订单暂无待重试的上传');
       order.uploadedAt = state.now;
+      delete order.uploadFailed;
       break;
     default:
       throw new Error('无效订单操作');
   }
   const actionNames = { travel: '模拟出发自报', arrive: '模拟签到自报', collect: '模拟领机并开始采集',
-    stop: '结束模拟采集', return: '自报归还与模拟上传' };
+    stop: '结束模拟采集', return: failUpload ? '自报归还，模拟上传失败' : '自报归还与模拟上传',
+    upload: '重试模拟上传成功' };
   record(state, actor, actionNames[action], id, order.status);
   return order;
 }
@@ -164,17 +181,37 @@ function verifyReturn(state, id, evidence) {
   return order;
 }
 
-function report(state, actor, id, description, samplePhoto) {
+function report(state, actor, id, description, samplePhoto, kind = 'device') {
   const order = ownedOrder(state, actor, id);
-  requireThat(preStart(order) || holding(order), '当前订单不可上报设备异常');
-  const details = text(description, '请描述模拟设备异常');
+  const type = requireThat(ISSUE_TYPES.find(item => item.id === kind), '请选择有效的求助类型');
+  if (type.device) requireThat(preStart(order) || holding(order), '当前订单不可上报设备异常');
+  const details = text(description, '请描述遇到的模拟问题');
   const existing = state.reports.find(item => item.orderId === id && item.status === 'pending');
   if (existing) return existing;
-  const item = { id: nextId(state, 'R'), orderId: id, stationId: order.stationId, details,
+  const item = { id: nextId(state, 'R'), orderId: id, stationId: order.stationId, details, kind,
     samplePhoto: Boolean(samplePhoto), at: state.now, status: 'pending' };
   state.reports.unshift(item);
-  record(state, actor, '上报模拟设备异常', id, details);
+  record(state, actor, '提交模拟订单求助', id, type.label + ' · ' + details);
   return item;
+}
+
+function issueType(report) {
+  return ISSUE_TYPES.find(type => type.id === (report.kind || 'device'));
+}
+
+function resolveReport(state, id, evidence) {
+  const report = byId(state.reports, id);
+  requireThat(report.status === 'pending', '该求助已处理');
+  completeReport(state, report, 'resolved', text(evidence, '请填写核查结果和处理建议'));
+}
+
+function completeReport(state, report, status, reason) {
+  const order = byId(state.orders, report.orderId);
+  report.status = status;
+  report.response = reason;
+  report.resolvedAt = state.now;
+  record(state, '凌矩模拟运营', '处理模拟订单求助', report.id, reason);
+  notify(state, order.collectorId, report.id + ':response', '凌矩已处理订单求助', reason, order.id);
 }
 
 function impact(state, order, outage) {
@@ -191,8 +228,8 @@ function pause(state, stationId, evidence, reportId) {
   if (reportId) {
     const report = byId(state.reports, reportId);
     requireThat(report.stationId === stationId && report.status === 'pending', '故障记录与设备不符或已处理');
-    report.status = 'verified';
-    record(state, '凌矩模拟运营', '核查模拟设备报告', reportId, reason);
+    requireThat(issueType(report).device, '请通过求助回复处理非设备问题');
+    completeReport(state, report, 'verified', reason);
   }
   if (device.fault) return;
   device.fault = { key: nextId(state, 'F'), type: 'fault', reason, at: state.now };
@@ -298,4 +335,5 @@ function advance(state, target) {
   }
 }
 
-module.exports = { conflicts, availability, create, cancel, perform, verifyReturn, report, pause, reopen, advance, usable };
+module.exports = { ISSUE_TYPES, conflicts, availability, create, cancel, perform, verifyReturn, report, issueType, resolveReport,
+  pause, reopen, advance, usable };

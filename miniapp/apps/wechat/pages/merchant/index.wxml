@@ -1,3 +1,4 @@
+<import src="../../templates/range-editor.wxml"/>
 <view class="screen {{deployed ? 'with-dock' : ''}}">
   <view class="row split">
     <view class="row brand-lockup"><view class="brand-logo">凌</view><text>商家工作台</text></view>
@@ -6,7 +7,7 @@
   <picker mode="selector" range="{{sites}}" value="{{siteIndex}}" bindchange="persona">
     <view class="panel row split action">
       <view class="row grow"><image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/><view class="subheading">{{station.name}}</view></view>
-      <text class="muted small">演示门店 ›</text>
+      <text class="muted small">切换门店 ›</text>
     </view>
   </picker>
   <block wx:if="{{!deployed}}">
@@ -31,6 +32,9 @@
     <view class="panel" wx:if="{{canApply && showApplication}}" id="merchant-apply">
       <view class="heading">场地申请</view>
       <view class="notice">请使用预填的虚构资料。照片使用本地占位。</view>
+      <picker range="{{districts}}" value="{{districtIndex}}" bindchange="district">
+        <view class="field row split"><text>所在区域</text><text>{{city}} · {{districts[districtIndex]}} ›</text></view>
+      </picker>
       <block wx:for="{{fields}}" wx:key="key">
         <view class="muted">{{item.label}}</view>
         <input value="{{form[item.key]}}" maxlength="45" data-key="{{item.key}}" bindinput="field"/>
@@ -55,6 +59,7 @@
     <block wx:if="{{section === 'home'}}">
       <view class="panel">
         <view class="row split"><view class="subheading">{{station.device.id}}</view><view class="badge">{{deviceLabel}}</view></view>
+        <view class="muted">{{city}} · {{station.district}} · {{station.address}}</view>
         <view class="muted">采集员在订单内自助领还。归还核验由凌矩处理。</view>
         <view class="row divider">
           <view class="grow tile"><view class="metric">{{todayOrders}}</view><view class="muted">今日预约</view></view>
@@ -77,21 +82,34 @@
     <block wx:if="{{section === 'schedule'}}">
       <view class="panel">
         <view class="heading">每周开放计划</view>
-        <view class="muted">可填写最多四段。用逗号分隔，留空表示该星期几暂停。</view>
+        <view class="muted">每天最多四段。移除全部时段后，该星期几暂停。</view>
         <picker range="{{days}}" value="{{weekday}}" bindchange="weekday"><view class="field">{{days[weekday]}} ›</view></picker>
-        <input value="{{ranges}}" bindinput="editRanges" placeholder="09:00-12:00, 14:00-18:00"/>
-        <button class="primary" bindtap="saveWeek">保存该星期几的计划</button>
+        <template is="range-editor" data="{{ranges: weekRanges, field: 'weekRanges'}}"/>
+        <button class="primary action" bindtap="saveWeek">预览周计划变更</button>
       </view>
       <view class="panel">
         <view class="heading">指定日期调整</view>
         <picker mode="date" value="{{date}}" start="{{today}}" bindchange="selectDate">
           <view class="field">{{date}}　{{windowLabel}} ›</view>
         </picker>
-        <input value="{{dateRanges}}" bindinput="editDateRanges" placeholder="如 10:00-16:00"/>
-        <button class="primary" bindtap="saveDate">保存单日时段</button>
+        <template is="range-editor" data="{{ranges: dayRanges, field: 'dayRanges'}}"/>
+        <button class="primary action" bindtap="saveDate">预览单日变更</button>
         <view class="row action">
           <button class="grow danger" bindtap="pauseDate">暂停当日</button>
           <button class="grow ghost" bindtap="restoreDate">恢复周计划</button>
+        </view>
+      </view>
+      <view wx:if="{{scheduleReview}}" class="panel" id="schedule-review">
+        <view class="heading">{{scheduleReview.title}}</view>
+        <view class="muted">{{scheduleReview.site}} · {{scheduleReview.hours}}</view>
+        <view class="notice">将新增影响 {{scheduleReview.orders.length}} 笔预约</view>
+        <view class="divider" wx:for="{{scheduleReview.orders}}" wx:key="id">
+          <view class="row split"><text>{{item.id}} · {{item.interval}}</text><text class="badge">{{item.stateLabel}}</text></view>
+          <view class="muted">{{item.impactText}}</view>
+        </view>
+        <view class="row action">
+          <button class="grow ghost" bindtap="cancelSchedule">返回编辑</button>
+          <button class="grow primary" bindtap="confirmSchedule">确认变更</button>
         </view>
       </view>
     </block>

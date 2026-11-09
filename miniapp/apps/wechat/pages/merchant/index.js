@@ -1,13 +1,14 @@
 const store = require('../../lib/storage');
 const merchant = require('../../lib/merchant');
-const { TASKS, at, dateOf, stamp, timeLabel, minutes } = require('../../lib/catalog');
-const { stationFor, windows } = require('../../lib/model');
+const { TASKS, CITY, DISTRICTS, dateOf, stamp, timeLabel, minutes } = require('../../lib/catalog');
+const { stationFor, windows, holding, requireThat } = require('../../lib/model');
 const ui = require('../../lib/ui');
 
 const TASK_KEYS = Object.keys(TASKS);
 const DAYS = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 const FIELDS = [
-  { key: 'name', label: '店铺名称' }, { key: 'address', label: '虚构地址' },
+  { key: 'name', label: '店铺名称' }, { key: 'address', label: '详细地址（街道、门牌）' },
+  { key: 'entrance', label: '门头与入口' }, { key: 'locker', label: '设备箱位置' }, { key: 'area', label: '采集区域' },
   { key: 'contact', label: '虚构联系人' }, { key: 'phone', label: '演示联系电话' }
 ];
 const STEPS = ['申请', '审核', '部署', '到位确认', '开放'];
@@ -26,24 +27,23 @@ const NAV_ITEMS = [
   { section: 'schedule', label: '开放时间', icon: '/assets/icons/calendar.svg' },
   { section: 'income', label: '场地收益', icon: '/assets/icons/wallet.svg' }
 ];
-const SAMPLE = { name: '木尺文具（虚构）', address: '样例街 D-04', contact: '演示店主', phone: '示例-0000' };
+const SAMPLE = { name: '木尺文具（虚构）', address: '样例街 D-04', contact: '演示店主', phone: '示例-0000',
+  entrance: '从木色门头下的正门进入。', locker: '进门后收纳柜旁的 D-04 演示箱。', area: '演示区内的文具整理台。' };
 
-function readRanges(input) {
-  if (!input.trim()) return [];
-  return input.split(/[，,]/).map(range => {
-    const parts = range.trim().split(/\s*[-–]\s*/);
-    if (parts.length !== 2 || !parts.every(value => /^([01]\d|2[0-3]):[0-5]\d$/.test(value))) {
-      throw new Error('请输入 09:00-12:00, 14:00-18:00 格式的时间');
-    }
-    return parts.map(minutes);
-  });
+function rangeFields(ranges) {
+  return ranges.map(([from, to], id) => ({ id, from: timeLabel(from), to: timeLabel(to) }));
+}
+
+function affectedKey(orders) {
+  return orders.map(order => order.id + ':' + order.status).join('|');
 }
 
 Page({
   data: {
-    fields: FIELDS, form: SAMPLE, taskIndex: 0, categories: TASK_KEYS.map(key => TASKS[key].category),
+    fields: FIELDS, city: CITY, districts: DISTRICTS, form: SAMPLE, districtIndex: 0,
+    taskIndex: 0, categories: TASK_KEYS.map(key => TASKS[key].category),
     photos: [{ id: 'front', title: '门头' }, { id: 'inside', title: '室内' }, { id: 'device', title: '设备位置' }],
-    added: {}, days: DAYS, weekday: 0, ranges: '', section: 'home',
+    added: {}, days: DAYS, weekday: 0, weekRanges: [], dayRanges: [], section: 'home',
     steps: STEPS, navItems: NAV_ITEMS, showApplication: false
   },
   onShow() {
@@ -66,15 +66,19 @@ Page({
       deployed: ['schedule', 'open'].includes(station.stage),
       todayOrders: state.orders.filter(order => order.stationId === station.id && order.date === today && order.status !== 'cancelled').length,
       deviceLabel: station.device && (station.device.fault || station.device.overdue.length) ? '暂停接单' : '已登记',
-      windowLabel: ui.rangeText(windows(station, date)), currentEarnings, daily: daily.length });
+      windowLabel: ui.rangeText(windows(station, date)), dayRanges: rangeFields(windows(station, date)),
+      currentEarnings, daily: daily.length });
     this.showWeek(this.data.weekday);
   },
   persona(event) {
     ui.commit(this, state => { state.merchant = state.stations[Number(event.detail.value)].id; });
-    this.setData({ form: SAMPLE, added: {}, section: 'home', showApplication: false });
+    this.setData({ section: 'home', showApplication: false, scheduleReview: null });
   },
   openApplication() {
-    this.setData({ showApplication: true }, () => {
+    const { application, district, guide, task } = this.data.station;
+    const added = Object.fromEntries(((application && application.photos) || []).map(id => [id, true]));
+    this.setData({ showApplication: true, form: { ...SAMPLE, ...application, ...guide }, added,
+      districtIndex: Math.max(0, DISTRICTS.indexOf(district)), taskIndex: TASK_KEYS.indexOf(task) }, () => {
       wx.pageScrollTo({ selector: '#merchant-apply', duration: 250 });
     });
   },
@@ -84,60 +88,87 @@ Page({
   category(event) {
     this.setData({ taskIndex: Number(event.detail.value) });
   },
+  district(event) {
+    this.setData({ districtIndex: Number(event.detail.value) });
+  },
   photo(event) {
     const id = event.currentTarget.dataset.id;
     this.setData({ ['added.' + id]: !this.data.added[id] });
   },
   apply() {
-    const form = { ...this.data.form, task: TASK_KEYS[this.data.taskIndex], photos: Object.keys(this.data.added).filter(id => this.data.added[id]) };
-    ui.commit(this, state => merchant.apply(state, state.merchant, form));
+    const form = { ...this.data.form, district: DISTRICTS[this.data.districtIndex], task: TASK_KEYS[this.data.taskIndex],
+      photos: Object.keys(this.data.added).filter(id => this.data.added[id]) };
+    ui.commit(this, state => merchant.apply(state, state.merchant, form), () => this.setData({ showApplication: false }));
   },
   confirm() {
     ui.commit(this, state => merchant.confirmInstallation(state, state.merchant),
       () => this.setData({ section: 'schedule' }));
   },
   showWeek(weekday) {
-    const ranges = this.data.station.week[weekday].map(([open, close]) => timeLabel(open) + '-' + timeLabel(close)).join(', ');
-    this.setData({ weekday, ranges });
+    this.setData({ weekday, weekRanges: rangeFields(this.data.station.week[weekday]), scheduleReview: null });
   },
   weekday(event) {
     this.showWeek(Number(event.detail.value));
   },
-  editRanges(event) {
-    this.setData({ ranges: event.detail.value });
+  editRange(event) {
+    const { field, index, side } = event.currentTarget.dataset;
+    const ranges = this.data[field].map((range, i) => i === Number(index) ? { ...range, [side]: event.detail.value } : range);
+    this.setData({ [field]: ranges, scheduleReview: null });
+  },
+  addRange(event) {
+    const { field } = event.currentTarget.dataset;
+    const ranges = this.data[field];
+    const id = ranges.length ? ranges[ranges.length - 1].id + 1 : 0;
+    if (ranges.length < 4) this.setData({ [field]: [...ranges, { id, from: '09:00', to: '12:00' }], scheduleReview: null });
+  },
+  removeRange(event) {
+    const { field, index } = event.currentTarget.dataset;
+    this.setData({ [field]: this.data[field].filter((_, i) => i !== index), scheduleReview: null });
   },
   saveWeek() {
-    ui.commit(this, state => merchant.schedule(state, state.merchant, this.data.weekday, readRanges(this.data.ranges)),
-      () => wx.showToast({ title: '周计划已保存' }));
+    this.previewSchedule(this.data.weekday, this.data.weekRanges.map(item => [minutes(item.from), minutes(item.to)]), '更新' + DAYS[this.data.weekday] + '开放计划');
   },
   selectDate(event) {
     this.setData({ date: event.detail.value });
     this.refresh();
   },
-  editDateRanges(event) {
-    this.setData({ dateRanges: event.detail.value });
-  },
   saveDate() {
-    ui.commit(this, state => merchant.schedule(state, state.merchant, this.data.date, readRanges(this.data.dateRanges || '')),
-      () => wx.showToast({ title: '当日时段已保存' }));
+    this.previewSchedule(this.data.date, this.data.dayRanges.map(item => [minutes(item.from), minutes(item.to)]), '更新 ' + this.data.date + ' 开放时段');
   },
   pauseDate() {
-    wx.showModal({
-      title: '暂停当日采集',
-      content: '会停止该日的新预约并通知受影响的采集员。',
-      success: result => {
-        if (result.confirm) ui.commit(this, state => merchant.schedule(state, state.merchant, this.data.date, []));
-      }
-    });
+    this.previewSchedule(this.data.date, [], '暂停 ' + this.data.date + ' 采集');
   },
   restoreDate() {
+    this.previewSchedule(this.data.date, null, '恢复 ' + this.data.date + ' 周计划');
+  },
+  previewSchedule(day, ranges, title) {
+    try {
+      const state = store.read();
+      const id = state.merchant;
+      const affected = merchant.previewSchedule(state, id, day, ranges);
+      this.setData({ scheduleReview: { day, ranges, title, id, key: affectedKey(affected),
+        site: this.data.station.name, hours: ranges === null ? '沿用每周开放计划' : ui.rangeText(ranges),
+        orders: affected.map(order => ({
+          ...ui.presentOrder(state, order),
+          impactText: order.status === 'submitted' ? '已提交归还，凌矩继续核验'
+            : holding(order) ? '已领机，由凌矩协调归还' : order.status === 'booked' ? '未出发，可无责取消或改约' : '已出发或到店，可无责取消或改约'
+        })) } }, () => wx.pageScrollTo({ selector: '#schedule-review', duration: 200 }));
+    } catch (error) {
+      ui.errorToast(error);
+    }
+  },
+  confirmSchedule() {
+    const review = this.data.scheduleReview;
+    if (!review) return;
     ui.commit(this, state => {
-      const station = stationFor(state, state.merchant);
-      const date = this.data.date;
-      const weekday = (new Date(at(date)).getUTCDay() + 7) % 7;
-      merchant.schedule(state, station.id, date, station.week[weekday]);
-      delete station.exceptions[date];
-    });
+      requireThat(state.merchant === review.id, '当前门店已变化，请重新预览');
+      requireThat(affectedKey(merchant.previewSchedule(state, review.id, review.day, review.ranges)) === review.key,
+        '受影响订单已变化，请重新预览');
+      merchant.schedule(state, review.id, review.day, review.ranges);
+    }, () => wx.showToast({ title: '开放时段已更新' }));
+  },
+  cancelSchedule() {
+    this.setData({ scheduleReview: null });
   },
   selectPeriod(event) {
     this.setData({ period: event.detail.value });

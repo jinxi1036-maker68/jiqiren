@@ -4,6 +4,7 @@ const path = require('node:path');
 const { runtime, event } = require('./harness.cjs');
 const store = require('../lib/storage');
 const booking = require('../lib/booking');
+const merchant = require('../lib/merchant');
 
 const compiler = require(process.env.LINGJU_COMPILER || 'miniprogram-compiler');
 const r = runtime();
@@ -45,6 +46,8 @@ function findButton(node, label) {
 
 const task = r.open('task', { id: 's1' });
 const renderTask = render('pages/task/index.wxml');
+assert.ok(findButton(renderTask(task.data), '复制地址'));
+assert.doesNotMatch(pageText(renderTask(task.data)), /设备箱位置/);
 assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
 task.start(event({ minute: 540 }));
 assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
@@ -60,6 +63,7 @@ assert.match(homeText, /09:00–10:00/);
 const order = r.open('order', { id });
 const renderOrder = render('pages/order/index.wxml');
 assert.match(pageText(renderOrder(order.data)), /准备前往站点/);
+assert.match(pageText(renderOrder(order.data)), /设备箱位置/);
 assert.doesNotMatch(pageText(renderOrder(order.data)), /时钟到预约开始/);
 order.toggleDemo();
 assert.match(pageText(renderOrder(order.data)), /时钟到预约开始/);
@@ -80,4 +84,36 @@ const resultText = pageText(renderOrder(order.data));
 assert.match(resultText, /已核验归还/);
 assert.match(resultText, /待审核/);
 assert.match(resultText, /质检后确认/);
-console.log('WXML flow states rendered: explicit booking, next order, arrival guidance and independent results');
+assert.match(resultText, /订单回执/);
+
+const later = r.open('task', { id: 's1' });
+later.start(event({ minute: 630 }));
+later.end(event({ minute: 690 }));
+later.submit();
+const affectedId = store.read().orders[0].id;
+store.change(state => merchant.schedule(state, 's1', '2026-11-09', []));
+const affected = r.open('order', { id: affectedId });
+assert.equal(affected.data.mainAction, null);
+const affectedView = renderOrder(affected.data);
+assert.match(pageText(affectedView), /处理预约变更/);
+assert.equal(findButton(affectedView, '遇到问题').attr.bindtap, 'toggleIssue');
+affected.toggleIssue();
+assert.ok(findButton(renderOrder(affected.data), '提交模拟求助'));
+affected.reportIssue();
+r.answer('模拟箱子打不开');
+
+r.app.onLaunch({ path: 'pages/ops/index', query: { mode: 'mock-ops' } });
+const ops = r.open('ops', { mode: 'mock-ops' });
+const renderOps = render('pages/ops/index.wxml');
+assert.match(pageText(renderOps(ops.data)), /模拟箱子打不开/);
+ops.openWork(event(ops.data.work[0]));
+assert.ok(findButton(renderOps(ops.data), '回复并结案'));
+
+const shop = r.open('merchant');
+shop.persona(event({}, '0'));
+shop.section(event({ section: 'schedule' }));
+shop.restoreDate();
+const shopView = render('pages/merchant/index.wxml')(shop.data);
+assert.ok(findButton(shopView, '确认变更'));
+assert.match(pageText(shopView), /将新增影响 0 笔预约/);
+console.log('WXML flow states rendered: booking, station guide, return receipt, independent help, ops queue and schedule review');

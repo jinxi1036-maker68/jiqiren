@@ -1,6 +1,6 @@
 const store = require('../../lib/storage');
 const { stamp, MINUTE, TASKS } = require('../../lib/catalog');
-const { ownedOrder } = require('../../lib/model');
+const { ownedOrder, stationFor } = require('../../lib/model');
 const booking = require('../../lib/booking');
 const reviews = require('../../lib/reviews');
 const ui = require('../../lib/ui');
@@ -16,7 +16,7 @@ const GUIDANCE = {
 };
 
 function instructions(order, mainAction) {
-  if (order.uploadedAt || !order.active) return null;
+  if (order.submittedAt || !order.active) return null;
   if (order.canCancel && (order.impact || order.closed)) {
     return { title: '处理预约变更', detail: '请查看上方影响说明，可在此改期或无责取消。' };
   }
@@ -41,24 +41,36 @@ function instructions(order, mainAction) {
 }
 
 function orderResult(state, order) {
-  if (!order.uploadedAt) return null;
+  if (!order.submittedAt) return null;
   const entries = state.earnings.filter(item => item.party === order.collectorId && item.orderId === order.id
     && ['capture', 'qaAdjustment'].includes(item.kind));
   const confirmed = entries.reduce((total, item) => total + item.cents, 0);
   const inReview = order.qaAppeal && order.qaAppeal.status === 'pending';
-  let qaLabel = '待审核';
+  let qaLabel = order.uploadedAt ? '待审核' : '等待上传';
   if (order.qa) qaLabel = inReview ? '部分工时复核中' : '已审核';
   else if (!order.actual) qaLabel = '无采集时长';
   return {
     deviceLabel: order.status === 'done' ? '已核验归还' : '已提交 · 待核验',
+    uploadLabel: order.uploadedAt ? '已模拟上传' : '模拟上传失败',
     qaLabel,
-    earningsLabel: entries.length ? '已确认 · 待结算' : order.actual && !order.qa ? '质检后确认' : '暂无确认报酬',
+    earningsLabel: entries.length ? '已确认 · 待结算' : order.uploadFailed ? '上传后进入质检'
+      : order.actual && !order.qa ? '质检后确认' : '暂无确认报酬',
     amount: entries.length ? '¥' + ui.money(confirmed) + '（虚构）' : ''
   };
 }
 
+function orderTimeline(order) {
+  return [
+    ['预约确认', order.createdAt], ['到店签到', order.arrivedAt],
+    ['提交归还', order.submittedAt], ['采集记录上传', order.uploadedAt],
+    ['凌矩核验归还', order.verifiedAt], ['凌矩质检', order.qa && order.qa.at]
+  ].filter(([, at]) => at).sort((a, b) => a[1] - b[1])
+    .map(([label, at]) => ({ label, at: stamp(at) }));
+}
+
 Page({
-  data: { reportPhoto: false, steps: STEPS, mainAction: null, showDemo: false, showIssue: false, showSop: false },
+  data: { reportPhoto: false, steps: STEPS, mainAction: null, showDemo: false, showIssue: false, showSop: false,
+    issueKind: 'device', failUpload: false },
   onLoad(options) {
     this.id = options.id;
   },
@@ -74,14 +86,23 @@ Page({
     }
     const view = ui.presentOrder(state, order);
     const mainAction = ui.nextAction(view);
+    const issueTypes = booking.ISSUE_TYPES.filter(type => !type.device || view.canReport);
+    const issueIndex = Math.max(0, issueTypes.findIndex(type => type.id === this.data.issueKind));
+    const reports = state.reports.filter(item => item.orderId === order.id).map(item => ({
+      ...item, label: booking.issueType(item).label, time: stamp(item.at),
+      statusLabel: item.status === 'pending' ? '待凌矩处理' : item.status === 'verified' ? '已核实设备异常' : '已回复'
+    }));
     this.setData({ missing: false, order: view, now: stamp(state.now), mainAction,
       step: PROGRESS[order.status] ?? -1, guidance: instructions(view, mainAction), result: orderResult(state, order),
+      guide: ui.siteGuide(stationFor(state, order.stationId), order.date, view.active),
+      timeline: orderTimeline(order), issueTypes, issueIndex, reports,
+      pendingReport: reports.some(item => item.status === 'pending'),
       taskSteps: TASKS[order.task].steps,
       canJumpStart: view.active && state.now < view.startAt,
       canJumpEnd: order.status === 'collecting',
-      canJumpOverdue: ['stopped', 'submitted'].includes(order.status) && state.now < view.endAt + 30 * MINUTE,
-      report: state.reports.find(item => item.orderId === order.id) || null });
+      canJumpOverdue: ['stopped', 'submitted'].includes(order.status) && state.now < view.endAt + 30 * MINUTE });
   },
+  copyAddress: ui.copyAddress,
   perform(event) {
     const action = event.currentTarget.dataset.action;
     ui.commit(this, state => {
@@ -91,8 +112,11 @@ Page({
         ui.advanceClock(state, next.advanceTo);
         if (action === 'stop') return order;
       }
-      return booking.perform(state, state.collector, this.id, action);
+      return booking.perform(state, state.collector, this.id, action, action === 'return' && this.data.failUpload);
     });
+  },
+  failUpload(event) {
+    this.setData({ failUpload: event.detail.value });
   },
   cancel() {
     if (this.data.order.lateCancel) {
@@ -120,7 +144,7 @@ Page({
   toggleIssue() {
     const showIssue = !this.data.showIssue;
     this.setData({ showIssue }, () => {
-      if (showIssue) wx.pageScrollTo({ selector: '#order-issue', duration: 220 });
+      if (showIssue || this.data.reports.length) wx.pageScrollTo({ selector: '#order-issue', duration: 220 });
     });
   },
   jumpTo(event) {
@@ -131,9 +155,14 @@ Page({
   reportPhoto(event) {
     this.setData({ reportPhoto: event.detail.value });
   },
+  issueType(event) {
+    const type = this.data.issueTypes[Number(event.detail.value)];
+    if (type) this.setData({ issueKind: type.id, issueIndex: Number(event.detail.value) });
+  },
   reportIssue() {
-    ui.inputPrompt('上报模拟设备异常', '如密码箱故障、设备无法使用',
-      reason => ui.commit(this, state => booking.report(state, state.collector, this.id, reason, this.data.reportPhoto),
+    const type = this.data.issueTypes[this.data.issueIndex];
+    ui.inputPrompt('模拟求助 · ' + type.label, '说明现场情况和需要凌矩协助的事',
+      reason => ui.commit(this, state => booking.report(state, state.collector, this.id, reason, this.data.reportPhoto, type.id),
         () => this.setData({ showIssue: false, reportPhoto: false })));
   },
   applySubsidy() {

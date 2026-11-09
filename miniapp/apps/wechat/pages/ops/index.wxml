@@ -14,19 +14,33 @@
       <button class="grow ghost" data-role="merchant" bindtap="viewRole">查看商家端</button>
       <button class="grow ghost" data-role="collector" bindtap="viewRole">查看采集员端</button>
     </view>
-    <view class="row tabs">
+    <view class="row wrap tabs">
+      <button class="{{section === 'work' ? 'primary' : ''}}" data-section="work" bindtap="section">今日待办</button>
       <button class="{{section === 'sites' ? 'primary' : ''}}" data-section="sites" bindtap="section">场地</button>
       <button class="{{section === 'orders' ? 'primary' : ''}}" data-section="orders" bindtap="section">设备订单</button>
       <button class="{{section === 'reviews' ? 'primary' : ''}}" data-section="reviews" bindtap="section">审核</button>
       <button class="{{section === 'logs' ? 'primary' : ''}}" data-section="logs" bindtap="section">时钟审计</button>
     </view>
+    <block wx:if="{{section === 'work'}}">
+      <view class="panel">
+        <view class="row split"><view class="heading">今日待办</view><text class="badge">{{work.length}} 项</text></view>
+        <view class="muted action">包含未结事项，优先显示逾期归还和暂停接单的设备。</view>
+      </view>
+      <view class="panel row split" wx:for="{{work}}" wx:key="target">
+        <view class="grow"><view class="subheading">{{item.label}}</view><view class="muted">{{item.detail}}</view></view>
+        <button class="ghost subtle-button" data-section="{{item.section}}" data-target="{{item.target}}" bindtap="openWork">查看</button>
+      </view>
+      <view class="panel muted" wx:if="{{!work.length}}">暂无需要处理的事项。</view>
+    </block>
     <block wx:if="{{section === 'sites'}}">
-      <view class="panel" wx:for="{{sites}}" wx:key="id">
+      <view class="panel" wx:for="{{sites}}" wx:key="id" id="site-{{item.id}}">
         <view class="row split"><view class="subheading">{{item.name}}</view><view class="badge">{{item.label}}</view></view>
         <view class="muted">{{item.district}} {{item.address}}</view>
         <view class="divider" wx:if="{{item.application}}">
           <view>{{item.application.contact}} · {{item.application.phone}}</view>
           <view class="muted">模拟门头、室内、设备位置照片已提交。</view>
+          <view class="muted" wx:if="{{item.guide}}">{{item.guide.entrance}} {{item.guide.locker}} {{item.guide.area}}</view>
+          <view class="muted" wx:if="{{item.note}}">{{item.note}}</view>
         </view>
         <view class="row wrap action" wx:if="{{item.stage === 'review'}}">
           <button class="primary" data-action="site" data-id="{{item.id}}" data-result="approved" bindtap="act">模拟通过</button>
@@ -42,21 +56,25 @@
     </block>
     <block wx:if="{{section === 'orders'}}">
       <view class="section heading">设备</view>
-      <view class="panel" wx:for="{{sites}}" wx:key="id" wx:if="{{item.device}}">
+      <view class="panel" wx:for="{{sites}}" wx:key="id" wx:if="{{item.device}}" id="device-{{item.id}}">
         <view class="row split"><view class="subheading">{{item.device.id}}</view><view class="badge">{{item.paused ? '暂停接单' : '可用'}}</view></view>
         <view class="muted">{{item.name}} {{item.device.fault.reason}}</view>
         <button wx:if="{{item.paused}}" class="action" data-action="reopen" data-id="{{item.id}}" bindtap="act">模拟核验可用并复开</button>
         <button wx:else class="action" data-action="pause" data-id="{{item.id}}" bindtap="act">核实故障并暂停</button>
       </view>
-      <view class="section heading">待核查异常</view>
-      <view class="panel" wx:for="{{reports}}" wx:key="id">
-        <view class="subheading">{{item.orderId}} · {{item.details}}</view>
-        <view class="muted">{{item.samplePhoto ? '附模拟现场照片占位' : '无照片'}}</view>
-        <button class="action" data-action="pause" data-id="{{item.stationId}}" data-report="{{item.id}}" bindtap="act">核实故障并暂停</button>
+      <view class="section heading">待处理订单求助</view>
+      <view class="panel" wx:for="{{reports}}" wx:key="id" id="report-{{item.id}}">
+        <view class="subheading">{{item.orderId}} · {{item.type}}</view>
+        <view>{{item.details}}</view>
+        <view class="muted">{{item.time}} · {{item.samplePhoto ? '附模拟现场照片占位' : '无照片'}}</view>
+        <view class="row wrap action">
+          <button data-action="resolve" data-id="{{item.id}}" bindtap="act">回复并结案</button>
+          <button wx:if="{{item.deviceIssue}}" data-action="pause" data-id="{{item.stationId}}" data-report="{{item.id}}" bindtap="act">核实故障并暂停</button>
+        </view>
       </view>
-      <view class="panel muted" wx:if="{{!reports.length}}">暂无待核查的设备报告。</view>
+      <view class="panel muted" wx:if="{{!reports.length}}">暂无待处理求助。</view>
       <view class="section heading">订单</view>
-      <view class="panel" wx:for="{{orders}}" wx:key="id">
+      <view class="panel" wx:for="{{orders}}" wx:key="id" id="order-{{item.id}}">
         <view class="row split"><view class="subheading">{{item.id}} · {{item.collectorId}}</view><view class="badge">{{item.stateLabel}}</view></view>
         <view>{{item.stationName}}</view><view class="muted">{{item.interval}}</view>
         <button wx:if="{{item.status === 'submitted'}}" class="primary action" data-action="return" data-id="{{item.id}}" bindtap="act">模拟核验归还</button>
@@ -66,7 +84,7 @@
     </block>
     <block wx:if="{{section === 'reviews'}}">
       <view class="section heading">质检待办</view>
-      <view class="panel" wx:for="{{qa}}" wx:key="id">
+      <view class="panel" wx:for="{{qa}}" wx:key="id" id="qa-{{item.id}}">
         <view class="subheading">{{item.id}} · 实采 {{item.actual}} 分钟</view>
         <view wx:if="{{item.qaAppeal}}" class="muted">{{item.qaAppeal.reason}} · 原有效 {{item.qa.valid}} 分钟</view>
         <button class="action" data-action="{{item.qaPending ? 'qa' : 'qaAppeal'}}" data-id="{{item.id}}" bindtap="act">{{item.qaPending ? '录入模拟QA' : '模拟QA复核'}}</button>
@@ -78,7 +96,7 @@
         <view class="muted">开关用于模拟运营负责人。新金额只作用于新申请。</view>
         <button wx:if="{{lead}}" class="action" data-action="price" bindtap="act">调整虚构金额</button>
       </view>
-      <view class="panel" wx:for="{{subsidies}}" wx:key="id">
+      <view class="panel" wx:for="{{subsidies}}" wx:key="id" id="subsidy-{{item.id}}">
         <view class="subheading">{{item.id}} · {{item.subsidyStatus}}</view>
         <view>¥{{item.subsidyAmount}}（虚构） · 凭证 {{item.subsidy.proof === 'route' ? '模拟行程' : '模拟到店'}}</view>
         <view class="muted">{{item.cancellation.outage.reason}} · 截止 {{item.subsidyDue}}</view>

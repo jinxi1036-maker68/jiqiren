@@ -4,6 +4,7 @@ function runtime() {
   const state = new Map();
   const nav = [];
   const dialogs = [];
+  const clipboard = [];
   let app;
   global.App = options => { app = options; };
   global.getApp = () => app;
@@ -11,6 +12,8 @@ function runtime() {
     getStorageSync(key) { return structuredClone(state.get(key)); },
     setStorageSync(key, value) { state.set(key, structuredClone(value)); },
     showToast() {},
+    pageScrollTo() {},
+    setClipboardData({ data }) { clipboard.push(data); },
     showModal(options) { dialogs.push(options); },
     showActionSheet(options) { dialogs.push(options); },
     navigateTo(options) { nav.push(options.url); },
@@ -30,13 +33,14 @@ function runtime() {
     global.Page = options => { page = options; };
     load('pages/' + name + '/index.js');
     page.data = structuredClone(page.data || {});
-    page.setData = changes => {
+    page.setData = (changes, done) => {
       for (const [key, value] of Object.entries(changes)) {
         const fields = key.split('.');
         const field = fields.pop();
         const target = fields.reduce((object, part) => object[part], page.data);
         target[field] = structuredClone(value);
       }
+      if (done) done();
     };
     if (page.onLoad) page.onLoad(query);
     if (page.onShow) page.onShow();
@@ -47,7 +51,7 @@ function runtime() {
     dialogs.pop().success({ confirm: true, content: value, tapIndex: 0 });
   }
 
-  return { app, open, nav, dialogs, answer, root };
+  return { app, open, nav, dialogs, clipboard, answer, root };
 }
 
 function event(dataset = {}, value) {

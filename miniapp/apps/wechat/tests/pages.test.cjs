@@ -11,6 +11,13 @@ function select(task, start, end) {
   task.end(event({ minute: end }));
 }
 
+function makeOrder(r, start = 540, end = 600) {
+  const task = r.open('task', { id: 's1' });
+  select(task, start, end);
+  task.submit();
+  return r.open('order', { id: store.read().orders[0].id });
+}
+
 test('原生页面入口记住选择，默认不进入运营工作台且可一键重置', () => {
   const r = runtime();
   r.app.onLaunch({ path: 'pages/home/index', query: {} });
@@ -26,6 +33,115 @@ test('原生页面入口记住选择，默认不进入运营工作台且可一�
   home.reset();
   r.answer();
   assert.equal(store.read().selection, '');
+});
+
+test('搜地址、复制到店地址，切回采集员时保留筛选和原订单', () => {
+  const r = runtime();
+  const collector = r.open('collector');
+  collector.region(event({}, '1'));
+  collector.search(event({}, '样例街 A-01'));
+  assert.deepEqual(collector.data.cards.map(card => card.id), ['s1']);
+  const task = r.open('task', { id: 's1' });
+  assert.equal(task.data.guide.locker, '');
+  task.copyAddress();
+  assert.deepEqual(r.clipboard, ['平顶山 · 新华区 · 样例街 A-01']);
+  const order = makeOrder(r);
+  assert.match(order.data.guide.locker, /A-01/);
+  collector.switchRole();
+  const home = r.open('home', { choose: '1' });
+  home.choose(event({ role: 'merchant' }));
+  r.open('merchant').switchRole();
+  r.open('home', { choose: '1' }).choose(event({ role: 'collector' }));
+  const reopened = r.open('collector');
+  assert.equal(reopened.data.region, 1);
+  assert.equal(reopened.data.search, '样例街 A-01');
+  assert.equal(reopened.data.nextOrder.id, order.data.order.id);
+  reopened.persona(event({}, '1'));
+  assert.equal(reopened.data.region, 0);
+  assert.equal(reopened.data.orders.length, 0);
+  reopened.persona(event({}, '0'));
+  assert.equal(reopened.data.region, 1);
+});
+
+test('补资料回显原申请的区、地址、到店说明及照片状态', () => {
+  const r = runtime();
+  const m = r.open('merchant');
+  m.openApplication();
+  m.district(event({}, '1'));
+  m.field(event({ key: 'address' }, '样例街 D-08'));
+  m.field(event({ key: 'entrance' }, '从东侧演示入口进入'));
+  m.category(event({}, '2'));
+  for (const id of ['front', 'inside', 'device']) m.photo(event({ id }));
+  m.apply();
+  store.change(state => merchant.reviewSite(state, 'new', 'supplement', '请补充楼层'));
+  const reopened = r.open('merchant');
+  reopened.openApplication();
+  assert.equal(reopened.data.districtIndex, 1);
+  assert.equal(reopened.data.station.district, '卫东区');
+  assert.equal(reopened.data.form.address, '样例街 D-08');
+  assert.equal(reopened.data.form.entrance, '从东侧演示入口进入');
+  assert.equal(reopened.data.taskIndex, 2);
+  assert.deepEqual(reopened.data.added, { front: true, inside: true, device: true });
+});
+
+test('停业先预览，预览之后新增的订单须重新确认；求助可从运营待办回复结案', () => {
+  const r = runtime();
+  const order = makeOrder(r);
+  const m = r.open('merchant');
+  m.persona(event({}, '0'));
+  m.pauseDate();
+  assert.match(m.data.scheduleReview.orders[0].impactText, /未出发/);
+  assert.equal(store.read().orders[0].closed, undefined);
+  store.change(state => booking.create(state, 'c2', { stationId: 's1', date: m.data.date, start: 630, end: 690 }));
+  m.confirmSchedule();
+  assert.match(r.dialogs.pop().content, /重新预览/);
+  assert.equal(store.read().orders.some(item => item.closed), false);
+  m.pauseDate();
+  assert.equal(m.data.scheduleReview.orders.length, 2);
+  m.confirmSchedule();
+  order.onShow();
+  assert.equal(order.data.mainAction, null);
+  order.toggleIssue();
+  order.issueType(event({}, String(order.data.issueTypes.findIndex(item => item.id === 'closed'))));
+  order.reportIssue();
+  r.answer('到店后门未开');
+  assert.equal(order.data.pendingReport, true);
+  r.app.onLaunch({ path: 'pages/ops/index', query: { mode: 'mock-ops' } });
+  const ops = r.open('ops', { mode: 'mock-ops' });
+  assert.equal(ops.data.section, 'work');
+  const pending = ops.data.work.find(item => item.label === '门店未开');
+  ops.openWork(event(pending));
+  assert.equal(ops.data.section, 'orders');
+  ops.act(event({ action: 'resolve', id: ops.data.reports[0].id }));
+  r.answer('已联系门店，请在原订单无责改约。');
+  order.onShow();
+  assert.equal(ops.data.work.some(item => item.target === pending.target), false);
+  assert.equal(order.data.reports[0].statusLabel, '已回复');
+  assert.match(order.data.reports[0].response, /改约/);
+  assert.equal(store.read().stations[0].device.fault, null);
+});
+
+test('模拟上传失败后可先核验归还，重试不重复提交或入账', () => {
+  const r = runtime();
+  const order = makeOrder(r);
+  for (const action of ['travel', 'arrive', 'collect', 'stop']) order.perform(event({ action }));
+  order.failUpload(event({}, true));
+  order.perform(event({ action: 'return' }));
+  const id = order.data.order.id;
+  assert.equal(order.data.result.uploadLabel, '模拟上传失败');
+  assert.equal(order.data.result.qaLabel, '等待上传');
+  assert.equal(order.data.guidance, null);
+  store.change(state => booking.verifyReturn(state, id, '模拟在箱'));
+  order.onShow();
+  assert.equal(order.data.result.deviceLabel, '已核验归还');
+  order.perform(event({ action: 'upload' }));
+  order.perform(event({ action: 'upload' }));
+  assert.equal(order.data.result.deviceLabel, '已核验归还');
+  assert.equal(order.data.result.uploadLabel, '已模拟上传');
+  assert.equal(order.data.result.qaLabel, '待审核');
+  const state = store.read();
+  assert.equal(state.earnings.filter(item => item.orderId === id && item.kind === 'venue').length, 1);
+  assert.equal(state.audit.filter(item => item.action === '重试模拟上传成功').length, 1);
 });
 
 test('商家页面申请，运营审核部署，商家确认后排班才进入采集员列表', () => {
@@ -47,8 +163,12 @@ test('商家页面申请，运营审核部署，商家确认后排班才进入�
   assert.equal(collector.data.cards.length, 3);
   m.onShow();
   m.confirm();
-  m.editRanges(event({}, '09:00-12:00, 14:00-18:00'));
+  m.addRange(event({ field: 'weekRanges' }));
+  m.addRange(event({ field: 'weekRanges' }));
+  m.editRange(event({ field: 'weekRanges', index: 1, side: 'from' }, '14:00'));
+  m.editRange(event({ field: 'weekRanges', index: 1, side: 'to' }, '18:00'));
   m.saveWeek();
+  m.confirmSchedule();
   collector.onShow();
   assert.equal(collector.data.cards.length, 4);
   assert.ok(collector.data.cards.find(item => item.id === 'new').openCount > 0);

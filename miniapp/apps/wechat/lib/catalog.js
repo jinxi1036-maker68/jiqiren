@@ -3,6 +3,13 @@ const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 const OFFSET = 8 * HOUR;
 const START = Date.parse('2026-11-09T08:00:00+08:00');
+const CITY = '平顶山';
+const DISTRICTS = ['新华区', '卫东区', '湛河区'];
+const DEMO_GUIDES = {
+  s1: { entrance: '从「松墨文具」深绿门头正门进入。', locker: '进门右侧的编号 A-01 演示箱。', area: '贴有采集标识的文具分拣台。' },
+  s2: { entrance: '从「方盒工坊」蓝色卷帘门旁的人行门进入。', locker: '人行门内左侧的编号 B-02 演示箱。', area: '工作间内划线的周转盒装配台。' },
+  s3: { entrance: '从「青枝花室」木色门头下的玻璃门进入。', locker: '沿入口通道到编号 C-03 演示箱。', area: '靠窗的仿真花材示范台。' }
+};
 
 function dateOf(time) {
   return new Date(time + OFFSET).toISOString().slice(0, 10);
@@ -74,4 +81,4 @@ function seed() {
   };
 }
 
-module.exports = { MINUTE, HOUR, DAY, TASKS, dateOf, clock, stamp, at, timeLabel, minutes, seed };
+module.exports = { MINUTE, HOUR, DAY, CITY, DISTRICTS, DEMO_GUIDES, TASKS, dateOf, clock, stamp, at, timeLabel, minutes, seed };

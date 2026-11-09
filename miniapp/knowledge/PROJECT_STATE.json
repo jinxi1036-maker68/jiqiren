@@ -1260,6 +1260,20 @@
       "automated_tests_passed": 28,
       "offline_render": "explicit booking, next order, arrival guidance and independent results",
       "guided_order_actions": "early appointment to return through visible order actions, with on-demand simulation clock and device checks"
+    },
+    "onsite_and_ops_refresh": {
+      "status": "implemented_automated_tested",
+      "base_commit": "81965c2665659bcb156d449e5dd0a24850c5fe1e",
+      "scope": [
+        "fictional station guide, address search and copy",
+        "collector filters persisted separately from role and demo persona selection",
+        "district and visit details, application repopulation and schedule impact preview",
+        "order-linked help and operator work queue, including closure without device suspension",
+        "independent return and upload receipts with a simulated retry"
+      ],
+      "automated_tests_passed": 32,
+      "offline_render": "six WXML routes and WXSS compiled, guide, help, receipts, operator queue and schedule preview rendered",
+      "real_device_preview_verified": false
     }
   }
 }

@@ -1,3 +1,4 @@
+<import src="../../templates/site-guide.wxml"/>
 <view class="screen">
   <view class="panel" wx:if="{{missing}}">
     <view class="heading">无法打开预约</view>
@@ -28,7 +29,6 @@
       <view class="muted action">{{guidance.detail}}</view>
       <view class="row action" wx:if="{{mainAction}}">
         <button class="grow primary order-step-button" data-action="{{mainAction.action}}" bindtap="perform">{{mainAction.label}}</button>
-        <button wx:if="{{order.canReport && report.status !== 'pending'}}" class="ghost order-step-button" bindtap="toggleIssue">{{showIssue ? '收起异常' : '设备异常'}}</button>
       </view>
       <view wx:if="{{order.showCode}}" class="divider">
         <view class="muted small">模拟密码箱 · {{order.device}}</view>
@@ -40,9 +40,32 @@
       <button class="ghost action" bindtap="toggleSop">{{showSop ? '收起采集 SOP' : '查看采集 SOP'}}</button>
     </view>
 
+    <view class="row split action">
+      <view class="muted small">订单求助由凌矩处理</view>
+      <button class="ghost subtle-button" bindtap="toggleIssue">{{showIssue && !reports.length ? '收起求助' : '遇到问题'}}</button>
+    </view>
+    <view class="panel" wx:if="{{showIssue || reports.length}}" id="order-issue">
+      <view class="heading">联系凌矩 · 模拟求助</view>
+      <view class="divider" wx:for="{{reports}}" wx:key="id">
+        <view class="row split"><view class="subheading">{{item.label}}</view><text class="badge">{{item.statusLabel}}</text></view>
+        <view class="muted">{{item.time}} · {{item.details}}</view>
+        <view class="notice" wx:if="{{item.response}}">凌矩回复　{{item.response}}</view>
+      </view>
+      <block wx:if="{{showIssue && !pendingReport}}">
+        <picker range="{{issueTypes}}" range-key="label" value="{{issueIndex}}" bindchange="issueType">
+          <view class="field">求助类型　{{issueTypes[issueIndex].label}} ›</view>
+        </picker>
+        <view class="row split divider"><view class="muted">附模拟现场照片占位</view><switch checked="{{reportPhoto}}" color="#244b3a" bindchange="reportPhoto"/></view>
+        <button class="primary action" bindtap="reportIssue">提交模拟求助</button>
+      </block>
+    </view>
+    <template wx:if="{{!result}}" is="site-guide" data="{{guide: guide}}"/>
+
     <view class="panel" wx:if="{{result}}">
       <view class="heading">订单结果</view>
       <view class="row split divider result-row"><view class="muted">设备</view><view class="subheading">{{result.deviceLabel}}</view></view>
+      <view class="row split divider result-row"><view class="muted">采集记录</view><view class="subheading">{{result.uploadLabel}}</view></view>
+      <button wx:if="{{order.uploadFailed}}" class="primary action" data-action="upload" bindtap="perform">重试模拟上传</button>
       <view class="row split divider result-row"><view class="muted">质检</view><view class="subheading">{{result.qaLabel}}</view></view>
       <view class="row split divider result-row">
         <view class="muted">采集报酬</view>
@@ -58,13 +81,12 @@
       </block>
     </view>
 
-    <view class="panel" wx:if="{{report || (order.canReport && showIssue)}}" id="order-issue">
-      <view class="heading">设备异常</view>
-      <view wx:if="{{report}}" class="notice">{{report.details}} · {{report.status === 'pending' ? '待核查' : '已模拟核实'}}</view>
-      <block wx:if="{{order.canReport && showIssue && report.status !== 'pending'}}">
-        <view class="row split divider"><view class="muted">附模拟现场照片占位</view><switch checked="{{reportPhoto}}" color="#244b3a" bindchange="reportPhoto"/></view>
-        <button class="action" bindtap="reportIssue">上报设备异常</button>
-      </block>
+    <view class="panel" wx:if="{{result && timeline.length}}">
+      <view class="heading">订单回执</view>
+      <view class="row split divider" wx:for="{{timeline}}" wx:key="label">
+        <view>{{item.label}}</view><view class="muted small">{{item.at}}</view>
+      </view>
+      <view class="muted action" wx:if="{{order.status === 'submitted'}}">下一步由凌矩核验设备归还。</view>
     </view>
 
     <view class="panel" wx:if="{{order.canApply || order.subsidy || order.cancellation.outage}}">
@@ -86,6 +108,9 @@
         <button class="subtle-button ghost" bindtap="toggleDemo">{{showDemo ? '收起' : '展开'}}</button>
       </view>
       <view class="row wrap action" wx:if="{{showDemo}}">
+        <view class="row split grow" wx:if="{{order.status === 'stopped'}}">
+          <view class="muted">模拟首次上传失败</view><switch checked="{{failUpload}}" bindchange="failUpload" color="#244b3a"/>
+        </view>
         <button wx:if="{{canJumpStart}}" class="ghost" data-target="start" bindtap="jumpTo">时钟到预约开始</button>
         <button wx:if="{{canJumpEnd}}" class="ghost" data-target="end" bindtap="jumpTo">时钟到预约结束</button>
         <button wx:if="{{canJumpOverdue}}" class="ghost" data-target="overdue" bindtap="jumpTo">时钟到结束后30分钟</button>

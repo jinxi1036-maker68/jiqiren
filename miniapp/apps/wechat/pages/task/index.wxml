@@ -1,3 +1,4 @@
+<import src="../../templates/site-guide.wxml"/>
 <view class="screen {{missing ? '' : 'with-booking-dock'}}">
   <view class="panel" wx:if="{{missing}}">此任务已不可用。</view>
   <block wx:else>
@@ -16,6 +17,7 @@
       </view>
       <view class="muted small action">只在示范区采集，避开顾客、未成年人和个人信息。</view>
     </view>
+    <template is="site-guide" data="{{guide: guide}}"/>
     <view class="panel">
       <view class="row split">
         <view class="heading">{{replaceId ? '选择改约时间' : '选择预约时间'}}</view>

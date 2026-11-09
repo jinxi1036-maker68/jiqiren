@@ -1,10 +1,10 @@
 const store = require('../../lib/storage');
-const { stamp, dateOf, HOUR } = require('../../lib/catalog');
+const { stamp, dateOf, HOUR, DISTRICTS } = require('../../lib/catalog');
 const { preStart } = require('../../lib/model');
 const reviews = require('../../lib/reviews');
 const ui = require('../../lib/ui');
 
-const REGIONS = ['全城', '新华区', '卫东区', '湛河区'];
+const REGIONS = ['全城', ...DISTRICTS];
 const SORTS = ['最早可开工', '区域顺序'];
 const NAV_ITEMS = [
   { section: 'tasks', label: '找任务', icon: '/assets/icons/radar.svg' },
@@ -39,7 +39,7 @@ function nextReservation(orders, now) {
 }
 
 Page({
-  data: { section: 'tasks', navItems: NAV_ITEMS, regions: REGIONS, region: 0, sorts: SORTS, sort: 0, search: '', showDemo: false },
+  data: { section: 'tasks', navItems: NAV_ITEMS, regions: REGIONS, sorts: SORTS, showDemo: false },
   onLoad(options) {
     this.replaceId = options.replace || '';
   },
@@ -50,18 +50,20 @@ Page({
     const state = store.read();
     const actor = state.collector;
     const today = dateOf(state.now);
-    const date = this.data.date && this.data.date >= today ? this.data.date : today;
+    const { date: savedDate, region = 0, sort = 0, search = '' } = (state.collectorFilters || {})[actor] || {};
+    const date = savedDate && savedDate >= today ? savedDate : today;
     const period = this.data.period || today.slice(0, 7);
     const messages = ui.inbox(state, actor);
     const oldOrder = state.orders.find(order => order.id === this.replaceId && order.collectorId === actor);
     if (this.replaceId && (!oldOrder || oldOrder.replacedBy || (!preStart(oldOrder) && oldOrder.status !== 'cancelled'))) this.replaceId = '';
     const candidates = state.stations.filter(station => station.stage === 'open' && station.taskEnabled);
-    const cards = candidates.filter(station => !this.data.region || station.district === REGIONS[this.data.region])
+    const cards = candidates.filter(station => !region || station.district === REGIONS[region])
       .map(station => ui.listing(state, station, date, actor, this.replaceId))
-      .filter(card => (card.name + card.title + card.category).includes(this.data.search));
-    if (this.data.sort === 0) cards.sort((a, b) => (a.openCount ? a.earliest : '99:99').localeCompare(b.openCount ? b.earliest : '99:99'));
+      .filter(card => [card.name, card.title, card.category, card.district, card.address].join(' ').includes(search.trim()));
+    if (sort === 0) cards.sort((a, b) => (a.openCount ? a.earliest : '99:99').localeCompare(b.openCount ? b.earliest : '99:99'));
+    else cards.sort((a, b) => REGIONS.indexOf(a.district) - REGIONS.indexOf(b.district));
     const orders = state.orders.filter(order => order.collectorId === actor).map(order => ui.presentOrder(state, order));
-    this.setData({ today, date, dateLabel: date === today ? '今天 ' + date.slice(5).replace('-', '/') : date.slice(5).replace('-', '/'),
+    this.setData({ today, date, region, sort, search, dateLabel: date === today ? '今天 ' + date.slice(5).replace('-', '/') : date.slice(5).replace('-', '/'),
       availableCount: cards.filter(card => card.openCount).length, period, clock: stamp(state.now), cards, messages,
       replaceId: this.replaceId, personas: state.collectors.map(person => person.name),
       persona: state.collectors.findIndex(person => person.id === actor),
@@ -81,20 +83,26 @@ Page({
     this.refresh();
   },
   date(event) {
-    this.setData({ date: event.detail.value });
-    this.refresh();
+    this.saveFilters({ date: event.detail.value });
   },
   region(event) {
-    this.setData({ region: Number(event.detail.value) });
-    this.refresh();
+    this.saveFilters({ region: Number(event.detail.value) });
   },
   sort(event) {
-    this.setData({ sort: Number(event.detail.value) });
-    this.refresh();
+    this.saveFilters({ sort: Number(event.detail.value) });
   },
   search(event) {
-    this.setData({ search: event.detail.value.trim() });
-    this.refresh();
+    this.saveFilters({ search: event.detail.value });
+  },
+  saveFilters(changes) {
+    ui.commit(this, state => {
+      if (!state.collectorFilters) state.collectorFilters = {};
+      state.collectorFilters[state.collector] = { ...state.collectorFilters[state.collector], ...changes };
+    });
+  },
+  help() {
+    wx.showModal({ title: '采集帮助', content: '预约后，从「预约」打开订单查看到店指引。现场或归还遇到困难，点订单里的「遇到问题」，凌矩的模拟回复会回到该订单和站内消息。',
+      showCancel: false });
   },
   period(event) {
     this.setData({ period: event.detail.value });

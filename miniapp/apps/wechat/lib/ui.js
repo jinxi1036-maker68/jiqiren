@@ -1,4 +1,4 @@
-const { TASKS, stamp, timeLabel, HOUR, MINUTE, at } = require('./catalog');
+const { TASKS, CITY, DEMO_GUIDES, stamp, timeLabel, HOUR, MINUTE, at } = require('./catalog');
 const { stationFor, preStart, holding, credit, windows } = require('./model');
 const booking = require('./booking');
 const reviews = require('./reviews');
@@ -33,6 +33,22 @@ function listing(state, station, date, actor, replaceId, slots = booking.availab
 
 function rangeText(ranges) {
   return ranges.map(([from, to]) => timeLabel(from) + '–' + timeLabel(to)).join(' / ') || '暂停开放';
+}
+
+function siteGuide(station, date, booked = false) {
+  const details = station.guide || DEMO_GUIDES[station.id] || {};
+  return {
+    name: station.name, address: [CITY, station.district, station.address].filter(Boolean).join(' · '),
+    opening: rangeText(windows(station, date)),
+    entrance: details.entrance || '入口说明待凌矩补充。',
+    area: details.area || '采集区域待凌矩补充。',
+    locker: booked ? details.locker || '箱位待凌矩补充，请从本单求助。' : ''
+  };
+}
+
+function copyAddress() {
+  wx.setClipboardData({ data: this.data.guide.address,
+    fail: () => wx.showToast({ title: '复制失败，请查看上方地址', icon: 'none' }) });
 }
 
 function presentOrder(state, order) {
@@ -163,5 +179,5 @@ function jump(event) {
   advance(this, store.read().now + Number(event.currentTarget.dataset.delta) * MINUTE);
 }
 
-module.exports = { STAGES, money, rangeText, listing, presentOrder, nextAction, ledger, income, inbox, profile, errorToast, commit,
+module.exports = { STAGES, money, rangeText, siteGuide, copyAddress, listing, presentOrder, nextAction, ledger, income, inbox, profile, errorToast, commit,
   inputPrompt, switchRole, advanceClock, advance, jump };

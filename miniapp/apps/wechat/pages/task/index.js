@@ -35,7 +35,7 @@ Page({
       || (this.data.selectedEnd !== null && selectedEnd === null);
     const task = TASKS[station.task];
     const previous = state.orders.find(order => order.id === this.replaceId && order.collectorId === state.collector);
-    this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd,
+    this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd, guide: ui.siteGuide(station, date),
       selectionLost: selectionLost || this.data.selectionLost, canConfirm: selectedEnd !== null,
       selectionText: selectedEnd === null ? '请选择开始和结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),
       starts: slots.map(item => option(item.start)), ends: slot ? slot.ends.map(option) : [],
@@ -44,6 +44,7 @@ Page({
       reserved: state.orders.filter(order => order.stationId === station.id && order.date === date && order.status !== 'cancelled')
         .sort((a, b) => a.start - b.start).map(order => ({ id: order.id, interval: timeLabel(order.start) + '–' + timeLabel(order.end) })) });
   },
+  copyAddress: ui.copyAddress,
   date(event) {
     this.setData({ date: event.detail.value, selectedStart: null, selectedEnd: null, selectionLost: false });
     this.refresh();

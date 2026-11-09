@@ -1,0 +1,13 @@
+<template name="range-editor">
+  <view class="row divider" wx:for="{{ranges}}" wx:key="id">
+    <picker class="grow" mode="time" value="{{item.from}}" data-field="{{field}}" data-index="{{index}}" data-side="from" bindchange="editRange">
+      <view class="field">开始 {{item.from}} ›</view>
+    </picker>
+    <picker class="grow" mode="time" value="{{item.to}}" data-field="{{field}}" data-index="{{index}}" data-side="to" bindchange="editRange">
+      <view class="field">结束 {{item.to}} ›</view>
+    </picker>
+    <button class="ghost subtle-button" data-field="{{field}}" data-index="{{index}}" bindtap="removeRange">移除</button>
+  </view>
+  <view wx:if="{{!ranges.length}}" class="muted action">暂无开放时段</view>
+  <button wx:if="{{ranges.length < 4}}" class="ghost action" data-field="{{field}}" bindtap="addRange">＋ 添加开放时段</button>
+</template>

@@ -2,16 +2,13 @@
   <view class="list-masthead">
     <view class="row split">
       <view class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山</text><text class="badge">模拟体验</text></view>
-      <button class="ghost subtle-button" bindtap="switchRole">切换身份</button>
+      <text class="muted small">{{personas[persona]}}</text>
     </view>
     <view class="row split action">
       <view class="grow">
-        <view class="title">{{section === 'tasks' ? (nextOrder && !replaceId ? '我的采集' : '附近采集任务') : section === 'orders' ? '预约' : section === 'income' ? '收益' : section === 'messages' ? '消息' : '我的'}}</view>
-        <view class="muted">{{section === 'tasks' ? (nextOrder && !replaceId ? '预约进度和附近任务' : availableCount + ' 个站点有可约时段') : '模拟北京时间 ' + clock}}</view>
+        <view class="title">{{section === 'tasks' ? (nextOrder && !replaceId ? '我的采集' : '找采集任务') : section === 'orders' ? '预约' : section === 'income' ? '收益' : section === 'messages' ? '消息' : '我的'}}</view>
+        <view class="muted">{{section === 'tasks' ? (nextOrder && !replaceId ? '预约进度和站点任务' : availableCount + ' 个站点有可约时段') : '模拟北京时间 ' + clock}}</view>
       </view>
-      <picker range="{{personas}}" value="{{persona}}" bindchange="persona">
-        <view class="filter-chip">{{personas[persona]}} ›</view>
-      </picker>
     </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">
@@ -29,7 +26,7 @@
     <view class="panel filter-panel">
       <view class="field row filter-search">
         <image class="icon icon-small" src="/assets/icons/search.svg" mode="aspectFit"/>
-        <input class="grow" placeholder="搜站点、任务或场景" value="{{search}}" bindinput="search"/>
+        <input class="grow" placeholder="搜站点、地址或任务" value="{{search}}" bindinput="search"/>
       </view>
       <view class="row filter-row">
         <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="filter-chip">{{dateLabel}} ▾</view></picker>
@@ -108,6 +105,20 @@
     <view class="panel muted" wx:if="{{!messages.length}}">暂无站内消息。</view>
   </block>
   <block wx:if="{{section === 'credit'}}">
+    <view class="panel">
+      <view class="row split"><view class="heading">{{personas[persona]}}</view><text class="badge">演示资料</text></view>
+      <view class="muted action">当前身份　个人采集员</view>
+      <view class="row action">
+        <button class="grow ghost" bindtap="switchRole">切换身份</button>
+        <button class="grow ghost" bindtap="help">采集帮助</button>
+      </view>
+    </view>
+    <view class="panel">
+      <view class="row split"><view class="subheading">演示设置</view><button class="ghost subtle-button" bindtap="toggleDemo">{{showDemo ? '收起' : '展开'}}</button></view>
+      <picker wx:if="{{showDemo}}" range="{{personas}}" value="{{persona}}" bindchange="persona">
+        <view class="field">切换演示采集员　{{personas[persona]}} ›</view>
+      </picker>
+    </view>
     <view class="panel">
       <view class="row split"><view class="heading">信誉分</view><view class="badge">{{profile.label}}</view></view>
       <view class="metric section">{{profile.score}} / 100</view>

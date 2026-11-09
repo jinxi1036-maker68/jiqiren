@@ -8,7 +8,8 @@ const reviews = require('../lib/reviews');
 const ui = require('../lib/ui');
 
 const DATE = '2026-11-09';
-const FORM = { name: '测试文具（虚构）', address: '样例地址', contact: '演示店主', phone: '示例-0000',
+const FORM = { name: '测试文具（虚构）', address: '样例地址', district: '新华区', contact: '演示店主', phone: '示例-0000',
+  entrance: '正门', locker: '演示箱 A', area: '文具示范台',
   task: 'stationery', photos: ['front', 'inside', 'device'] };
 
 function reserve(state, collector = 'c1', stationId = 's1', start = 540, end = 600, date = DATE) {
