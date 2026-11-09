@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed subsidy appeal review must be completed within 72 hours after appeal submission; approval moves subsidy to pending disbursement, rejection requires final explanation, overdue reminders go to Lingju supervisor without automatic approval or payment.",
+  "latest_decision": "Owner confirmed a fixed-amount transport subsidy per verified fault-related no-collection order (normally at most once per order), centrally configurable by Lingju operations; specific amount, modification permissions and effective-date rules remain undecided. No actual payment or code implemented.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -455,12 +455,15 @@
     "not_departed_and_notified_early": "no_subsidy",
     "already_departed_or_arrived_and_cannot_collect_due_to_verified_device_fault": "eligible_after_lingju_review",
     "evidence": "order_start_travel_self_report_plus_optional_on_arrival_checkin_and_trip_screenshot_or_onsite_proof; verification_by_lingju; exact_evidence_standard_undecided",
-    "amount": "undecided",
+    "amount": "fixed_amount_configurable_by_lingju_admin; numeric_value_undecided",
     "approval_process": "collector_voluntarily_applies_with_proof_from_fault_cancelled_order; lingju_reviews_and_approves; approved_goes_to_pending_disbursement; no_auto_payment",
     "paid": false,
     "implemented": false,
     "application_approved_by_owner": true,
-    "application_decision_id": "DEC-2026-11-09-07"
+    "application_decision_id": "DEC-2026-11-09-07",
+    "maximum_payouts_per_affected_order": "one_normally; exception_policy_undecided",
+    "amount_formula": "fixed_per_verified_eligible_fault_order_not_distance_based",
+    "amount_rule_decision_id": "DEC-2026-11-09-12"
   },
   "device_fault_travel_evidence_20261109": {
     "status": "owner_confirmed_concept",
@@ -563,6 +566,21 @@
     "auto_approval_if_overdue": false,
     "automatic_payment": false,
     "reminder_channel": "undecided",
+    "implemented": false
+  },
+  "device_fault_subsidy_fixed_amount_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-12",
+    "amount_type": "fixed_not_distance_based",
+    "amount_value_cny": "undecided",
+    "configured_by": "lingju_operations_backend",
+    "editable_after_initial_setup": true,
+    "maximum_payments_per_fault_order": "one_normally",
+    "repeat_claims_not_automatic_extra_payments": true,
+    "admin_change_permission": "undecided",
+    "change_effect_on_existing_claims": "undecided",
+    "verified_evidence_and_approval_required": true,
+    "approval_not_equal_paid": true,
     "implemented": false
   }
 }
