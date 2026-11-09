@@ -26,3 +26,4 @@
 - 25 项 Node.js 流程及原生页面逻辑测试通过。微信离线编译器编译并渲染 6 个 WXML 页面，WXSS 编译通过。
 - 微信开发者工具 2.02.2609250 识别工程信息。游客模式校验占位 AppID 时返回系统错误 1，模拟器和真机预览待使用有权限的本地 AppID 验收。
 - [导入说明与三个演示剧本](apps/wechat/README.md)。
+- 已创建 [Draft PR #26](https://github.com/jinxi1036-maker68/jiqiren/pull/26)。[验收记录和离线编译截图](apps/wechat/evidence/README.md)随分支交付。

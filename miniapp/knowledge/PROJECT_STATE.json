@@ -4,7 +4,7 @@
   "updated_at": "2026-11-09",
   "home": "miniapp/knowledge/00_START_HERE.md",
   "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
-  "phase": "native_wechat_mock_v0_1_offline_tested_pending_owner_review",
+  "phase": "native_wechat_mock_v0_1_offline_tested_draft_pr",
   "model": "merchant_host_device_plus_individual_collector_hourly_orders",
   "model_confirmed_by_owner": true,
   "mvp": {
@@ -14,7 +14,7 @@
     "issue_number": 25,
     "code_in_repo_verified": true,
     "codex_actively_running_verified": true,
-    "pr_created_verified": false,
+    "pr_created_verified": true,
     "tests_verified": true,
     "publicly_deployed": false,
     "real_payment": false,
@@ -1231,7 +1231,9 @@
       "compiler": "miniprogram-compiler 0.2.3: six WXML routes compiled and rendered, WXSS compiled",
       "devtools_guest_import": "2.02.2609250 recognized project metadata, then system error 1 during placeholder AppID validation",
       "desktop_simulator_verified": false,
-      "real_device_preview_verified": false
-    }
+      "real_device_preview_verified": false,
+      "offline_render_screenshot": "miniapp/apps/wechat/evidence/v0.1-offline-render.png"
+    },
+    "draft_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/26"
   }
 }

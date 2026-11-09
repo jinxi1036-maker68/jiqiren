@@ -60,6 +60,9 @@ Page({
     const saved = ui.commit(this, state => booking.create(state, state.collector, request), order => {
       wx.redirectTo({ url: '/pages/order/index?id=' + order.id, complete: () => { this.submitting = false; } });
     });
-    if (!saved) this.submitting = false;
+    if (!saved) {
+      this.submitting = false;
+      this.refresh();
+    }
   }
 });

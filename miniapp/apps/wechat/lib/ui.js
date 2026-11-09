@@ -1,4 +1,4 @@
-const { TASKS, stamp, timeLabel, HOUR, MINUTE, at, dateOf } = require('./catalog');
+const { TASKS, stamp, timeLabel, HOUR, MINUTE, at } = require('./catalog');
 const { stationFor, preStart, holding, credit, windows } = require('./model');
 const booking = require('./booking');
 const reviews = require('./reviews');
@@ -133,9 +133,5 @@ function jump(event) {
   advance(this, store.read().now + Number(event.currentTarget.dataset.delta) * MINUTE);
 }
 
-function choices(state) {
-  return Array.from({ length: 8 }, (_, index) => dateOf(state.now + index * 24 * HOUR));
-}
-
 module.exports = { STAGES, money, rangeText, listing, presentOrder, ledger, income, inbox, profile, errorToast, commit,
-  inputPrompt, switchRole, advance, jump, choices };
+  inputPrompt, switchRole, advance, jump };

@@ -815,6 +815,7 @@
     "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/25",
     "target_path": "miniapp/apps/wechat/",
     "scope": "native_miniprogram_fake_data_only",
-    "implemented": false
+    "implemented": true,
+    "verification": "offline_compiler_and_mock_flow_tests_passed_devtools_runtime_pending"
   }
 }
