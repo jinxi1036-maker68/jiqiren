@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed that after a QA appeal finishes, collector receives an automatic notification and can inspect the result in the order detail; successful authorized reviews show additional verified valid hours and earnings, rejected reviews explain reasons, original QA and appeal audit trail preserved. Message channels and delivery handling pending.",
+  "latest_decision": "Owner confirmed QA appeal outcomes are notified through in-app messages plus WeChat subscription messages only when collector-authorized and platform-permitted; unread count is visible on miniapp home, and QA results remain accessible in the order even if WeChat notifications fail. Actual delivery, retention and implementation details pending.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -688,8 +688,24 @@
     "preserve_original_qa_and_review_history": true,
     "new_income_settles_in_next_cycle": true,
     "qa_results_require_upstream_authorization": true,
-    "notification_channel": "undecided",
-    "message_delivery_and_retry": "undecided",
+    "notification_channel": "in_app_required_plus_wechat_subscription_if_authorized",
+    "message_delivery_and_retry": "wechat_failure_does_not_block_in_app_visibility; retry_policy_undecided",
+    "implemented": false,
+    "notification_channel_decision_id": "DEC-2026-11-09-19"
+  },
+  "collector_qa_notification_channels_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-19",
+    "in_app_notification_required": true,
+    "linked_order_review_history_persistently_viewable": true,
+    "home_unread_message_count": true,
+    "wechat_subscription_message": "collector_explicit_authorization_and_platform_rules_required",
+    "wechat_authorization_mandatory": false,
+    "wechat_failure_blocks_in_app_or_order_visibility": false,
+    "notification_delivery_not_assumed": true,
+    "retention": "long_term_traceable_subject_to_legal_privacy_requirements",
+    "unread_definition": "undecided",
+    "we_chat_template_and_authorization_timing": "undecided",
     "implemented": false
   }
 }
