@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed collector reminders 15 minutes before booked collection end and again at the booked end to stop and return equipment. Continuation requires a separate valid booking, no automatic extension. Once equipment return is verified complete, suppress redundant end/return reminders; self-reported return submission alone does not equal verified return.",
+  "latest_decision": "Owner asked to continue with the proposed return-overdue escalation: 5m collector reminder, 15m Lingju operations alert, 30m suspected abnormal non-return, with verification before reputation action and exemption for device/platform faults. A collector's self-report is not proof of verified return.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -835,9 +835,38 @@
     "continuation": "new_booking_required_and_must_respect_reserved_slots",
     "suppress_redundant_reminders_when": "verified_equipment_return_completed",
     "self_reported_return_submission_not_verified_return": true,
-    "overdue_return_escalation": "undecided",
+    "overdue_return_escalation": "after_end_5m_remind_collector_15m_alert_lingju_ops_30m_mark_abnormal_pending_verification",
     "notification_channels": "undecided",
     "physical_device_stop_control": "undecided",
+    "implemented": false,
+    "overdue_return_decision_id": "DEC-2026-11-09-28"
+  },
+  "collector_equipment_overdue_return_20261109": {
+    "status": "advanced_by_owner_continue_request",
+    "decision_id": "DEC-2026-11-09-28",
+    "time_anchor": "booking_end",
+    "if_not_verified_returned_after_minutes": [
+      {
+        "minute": 5,
+        "action": "remind_collector_again"
+      },
+      {
+        "minute": 15,
+        "action": "notify_lingju_operations"
+      },
+      {
+        "minute": 30,
+        "action": "mark_异常未归还_and_initiate_lingju_verification"
+      }
+    ],
+    "verified_return_suppresses_later_reminders": true,
+    "self_reported_return_is_sufficient": false,
+    "no_automatic_reputation_deduction": true,
+    "non_collector_cause_exemption": true,
+    "check_for_device_fault_and_sync_delay": true,
+    "verification_source": "undecided",
+    "effect_on_future_booking": "undecided",
+    "exact_penalty_and_appeal": "undecided",
     "implemented": false
   }
 }
