@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed collection booking reminders at 24 hours, 2 hours and 30 minutes before scheduled start, via in-app messages; WeChat subscription reminders only with permitted user authorization. Same-day bookings skip elapsed reminder offsets and canceled/rescheduled bookings should not receive stale reminders. Implementation pending.",
+  "latest_decision": "Owner requested continuation following the proposed collector cancellation rule: free cancellations >=2h before start; reason required <2h; verified unjustified late cancellation may incur reputation deduction only under future defined standard; device-fault or other non-collector causes exempt.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -738,6 +738,21 @@
     "cancelled_or_rescheduled": "prevent_stale_reminders_and_recompute_using_latest_valid_booking",
     "same_day_immediate_reminder": "undecided",
     "duplicate_delivery_policy": "undecided",
+    "implemented": false
+  },
+  "collector_booking_cancellation_20261109": {
+    "status": "advanced_by_owner_continue_request",
+    "decision_id": "DEC-2026-11-09-22",
+    "free_cancel_earliest_minutes_before_start": 120,
+    "free_cancel_reputation_penalty": false,
+    "late_cancel_when_less_than_minutes_before_start": 120,
+    "late_cancel_reason_required": true,
+    "unjustified_late_cancel_reputation_deduction": "possible_only_after_manual_or_verifiable_fact_check; amount_undecided",
+    "automatic_deduction": false,
+    "external_device_fault_exempt": true,
+    "other_non_collector_cause_exempt": true,
+    "unjustified_reason_definition": "undecided",
+    "appeal_process": "undecided",
     "implemented": false
   }
 }
