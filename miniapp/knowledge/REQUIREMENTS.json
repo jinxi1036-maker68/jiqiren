@@ -647,6 +647,14 @@
       "status": "confirmed_concept",
       "implemented": false,
       "source": "Owner confirmed existing affected booking notification plus collector choice"
+    },
+    {
+      "id": "UI-C-020",
+      "role": "collector",
+      "name": "经确认因设备故障造成预约取消时不扣采集员信誉分，不记作采集员违约；争议原因先核查",
+      "status": "confirmed_concept",
+      "implemented": false,
+      "source": "Owner 2026-11-09 replied 可以 to no reputation deduction for equipment-failure-caused cancellation"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
