@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed first minor overdue equipment return means up to and including 15 minutes late with no actual impact on the next collector: warning and zero points. Longer delay requires investigation, and verified personal fault blocking next collector still incurs 5 points even within 15 minutes. Device/system causes exempt.",
+  "latest_decision": "Owner confirmed rolling 90-day counting for verified collector-caused overdue-return infractions: first minor incident gets a warning (0 points), next unjustified incident in the lookback deducts 2 points; after 90 consecutive infraction-free days a qualifying minor incident is again treated as first; verified disruption of the next collector carries 5 points, no stacking. Record reset does not automatically restore deducted points.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -946,7 +946,7 @@
     "appeal_allowed": true,
     "unverified_case_automatic_deduction": false,
     "minor_threshold": "first_incident_lateness_up_to_and_including_15_minutes_without_downstream_harm",
-    "repeated_offense_definition": "undecided",
+    "repeated_offense_definition": "more_than_one_verified_personal_fault_overdue_return_incident_within_rolling_90_days",
     "specific_deduction_points": {
       "first_minor": 0,
       "repeated_unjustified": 2,
@@ -956,7 +956,10 @@
     "appeal_deadline": "undecided",
     "implemented": false,
     "numeric_penalty_decision_id": "DEC-2026-11-09-33",
-    "minor_threshold_decision_id": "DEC-2026-11-09-34"
+    "minor_threshold_decision_id": "DEC-2026-11-09-34",
+    "lookback_days": 90,
+    "infraction_free_reset_days": 90,
+    "repetition_decision_id": "DEC-2026-11-09-35"
   },
   "overdue_equipment_return_reputation_points_20261109": {
     "status": "owner_confirmed_concept",
@@ -977,13 +980,17 @@
     "non_collector_cause_points_deducted": 0,
     "appeal_allowed": true,
     "minor_overdue_minute_threshold": 15,
-    "repeat_count_lookback": "undecided",
+    "repeat_count_lookback": "rolling_90_days_for_verified_personal_fault_events",
     "appeal_deadline": "undecided",
     "implemented": false,
     "minor_threshold_inclusive": true,
     "first_minor_requires_no_actual_downstream_harm": true,
     "verified_downstream_harm_up_to_15_min_applies_5_point_tier": true,
-    "minor_threshold_decision_id": "DEC-2026-11-09-34"
+    "minor_threshold_decision_id": "DEC-2026-11-09-34",
+    "infraction_free_reset_after_days": 90,
+    "warning_counts_as_recorded_event": true,
+    "record_count_reset_does_not_imply_point_restoration": true,
+    "repetition_decision_id": "DEC-2026-11-09-35"
   },
   "overdue_equipment_return_first_minor_threshold_20261109": {
     "status": "owner_confirmed_concept",
@@ -999,6 +1006,34 @@
     "verified_impact_required": true,
     "repeat_lookback_period": "undecided",
     "over_15_minutes_without_downstream_harm_penalty": "undecided",
+    "implemented": false
+  },
+  "overdue_equipment_return_repetition_window_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-35",
+    "lookback_type": "rolling",
+    "lookback_days": 90,
+    "count_only_verified_collector_fault_incidents": true,
+    "exempt_non_collector_fault_events": true,
+    "first_minor_within_window": {
+      "action": "warning",
+      "points_deducted": 0,
+      "minor_max_minutes_inclusive": 15,
+      "requires_no_verified_downstream_harm": true,
+      "warning_still_counted_for_repeat_analysis": true
+    },
+    "next_unjustified_within_window": {
+      "points_deducted": 2,
+      "requires_lingju_verification": true
+    },
+    "after_consecutive_days_without_violation": 90,
+    "next_qualifying_minor_treated_as_first": true,
+    "verified_disruption_of_next_collector_points": 5,
+    "highest_single_tier_per_event": true,
+    "history_retained_after_window_reset": true,
+    "historical_deducted_points_auto_restored": false,
+    "exact_window_boundary": "undecided",
+    "appeal_and_credit_restoration": "undecided",
     "implemented": false
   }
 }
