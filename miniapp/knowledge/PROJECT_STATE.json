@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed that undisputed accepted valid hours in a partly disputed QA order settle normally; disputed hours remain under review. Authorized, verified successful review creates additional income in next settlement period; failed review explains reasons and preserves original QA evidence. Actual upstream rights and accounting details remain undecided.",
+  "latest_decision": "Owner confirmed that after a QA appeal finishes, collector receives an automatic notification and can inspect the result in the order detail; successful authorized reviews show additional verified valid hours and earnings, rejected reviews explain reasons, original QA and appeal audit trail preserved. Message channels and delivery handling pending.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -670,6 +670,26 @@
     "upstream_qa_modification_authority": "requires_contractual_or_authorized_verification",
     "reassessment_deadline": "undecided",
     "legal_contract_payment_requirements_apply": true,
+    "implemented": false
+  },
+  "collector_qa_review_result_notification_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-18",
+    "notify_collector_when_qa_review_completed": true,
+    "review_result_visible_in_order_detail": true,
+    "on_approved_review": [
+      "additional_verified_valid_hours",
+      "additional_earnings"
+    ],
+    "on_rejected_review": [
+      "rejection_reason",
+      "handling_explanation"
+    ],
+    "preserve_original_qa_and_review_history": true,
+    "new_income_settles_in_next_cycle": true,
+    "qa_results_require_upstream_authorization": true,
+    "notification_channel": "undecided",
+    "message_delivery_and_retry": "undecided",
     "implemented": false
   }
 }
