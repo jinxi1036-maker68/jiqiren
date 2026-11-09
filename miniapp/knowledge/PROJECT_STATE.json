@@ -38,7 +38,7 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner confirmed collector reputation points regain 1 point per consecutive violation-free 30-day period until the balance reaches its 100-point cap; accepted appeals correct erroneously deducted points promptly, without waiting 30 days. Reputation recovery is distinct from the rolling 90-day repeat-offense counting window.",
+  "latest_decision": "Owner confirmed collector booking thresholds: score >=80 normal bookings, 60-79 warning without booking restriction, <60 pause new bookings pending Lingju manual review. Booking access may resume after approved manual review or score >=60; existing confirmed bookings are not automatically canceled.",
   "next_gate": "Codex before implementation must reconcile Issue #24 historical demo/city-station location with current miniapp/apps/demo canonical path and Owner-confirmed two-sided model.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
@@ -1106,6 +1106,26 @@
     "recovery_period_start": "undecided",
     "reset_on_new_violation": "details_undecided",
     "appeal_correction_and_prior_recovery_reconciliation": "undecided",
+    "implemented": false
+  },
+  "collector_reputation_booking_threshold_20261109": {
+    "status": "owner_confirmed_concept",
+    "decision_id": "DEC-2026-11-09-39",
+    "score_max": 100,
+    "normal_booking_min_score": 80,
+    "warning_range_inclusive": [
+      60,
+      79
+    ],
+    "new_booking_paused_when_score_below": 60,
+    "pause_new_bookings_requires_lingju_manual_review": true,
+    "new_booking_resume_when": "lingju_manually_approves_or_current_reputation_score_at_least_60",
+    "existing_bookings_cancel_automatically": false,
+    "existing_bookings": "lingju_verifies_and_handles_individually",
+    "reputation_deductions_require_verification_and_allow_appeal": true,
+    "manual_review_requirements": "undecided",
+    "review_deadline": "undecided",
+    "manual_reinstatement_validity": "undecided",
     "implemented": false
   }
 }
