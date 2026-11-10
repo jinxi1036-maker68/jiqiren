@@ -22,7 +22,9 @@ function conflicts(state, collectorId, stationId, date, start, end, ignoreId) {
   if (!credit(state, collectorId).allowed) return '信誉低于60分，暂停新预约';
   if (at(date, start) <= state.now) return '请选择尚未开始的时段';
   if (!fits(station, { date, start, end })) return '须在开放时间内采集，并至少提前15分钟结束';
-  if (start % 30 || (end - start) % 30 || end - start < task.min || end - start > task.max) {
+  const duration = end - start;
+  if (duration < task.min) return `预约时长至少 ${task.min / 60} 小时`;
+  if (start % 30 || duration % 30 || duration > task.max) {
     return '请选择符合任务时长的半小时档位';
   }
   const orders = state.orders.filter(order => order.id !== ignoreId && order.date === date && order.status !== 'cancelled');
@@ -33,7 +35,7 @@ function conflicts(state, collectorId, stationId, date, start, end, ignoreId) {
   if (orders.some(order => order.collectorId === collectorId && start < order.end && end > order.start)) {
     return '与你已有的预约时间重叠';
   }
-  if (deviceOrders.reduce((total, order) => total + order.end - order.start, end - start) > task.daily) {
+  if (deviceOrders.reduce((total, order) => total + order.end - order.start, duration) > task.daily) {
     return '超出设备当日采集时长上限';
   }
   return '';

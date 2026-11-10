@@ -12,7 +12,7 @@
       </view>
       <view class="row split divider">
         <view class="price">¥{{card.rate}}<text class="price-unit">/ 有效小时 · 示例</text></view>
-        <view class="muted">{{task.min}}–{{task.max}} 分钟</view>
+        <view class="muted">可约 {{task.min / 60}}<text wx:if="{{task.min !== task.max}}">–{{task.max / 60}}</text> 小时</view>
       </view>
     </view>
     <view class="panel">
@@ -32,7 +32,10 @@
           </scroll-view>
         </view>
         <view class="divider">
-          <view class="row d1-slot-heading"><text class="sop-step">2</text><view class="subheading">结束时间</view></view>
+          <view class="row d1-slot-heading">
+            <text class="sop-step">2</text><view class="subheading grow">结束时间</view>
+            <text wx:if="{{ends.length}}" class="muted small">最早 {{ends[0].label}}</text>
+          </view>
           <view class="muted small action" wx:if="{{selectedStart === null}}">先选开始时间</view>
           <scroll-view wx:else class="slot-scroll" scroll-x enhanced show-scrollbar="{{false}}">
             <view class="slot-row">

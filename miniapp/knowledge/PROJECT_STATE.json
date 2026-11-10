@@ -1,7 +1,7 @@
 {
   "schema_version": "lingju_miniapp_state_v1",
   "project_id": "lingju-merchant-collector-miniapp",
-  "updated_at": "2026-11-09",
+  "updated_at": "2026-11-10",
   "home": "miniapp/knowledge/00_START_HERE.md",
   "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
   "phase": "native_wechat_mock_v0_1_desktop_smoke_verified_draft_pr",
@@ -1370,6 +1370,15 @@
       "scope": "Booked orders with available equipment show departure before check-in even after the check-in window opens.",
       "automated_tests_passed": 44,
       "offline_render": "seven WXML routes and WXSS compiled; verified departure and check-in controls at the 15-minute boundary",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_booking_minimum": {
+      "status": "implemented_automated_tested",
+      "base_commit": "fe44b1553596dec034949712d824e222031a80fe",
+      "scope": "New and rescheduled bookings require at least 120 continuous minutes. Existing bookings remain valid at their original times.",
+      "automated_tests_passed": 46,
+      "offline_render": "seven WXML routes and WXSS compiled; verified earliest end time and end slot rendering",
       "desktop_simulator_interaction_verified": false,
       "real_device_visual_verified": false
     }

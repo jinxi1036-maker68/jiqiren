@@ -11,7 +11,7 @@ function select(task, start, end) {
   task.end(event({ minute: end }));
 }
 
-function makeOrder(r, start = 540, end = 600) {
+function makeOrder(r, start = 540, end = 660) {
   const task = r.open('task', { id: 's1' });
   select(task, start, end);
   task.submit();
@@ -151,14 +151,14 @@ test('商家概览区分设备状态，排班图保留占用和缓冲，换日�
   const r = runtime();
   const first = makeOrder(r);
   const date = first.data.order.date;
-  const next = store.change(state => booking.create(state, 'c2', { stationId: 's1', date, start: 630, end: 690 }));
+  const next = store.change(state => booking.create(state, 'c2', { stationId: 's1', date, start: 690, end: 810 }));
   const shop = r.open('merchant');
   shop.persona(event({}, '0'));
   assert.equal(shop.data.overview.next.id, first.data.order.id);
   assert.equal(shop.data.overview.opening.label, '09:00 开放');
   assert.equal(shop.data.overview.device.label, '设备可用');
   const segments = shop.data.track.segments;
-  assert.deepEqual(segments.slice(0, 3).map(item => [item.tone, item.minutes]), [['booked', 60], ['buffer', 30], ['booked', 60]]);
+  assert.deepEqual(segments.slice(0, 3).map(item => [item.tone, item.minutes]), [['booked', 120], ['buffer', 30], ['booked', 120]]);
   assert.equal(segments.at(-1).minutes, 15);
   assert.equal(segments.reduce((sum, item) => sum + item.minutes, 0), 540);
 
@@ -188,9 +188,9 @@ test('商家概览区分设备状态，排班图保留占用和缓冲，换日�
 
 test('前单待核验时解释为何不能签到，刷新后可继续且求助不会锁住下一步', () => {
   const r = runtime();
-  const later = makeOrder(r, 630, 690);
+  const later = makeOrder(r, 690, 810);
   const earlier = store.change(state => {
-    const order = booking.create(state, 'c2', { stationId: 's1', date: later.data.order.date, start: 540, end: 600 });
+    const order = booking.create(state, 'c2', { stationId: 's1', date: later.data.order.date, start: 540, end: 660 });
     booking.advance(state, later.data.order.startAt - 90 * MINUTE);
     booking.perform(state, 'c2', order.id, 'arrive');
     booking.perform(state, 'c2', order.id, 'collect');
@@ -248,7 +248,7 @@ test('停业先预览，预览之后新增的订单须重新确认；求助可�
   m.pauseDate();
   assert.match(m.data.scheduleReview.orders[0].impactText, /未出发/);
   assert.equal(store.read().orders[0].closed, undefined);
-  store.change(state => booking.create(state, 'c2', { stationId: 's1', date: m.data.date, start: 630, end: 690 }));
+  store.change(state => booking.create(state, 'c2', { stationId: 's1', date: m.data.date, start: 690, end: 810 }));
   m.confirmSchedule();
   assert.match(r.dialogs.pop().content, /重新预览/);
   assert.equal(store.read().orders.some(item => item.closed), false);
@@ -419,6 +419,24 @@ test('临近开始的预约仍先显示模拟开始前往，再显示到店签�
   assert.equal(store.read().now, now);
 });
 
+test('预约至少连续两小时，选 08:00 后最早 10:00 结束', () => {
+  const r = runtime();
+  const date = '2026-11-10';
+  store.change(state => merchant.schedule(state, 's1', date, [[480, 720], [810, 1080]]));
+  const task = r.open('task', { id: 's1', date });
+  assert.equal(task.data.starts[0].label, '08:00');
+  assert.equal(task.data.starts.at(-1).label, '15:30');
+  assert.ok(!task.data.starts.some(item => item.label === '10:00'));
+  select(task, 480, 540);
+  assert.equal(task.data.ends[0].label, '10:00');
+  assert.equal(task.data.canConfirm, false);
+  task.end(event({ minute: 570 }));
+  assert.equal(task.data.canConfirm, false);
+  task.end(event({ minute: 600 }));
+  task.submit();
+  assert.equal(store.read().orders[0].end, 600);
+});
+
 test('任务页预约到订单归还，再通过独立运营入口核验和登记QA', () => {
   const r = runtime();
   const collector = r.open('collector');
@@ -433,10 +451,10 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   assert.equal(store.read().orders.length, 0);
   task.start(event({ minute: 570 }));
   assert.equal(task.data.selectedStart, 570);
-  assert.equal(task.data.ends[0].label, '10:30');
+  assert.equal(task.data.ends[0].label, '11:30');
   assert.equal(task.data.canConfirm, false);
-  select(task, 540, 600);
-  assert.equal(task.data.selectionText, '09:00–10:00');
+  select(task, 540, 660);
+  assert.equal(task.data.selectionText, '09:00–11:00');
   task.submit();
   const id = new URL(r.nav.pop(), 'https://demo.invalid').searchParams.get('id');
   const order = r.open('order', { id });
@@ -455,7 +473,7 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   order.perform(event({ action: 'collect' }));
   assert.equal(order.data.mainAction.label, '模拟完成采集');
   order.perform(event({ action: 'stop' }));
-  assert.equal(order.data.order.actual, 60);
+  assert.equal(order.data.order.actual, 120);
   assert.equal(order.data.mainAction.action, 'return');
   assert.equal(order.data.showDemo, false);
   order.perform(event({ action: 'return' }));
@@ -477,7 +495,7 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
   r.answer('45 / 模拟末段遮挡，调整视角');
   order.onShow();
   assert.equal(order.data.order.stateLabel, '归还完成');
-  assert.equal(order.data.order.qaRate, '75%');
+  assert.equal(order.data.order.qaRate, '38%');
   assert.equal(order.data.result.qaLabel, '已审核');
   assert.equal(order.data.result.earningsLabel, '已确认 · 待结算');
   assert.equal(order.data.result.amount, '¥22.50（虚构）');
@@ -490,7 +508,7 @@ test('任务页预约到订单归还，再通过独立运营入口核验和登�
 test('页面取消后显示无责状态，采集员提交证据后方有补贴审核待办', () => {
   const r = runtime();
   const task = r.open('task', { id: 's1' });
-  select(task, 540, 600);
+  select(task, 540, 660);
   task.submit();
   const id = store.read().orders[0].id;
   const order = r.open('order', { id });
@@ -524,26 +542,26 @@ test('页面取消后显示无责状态，采集员提交证据后方有补贴�
 test('已选时段被占后清空选择，重复点击不会预约替代时段', () => {
   const r = runtime();
   const task = r.open('task', { id: 's1' });
-  select(task, 540, 600);
-  store.change(state => booking.create(state, 'c2', { stationId: 's1', date: task.data.date, start: 540, end: 600 }));
+  select(task, 540, 660);
+  store.change(state => booking.create(state, 'c2', { stationId: 's1', date: task.data.date, start: 540, end: 660 }));
   task.submit();
   assert.match(r.dialogs[0].content, /时段冲突/);
   assert.equal(task.data.selectionLost, true);
   assert.equal(task.data.selectedStart, null);
   assert.equal(task.data.selectedEnd, null);
   assert.equal(task.data.canConfirm, false);
-  assert.equal(task.data.starts[0].label, '10:30');
+  assert.equal(task.data.starts[0].label, '11:30');
   task.submit();
   assert.equal(store.read().orders.filter(item => item.collectorId === 'c1').length, 0);
-  select(task, 630, 690);
+  select(task, 690, 810);
   task.submit();
-  assert.equal(store.read().orders.find(item => item.collectorId === 'c1').start, 630);
+  assert.equal(store.read().orders.find(item => item.collectorId === 'c1').start, 690);
 });
 
 test('采集员首页区分未开放和设备暂停，受影响预约有处理入口', () => {
   const r = runtime();
   const task = r.open('task', { id: 's1' });
-  select(task, 540, 600);
+  select(task, 540, 660);
   task.submit();
   const id = store.read().orders[0].id;
   store.change(state => {
@@ -563,7 +581,7 @@ test('采集员首页区分未开放和设备暂停，受影响预约有处理�
 test('提前签到后可等到开工，已有模拟时长时按当前时间停止', () => {
   const r = runtime();
   const task = r.open('task', { id: 's1' });
-  select(task, 540, 600);
+  select(task, 540, 660);
   task.submit();
   const id = store.read().orders[0].id;
   const order = r.open('order', { id });

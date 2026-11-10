@@ -58,11 +58,11 @@ test('邀请和首单礼在归还核验及有效质检后才可记录，重复�
   assert.equal(invited.data.invite.incoming, '采集员 A');
 
   const order = store.change(state => {
-    const reservation = booking.create(state, 'c2', { stationId: 's1', date: DATE, start: 540, end: 600 });
+    const reservation = booking.create(state, 'c2', { stationId: 's1', date: DATE, start: 540, end: 660 });
     booking.advance(state, at(DATE, 540));
     booking.perform(state, 'c2', reservation.id, 'arrive');
     booking.perform(state, 'c2', reservation.id, 'collect');
-    booking.advance(state, at(DATE, 600));
+    booking.advance(state, at(DATE, reservation.end));
     booking.perform(state, 'c2', reservation.id, 'return');
     return reservation;
   });

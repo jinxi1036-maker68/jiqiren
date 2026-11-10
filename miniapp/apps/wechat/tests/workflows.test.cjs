@@ -12,7 +12,7 @@ const FORM = { name: '测试文具（虚构）', address: '样例地址', distri
   entrance: '正门', locker: '演示箱 A', area: '文具示范台',
   task: 'stationery', photos: ['front', 'inside', 'device'] };
 
-function reserve(state, collector = 'c1', stationId = 's1', start = 540, end = 600, date = DATE) {
+function reserve(state, collector = 'c1', stationId = 's1', start = 540, end = 660, date = DATE) {
   return booking.create(state, collector, { stationId, date, start, end });
 }
 
@@ -51,31 +51,47 @@ test('双人争同一设备时段只有一笔成功，重复提交不生成第�
 
 test('同设备前后缓冲严格30分钟，个人跨设备也不能重叠', () => {
   const state = seed();
-  reserve(state, 'c1', 's1', 660, 780);
-  assert.throws(() => reserve(state, 'c2', 's1', 600, 660), /30分钟/);
-  assert.throws(() => reserve(state, 'c2', 's1', 780, 840), /30分钟/);
-  assert.throws(() => reserve(state, 'c1', 's2', 660, 750), /时间重叠/);
-  reserve(state, 'c2', 's1', 570, 630);
-  reserve(state, 'c2', 's1', 810, 870);
+  reserve(state, 'c1', 's1', 690, 810);
+  assert.throws(() => reserve(state, 'c2', 's1', 570, 690), /30分钟/);
+  assert.throws(() => reserve(state, 'c2', 's1', 810, 930), /30分钟/);
+  assert.throws(() => reserve(state, 'c1', 's2', 690, 810), /时间重叠/);
+  reserve(state, 'c2', 's1', 540, 660);
+  reserve(state, 'c2', 's1', 840, 960);
 });
 
 test('同日结束，恰好提前15分钟可约，晚于该边界拒绝', () => {
   const state = seed();
   merchant.schedule(state, 's1', DATE, [[540, 1095]]);
   assert.throws(() => reserve(state, 'c1', 's1', 1350, 1440), /自然日/);
-  assert.throws(() => reserve(state, 'c1', 's1', 1050, 1110), /提前15分钟/);
-  assert.throws(() => reserve(state, 'c1', 's1', 1000, 1081), /提前15分钟/);
-  assert.throws(() => reserve(state, 'c1', 's1', 540, 600, '2026-02-30'), /自然日/);
-  assert.equal(reserve(state, 'c1', 's1', 1020, 1080).end, 1080);
+  assert.throws(() => reserve(state, 'c1', 's1', 990, 1110), /提前15分钟/);
+  assert.throws(() => reserve(state, 'c1', 's1', 960, 1081), /提前15分钟/);
+  assert.throws(() => reserve(state, 'c1', 's1', 540, 660, '2026-02-30'), /自然日/);
+  assert.equal(reserve(state, 'c1', 's1', 960, 1080).end, 1080);
 });
 
 test('任务最小、最大、设备日上限生效', () => {
   const state = seed();
-  assert.throws(() => reserve(state, 'c1', 's2', 600, 660), /任务时长/);
+  assert.throws(() => reserve(state, 'c1', 's2', 600, 660), /至少 2 小时/);
   assert.throws(() => reserve(state, 'c1', 's3', 600, 750), /任务时长/);
+  merchant.schedule(state, 's2', DATE, [[600, 1200]]);
   reserve(state, 'c1', 's2', 600, 780);
   reserve(state, 'c2', 's2', 810, 990);
-  assert.throws(() => reserve(state, 'c1', 's2', 1020, 1110), /日采集时长/);
+  assert.throws(() => reserve(state, 'c1', 's2', 1020, 1140), /日采集时长/);
+});
+
+test('已有一小时预约可按原时段履行，改约不足两小时被拒绝', () => {
+  const state = seed();
+  const order = reserve(state);
+  // Simulate an existing reservation saved before the minimum changed.
+  order.end = 600;
+  order.requestKey = ['c1', 's1', DATE, 540, 600, ''].join('|');
+  assert.equal(reserve(state, 'c1', 's1', 540, 600).id, order.id);
+  assert.throws(() => booking.create(state, 'c1', { replaceId: order.id, stationId: 's1', date: DATE,
+    start: 660, end: 750, reason: '模拟改期' }), /至少 2 小时/);
+  start(state, order);
+  submit(state, order);
+  assert.equal(order.actual, 60);
+  assert.equal(order.status, 'submitted');
 });
 
 test('商家审核、安装和到位确认均不能提前开启预约', () => {
@@ -90,21 +106,21 @@ test('商家审核、安装和到位确认均不能提前开启预约', () => {
   merchant.confirmInstallation(state, 'new');
   assert.throws(() => reserve(state, 'c1', 'new'), /尚未开放/);
   merchant.schedule(state, 'new', 0, [[540, 720], [840, 1080]]);
-  assert.throws(() => reserve(state, 'c1', 'new', 720, 780), /开放时间/);
-  assert.throws(() => reserve(state, 'c1', 'new', 540, 600, '2026-11-10'), /开放时间/);
+  assert.throws(() => reserve(state, 'c1', 'new', 720, 840), /开放时间/);
+  assert.throws(() => reserve(state, 'c1', 'new', 540, 660, '2026-11-10'), /开放时间/);
   assert.equal(reserve(state, 'c1', 'new').stationId, 'new');
 });
 
 test('暂停指定日期保留原单，只影响对应设备，可无责改约', () => {
   const state = seed();
   const old = reserve(state);
-  const unaffected = reserve(state, 'c2', 's2', 600, 690);
+  const unaffected = reserve(state, 'c2', 's2', 600, 720);
   merchant.schedule(state, 's1', DATE, []);
   assert.equal(old.status, 'booked');
   assert.equal(old.closed, true);
   assert.equal(unaffected.closed, undefined);
-  assert.throws(() => reserve(state, 'c2', 's1', 660, 720), /开放时间/);
-  const moved = booking.create(state, 'c1', { replaceId: old.id, stationId: 's3', date: DATE, start: 540, end: 600 });
+  assert.throws(() => reserve(state, 'c2', 's1', 660, 780), /开放时间/);
+  const moved = booking.create(state, 'c1', { replaceId: old.id, stationId: 's3', date: DATE, start: 540, end: 660 });
   assert.equal(old.status, 'cancelled');
   assert.equal(old.cancellation.exempt, true);
   assert.equal(moved.replacedFrom, old.id);
@@ -114,15 +130,15 @@ test('暂停指定日期保留原单，只影响对应设备，可无责改约',
 test('改约校验失败保留原预约，成功后旧提醒失效且新单防重', () => {
   const state = seed();
   const date = '2026-11-10';
-  const old = reserve(state, 'c1', 's1', 540, 600, date);
-  reserve(state, 'c2', 's1', 630, 690, date);
-  const request = { replaceId: old.id, stationId: 's1', date, start: 630, end: 690 };
+  const old = reserve(state, 'c1', 's1', 540, 660, date);
+  reserve(state, 'c2', 's1', 690, 810, date);
+  const request = { replaceId: old.id, stationId: 's1', date, start: 690, end: 810 };
   assert.throws(() => booking.create(state, 'c1', request), /时段冲突/);
   assert.equal(old.status, 'booked');
-  const revised = { ...request, start: 720, end: 780 };
+  const revised = { ...request, start: 840, end: 960 };
   const next = booking.create(state, 'c1', revised);
   assert.equal(booking.create(state, 'c1', revised).id, next.id);
-  tick(state, at(date, 719));
+  tick(state, at(date, 839));
   const reminders = state.messages.filter(item => item.key.includes(':pre'));
   assert.equal(reminders.filter(item => item.orderId === old.id).length, 0);
   assert.equal(reminders.filter(item => item.orderId === next.id).length, 3);
@@ -143,10 +159,10 @@ test('隔离采集员订单，迟到仍可在剩余时间采集且到期截断',
   const state = seed();
   const order = reserve(state);
   assert.throws(() => booking.perform(state, 'c2', order.id, 'travel'), /自己的预约/);
-  start(state, order, 35);
+  start(state, order, 95);
   assert.ok(order.suspected);
-  assert.equal(order.end, 600);
-  tick(state, at(DATE, 620));
+  assert.equal(order.end, 660);
+  tick(state, at(DATE, 680));
   assert.equal(order.status, 'stopped');
   assert.equal(order.actual, 25);
   assert.throws(() => booking.perform(state, 'c1', order.id, 'collect'), /预约时段/);
@@ -161,7 +177,7 @@ test('自报归还不能产生场地收益，核验后独立于个人QA', () => 
   submit(state, order);
   assert.equal(order.status, 'submitted');
   assert.equal(state.earnings.length, 0);
-  assert.equal(ui.income(state, 'c1', '2026-11').pending, '30.00');
+  assert.equal(ui.income(state, 'c1', '2026-11').pending, '60.00');
   booking.verifyReturn(state, order.id, '模拟设备在箱且可用');
   booking.verifyReturn(state, order.id, '重复调用');
   reviews.qaReview(state, order.id, 0, '样例遮挡，请保持操作台可见');
@@ -173,17 +189,17 @@ test('自报归还不能产生场地收益，核验后独立于个人QA', () => 
 test('跨月待审保留，部分复核只在下一期补差额', () => {
   const state = seed();
   const date = '2026-11-30';
-  const order = reserve(state, 'c1', 's1', 540, 600, date);
+  const order = reserve(state, 'c1', 's1', 540, 660, date);
   start(state, order);
   submit(state, order);
   booking.verifyReturn(state, order.id, '模拟设备在箱可用');
   tick(state, at('2026-12-01', 540));
-  assert.equal(ui.income(state, 'c1', '2026-12').pending, '30.00');
+  assert.equal(ui.income(state, 'c1', '2026-12').pending, '60.00');
   assert.equal(ui.income(state, 'c1', '2026-11').confirmed, '0.00');
   reviews.qaReview(state, order.id, 30, '后段遮挡，请调整视角');
   reviews.appealQA(state, 'c1', order.id, '复查后半段样例');
   assert.equal(ui.income(state, 'c1', '2026-12').confirmed, '15.00');
-  assert.throws(() => reviews.resolveQA(state, order.id, 31, '模拟复核'), /超过争议范围/);
+  assert.throws(() => reviews.resolveQA(state, order.id, 91, '模拟复核'), /超过争议范围/);
   reviews.resolveQA(state, order.id, 15, '补充确认15分钟');
   assert.equal(order.qa.valid, 30);
   assert.equal(ui.income(state, 'c1', '2027-01').confirmed, '7.50');
@@ -194,7 +210,7 @@ test('跨月待审保留，部分复核只在下一期补差额', () => {
 test('逾期5/15/30分钟分别提醒，后序订单受保护并需运营复开', () => {
   const state = seed();
   const first = reserve(state);
-  const next = reserve(state, 'c2', 's1', 630, 690);
+  const next = reserve(state, 'c2', 's1', 690, 810);
   start(state, first);
   submit(state, first, 30);
   assert.ok(next.impact);
@@ -202,11 +218,11 @@ test('逾期5/15/30分钟分别提醒，后序订单受保护并需运营复开'
   assert.ok(state.messages.some(item => item.key.endsWith(':late-return5')));
   assert.ok(state.messages.some(item => item.recipient === 'ops' && item.key.endsWith(':late-return15')));
   assert.ok(state.messages.some(item => item.recipient === 'ops' && item.key.endsWith(':late-return30')));
-  assert.throws(() => reserve(state, 'c1', 's1', 720, 780), /暂停/);
+  assert.throws(() => reserve(state, 'c1', 's1', 840, 960), /暂停/);
   assert.throws(() => booking.reopen(state, 's1', '待查'), /待核验归还/);
   assert.throws(() => booking.perform(state, 'c2', next.id, 'arrive'), /设备可用/);
   booking.verifyReturn(state, first.id, '设备在箱且可用（模拟）');
-  assert.throws(() => reserve(state, 'c1', 's1', 720, 780), /暂停/);
+  assert.throws(() => reserve(state, 'c1', 's1', 840, 960), /暂停/);
   booking.reopen(state, 's1', '模拟修复检查通过');
   assert.equal(next.impact, null);
   booking.perform(state, 'c2', next.id, 'arrive');
@@ -219,7 +235,7 @@ test('在预约结束后五分钟前核验归还，后续催还停止', () => {
   start(state, order);
   submit(state, order);
   booking.verifyReturn(state, order.id, '演示核验通过');
-  tick(state, at(DATE, 660));
+  tick(state, at(DATE, order.end + 60));
   assert.equal(state.messages.filter(item => item.key.includes('late-return')).length, 0);
 });
 
@@ -227,7 +243,7 @@ test('故障自报不暂停、运营核实才暂停，未响应的确认故障�
   const state = seed();
   const first = reserve(state);
   const report = booking.report(state, 'c1', first.id, '模拟故障', false);
-  const next = reserve(state, 'c2', 's1', 630, 690);
+  const next = reserve(state, 'c2', 's1', 690, 810);
   booking.pause(state, 's1', '确认模拟异常', report.id);
   tick(state, at(DATE, 540));
   assert.equal(first.status, 'cancelled');
@@ -287,7 +303,7 @@ test('补贴申请超过48小时，拒绝后的申诉超过72小时分别关闭'
 test('首次轻微0分，再次2分，90天后轻微按首次，非本人原因不计', () => {
   const state = seed();
   function verify(date, fault, delay) {
-    const order = reserve(state, 'c1', 's1', 540, 600, date);
+    const order = reserve(state, 'c1', 's1', 540, 660, date);
     start(state, order);
     submit(state, order, delay);
     booking.verifyReturn(state, order.id, '演示核验通过');
@@ -307,7 +323,7 @@ test('首次轻微0分，再次2分，90天后轻微按首次，非本人原因�
 test('核实下位确实受阻时最高只扣5分，申诉纠错及恢复封顶100', () => {
   const state = seed();
   const first = reserve(state);
-  const next = reserve(state, 'c2', 's1', 630, 690);
+  const next = reserve(state, 'c2', 's1', 690, 810);
   start(state, first);
   submit(state, first, 31);
   booking.cancel(state, 'c2', next.id, '因前序设备未归还无法采集');
@@ -337,7 +353,7 @@ test('首次个人原因超过15分钟核实扣2分，核实时间不支持的�
 
 test('低于60分停新预约并开启48小时人工审核，既有订单仍可履行', () => {
   const state = seed();
-  const old = reserve(state, 'c1', 's1', 540, 600, '2026-11-12');
+  const old = reserve(state, 'c1', 's1', 540, 660, '2026-11-12');
   // Import a synthetic history fixture to cross the threshold without replaying nine incidents.
   state.violations = Array.from({ length: 9 }, (_, i) => ({
     id: 'fixture-' + i, collectorId: 'c1', points: 5, fault: true, at: state.now - i * MINUTE

@@ -39,10 +39,10 @@ function pageText(node) {
   return (node.children || []).map(pageText).join(' ');
 }
 
-function findButton(node, label) {
-  if (node.tag === 'wx-button' && pageText(node).trim() === label) return node;
+function findButton(node, label, action) {
+  if (node.tag === 'wx-button' && pageText(node).trim() === label && (!action || node.attr.bindtap === action)) return node;
   for (const child of node.children || []) {
-    const button = findButton(child, label);
+    const button = findButton(child, label, action);
     if (button) return button;
   }
   return null;
@@ -114,7 +114,10 @@ assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabl
 task.start(event({ minute: 540 }));
 assert.equal(findButton(renderTask(task.data), '确认模拟预约').attr.disabled, true);
 assert.match(pageText(renderTask(task.data)), /再选结束时间/);
-task.end(event({ minute: 600 }));
+assert.match(pageText(renderTask(task.data)), /最早 11:00/);
+assert.equal(findButton(renderTask(task.data), '10:00', 'end'), null);
+assert.ok(findButton(renderTask(task.data), '11:00', 'end'));
+task.end(event({ minute: 660 }));
 assert.equal(Boolean(findButton(renderTask(task.data), '确认模拟预约').attr.disabled), false);
 task.submit();
 
@@ -130,7 +133,7 @@ assert.equal(findButton(board, '查看今日排班').attr.bindtap, 'showTodaySch
 const collector = r.open('collector');
 const homeText = pageText(render('pages/collector/index.wxml')(collector.data));
 assert.match(homeText, /下一单/);
-assert.match(homeText, /09:00–10:00/);
+assert.match(homeText, /09:00–11:00/);
 const order = r.open('order', { id });
 const renderOrder = render('pages/order/index.wxml');
 assert.equal(order.data.order.arrive, true);
@@ -186,8 +189,8 @@ assert.match(resultText, /质检后确认/);
 assert.match(resultText, /订单回执/);
 
 const later = r.open('task', { id: 's1' });
-later.start(event({ minute: 630 }));
-later.end(event({ minute: 690 }));
+later.start(event({ minute: 690 }));
+later.end(event({ minute: 810 }));
 later.submit();
 const affectedId = store.read().orders[0].id;
 store.change(state => merchant.schedule(state, 's1', '2026-11-09', []));
