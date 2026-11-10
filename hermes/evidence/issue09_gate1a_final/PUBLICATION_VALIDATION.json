@@ -1,0 +1,23 @@
+{
+  "schema": "gate1a_final_publication_validation_v1",
+  "client_report_date": "2026-10-17",
+  "validation_kind": "offline artifact checks, not repeated capability tests",
+  "desktop_mcp_trace_payload_cross_matches": 13,
+  "company_file_read_receipts": 10,
+  "appended_hermes_agents_contexts": 1,
+  "synthetic_qa_snapshots_consistent": true,
+  "http503_request_and_console_consistent": true,
+  "cause_and_temporariness_unknown": true,
+  "model_calls": 0,
+  "browser_replays": 0,
+  "selected_hashes_equal_to_inherited": 5,
+  "python_ast_valid": true,
+  "json_valid": true,
+  "relative_report_links_resolve": true,
+  "public_sources_equal_executed_local_sources": true,
+  "private_root_or_obvious_credential_pattern_scan": "passed; heuristic plus manual review, not absolute proof",
+  "raw_private_data_exported": false,
+  "original_environment_files_exported": false,
+  "business_current_files_overwritten": false,
+  "full_gate1a_verdict": "not_yet_satisfied"
+}

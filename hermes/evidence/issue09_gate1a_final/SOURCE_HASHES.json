@@ -1,0 +1,97 @@
+[
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\trace.jsonl",
+    "bytes": 10304,
+    "sha256": "78c2b95c12865dd32bee4d521e90c32baea0c06c8c9b5588c0ada6a0459790b5"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\requests.jsonl",
+    "bytes": 241,
+    "sha256": "87c710f500e4a498ea36d1ebde880a53ec71bd2485b8a0d1a86a501ad42f40b1"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\lifecycle.json",
+    "bytes": 275,
+    "sha256": "23013d9044c89172a765b32394cd0827cd653b1ad0dd673d03579a552852c42f"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\HERMES.md",
+    "bytes": 1336,
+    "sha256": "9bd0027bd94a7f17424b7dae9bd60e466ab7f430e3ab6ec2442cfe4986a8ed39"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\knowledge\\00_START_HERE.md",
+    "bytes": 2881,
+    "sha256": "94eff41af85e0c79239b03822f7d6f70e9a8305c494bf83bc759486124faf7c5"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\knowledge\\CURRENT_WORK.json",
+    "bytes": 12591,
+    "sha256": "a12cd29b3c512986e6e00a1ec3fc41d5249bc553ebd7cea767766bf659396ff5"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\hermes\\identity\\ROLE_BRIEF.md",
+    "bytes": 4622,
+    "sha256": "9eecd961bd75a398e367721a62eb214b78080dba6acf9418b9da9fa68551b241"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\knowledge\\HERMES_DIGITAL_EMPLOYEE_CHARTER.md",
+    "bytes": 12513,
+    "sha256": "9b907998b296365f07df8aea646383a74b3e97ae95f3e190c95e3d3f4a0d586d"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\knowledge\\decisions\\ADR-HERMES-SINGLE-EMPLOYEE-2026-10-16.md",
+    "bytes": 5253,
+    "sha256": "117317f8f2abc7aa392d07b2d91e2bf66176956e27726a9dc35969a4d079b79b"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\GATE_1A_STATUS.json",
+    "bytes": 548,
+    "sha256": "b2a38d9d66ebce7442ff3ce3711d36fcae06f213cc726c34340f0ae911a48609"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\knowledge\\PROJECT_INDEX.json",
+    "bytes": 4589,
+    "sha256": "72cbf0194219b20c1a4fd0373cdeaf7d42c606ac86034989443122d347e50354"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\SNAPSHOT_MANIFEST.json",
+    "bytes": 7368,
+    "sha256": "8b4783d361b71cfe2b61c7b9949b57dbc11deeefa45f43fb31c8397159d7cf6e"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\knowledge\\KNOWLEDGE_HARNESS.json",
+    "bytes": 4629,
+    "sha256": "4767797b382900068935cc2aa4a6ca525a12361fe0cc066ecdc0ff75f8e27e98"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\company-workspace\\hermes\\AGENTS.md",
+    "bytes": 4369,
+    "sha256": "943366142e85aceb4c4d2c11b305ccba3e8b0c0f962523199d8ae169f948aad9"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\browser\\page-2026-10-16T12-39-44-798Z.yml",
+    "bytes": 1056,
+    "sha256": "f71dcd001d6ef2de411eedc1ca2626ccbd15ddaae394046e12895bb3b86623ba"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\browser\\page-2026-10-16T12-40-10-490Z.yml",
+    "bytes": 1062,
+    "sha256": "d53fd192015326ce7c3dfaf72a69cfa984b948a375f099e5ff138177e95c2dab"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\browser\\page-2026-10-16T12-40-50-761Z.yml",
+    "bytes": 1091,
+    "sha256": "e74edbe45b408ca4fe9e17145b05091a9afccf2e1a49396efed950d839846618"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\browser\\page-2026-10-16T12-41-23-609Z.yml",
+    "bytes": 1135,
+    "sha256": "534e22df6b6ae9bb9922acb7090a711b23f0136d4bbb5a46a3a99f24ee1f1274"
+  },
+  {
+    "path": "<USER_HOME>\\.hermes\\tools\\company-browser-simulation\\runs\\20261016T123217Z-b9d92b45\\browser\\console-2026-10-16T12-40-34-249Z.log",
+    "bytes": 147,
+    "sha256": "106bf9009101470b308d5bf4bdb4229917b26ec04c359022f2fd6649f8cb78e0"
+  }
+]
