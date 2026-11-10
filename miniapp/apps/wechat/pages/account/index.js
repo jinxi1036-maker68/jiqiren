@@ -27,8 +27,11 @@ Page({
     this.role = options.role === 'merchant' ? 'merchant' : 'collector';
     const view = Object.prototype.hasOwnProperty.call(TITLES, options.view) && !(this.role === 'merchant' && COLLECTOR_VIEWS.includes(options.view))
       ? options.view : 'guide';
-    this.setData({ view, title: TITLES[view], role: this.role, steps: this.role === 'merchant' ? MERCHANT_STEPS : COLLECTOR_STEPS });
-    wx.setNavigationBarTitle({ title: TITLES[view] });
+    const topic = Number(options.topic);
+    const topicIndex = view === 'feedback' && experience.TOPICS[topic] ? topic : 0;
+    const title = experience.TOPICS[topicIndex] === '门店推荐' ? '推荐门店' : TITLES[view];
+    this.setData({ view, title, topicIndex, role: this.role, steps: this.role === 'merchant' ? MERCHANT_STEPS : COLLECTOR_STEPS });
+    wx.setNavigationBarTitle({ title });
   },
   onShow() {
     this.refresh();

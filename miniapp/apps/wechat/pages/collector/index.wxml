@@ -1,18 +1,30 @@
-<view class="screen with-dock collector-d1">
+<import src="../../templates/site-guide.wxml"/>
+<view class="screen with-dock collector-d1 collector-ink">
+  <view class="row ink-brand">
+    <view class="ink-mark" aria-hidden="true"></view>
+    <text class="ink-wordmark">凌矩</text><text class="muted small grow">共享采集站</text>
+    <button class="d1-link" hover-class="d1-pressed" bindtap="switchRole">切换身份</button>
+  </view>
   <view class="list-masthead" wx:if="{{section !== 'credit'}}">
     <view class="row split">
-      <view class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山 · {{region ? regions[region] : '全城'}}</text></view>
-      <button class="d1-link" hover-class="d1-pressed" bindtap="switchRole">切换身份</button>
-    </view>
-    <view class="row split">
-      <view class="grow">
-        <view class="title">{{section === 'tasks' ? '今天去哪采集' : section === 'orders' ? '我的订单' : section === 'income' ? '我的收益' : '消息'}}</view>
-        <view class="muted">{{section === 'tasks' ? availableCount + ' 个站点有可约时段' : '模拟北京时间 ' + clock}}</view>
-      </view>
-      <text wx:if="{{section !== 'tasks'}}" class="muted small">{{personas[persona]}}</text>
+      <view class="title grow">{{section === 'tasks' ? '找采集任务' : section === 'stores' ? '合作门店' : section === 'scan' ? '扫一扫' : '消息'}}</view>
+      <view wx:if="{{section === 'tasks' || section === 'stores'}}" class="row city-mark"><image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/><text>平顶山</text></view>
+      <text wx:elif="{{section === 'scan'}}" class="muted small">设备操作 · 模拟</text>
     </view>
   </view>
   <block wx:if="{{section === 'tasks'}}">
+    <view class="d1-filter">
+      <view class="field row filter-search">
+        <image class="icon icon-small" src="/assets/icons/search.svg" mode="aspectFit"/>
+        <input class="grow" placeholder="搜门店、地址或任务" value="{{search}}" bindinput="search"/>
+      </view>
+      <view class="row wrap filter-row ink-filters">
+        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="filter-chip">{{dateLabel}} ▾</view></picker>
+        <picker range="{{regions}}" value="{{region}}" bindchange="region"><view class="filter-chip">{{regions[region]}} ▾</view></picker>
+        <picker range="{{sorts}}" value="{{sort}}" bindchange="sort"><view class="filter-chip">{{sorts[sort]}} ▾</view></picker>
+        <button class="filter-chip {{onlyAvailable ? 'ink-filter-active' : ''}}" hover-class="d1-pressed" bindtap="toggleAvailable" aria-pressed="{{onlyAvailable}}">仅看可约</button>
+      </view>
+    </view>
     <button wx:if="{{nextOrder && !replaceId}}" class="panel d1-next" hover-class="d1-pressed" data-id="{{nextOrder.id}}" bindtap="order">
       <view class="d1-next-icon"><image class="icon icon-small" src="/assets/icons/calendar.svg" mode="aspectFit"/></view>
       <view class="grow">
@@ -21,6 +33,28 @@
       </view>
       <view class="d1-next-end"><text class="status-pill status-{{nextOrder.stateTone}}">{{nextOrder.stateLabel}}</text><text class="d1-next-link">{{nextOrder.link}} ›</text></view>
     </button>
+    <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
+    <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
+    <view class="row split d1-block-head"><view class="heading">采集站点</view><text class="muted small">{{availableCount}} 个可约</text></view>
+    <view class="panel ink-stations" wx:if="{{cards.length}}">
+      <button class="d1-station" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="task">
+        <view class="row split ink-station-title">
+          <view class="subheading grow">{{item.title}}</view>
+          <view class="price">¥{{item.rate}}<text class="price-unit"> / 有效小时</text></view>
+        </view>
+        <view class="muted small">{{item.name}} · {{item.district}} {{item.address}}</view>
+        <view class="row split d1-station-rate">
+          <text wx:if="{{item.openCount}}" class="ink-available d1-numeric">最早 {{item.earliest}}</text>
+          <text wx:else class="muted small">{{item.availabilityReason}}</text>
+          <text class="muted small">连续 {{item.min / 60}} 小时{{item.min < item.max ? '起' : ''}} · 示例报酬</text>
+        </view>
+      </button>
+    </view>
+    <view class="account-paper account-empty" wx:if="{{!cards.length}}">
+      <view class="account-heading">当前条件下没有任务</view>
+      <view class="account-copy">可以换个区域、日期或关键词继续找。</view>
+      <button class="ghost account-button" wx:if="{{search || region || date !== today || sort || onlyAvailable}}" bindtap="clearFilters">清除筛选</button>
+    </view>
     <block wx:if="{{!replaceId && stories.length}}">
       <view class="row split d1-block-head"><view class="heading">站内动态</view></view>
       <swiper class="d1-stories" current="{{storyIndex}}" autoplay="{{stories.length > 1}}" circular="{{stories.length > 1}}"
@@ -42,74 +76,31 @@
         <button wx:for="{{stories}}" wx:key="id" class="{{storyIndex === index ? 'd1-selected' : ''}}" data-index="{{index}}" hover-class="d1-pressed" bindtap="selectStory">{{item.tab}}</button>
       </view>
     </block>
-    <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
-    <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
-    <view class="d1-filter">
-      <view class="field row filter-search">
-        <image class="icon icon-small" src="/assets/icons/search.svg" mode="aspectFit"/>
-        <input class="grow" placeholder="搜站点、地址或任务" value="{{search}}" bindinput="search"/>
-      </view>
-      <view class="row filter-row">
-        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="filter-chip">{{dateLabel}} ▾</view></picker>
-        <picker range="{{regions}}" value="{{region}}" bindchange="region"><view class="filter-chip">{{regions[region]}} ▾</view></picker>
-        <picker range="{{sorts}}" value="{{sort}}" bindchange="sort"><view class="filter-chip">{{sorts[sort]}} ▾</view></picker>
-      </view>
-    </view>
-    <view class="row split d1-block-head">
-      <view class="heading">采集站点</view>
-      <button class="d1-link" data-view="guide" bindtap="openAccount">服务指南 ›</button>
-    </view>
-    <button class="panel d1-station" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="task">
-      <image class="site-thumb" src="{{item.art}}" mode="aspectFill"/>
-      <view class="grow">
-        <view class="subheading">{{item.title}}</view>
-        <view class="muted small">{{item.name}} · {{item.district}}</view>
-        <view class="row split d1-station-rate">
-          <view class="price">¥{{item.rate}}<text class="price-unit">/ 有效小时</text></view>
-          <text wx:if="{{item.openCount}}" class="muted small d1-numeric">{{item.earliest}} 可约</text>
-        </view>
-        <view wx:if="{{!item.openCount}}" class="muted small">{{item.availabilityReason}}</view>
-      </view>
-      <text class="d1-arrow">›</text>
-    </button>
-    <view class="account-paper account-empty" wx:if="{{!cards.length}}">
-      <view class="account-heading">当前条件下没有任务</view>
-      <view class="account-copy">可以换个区域、日期或关键词继续找。</view>
-      <button class="ghost account-button" wx:if="{{search || region || date !== today || sort}}" bindtap="clearFilters">清除筛选</button>
-    </view>
   </block>
-  <block wx:if="{{section === 'orders'}}">
-    <view wx:if="{{orderFilter}}" class="row split d1-block-head">
-      <view class="heading">{{orderFilterLabel}} · {{shownOrders.length}} 笔</view>
-      <button class="d1-link" data-section="orders" bindtap="section">全部订单 ›</button>
-    </view>
-    <button class="panel discovery-card d1-order-card" wx:for="{{shownOrders}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="order">
-      <view class="row split"><view class="subheading grow">{{item.taskName}}</view><view class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</view></view>
-      <view class="muted action">{{item.stationName}} · {{item.interval}}</view>
-      <view class="row split divider"><text class="muted small">订单 {{item.id}}</text><text class="discovery-action">查看订单 ›</text></view>
-    </button>
-    <view class="account-paper account-empty" wx:if="{{!shownOrders.length}}">
-      <view class="account-heading">{{orderFilter ? '暂无' + orderFilterLabel + '的订单' : '还没有预约'}}</view>
-      <view class="account-copy">{{orderFilter ? '可切回全部订单查看其他进度。' : '选好站点和时段后，订单会出现在这里。'}}</view>
-      <button wx:if="{{!orderFilter}}" class="ghost account-button" data-section="tasks" bindtap="section">去找采集任务</button>
-    </view>
-  </block>
-  <block wx:if="{{section === 'income'}}">
-    <view class="panel">
-      <view class="heading">采集员月度收益</view>
-      <picker mode="date" fields="month" value="{{period}}" bindchange="period"><view class="field">{{period}} ›</view></picker>
-      <view class="row wrap">
-        <view class="grow tile"><view class="muted">预计</view><view class="subheading">¥{{income.estimated}}</view></view>
-        <view class="grow tile"><view class="muted">待审核</view><view class="subheading">¥{{income.pending}}</view></view>
-        <view class="grow tile"><view class="muted">已确认</view><view class="subheading">¥{{income.confirmed}}</view></view>
+  <block wx:if="{{section === 'stores'}}">
+    <view class="panel ink-stations" wx:if="{{stores.length}}">
+      <view class="ink-store-item" wx:for="{{stores}}" wx:key="id">
+        <button class="d1-station" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="showStore" aria-expanded="{{storeId === item.id}}">
+          <view class="row split"><view class="subheading grow">{{item.name}}</view><text class="muted small">{{storeId === item.id ? '收起' : '到店指引 ›'}}</text></view>
+          <view class="muted small">{{item.address}}</view>
+          <view class="muted small">今日 {{item.opening}}</view>
+        </button>
+        <template wx:if="{{storeId === item.id}}" is="site-guide" data="{{guide: guide}}"/>
       </view>
-      <view class="notice">以上为虚构金额。{{income.pendingCount}} 笔待审可跨期，审核确认后才进入月度账目。</view>
     </view>
-    <view class="panel" wx:for="{{income.entries}}" wx:key="id">
-      <view class="row split"><view class="subheading">{{item.kindLabel}}</view><view class="badge">{{item.state}}</view></view>
-      <view class="row split"><view class="muted">{{item.orderId}} · {{item.period}}</view><view>{{item.amount}}</view></view>
+    <view class="panel muted" wx:else>暂时没有已开放的合作门店。</view>
+    <view class="ink-promotion"><view class="muted small">门店福利 · 示意</view><view class="subheading">到店积分</view><view class="muted small">合作门店的活动和使用条件将在这里展示。</view></view>
+  </block>
+  <block wx:if="{{section === 'scan'}}">
+    <view class="panel ink-scan">
+      <view class="ink-scan-mark"><image src="/assets/icons/scan.svg" mode="aspectFit"/></view>
+      <view class="heading">选择模拟设备</view>
+      <view class="muted small">匹配本人预约后，回到本单取机或归还。</view>
+      <picker wx:if="{{scanDevices.length}}" range="{{scanDevices}}" range-key="label" value="{{scanDeviceIndex}}" bindchange="scanDevice">
+        <view class="field">{{scanDevices[scanDeviceIndex].label}} ▾</view>
+      </picker>
+      <button class="primary" disabled="{{!scanDevices.length}}" hover-class="d1-primary-pressed" bindtap="simulateScan">模拟扫设备码</button>
     </view>
-    <view class="panel muted" wx:if="{{!income.entries.length}}">该月暂无确认账目或待发放补贴。</view>
   </block>
   <block wx:if="{{section === 'messages'}}">
     <view class="panel">
@@ -134,43 +125,84 @@
     <view class="panel muted" wx:if="{{!messages.length}}">暂无站内消息。</view>
   </block>
   <block wx:if="{{section === 'credit'}}">
-    <view class="d1-profile-head">
-      <view class="row split"><view class="title">我的</view><button class="d1-link" hover-class="d1-pressed" bindtap="switchRole">切换身份 ›</button></view>
-      <view class="row d1-profile-id">
-        <view class="d1-avatar">采</view>
-        <view class="grow"><view class="subheading">{{account.name}}</view><view class="muted small">个人采集员 · {{account.loggedIn ? '演示账号' : '未登录'}}</view></view>
-        <button wx:if="{{!account.loggedIn}}" class="d1-link" data-view="login" bindtap="openAccount">点击登录 ›</button>
+    <view class="row d1-profile-id">
+      <view class="d1-avatar">采</view>
+      <view class="grow"><view class="subheading">{{account.name}}</view><view class="muted small">个人采集员</view></view>
+      <button wx:if="{{!account.loggedIn}}" class="d1-link" data-view="login" bindtap="openAccount">点击登录 ›</button>
+      <text wx:else class="ink-account-state">● 体验账号</text>
+    </view>
+    <view class="ink-wallet">
+      <view class="ink-wallet-mark"></view>
+      <view class="row split ink-wallet-head"><view class="row"><image class="icon icon-small" src="/assets/icons/wallet.svg" mode="aspectFit"/>我的钱包</view><text>{{period}} · 模拟账目</text></view>
+      <view class="ink-assets">
+        <button class="{{walletPanel === 'balance' ? 'ink-asset-active' : ''}}" data-panel="balance" aria-expanded="{{walletPanel === 'balance'}}" hover-class="ink-wallet-pressed" bindtap="wallet">
+          <text>余额 {{walletPanel === 'balance' ? '⌃' : '⌄'}}</text><view class="d1-numeric"><text>¥</text>{{income.confirmed}}</view>
+        </button>
+        <button class="{{walletPanel === 'coupons' ? 'ink-asset-active' : ''}}" data-panel="coupons" aria-expanded="{{walletPanel === 'coupons'}}" hover-class="ink-wallet-pressed" bindtap="wallet">
+          <text>优惠券 {{walletPanel === 'coupons' ? '⌃' : '⌄'}}</text><view class="d1-numeric">{{account.coupons.length}}</view>
+        </button>
+        <button class="{{walletPanel === 'points' ? 'ink-asset-active' : ''}}" data-panel="points" aria-expanded="{{walletPanel === 'points'}}" hover-class="ink-wallet-pressed" bindtap="wallet">
+          <text>门店积分 {{walletPanel === 'points' ? '⌃' : '⌄'}}</text><view class="d1-numeric">—</view>
+        </button>
+      </view>
+      <view class="ink-wallet-detail" wx:if="{{walletPanel === 'balance'}}">
+        <view class="row split ink-wallet-detail-head">
+          <text>余额明细</text><picker mode="date" fields="month" value="{{period}}" bindchange="period"><view class="ink-wallet-month">{{period}} ▾</view></picker>
+        </view>
+        <view class="row split"><text>已确认 · 待结算</text><text class="d1-numeric">¥{{income.confirmed}}</text></view>
+        <view class="row split"><text>待审核 · {{income.pendingCount}} 笔</text><text class="d1-numeric">¥{{income.pending}}</text></view>
+        <view class="row split"><text>预约预计</text><text class="d1-numeric">¥{{income.estimated}}</text></view>
+        <view class="ink-wallet-entry" wx:for="{{income.entries}}" wx:key="id">
+          <view class="row split"><text>{{item.kindLabel}} · {{item.orderId}}</text><text class="d1-numeric">{{item.amount}}</text></view>
+          <text>{{item.state}}</text>
+        </view>
+      </view>
+      <view class="ink-wallet-detail" wx:elif="{{walletPanel === 'coupons'}}">
+        <view class="row split ink-wallet-detail-head"><text>我的优惠券</text><button class="ink-wallet-link" data-view="benefits" bindtap="openAccount">去领券 ›</button></view>
+        <view wx:for="{{account.coupons}}" wx:key="id" class="ink-wallet-entry"><view>{{item.title}}</view><text>领取时间 {{item.time}}</text></view>
+        <view wx:if="{{!account.coupons.length}}">还没有领取优惠券。</view>
+      </view>
+      <view class="ink-wallet-detail" wx:elif="{{walletPanel === 'points'}}">
+        <view class="ink-wallet-detail-head">门店积分 · 示意</view>
+        <view>合作门店发放的积分将在这里按店展示。</view>
       </view>
     </view>
     <view class="panel d1-profile-orders">
-      <view class="row split"><view class="heading">我的订单</view><button class="d1-link" data-section="orders" bindtap="section">全部订单 ›</button></view>
+      <view class="row split ink-orders-head"><view class="heading">我的订单</view><button class="d1-link" data-filter="all" aria-expanded="{{orderFilter === 'all'}}" bindtap="ordersPanel">全部订单 ›</button></view>
       <view class="d1-order-tabs">
-        <button wx:for="{{orderTabs}}" wx:key="id" data-section="orders" data-filter="{{item.id}}" hover-class="d1-pressed" bindtap="section">
+        <button wx:for="{{orderTabs}}" wx:key="id" data-filter="{{item.id}}" class="{{orderFilter === item.id ? 'ink-order-active' : ''}}" aria-expanded="{{orderFilter === item.id}}" hover-class="d1-pressed" bindtap="ordersPanel">
           <view class="d1-order-icon"><image class="icon" src="{{item.icon}}" mode="aspectFit"/><text wx:if="{{item.count}}" class="d1-count">{{item.count > 99 ? '99+' : item.count}}</text></view>
           <text>{{item.label}}</text>
         </button>
       </view>
+      <button wx:if="{{attentionCount}}" class="d1-link ink-attention" data-filter="attention" aria-expanded="{{orderFilter === 'attention'}}" bindtap="ordersPanel">待处理 · {{attentionCount}} 笔 ›</button>
+      <view class="ink-order-list" wx:if="{{orderFilter}}">
+        <view class="muted small">{{orderFilterLabel}} · {{shownOrders.length}} 笔</view>
+        <button class="ink-order-row" wx:for="{{shownOrders}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="order">
+          <view class="row split"><text class="grow">{{item.stationName}}</text><text class="status-pill status-{{item.stateTone}}">{{item.stateLabel}}</text></view>
+          <view class="muted small">{{item.interval}} · {{item.taskName}}</view>
+        </button>
+        <view wx:if="{{!shownOrders.length}}" class="muted small">这个状态暂无订单。</view>
+      </view>
     </view>
-    <view class="panel d1-profile-group" wx:for="{{profileGroups}}" wx:key="id" wx:for-item="group">
-      <button class="d1-cell" wx:for="{{group.items}}" wx:key="label" data-view="{{item.view}}" data-section="{{item.section}}" hover-class="d1-pressed" bindtap="profileEntry">
-        <text class="grow">{{item.label}}</text>
-        <text wx:if="{{item.view === 'coupons' && account.coupons.length}}" class="muted">{{account.coupons.length}}</text>
-        <text class="d1-arrow">›</text>
-      </button>
+    <view class="ink-services">
+      <view class="row split"><view class="heading">常用服务</view><button class="d1-link" data-view="credit" bindtap="openAccount">信誉记录 ›</button></view>
+      <view class="ink-service-grid">
+        <button wx:for="{{profileServices}}" wx:key="label" data-view="{{item.view}}" data-topic="{{item.topic}}" hover-class="d1-pressed" bindtap="openAccount">
+          <image class="icon icon-small" src="/assets/icons/{{item.icon}}.svg" mode="aspectFit"/>{{item.label}}
+        </button>
+      </view>
     </view>
-    <view class="panel d1-profile-group">
-      <button class="d1-cell" data-view="credit" hover-class="d1-pressed" bindtap="openAccount"><text class="grow">信誉记录</text><text class="d1-arrow">›</text></button>
-    </view>
-    <view class="account-paper">
-      <view class="row split"><view class="subheading">演示设置</view><button class="account-link touch-control" bindtap="toggleDemo">{{showDemo ? '收起' : '展开 ›'}}</button></view>
-      <picker wx:if="{{showDemo}}" range="{{personas}}" value="{{persona}}" bindchange="persona">
-        <view class="field">切换演示采集员　{{personas[persona]}} ›</view>
-      </picker>
+    <button wx:if="{{account.showCampaign}}" class="ink-promotion" data-view="benefits" hover-class="ink-promo-pressed" bindtap="openAccount">
+      <view class="grow"><view class="muted small">合作门店 · 本周</view><view class="subheading">回店有礼</view></view><text class="muted small">推广示意 ›</text>
+    </button>
+    <view class="ink-demo">
+      <button class="d1-link" bindtap="toggleDemo">{{showDemo ? '收起演示设置' : '演示设置 ›'}}</button>
+      <picker wx:if="{{showDemo}}" range="{{personas}}" value="{{persona}}" bindchange="persona"><view class="field">切换演示采集员　{{personas[persona]}} ›</view></picker>
     </view>
   </block>
-  <view class="tagline">演示数据 · 站内消息 · 虚构金额</view>
-  <view class="dock dock-nav">
-    <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}}" data-section="{{item.section}}" hover-class="d1-pressed" bindtap="section">
+  <view class="dock dock-nav ink-dock" role="tablist" aria-label="采集员导航">
+    <button wx:for="{{navItems}}" wx:key="section" class="dock-item {{section === item.section ? 'is-active' : ''}} {{item.section === 'scan' ? 'ink-scan-tab' : ''}}" data-section="{{item.section}}" role="tab" aria-selected="{{section === item.section}}" hover-class="d1-pressed" bindtap="section">
       <view class="dock-mark">
         <image class="icon" src="{{item.icon}}" mode="aspectFit"/>
         <view wx:if="{{item.section === 'messages' && unread}}" class="unread-dot">{{unread > 99 ? '99+' : unread}}</view>

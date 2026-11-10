@@ -5,7 +5,7 @@ const CAMPAIGNS = [
   { id: 'welcome', title: '新人体验券', detail: '完成演示登录，即可领取一张体验券。', label: '新手福利' },
   { id: 'first-order', title: '首单完成礼', detail: '首笔采集归还经凌矩核验，且质检有有效时长后可领取。', label: '完成采集' }
 ];
-const TOPICS = ['体验建议', '投诉反馈', '功能问题'];
+const TOPICS = ['体验建议', '投诉反馈', '功能问题', '门店推荐'];
 const EMPTY = { profiles: {}, coupons: [], invites: [], feedback: [] };
 
 function data(state) {
@@ -128,8 +128,10 @@ function accountView(state, role) {
 }
 
 function openAccount(event, replace = false) {
-  const { role = 'collector', view } = event.currentTarget.dataset;
-  const url = '/pages/account/index?role=' + role + '&view=' + view;
+  const { role = 'collector', view, topic } = event.currentTarget.dataset;
+  const topicIndex = TOPICS.indexOf(topic);
+  const url = '/pages/account/index?role=' + role + '&view=' + view
+    + (view === 'feedback' && topicIndex >= 0 ? '&topic=' + topicIndex : '');
   if (replace) wx.redirectTo({ url });
   else wx.navigateTo({ url });
 }

@@ -1381,6 +1381,17 @@
       "offline_render": "seven WXML routes and WXSS compiled; verified earliest end time and end slot rendering",
       "desktop_simulator_interaction_verified": false,
       "real_device_visual_verified": false
+    },
+    "collector_ink_navigation": {
+      "status": "implemented_automated_tested",
+      "base_commit": "58d95873f002c102303ad7bfb0de2837cec61090",
+      "decision": "DEC-2026-11-10-02",
+      "scope": ["search-first home and store guide", "inline account wallet and order filters", "simulated scan opens matching owned order"],
+      "automated_tests_passed": 48,
+      "offline_render": "seven WXML routes and WXSS compiled; home, profile and expanded wallet inspected at 320px and 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-ink.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
     }
   }
 }

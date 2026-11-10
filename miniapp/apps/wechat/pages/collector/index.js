@@ -1,5 +1,5 @@
 const store = require('../../lib/storage');
-const { stamp, dateOf, HOUR, DISTRICTS } = require('../../lib/catalog');
+const { dateOf, HOUR, DISTRICTS } = require('../../lib/catalog');
 const { preStart } = require('../../lib/model');
 const experience = require('../../lib/experience');
 const ui = require('../../lib/ui');
@@ -7,9 +7,9 @@ const ui = require('../../lib/ui');
 const REGIONS = ['全城', ...DISTRICTS];
 const SORTS = ['最早可开工', '区域顺序'];
 const NAV_ITEMS = [
-  { section: 'tasks', label: '找任务', icon: '/assets/icons/radar.svg' },
-  { section: 'orders', label: '订单', icon: '/assets/icons/orders.svg' },
-  { section: 'income', label: '收益', icon: '/assets/icons/wallet.svg' },
+  { section: 'tasks', label: '首页', icon: '/assets/icons/home.svg' },
+  { section: 'stores', label: '门店', icon: '/assets/icons/store.svg' },
+  { section: 'scan', label: '扫一扫', icon: '/assets/icons/scan.svg' },
   { section: 'messages', label: '消息', icon: '/assets/icons/bell.svg' },
   { section: 'credit', label: '我的', icon: '/assets/icons/person.svg' }
 ];
@@ -25,14 +25,15 @@ const ORDER_TABS = [
   { id: 'arrival', label: '待到店', icon: '/assets/icons/pin.svg' },
   { id: 'active', label: '进行中', icon: '/assets/icons/radar.svg' },
   { id: 'return', label: '待归还', icon: '/assets/icons/store.svg' },
-  { id: 'verify', label: '待核验', icon: '/assets/icons/guide.svg' },
-  { id: 'attention', label: '待处理', icon: '/assets/icons/feedback.svg' }
+  { id: 'verify', label: '待审核', icon: '/assets/icons/guide.svg' }
 ];
-const PROFILE_GROUPS = [
-  { id: 'earnings', items: [{ label: '我的收益', section: 'income' }, { label: '我的券', view: 'coupons' },
-    { label: '福利活动', view: 'benefits' }, { label: '邀请好友', view: 'invite' }] },
-  { id: 'support', items: [{ label: '服务指南', view: 'guide' }, { label: '投诉建议', view: 'feedback' },
-    { label: '关于我们', view: 'about' }, { label: '设置', view: 'settings' }] }
+const PROFILE_SERVICES = [
+  { label: '邀请好友', view: 'invite', icon: 'people' },
+  { label: '推荐门店', view: 'feedback', icon: 'store', topic: '门店推荐' },
+  { label: '服务指南', view: 'guide', icon: 'guide' },
+  { label: '投诉建议', view: 'feedback', icon: 'feedback' },
+  { label: '关于我们', view: 'about', icon: 'person' },
+  { label: '设置', view: 'settings', icon: 'settings' }
 ];
 
 function orderGroup(order) {
@@ -42,6 +43,10 @@ function orderGroup(order) {
   if (order.status === 'stopped') return 'return';
   if (order.status === 'submitted') return 'verify';
   return '';
+}
+
+function filterOrders(orders, filter) {
+  return !filter || filter === 'all' ? orders : orders.filter(order => order.group === filter);
 }
 
 function priority(order, now) {
@@ -77,7 +82,7 @@ function nextReservation(orders, now) {
 
 Page({
   data: { section: 'tasks', navItems: NAV_ITEMS, regions: REGIONS, sorts: SORTS, showDemo: false,
-    storyIndex: 0, orderFilter: '', profileGroups: PROFILE_GROUPS },
+    storyIndex: 0, orderFilter: '', walletPanel: '', profileServices: PROFILE_SERVICES, scanStationId: '' },
   onLoad(options) {
     this.replaceId = options.replace || '';
   },
@@ -88,16 +93,17 @@ Page({
     const state = store.read();
     const actor = state.collector;
     const today = dateOf(state.now);
-    const { date: savedDate, region = 0, sort = 0, search = '' } = (state.collectorFilters || {})[actor] || {};
+    const { date: savedDate, region = 0, sort = 0, search = '', onlyAvailable = false } = (state.collectorFilters || {})[actor] || {};
     const date = savedDate && savedDate >= today ? savedDate : today;
     const period = this.data.period || today.slice(0, 7);
     const messages = ui.inbox(state, actor);
     const oldOrder = state.orders.find(order => order.id === this.replaceId && order.collectorId === actor);
     if (this.replaceId && (!oldOrder || oldOrder.replacedBy || (!preStart(oldOrder) && oldOrder.status !== 'cancelled'))) this.replaceId = '';
-    const candidates = state.stations.filter(station => station.stage === 'open' && station.taskEnabled);
-    const cards = candidates.filter(station => !region || station.district === REGIONS[region])
+    const stations = state.stations.filter(station => station.stage === 'open');
+    const cards = stations.filter(station => station.taskEnabled && (!region || station.district === REGIONS[region]))
       .map(station => ui.listing(state, station, date, actor, this.replaceId))
-      .filter(card => [card.name, card.title, card.category, card.district, card.address].join(' ').includes(search.trim()));
+      .filter(card => (!onlyAvailable || card.openCount)
+        && [card.name, card.title, card.category, card.district, card.address].join(' ').toLowerCase().includes(search.trim().toLowerCase()));
     if (sort === 0) cards.sort((a, b) => (a.openCount ? a.earliest : '99:99').localeCompare(b.openCount ? b.earliest : '99:99'));
     else cards.sort((a, b) => REGIONS.indexOf(a.district) - REGIONS.indexOf(b.district));
     const orders = state.orders.filter(order => order.collectorId === actor).map(order => {
@@ -107,14 +113,23 @@ Page({
     const account = experience.accountView(state, 'collector');
     const stories = STORIES.filter(item => item.id !== 'benefits' || account.showCampaign);
     const activeStory = this.data.stories?.[this.data.storyIndex]?.id;
+    const scanDevices = stations.filter(station => station.device).map(station => ({
+      id: station.id, label: station.name + ' · ' + station.device.id
+    }));
+    const scanDeviceIndex = Math.max(0, scanDevices.findIndex(item => item.id === this.data.scanStationId));
+    const stores = stations.map(station => ({ id: station.id, ...ui.siteGuide(station, today) }));
+    const guide = stores.find(station => station.id === this.storeId) || null;
     this.setData({ today, date, region, sort, search, dateLabel: date === today ? '今天 ' + date.slice(5).replace('-', '/') : date.slice(5).replace('-', '/'),
-      availableCount: cards.filter(card => card.openCount).length, period, clock: stamp(state.now), cards, messages,
+      availableCount: cards.filter(card => card.openCount).length, onlyAvailable, period, cards, messages,
+      stores, storeId: guide?.id || '', guide,
+      scanDevices, scanDeviceIndex,
       replaceId: this.replaceId, personas: state.collectors.map(person => person.name),
       persona: state.collectors.findIndex(person => person.id === actor),
       unread: messages.filter(message => !message.read).length,
       orders, nextOrder: nextReservation(orders, state.now),
-      shownOrders: orders.filter(order => !this.data.orderFilter || order.group === this.data.orderFilter),
+      shownOrders: filterOrders(orders, this.data.orderFilter),
       orderTabs: ORDER_TABS.map(tab => ({ ...tab, count: orders.filter(order => order.group === tab.id).length })),
+      attentionCount: orders.filter(order => order.group === 'attention').length,
       stories, storyIndex: Math.max(0, stories.findIndex(item => item.id === activeStory)),
       income: ui.income(state, actor, period), profile: ui.profile(state, actor),
       account });
@@ -124,11 +139,49 @@ Page({
     ui.commit(this, state => { state.collector = state.collectors[Number(event.detail.value)].id; });
   },
   section(event) {
-    const { section, filter = '' } = event.currentTarget.dataset;
-    this.setData({
-      section, orderFilter: filter, orderFilterLabel: ORDER_TABS.find(tab => tab.id === filter)?.label || '',
-      shownOrders: this.data.orders.filter(order => !filter || order.group === filter)
-    }, () => wx.pageScrollTo({ scrollTop: 0, duration: 0 }));
+    this.setData({ section: event.currentTarget.dataset.section }, () => wx.pageScrollTo({ scrollTop: 0, duration: 0 }));
+  },
+  ordersPanel(event) {
+    const filter = event.currentTarget.dataset.filter;
+    const orderFilter = this.data.orderFilter === filter ? '' : filter;
+    this.setData({ orderFilter, orderFilterLabel: filter === 'attention' ? '待处理'
+      : ORDER_TABS.find(tab => tab.id === filter)?.label || '全部订单',
+      shownOrders: filterOrders(this.data.orders, orderFilter) });
+  },
+  wallet(event) {
+    const { panel } = event.currentTarget.dataset;
+    this.setData({ walletPanel: this.data.walletPanel === panel ? '' : panel });
+  },
+  showStore(event) {
+    const { id } = event.currentTarget.dataset;
+    this.storeId = this.storeId === id ? '' : id;
+    this.refresh();
+  },
+  copyAddress: ui.copyAddress,
+  openMap: ui.openMap,
+  scanDevice(event) {
+    const scanDeviceIndex = Number(event.detail.value);
+    const station = this.data.scanDevices[scanDeviceIndex];
+    if (station) this.setData({ scanDeviceIndex, scanStationId: station.id });
+  },
+  simulateScan() {
+    const station = this.data.scanDevices[this.data.scanDeviceIndex];
+    if (!station) return;
+    const state = store.read();
+    const orders = state.orders.filter(order => order.collectorId === state.collector && order.stationId === station.id)
+      .map(order => ui.presentOrder(state, order));
+    const current = orders.find(order => order.status === 'stopped' || order.status === 'collecting')
+      || orders.filter(order => preStart(order) && order.date === dateOf(state.now) && order.endAt > state.now)
+        .sort((a, b) => a.startAt - b.startAt)[0];
+    if (!current) {
+      wx.showModal({ title: '未找到匹配订单', content: '请选择你今天预约的设备。可以在「我的订单」核对门店与时段。', showCancel: false });
+      return;
+    }
+    const action = ui.nextAction(current);
+    wx.showModal({ title: '已匹配模拟设备', content: current.stationName + '\n' + (action ? action.label : current.handoffBlock || '打开订单查看进度'),
+      confirmText: '查看订单', success(result) {
+        if (result.confirm && store.read().collector === current.collectorId) wx.navigateTo({ url: '/pages/order/index?id=' + current.id });
+      } });
   },
   finishStory(event) {
     const { current } = event.detail;
@@ -151,10 +204,6 @@ Page({
         showCancel: false });
     }
   },
-  profileEntry(event) {
-    if (event.currentTarget.dataset.section) this.section(event);
-    else this.openAccount(event);
-  },
   exitReschedule() {
     this.replaceId = '';
     this.refresh();
@@ -171,8 +220,11 @@ Page({
   search(event) {
     this.saveFilters({ search: event.detail.value });
   },
+  toggleAvailable() {
+    this.saveFilters({ onlyAvailable: !this.data.onlyAvailable });
+  },
   clearFilters() {
-    this.saveFilters({ search: '', region: 0, sort: 0, date: this.data.today });
+    this.saveFilters({ search: '', region: 0, sort: 0, date: this.data.today, onlyAvailable: false });
   },
   saveFilters(changes) {
     ui.commit(this, state => {

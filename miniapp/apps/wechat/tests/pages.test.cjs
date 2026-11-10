@@ -46,7 +46,9 @@ test('我的订单按进度筛选且继续打开同一笔订单', () => {
   const order = makeOrder(r);
   const collector = r.open('collector');
   const id = order.data.order.id;
-  collector.section(event({ section: 'orders', filter: 'arrival' }));
+  collector.section(event({ section: 'credit' }));
+  collector.ordersPanel(event({ filter: 'arrival' }));
+  assert.equal(collector.data.section, 'credit');
   assert.equal(collector.data.shownOrders[0].id, id);
   collector.order(event({ id }));
   assert.equal(r.nav.pop(), '/pages/order/index?id=' + id);
@@ -54,13 +56,71 @@ test('我的订单按进度筛选且继续打开同一笔订单', () => {
   collector.onShow();
   assert.equal(collector.data.shownOrders.length, 0);
   assert.equal(collector.data.orderTabs.find(tab => tab.id === 'return').count, 1);
-  collector.section(event({ section: 'orders', filter: 'return' }));
+  collector.ordersPanel(event({ filter: 'return' }));
   assert.equal(collector.data.shownOrders[0].id, id);
   order.perform(event({ action: 'return' }));
   collector.onShow();
   assert.equal(collector.data.orderTabs.find(tab => tab.id === 'verify').count, 1);
-  collector.section(event({ section: 'orders' }));
+  collector.ordersPanel(event({ filter: 'all' }));
   assert.equal(collector.data.shownOrders[0].id, id);
+  collector.ordersPanel(event({ filter: 'all' }));
+  assert.equal(collector.data.orderFilter, '');
+});
+
+test('钱包和订单在我的展开，门店提供同栏到店指引，首页可筛出可约站点', () => {
+  const r = runtime();
+  const collector = r.open('collector');
+  assert.deepEqual(collector.data.navItems.map(item => item.label), ['首页', '门店', '扫一扫', '消息', '我的']);
+  collector.section(event({ section: 'credit' }));
+  collector.wallet(event({ panel: 'balance' }));
+  assert.equal(collector.data.walletPanel, 'balance');
+  assert.equal(collector.data.income.confirmed, '0.00');
+  collector.wallet(event({ panel: 'points' }));
+  assert.equal(collector.data.walletPanel, 'points');
+  assert.deepEqual(r.nav, []);
+  collector.openAccount(event({ view: 'feedback', topic: '门店推荐' }));
+  const query = new URL(r.nav.pop(), 'https://demo.invalid').searchParams;
+  assert.equal(r.open('account', Object.fromEntries(query)).data.title, '推荐门店');
+  collector.section(event({ section: 'stores' }));
+  collector.showStore(event({ id: 's1' }));
+  assert.equal(collector.data.guide.locker, '');
+  collector.copyAddress();
+  assert.match(r.clipboard.pop(), /样例街 A-01/);
+  collector.section(event({ section: 'tasks' }));
+  store.change(state => merchant.schedule(state, 's1', collector.data.today, []));
+  collector.onShow();
+  assert.ok(collector.data.cards.some(item => item.id === 's1'));
+  collector.toggleAvailable();
+  assert.ok(!collector.data.cards.some(item => item.id === 's1'));
+  collector.clearFilters();
+  assert.ok(collector.data.cards.some(item => item.id === 's1'));
+});
+
+test('模拟扫码按采集员和设备匹配原订单，归还入口保留原流程', () => {
+  const r = runtime();
+  const order = makeOrder(r);
+  const id = order.data.order.id;
+  r.nav.length = 0;
+  const collector = r.open('collector');
+  collector.section(event({ section: 'scan' }));
+  collector.scanDevice(event({}, '1'));
+  collector.simulateScan();
+  assert.match(r.dialogs.pop().title, /未找到/);
+  collector.scanDevice(event({}, '0'));
+  collector.simulateScan();
+  assert.match(r.dialogs.at(-1).content, /模拟开始前往/);
+  r.answer();
+  assert.equal(r.nav.pop(), '/pages/order/index?id=' + id);
+  for (const action of ['travel', 'arrive', 'collect', 'stop']) order.perform(event({ action }));
+  collector.simulateScan();
+  assert.match(r.dialogs.at(-1).content, /提交归还/);
+  r.answer();
+  assert.equal(r.nav.pop(), '/pages/order/index?id=' + id);
+  assert.equal(store.read().orders[0].status, 'stopped');
+  collector.persona(event({}, '1'));
+  collector.simulateScan();
+  assert.match(r.dialogs.pop().title, /未找到/);
+  assert.deepEqual(r.nav, []);
 });
 
 test('首页冷启动恢复身份一次，原生返回首页后可切换且能重置演示数据', () => {

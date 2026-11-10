@@ -28,6 +28,11 @@ test('从个人中心登录，领取新人券后可查看，重复领取或切�
   assert.match(r.dialogs.pop().content, /已领取/);
   assert.equal(r.open('account', { view: 'coupons' }).data.account.coupons.length, 1);
   assert.equal(benefits.data.offers.find(offer => offer.id === 'first-order').eligible, false);
+  collector.onShow();
+  collector.wallet(event({ panel: 'coupons' }));
+  assert.equal(collector.data.section, 'credit');
+  assert.equal(collector.data.walletPanel, 'coupons');
+  assert.equal(collector.data.account.coupons.length, 1);
 
   const settings = r.open('account', { view: 'settings' });
   settings.campaignSetting(event({}, false));

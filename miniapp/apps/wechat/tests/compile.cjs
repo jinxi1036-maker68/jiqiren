@@ -63,6 +63,8 @@ assert.match(pageText(entryView), /我是商家/);
 assert.match(pageText(entryView), /我是采集员/);
 const collectorEntry = render('pages/collector/index.wxml')(r.open('collector').data);
 assert.equal(findButton(collectorEntry, '切换身份').attr.bindtap, 'switchRole');
+assert.equal(findTag(collectorEntry, 'wx-input').attr.placeholder, '搜门店、地址或任务');
+assert.equal(findButton(collectorEntry, '扫一扫').attr['data-section'], 'scan');
 assert.match(pageText(collectorEntry), /新手采集计划/);
 assert.equal(findButton(collectorEntry, '查看参与条件 ›').attr.bindtap, 'openStory');
 assert.match(pageText(collectorEntry), /采集故事.*¥60.00.*推广 · 示意/);
@@ -74,11 +76,21 @@ assert.equal(storySwiper.attr.bindanimationfinish, 'finishStory');
 const profilePage = r.open('collector');
 profilePage.section(event({ section: 'credit' }));
 const profileView = render('pages/collector/index.wxml')(profilePage.data);
-assert.equal(findButton(profileView, '全部订单 ›').attr.bindtap, 'section');
+assert.equal(findButton(profileView, '全部订单 ›').attr.bindtap, 'ordersPanel');
 assert.match(pageText(profileView), /点击登录/);
-for (const label of ['我的券', '邀请好友', '投诉建议', '服务指南', '关于我们', '设置']) {
+for (const label of ['我的钱包', '余额', '优惠券', '门店积分', '邀请好友', '推荐门店', '投诉建议', '服务指南', '关于我们', '设置']) {
   assert.ok(pageText(profileView).includes(label));
 }
+assert.doesNotMatch(pageText(profileView), /余额明细/);
+profilePage.wallet(event({ panel: 'balance' }));
+assert.match(pageText(render('pages/collector/index.wxml')(profilePage.data)), /余额明细/);
+profilePage.ordersPanel(event({ filter: 'all' }));
+assert.match(pageText(render('pages/collector/index.wxml')(profilePage.data)), /全部订单 · 0 笔/);
+profilePage.section(event({ section: 'stores' }));
+profilePage.showStore(event({ id: 's1' }));
+assert.ok(findButton(render('pages/collector/index.wxml')(profilePage.data), '地图导航'));
+profilePage.section(event({ section: 'scan' }));
+assert.equal(findButton(render('pages/collector/index.wxml')(profilePage.data), '模拟扫设备码').attr.bindtap, 'simulateScan');
 const renderAccount = render('pages/account/index.wxml');
 const benefits = r.open('account', { view: 'benefits' });
 assert.match(pageText(renderAccount(benefits.data)), /登录后参与/);
