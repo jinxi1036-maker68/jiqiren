@@ -16,9 +16,9 @@ Page({
     this.replaceId = options.replace || '';
     this.setData({ date: validDate(options.date) ? options.date : dateOf(store.read().now) });
   },
-  onShow() {
-    this.refresh();
-  },
+  onShow: ui.watchBookingClock,
+  onHide: ui.stopBookingClock,
+  onUnload: ui.stopBookingClock,
   toggleGuide() {
     this.setData({ showGuide: !this.data.showGuide });
   },
@@ -43,6 +43,7 @@ Page({
     const task = TASKS[station.task];
     const previous = state.orders.find(order => order.id === this.replaceId && order.collectorId === state.collector);
     this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd, guide: ui.siteGuide(station, date),
+      clockLabel: ui.bookingClockLabel(state),
       selectionLost: selectionLost || this.data.selectionLost, canConfirm: selectedEnd !== null,
       selectionText: selectedStart === null ? '先选开始时间'
         : selectedEnd === null ? '再选结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),

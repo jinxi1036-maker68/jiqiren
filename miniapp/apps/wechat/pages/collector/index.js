@@ -86,9 +86,9 @@ Page({
   onLoad(options) {
     this.replaceId = options.replace || '';
   },
-  onShow() {
-    this.refresh();
-  },
+  onShow: ui.watchBookingClock,
+  onHide: ui.stopBookingClock,
+  onUnload: ui.stopBookingClock,
   refresh() {
     const state = store.read();
     const actor = state.collector;
@@ -120,7 +120,7 @@ Page({
     const stores = stations.map(station => ({ id: station.id, ...ui.siteGuide(station, today) }));
     const guide = stores.find(station => station.id === this.storeId) || null;
     this.setData({ today, date, region, sort, search, dateLabel: date === today ? '今天 ' + date.slice(5).replace('-', '/') : date.slice(5).replace('-', '/'),
-      availableCount: cards.filter(card => card.openCount).length, onlyAvailable, period, cards, messages,
+      availableCount: cards.filter(card => card.openCount).length, onlyAvailable, period, cards, messages, clockLabel: ui.bookingClockLabel(state),
       stores, storeId: guide?.id || '', guide,
       scanDevices, scanDeviceIndex,
       replaceId: this.replaceId, personas: state.collectors.map(person => person.name),

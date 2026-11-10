@@ -20,7 +20,10 @@
         <view class="heading">{{replaceId ? '选择改约时间' : '选择预约时间'}}</view>
         <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="filter-chip">{{date}} ›</view></picker>
       </view>
-      <view class="muted action">门店开放 {{card.opening}}</view>
+      <view class="row split wrap action">
+        <view class="muted small">门店开放 {{card.opening}}</view>
+        <view class="muted small d1-numeric">{{clockLabel}}</view>
+      </view>
       <view class="notice" wx:if="{{selectionLost}}">原选时段已不可用，请重新选择。</view>
       <block wx:if="{{starts.length}}">
         <view class="divider">

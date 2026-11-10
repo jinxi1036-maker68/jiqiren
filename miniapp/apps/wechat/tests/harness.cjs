@@ -1,12 +1,21 @@
 const path = require('node:path');
 
-function runtime() {
+function runtime(wallTime = Date.parse('2026-11-09T08:00:00+08:00')) {
   const state = new Map();
   const nav = [];
   const dialogs = [];
   const clipboard = [];
   const mapCalls = [];
+  const timers = new Map();
+  let timerId = 0;
   let app;
+  // Keep page tests independent of the machine clock and drive foreground refreshes synchronously.
+  Date.now = () => wallTime;
+  global.setTimeout = (run, delay) => {
+    timers.set(++timerId, { run, due: wallTime + delay });
+    return timerId;
+  };
+  global.clearTimeout = id => timers.delete(id);
   global.App = options => { app = options; };
   global.getApp = () => app;
   global.wx = {
@@ -55,7 +64,15 @@ function runtime() {
     dialogs.pop().success({ confirm: true, content: value, tapIndex: 0 });
   }
 
-  return { app, open, nav, dialogs, clipboard, mapCalls, answer, root };
+  function setWallTime(time, runTimers = true) {
+    wallTime = time;
+    if (!runTimers) return;
+    for (const [id, timer] of [...timers]) {
+      if (timer.due <= time && timers.delete(id)) timer.run();
+    }
+  }
+
+  return { app, open, nav, dialogs, clipboard, mapCalls, answer, root, setWallTime };
 }
 
 function event(dataset = {}, value) {

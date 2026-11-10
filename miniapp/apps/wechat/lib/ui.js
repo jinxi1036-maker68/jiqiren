@@ -187,13 +187,22 @@ function switchRole() {
   wx.reLaunch({ url: '/pages/home/index?choose=1' });
 }
 
-function advanceClock(state, target) {
-  booking.advance(state, target);
-  reviews.deadlineAlerts(state);
+function bookingClockLabel(state) {
+  return (state.now > Date.now() ? '演示快进 ' : '北京时间 ') + stamp(state.now).slice(5);
+}
+
+function watchBookingClock() {
+  clearTimeout(this.bookingClockTimer);
+  this.refresh();
+  this.bookingClockTimer = setTimeout(() => watchBookingClock.call(this), MINUTE - Date.now() % MINUTE);
+}
+
+function stopBookingClock() {
+  clearTimeout(this.bookingClockTimer);
 }
 
 function advance(page, target) {
-  commit(page, state => advanceClock(state, target));
+  commit(page, state => store.advanceClock(state, target));
 }
 
 function jump(event) {
@@ -201,4 +210,4 @@ function jump(event) {
 }
 
 module.exports = { STAGES, money, rangeText, siteGuide, copyAddress, openMap, listing, presentOrder, nextAction, ledger, income, inbox, profile, errorToast, commit,
-  inputPrompt, switchRole, advanceClock, advance, jump };
+  inputPrompt, switchRole, bookingClockLabel, watchBookingClock, stopBookingClock, advanceClock: store.advanceClock, advance, jump };

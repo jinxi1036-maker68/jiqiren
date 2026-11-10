@@ -479,6 +479,56 @@ test('临近开始的预约仍先显示模拟开始前往，再显示到店签�
   assert.equal(store.read().now, now);
 });
 
+test('已有本地演示数据按当前北京时间更新，跨日后隐藏已过时段', () => {
+  const r = runtime();
+  const oldOrder = makeOrder(r);
+  const collector = r.open('collector');
+  const task = r.open('task', { id: 's1' });
+  const today = '2026-11-10';
+  assert.equal(task.data.today, '2026-11-09');
+  r.setWallTime(at(today, 720));
+  assert.equal(collector.data.date, today);
+  assert.equal(collector.data.cards.find(card => card.id === 's1').earliest, '12:30');
+  assert.equal(task.data.date, today);
+  assert.equal(task.data.starts[0].label, '12:30');
+  assert.equal(task.data.clockLabel, '北京时间 11-10 12:00');
+  assert.equal(store.read().orders.find(order => order.id === oldOrder.data.order.id).status, 'missed');
+  r.setWallTime(at(today, 750));
+  assert.equal(task.data.starts[0].label, '13:00');
+  task.onHide();
+  r.setWallTime(at(today, 780));
+  assert.equal(task.data.starts[0].label, '13:00');
+  task.onShow();
+  assert.equal(task.data.starts[0].label, '13:30');
+});
+
+test('预约页上的旧选项跨过开始时间后提交会被拒绝', () => {
+  const today = '2026-11-10';
+  const r = runtime(at(today, 630));
+  const task = r.open('task', { id: 's1' });
+  assert.equal(task.data.starts[0].label, '11:00');
+  select(task, 660, 780);
+  assert.equal(task.data.canConfirm, true);
+  // Simulate tapping submit before the on-screen minute refresh can run.
+  r.setWallTime(at(today, 660), false);
+  task.submit();
+  assert.match(r.dialogs.pop().content, /请选择尚未开始的时段/);
+  assert.equal(store.read().orders.length, 0);
+  assert.equal(task.data.canConfirm, false);
+  assert.equal(task.data.starts[0].label, '11:30');
+});
+
+test('演示快进保留标识，设备时钟追上后恢复北京时间', () => {
+  const today = '2026-11-10';
+  const r = runtime(at(today, 660));
+  const collector = r.open('collector');
+  collector.jump(event({ delta: 30 }));
+  assert.equal(collector.data.clockLabel, '演示快进 11-10 11:30');
+  r.setWallTime(at(today, 690));
+  assert.equal(collector.data.clockLabel, '北京时间 11-10 11:30');
+  assert.equal(collector.data.cards.find(card => card.id === 's1').earliest, '12:00');
+});
+
 test('预约至少连续两小时，选 08:00 后最早 10:00 结束', () => {
   const r = runtime();
   const date = '2026-11-10';

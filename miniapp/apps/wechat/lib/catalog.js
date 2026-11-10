@@ -74,9 +74,9 @@ function station(id, name, district, address, task, open, close) {
     exceptions: {}, device: { id: '模拟设备-' + id.toUpperCase(), fault: null, overdue: [] } };
 }
 
-function seed() {
+function seed(now = START) {
   return {
-    schema: 1, sequence: 0, now: START, selection: '', merchant: 'new', collector: 'c1',
+    schema: 1, sequence: 0, now, selection: '', merchant: 'new', collector: 'c1',
     stations: [
       station('s1', '松墨文具（虚构）', '新华区', '样例街 A-01', 'stationery', 540, 1080),
       station('s2', '方盒工坊（虚构）', '卫东区', '样例街 B-02', 'packing', 600, 1140),

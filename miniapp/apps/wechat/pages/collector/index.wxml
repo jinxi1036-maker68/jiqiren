@@ -35,7 +35,7 @@
     </button>
     <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
     <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
-    <view class="row split d1-block-head"><view class="heading">采集站点</view><text class="muted small">{{availableCount}} 个可约</text></view>
+    <view class="row split d1-block-head"><view class="heading">采集站点</view><text class="muted small">{{clockLabel}} · {{availableCount}} 个可约</text></view>
     <view class="panel ink-stations" wx:if="{{cards.length}}">
       <button class="d1-station" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="task">
         <view class="row split ink-station-title">
