@@ -207,7 +207,7 @@ test('跨月待审保留，部分复核只在下一期补差额', () => {
   assert.throws(() => reviews.resolveQA(state, order.id, 15, '重复复核'), /没有待复核/);
 });
 
-test('逾期5/15/30分钟分别提醒，后序订单受保护并需运营复开', () => {
+test('逾期5/15/30分钟分别提醒，凌矩核验归还及可用后恢复预约', () => {
   const state = seed();
   const first = reserve(state);
   const next = reserve(state, 'c2', 's1', 690, 810);
@@ -222,8 +222,9 @@ test('逾期5/15/30分钟分别提醒，后序订单受保护并需运营复开'
   assert.throws(() => booking.reopen(state, 's1', '待查'), /待核验归还/);
   assert.throws(() => booking.perform(state, 'c2', next.id, 'arrive'), /设备可用/);
   booking.verifyReturn(state, first.id, '设备在箱且可用（模拟）');
-  assert.throws(() => reserve(state, 'c1', 's1', 840, 960), /暂停/);
-  booking.reopen(state, 's1', '模拟修复检查通过');
+  assert.deepEqual(state.stations.find(item => item.id === 's1').device.overdue, []);
+  assert.ok(reserve(state, 'c1', 's1', 840, 960));
+  assert.throws(() => booking.reopen(state, 's1', '无需重复复开'), /设备未暂停/);
   assert.equal(next.impact, null);
   booking.perform(state, 'c2', next.id, 'arrive');
   assert.equal(credit(state, 'c1').score, 100);
@@ -237,6 +238,21 @@ test('在预约结束后五分钟前核验归还，后续催还停止', () => {
   booking.verifyReturn(state, order.id, '演示核验通过');
   tick(state, at(DATE, order.end + 60));
   assert.equal(state.messages.filter(item => item.key.includes('late-return')).length, 0);
+});
+
+test('归还核验只解除对应逾期，另有设备故障时仍暂停新预约', () => {
+  const state = seed();
+  const order = reserve(state);
+  start(state, order);
+  submit(state, order, 30);
+  booking.pause(state, 's1', '另有模拟故障');
+  booking.verifyReturn(state, order.id, '设备在箱，归还记录已核验');
+  const device = state.stations.find(item => item.id === 's1').device;
+  assert.deepEqual(device.overdue, []);
+  assert.ok(device.fault);
+  assert.throws(() => reserve(state, 'c2', 's1', 720, 840), /暂停/);
+  booking.reopen(state, 's1', '故障已修复并核验可用');
+  assert.ok(reserve(state, 'c2', 's1', 720, 840));
 });
 
 test('故障自报不暂停、运营核实才暂停，未响应的确认故障订单到点无责取消', () => {

@@ -638,6 +638,40 @@ test('预约至少连续两小时，选 08:00 后最早 10:00 结束', () => {
   assert.equal(store.read().orders[0].end, 600);
 });
 
+test('手机预约遇到逾期设备时可返回原订单，再进入本机模拟运营核验并恢复预约', () => {
+  const r = runtime();
+  const order = makeOrder(r);
+  const original = store.read().orders[0];
+  for (const action of ['travel', 'arrive', 'collect', 'stop']) order.perform(event({ action }));
+  store.change(state => booking.advance(state, at(original.date, original.end + 30)));
+  const task = r.open('task', { id: 's1' });
+  assert.equal(task.data.card.availabilityReason, '设备待核验归还');
+  assert.equal(task.data.canDemoReview, true);
+  assert.equal(task.data.ownOverdueOrderId, original.id);
+  assert.deepEqual(task.data.starts, []);
+  task.openOverdueOrder();
+  assert.equal(r.nav.pop(), '/pages/order/index?id=' + original.id);
+  task.openDemoReview();
+  assert.match(r.dialogs.at(-1).content, /本机虚构订单/);
+  r.answer();
+  assert.equal(r.nav.pop(), '/pages/ops/index?mode=mock-ops&focus=s1');
+  const ops = r.open('ops', { mode: 'mock-ops', focus: 's1' });
+  assert.equal(ops.data.focusRecovery.orderId, original.id);
+  assert.equal(ops.data.focusRecovery.submitted, false);
+  order.perform(event({ action: 'return' }));
+  ops.refresh();
+  assert.equal(ops.data.focusRecovery.submitted, true);
+  ops.act(event({ action: 'return', id: original.id }));
+  r.answer('模拟核验设备在箱且可用');
+  assert.equal(ops.data.focusRecovery.paused, false);
+  assert.deepEqual(store.read().stations.find(site => site.id === 's1').device.overdue, []);
+  ops.backToBooking();
+  assert.equal(r.nav.pop(), 'back');
+  task.refresh();
+  assert.equal(task.data.canDemoReview, false);
+  assert.ok(task.data.starts.length > 0);
+});
+
 test('任务页预约到订单归还，再通过独立运营入口核验和登记QA', () => {
   const r = runtime();
   const collector = r.open('collector');

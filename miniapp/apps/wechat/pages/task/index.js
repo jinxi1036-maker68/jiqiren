@@ -73,11 +73,16 @@ Page({
     const card = ui.listing(state, station, date, state.collector, this.replaceId, slots);
     const stationBlocked = ['站点或任务尚未开放', '设备暂停检修', '设备待核验归还'].includes(card.availabilityReason);
     const collectorBlocked = card.availabilityReason === '当前采集员暂不可预约';
+    const overdueOrder = card.availabilityReason === '设备待核验归还'
+      ? state.orders.find(order => station.device.overdue.includes(order.id)) : null;
     const { quickDates, nextAvailable } = stationBlocked || collectorBlocked
       ? { quickDates: [], nextAvailable: null }
       : dateOptions(state, station, today, date, slots, this.replaceId);
     this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd, guide: ui.siteGuide(station, date),
       quickDates, nextAvailable, stationBlocked, collectorBlocked,
+      canDemoReview: Boolean(overdueOrder),
+      ownOverdueOrderId: overdueOrder && overdueOrder.collectorId === state.collector
+        && overdueOrder.status !== 'submitted' ? overdueOrder.id : '',
       showStarts: selectedStart === null || this.data.showStarts,
       selectedStartLabel: selectedStart === null ? '' : timeLabel(selectedStart),
       clockLabel: ui.bookingClockLabel(state),
@@ -101,6 +106,22 @@ Page({
   },
   goTasks() {
     wx.redirectTo({ url: '/pages/collector/index' });
+  },
+  openOverdueOrder() {
+    if (this.data.ownOverdueOrderId) wx.navigateTo({ url: '/pages/order/index?id=' + this.data.ownOverdueOrderId });
+  },
+  openDemoReview() {
+    if (!this.data.canDemoReview) return;
+    wx.showModal({
+      title: '切换到模拟运营',
+      content: '仅处理本机虚构订单。采集员提交归还后，仍需在凌矩模拟运营页核验设备在箱且可用。',
+      confirmText: '进入演示',
+      success: result => {
+        if (!result.confirm) return;
+        getApp().opsMode = true;
+        wx.navigateTo({ url: '/pages/ops/index?mode=mock-ops&focus=' + this.stationId });
+      }
+    });
   },
   toggleStarts() {
     this.setData({ showStarts: !this.data.showStarts });

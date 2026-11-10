@@ -189,6 +189,19 @@ function verifyReturn(state, id, evidence) {
   order.returnEvidence = text(evidence, '请记录模拟在箱与设备可用的核验依据');
   order.verifiedAt = state.now;
   order.status = 'done';
+  const device = stationFor(state, order.stationId).device;
+  if (device.overdue.includes(id)) {
+    device.overdue = device.overdue.filter(overdueId => overdueId !== id);
+    if (!device.overdue.length && !device.fault) {
+      for (const next of state.orders.filter(item => item.stationId === order.stationId && preStart(item)
+        && item.impact?.type === 'overdue')) {
+        next.impact = null;
+        notify(state, next.collectorId, next.id + ':return-restored:' + id,
+          '设备已模拟复开', '凌矩已模拟核验设备在箱且可用，请查看原预约。', next.id);
+      }
+      record(state, '凌矩模拟运营', '归还核验后恢复新预约', order.stationId, order.returnEvidence);
+    }
+  }
   if (order.actual > 0) {
     state.earnings.push({ id: nextId(state, 'L'), party: order.stationId, orderId: id, kind: 'venue',
       period: order.date.slice(0, 7), cents: null, state: '待结算', at: state.now });

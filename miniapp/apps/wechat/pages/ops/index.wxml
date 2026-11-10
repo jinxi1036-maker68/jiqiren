@@ -10,6 +10,16 @@
       <view class="title">凌矩运营工作台</view>
       <view class="muted">模拟北京时间 {{now}} · 本机数据</view>
     </view>
+    <view class="panel" wx:if="{{focusRecovery}}">
+      <view class="row split"><view class="heading">{{focusRecovery.stationName}}</view><text class="badge">{{focusRecovery.paused ? '暂停新预约' : '已恢复'}}</text></view>
+      <view class="muted">{{focusRecovery.orderId ? focusRecovery.orderId + ' · ' + focusRecovery.status : focusRecovery.status}}</view>
+      <view class="muted action" wx:if="{{focusRecovery.orderId && !focusRecovery.submitted}}">原采集员需先在订单页提交归还，再由模拟运营核验。</view>
+      <view class="muted action" wx:elif="{{focusRecovery.submitted}}">请确认模拟设备已在箱且可用。若另有故障或待核验订单，该设备继续暂停。</view>
+      <view class="muted action" wx:elif="{{!focusRecovery.paused}}">这台设备已恢复新预约。</view>
+      <button wx:if="{{focusRecovery.submitted}}" class="primary action" data-action="return" data-id="{{focusRecovery.orderId}}" bindtap="act">模拟核验归还</button>
+      <button wx:elif="{{focusRecovery.paused && !focusRecovery.orderId}}" class="primary action" data-action="reopen" data-id="{{focusRecovery.stationId}}" bindtap="act">模拟核验设备可用</button>
+      <button class="ghost action" bindtap="backToBooking">返回预约页</button>
+    </view>
     <view class="row">
       <button class="grow ghost" data-role="merchant" bindtap="viewRole">查看商家端</button>
       <button class="grow ghost" data-role="collector" bindtap="viewRole">查看采集员端</button>

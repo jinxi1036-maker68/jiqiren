@@ -1433,6 +1433,14 @@
       "screenshot": "miniapp/apps/wechat/evidence/v0.1-booking-merchant-entry.png",
       "desktop_simulator_merchant_entry_verified": true,
       "real_device_visual_verified": false
+    },
+    "collector_overdue_recovery": {
+      "status": "implemented_automated_tested",
+      "decision": "DEC-2026-11-10-07",
+      "scope": ["normal future slots bookable before preceding return", "overdue device pauses only its new bookings", "phone-local mock operator entry and return verification recovery"],
+      "automated_tests_passed": 57,
+      "offline_render": "seven WXML routes and WXSS compiled; overdue booking and mock operator verification actions rendered",
+      "real_device_visual_verified": false
     }
   }
 }

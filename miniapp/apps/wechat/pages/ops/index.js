@@ -59,6 +59,7 @@ Page({
   data: { section: 'work', lead: false },
   onLoad(options) {
     this.allowed = getApp().opsMode && options.mode === 'mock-ops';
+    this.focusStationId = options.focus || '';
     this.setData({ allowed: this.allowed });
   },
   onShow() {
@@ -84,6 +85,14 @@ Page({
     const subsidies = orders.filter(order => order.subsidyPending);
     const sites = state.stations.map(station => ({ ...station, label: ui.STAGES[station.stage], taskName: TASKS[station.task].title,
       paused: station.device && Boolean(station.device.fault || station.device.overdue.length) }));
+    const focusSite = sites.find(site => site.id === this.focusStationId);
+    const focusOrder = focusSite && orders.find(order => focusSite.device.overdue.includes(order.id));
+    const focusRecovery = focusSite ? {
+      stationId: focusSite.id, stationName: focusSite.name, paused: focusSite.paused,
+      orderId: focusOrder?.id || '', submitted: focusOrder?.status === 'submitted',
+      fault: Boolean(focusSite.device.fault),
+      status: focusOrder ? focusOrder.stateLabel : focusSite.paused ? '设备暂停检修' : '可预约'
+    } : null;
     const reports = state.reports.filter(item => item.status === 'pending').map(item => {
       const type = booking.issueType(item);
       return { ...item, type: type.label, deviceIssue: Boolean(type.device), time: stamp(item.at) };
@@ -113,7 +122,7 @@ Page({
       ...subsidies.map(order => workItem('reviews', 'subsidy-' + order.id, order.subsidyStatus, order.id + ' · ' + order.subsidyDue)),
       ...feedback.filter(item => !item.reply).map(item => workItem('feedback', 'feedback-' + item.id, item.topic, item.name + ' · ' + item.time))
     ];
-    this.setData({ now: stamp(state.now), orders, credits, qa, subsidies, sites, work, feedback,
+    this.setData({ now: stamp(state.now), orders, credits, qa, subsidies, sites, work, feedback, focusRecovery,
       penalties: orders.filter(order => order.creditPending),
       price: ui.money(state.subsidy.cents), priceVersion: state.subsidy.version,
       people: state.collectors.map(item => {
@@ -147,6 +156,9 @@ Page({
   },
   viewRole(event) {
     wx.navigateTo({ url: '/pages/' + event.currentTarget.dataset.role + '/index' });
+  },
+  backToBooking() {
+    wx.navigateBack();
   },
   home: ui.switchRole
 });

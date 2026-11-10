@@ -60,7 +60,9 @@
       </block>
       <view class="booking-empty" wx:else>
         <view class="subheading">{{stationBlocked || collectorBlocked ? card.availabilityReason : date === today ? '今天暂无可约时段' : '所选日期暂无可约时段'}}</view>
-        <view class="muted">{{stationBlocked ? '这个站点目前无法预约，换日期也不会有空档。' : collectorBlocked ? '请到「我的」查看信誉与复核状态。' : card.availabilityReason === '当天暂无合规空档' ? '可查看其他日期的空档。' : card.availabilityReason}}</view>
+        <view class="muted">{{canDemoReview ? '前一单逾期未核验，该设备暂停新预约。正常订单可提前预约未来空档。' : stationBlocked ? '这个站点目前无法预约，换日期也不会有空档。' : collectorBlocked ? '请到「我的」查看信誉与复核状态。' : card.availabilityReason === '当天暂无合规空档' ? '可查看其他日期的空档。' : card.availabilityReason}}</view>
+        <button wx:if="{{ownOverdueOrderId}}" class="booking-recovery-link" hover-class="d1-pressed" bindtap="openOverdueOrder">回原订单提交归还 ›</button>
+        <button wx:if="{{canDemoReview}}" class="booking-recovery-link" hover-class="d1-pressed" bindtap="openDemoReview">凌矩模拟运营处理 ›</button>
       </view>
       <view class="row wrap divider" wx:if="{{reserved.length}}">
         <text class="muted small">已占用</text><text class="badge badge-muted" wx:for="{{reserved}}" wx:key="id">{{item.interval}}</text>

@@ -27,6 +27,7 @@
 .booking-hours { margin-top: 10px; gap: 3px 8px; }
 .booking-empty { margin-top: 12px; padding: 11px 12px; border-radius: 10px; background: #f1ece2; }
 .booking-empty .subheading { margin-bottom: 2px; }
+.booking-recovery-link { display: block; min-height: 44px; margin-top: 5px; padding: 0 2px; text-align: left; color: #295d52; background: transparent; font-size: 15px; font-weight: 600; }
 .booking-page .booking-reference { padding: 0 14px; }
 .booking-page .booking-dock { background: #fffefa; border-color: #e6e3d9; }
 .booking-page .booking-dock .primary { background: #20364b; color: #fffefa; min-height: 46px; font-size: 17px; }
