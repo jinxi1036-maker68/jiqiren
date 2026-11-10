@@ -2,23 +2,23 @@
 
 .order-overview > .row:first-child { min-height: 88rpx; }
 .order-focus { margin: 0 0 20rpx; }
-.order-focus-title { font-size: 52rpx; line-height: 68rpx; font-weight: 600; margin-bottom: 6rpx; }
+.order-focus-title { font-size: 24px; line-height: 1.3; font-weight: 650; margin-bottom: 6rpx; }
 .order-focus-risk .order-focus-title { color: #81372c; }
 .collector-d1 .order-progress { display: flex; padding: 16rpx 12rpx; }
-.order-stage { flex: 1; min-width: 0; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5rpx; font-size: 24rpx; line-height: 36rpx; color: #586777; }
+.order-stage { flex: 1; min-width: 0; position: relative; display: flex; flex-direction: column; align-items: center; gap: 5rpx; font-size: 13px; line-height: 1.4; color: #586777; }
 .order-stage:not(:last-child)::after { content: ""; position: absolute; top: 23rpx; left: calc(50% + 24rpx); width: calc(100% - 48rpx); height: 2rpx; background: #e8e9eb; }
 .order-stage-dot { display: flex; align-items: center; justify-content: center; width: 44rpx; height: 44rpx; border-radius: 50%; background: #eff1f4; font-variant-numeric: tabular-nums; font-weight: 600; }
 .order-stage-past,.order-stage-current { color: #1e3d68; }
 .order-stage-past .order-stage-dot { background: #eaf0f8; }
 .order-stage-current .order-stage-dot { background: #1e3d68; color: #fff; }
 .order-stage-current > text { font-weight: 600; }
-.order-time { font-size: 28rpx; color: #4d5c6d; font-variant-numeric: tabular-nums; }
+.order-time { font-size: 15px; color: #4d5c6d; font-variant-numeric: tabular-nums; }
 .order-tutorial-main { gap: 12rpx; min-height: 100rpx; }
 .order-tutorial-main .heading { margin-top: 4rpx; }
 .order-tutorial-art { width: 204rpx; height: 172rpx; flex-shrink: 0; border-radius: 16rpx; }
 .order-tutorial-block { border-top: 1rpx solid #e8e9eb; margin-top: 14rpx; padding-top: 14rpx; }
-.order-tutorial .order-shortcut { width: 100%; min-height: 96rpx; margin-top: 14rpx; font-size: 30rpx; border-radius: 18rpx; font-weight: 600; }
-.order-sop-steps .sop-row { margin-top: 16rpx; font-size: 28rpx; line-height: 44rpx; }
+.order-tutorial .order-shortcut { width: 100%; min-height: 44px; margin-top: 14rpx; font-size: 16px; border-radius: 18rpx; font-weight: 600; }
+.order-sop-steps .sop-row { margin-top: 16rpx; font-size: 15px; line-height: 1.5; }
 .collector-d1 .order-art-toggle { margin: 4rpx 0 -10rpx auto; padding: 0 8rpx; font-weight: 400; }
 .collector-d1 .order-kit { padding: 0 24rpx; }
 .order-kit .order-tutorial-block { margin: 0; padding-bottom: 12rpx; }

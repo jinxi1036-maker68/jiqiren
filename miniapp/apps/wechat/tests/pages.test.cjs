@@ -529,6 +529,56 @@ test('演示快进保留标识，设备时钟追上后恢复北京时间', () =>
   assert.equal(collector.data.cards.find(card => card.id === 's1').earliest, '12:00');
 });
 
+test('手机预约在当天没有空档时仍可点日期，跳过暂停日并完成预约', () => {
+  const today = '2026-11-10';
+  const tomorrow = '2026-11-11';
+  const next = '2026-11-12';
+  const r = runtime(at(today, 960));
+  store.change(state => merchant.schedule(state, 's1', tomorrow, []));
+  const task = r.open('task', { id: 's1' });
+  assert.deepEqual(task.data.quickDates.map(item => [item.label, item.available]), [['今天', false], ['明天', false], ['后天', true]]);
+  assert.deepEqual(task.data.starts, []);
+  assert.deepEqual(task.data.nextAvailable, { date: next, label: '后天', time: '09:00' });
+  assert.equal(task.data.canConfirm, false);
+  task.date(event({ date: task.data.nextAvailable.date }));
+  assert.equal(task.data.date, next);
+  assert.equal(task.data.starts[0].label, '09:00');
+  task.start(event({ minute: 540 }));
+  assert.equal(task.data.showStarts, false);
+  task.toggleStarts();
+  task.start(event({ minute: 570 }));
+  task.end(event({ minute: 690 }));
+  assert.equal(task.data.canConfirm, true);
+  task.date(event({ date: tomorrow }));
+  assert.equal(task.data.selectedStart, null);
+  assert.equal(task.data.canConfirm, false);
+  assert.equal(task.data.card.availabilityReason, '门店当天未开放');
+  task.date(event({}, next));
+  select(task, 540, 660);
+  task.submit();
+  assert.equal(store.read().orders[0].date, next);
+  assert.equal(store.read().orders[0].end - store.read().orders[0].start, 120);
+});
+
+test('首页仅看可约后当天为空，可直接看明天；设备暂停时预约页仍可换日期', () => {
+  const today = '2026-11-10';
+  const tomorrow = '2026-11-11';
+  const r = runtime(at(today, 1200));
+  const collector = r.open('collector');
+  collector.toggleAvailable();
+  assert.deepEqual(collector.data.cards, []);
+  collector.date(event({ date: collector.data.tomorrow }));
+  assert.equal(collector.data.date, tomorrow);
+  assert.ok(collector.data.cards.length > 0);
+  store.change(state => booking.pause(state, 's1', '模拟检修'));
+  const task = r.open('task', { id: 's1', date: tomorrow });
+  assert.equal(task.data.nextAvailable, null);
+  assert.equal(task.data.card.availabilityReason, '设备暂停检修');
+  task.date(event({}, '2026-11-20'));
+  assert.equal(task.data.date, '2026-11-20');
+  assert.equal(task.data.canConfirm, false);
+});
+
 test('预约至少连续两小时，选 08:00 后最早 10:00 结束', () => {
   const r = runtime();
   const date = '2026-11-10';

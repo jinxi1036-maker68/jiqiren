@@ -29,7 +29,7 @@
       <view class="d1-next-icon"><image class="icon icon-small" src="/assets/icons/calendar.svg" mode="aspectFit"/></view>
       <view class="grow">
         <view class="d1-next-title">{{nextOrder.submitted ? '最近进度' : '下一单'}} · {{nextOrder.stationName}}</view>
-        <view class="muted small d1-numeric">{{nextOrder.date === today ? nextOrder.time : nextOrder.interval}}</view>
+        <view class="muted d1-numeric">{{nextOrder.date === today ? nextOrder.time : nextOrder.interval}}</view>
       </view>
       <view class="d1-next-end"><text class="status-pill status-{{nextOrder.stateTone}}">{{nextOrder.stateLabel}}</text><text class="d1-next-link">{{nextOrder.link}} ›</text></view>
     </button>
@@ -40,19 +40,23 @@
       <button class="d1-station" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="task">
         <view class="row split ink-station-title">
           <view class="subheading grow">{{item.title}}</view>
-          <view class="price">¥{{item.rate}}<text class="price-unit"> / 有效小时</text></view>
+          <text class="muted">{{item.min / 60}} 小时{{item.min < item.max ? '起' : ''}}</text>
         </view>
-        <view class="muted small">{{item.name}} · {{item.district}} {{item.address}}</view>
+        <view class="muted ink-station-address">{{item.name}} · {{item.district}} {{item.address}}</view>
         <view class="row split d1-station-rate">
-          <text wx:if="{{item.openCount}}" class="ink-available d1-numeric">最早 {{item.earliest}}</text>
-          <text wx:else class="muted small">{{item.availabilityReason}}</text>
-          <text class="muted small">连续 {{item.min / 60}} 小时{{item.min < item.max ? '起' : ''}} · 示例报酬</text>
+          <view class="grow">
+            <text wx:if="{{item.openCount}}" class="ink-available d1-numeric">最早 {{item.earliest}}</text>
+            <text wx:else class="muted">{{item.availabilityReason}}</text>
+            <view class="price">¥{{item.rate}}<text class="price-unit"> / 有效小时 · 示例</text></view>
+          </view>
+          <view class="ink-task-action {{item.openCount ? '' : 'ink-task-secondary'}}">{{item.openCount ? '选时段' : '看其他日期'}} ›</view>
         </view>
       </button>
     </view>
     <view class="account-paper account-empty" wx:if="{{!cards.length}}">
-      <view class="account-heading">当前条件下没有任务</view>
-      <view class="account-copy">可以换个区域、日期或关键词继续找。</view>
+      <view class="account-heading">{{onlyAvailable ? '这天暂无可约任务' : '当前条件下没有任务'}}</view>
+      <view class="account-copy">换个日期、区域或关键词继续找。</view>
+      <button class="primary account-button" wx:if="{{date === today}}" data-date="{{tomorrow}}" bindtap="date">看看明天</button>
       <button class="ghost account-button" wx:if="{{search || region || date !== today || sort || onlyAvailable}}" bindtap="clearFilters">清除筛选</button>
     </view>
     <block wx:if="{{!replaceId && stories.length}}">

@@ -1,5 +1,5 @@
 const store = require('../../lib/storage');
-const { dateOf, HOUR, DISTRICTS } = require('../../lib/catalog');
+const { dateOf, DAY, HOUR, DISTRICTS } = require('../../lib/catalog');
 const { preStart } = require('../../lib/model');
 const experience = require('../../lib/experience');
 const ui = require('../../lib/ui');
@@ -75,8 +75,8 @@ function nextReservation(orders, now) {
     stateLabel: order.stateLabel === '已确认' ? '待到店' : order.stateLabel,
     stateTone: order.stateLabel === '已确认' ? 'wait' : order.stateTone,
     link: order.status === 'submitted' ? '查看结果' : order.impact || order.closed ? '处理预约'
-      : order.handoffBlock ? '查看进度' : order.status === 'stopped' ? '提交归还'
-        : order.status === 'collecting' || order.status === 'arrived' ? '继续采集' : '到店流程',
+      : order.handoffBlock ? '查看进度'
+        : { travel: '开始前往', arrive: '到店签到', collect: '开始采集', stop: '继续采集', return: '提交归还' }[action?.action] || '查看订单',
     hint, submitted: order.status === 'submitted' };
 }
 
@@ -119,7 +119,7 @@ Page({
     const scanDeviceIndex = Math.max(0, scanDevices.findIndex(item => item.id === this.data.scanStationId));
     const stores = stations.map(station => ({ id: station.id, ...ui.siteGuide(station, today) }));
     const guide = stores.find(station => station.id === this.storeId) || null;
-    this.setData({ today, date, region, sort, search, dateLabel: date === today ? '今天 ' + date.slice(5).replace('-', '/') : date.slice(5).replace('-', '/'),
+    this.setData({ today, tomorrow: dateOf(state.now + DAY), date, region, sort, search, dateLabel: date === today ? '今天 ' + date.slice(5).replace('-', '/') : date.slice(5).replace('-', '/'),
       availableCount: cards.filter(card => card.openCount).length, onlyAvailable, period, cards, messages, clockLabel: ui.bookingClockLabel(state),
       stores, storeId: guide?.id || '', guide,
       scanDevices, scanDeviceIndex,
@@ -209,7 +209,7 @@ Page({
     this.refresh();
   },
   date(event) {
-    this.saveFilters({ date: event.detail.value });
+    this.saveFilters({ date: event.currentTarget.dataset.date || event.detail.value });
   },
   region(event) {
     this.saveFilters({ region: Number(event.detail.value) });

@@ -1,5 +1,5 @@
 const store = require('../../lib/storage');
-const { TASKS, dateOf, timeLabel } = require('../../lib/catalog');
+const { DAY, TASKS, at, dateOf, timeLabel } = require('../../lib/catalog');
 const { validDate } = require('../../lib/model');
 const booking = require('../../lib/booking');
 const ui = require('../../lib/ui');
@@ -8,9 +8,31 @@ function option(minute) {
   return { minute, label: timeLabel(minute) };
 }
 
+function dateOptions(state, stationId, today, date, slots, replaceId) {
+  const byDate = new Map([[date, slots]]);
+  const availability = day => {
+    if (!byDate.has(day)) byDate.set(day, booking.availability(state, state.collector, stationId, day, replaceId));
+    return byDate.get(day);
+  };
+  const quickDates = ['今天', '明天', '后天'].map((label, offset) => {
+    const day = dateOf(at(today) + offset * DAY);
+    return { date: day, label, shortDate: day.slice(5).replace('-', '/'), available: availability(day).length > 0 };
+  });
+  if (slots.length) return { quickDates, nextAvailable: null };
+  for (let offset = 1; offset <= 7; offset++) {
+    const day = dateOf(at(date) + offset * DAY);
+    const first = availability(day)[0];
+    if (first) {
+      const label = quickDates.find(item => item.date === day)?.label || day.slice(5).replace('-', '/');
+      return { quickDates, nextAvailable: { date: day, label, time: timeLabel(first.start) } };
+    }
+  }
+  return { quickDates, nextAvailable: null };
+}
+
 Page({
   data: { selectedStart: null, selectedEnd: null, selectionLost: false, canConfirm: false, reason: '',
-    showGuide: false, showSop: false },
+    showGuide: false, showSop: false, showStarts: true },
   onLoad(options) {
     this.stationId = options.id;
     this.replaceId = options.replace || '';
@@ -42,11 +64,16 @@ Page({
       || (this.data.selectedEnd !== null && selectedEnd === null);
     const task = TASKS[station.task];
     const previous = state.orders.find(order => order.id === this.replaceId && order.collectorId === state.collector);
+    const { quickDates, nextAvailable } = dateOptions(state, this.stationId, today, date, slots, this.replaceId);
     this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd, guide: ui.siteGuide(station, date),
+      quickDates, nextAvailable,
+      showStarts: selectedStart === null || this.data.showStarts,
+      selectedStartLabel: selectedStart === null ? '' : timeLabel(selectedStart),
       clockLabel: ui.bookingClockLabel(state),
       selectionLost: selectionLost || this.data.selectionLost, canConfirm: selectedEnd !== null,
-      selectionText: selectedStart === null ? '先选开始时间'
-        : selectedEnd === null ? '再选结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),
+      selectionText: !slots.length ? (nextAvailable ? nextAvailable.label + ' ' + nextAvailable.time + ' 起' : '暂无可约时段')
+        : selectedStart === null ? '先选开始时间'
+          : selectedEnd === null ? '再选结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),
       starts: slots.map(item => option(item.start)), ends: slot ? slot.ends.map(option) : [],
       card: ui.listing(state, station, date, state.collector, this.replaceId, slots),
       replaceId: this.replaceId, lateChange: Boolean(previous && ui.presentOrder(state, previous).lateCancel),
@@ -56,13 +83,22 @@ Page({
   copyAddress: ui.copyAddress,
   openMap: ui.openMap,
   date(event) {
-    this.setData({ date: event.detail.value, selectedStart: null, selectedEnd: null, selectionLost: false });
+    const date = event.currentTarget.dataset.date || event.detail.value;
+    if (!validDate(date) || date === this.data.date) return;
+    this.setData({ date, selectedStart: null, selectedEnd: null, selectionLost: false });
     this.refresh();
+  },
+  toggleStarts() {
+    this.setData({ showStarts: !this.data.showStarts });
   },
   start(event) {
     const minute = Number(event.currentTarget.dataset.minute);
-    if (!this.data.starts.some(item => item.minute === minute) || minute === this.data.selectedStart) return;
-    this.setData({ selectedStart: minute, selectedEnd: null, selectionLost: false });
+    if (!this.data.starts.some(item => item.minute === minute)) return;
+    if (minute === this.data.selectedStart) {
+      this.setData({ showStarts: false });
+      return;
+    }
+    this.setData({ selectedStart: minute, selectedEnd: null, selectionLost: false, showStarts: false });
     this.refresh();
   },
   end(event) {

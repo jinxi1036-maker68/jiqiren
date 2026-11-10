@@ -1402,6 +1402,17 @@
       "offline_render": "seven WXML routes and WXSS compiled; verified current-time and fast-forward labels",
       "desktop_simulator_interaction_verified": false,
       "real_device_visual_verified": false
+    },
+    "collector_mobile_booking": {
+      "status": "implemented_automated_tested",
+      "base_commit": "609a95b46e7abf26cd0f17a74d3d0d41ab14e4d7",
+      "decision": "DEC-2026-11-10-04",
+      "scope": ["persistent date controls and next available day", "visible start and end buttons", "mobile reading hierarchy in task, order, collector home and merchant board"],
+      "automated_tests_passed": 53,
+      "offline_render": "seven WXML routes and WXSS compiled; 320px and 375px views inspected",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-mobile-booking.png",
+      "desktop_simulator_interaction_verified": true,
+      "real_device_visual_verified": false
     }
   }
 }
