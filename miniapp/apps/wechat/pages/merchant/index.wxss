@@ -10,6 +10,14 @@ page {
 .merchant-context-label { flex: 1; min-width: 0; font-size: 13px; line-height: 1.45; color: #586777; }
 .merchant-context-label text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .merchant-masthead > .row:last-child { flex-shrink: 0; gap: 2rpx; }
+.merchant-screen button.merchant-demo-shortcut {
+  box-sizing: border-box; width: 100%; min-height: 76px; margin: 4px 0 14px; padding: 14px 16px;
+  justify-content: flex-start; gap: 12px; text-align: left;
+  border: 1px solid #d7e4dc; border-radius: 16px; background: #edf4ee; color: #1f4e3e;
+}
+.merchant-demo-title { font-size: 17px; line-height: 1.35; font-weight: 650; }
+.merchant-demo-copy { margin-top: 3px; color: #4c695c; font-size: 13px; line-height: 1.4; font-weight: 400; }
+.merchant-demo-arrow { flex-shrink: 0; color: #2b654e; font-size: 25px; font-weight: 400; }
 .merchant-heading { margin-bottom: 22rpx; }
 .merchant-title { font-size: 24px; line-height: 1.3; font-weight: 650; }
 .merchant-screen .heading { font-size: 19px; line-height: 1.4; font-weight: 600; }

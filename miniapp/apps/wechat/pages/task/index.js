@@ -8,26 +8,32 @@ function option(minute) {
   return { minute, label: timeLabel(minute) };
 }
 
-function dateOptions(state, stationId, today, date, slots, replaceId) {
+const SHORT_REASONS = {
+  '站点或任务尚未开放': '暂停接单',
+  '设备暂停检修': '设备暂停',
+  '设备待核验归还': '待归还核验',
+  '门店当天未开放': '门店休息',
+  '当前采集员暂不可预约': '暂不可预约'
+};
+
+function dateOptions(state, station, today, date, slots, replaceId) {
   const byDate = new Map([[date, slots]]);
   const availability = day => {
-    if (!byDate.has(day)) byDate.set(day, booking.availability(state, state.collector, stationId, day, replaceId));
+    if (!byDate.has(day)) byDate.set(day, booking.availability(state, state.collector, station.id, day, replaceId));
     return byDate.get(day);
   };
-  const quickDates = ['今天', '明天', '后天'].map((label, offset) => {
-    const day = dateOf(at(today) + offset * DAY);
-    return { date: day, label, shortDate: day.slice(5).replace('-', '/'), available: availability(day).length > 0 };
-  });
+  const option = (day, label) => {
+    const daySlots = availability(day);
+    const reason = daySlots.length ? '' : ui.listing(state, station, day, state.collector, replaceId, daySlots).availabilityReason;
+    return { date: day, label, shortDate: day.slice(5).replace('-', '/'), available: daySlots.length > 0,
+      status: daySlots.length ? '可预约' : SHORT_REASONS[reason] || '暂无空档' };
+  };
+  const quickDates = ['今天', '明天', '后天'].map((label, offset) => option(dateOf(at(today) + offset * DAY), label));
+  if (!quickDates.some(item => item.date === date)) quickDates.push(option(date, '所选'));
   if (slots.length) return { quickDates, nextAvailable: null };
-  for (let offset = 1; offset <= 7; offset++) {
-    const day = dateOf(at(date) + offset * DAY);
-    const first = availability(day)[0];
-    if (first) {
-      const label = quickDates.find(item => item.date === day)?.label || day.slice(5).replace('-', '/');
-      return { quickDates, nextAvailable: { date: day, label, time: timeLabel(first.start) } };
-    }
-  }
-  return { quickDates, nextAvailable: null };
+  const next = booking.nextAvailability(state, state.collector, station.id, date, replaceId);
+  const label = next && (quickDates.find(item => item.date === next.date)?.label || next.date.slice(5).replace('-', '/'));
+  return { quickDates, nextAvailable: next ? { date: next.date, label, time: timeLabel(next.start) } : null };
 }
 
 Page({
@@ -64,9 +70,14 @@ Page({
       || (this.data.selectedEnd !== null && selectedEnd === null);
     const task = TASKS[station.task];
     const previous = state.orders.find(order => order.id === this.replaceId && order.collectorId === state.collector);
-    const { quickDates, nextAvailable } = dateOptions(state, this.stationId, today, date, slots, this.replaceId);
+    const card = ui.listing(state, station, date, state.collector, this.replaceId, slots);
+    const stationBlocked = ['站点或任务尚未开放', '设备暂停检修', '设备待核验归还'].includes(card.availabilityReason);
+    const collectorBlocked = card.availabilityReason === '当前采集员暂不可预约';
+    const { quickDates, nextAvailable } = stationBlocked || collectorBlocked
+      ? { quickDates: [], nextAvailable: null }
+      : dateOptions(state, station, today, date, slots, this.replaceId);
     this.setData({ missing: false, date, today, station, task, selectedStart, selectedEnd, guide: ui.siteGuide(station, date),
-      quickDates, nextAvailable,
+      quickDates, nextAvailable, stationBlocked, collectorBlocked,
       showStarts: selectedStart === null || this.data.showStarts,
       selectedStartLabel: selectedStart === null ? '' : timeLabel(selectedStart),
       clockLabel: ui.bookingClockLabel(state),
@@ -75,7 +86,7 @@ Page({
         : selectedStart === null ? '先选开始时间'
           : selectedEnd === null ? '再选结束时间' : timeLabel(selectedStart) + '–' + timeLabel(selectedEnd),
       starts: slots.map(item => option(item.start)), ends: slot ? slot.ends.map(option) : [],
-      card: ui.listing(state, station, date, state.collector, this.replaceId, slots),
+      card,
       replaceId: this.replaceId, lateChange: Boolean(previous && ui.presentOrder(state, previous).lateCancel),
       reserved: state.orders.filter(order => order.stationId === station.id && order.date === date && order.status !== 'cancelled')
         .sort((a, b) => a.start - b.start).map(order => ({ id: order.id, interval: timeLabel(order.start) + '–' + timeLabel(order.end) })) });
@@ -87,6 +98,9 @@ Page({
     if (!validDate(date) || date === this.data.date) return;
     this.setData({ date, selectedStart: null, selectedEnd: null, selectionLost: false });
     this.refresh();
+  },
+  goTasks() {
+    wx.redirectTo({ url: '/pages/collector/index' });
   },
   toggleStarts() {
     this.setData({ showStarts: !this.data.showStarts });

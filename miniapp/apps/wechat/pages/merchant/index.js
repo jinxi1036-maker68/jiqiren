@@ -153,9 +153,11 @@ Page({
     const [step, nextTitle, nextHint] = PROGRESS[station.stage];
     const deployed = ['schedule', 'open'].includes(station.stage);
     this.setData({ station, today, date, editDate, period, orders, step, nextTitle, nextHint,
-      sites: state.stations.map(item => item.name), siteIndex: state.stations.indexOf(station),
+      sites: state.stations.map(item => item.name + ' · ' + (['schedule', 'open'].includes(item.stage) ? '已入驻演示' : '入驻流程')),
+      siteIndex: state.stations.indexOf(station),
       stage: ui.STAGES[station.stage], canApply: ['draft', 'supplement', 'rejected'].includes(station.stage),
-      deployed, overview: deployed ? todayOverview(state, station, stationOrders, today) : null,
+      deployed, demoStoreReady: state.stations.some(item => ['schedule', 'open'].includes(item.stage) && item.device),
+      overview: deployed ? todayOverview(state, station, stationOrders, today) : null,
       todayOrders: stationOrders.filter(order => order.date === today && order.status !== 'cancelled').length,
       todayReturned: stationOrders.filter(order => order.date === today && order.status === 'done').length,
       track: scheduleTrack(ranges, orders), windowLabel: ui.rangeText(ranges),
@@ -171,6 +173,17 @@ Page({
     ui.commit(this, state => { state.merchant = state.stations[Number(event.detail.value)].id; }, () => {
       this.setData({ section: 'home', showApplication: false, scheduleReview: null, detail: null, incomeFilter: '' });
       this.refresh();
+    });
+  },
+  openDemoStore() {
+    ui.commit(this, state => {
+      const demo = state.stations.find(item => ['schedule', 'open'].includes(item.stage) && item.device);
+      requireThat(demo, '暂无已入驻演示门店');
+      state.merchant = demo.id;
+    }, () => {
+      this.setData({ section: 'home', showApplication: false, scheduleReview: null, detail: null, incomeFilter: '' });
+      this.refresh();
+      wx.pageScrollTo({ scrollTop: 0, duration: 0 });
     });
   },
   openApplication() {

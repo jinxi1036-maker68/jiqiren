@@ -1,6 +1,7 @@
 const store = require('../../lib/storage');
-const { dateOf, DAY, HOUR, DISTRICTS } = require('../../lib/catalog');
+const { dateOf, at, timeLabel, DAY, HOUR, DISTRICTS } = require('../../lib/catalog');
 const { preStart } = require('../../lib/model');
+const booking = require('../../lib/booking');
 const experience = require('../../lib/experience');
 const ui = require('../../lib/ui');
 
@@ -101,8 +102,14 @@ Page({
     if (this.replaceId && (!oldOrder || oldOrder.replacedBy || (!preStart(oldOrder) && oldOrder.status !== 'cancelled'))) this.replaceId = '';
     const stations = state.stations.filter(station => station.stage === 'open');
     const cards = stations.filter(station => station.taskEnabled && (!region || station.district === REGIONS[region]))
-      .map(station => ({ ...ui.listing(state, station, date, actor, this.replaceId),
-        displayName: station.name.replace(/（虚构）/g, '') }))
+      .map(station => {
+        const card = ui.listing(state, station, date, actor, this.replaceId);
+        const next = card.openCount ? null : booking.nextAvailability(state, actor, station.id, date, this.replaceId);
+        const nextLabel = next ? next.date === dateOf(at(today) + DAY) ? '明天'
+          : next.date === dateOf(at(today) + 2 * DAY) ? '后天' : next.date.slice(5).replace('-', '/') : '';
+        return { ...card, displayName: station.name.replace(/（虚构）/g, ''),
+          nextDate: next?.date || '', nextTime: next ? timeLabel(next.start) : '', nextLabel };
+      })
       .filter(card => (!onlyAvailable || card.openCount)
         && [card.name, card.title, card.category, card.district, card.address].join(' ').toLowerCase().includes(search.trim().toLowerCase()));
     if (sort === 0) cards.sort((a, b) => (a.openCount ? a.earliest : '99:99').localeCompare(b.openCount ? b.earliest : '99:99'));
@@ -240,7 +247,9 @@ Page({
   },
   task(event) {
     const id = event.currentTarget.dataset.id;
-    wx.navigateTo({ url: '/pages/task/index?id=' + id + '&date=' + this.data.date + '&replace=' + this.replaceId });
+    const card = this.data.cards.find(item => item.id === id);
+    const date = card && !card.openCount && card.nextDate ? card.nextDate : this.data.date;
+    wx.navigateTo({ url: '/pages/task/index?id=' + id + '&date=' + date + '&replace=' + this.replaceId });
   },
   order(event) {
     const id = event.currentTarget.dataset.id;

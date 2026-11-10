@@ -22,13 +22,13 @@
       </view>
       <view class="row d1-slot-heading booking-date-heading">
         <text class="sop-step">1</text><view class="subheading grow">预约日期</view>
-        <picker mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="booking-calendar-link">更多日期 ›</view></picker>
+        <picker wx:if="{{!stationBlocked && !collectorBlocked}}" mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="booking-calendar-link">更多日期 ›</view></picker>
       </view>
-      <view class="booking-date-grid">
+      <view class="booking-date-grid" wx:if="{{!stationBlocked && !collectorBlocked}}">
         <button wx:for="{{quickDates}}" wx:key="date" class="booking-day {{item.date === date ? 'booking-day-selected' : ''}}"
           data-date="{{item.date}}" aria-pressed="{{item.date === date}}" hover-class="d1-pressed" bindtap="date">
           <view>{{item.label}} <text class="booking-day-number">{{item.shortDate}}</text></view>
-          <text class="booking-day-status {{item.available ? 'booking-day-available' : ''}}">{{item.available ? '可预约' : '暂无时段'}}</text>
+          <text class="booking-day-status {{item.available ? 'booking-day-available' : ''}}">{{item.status}}</text>
         </button>
       </view>
       <view class="row split wrap booking-hours">
@@ -59,8 +59,8 @@
         </view>
       </block>
       <view class="booking-empty" wx:else>
-        <view class="subheading">{{date === today ? '今天暂无可约时段' : '所选日期暂无可约时段'}}</view>
-        <view class="muted">{{card.availabilityReason === '当天暂无合规空档' ? '可查看其他日期的空档。' : card.availabilityReason}}</view>
+        <view class="subheading">{{stationBlocked || collectorBlocked ? card.availabilityReason : date === today ? '今天暂无可约时段' : '所选日期暂无可约时段'}}</view>
+        <view class="muted">{{stationBlocked ? '这个站点目前无法预约，换日期也不会有空档。' : collectorBlocked ? '请到「我的」查看信誉与复核状态。' : card.availabilityReason === '当天暂无合规空档' ? '可查看其他日期的空档。' : card.availabilityReason}}</view>
       </view>
       <view class="row wrap divider" wx:if="{{reserved.length}}">
         <text class="muted small">已占用</text><text class="badge badge-muted" wx:for="{{reserved}}" wx:key="id">{{item.interval}}</text>
@@ -85,6 +85,7 @@
         <view class="subheading">{{selectionText}}</view>
       </view>
       <button wx:if="{{starts.length}}" class="primary" disabled="{{!canConfirm}}" hover-class="d1-primary-pressed" bindtap="submit">{{replaceId ? '确认模拟改约' : '确认模拟预约'}}</button>
+      <button wx:elif="{{stationBlocked || collectorBlocked}}" class="primary" hover-class="d1-primary-pressed" bindtap="goTasks">{{stationBlocked ? '查看其他站点' : '返回首页'}}</button>
       <button wx:elif="{{nextAvailable}}" class="primary" data-date="{{nextAvailable.date}}" hover-class="d1-primary-pressed" bindtap="date">查看{{nextAvailable.label}}时段</button>
       <picker wx:else mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="primary booking-calendar-cta">查看其他日期</view></picker>
     </view>

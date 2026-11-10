@@ -14,6 +14,10 @@
       </picker>
     </view>
   </view>
+  <button wx:if="{{!deployed && demoStoreReady}}" class="merchant-demo-shortcut" hover-class="merchant-link-pressed" bindtap="openDemoStore">
+    <view class="grow"><view class="merchant-demo-title">先体验已入驻门店</view><view class="merchant-demo-copy">直接看工作台、开放时段和场地收益</view></view>
+    <text class="merchant-demo-arrow">›</text>
+  </button>
   <template wx:if="{{!deployed && section === 'profile'}}" is="account-hub" data="{{account: account, deployed: deployed}}"/>
   <block wx:elif="{{!deployed}}">
     <view class="hero">

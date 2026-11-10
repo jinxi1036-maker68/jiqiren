@@ -1423,6 +1423,16 @@
       "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-station-cards.png",
       "desktop_simulator_visual_verified": true,
       "real_device_visual_verified": false
+    },
+    "booking_merchant_demo_entry": {
+      "status": "implemented_automated_tested_desktop_smoke_verified",
+      "decision": "DEC-2026-11-10-06",
+      "scope": ["home cards link to next available date", "booking distinguishes blocked stations from no daily slot", "merchant onboarding screen links to an existing deployed mock store"],
+      "automated_tests_passed": 55,
+      "offline_render": "seven WXML routes and WXSS compiled; four screens inspected at 320px and 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-booking-merchant-entry.png",
+      "desktop_simulator_merchant_entry_verified": true,
+      "real_device_visual_verified": false
     }
   }
 }

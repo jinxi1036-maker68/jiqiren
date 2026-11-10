@@ -1,4 +1,4 @@
-const { MINUTE, HOUR, DEVICE_BUFFER, CLOSING_BUFFER, TASKS, at, dateOf } = require('./catalog');
+const { MINUTE, HOUR, DAY, DEVICE_BUFFER, CLOSING_BUFFER, TASKS, at, dateOf } = require('./catalog');
 const { requireThat, text, nextId, record, notify, stationFor, ownedOrder, validDate, windows, fits,
   preStart, holding, credit, byId } = require('./model');
 
@@ -56,6 +56,15 @@ function availability(state, collectorId, stationId, date, ignoreId) {
     }
   }
   return slots;
+}
+
+function nextAvailability(state, collectorId, stationId, afterDate, ignoreId, days = 7) {
+  for (let offset = 1; offset <= days; offset++) {
+    const date = dateOf(at(afterDate) + offset * DAY);
+    const first = availability(state, collectorId, stationId, date, ignoreId)[0];
+    if (first) return { date, start: first.start };
+  }
+  return null;
 }
 
 function create(state, collectorId, request) {
@@ -343,5 +352,5 @@ function advance(state, target) {
   }
 }
 
-module.exports = { ISSUE_TYPES, conflicts, availability, create, cancel, perform, verifyReturn, report, issueType, resolveReport,
+module.exports = { ISSUE_TYPES, conflicts, availability, nextAvailability, create, cancel, perform, verifyReturn, report, issueType, resolveReport,
   pause, reopen, advance, handoffBlock };

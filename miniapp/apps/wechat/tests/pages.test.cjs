@@ -560,7 +560,7 @@ test('手机预约在当天没有空档时仍可点日期，跳过暂停日并�
   assert.equal(store.read().orders[0].end - store.read().orders[0].start, 120);
 });
 
-test('首页仅看可约后当天为空，可直接看明天；设备暂停时预约页仍可换日期', () => {
+test('首页无当日空档时直接进入下一可约日，设备暂停时说明原因并返回站点', () => {
   const today = '2026-11-10';
   const tomorrow = '2026-11-11';
   const r = runtime(at(today, 1200));
@@ -574,9 +574,50 @@ test('首页仅看可约后当天为空，可直接看明天；设备暂停时�
   const task = r.open('task', { id: 's1', date: tomorrow });
   assert.equal(task.data.nextAvailable, null);
   assert.equal(task.data.card.availabilityReason, '设备暂停检修');
-  task.date(event({}, '2026-11-20'));
-  assert.equal(task.data.date, '2026-11-20');
+  assert.equal(task.data.stationBlocked, true);
+  assert.deepEqual(task.data.quickDates, []);
+  task.goTasks();
+  assert.equal(r.nav.pop(), '/pages/collector/index');
   assert.equal(task.data.canConfirm, false);
+});
+
+test('首页站点卡直接指向下一开放日，超过快捷日期时仍显示已选日期', () => {
+  const today = '2026-11-10';
+  const r = runtime(at(today, 1170));
+  store.change(state => {
+    const station = state.stations.find(item => item.id === 's1');
+    for (const date of ['2026-11-11', '2026-11-12', '2026-11-13']) station.exceptions[date] = [];
+  });
+  const collector = r.open('collector');
+  const card = collector.data.cards.find(item => item.id === 's1');
+  assert.equal(card.openCount, 0);
+  assert.equal(card.nextDate, '2026-11-14');
+  assert.equal(card.nextTime, '09:00');
+  collector.task(event({ id: 's1' }));
+  assert.match(r.nav.pop(), /id=s1&date=2026-11-14/);
+  const task = r.open('task', { id: 's1', date: card.nextDate });
+  assert.equal(task.data.date, card.nextDate);
+  assert.equal(task.data.quickDates.length, 4);
+  assert.equal(task.data.quickDates[3].label, '所选');
+  assert.equal(task.data.quickDates[3].available, true);
+  assert.equal(task.data.quickDates[1].status, '门店休息');
+  assert.equal(task.data.starts[0].label, '09:00');
+});
+
+test('新商家可一键查看已入驻演示门店，不修改原门店申请状态', () => {
+  const r = runtime();
+  const shop = r.open('merchant');
+  assert.equal(shop.data.station.id, 'new');
+  assert.equal(shop.data.demoStoreReady, true);
+  shop.openDemoStore();
+  assert.equal(shop.data.deployed, true);
+  assert.equal(shop.data.section, 'home');
+  assert.equal(shop.data.station.id, 's1');
+  assert.equal(shop.data.overview.device.label, '设备可用');
+  assert.equal(store.read().stations.find(item => item.id === 'new').stage, 'draft');
+  shop.persona(event({}, '3'));
+  assert.equal(shop.data.station.id, 'new');
+  assert.equal(shop.data.deployed, false);
 });
 
 test('预约至少连续两小时，选 08:00 后最早 10:00 结束', () => {

@@ -52,9 +52,10 @@
           <text class="ink-station-task-name">{{item.title}}</text>
           <text class="ink-station-duration">{{item.min / 60}} 小时{{item.min < item.max ? '起' : ''}}</text>
         </view>
-        <view class="ink-station-slot {{item.openCount ? '' : 'ink-station-unavailable'}}">
-          <view class="ink-slot-dot" wx:if="{{item.openCount}}"></view>
+        <view class="ink-station-slot {{item.openCount || item.nextDate ? '' : 'ink-station-unavailable'}}">
+          <view class="ink-slot-dot" wx:if="{{item.openCount || item.nextDate}}"></view>
           <text wx:if="{{item.openCount}}">最早 {{item.earliest}} 可开始</text>
+          <text wx:elif="{{item.nextDate}}">{{item.nextLabel}} {{item.nextTime}} 可开始</text>
           <text wx:else>{{item.availabilityReason}}</text>
         </view>
         <view class="ink-station-footer">
@@ -62,7 +63,7 @@
             <view class="ink-station-demo">报酬示例</view>
             <view class="ink-station-pay-row"><text class="ink-station-yuan d1-numeric">¥{{item.rate}}</text><text class="ink-station-pay-unit">/ 有效小时</text></view>
           </view>
-          <view class="ink-task-action {{item.openCount ? '' : 'ink-task-secondary'}}">{{item.openCount ? '选时段' : '看其他日期'}} ›</view>
+          <view class="ink-task-action {{item.openCount || item.nextDate ? '' : 'ink-task-secondary'}}">{{item.openCount || item.nextDate ? '选时段' : '查看原因'}} ›</view>
         </view>
       </button>
     </view>
