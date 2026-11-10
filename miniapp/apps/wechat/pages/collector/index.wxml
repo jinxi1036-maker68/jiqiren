@@ -35,19 +35,32 @@
     </button>
     <view wx:if="{{replaceId}}" class="notice row split"><view class="grow">正在为 {{replaceId}} 改约。原订单保留至新时段确认。</view><button class="ghost subtle-button" bindtap="exitReschedule">退出改约</button></view>
     <view wx:if="{{!profile.allowed}}" class="notice">新预约受限，已有预约可按原安排履行。</view>
-    <view class="row split d1-block-head"><view class="heading">采集站点</view><text class="muted small">{{clockLabel}} · {{availableCount}} 个可约</text></view>
-    <view class="panel ink-stations" wx:if="{{cards.length}}">
-      <button class="d1-station" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="task">
-        <view class="row split ink-station-title">
-          <view class="subheading grow">{{item.title}}</view>
-          <text class="muted">{{item.min / 60}} 小时{{item.min < item.max ? '起' : ''}}</text>
+    <view class="row split d1-block-head ink-station-head">
+      <view class="row ink-station-heading"><view class="heading">采集站点</view><text class="ink-station-count">{{availableCount}} 个可约</text></view>
+      <text class="ink-station-clock">{{clockLabel}}</text>
+    </view>
+    <view class="ink-task-list" wx:if="{{cards.length}}">
+      <button class="d1-station ink-task-card" wx:for="{{cards}}" wx:key="id" data-id="{{item.id}}" hover-class="d1-pressed" bindtap="task">
+        <view class="ink-station-top">
+          <view class="ink-station-identity">
+            <view class="ink-station-name">{{item.displayName}}</view>
+            <view class="ink-station-address">{{item.district}} · {{item.address}}</view>
+          </view>
+          <image class="ink-station-art" src="{{item.art}}" mode="aspectFill"/>
         </view>
-        <view class="muted ink-station-address">{{item.name}} · {{item.district}} {{item.address}}</view>
-        <view class="row split d1-station-rate">
-          <view class="grow">
-            <text wx:if="{{item.openCount}}" class="ink-available d1-numeric">最早 {{item.earliest}}</text>
-            <text wx:else class="muted">{{item.availabilityReason}}</text>
-            <view class="price">¥{{item.rate}}<text class="price-unit"> / 有效小时 · 示例</text></view>
+        <view class="ink-station-task">
+          <text class="ink-station-task-name">{{item.title}}</text>
+          <text class="ink-station-duration">{{item.min / 60}} 小时{{item.min < item.max ? '起' : ''}}</text>
+        </view>
+        <view class="ink-station-slot {{item.openCount ? '' : 'ink-station-unavailable'}}">
+          <view class="ink-slot-dot" wx:if="{{item.openCount}}"></view>
+          <text wx:if="{{item.openCount}}">最早 {{item.earliest}} 可开始</text>
+          <text wx:else>{{item.availabilityReason}}</text>
+        </view>
+        <view class="ink-station-footer">
+          <view class="ink-station-pay">
+            <view class="ink-station-demo">报酬示例</view>
+            <view class="ink-station-pay-row"><text class="ink-station-yuan d1-numeric">¥{{item.rate}}</text><text class="ink-station-pay-unit">/ 有效小时</text></view>
           </view>
           <view class="ink-task-action {{item.openCount ? '' : 'ink-task-secondary'}}">{{item.openCount ? '选时段' : '看其他日期'}} ›</view>
         </view>

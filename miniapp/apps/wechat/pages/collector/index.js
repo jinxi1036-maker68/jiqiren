@@ -101,7 +101,8 @@ Page({
     if (this.replaceId && (!oldOrder || oldOrder.replacedBy || (!preStart(oldOrder) && oldOrder.status !== 'cancelled'))) this.replaceId = '';
     const stations = state.stations.filter(station => station.stage === 'open');
     const cards = stations.filter(station => station.taskEnabled && (!region || station.district === REGIONS[region]))
-      .map(station => ui.listing(state, station, date, actor, this.replaceId))
+      .map(station => ({ ...ui.listing(state, station, date, actor, this.replaceId),
+        displayName: station.name.replace(/（虚构）/g, '') }))
       .filter(card => (!onlyAvailable || card.openCount)
         && [card.name, card.title, card.category, card.district, card.address].join(' ').toLowerCase().includes(search.trim().toLowerCase()));
     if (sort === 0) cards.sort((a, b) => (a.openCount ? a.earliest : '99:99').localeCompare(b.openCount ? b.earliest : '99:99'));
