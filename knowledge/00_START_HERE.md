@@ -11,6 +11,11 @@
 - Owner希望小U每隔1～2分钟检查采集画面，针对双手脱离视野、镜头遮挡和画质异常及时提醒。现有设备据Owner报告可WiFi联网、独立内存卡录像、厂家安卓APP实时预览、APP升级固件。**首选技术建议：厂商支持的独立截图/视频接口→小U服务→采集员手机提醒**；避开手机常亮预览。**[详细技术方案V1](strategy/2026-11-11_XIAOU_PERIODIC_VISUAL_COLLECTION_MONITORING_V1.md)**。尚未确认具体API、外部画面分析授权和实际代码。
 - Owner同日提出研究将现有Windows电脑上的**唯一Hermes数字员工**迁到自己的服务器，以期持续运行；**目前是可行性讨论，未批准实际停机、迁移配置/登录凭据、另起长期第二身份或部署生产连接**。先核实服务器系统/资源和原机依赖，再定保留同一身份的迁移路径。
 
+## 2026-11-11 Linux服务器旧托管Agent与Hermes共存/备份讨论
+
+- Owner报告自己的Linux服务器上可能仍有以前用于托管业务的Agent，想先由Codex只读盘点并评估**不同业务的两个Agent是否能隔离共存**；若无法共存，倾向将旧托管Agent**先完整可恢复备份，再按授权清理**，让当前唯一Hermes数字员工运行在服务器上。**[完整评估与安全迁移原则](operations/2026-11-11_SERVER_AGENT_COEXISTENCE_AND_HERMES_MIGRATION_POLICY.md)**。
+- **特别注意**：GitHub只存脱敏源码/配置模板/恢复说明，含私有数据、密钥、数据库的完整包应存Owner控制的加密备份位置并验证恢复。**目前未查服务器、未备份、未停服、未删除、未迁移Hermes；讨论不构成直接删除授权**。
+
 ## 2026-11-08 已建立凌矩双端小程序专属GitHub项目底座
 
 - **Owner明确要求**未来由Codex开发小程序时，全部产品理念、需求、源码、测试、改版决策和历史必须集中存放在GitHub，一次次基于旧版本迭代。**已实际建立 [miniapp/专属项目](../miniapp/README.md)，[小程序知识库唯一入口](../miniapp/knowledge/00_START_HERE.md)，[Codex强制开发说明](../miniapp/AGENTS.md)，以及demo/wechat/tests/releases代码和验收位置**；用户两端定位由Owner明确确认。详见[产品当前状态](../miniapp/knowledge/PROJECT_STATE.json)；目前只是知识底座，非已完成代码/已上线小程序。旧Issue #24建议的demo/city-station路径已由miniapp/apps/demo替代。
