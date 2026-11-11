@@ -107,3 +107,9 @@
 - Owner进一步说明Linux服务器上可能仍有过去托管业务的Agent，提出**先检查能否与原Windows Hermes共存**；若不具备条件，先备份旧业务Agent内容，确认可恢复后清理旧服务，再让服务器主要运行Hermes。
 - 技术边界：不同业务Agent可以隔离共存，不构成“两个Hermes员工”；仅凭资源未知不能断言必须删。GitHub保存**脱敏**代码和恢复文档，包含秘密/客户或学生资料/会话/数据库的完整备份须走Owner控制的加密存储，先恢复演练，后另获删除范围授权。
 - 当前仅记录讨论，**并无服务器实地清查、备份、停止、删除或Hermes迁移完成**。详见 [共存与备份原则](../operations/2026-11-11_SERVER_AGENT_COEXISTENCE_AND_HERMES_MIGRATION_POLICY.md)。
+
+
+## 2026-11-11 12:00｜小优现网只读盘点纠正服务器规格
+- Owner转交Codex于11:54—12:00的现场报告：服务器实际为**Alibaba Cloud Linux 3 / 2核 / 1.83GiB总内存（可用约920MiB）/ 20GB磁盘余量**。这纠正了当日早期迁移V0.1的“Ubuntu/4GB”假设，应以此次报告作为后续容量规划依据。
+- 小优企业微信桥接和Resident仍running，回调因DNS解析失败；已有备份恢复证明日期为10月17日，旧服务可恢复备份需要更新。**另有Hermes名义的active代理**，不明是否同一员工，迁移前优先核实身份与依赖。
+- 记录详见 [只读盘点脱敏摘要](../reports/2026-11-11_XIAOYOU_LINUX_SERVER_READ_ONLY_AUDIT_RECEIVED.md)。此次没有停用、删除、备份迁移或修改服务器服务。
