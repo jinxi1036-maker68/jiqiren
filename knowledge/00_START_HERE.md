@@ -2,6 +2,10 @@
 
 > 聊天记忆不是权威；旧截图不是当前事实；口头条件在写进正式协议前都只是“待合同确认”。
 
+## 2026-11-11 17:20 现场执行更新
+
+- 旧小优的最新完整加密包与搜索镜像补充包已上传 Owner 指定的私有小优仓库，并从 GitHub 重新下载、校验和隔离恢复。四项旧服务已停用，95 个确认归属旧代理的路径已清理；共享服务保留。**原 Windows Hermes 仍在运行，Linux 迁移尚未发生。**详细事实、限制与后续资源条件见 [执行状态报告](reports/2026-11-11_XIAOYOU_ARCHIVE_CLEANUP_AND_HERMES_MIGRATION_STATUS.md) 与[小优私库 Draft PR #39](https://github.com/jinxi1036-maker68/xiaou-pi-lab/pull/39)。下面较早段落中“备份/清理尚未执行”是当时截面，不再代表当前状态。
+
 ## 2026-11-11 Owner决定封存小优并让服务器只运行唯一Hermes
 
 - Owner已明确**现在停止托管小优业务，不再处理旧小优DNS/企业微信/备案**；先**完整加密新备份＋隔离恢复验证**，再清理小优及不需要的旧代理，最后把**Windows电脑上的同一名正式Hermes**迁移到Linux服务器。GitHub只放脱敏代码和恢复说明，完整生产归档另行加密存放。已授权方向，**尚未执行备份、停服、删除和迁移**。详细操作边界和验收：[正式决策ADR](decisions/ADR-2026-11-11-RETIRE-XIAOYOU-ARCHIVE-AND-MIGRATE-ONLY-HERMES.md)。
