@@ -331,5 +331,19 @@
     "backup_last_restored_date": "2026-10-17",
     "supersedes_server_assumption": "Ubuntu 2vCPU 4GB is a historic assumption not supported by this server audit",
     "hermes_migration_completed": false
+  },
+  "owner_decision_retire_xiaoyou_20261111": {
+    "date": "2026-11-11",
+    "status": "owner_decision_confirmed_execution_not_started",
+    "source": "knowledge/decisions/ADR-2026-11-11-RETIRE-XIAOYOU-ARCHIVE-AND-MIGRATE-ONLY-HERMES.md",
+    "legacy_childcare_agent": "retire_and_archive_complete_encrypted_recoverable_snapshot",
+    "dns_and_wecom_repair": "not_needed_when_legacy_business_stopped",
+    "cleanup": "after_restoration_verification_stop_and_remove_only_confirmed_legacy_agent_and_unneeded_agent_proxy_assets",
+    "github": "sanitized_source_inventory_restoration_docs_only",
+    "full_backup": "separate_owner_controlled_encrypted_storage",
+    "target": "one existing Windows Hermes migrated to Linux",
+    "server_size_basis": "Alibaba Cloud Linux 3 2vCPU 1.83GiB 920MiB available",
+    "destructive_actions_completed": false,
+    "hermes_migration_completed": false
   }
 }
