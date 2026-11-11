@@ -2,6 +2,10 @@
 
 > 聊天记忆不是权威；旧截图不是当前事实；口头条件在写进正式协议前都只是“待合同确认”。
 
+## 2026-11-11 Owner决定封存小优并让服务器只运行唯一Hermes
+
+- Owner已明确**现在停止托管小优业务，不再处理旧小优DNS/企业微信/备案**；先**完整加密新备份＋隔离恢复验证**，再清理小优及不需要的旧代理，最后把**Windows电脑上的同一名正式Hermes**迁移到Linux服务器。GitHub只放脱敏代码和恢复说明，完整生产归档另行加密存放。已授权方向，**尚未执行备份、停服、删除和迁移**。详细操作边界和验收：[正式决策ADR](decisions/ADR-2026-11-11-RETIRE-XIAOYOU-ARCHIVE-AND-MIGRATE-ONLY-HERMES.md)。
+
 ## 2026-11-11 小优Linux服务器只读盘点实测（纠正旧规格）
 
 - **11月11日12:00 Codex现场只读盘点，Owner转交报告**：待迁移主机实际为 **Alibaba Cloud Linux 3 / 2vCPU / 总内存1.83GiB（available约920MiB）/ 磁盘余量约20GB**，不是早期记录的Ubuntu/4GB。旧小优企业微信桥接与Resident仍运行，但回调DNS解析失败；备份过旧、SSH登录面较宽。发现还有**名称为Hermes的active代理服务**，其身份用途尚未核实。**[脱敏审计摘要与迁移风险](reports/2026-11-11_XIAOYOU_LINUX_SERVER_READ_ONLY_AUDIT_RECEIVED.md)**。只读检查不代表迁移已执行。
