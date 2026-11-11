@@ -1,5 +1,8 @@
 # Hermes 唯一正式数字员工：Windows → Ubuntu 服务器迁移可行性与分阶段计划 V0.1
 
+> **SUPERSEDED CAPACITY ASSUMPTION｜2026-11-11 12:00现场盘点纠偏**：本文件曾以“Ubuntu 2核4GB”为早期Owner报告前提。现已收到Codex当天现场只读盘点，待迁移服务器**实际为Alibaba Cloud Linux 3（不是Ubuntu）、2 vCPU、1.83GiB内存（available约920MiB）、磁盘余量约20GB**，且运行小优及其他服务、存在名称为Hermes的active代理服务。**不要直接执行本V0.1按4GB估算的部署指令**；本文件保留历史计划，当前事实和风险改以 [2026-11-11服务器现场盘点摘要](../reports/2026-11-11_XIAOYOU_LINUX_SERVER_READ_ONLY_AUDIT_RECEIVED.md) 为准。迁移仍未开始。
+
+
 **日期**：2026-11-11
 **来源**：Owner明确报告现有一台 Ubuntu Linux 服务器，**2 vCPU、4GB RAM**；希望把个人电脑现有唯一 Hermes 数字员工部署到服务器以长期持续工作。
 **当前状态**：PROPOSED / FEASIBILITY_ONLY；**没有实际登录服务器、没有进行安装、没有复制任何本机私人数据、没有停用旧电脑任务、没有完成切换**。
