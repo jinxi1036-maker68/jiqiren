@@ -2,7 +2,11 @@
 
 > 聊天记忆不是权威；旧截图不是当前事实；口头条件在写进正式协议前都只是“待合同确认”。
 
-## 2026-11-11 Hermes 迁移到 Ubuntu 服务器评估（2核4GB）
+## 2026-11-11 小优Linux服务器只读盘点实测（纠正旧规格）
+
+- **11月11日12:00 Codex现场只读盘点，Owner转交报告**：待迁移主机实际为 **Alibaba Cloud Linux 3 / 2vCPU / 总内存1.83GiB（available约920MiB）/ 磁盘余量约20GB**，不是早期记录的Ubuntu/4GB。旧小优企业微信桥接与Resident仍运行，但回调DNS解析失败；备份过旧、SSH登录面较宽。发现还有**名称为Hermes的active代理服务**，其身份用途尚未核实。**[脱敏审计摘要与迁移风险](reports/2026-11-11_XIAOYOU_LINUX_SERVER_READ_ONLY_AUDIT_RECEIVED.md)**。只读检查不代表迁移已执行。
+
+## 2026-11-11 Hermes 迁移到 Ubuntu 服务器评估（2核4GB；已被实测纠正）
 
 - Owner确认已有**Ubuntu Linux服务器、2核CPU、4GB内存**。建议使用云端模型，将现有**唯一Hermes**分阶段搬迁：原Windows只读盘点、受控备份与远端试运行、飞书及浏览器能力验证、最终停止原机任务后再切服务器；当前**未执行迁移/部署**。详见 [迁移计划V0.1](operations/2026-11-11_HERMES_UBUNTU_SERVER_MIGRATION_PLAN_V0_1.md)。
 
