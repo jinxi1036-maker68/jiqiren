@@ -637,6 +637,7 @@
     "hermes_browser_capacity_gate_passed": false,
     "owner_server_upgrade_approval": "pending",
     "formal_hermes_current_host": "Owner Windows PC",
+    "private_hermes_precutover_backup_verified": true,
     "formal_hermes_linux_cutover_completed": false
   }
 }

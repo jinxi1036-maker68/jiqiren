@@ -362,6 +362,8 @@
     "hermes_windows_original_still_running": true,
     "hermes_agent_runtime_version": "0.22.2",
     "hermes_active_cron_jobs_count": 4,
+    "hermes_private_precutover_backup_crc_and_db_verified": true,
+    "hermes_private_precutover_backup_bytes": 514854360,
     "hermes_linux_migration_completed": false,
     "capacity_gate": "Hermes browser requires at least 2GB for itself; current server has only 1.83GiB total and retains other services. Owner approval required before any server upgrade.",
     "report": "knowledge/reports/2026-11-11_XIAOYOU_ARCHIVE_CLEANUP_AND_HERMES_MIGRATION_STATUS.md",

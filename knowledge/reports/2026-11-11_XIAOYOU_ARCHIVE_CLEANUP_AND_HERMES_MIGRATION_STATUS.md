@@ -24,6 +24,7 @@
 - 原 Windows 电脑当前仍有唯一正式 Hermes Desktop 与 gateway 在运行；`hermes --version` 返回 Agent **v0.22.2**、本地源码提交 `d923a5eb487a`、Python 3.14.4。安装目录名字含 `v0.21.0`，但不能据目录名误报实际版本。Desktop 自身包版本与 Agent 版本分别记录，不混用。
 - 活动用户数据根为该电脑的 `~/.hermes`；SOUL、公司工作区 `company-workspace/HERMES.md`、记忆、Skills 和会话均存在。`state.db` 主文件约 1.213GB，仍有 WAL；已启用的 cron 工作有 4 项。Skills 目录 822 个文件、sessions 目录约 3,549 个文件；浏览资料和 Windows 工具依赖需重新适配，不能把登录 Cookie 或 Windows 可执行文件直接搬到 Linux。
 - 本轮只读取元数据和数量，没有输出私人记忆、会话正文、提示词或凭据；没有向 Hermes 发送模型消息，没有关闭原电脑网关或修改其正式身份、工作区、任务和配置。
+- **17:41 增量核验**：使用原 v0.22.2 的 `hermes backup`，显式指向活动 `~/.hermes`，在电脑本机私有目录生成迁移前恢复点；9,148 个文件，压缩后 514,854,360 字节，SHA256 `b1055b654e410345941c5de4fdc7335aa7efdd7298894be382ad623243ed473b`。ZIP 全成员 CRC 检查通过；从包内取出的 `state.db` 为 1,213,476,864 字节，独立 SQLite `PRAGMA quick_check=ok`。确认包含 `SOUL.md`、`company-workspace/HERMES.md`、`cron/jobs.json`、`.env` 与 `auth.json`，**未读取其私人正文或凭据，也未上传该备份**。验库时临时取出的数据库及其 sidecar 已删除。此备份是迁移前回退点；正式切换前仍需再取一次最新状态，避免丢失期间新会话。
 
 ## 4. 阻断与下一步
 
