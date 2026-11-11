@@ -314,5 +314,22 @@
     "delete_approved": false,
     "hermes_migration_completed": false,
     "source": "knowledge/operations/2026-11-11_SERVER_AGENT_COEXISTENCE_AND_HERMES_MIGRATION_POLICY.md"
+  },
+  "server_actual_audit_20261111": {
+    "source": "knowledge/reports/2026-11-11_XIAOYOU_LINUX_SERVER_READ_ONLY_AUDIT_RECEIVED.md",
+    "status": "owner_provided_codex_read_only_audit_not_independently_reverified",
+    "date": "2026-11-11T12:00:02+08:00",
+    "os": "Alibaba Cloud Linux 3.2104 U13",
+    "vcpus": 2,
+    "memory_total_gib": 1.83,
+    "memory_available_mib": 920,
+    "swap_used_mib": 349,
+    "root_disk_available_gb": 20,
+    "xiaoyou_services_running": true,
+    "dns_external_callback_fail": true,
+    "hermes_named_service_active_but_identity_unverified": true,
+    "backup_last_restored_date": "2026-10-17",
+    "supersedes_server_assumption": "Ubuntu 2vCPU 4GB is a historic assumption not supported by this server audit",
+    "hermes_migration_completed": false
   }
 }
