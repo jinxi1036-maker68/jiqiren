@@ -276,7 +276,7 @@
     "scope": "evaluation_only"
   },
   "hermes_server_migration_exploration_20261111": {
-    "status": "owner_asked_feasibility_only_not_authorized_to_migrate",
+    "status": "proposed_only_not_installed",
     "owner_reports_server_available": true,
     "existing_hermes_runtime": "Windows_11_Desktop_CLI_local_backend_per_2026_10_15_audit_recheck_current_state_before_action",
     "aim": "move_single_existing_digital_employee_identity_to_continuously_running_server",
@@ -293,6 +293,11 @@
       "scheduler_and_channels",
       "rollback_testing"
     ],
-    "approved_for_implementation": false
+    "approved_for_implementation": false,
+    "server_os": "Ubuntu",
+    "vcpus": 2,
+    "memory_gb": 4,
+    "plan": "knowledge/operations/2026-11-11_HERMES_UBUNTU_SERVER_MIGRATION_PLAN_V0_1.md",
+    "disk_space_unverified": true
   }
 }
