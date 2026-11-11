@@ -299,5 +299,20 @@
     "memory_gb": 4,
     "plan": "knowledge/operations/2026-11-11_HERMES_UBUNTU_SERVER_MIGRATION_PLAN_V0_1.md",
     "disk_space_unverified": true
+  },
+  "server_agent_coexistence_and_backup_discussion_20261111": {
+    "status": "owner_intent_read_only_audit_first_no_actions_executed",
+    "server_os": "Linux (owner_reported)",
+    "legacy_agent": "previous childcare business agent possibly running; unverified",
+    "coexistence": "evaluate CPU memory storage ports processes dependencies and service isolation",
+    "fallback_if_not_feasible": "after complete encrypted recoverable backup and explicit owner approval, stop and clean only named legacy agent resources",
+    "github_sanitized_artifacts_only": true,
+    "full_private_backup_destination": "owner-controlled encrypted separate storage, to be decided",
+    "migration_target": "same existing single Hermes digital employee from Windows PC",
+    "server_inspection_completed": false,
+    "legacy_agent_backup_completed": false,
+    "delete_approved": false,
+    "hermes_migration_completed": false,
+    "source": "knowledge/operations/2026-11-11_SERVER_AGENT_COEXISTENCE_AND_HERMES_MIGRATION_POLICY.md"
   }
 }
