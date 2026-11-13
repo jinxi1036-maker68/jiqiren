@@ -344,6 +344,29 @@
     "target": "one existing Windows Hermes migrated to Linux",
     "server_size_basis": "Alibaba Cloud Linux 3 2vCPU 1.83GiB 920MiB available",
     "destructive_actions_completed": false,
-    "hermes_migration_completed": false
+    "hermes_migration_completed": false,
+    "execution_status_note": "This is the decision-time snapshot. For actual completed archive/cleanup and current migration gate, use server_retirement_and_single_hermes_migration_current_20261111."
+  },
+  "server_retirement_and_single_hermes_migration_current_20261111": {
+    "status": "xiaou_archive_restored_and_cleanup_completed_hermes_migration_blocked_on_capacity",
+    "as_of": "2026-11-11T17:20:00+08:00",
+    "actual_server_os": "Alibaba Cloud Linux 3.2104 U13",
+    "server_vcpus": 2,
+    "server_memory_total_gib": 1.83,
+    "disk_available_after_cleanup_gb_approx": 26,
+    "xiaou_full_encrypted_archive_download_verified": true,
+    "xiaou_isolated_restore_verified": true,
+    "xiaou_active_services_stopped_disabled": 4,
+    "xiaou_archived_owned_paths_removed": 95,
+    "shared_and_uncertain_assets_preserved": true,
+    "hermes_windows_original_still_running": true,
+    "hermes_agent_runtime_version": "0.22.2",
+    "hermes_active_cron_jobs_count": 4,
+    "hermes_private_precutover_backup_crc_and_db_verified": true,
+    "hermes_private_precutover_backup_bytes": 514854360,
+    "hermes_linux_migration_completed": false,
+    "capacity_gate": "Hermes browser requires at least 2GB for itself; current server has only 1.83GiB total and retains other services. Owner approval required before any server upgrade.",
+    "report": "knowledge/reports/2026-11-11_XIAOYOU_ARCHIVE_CLEANUP_AND_HERMES_MIGRATION_STATUS.md",
+    "private_archive_pr": "https://github.com/jinxi1036-maker68/xiaou-pi-lab/pull/39"
   }
 }

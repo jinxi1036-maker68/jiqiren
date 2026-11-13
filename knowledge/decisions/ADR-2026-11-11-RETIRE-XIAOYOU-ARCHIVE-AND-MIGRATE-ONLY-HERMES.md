@@ -1,5 +1,7 @@
 # ADR｜暂停托管小优、封存可恢复备份、清理旧服务、迁移唯一Hermes至Linux
 
+> **执行进度补记｜2026-11-11 17:20**：Owner已指定把完整密文放入私有小优 GitHub 仓库、恢复钥匙放在电脑桌面。加密备份、GitHub 回下载认证、隔离恢复演练及确认范围内旧代理清理已经完成；唯一正式 Hermes 仍在原 Windows 电脑上，服务器资源不足，尚未迁移或切换。详见[现场执行报告](../reports/2026-11-11_XIAOYOU_ARCHIVE_CLEANUP_AND_HERMES_MIGRATION_STATUS.md)。下方“尚未执行”措辞为决策发布时的历史状态。
+
 **日期**：2026-11-11
 **来源**：Owner在获得Codex服务器只读盘点报告后的明确最新决定。
 **状态**：OWNER_APPROVED_DIRECTION；备份、恢复演练、清理和Hermes迁移均**尚未执行或验证**。

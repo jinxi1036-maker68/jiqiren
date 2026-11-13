@@ -626,5 +626,18 @@
     "ledger": "knowledge/PARTNER_LEDGER.json",
     "next_step": "Review replies and bounces, focus Henan long-term trial and Lightwheel supplier registration, evaluate QA and payment, avoid over-contact; three screenshot companies still need proper official forms",
     "codex_blockers_unresolved": true
+  },
+  "single_hermes_server_migration_20261111": {
+    "status": "old_xiaou_archived_and_cleaned_single_hermes_remains_on_windows",
+    "source_of_truth": "knowledge/reports/2026-11-11_XIAOYOU_ARCHIVE_CLEANUP_AND_HERMES_MIGRATION_STATUS.md",
+    "old_xiaou_recovery_package": "private GitHub encrypted LFS objects verified by fresh download; decryption key only on Owner PC",
+    "old_xiaou_active_services_stopped": true,
+    "old_xiaou_confirmed_owned_paths_removed": 95,
+    "server_memory_total_gib": 1.83,
+    "hermes_browser_capacity_gate_passed": false,
+    "owner_server_upgrade_approval": "pending",
+    "formal_hermes_current_host": "Owner Windows PC",
+    "private_hermes_precutover_backup_verified": true,
+    "formal_hermes_linux_cutover_completed": false
   }
 }
