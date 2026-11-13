@@ -1,0 +1,66 @@
+.collector-d1 {
+  box-sizing: border-box; min-height: 100vh; padding-top: 12rpx;
+  background: #f6f5f2; color: #192636; font-size: 16px; line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.collector-d1.with-dock { padding-bottom: calc(144rpx + env(safe-area-inset-bottom)); }
+.collector-d1.with-booking-dock { padding-bottom: calc(194rpx + env(safe-area-inset-bottom)); }
+.collector-d1 .title,.collector-d1 .account-title { font-size: 24px; line-height: 1.3; font-weight: 650; letter-spacing: 0; margin: 0 0 4rpx; }
+.collector-d1 .heading,.collector-d1 .account-heading { font-size: 19px; line-height: 1.4; font-weight: 600; color: #192636; }
+.collector-d1 .subheading { font-size: 16px; line-height: 1.4; font-weight: 600; }
+.collector-d1 .muted,.collector-d1 .account-copy { color: #4d5c6d; font-size: 14px; line-height: 1.5; }
+.collector-d1 .small,.collector-d1 .account-note,.collector-d1 .kicker,.collector-d1 .tagline { color: #586777; font-size: 13px; line-height: 1.45; letter-spacing: 0; }
+.collector-d1 .panel,.collector-d1 .account-paper { border: 1rpx solid #e4e6e8; border-radius: 24rpx; padding: 24rpx 26rpx; margin-bottom: 18rpx; }
+.collector-d1 .divider { border-color: #e8e9eb; }
+.collector-d1 .notice,.collector-d1 .tile,.collector-d1 .account-code,.collector-d1 .account-reply { color: #304e76; background: #eaf0f8; }
+.collector-d1 .notice { font-size: 14px; }
+.collector-d1 .badge { color: #254872; background: #eaf0f8; font-size: 13px; }
+.collector-d1 .status-pill { font-size: 13px; line-height: 1.4; padding: 3rpx 12rpx; border-radius: 40rpx; font-weight: 500; }
+.collector-d1 .status-ready { background: #e8f1e9; color: #335e44; }
+.collector-d1 .status-active { background: #eaf0f8; color: #254872; }
+.collector-d1 .status-wait { background: #f9ebdf; color: #863d19; }
+.collector-d1 .status-risk { background: #f9e7e3; color: #81372c; }
+.collector-d1 .status-quiet { background: #eff1f4; color: #465468; }
+.collector-d1 .primary { background: #1e3d68; color: #fff; font-weight: 600; }
+.collector-d1 .primary[disabled] { background: #e6eaf0; color: #586777; }
+.collector-d1 .ghost { background: #fff; border-color: #d9e1eb; color: #1e3d68; }
+.collector-d1 button { color: #1e3d68; background: #eaf0f8; }
+.collector-d1 button.panel { background: #fff; }
+.collector-d1 .d1-pressed { background-color: #e0e9f6 !important; }
+.collector-d1 .d1-primary-pressed { background-color: #142d4e !important; }
+.collector-d1 .d1-link,.collector-d1 .account-link {
+  min-height: 44px; padding: 0 4rpx; background: transparent; color: #1e3d68;
+  font-size: 14px; line-height: 1.4; font-weight: 600; white-space: nowrap;
+}
+.collector-d1 .field,.collector-d1 input,.collector-d1 textarea { background: #fbfcfe; border-color: #dce2e9; }
+.collector-d1 .price,.collector-d1 .discovery-action,.collector-d1 .money-line { color: #1e3d68; }
+.collector-d1 .price { font-size: 20px; line-height: 1.4; font-weight: 650; }
+.collector-d1 .price-unit { color: #586777; font-size: 13px; }
+.collector-d1 .d1-numeric { font-variant-numeric: tabular-nums; }
+.collector-d1 .d1-arrow { flex-shrink: 0; color: #586777; font-size: 34rpx; }
+.collector-d1 .icon { filter: grayscale(1) sepia(.16) hue-rotate(174deg) saturate(2); }
+.collector-d1 .dock {
+  border-color: #e4e6e8; box-shadow: none; padding: 8rpx 28rpx calc(8rpx + env(safe-area-inset-bottom));
+}
+.collector-d1 .dock-nav { padding-top: 0; }
+.collector-d1 .dock-item { min-height: 44px; font-size: 12px; font-weight: 400; color: #586777; background: transparent; }
+.collector-d1 .dock-item.is-active { color: #1e3d68; font-weight: 600; }
+.collector-d1 .dock-item.is-active .dock-mark { background: #eaf0f8; }
+.collector-d1 .dock .primary,.collector-d1 .dock .order-step-button { min-height: 46px; font-size: 17px; border-radius: 20rpx; }
+.collector-d1 .booking-dock,.collector-d1 .order-dock { padding-top: 12rpx; }
+.collector-d1 .booking-summary .subheading { font-size: 15px; line-height: 1.4; }
+.collector-d1 .sop-step { color: #254872; background: #eaf0f8; font-weight: 600; }
+.collector-d1 .site-thumb { border-radius: 16rpx; }
+.collector-d1 .filter-chip { min-height: 44px; color: #4d5c6d; background: #fff; border: 1rpx solid #e4e6e8; font-size: 14px; }
+.collector-d1 .account-empty { padding: 32rpx 24rpx; }
+.collector-d1 .offer { border-left: 5rpx solid #335c91; }
+.collector-d1 .brand-logo { color: #fff; background: #1e3d68; }
+.collector-d1 .campaign-hero { color: #3f2d20; background: #fae6d3; border-color: #f0d5b9; }
+.collector-d1 .campaign-label { color: #863d19; }
+.collector-d1 .campaign-copy { color: #6b4934; }
+.collector-d1 .d1-cell {
+  display: flex; width: 100%; justify-content: flex-start; gap: 12rpx; padding: 0;
+  min-height: 44px; border-radius: 0; background: transparent; color: #192636;
+  font-size: 16px; line-height: 1.5; text-align: left;
+}
+.collector-d1 .d1-cell + .d1-cell { border-top: 1rpx solid #e8e9eb; }

@@ -1,0 +1,95 @@
+<import src="../../templates/site-guide.wxml"/>
+<view class="screen collector-d1 booking-page {{missing ? '' : 'with-booking-dock'}}">
+  <view class="panel" wx:if="{{missing}}">此任务已不可用。</view>
+  <block wx:else>
+    <view class="panel booking-overview">
+      <view class="row">
+        <view class="grow">
+          <view class="title">{{task.title}}</view>
+          <view class="muted">{{station.name}} · {{station.district}} {{station.address}}</view>
+        </view>
+        <image class="site-thumb" src="{{task.art}}" mode="aspectFill"/>
+      </view>
+      <view class="row split divider">
+        <view class="price">¥{{card.rate}}<text class="price-unit"> / 有效小时 · 示例</text></view>
+        <view class="muted">每单 {{task.min / 60}} 小时{{task.min < task.max ? '起' : ''}}</view>
+      </view>
+    </view>
+    <view class="panel booking-choices">
+      <view class="row split">
+        <view class="heading">{{replaceId ? '选择改约时间' : '选择预约时间'}}</view>
+        <view class="muted d1-numeric">{{date}}</view>
+      </view>
+      <view class="row d1-slot-heading booking-date-heading">
+        <text class="sop-step">1</text><view class="subheading grow">预约日期</view>
+        <picker wx:if="{{!stationBlocked && !collectorBlocked}}" mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="booking-calendar-link">更多日期 ›</view></picker>
+      </view>
+      <view class="booking-date-grid" wx:if="{{!stationBlocked && !collectorBlocked}}">
+        <button wx:for="{{quickDates}}" wx:key="date" class="booking-day {{item.date === date ? 'booking-day-selected' : ''}}"
+          data-date="{{item.date}}" aria-pressed="{{item.date === date}}" hover-class="d1-pressed" bindtap="date">
+          <view>{{item.label}} <text class="booking-day-number">{{item.shortDate}}</text></view>
+          <text class="booking-day-status {{item.available ? 'booking-day-available' : ''}}">{{item.status}}</text>
+        </button>
+      </view>
+      <view class="row split wrap booking-hours">
+        <view class="muted">门店开放 {{card.opening}}</view>
+        <view class="muted d1-numeric">{{clockLabel}}</view>
+      </view>
+      <view class="notice" wx:if="{{selectionLost}}">原选时段已不可用，请重新选择。</view>
+      <block wx:if="{{starts.length}}">
+        <view class="divider">
+          <view class="row d1-slot-heading">
+            <text class="sop-step">2</text><view class="subheading grow">开始时间</view>
+            <text wx:if="{{!showStarts}}" class="booking-picked-time d1-numeric">{{selectedStartLabel}}</text>
+            <button wx:if="{{selectedStart !== null}}" class="booking-adjust" hover-class="d1-pressed" bindtap="toggleStarts">{{showStarts ? '收起' : '更改'}}</button>
+          </view>
+          <view wx:if="{{showStarts}}" class="booking-time-grid">
+            <button wx:for="{{starts}}" wx:key="minute" class="slot {{item.minute === selectedStart ? 'slot-selected' : ''}}" data-minute="{{item.minute}}" aria-pressed="{{item.minute === selectedStart}}" bindtap="start">{{item.label}}</button>
+          </view>
+        </view>
+        <view class="divider">
+          <view class="row d1-slot-heading">
+            <text class="sop-step">3</text><view class="subheading grow">结束时间</view>
+            <text wx:if="{{ends.length}}" class="muted">最早 {{ends[0].label}}</text>
+          </view>
+          <view class="muted action" wx:if="{{selectedStart === null}}">选择开始时间后，这里会显示可选的结束时间。</view>
+          <view wx:else class="booking-time-grid">
+            <button wx:for="{{ends}}" wx:key="minute" class="slot {{item.minute === selectedEnd ? 'slot-selected' : ''}}" data-minute="{{item.minute}}" aria-pressed="{{item.minute === selectedEnd}}" bindtap="end">{{item.label}}</button>
+          </view>
+        </view>
+      </block>
+      <view class="booking-empty" wx:else>
+        <view class="subheading">{{stationBlocked || collectorBlocked ? card.availabilityReason : date === today ? '今天暂无可约时段' : '所选日期暂无可约时段'}}</view>
+        <view class="muted">{{canDemoReview ? '前一单逾期未核验，该设备暂停新预约。正常订单可提前预约未来空档。' : stationBlocked ? '这个站点目前无法预约，换日期也不会有空档。' : collectorBlocked ? '请到「我的」查看信誉与复核状态。' : card.availabilityReason === '当天暂无合规空档' ? '可查看其他日期的空档。' : card.availabilityReason}}</view>
+        <button wx:if="{{ownOverdueOrderId}}" class="booking-recovery-link" hover-class="d1-pressed" bindtap="openOverdueOrder">回原订单提交归还 ›</button>
+        <button wx:if="{{canDemoReview}}" class="booking-recovery-link" hover-class="d1-pressed" bindtap="openDemoReview">凌矩模拟运营处理 ›</button>
+      </view>
+      <view class="row wrap divider" wx:if="{{reserved.length}}">
+        <text class="muted small">已占用</text><text class="badge badge-muted" wx:for="{{reserved}}" wx:key="id">{{item.interval}}</text>
+      </view>
+      <input wx:if="{{lateChange}}" placeholder="距原预约不足2小时，请填写改期原因" bindinput="reason" value="{{reason}}"/>
+    </view>
+    <view class="panel booking-reference">
+      <button class="d1-cell" hover-class="d1-pressed" bindtap="toggleGuide"><text class="grow">到店指引</text><text class="d1-arrow">{{showGuide ? '−' : '›'}}</text></button>
+      <button class="d1-cell" hover-class="d1-pressed" bindtap="toggleSop"><text class="grow">采集要求</text><text class="d1-arrow">{{showSop ? '−' : '›'}}</text></button>
+    </view>
+    <template wx:if="{{showGuide}}" is="site-guide" data="{{guide: guide}}"/>
+    <view wx:if="{{showSop}}" class="panel">
+      <view class="heading">采集 SOP</view>
+      <view class="muted small">只在示范区采集，避开顾客、未成年人和个人信息。</view>
+      <view class="row divider sop-row" wx:for="{{task.steps}}" wx:key="*this"><text class="sop-step">{{index + 1}}</text><view class="grow">{{item}}</view></view>
+      <view class="muted divider">设备 {{station.device.id}} · 每日上限 {{task.daily}} 分钟。按订单指引领机，结束后放回原箱并锁好。</view>
+      <view class="muted small">相邻预约至少间隔30分钟，闭店前至少15分钟结束。</view>
+    </view>
+    <view class="dock booking-dock">
+      <view class="row split booking-summary">
+        <view class="muted small grow">{{date}} · {{station.name}}</view>
+        <view class="subheading">{{selectionText}}</view>
+      </view>
+      <button wx:if="{{starts.length}}" class="primary" disabled="{{!canConfirm}}" hover-class="d1-primary-pressed" bindtap="submit">{{replaceId ? '确认模拟改约' : '确认模拟预约'}}</button>
+      <button wx:elif="{{stationBlocked || collectorBlocked}}" class="primary" hover-class="d1-primary-pressed" bindtap="goTasks">{{stationBlocked ? '查看其他站点' : '返回首页'}}</button>
+      <button wx:elif="{{nextAvailable}}" class="primary" data-date="{{nextAvailable.date}}" hover-class="d1-primary-pressed" bindtap="date">查看{{nextAvailable.label}}时段</button>
+      <picker wx:else mode="date" value="{{date}}" start="{{today}}" bindchange="date"><view class="primary booking-calendar-cta">查看其他日期</view></picker>
+    </view>
+  </block>
+</view>

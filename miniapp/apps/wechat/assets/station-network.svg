@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="344" viewBox="0 0 620 344">
+  <defs>
+    <linearGradient id="board" x2="1" y2="1">
+      <stop stop-color="#568b6a"/><stop offset="1" stop-color="#304f47"/>
+    </linearGradient>
+    <linearGradient id="top" x2="1" y2="1">
+      <stop stop-color="#cde98a"/><stop offset="1" stop-color="#8bb669"/>
+    </linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M0 28V0h28" fill="none" stroke="#bfe5ae" stroke-opacity=".13"/></pattern>
+  </defs>
+  <path d="M265 145 469 44l140 74v116L404 338l-139-74z" fill="url(#grid)" opacity=".8"/>
+  <path d="m275 240 180-104 154 87-180 104z" fill="#112522"/>
+  <path d="m280 219 174-100 147 83-174 100z" fill="url(#board)" stroke="#749f79" stroke-width="2"/>
+  <path d="M280 219v17l147 84v-18z" fill="#2a5149"/><path d="m427 302 174-100v17L427 320z" fill="#406959"/>
+  <path d="m313 222 141-80 113 64m-199 34 77 44m-17-104 107 60m-176-33 114 65" stroke="#abd08a" stroke-opacity=".38" fill="none"/>
+  <path d="m310 216 61-36 57 33 48-28 59 34" fill="none" stroke="#dbf78b" stroke-width="3" stroke-linejoin="round" stroke-dasharray="6 7"/>
+  <path d="m373 140 92-52 79 45-94 54z" fill="url(#top)" stroke="#c9e69a" stroke-width="2"/>
+  <path d="M373 140v50l77 46v-49z" fill="#7eaf75"/><path d="m450 187 94-54v51l-94 52z" fill="#568665"/>
+  <path d="m390 149 58 34 79-46m-93 56v27m33-21 60-34v-19" fill="none" stroke="#d0eeb0" stroke-opacity=".64" stroke-width="2"/>
+  <path d="m409 120 55-31 48 28-55 31z" fill="#213e37" stroke="#c6e886" stroke-width="2"/>
+  <path d="m425 120 38-22 34 19-38 22z" fill="#324f43"/>
+  <path d="m445 119 19-10 18 10-18 10z" fill="#e1fa99"/>
+  <g fill="#e2fa9d" stroke="#42675b" stroke-width="3"><circle cx="312" cy="216" r="7"/><circle cx="427" cy="214" r="7"/><circle cx="536" cy="220" r="7"/></g>
+  <path d="m508 69 34-19 38 22-33 20zM295 150l23-14 22 13-23 14z" fill="none" stroke="#9ac298" stroke-opacity=".55"/>
+  <path d="m531 62 9-5 9 5-9 5zM310 149l8-5 8 5-8 5z" fill="#d8f38c"/>
+</svg>

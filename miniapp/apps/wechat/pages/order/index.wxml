@@ -1,0 +1,188 @@
+<import src="../../templates/site-guide.wxml"/>
+<view class="screen collector-d1 {{missing ? '' : 'with-dock'}}">
+  <view class="panel" wx:if="{{missing}}">
+    <view class="heading">无法打开预约</view>
+    <view class="muted">请核对演示采集员身份，或查看重置后的订单列表。</view>
+    <button class="action" bindtap="home">返回采集员端</button>
+  </view>
+  <block wx:else>
+    <view class="order-overview">
+      <view class="row split">
+        <text class="kicker">模拟订单 {{order.id}}</text>
+        <button class="d1-link" hover-class="d1-pressed" bindtap="toggleIssue">{{showIssue ? '收起求助' : reports.length ? '求助进度' : '订单求助'}}</button>
+      </view>
+      <view wx:if="{{guidance}}" class="order-focus order-focus-{{order.stateTone}}">
+        <view class="order-focus-title">{{guidance.title}}</view>
+        <view wx:if="{{!guidance.phase}}" class="muted">{{guidance.detail}}</view>
+      </view>
+      <view wx:elif="{{result}}" class="order-focus">
+        <view class="order-focus-title">{{order.status === 'done' ? '设备已核验归还' : '归还已提交'}}</view>
+      </view>
+      <view wx:elif="{{order.cancelText}}" class="order-focus">
+        <view class="order-focus-title">{{order.cancellation.exempt ? '预约已无责取消' : '预约已取消'}}</view>
+        <view class="muted">{{order.cancelText}}</view>
+      </view>
+      <view wx:elif="{{order.status === 'missed'}}" class="order-focus">
+        <view class="order-focus-title">预约时段已结束</view>
+      </view>
+      <view wx:if="{{order.overdue && order.active}}" class="notice">归还已逾期，凌矩待核查。</view>
+      <view class="panel order-progress" wx:if="{{step >= 0}}">
+        <view wx:for="{{steps}}" wx:key="*this" class="order-stage {{index === step ? 'order-stage-current' : index < step ? 'order-stage-past' : ''}}">
+          <view class="order-stage-dot">{{index < step ? '✓' : index + 1}}</view><text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{guidance.phase}}" class="panel order-tutorial">
+      <view class="row order-tutorial-main">
+        <view class="grow">
+          <view class="kicker">本步指引</view>
+          <view class="heading">{{guidance.detail}}</view>
+          <view wx:if="{{guidance.clockHint}}" class="muted small">{{guidance.clockHint}}</view>
+        </view>
+        <image wx:if="{{!tutorialCollapsed}}" class="order-tutorial-art" src="{{guidance.art}}" mode="aspectFit" aria-label="本步操作示意图"/>
+      </view>
+
+      <block wx:if="{{guidance.phase === 'travel'}}">
+        <view class="order-tutorial-block">
+          <view class="subheading">{{order.stationName}}</view>
+          <view class="muted">{{order.stationAddress}}</view>
+          <view class="muted order-time">{{order.interval}}</view>
+        </view>
+        <button wx:if="{{guide.mapPoint}}" class="order-shortcut touch-control" hover-class="d1-pressed" bindtap="openMap">
+          <image class="icon icon-small" src="/assets/icons/pin.svg" mode="aspectFit"/>地图导航
+        </button>
+      </block>
+
+      <block wx:elif="{{guidance.phase === 'pickup'}}">
+        <view class="order-tutorial-block">
+          <view class="subheading">设备箱位置</view>
+          <view class="muted">{{guide.locker}}</view>
+        </view>
+        <view wx:if="{{order.showCode}}" class="row split order-code">
+          <text>开箱密码 <text class="muted small">模拟</text></text>
+          <text class="order-code-value">0427</text>
+        </view>
+      </block>
+
+      <block wx:elif="{{guidance.phase === 'capture'}}">
+        <view class="order-tutorial-block">
+          <view class="subheading">{{order.taskName}}</view>
+          <view class="muted small">只拍示范区，避开顾客、未成年人和个人信息。</view>
+        </view>
+        <button class="order-shortcut touch-control" hover-class="d1-pressed" bindtap="toggleSop">{{showSop ? '收起 SOP' : '查看本单 SOP'}}</button>
+        <view wx:if="{{showSop}}" class="order-sop-steps">
+          <view class="row sop-row" wx:for="{{taskSteps}}" wx:key="*this">
+            <text class="sop-step">{{index + 1}}</text><view class="grow">{{item}}</view>
+          </view>
+        </view>
+      </block>
+
+      <view wx:elif="{{guidance.phase === 'return'}}" class="order-tutorial-block">
+        <view class="subheading">原箱位置</view>
+        <view class="muted">{{guide.locker}}</view>
+      </view>
+
+      <button class="d1-link order-art-toggle" hover-class="d1-pressed" bindtap="toggleTutorial">{{tutorialCollapsed ? '展开图解' : '收起图解'}}</button>
+    </view>
+
+    <view class="panel order-kit" wx:if="{{!result}}">
+      <button class="d1-cell" hover-class="d1-pressed" bindtap="toggleGuide">
+        <text class="grow">本单资料{{order.canCancel && !(order.impact || order.closed) ? '与改约' : ''}}</text>
+        <text class="d1-arrow">{{showGuide ? '−' : '›'}}</text>
+      </button>
+      <view wx:if="{{showGuide}}" class="order-tutorial-block">
+        <view class="subheading">{{order.taskName}}</view>
+        <view class="muted order-time">{{order.interval}}</view>
+        <view wx:if="{{order.showCode && guidance.phase !== 'pickup'}}" class="row split order-code">
+          <text>开箱密码 <text class="muted small">模拟</text></text>
+          <text class="order-code-value">0427</text>
+        </view>
+      </view>
+    </view>
+    <template wx:if="{{!result && showGuide}}" is="site-guide" data="{{guide: guide}}"/>
+    <view class="panel" wx:if="{{showIssue}}" id="order-issue">
+      <view class="row split">
+        <view class="heading">订单求助</view>
+        <button wx:if="{{guide.mapPoint}}" class="ghost subtle-button" bindtap="openMap">地图导航</button>
+      </view>
+      <view class="divider" wx:for="{{reports}}" wx:key="id">
+        <view class="row split"><view class="subheading">{{item.label}}</view><text class="badge">{{item.statusLabel}}</text></view>
+        <view class="muted">{{item.time}} · {{item.details}}</view>
+        <view class="notice" wx:if="{{item.response}}">凌矩回复　{{item.response}}</view>
+      </view>
+      <view wx:if="{{pendingReport}}" class="muted action">凌矩处理后会在本订单和站内消息回复。订单操作仍在底部。</view>
+      <block wx:if="{{!pendingReport}}">
+        <picker range="{{issueTypes}}" range-key="label" value="{{issueIndex}}" bindchange="issueType">
+          <view class="field">求助类型　{{issueTypes[issueIndex].label}} ›</view>
+        </picker>
+        <textarea value="{{issueDetails}}" bindinput="issueDetails" maxlength="200" auto-height
+          placeholder="填写现场情况，以及需要凌矩协助的事" />
+        <view class="row split divider"><view class="muted">附模拟现场照片占位</view><switch checked="{{reportPhoto}}" color="#1e3d68" bindchange="reportPhoto"/></view>
+        <view class="muted small">{{issueDetails.length}} / 200 字</view>
+        <button class="action touch-control" hover-class="control-pressed" disabled="{{!canSendIssue}}" bindtap="reportIssue">提交模拟求助</button>
+      </block>
+    </view>
+
+    <view class="panel" wx:if="{{result}}">
+      <view class="heading">订单结果</view>
+      <view class="row split divider result-row"><view class="muted">设备</view><text class="status-pill status-{{order.status === 'done' ? 'ready' : 'wait'}}">{{result.deviceLabel}}</text></view>
+      <view class="row split divider result-row"><view class="muted">采集记录</view><text class="status-pill status-{{order.uploadFailed ? 'risk' : 'ready'}}">{{result.uploadLabel}}</text></view>
+      <view class="row split divider result-row"><view class="muted">质检</view><text class="status-pill status-quiet">{{result.qaLabel}}</text></view>
+      <view class="row split divider result-row">
+        <view class="muted">采集报酬</view>
+        <view class="result-value"><view class="subheading">{{result.earningsLabel}}</view><view wx:if="{{result.amount}}" class="money-line">{{result.amount}}</view></view>
+      </view>
+      <view class="muted divider">实际采集 {{order.actual}} 分钟</view>
+      <block wx:if="{{order.qa}}">
+        <view class="action">有效 {{order.valid}} 分钟 · 有效率 {{order.qaRate}}</view>
+        <view class="muted">来源 {{order.qa.source}} · {{order.qa.reason}}</view>
+        <view class="notice" wx:if="{{order.qaAppeal}}">{{order.qaAppeal.status === 'pending' ? '争议工时复核中，已确认工时照常入账。' : order.qaAppeal.result.reason}}</view>
+        <view class="muted" wx:if="{{order.qaAppeal.result.extra}}">复核新增 {{order.qaAppeal.result.extra}} 分钟，计入 {{order.qaAppeal.result.period}} 账期。</view>
+        <button wx:if="{{!order.qaAppeal && order.qa.valid < order.actual}}" class="action" bindtap="appealQA">申请模拟质检复核</button>
+      </block>
+    </view>
+
+    <view class="panel order-kit" wx:if="{{result && timeline.length}}">
+      <button class="d1-cell" hover-class="d1-pressed" bindtap="toggleReceipt"><text class="grow">订单回执</text><text class="d1-arrow">{{showReceipt ? '−' : '›'}}</text></button>
+      <view wx:if="{{showReceipt}}" class="row split divider" wx:for="{{timeline}}" wx:key="label">
+        <view>{{item.label}}</view><view class="muted small">{{item.at}}</view>
+      </view>
+    </view>
+
+    <view class="panel" wx:if="{{order.canApply || order.subsidy || order.cancellation.outage}}">
+      <view class="heading">交通补贴</view>
+      <view wx:if="{{order.subsidy}}" class="notice">{{order.subsidyStatus}} · ¥{{order.subsidyAmount}}（虚构）</view>
+      <view class="muted" wx:if="{{order.subsidyReason}}">{{order.subsidyReason}}</view>
+      <view class="muted">须在取消后48小时内提交出行凭证并由凌矩核查。审批通过进入待发放补贴。</view>
+      <button wx:if="{{order.canApply}}" class="primary action" bindtap="applySubsidy">提交模拟凭证并申请</button>
+      <button wx:if="{{order.canAppealSubsidy}}" class="action" bindtap="appealSubsidy">提交模拟补贴申诉</button>
+    </view>
+    <view class="row action" wx:if="{{(showGuide && (order.canCancel || order.canReschedule)) || (order.canCancel && (order.impact || order.closed))}}">
+      <button wx:if="{{order.canCancel}}" class="grow ghost" bindtap="cancel">{{order.impact || order.closed ? '无责取消' : '取消预约'}}</button>
+      <button wx:if="{{order.canReschedule && !order.impact && !order.closed && !order.cancelText}}" class="grow ghost" bindtap="reschedule">选择其他时段</button>
+    </view>
+    <view class="panel order-kit action" wx:if="{{canJumpStart || canJumpEnd || canJumpOverdue}}">
+      <view class="row split">
+        <view class="muted small">演示控制</view>
+        <button class="d1-link" bindtap="toggleDemo">{{showDemo ? '收起' : '展开 ›'}}</button>
+      </view>
+      <view class="row wrap action" wx:if="{{showDemo}}">
+        <view class="row split grow" wx:if="{{order.status === 'stopped'}}">
+          <view class="muted">模拟首次上传失败</view><switch checked="{{failUpload}}" bindchange="failUpload" color="#1e3d68"/>
+        </view>
+        <button wx:if="{{canJumpStart}}" class="ghost" data-target="start" bindtap="jumpTo">时钟到预约开始</button>
+        <button wx:if="{{canJumpEnd}}" class="ghost" data-target="end" bindtap="jumpTo">时钟到预约结束</button>
+        <button wx:if="{{canJumpOverdue}}" class="ghost" data-target="overdue" bindtap="jumpTo">时钟到结束后30分钟</button>
+      </view>
+    </view>
+    <view class="dock order-dock">
+      <button wx:if="{{mainAction}}" class="primary order-step-button" hover-class="d1-primary-pressed" data-action="{{mainAction.action}}" bindtap="perform">{{mainAction.label}}</button>
+      <button wx:elif="{{order.uploadFailed}}" class="primary order-step-button" hover-class="d1-primary-pressed" data-action="upload" bindtap="perform">重试模拟上传</button>
+      <button wx:elif="{{order.replacedBy}}" class="primary order-step-button" hover-class="d1-primary-pressed" bindtap="openReplacement">查看新预约</button>
+      <button wx:elif="{{order.canReschedule && (order.impact || order.closed || order.cancelText)}}" class="primary order-step-button" hover-class="d1-primary-pressed" bindtap="reschedule">选择其他时段</button>
+      <button wx:elif="{{order.active}}" class="ghost order-step-button" hover-class="control-pressed" bindtap="refreshOrder">{{order.status === 'submitted' ? '刷新归还进度' : '刷新订单状态'}}</button>
+      <button wx:else class="ghost order-step-button" hover-class="control-pressed" bindtap="home">返回找任务</button>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/merchant/index",
+    "pages/collector/index",
+    "pages/account/index",
+    "pages/task/index",
+    "pages/order/index",
+    "pages/ops/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "凌矩共享采集站",
+    "navigationBarBackgroundColor": "#f3f4ef",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f3f4ef"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -3,7 +3,30 @@
   "created_at": "2026-11-08",
   "product": "凌矩共享采集站（暂定）",
   "owner_model_status": "two_roles_explicitly_confirmed",
-  "implementation_status": "docs_only",
+  "implementation_status": "native_wechat_mock_v0_1_offline_tested",
+  "latest_mock_verification": {
+    "status": "mock_tested",
+    "requirements": {
+      "C-001 / UI-C-001 / UI-C-002": "首页搜索前置并支持仅看可约；独立站点卡片区分门店、任务、可约时间、示例报酬与操作；门店内展开到店资料、复制地址与打开微信地图演示点",
+      "C-001 / C-002 / C-008": "采集员 D.1 首页横滑动态和下一单、先选时段、按进度查单与个人中心",
+      "C-002 / UI-C-004": "预约后按前往、取机、采集、归还切换当前图解；首页轮播自动切换且可手动横滑",
+      "UI-C-021": "进入签到窗口的有效预约仍先显示模拟开始前往，出发后显示签到",
+      "C-003 / UI-C-004 / S-006": "新预约和改约至少连续 2 小时，显示最早结束时间，隐藏时长不足的开始档",
+      "C-003 / UI-C-004 / S-005": "预约时段按设备当前北京时间更新，已开始的档位隐藏，提交时重新校验",
+      "C-003 / UI-C-004 / UI-C-005": "正常站点的日期入口可见，选择开始后直接显示结束档；首页无空档时直达下一可约日期，设备暂停或归还待核验时说明原因并返回其他站点；异常逾期时可从本机预约页进入原单和模拟运营核验，核验设备可用后恢复新预约",
+      "C-008 / UI-C-004 / C-009": "钱包、券和订单在我的原地展开，模拟扫码按设备匹配当前采集员的预约",
+      "UI-C-004": "订单首屏显示当前状态与下一步，底部固定主操作，等待设备、停业和预约结束时有相应恢复入口",
+      "UI-002": "普通冷启动恢复上次身份，返回首页或主动切换时显示双入口，保留个人筛选和预约",
+      "UI-M-003 / UI-M-004 / UI-M-005": "区域及到店说明、退回补资料回显，照片继续使用占位",
+      "UI-M-001 / M-002": "D.1 工作台显示下一位到店、设备和当日开放状态；申请页可一键查看已入驻演示门店且保留原申请状态，门店页集中设备记录、入驻、到店指引和求助",
+      "M-004 / M-005": "每周和单日时段分开编辑，暂停前预览影响；自然月场地账目分待结算、待打款、已到账并追溯原订单",
+      "M-003 / UI-M-007 / UI-M-008 / UI-M-009": "点选时段、暂停及恢复前预览新增受影响订单",
+      "O-001 / UI-C-017 / UI-A-002": "原订单内填写求助，待回复可继续操作；运营待办、回复结案与核实暂停",
+      "C-005": "模拟上传失败与重试独立于归还核验，保留各环节回执",
+      "C-008 / C-009": "模拟登录、双端个人中心、活动与我的券、首单与邀请奖励进度、设置、服务指南和反馈回执"
+    },
+    "evidence": "miniapp/apps/wechat/evidence/README.md"
+  },
   "status_legend": {
     "confirmed_concept": "Owner确认的产品方向，仍需设计界面/具体规则",
     "example_unconfirmed": "Owner口述示例，计费触发和具体规则未确认",
@@ -11,7 +34,8 @@
     "supporting_suggestion": "为流程可用性提出的内部辅助功能，待Owner确认",
     "proposal_only": "AI技术建议，尚未获得产品范围批准",
     "first_version_provisionally_approved": "Owner同意作为第一版设计方向，具体细节可在后续讨论或原型验收时调整",
-    "ai_delegated_working_default": "Owner授权AI自主补全的非商业流程/演示工作默认方案；可作为模拟设计输入，但不是逐项Owner批准或生产授权"
+    "ai_delegated_working_default": "Owner授权AI自主补全的非商业流程/演示工作默认方案；可作为模拟设计输入，但不是逐项Owner批准或生产授权",
+    "mock_status": "体验版实现与验证状态。原需求状态仍记录Owner决定和正式能力。"
   },
   "requirements": [
     {
@@ -19,147 +43,168 @@
       "role": "merchant",
       "name": "申请门店场景采集设备入驻",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "M-002",
       "role": "merchant",
       "name": "查看设备与部署状态",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "M-003",
       "role": "merchant",
       "name": "设置指定日期和每日允许采集时段",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "M-004",
       "role": "merchant",
       "name": "暂停接单、临时关店及不可用时间",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "M-005",
       "role": "merchant",
       "name": "查看到店接单记录和每日/累计收益",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "M-006",
       "role": "merchant",
       "name": "商家每次接单提成20元的示例方案（具体触发待定）",
       "status": "example_unconfirmed",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "outside_mock_scope"
     },
     {
       "id": "M-007",
       "role": "merchant",
       "name": "商家个人/经营资料、评分和信誉分",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_partial"
     },
     {
       "id": "C-001",
       "role": "collector",
       "name": "查看地点、商家站点和可接任务",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "C-002",
       "role": "collector",
       "name": "查看任务详情和动作SOP",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_implemented"
     },
     {
       "id": "C-003",
       "role": "collector",
       "name": "查看时段、最少和最多可接小时以及小时报酬",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_implemented"
     },
     {
       "id": "C-004",
       "role": "collector",
       "name": "按可用时间接多个订单和查看接单详情",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "C-005",
       "role": "collector",
       "name": "采集记录、上传状态和后续审核状态",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "C-006",
       "role": "collector",
       "name": "按批次/订单查看有效率、质检问题与改进建议",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "C-007",
       "role": "collector",
       "name": "按合法确认的有效小时计价及每日收益、待结已结记录",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_partial"
     },
     {
       "id": "C-008",
       "role": "collector",
       "name": "个人资料、评分和信誉分",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_partial"
     },
     {
       "id": "C-009",
       "role": "collector",
       "name": "未来接单补助、优惠券或激励券",
       "status": "future_idea",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_partial"
     },
     {
       "id": "O-001",
       "role": "operator",
       "name": "凌矩城市运营对场景、设备、任务和人员进行审核管理",
       "status": "supporting_suggestion",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_partial"
     },
     {
       "id": "O-002",
       "role": "operator",
       "name": "设备签领归还、模拟上游QA和商家/个人模拟结算链路",
       "status": "supporting_suggestion",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_partial"
     },
     {
       "id": "S-001",
       "role": "system",
       "name": "商家不可用时段禁止新预约；已有预约需有冲突处理",
       "status": "supporting_suggestion",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-002",
       "role": "system",
       "name": "不同上游客户数据/设备/权限隔离",
       "status": "supporting_suggestion",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "outside_mock_scope"
     },
     {
       "id": "S-003",
       "role": "system",
       "name": "演示版不可真实交易、无支付、无客户数据、无真实设备联机",
       "status": "confirmed_concept",
-      "implemented": false
+      "implemented": false,
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-001",
@@ -167,7 +212,8 @@
       "name": "首次访问展示我是商家/我是采集员的双入口页面",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 approves suggested home screen"
+      "source": "Owner 2026-11-08 approves suggested home screen",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-002",
@@ -175,7 +221,8 @@
       "name": "记住上次选中的身份，再次进入相应页面，并提供身份切换",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 agrees to first-use selection and later easy switching; actual authentication undecided"
+      "source": "Owner 2026-11-08 agrees to first-use selection and later easy switching; actual authentication undecided",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-001",
@@ -183,7 +230,8 @@
       "name": "商家尚未入驻时首页重点显示申请设备入驻",
       "status": "first_version_provisionally_approved",
       "implemented": false,
-      "source": "Owner 2026-11-08: 我感觉前期这样设计可以"
+      "source": "Owner 2026-11-08: 我感觉前期这样设计可以",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-002",
@@ -191,7 +239,8 @@
       "name": "商家入驻并部署设备后首页显示设备状态、可采时间、今日订单与今日收益",
       "status": "first_version_provisionally_approved",
       "implemented": false,
-      "source": "Owner 2026-11-08: 我感觉前期这样设计可以"
+      "source": "Owner 2026-11-08: 我感觉前期这样设计可以",
+      "mock_status": "mock_partial"
     },
     {
       "id": "UI-M-003",
@@ -199,7 +248,8 @@
       "name": "设备入驻申请表：店名、地址、经营类型、联系人与联系电话",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "User accepted proposed first-version merchant application fields"
+      "source": "User accepted proposed first-version merchant application fields",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-004",
@@ -207,7 +257,8 @@
       "name": "设备入驻申请支持门头、店内环境与拟布置设备区域的场地/场景照片",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner explicitly requested scene photos; three photo types assistant-proposed; mandatory quantities not approved"
+      "source": "Owner explicitly requested scene photos; three photo types assistant-proposed; mandatory quantities not approved",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-005",
@@ -215,7 +266,8 @@
       "name": "展示申请状态：待审核、审核通过、需要补充资料、暂不通过",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner said 可以可以 to exact four statuses"
+      "source": "Owner said 可以可以 to exact four statuses",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-006",
@@ -223,7 +275,8 @@
       "name": "审核通过后依次经历凌矩安排设备安装、商家确认设备到位、设置采集开放时间，才对个人采集员开放接单",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 合适，可以。"
+      "source": "Owner 2026-11-08: 合适，可以。",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-004",
@@ -231,7 +284,8 @@
       "name": "商家审核通过与设备实际可接单为不同状态，未完成安装、商家确认与开放时段设置不得直接接单",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner approved post-review sequence 2026-11-08"
+      "source": "Owner approved post-review sequence 2026-11-08",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-007",
@@ -239,7 +293,8 @@
       "name": "商家设置每周固定开放采集的星期及多个日内时段",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以合适"
+      "source": "Owner 2026-11-08: 可以合适",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-008",
@@ -247,7 +302,8 @@
       "name": "商家可针对某个日期临时关店、关闭采集或调整当天开放时间",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以合适"
+      "source": "Owner 2026-11-08: 可以合适",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-009",
@@ -255,7 +311,8 @@
       "name": "商家可申请临时关闭/暂停某日或某时段，影响时段停止接受新预约",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以，合适"
+      "source": "Owner 2026-11-08: 可以，合适",
+      "mock_status": "mock_tested"
     },
     {
       "id": "C-010",
@@ -263,7 +320,8 @@
       "name": "商家临时关店影响已有预约时，通知采集员并引导改约到其他时段或店铺",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以，合适"
+      "source": "Owner 2026-11-08: 可以，合适",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-001",
@@ -271,7 +329,8 @@
       "name": "采集员首页优先显示附近可接单商家场地及采集任务",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以合适"
+      "source": "Owner 2026-11-08: 可以合适",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-002",
@@ -279,7 +338,8 @@
       "name": "任务卡展示场地位置、任务内容、开放时间、小时报酬和可接单时长，支持进入详情",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以合适"
+      "source": "Owner 2026-11-08: 可以合适",
+      "mock_status": "mock_implemented"
     },
     {
       "id": "UI-C-003",
@@ -287,7 +347,8 @@
       "name": "任务详情提供文字SOP和示范图片以供新手学习",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 approved image + step instructions"
+      "source": "Owner 2026-11-08 approved image + step instructions",
+      "mock_status": "mock_implemented"
     },
     {
       "id": "UI-C-004",
@@ -295,7 +356,8 @@
       "name": "采集员在商家开放时段内自主选择起止时间和订单小时数，支持多单，互不冲突",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 explicitly described flexible duration rather than rigid slots"
+      "source": "Owner 2026-11-08 explicitly described flexible duration rather than rigid slots",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-005",
@@ -303,7 +365,8 @@
       "name": "预约时展示最少采集小时、每单最多小时、早/下午或全天可用窗口及设备每日余量",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 offered example 2h minimum, morning/afternoon/day and daily machine maximum; precise values remain open"
+      "source": "Owner 2026-11-08 offered example 2h minimum, morning/afternoon/day and daily machine maximum; precise values remain open",
+      "mock_status": "mock_implemented"
     },
     {
       "id": "S-005",
@@ -311,15 +374,17 @@
       "name": "每台设备预约不可重叠且不得超过日采集上限、商家开放窗口或任务限制",
       "status": "supporting_suggestion",
       "implemented": false,
-      "source": "Anti-double-booking and daily cap necessary for owner requested flexible slots"
+      "source": "Anti-double-booking and daily cap necessary for owner requested flexible slots",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-006",
       "role": "system",
-      "name": "最低采集时长示例2小时但应可配置，不能把示例硬编码为永久业务规则",
-      "status": "example_unconfirmed",
+      "name": "体验版新预约和改约至少连续 2 小时，最低时长由任务配置提供",
+      "status": "first_version_provisionally_approved",
       "implemented": false,
-      "source": "Owner proposed two hours as example, asked flexible max hours"
+      "source": "DEC-2026-11-10-01",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-006",
@@ -327,7 +392,8 @@
       "name": "同一设备日期展示已预约不可选时段和剩余可选时段，确认新预约后动态更新剩余",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner explained train-ticket-like multiple individual sequential bookings; example 08-11 reserved then next sees 11/12 onwards"
+      "source": "Owner explained train-ticket-like multiple individual sequential bookings; example 08-11 reserved then next sees 11/12 onwards",
+      "mock_status": "mock_implemented"
     },
     {
       "id": "S-007",
@@ -335,7 +401,8 @@
       "name": "同一设备可多人分时预约，前后至少30分钟，不得重叠，无需商家交接",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner explicit model: many people can reserve same equipment in succession, booked interval disappears"
+      "source": "Owner explicit model: many people can reserve same equipment in succession, booked interval disappears",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-008",
@@ -343,7 +410,8 @@
       "name": "多人同时尝试抢相同设备时段时仅容许一个确认成功，其他人刷新并重选剩余时段",
       "status": "supporting_suggestion",
       "implemented": false,
-      "source": "Implementation necessary for owner confirmed single-device occupancy"
+      "source": "Implementation necessary for owner confirmed single-device occupancy",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-010",
@@ -351,7 +419,8 @@
       "name": "商家可查看每台设备当日按时间排序的接单排班",
       "status": "supporting_suggestion",
       "implemented": false,
-      "source": "Merchant view of train-ticket-like occupancy proposed for convenience"
+      "source": "Merchant view of train-ticket-like occupancy proposed for convenience",
+      "mock_status": "mock_implemented"
     },
     {
       "id": "S-009",
@@ -359,7 +428,8 @@
       "name": "同设备前后预约必须至少间隔30分钟不可预约的周转空档，无需商家人工交接",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner confirmed 2026-11-08: 设备交接至少中间要留半个小时三十分钟"
+      "source": "Owner confirmed 2026-11-08: 设备交接至少中间要留半个小时三十分钟",
+      "mock_status": "mock_tested"
     },
     {
       "id": "C-011",
@@ -367,7 +437,8 @@
       "name": "接单成功后从采集员个人订单页查看设备箱的开箱密码，自主解锁领取设备",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner explicitly requested password box and order-visible password, no merchant handover"
+      "source": "Owner explicitly requested password box and order-visible password, no merchant handover",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-010",
@@ -375,7 +446,8 @@
       "name": "商家不参与逐单取机/归还或保管交接确认，设备领用与订单和本人可追溯",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner explicitly rejects merchant handoff and prioritizes venue-only merchants"
+      "source": "Owner explicitly rejects merchant handoff and prioritizes venue-only merchants",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-011",
@@ -383,7 +455,8 @@
       "name": "设备自身故障与采集员损坏按凭证核实责任，不能自动将责任归于门店",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner differentiates inherent equipment problems, collector damage, merchant only venue"
+      "source": "Owner differentiates inherent equipment problems, collector damage, merchant only venue",
+      "mock_status": "mock_implemented"
     },
     {
       "id": "C-012",
@@ -391,7 +464,8 @@
       "name": "采集员使用后自行放回设备箱并锁好，在订单页点击设备已归还，商家无须确认",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 explicitly confirmed shared-bicycle-like self return and app return button"
+      "source": "Owner 2026-11-08 explicitly confirmed shared-bicycle-like self return and app return button",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-012",
@@ -399,7 +473,8 @@
       "name": "第一版区分采集员自主申报已归还与真实设备已核验归还，归还记录能关联订单/设备/采集员",
       "status": "supporting_suggestion",
       "implemented": false,
-      "source": "Prevents false assertion that app button verifies physical device"
+      "source": "Prevents false assertion that app button verifies physical device",
+      "mock_status": "mock_tested"
     },
     {
       "id": "F-001",
@@ -407,7 +482,8 @@
       "name": "以后探索联网智能设备箱经WiFi等连接服务器，回传箱锁状态并向小程序反馈",
       "status": "future_idea",
       "implemented": false,
-      "source": "Owner said WiFi box/server connection is for later"
+      "source": "Owner said WiFi box/server connection is for later",
+      "mock_status": "outside_mock_scope"
     },
     {
       "id": "F-002",
@@ -415,7 +491,8 @@
       "name": "以后探索设备是否在箱及采集设备自身运行/故障状态检测，不能仅凭箱锁联网推断",
       "status": "future_idea",
       "implemented": false,
-      "source": "Owner future wish device health monitoring; actual device data sources not confirmed"
+      "source": "Owner future wish device health monitoring; actual device data sources not confirmed",
+      "mock_status": "outside_mock_scope"
     },
     {
       "id": "C-013",
@@ -423,7 +500,8 @@
       "name": "归还后订单先显示已提交归还，核验真实归还后才显示归还完成",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以 to two-stage return status proposal"
+      "source": "Owner 2026-11-08: 可以 to two-stage return status proposal",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-013",
@@ -431,7 +509,8 @@
       "name": "不可将采集员点击归还视为设备真实核验，第一版仅模拟核验；商家无需逐单确认",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner accepted return status separation"
+      "source": "Owner accepted return status separation",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-009",
@@ -439,7 +518,8 @@
       "name": "收益首页分开显示预计收入、待审核收入、已确认收入三个状态",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 合适"
+      "source": "Owner 2026-11-08: 合适",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-014",
@@ -447,7 +527,8 @@
       "name": "预计/待审核/已确认收入不可重复统计，已确认不等于已结算或已到账",
       "status": "supporting_suggestion",
       "implemented": false,
-      "source": "Clarifies Owner-approved earnings status display vs actual payments"
+      "source": "Clarifies Owner-approved earnings status display vs actual payments",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-010",
@@ -455,7 +536,8 @@
       "name": "每笔订单质检反馈展示实际采集小时、有效小时、有效率、无效/拒收原因和改进建议",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以, after proposed complete order-level QA feedback"
+      "source": "Owner 2026-11-08: 可以, after proposed complete order-level QA feedback",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-015",
@@ -463,7 +545,8 @@
       "name": "质检结果须可追溯真实客户/授权审核来源，未出结果不得捏造有效率、拒收原因或客户建议",
       "status": "supporting_suggestion",
       "implemented": false,
-      "source": "Accuracy/privacy requirement for Owner-approved QA feedback UI"
+      "source": "Accuracy/privacy requirement for Owner-approved QA feedback UI",
+      "mock_status": "outside_mock_scope"
     },
     {
       "id": "UI-C-011",
@@ -471,7 +554,8 @@
       "name": "单笔订单质检反馈提供申请复核按钮，支持采集员提交异议并查看凌矩核查反馈",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以 to proposed QA dispute and review feature"
+      "source": "Owner 2026-11-08: 可以 to proposed QA dispute and review feature",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-016",
@@ -479,7 +563,8 @@
       "name": "申诉关联订单及原始质检结果，保留复核记录；未获客户授权不能由平台擅自改客户有效小时",
       "status": "supporting_suggestion",
       "implemented": false,
-      "source": "Controls needed to preserve QA auditability and customer authority"
+      "source": "Controls needed to preserve QA auditability and customer authority",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-012",
@@ -487,7 +572,8 @@
       "name": "个人采集员展示信誉分与按时到店、按时归还设备、采集质量相关履约记录",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 said 可以可以 to proposed collector reputation system"
+      "source": "Owner 2026-11-08 said 可以可以 to proposed collector reputation system",
+      "mock_status": "mock_partial"
     },
     {
       "id": "S-017",
@@ -495,7 +581,8 @@
       "name": "信誉较好采集员可优先获得部分任务机会，评分有争议时先核查不直接扣分",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner confirmed priority tasks for good standing and investigate contested events before penalties"
+      "source": "Owner confirmed priority tasks for good standing and investigate contested events before penalties",
+      "mock_status": "mock_partial"
     },
     {
       "id": "UI-C-013",
@@ -503,7 +590,8 @@
       "name": "采集员信誉采用100分制，新采集员初始100分，经核实的违规可扣分，表现好可逐步恢复且不超过100分",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 replied 可以 to 100 point system, initial 100, verified violations, gradual recovery"
+      "source": "Owner 2026-11-08 replied 可以 to 100 point system, initial 100, verified violations, gradual recovery",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-011",
@@ -511,7 +599,8 @@
       "name": "商家场地收益仅在采集员实际完成采集并归还设备后确认，预约但未完成不产生已确认收益",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner responded 可以 2026-11-08 to complete collection and return before merchant earnings confirmation"
+      "source": "Owner responded 可以 2026-11-08 to complete collection and return before merchant earnings confirmation",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-018",
@@ -519,7 +608,8 @@
       "name": "商家20元/次仍为示例单价，不得固定真实计费、付款；设备归还确认节点与收入结算细则待定",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner confirmed trigger concept not specific amount or exact return verification step"
+      "source": "Owner confirmed trigger concept not specific amount or exact return verification step",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-012",
@@ -527,7 +617,8 @@
       "name": "采集员实际完成采集且设备归还核验到归还完成后才确认商家收益，已提交归还不能触发收益",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08: 可以 to require verified 归还完成 for merchant earnings"
+      "source": "Owner 2026-11-08: 可以 to require verified 归还完成 for merchant earnings",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-013",
@@ -535,7 +626,8 @@
       "name": "商家正常场地收益与采集员数据QA结果解耦，采集员完成采集并核实归还设备后确认，数据质检不合格不能单独扣减商家收益",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 replied 可以 to QA-independent venue earnings proposal"
+      "source": "Owner 2026-11-08 replied 可以 to QA-independent venue earnings proposal",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-M-014",
@@ -543,7 +635,8 @@
       "name": "商家收益明细展示待结算、待打款、已到账三类状态，每笔关联对应采集订单；到账须依据真实支付凭证",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 replied 可以 to three merchant earnings statuses and per-order linked details"
+      "source": "Owner 2026-11-08 replied 可以 to three merchant earnings statuses and per-order linked details",
+      "mock_status": "mock_partial"
     },
     {
       "id": "UI-M-015",
@@ -551,7 +644,8 @@
       "name": "商家场地收益结算不采用周结，结算周期最短按月；具体月结方式和打款日后续确定",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 rejected weekly due to data labeling timeline and said 最起码得按月"
+      "source": "Owner 2026-11-08 rejected weekly due to data labeling timeline and said 最起码得按月",
+      "mock_status": "mock_partial"
     },
     {
       "id": "UI-M-016",
@@ -559,7 +653,8 @@
       "name": "商家收益按自然月展示统计及订单明细，具体财务结算和打款时间与自然月统计解耦并由实际业务周期另定",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 said 可以可以 to natural-calendar-month statistics, business-cycle settlement/payment TBD"
+      "source": "Owner 2026-11-08 said 可以可以 to natural-calendar-month statistics, business-cycle settlement/payment TBD",
+      "mock_status": "mock_partial"
     },
     {
       "id": "UI-C-014",
@@ -567,7 +662,8 @@
       "name": "采集预约和实际任务只能在商家开放时段内完成，关店前采集和自助归还结束，不创建跨夜跨日连续采集订单",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner corrected unrealistic cross-month overnight collection example: stores close at night, collectors cannot continue after close"
+      "source": "Owner corrected unrealistic cross-month overnight collection example: stores close at night, collectors cannot continue after close",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-015",
@@ -575,7 +671,8 @@
       "name": "末单采集预约结束时间不得晚于商家当日有效关门时间前15分钟，留出自助设备归还；与相邻订单至少30分钟缓冲分别执行",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 said 可以 to reserve 15 minutes before store closes for device return"
+      "source": "Owner 2026-11-08 said 可以 to reserve 15 minutes before store closes for device return",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-016",
@@ -583,7 +680,8 @@
       "name": "超时未完成设备归还时系统自动提醒采集员，并支持查看归还与核验状态",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 said 可以 to overdue equipment return reminders"
+      "source": "Owner 2026-11-08 said 可以 to overdue equipment return reminders",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-A-001",
@@ -591,7 +689,8 @@
       "name": "采集员超时未归还设备时凌矩后台收到告警并负责跟进，商家无催还追讨责任",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 said 可以 to notify Lingju backend; merchants do not chase equipment"
+      "source": "Owner 2026-11-08 said 可以 to notify Lingju backend; merchants do not chase equipment",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-017",
@@ -599,7 +698,8 @@
       "name": "采集员订单内提供设备异常上报入口，可报告密码箱打不开、设备损坏故障、无法正常归还并向凌矩反馈",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 replied 可以 to device exception report button on collector order"
+      "source": "Owner 2026-11-08 replied 可以 to device exception report button on collector order",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-A-002",
@@ -607,7 +707,8 @@
       "name": "凌矩后台接收关联订单和设备的采集员异常报告并跟进；商家不承担设备维修、核查和追讨责任",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner approved collector reporting issues directly to Lingju"
+      "source": "Owner approved collector reporting issues directly to Lingju",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-018",
@@ -615,7 +716,8 @@
       "name": "设备异常上报支持上传现场照片并关联对应订单及异常记录，供凌矩核查；是否必须提供及数量限制待定",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-08 replied 可以 to collector uploading onsite photos as equipment exception evidence"
+      "source": "Owner 2026-11-08 replied 可以 to collector uploading onsite photos as equipment exception evidence",
+      "mock_status": "mock_implemented"
     },
     {
       "id": "UI-A-003",
@@ -623,7 +725,8 @@
       "name": "凌矩后台人员可将故障设备暂停新采集订单预约，修复核验可用后恢复，并保留暂停和恢复记录",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-09 confirmed Lingju admin can pause faulty equipment new bookings until repaired/verified"
+      "source": "Owner 2026-11-09 confirmed Lingju admin can pause faulty equipment new bookings until repaired/verified",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-019",
@@ -631,7 +734,8 @@
       "name": "设备被凌矩暂停接单时屏蔽该设备的新预约时段；既有预约应另行妥善处理，不因故障报告直接自动判责",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner approves suspension of new bookings for affected equipment; existing bookings handling pending"
+      "source": "Owner approves suspension of new bookings for affected equipment; existing bookings handling pending",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-019",
@@ -639,7 +743,8 @@
       "name": "设备故障影响已预约订单时采集员收到系统通知，并可在订单中选择取消或改约",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-09 replied 可以 to auto-notify collectors affected by device fault and offer cancel or reschedule"
+      "source": "Owner 2026-11-09 replied 可以 to auto-notify collectors affected by device fault and offer cancel or reschedule",
+      "mock_status": "mock_tested"
     },
     {
       "id": "S-020",
@@ -647,7 +752,8 @@
       "name": "故障暂停设备时识别受影响的已预约订单、通知相关采集员并提供取消改约入口；不无声删除订单",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner confirmed existing affected booking notification plus collector choice"
+      "source": "Owner confirmed existing affected booking notification plus collector choice",
+      "mock_status": "mock_tested"
     },
     {
       "id": "UI-C-020",
@@ -655,7 +761,8 @@
       "name": "经确认因设备故障造成预约取消时不扣采集员信誉分，不记作采集员违约；争议原因先核查",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-09 replied 可以 to no reputation deduction for equipment-failure-caused cancellation"
+      "source": "Owner 2026-11-09 replied 可以 to no reputation deduction for equipment-failure-caused cancellation",
+      "mock_status": "mock_tested"
     },
     {
       "id": "C-LOW60-EXISTING-20261109",
@@ -663,7 +770,8 @@
       "name": "信誉低于60分时已确认普通预约原则上继续，涉及已核查安全风险时凌矩逐单暂停；取消不追加扣分",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-09 approved item 60; DEC-2026-11-09-41"
+      "source": "Owner 2026-11-09 approved item 60; DEC-2026-11-09-41",
+      "mock_status": "mock_tested"
     },
     {
       "id": "D-BATCH-MERCHANT",
@@ -671,7 +779,8 @@
       "name": "一揽子商家申请/状态/关店影响预约/设备和收益明细工作默认",
       "status": "ai_delegated_working_default",
       "implemented": false,
-      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals",
+      "mock_status": "mock_partial"
     },
     {
       "id": "D-BATCH-COLLECTOR",
@@ -679,7 +788,8 @@
       "name": "一揽子任务列表、预约防冲突、取还设备、QA、月度收入和消息交互默认",
       "status": "ai_delegated_working_default",
       "implemented": false,
-      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals",
+      "mock_status": "mock_partial"
     },
     {
       "id": "D-BATCH-OPERATOR",
@@ -687,7 +797,8 @@
       "name": "一揽子凌矩后台审核队列、设备异常、QA复核、审计与权限职责默认",
       "status": "ai_delegated_working_default",
       "implemented": false,
-      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals",
+      "mock_status": "mock_partial"
     },
     {
       "id": "D-BATCH-SYSTEM",
@@ -695,7 +806,8 @@
       "name": "一揽子状态机、时间、幂等、消息去重、数据隔离与异常验收默认",
       "status": "ai_delegated_working_default",
       "implemented": false,
-      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals",
+      "mock_status": "mock_partial"
     },
     {
       "id": "D-BATCH-DEMO",
@@ -703,7 +815,8 @@
       "name": "演示版多角色可点击流程、虚构数据标识及场景验收默认",
       "status": "ai_delegated_working_default",
       "implemented": false,
-      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals"
+      "source": "FUNCTIONAL_RULES_BATCH_V1_20261109.md; Owner delegated routine details, not commercial/production approvals",
+      "mock_status": "mock_partial"
     },
     {
       "id": "S-WECHAT-EXPERIENCE-20261109",
@@ -711,12 +824,13 @@
       "name": "交付原生微信小程序可导入体验版（商家与采集员双端＋凌矩模拟后台），不先做独立网页演示",
       "status": "confirmed_concept",
       "implemented": false,
-      "source": "Owner 2026-11-09 said 同意 to direct native WeChat Mini Program experience; DEC-2026-11-09-43; Issue #25"
+      "source": "Owner 2026-11-09 said 同意 to direct native WeChat Mini Program experience; DEC-2026-11-09-43; Issue #25",
+      "mock_status": "mock_partial"
     }
   ],
   "mvp_approved_reference": "GitHub Issue #24 (pure front-end simulation only)",
   "mvp_scope_approval": "Owner approved demo concept, individual implementation scope to be reconciled with updated two-sided charter before work",
-  "next_step": "Codex reads miniapp/AGENTS.md and issue #24, then creates isolated demo code PR after current owner prioritization",
+  "next_step": "Review the V0.1 Draft PR and check real-device preview with the local authorized AppID.",
   "batch_default_document": "miniapp/knowledge/FUNCTIONAL_RULES_BATCH_V1_20261109.md",
   "native_wechat_mock_experience": {
     "status": "owner_confirmed_concept",
@@ -724,6 +838,7 @@
     "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/25",
     "target_path": "miniapp/apps/wechat/",
     "scope": "native_miniprogram_fake_data_only",
-    "implemented": false
+    "implemented": true,
+    "verification": "offline_tests_and_desktop_simulator_smoke_passed_real_device_preview_pending"
   }
 }

@@ -1,0 +1,35 @@
+<view class="screen">
+  <view class="entry-brand">
+    <view class="row brand-lockup"><view class="brand-logo">凌</view><text>凌矩</text></view>
+    <text class="badge">模拟体验</text>
+  </view>
+  <view class="entry-cover">
+    <image class="cover-art" src="/assets/station-network.svg" mode="aspectFit"/>
+    <view class="cover-copy">
+      <view class="cover-label">LINGJU STATIONS</view>
+      <view class="cover-title"><view>共享</view><view>采集站</view></view>
+      <view class="cover-description">按门店开放时段预约设备，到店自助完成采集。</view>
+    </view>
+  </view>
+  <view class="section heading">选择你的身份</view>
+  <button class="entry-choice" data-role="merchant" bindtap="choose">
+    <view class="icon-chip"><image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/></view>
+    <view class="grow">
+      <view class="subheading">我是商家</view>
+      <text class="muted">申请设备入驻 · 管理门店排班</text>
+    </view>
+    <view class="chevron">›</view>
+  </button>
+  <button class="entry-choice" data-role="collector" bindtap="choose">
+    <view class="icon-chip icon-chip-lime"><image class="icon" src="/assets/icons/radar.svg" mode="aspectFit"/></view>
+    <view class="grow">
+      <view class="subheading">我是采集员</view>
+      <text class="muted">找站点任务 · 预约时段 · 查收益</text>
+    </view>
+    <view class="chevron">›</view>
+  </button>
+  <view class="entry-footer">
+    <view class="muted small">虚构站点与订单 · 仅保存到当前设备</view>
+    <button bindtap="reset">重置演示数据</button>
+  </view>
+</view>

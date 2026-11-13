@@ -1,10 +1,10 @@
 {
   "schema_version": "lingju_miniapp_state_v1",
   "project_id": "lingju-merchant-collector-miniapp",
-  "updated_at": "2026-11-09",
+  "updated_at": "2026-11-10",
   "home": "miniapp/knowledge/00_START_HERE.md",
   "product_charter": "miniapp/knowledge/PRODUCT_CHARTER.md",
-  "phase": "native_wechat_experience_approved_development_not_yet_verified",
+  "phase": "native_wechat_mock_v0_1_desktop_smoke_verified_draft_pr",
   "model": "merchant_host_device_plus_individual_collector_hourly_orders",
   "model_confirmed_by_owner": true,
   "mvp": {
@@ -12,22 +12,22 @@
     "owner_approved": true,
     "issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/25",
     "issue_number": 25,
-    "code_in_repo_verified": false,
-    "codex_actively_running_verified": false,
-    "pr_created_verified": false,
-    "tests_verified": false,
+    "code_in_repo_verified": true,
+    "codex_actively_running_verified": true,
+    "pr_created_verified": true,
+    "tests_verified": true,
     "publicly_deployed": false,
     "real_payment": false,
     "real_user_data": false,
     "prior_issue_url": "https://github.com/jinxi1036-maker68/jiqiren/issues/24",
     "prior_web_demo_direction": "superseded_by_owner_approval_of_native_wechat_miniprogram",
-    "local_wechat_devtools_import_verified": false,
+    "local_wechat_devtools_import_verified": true,
     "wechat_account_available_per_owner": true,
-    "app_id_configured_verified": false,
+    "app_id_configured_verified": true,
     "wechat_experience_uploaded_verified": false
   },
   "technology": {
-    "wechat_mini_program_stack": "native_WXML_WXSS_JS_JSON_proposed_for_initial_mock_subject_to_repository_review",
+    "wechat_mini_program_stack": "native_WXML_WXSS_JS_JSON",
     "backend": "no_backend_for_initial_mock",
     "api": "local_fake_data_only",
     "real_customer_integration": "not_authorized"
@@ -45,8 +45,8 @@
     "no claim of real QA without verified source",
     "don't hardcode merchant 20 CNY trigger until owner specifies"
   ],
-  "latest_decision": "Owner has WeChat Mini Program account and expressly approved Codex building a native WeChat Mini Program experience version directly instead of a standalone HTML demo. Issue #25 created. Scope remains fake data only; code, tests, account linkage, experience upload and public release unverified.",
-  "next_gate": "Issue #25: Codex should inspect current repository, build native WeChat Mini Program simulated experience in miniapp/apps/wechat, run verifiable build/tests, submit Draft PR for review. Owner later imports in WeChat DevTools and provides own AppID/preview authorization. No real server, upstream QA, device, payment or public release.",
+  "latest_decision": "Owner approved the native WeChat mock for Issue #25, superseding the web-first delivery format. Local V0.1 code and offline tests are verified. Production systems and WeChat release remain outside this scope.",
+  "next_gate": "Review the Draft PR and verify real-device preview with the authorized local AppID.",
   "ui_design_approved_20261108": {
     "source": "Owner explicit message: 可以，我同意这样设计。",
     "decision_id": "DEC-2026-11-08-04",
@@ -54,7 +54,7 @@
     "home_two_role_entry": true,
     "remember_selected_role": true,
     "allow_role_switch": true,
-    "actual_implementation": false,
+    "actual_implementation": true,
     "login_or_identity_verification_approved": false
   },
   "merchant_home_first_version_20261108": {
@@ -1195,5 +1195,252 @@
     "implemented": false,
     "tests_verified": false,
     "experience_uploaded": false
+  },
+  "mock_v0_1": {
+    "scope": "local_mock_only",
+    "branch": "codex/wechat-mock-v0.1",
+    "code": "miniapp/apps/wechat/",
+    "readme": "miniapp/apps/wechat/README.md",
+    "base_commit": "e9ab0fc2b8e103bf2ac2471cd547c440860687f9",
+    "implemented": {
+      "merchant": [
+        "mock onboarding and installation confirmation",
+        "weekly windows, date exceptions and schedule",
+        "monthly venue ledger"
+      ],
+      "collector": [
+        "three fictional stations with illustrated SOPs",
+        "booking, reschedule and self-service pickup/return",
+        "QA and monthly earnings",
+        "credit, inbox and subsidy"
+      ],
+      "operations": [
+        "isolated debug launch",
+        "site, task and equipment controls",
+        "return verification, QA and appeals",
+        "eligibility, subsidy reviews and audit"
+      ],
+      "platform": [
+        "local state and reset",
+        "manual simulation clock",
+        "no network business integrations"
+      ]
+    },
+    "verified": {
+      "node_automated_tests_passed": 25,
+      "compiler": "miniprogram-compiler 0.2.3: six WXML routes compiled and rendered, WXSS compiled",
+      "devtools_guest_import": "2.02.2609250 recognized project metadata, then system error 1 during placeholder AppID validation",
+      "desktop_simulator_verified": true,
+      "real_device_preview_verified": false,
+      "offline_render_screenshot": "miniapp/apps/wechat/evidence/v0.1-offline-render.png",
+      "desktop_simulator_smoke": "DevTools 2.02.2609250 and base library 3.18.0 with a local AppID: compiled and interacted from home through collector task list to illustrated task detail and booking controls."
+    },
+    "draft_pr": "https://github.com/jinxi1036-maker68/jiqiren/pull/26",
+    "interface_refresh": {
+      "status": "implemented_desktop_smoke_tested",
+      "scope": [
+        "role selection",
+        "collector navigation and task cards",
+        "booking controls",
+        "order progress",
+        "merchant onboarding and navigation"
+      ],
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-interface-refresh.png",
+      "desktop_smoke": "role entry, collector task list, slot selection and merchant onboarding landing",
+      "automated_tests_passed": 25
+    },
+    "collector_flow_refresh": {
+      "status": "implemented_automated_tested",
+      "scope": [
+        "next reservation",
+        "explicit slot selection",
+        "onsite guidance",
+        "independent return and QA results"
+      ],
+      "automated_tests_passed": 28,
+      "offline_render": "explicit booking, next order, arrival guidance and independent results",
+      "guided_order_actions": "early appointment to return through visible order actions, with on-demand simulation clock and device checks"
+    },
+    "onsite_and_ops_refresh": {
+      "status": "implemented_automated_tested",
+      "base_commit": "81965c2665659bcb156d449e5dd0a24850c5fe1e",
+      "scope": [
+        "fictional station guide, address search and copy",
+        "collector filters persisted separately from role and demo persona selection",
+        "district and visit details, application repopulation and schedule impact preview",
+        "order-linked help and operator work queue, including closure without device suspension",
+        "independent return and upload receipts with a simulated retry"
+      ],
+      "automated_tests_passed": 32,
+      "offline_render": "six WXML routes and WXSS compiled, guide, help, receipts, operator queue and schedule preview rendered",
+      "real_device_preview_verified": false
+    },
+    "map_and_order_actions": {
+      "status": "implemented_automated_tested",
+      "base_commit": "a66a1cdb830f396868829b9f4913ba1a0a9fc4e2",
+      "scope": [
+        "native WeChat map entry on task, order and help, with district demo pins",
+        "persistent order action with availability reason, refresh, reschedule or return to discovery",
+        "inline order help with submission feedback"
+      ],
+      "automated_tests_passed": 34,
+      "offline_render": "six WXML routes and WXSS compiled; navigation, impacted order reschedule and help controls rendered",
+      "real_device_map_verified": false
+    },
+    "role_home_return": {
+      "status": "implemented_automated_tested",
+      "base_commit": "c9d475f7d09e47a452fd6fda563531af279039d2",
+      "scope": "remember the role on a standard cold start; keep the role chooser on native return home and explicit switch",
+      "automated_tests_passed": 35,
+      "real_device_home_button_verified": false
+    },
+    "merchant_board_and_order_polish": {
+      "status": "implemented_automated_tested",
+      "base_commit": "63f32dd0152e46e494ed6da8ed25d8ea0d2b71d9",
+      "scope": [
+        "merchant overview with next visit, device state and opening hours",
+        "schedule rail with opening, reservations, buffers, closure and impact",
+        "order status hierarchy, primary and secondary controls and form feedback"
+      ],
+      "automated_tests_passed": 36,
+      "offline_render": "six WXML routes and WXSS compiled; 375px layout verified for merchant board and two order states",
+      "real_device_visual_verified": false
+    },
+    "account_and_campaign_experience": {
+      "status": "implemented_automated_tested",
+      "base_commit": "2597fa67a34f5bab5ab6fc23eb58c092ac59960b",
+      "scope": [
+        "collector discovery and role-specific account hubs",
+        "local demo login, campaign and coupon records, referral eligibility",
+        "service guides, settings, feedback and simulated ops reply"
+      ],
+      "automated_tests_passed": 39,
+      "offline_render": "seven WXML routes and WXSS compiled; four 375px screenshots inspected",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-account-experience.png",
+      "real_device_visual_verified": false,
+      "pending": ["real login and data storage", "cash reward rules and settlement", "cross-device referral attribution"]
+    },
+    "merchant_d1_workspace": {
+      "status": "implemented_automated_tested",
+      "base_commit": "40cac1d8004ce1964fb0b9234b6e6a6e06339346",
+      "scope": [
+        "D.1 workbench, opening hours, venue earnings and store management",
+        "weekly schedule and isolated single-date edits with impact preview and restore",
+        "venue earnings by month and stage, unpriced confirmation, pending return verification and linked receipts",
+        "explicit simulated operations steps for reconciliation and receipt"
+      ],
+      "automated_tests_passed": 41,
+      "offline_render": "seven WXML routes and WXSS compiled; four merchant sections, schedule preview and ledger details inspected at 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-merchant-d1.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_d1_workspace": {
+      "status": "implemented_automated_tested",
+      "base_commit": "7802c82934d691edfc9a4d6f9ab5682e5304f864",
+      "scope": [
+        "D.1 discovery with fixed next order and native swipeable simulated stories, benefits and promotion",
+        "booking time selection and fixed confirmation control",
+        "four-step order progress, guidance, map and help with fixed next action",
+        "collector profile with order stage filtering and grouped account services"
+      ],
+      "automated_tests_passed": 43,
+      "offline_render": "seven WXML routes and WXSS compiled; layouts inspected at 320px and 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-d1.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_guided_steps": {
+      "status": "implemented_automated_tested",
+      "base_commit": "8bee1a924f0a89a595f6187ce301b05d93e333d5",
+      "scope": [
+        "less repetitive discovery and booking copy, optional visit and SOP details",
+        "native swiper with 5-second looping autoplay, manual swipe and tab selection",
+        "phase-specific illustrated travel, pickup, capture and return guidance with the existing primary actions"
+      ],
+      "automated_tests_passed": 43,
+      "offline_render": "seven WXML routes and WXSS compiled, 320px and 375px layouts inspected",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-step-guides.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_departure_action_order": {
+      "status": "implemented_automated_tested",
+      "base_commit": "08ef53ef0e51e513d3f85c012662eeee300c96a1",
+      "scope": "Booked orders with available equipment show departure before check-in even after the check-in window opens.",
+      "automated_tests_passed": 44,
+      "offline_render": "seven WXML routes and WXSS compiled; verified departure and check-in controls at the 15-minute boundary",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_booking_minimum": {
+      "status": "implemented_automated_tested",
+      "base_commit": "fe44b1553596dec034949712d824e222031a80fe",
+      "scope": "New and rescheduled bookings require at least 120 continuous minutes. Existing bookings remain valid at their original times.",
+      "automated_tests_passed": 46,
+      "offline_render": "seven WXML routes and WXSS compiled; verified earliest end time and end slot rendering",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_ink_navigation": {
+      "status": "implemented_automated_tested",
+      "base_commit": "58d95873f002c102303ad7bfb0de2837cec61090",
+      "decision": "DEC-2026-11-10-02",
+      "scope": ["search-first home and store guide", "inline account wallet and order filters", "simulated scan opens matching owned order"],
+      "automated_tests_passed": 48,
+      "offline_render": "seven WXML routes and WXSS compiled; home, profile and expanded wallet inspected at 320px and 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-ink.png",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_booking_clock": {
+      "status": "implemented_automated_tested",
+      "base_commit": "31c973367a161ded0773927cfa5f717316ae21fb",
+      "decision": "DEC-2026-11-10-03",
+      "scope": "Use current device time as the booking clock floor. Refresh foreground slots each minute and reject stale submissions.",
+      "automated_tests_passed": 51,
+      "offline_render": "seven WXML routes and WXSS compiled; verified current-time and fast-forward labels",
+      "desktop_simulator_interaction_verified": false,
+      "real_device_visual_verified": false
+    },
+    "collector_mobile_booking": {
+      "status": "implemented_automated_tested",
+      "base_commit": "609a95b46e7abf26cd0f17a74d3d0d41ab14e4d7",
+      "decision": "DEC-2026-11-10-04",
+      "scope": ["persistent date controls and next available day", "visible start and end buttons", "mobile reading hierarchy in task, order, collector home and merchant board"],
+      "automated_tests_passed": 53,
+      "offline_render": "seven WXML routes and WXSS compiled; 320px and 375px views inspected",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-mobile-booking.png",
+      "desktop_simulator_interaction_verified": true,
+      "real_device_visual_verified": false
+    },
+    "collector_home_cards": {
+      "status": "implemented_automated_tested",
+      "decision": "DEC-2026-11-10-05",
+      "scope": "Separate collector station cards with station identity, local scene art, availability, example reward emphasis and two-column phone filters.",
+      "automated_tests_passed": 53,
+      "offline_render": "seven WXML routes and WXSS compiled; collector home inspected at 320px and 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-collector-station-cards.png",
+      "desktop_simulator_visual_verified": true,
+      "real_device_visual_verified": false
+    },
+    "booking_merchant_demo_entry": {
+      "status": "implemented_automated_tested_desktop_smoke_verified",
+      "decision": "DEC-2026-11-10-06",
+      "scope": ["home cards link to next available date", "booking distinguishes blocked stations from no daily slot", "merchant onboarding screen links to an existing deployed mock store"],
+      "automated_tests_passed": 55,
+      "offline_render": "seven WXML routes and WXSS compiled; four screens inspected at 320px and 375px",
+      "screenshot": "miniapp/apps/wechat/evidence/v0.1-booking-merchant-entry.png",
+      "desktop_simulator_merchant_entry_verified": true,
+      "real_device_visual_verified": false
+    },
+    "collector_overdue_recovery": {
+      "status": "implemented_automated_tested",
+      "decision": "DEC-2026-11-10-07",
+      "scope": ["normal future slots bookable before preceding return", "overdue device pauses only its new bookings", "phone-local mock operator entry and return verification recovery"],
+      "automated_tests_passed": 57,
+      "offline_render": "seven WXML routes and WXSS compiled; overdue booking and mock operator verification actions rendered",
+      "real_device_visual_verified": false
+    }
   }
 }

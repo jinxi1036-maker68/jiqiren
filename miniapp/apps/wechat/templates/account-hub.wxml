@@ -1,0 +1,75 @@
+<template name="account-hub">
+  <view class="hub-header row split">
+    <view class="account-title">我的</view>
+    <button class="account-link touch-control" hover-class="control-pressed" bindtap="switchRole">切换身份 ›</button>
+  </view>
+  <view class="hub-identity">
+    <image class="hub-art" src="/assets/member-route.svg" mode="aspectFit"/>
+    <view class="row hub-identity-content">
+      <view class="hub-avatar">{{account.merchant ? '商' : '采'}}</view>
+      <view class="grow">
+        <view class="hub-name">{{account.loggedIn ? account.name : '欢迎来到凌矩'}}</view>
+        <view class="hub-caption">{{account.merchant ? '商家' : '个人采集员'}} · {{account.loggedIn ? '已演示登录' : '演示体验'}}</view>
+      </view>
+    </view>
+    <button wx:if="{{!account.loggedIn}}" class="hub-login touch-control" hover-class="control-pressed" data-role="{{account.role}}" data-view="login" bindtap="openAccount">点击登录 <text>›</text></button>
+  </view>
+
+  <view class="account-paper hub-shortcuts" wx:if="{{!account.merchant}}">
+    <button class="hub-shortcut" hover-class="control-pressed" data-section="orders" bindtap="section">
+      <image class="icon" src="/assets/icons/orders.svg" mode="aspectFit"/><text>我的订单</text>
+    </button>
+    <button class="hub-shortcut" hover-class="control-pressed" data-section="income" bindtap="section">
+      <image class="icon" src="/assets/icons/wallet.svg" mode="aspectFit"/><text>我的收益</text>
+    </button>
+    <button class="hub-shortcut" hover-class="control-pressed" data-view="coupons" bindtap="openAccount">
+      <image class="icon" src="/assets/icons/ticket.svg" mode="aspectFit"/><text>我的券</text>
+      <text wx:if="{{account.coupons.length}}" class="hub-shortcut-count">{{account.coupons.length}}</text>
+    </button>
+    <button class="hub-shortcut" hover-class="control-pressed" data-view="credit" bindtap="openAccount">
+      <image class="icon" src="/assets/icons/person.svg" mode="aspectFit"/><text>信誉记录</text>
+    </button>
+  </view>
+  <view class="account-paper hub-shortcuts hub-shortcuts-merchant" wx:elif="{{deployed}}">
+    <button class="hub-shortcut" hover-class="control-pressed" data-section="home" bindtap="section">
+      <image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/><text>门店概览</text>
+    </button>
+    <button class="hub-shortcut" hover-class="control-pressed" data-section="schedule" bindtap="section">
+      <image class="icon" src="/assets/icons/calendar.svg" mode="aspectFit"/><text>开放时间</text>
+    </button>
+    <button class="hub-shortcut" hover-class="control-pressed" data-section="income" bindtap="section">
+      <image class="icon" src="/assets/icons/wallet.svg" mode="aspectFit"/><text>场地账目</text>
+    </button>
+  </view>
+  <button wx:else class="ghost account-button hub-return" data-section="home" bindtap="section">查看门店入驻进度 ›</button>
+
+  <block wx:if="{{!account.merchant}}">
+    <view class="account-heading account-section">采集福利</view>
+    <view class="account-paper hub-group">
+      <button class="hub-cell" hover-class="control-pressed" data-view="benefits" bindtap="openAccount">
+        <image class="icon" src="/assets/icons/ticket.svg" mode="aspectFit"/>
+        <view class="grow"><view>福利活动</view><view class="hub-cell-description">领体验券，完成首单</view></view><text class="hub-arrow">›</text>
+      </button>
+      <button class="hub-cell" hover-class="control-pressed" data-view="invite" bindtap="openAccount">
+        <image class="icon" src="/assets/icons/people.svg" mode="aspectFit"/>
+        <view class="grow"><view>邀请好友</view><view class="hub-cell-description">查邀请和奖励进度</view></view><text class="hub-arrow">›</text>
+      </button>
+    </view>
+  </block>
+
+  <view class="account-heading account-section">帮助与服务</view>
+  <view class="account-paper hub-group">
+    <button class="hub-cell" hover-class="control-pressed" data-role="{{account.role}}" data-view="guide" bindtap="openAccount">
+      <image class="icon" src="/assets/icons/guide.svg" mode="aspectFit"/><text class="grow">服务指南</text><text class="hub-arrow">›</text>
+    </button>
+    <button class="hub-cell" hover-class="control-pressed" data-role="{{account.role}}" data-view="feedback" bindtap="openAccount">
+      <image class="icon" src="/assets/icons/feedback.svg" mode="aspectFit"/><text class="grow">投诉建议</text><text class="hub-arrow">›</text>
+    </button>
+    <button class="hub-cell" hover-class="control-pressed" data-role="{{account.role}}" data-view="about" bindtap="openAccount">
+      <image class="icon" src="/assets/icons/store.svg" mode="aspectFit"/><text class="grow">关于我们</text><text class="hub-arrow">›</text>
+    </button>
+    <button class="hub-cell" hover-class="control-pressed" data-role="{{account.role}}" data-view="settings" bindtap="openAccount">
+      <image class="icon" src="/assets/icons/settings.svg" mode="aspectFit"/><text class="grow">设置</text><text class="hub-arrow">›</text>
+    </button>
+  </view>
+</template>

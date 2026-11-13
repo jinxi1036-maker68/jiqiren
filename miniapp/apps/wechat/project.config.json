@@ -1,0 +1,46 @@
+{
+  "description": "凌矩共享采集站 V0.1 · 本地模拟",
+  "appid": "touristappid",
+  "projectname": "凌矩共享采集站",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "./",
+  "libVersion": "3.7.8",
+  "setting": {
+    "es6": true,
+    "minified": true
+  },
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "tests"
+      },
+      {
+        "type": "folder",
+        "value": "evidence"
+      },
+      {
+        "type": "file",
+        "value": "README.md"
+      }
+    ]
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "用户入口",
+          "pathName": "pages/home/index",
+          "query": "choose=1",
+          "scene": null
+        },
+        {
+          "name": "凌矩模拟运营",
+          "pathName": "pages/ops/index",
+          "query": "mode=mock-ops",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
