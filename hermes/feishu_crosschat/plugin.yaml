@@ -1,0 +1,6 @@
+name: company_feishu_crosschat
+version: 0.1.0
+description: Owner-authorized Feishu DM to group work for the existing Hermes employee.
+kind: standalone
+provides_tools:
+  - company_feishu_crosschat
