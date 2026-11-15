@@ -1,25 +1,27 @@
-diff --git a/src/bridge.js b/src/bridge.js
 --- a/src/bridge.js
 +++ b/src/bridge.js
 @@ -9,0 +10 @@
 +import { PeerGate } from "./pi_peer_gate.js";
-@@ -33,0 +35,4 @@
+@@ -33,0 +35,5 @@
 +const peerGate = new PeerGate({
 +  groupId: process.env.COLLAB_GROUP_ID,
 +  peerOpenId: process.env.HERMES_BOT_OPEN_ID,
++  peerAppId: process.env.HERMES_BOT_APP_ID,
 +});
-@@ -45,0 +51 @@
+@@ -45,0 +52 @@
 +  includeRawEvent: true, // sender_type is needed to reject other bots; never log raw events
-@@ -76,0 +83,5 @@
+@@ -76,0 +84,7 @@
 +  const peer = peerGate.admit(msg, text);
 +  if (peer.kind === "reject") {
-+    log("机器人协作消息被拒绝:", peer.reason);
++    log("机器人协作消息被拒绝:", peer.reason,
++      "chat:", msg.chatType, msg.chatId, "sender:", msg.senderId,
++      "type:", msg.raw?.sender?.sender_type, "mentioned:", msg.mentionedBot);
 +    return;
 +  }
-@@ -90 +101 @@
+@@ -90 +104 @@
 -  const t = text;
 +  const t = peer.kind === "peer" ? peer.task : text;
-@@ -119,2 +130,12 @@
+@@ -119,2 +133,12 @@
 -    const reply = await pool.prompt(msg.chatId, t);
 -    await channel.send(msg.chatId, { markdown: reply }, { replyTo: msg.messageId });
 +    const task = peer.kind === "peer"

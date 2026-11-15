@@ -1,4 +1,3 @@
-diff --git a/plugins/platforms/feishu/adapter.py b/plugins/platforms/feishu/adapter.py
 --- a/plugins/platforms/feishu/adapter.py
 +++ b/plugins/platforms/feishu/adapter.py
 @@ -3434 +3434,11 @@
@@ -14,3 +13,11 @@ diff --git a/plugins/platforms/feishu/adapter.py b/plugins/platforms/feishu/adap
 +                )
 +                if not peer_allowed:
 +                    return "bots_disabled"
+@@ -3519,0 +3530,7 @@
++            # Bot mentions may arrive with an app ID (cli_...) rather than the
++            # bot/v3/info open ID (ou_...).  Match only this app's exact ID.
++            app_id = getattr(self, "_app_id", "")
++            if app_id and app_id in {
++                getattr(mention_id, "open_id", None), getattr(mention_id, "user_id", None)
++            }:
++                return True

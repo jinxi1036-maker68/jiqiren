@@ -3,9 +3,10 @@
 const REQUEST = /^【协作请求 ([A-Za-z0-9_-]{6,40}) ([1-3])\/3】\s*/u;
 
 export class PeerGate {
-  constructor({ groupId, peerOpenId, maxRequests = 3, windowMs = 30 * 60_000, now = Date.now }) {
+  constructor({ groupId, peerOpenId, peerAppId, maxRequests = 3, windowMs = 30 * 60_000, now = Date.now }) {
     this.groupId = groupId;
     this.peerOpenId = peerOpenId;
+    this.peerAppId = peerAppId;
     this.maxRequests = maxRequests;
     this.windowMs = windowMs;
     this.now = now;
@@ -16,8 +17,9 @@ export class PeerGate {
   admit(msg, text) {
     const senderType = msg.raw?.sender?.sender_type;
     if (senderType !== "bot" && senderType !== "app") return { kind: "human" };
-    if (!this.groupId || !this.peerOpenId || msg.chatType !== "group" ||
-        msg.chatId !== this.groupId || msg.senderId !== this.peerOpenId || !msg.mentionedBot) {
+    if (!this.groupId || !(this.peerOpenId || this.peerAppId) || msg.chatType !== "group" ||
+        msg.chatId !== this.groupId ||
+        (msg.senderId !== this.peerOpenId && msg.senderId !== this.peerAppId) || !msg.mentionedBot) {
       return { kind: "reject", reason: "untrusted_bot_or_chat" };
     }
     const match = REQUEST.exec(text);

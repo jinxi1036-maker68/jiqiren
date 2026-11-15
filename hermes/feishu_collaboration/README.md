@@ -4,8 +4,9 @@
 
 ## 接入范围
 
-- Hermes 原飞书适配器保持 `allow_bots=none`。仅 `platforms.feishu.extra.bot_peer_allowlist_by_chat` 指定的群与 Pi `open_id` 可以例外，且要求 Pi 真实 @Hermes；其它机器人、群、私聊仍拒绝。
-- Pi 桥接打开 `includeRawEvent` 读取 `sender_type`。来自机器人的消息仅接受指定群、指定 Hermes `open_id`、真实 @Pi，且首部为 `【协作请求 TASKID 1/3】`，其中 TASKID 为 6 到 40 位字母、数字、`_`、`-`。同一任务后续只能依次 `2/3`、`3/3`；30 分钟最多三次请求。普通人的消息维持原有行为。
+- Hermes 原飞书适配器保持 `allow_bots=none`。仅 `platforms.feishu.extra.bot_peer_allowlist_by_chat` 指定的群与 Pi 的接收端 `open_id` 可以例外，且要求 Pi 真实 @Hermes；其它机器人、群、私聊仍拒绝。
+- Pi 桥接打开 `includeRawEvent` 读取 `sender_type`。来自机器人的消息仅接受指定群、指定 Hermes 的接收端 `open_id`、真实 @Pi，且首部为 `【协作请求 TASKID 1/3】`，其中 TASKID 为 6 到 40 位字母、数字、`_`、`-`。同一任务后续只能依次 `2/3`、`3/3`；30 分钟最多三次请求。普通人的消息维持原有行为。
+- 飞书消息查询 API 的机器人 `sender.id` 是应用 ID；WebSocket 事件中的 `sender_id.open_id` 随接收应用而不同。部署时应先用同一条测试消息的 API 回执核准发送应用，再记录各接收端实际看到的 `open_id`。不能把机器人在自己应用下的 `open_id` 直接填给另一个应用。
 - Pi 对协作请求的答复会真实 @Hermes，标注 `【协作答复 TASKID n/3】`。Hermes 决定是否追问、核实和汇总，不按固定脚本决定业务。
 - Hermes 可通过原 `send_message` 工具向该群发纯文本，使用真实飞书 `<at user_id="...">小派派</at>` 标记；该行为仍受 Owner 原有对外发送授权约束。
 
@@ -19,7 +20,7 @@ $env:HERMES_AGENT_ROOT = 'C:\path\to\active\hermes-agent'
 & "$env:HERMES_AGENT_ROOT\.venv\Scripts\python.exe" hermes/feishu_collaboration/test_hermes_peer_gate.py
 ```
 
-飞书真实验收需确认两端消息送达、Pi 被调用、Hermes 实际收到协作答复并汇总，以及没有循环、重复发送或权限扩大。静态测试不能代替这一验收。
+飞书真实验收需确认两端消息送达、Pi 被调用、Hermes 实际收到协作答复并汇总，以及没有循环、重复发送或权限扩大。静态测试不能代替这一验收。2026-11-15 的限定群联调收据见 `VERIFICATION_2026-11-15.md`；真实项目任务的自主分工仍需由 Owner 在群内发起。
 
 ## 回退
 
