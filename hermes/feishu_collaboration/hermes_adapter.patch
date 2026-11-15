@@ -1,0 +1,23 @@
+--- a/plugins/platforms/feishu/adapter.py
++++ b/plugins/platforms/feishu/adapter.py
+@@ -3434 +3434,11 @@
+-                return "bots_disabled"
++                # Narrow opt-in for a named peer bot in one named group.  This
++                # does not alter the default policy for other groups or DMs.
++                peer_rules = (getattr(self.config, "extra", None) or {}).get("bot_peer_allowlist_by_chat") or {}
++                peers = peer_rules.get(chat_id, []) if isinstance(peer_rules, dict) else []
++                peer_allowed = (
++                    is_group and require_mention and bool(self_ids and sender_ids)
++                    and bool(sender_ids.intersection(peers))
++                    and self._message_mentions_bot(getattr(message, "mentions", None) or [])
++                )
++                if not peer_allowed:
++                    return "bots_disabled"
+@@ -3519,0 +3530,7 @@
++            # Bot mentions may arrive with an app ID (cli_...) rather than the
++            # bot/v3/info open ID (ou_...).  Match only this app's exact ID.
++            app_id = getattr(self, "_app_id", "")
++            if app_id and app_id in {
++                getattr(mention_id, "open_id", None), getattr(mention_id, "user_id", None)
++            }:
++                return True
