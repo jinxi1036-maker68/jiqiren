@@ -1,0 +1,40 @@
+{
+  "schema_version": "personal_ip_state_v1",
+  "date": "2026-11-17",
+  "status": "knowledge_base_created_not_published",
+  "owner_confirmed": {
+    "founder_real_person_on_camera": true,
+    "personal_ip_not_corporate_account": true,
+    "topics": "real_entrepreneurship_and_embodied_ai_data_collection",
+    "daily_experiences_to_assistant_for_copywriting": true,
+    "archive_scripts_and_reviews_in_github": true,
+    "hope_for_real_factory_store_scene_collaboration": true
+  },
+  "ideas_not_yet_fixed": {
+    "suggested_platforms": [
+      "Douyin",
+      "WeChat Video Account",
+      "Xiaohongshu"
+    ],
+    "suggested_style": "real_founder_vlog_with_natural_talk",
+    "suggested_lengths_seconds": [
+      45,
+      60,
+      90
+    ]
+  },
+  "actual_progress": {
+    "confirmed_full_scripts": 0,
+    "confirmed_published_posts": 0,
+    "measured_posts": 0,
+    "verified_social_leads": 0,
+    "accounts_verified": false
+  },
+  "next_step": "Collect one real episode from Owner, check scripts index for duplicate story, draft one natural oral script, save approved text and post results only when known.",
+  "links": {
+    "index": "personal-ip/knowledge/00_START_HERE.md",
+    "script_index": "personal-ip/scripts/INDEX.csv",
+    "review_log": "personal-ip/reviews/OPERATIONS_LOG.csv"
+  },
+  "data_provenance": "Owner reports goals and preference; publication and performance not verified"
+}
