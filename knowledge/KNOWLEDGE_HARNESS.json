@@ -29,7 +29,8 @@
     ],
     "hermes_historical_context_on_first_onboarding": "knowledge/history/HERMES_PRODUCT_EVOLUTION_2026-10-16.md",
     "company_evolution_charter": "knowledge/COMPANY_EVOLUTION_CHARTER.md",
-    "company_evolution_timeline": "knowledge/history/COMPANY_EVOLUTION_TIMELINE.md"
+    "company_evolution_timeline": "knowledge/history/COMPANY_EVOLUTION_TIMELINE.md",
+    "founder_ip_routing_rule": "涉及抖音/视频号/小红书个人IP及写口播时先读 personal-ip/knowledge/00_START_HERE.md 和该分库脚本索引；实际视频数据反馈才进入发布复盘台账。"
   },
   "profiles": {
     "orientation": {
@@ -104,6 +105,24 @@
       ],
       "purpose": "由Owner明确的唯一Hermes正式员工定位和自主成长工作方法；动态业务以项目当前事实核验，历史仅供解释，不能当现行部署方案",
       "design_rule": "一个原Hermes长期身份；开放自主思考和方法；业务目标/SOP/派单权限等底线不能由员工自改；后续项目按需培训"
+    },
+    "founder_personal_ip": {
+      "required": [
+        "personal-ip/knowledge/00_START_HERE.md",
+        "personal-ip/knowledge/PROJECT_STATE.json",
+        "personal-ip/knowledge/POSITIONING_AND_PLAYBOOK.md",
+        "personal-ip/scripts/INDEX.csv"
+      ],
+      "on_publish_or_review": [
+        "personal-ip/reviews/OPERATIONS_LOG.csv",
+        "personal-ip/reviews/REVIEW_METHOD.md"
+      ],
+      "on_strategy_change": [
+        "personal-ip/history/EVOLUTION.md",
+        "personal-ip/decisions/2026-11-17_IP_PROJECT_LAUNCH.md"
+      ],
+      "purpose": "Owner personal founder IP: real on-camera short-video script drafting, story deduplication, post data review and stage history",
+      "writing_rule": "Read script index before new full draft; store Owner-confirmed script as unique file with status; do not invent post or views; no permanent method rule from one discussion"
     }
   },
   "lifecycle": {
