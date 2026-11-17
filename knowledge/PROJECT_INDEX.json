@@ -345,5 +345,23 @@
     "server_size_basis": "Alibaba Cloud Linux 3 2vCPU 1.83GiB 920MiB available",
     "destructive_actions_completed": false,
     "hermes_migration_completed": false
+  },
+  "founder_personal_ip_project_20261117": {
+    "date": "2026-11-17",
+    "status": "knowledge_base_created_no_published_content",
+    "path": "personal-ip/knowledge/00_START_HERE.md",
+    "public_persona": "real_founder_self_on_camera",
+    "owner_intent": "daily real entrepreneurship narration and trustworthy embodied-AI data collection learning; eventual qualified scene owners communication",
+    "content_and_review": "personal-ip/knowledge/POSITIONING_AND_PLAYBOOK.md",
+    "script_index": "personal-ip/scripts/INDEX.csv",
+    "performance_log": "personal-ip/reviews/OPERATIONS_LOG.csv",
+    "history": "personal-ip/history/EVOLUTION.md",
+    "decision": "personal-ip/decisions/2026-11-17_IP_PROJECT_LAUNCH.md",
+    "not_done": [
+      "first confirmed full script",
+      "verified account publication",
+      "actual performance data",
+      "verified factory-owner leads"
+    ]
   }
 }
