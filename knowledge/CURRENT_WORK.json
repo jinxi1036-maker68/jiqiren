@@ -626,5 +626,24 @@
     "ledger": "knowledge/PARTNER_LEDGER.json",
     "next_step": "Review replies and bounces, focus Henan long-term trial and Lightwheel supplier registration, evaluate QA and payment, avoid over-contact; three screenshot companies still need proper official forms",
     "codex_blockers_unresolved": true
+  },
+  "capture_design_policy_20261117": {
+    "date": "2026-11-17",
+    "status": "owner_confirmed_design_principle_upstream_approval_pending",
+    "canonical_knowledge_path": "knowledge/strategy/2026-11-17_REAL_ORDER_ONE_TAKE_CAPTURE_SCENE_POLICY.md",
+    "summary": "真实工作一镜到底、工人自主执行有明确完成结果的任务，不强制六步SOP或每5分钟停录；禁止假活、机械/低价值重复、空闲画面，遵守截图双手出镜>90%及离开>3秒无效等要求；正式分类和同款笔连续装配有效性须上游确认。",
+    "owner_reported_existing_order_scene": [
+      "笔组装",
+      "娃娃/玩偶配件组装",
+      "手电筒组装"
+    ],
+    "candidate_classes_not_approved": [
+      "工业制造",
+      "创意工坊",
+      "仓储与物流"
+    ],
+    "long_recording_status": "owner_relayed_upstream_response_full_official_limits_unverified",
+    "repeated_same_product_assembly": "requires_explicit_upstream_confirmation",
+    "historical_fixed_six_step_sop": "legacy_reference_not_mandatory"
   }
 }
