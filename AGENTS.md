@@ -30,3 +30,9 @@ Owner最新明确决定优先，旧方案有冲突时标注`SUPERSEDED`并保留
 - `miniapp/` 是商家版＋个人采集员版小程序的**唯一正式GitHub产品/代码专区**。所有小程序相关Agent必须额外先读 `miniapp/AGENTS.md`、`miniapp/knowledge/00_START_HERE.md`、`miniapp/knowledge/PRODUCT_CHARTER.md` 和 `miniapp/knowledge/PROJECT_STATE.json`，不得沿用早期误解的“采集团队接单”模型。
 - 每次Codex改版在同一仓库提交可追踪源码、测试、`miniapp/CHANGELOG.md`、相应需求/决策/发展历史，并走独立分支PR与Owner验收；不得在聊天临时文件或第二个仓库独立维护互相冲突的版本。
 - 原有Issue #24批准纯前端演示，但历史建议的 `demo/city-station/` 路径现被 `miniapp/apps/demo/` 取代。**资料底座已建立≠Codex开工、正式微信程序或生产后台已上线**。
+
+
+## 创始人个人IP运营专区（2026-11-17建立）
+- 真人口播、抖音/视频号/小红书创作、脚本去重、发布数据与内容复盘时，必须先看 [personal-ip/knowledge/00_START_HERE.md](personal-ip/knowledge/00_START_HERE.md) 和 [personal-ip/scripts/INDEX.csv](personal-ip/scripts/INDEX.csv)。项目在原仓库 personal-ip/，不是第二仓库。
+- 用户确认后把完整文案存成独立条目并更新索引；真实发布和成效有证据才入绩效台账；未获得平台数据不得补造结果。
+- 本分库总结的内容技巧是可以复盘调整的阶段方案，不把单次讨论上升为永久硬性规则。遵守原仓库的公司史、隐私和客户数据保密要求。
