@@ -629,9 +629,10 @@
   },
   "capture_design_policy_20261117": {
     "date": "2026-11-17",
-    "status": "owner_confirmed_design_principle_upstream_approval_pending",
+    "status": "discussion_only_not_permanent_policy",
     "canonical_knowledge_path": "knowledge/strategy/2026-11-17_REAL_ORDER_ONE_TAKE_CAPTURE_SCENE_POLICY.md",
-    "summary": "真实工作一镜到底、工人自主执行有明确完成结果的任务，不强制六步SOP或每5分钟停录；禁止假活、机械/低价值重复、空闲画面，遵守截图双手出镜>90%及离开>3秒无效等要求；正式分类和同款笔连续装配有效性须上游确认。",
+    "owner_correction": "2026-11-17：上游新给的资料仅是本轮讨论材料，不能固定为所有后续工作的永久原则；此前owner_confirmed_design_principle表述已撤回。",
+    "summary": "本轮探索真实订单/自然操作/适用时连续录制、不强制六步的可选表达方式；同时保留原有固定工艺和SOP方案，后续根据当次项目和正式要求决定。",
     "owner_reported_existing_order_scene": [
       "笔组装",
       "娃娃/玩偶配件组装",
@@ -642,8 +643,9 @@
       "创意工坊",
       "仓储与物流"
     ],
-    "long_recording_status": "owner_relayed_upstream_response_full_official_limits_unverified",
+    "long_recording_status": "owner_relayed_new_upstream_information_scope_and_limits_unverified",
     "repeated_same_product_assembly": "requires_explicit_upstream_confirmation",
-    "historical_fixed_six_step_sop": "legacy_reference_not_mandatory"
+    "historical_fixed_six_step_sop": "retained_as_possible_method_not_cancelled",
+    "future_task_method": "decide_case_by_case_not_mandated_by_this_discussion"
   }
 }
