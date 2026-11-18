@@ -32,7 +32,7 @@
     "accounts_verified": false,
     "draft_scripts": 1
   },
-  "next_step": "Owner review IP-20261118-001; record corrections and approval as applicable; do not mark posted without evidence.",
+  "next_step": "Discuss researched writing approach and obtain a real key episode/turning point from Owner before revising same ID; do not count rejected draft as posted.",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -42,6 +42,7 @@
   "latest_script": {
     "id": "IP-20261118-001",
     "path": "personal-ip/scripts/2026/11/IP-20261118-001.md",
-    "status": "DRAFT"
-  }
+    "status": "REJECTED_NEEDS_REWRITE"
+  },
+  "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md"
 }
