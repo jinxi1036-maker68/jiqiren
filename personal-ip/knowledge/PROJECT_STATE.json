@@ -38,7 +38,7 @@
     "accounts_verified": false,
     "draft_scripts": 1
   },
-  "next_step": "Selected content types: viewpoint output and experience sharing. Discuss or draft a concise opinion-led revision of 001 grounded in real experience; specific scripts still await owner approval.",
+  "next_step": "Owner review concise opinion-led v0.5; distinguish personal judgment from actual outcomes; no confirmed publication.",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -48,8 +48,8 @@
   "latest_script": {
     "id": "IP-20261118-001",
     "path": "personal-ip/scripts/2026/11/IP-20261118-001.md",
-    "status": "V0_4_REJECTED_STYLE_EXPLORATION",
-    "version": "0.4",
+    "status": "DRAFT_V0_5",
+    "version": "0.5",
     "source": "personal-ip/history/2026-11-18_FOUNDER_ENTRY_STORY.md"
   },
   "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md",
