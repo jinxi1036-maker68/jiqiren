@@ -32,7 +32,7 @@
     "accounts_verified": false,
     "draft_scripts": 1
   },
-  "next_step": "Owner review v0.2 based on newly provided first-hand entry story; retain earlier rejected draft, no confirmed publication.",
+  "next_step": "Owner review v0.3 with strengthened genuine contrast in opening; retain older versions and do not mark published.",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -42,8 +42,8 @@
   "latest_script": {
     "id": "IP-20261118-001",
     "path": "personal-ip/scripts/2026/11/IP-20261118-001.md",
-    "status": "DRAFT_V0_2",
-    "version": "0.2",
+    "status": "DRAFT_V0_3",
+    "version": "0.3",
     "source": "personal-ip/history/2026-11-18_FOUNDER_ENTRY_STORY.md"
   },
   "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md"
