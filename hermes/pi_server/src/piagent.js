@@ -10,6 +10,63 @@ import path from "node:path";
 
 const log = (...a) => console.log("[pi]", ...a);
 
+function messageText(message) {
+  return (message?.content ?? []).filter(block => block.type === "text").map(block => block.text).join("");
+}
+
+function failedModelReply(error) {
+  const status = String(error?.status ?? "");
+  const detail = String(error?.message ?? error ?? "");
+  if (status === "429" || /(?:^|\bHTTP\s+)429\b|rate.limit.exceeded|too many requests/i.test(detail)) {
+    return "模型服务返回了限流错误（HTTP 429），这次没能生成最终答复。";
+  }
+  if (/timeout|timed out|network|connection|fetch failed|ECONNRESET|ENOTFOUND/i.test(detail)) {
+    return "连接模型服务时出了问题，这次没能生成最终答复。";
+  }
+  return "模型服务本次请求失败，没能生成最终答复。";
+}
+
+export async function promptWithStatus(session, input) {
+  let finalMessage;
+  let webpageStatus = "";
+  const unsubscribe = session.subscribe(({ type, message }) => {
+    if (type !== "message_end") return;
+    if (message?.role === "assistant") finalMessage = message;
+    if (message?.role === "toolResult" && message.toolName === "read_webpage") {
+      let result;
+      try {
+        result = JSON.parse(messageText(message));
+      } catch {
+        return;
+      }
+      if (result?.ok && typeof result.text === "string") {
+        webpageStatus = result.text.trim()
+          ? "网页工具已读到文字。"
+          : "网页工具收到了页面响应，但没有获取到正文。";
+      } else {
+        webpageStatus = "网页工具这次没能读到内容。";
+      }
+    }
+  });
+
+  try {
+    await session.prompt(input);
+    if (finalMessage?.stopReason === "error") {
+      return webpageStatus + failedModelReply(finalMessage.errorMessage);
+    }
+    if (finalMessage?.stopReason === "aborted") {
+      return webpageStatus + "这次处理已中断，最终答复没有生成。";
+    }
+    const reply = messageText(finalMessage);
+    if (finalMessage?.stopReason !== "toolUse" && reply.trim()) return reply;
+    return webpageStatus + "这次没有生成可发送的最终答复。";
+  } catch (error) {
+    return webpageStatus + failedModelReply(error);
+  } finally {
+    unsubscribe();
+  }
+}
+
 export class PiAgentPool {
   constructor({ dataDir, cwd, idleMs = 30 * 60_000, maxActive = 8 }) {
     this.dataDir = dataDir;
@@ -88,10 +145,9 @@ export class PiAgentPool {
       const rec = await this.sessionFor(chatId);
       rec.busy = true;
       try {
-        await rec.session.prompt(text);
+        const reply = await promptWithStatus(rec.session, text);
         rec.lastUsed = Date.now();
-        const reply = rec.session.getLastAssistantText?.() ?? "";
-        return reply || "(没有输出)";
+        return reply;
       } finally {
         rec.busy = false;
       }
