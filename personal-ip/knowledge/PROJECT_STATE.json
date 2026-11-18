@@ -10,7 +10,12 @@
     "archive_scripts_and_reviews_in_github": true,
     "hope_for_real_factory_store_scene_collaboration": true,
     "deliverable_preference": "只提供文案，拍摄由本人负责；不自动附加拍摄或镜头指导。",
-    "copywriting_feedback": "避免内容过多，追求精细、精致、简练；根据素材选择具体长度。"
+    "copywriting_feedback": "避免内容过多，追求精细、精致、简练；根据素材选择具体长度。",
+    "preferred_content_types": [
+      "观点输出型",
+      "经验分享型"
+    ],
+    "preferred_content_types_date": "2026-11-18"
   },
   "ideas_not_yet_fixed": {
     "suggested_platforms": [
@@ -33,7 +38,7 @@
     "accounts_verified": false,
     "draft_scripts": 1
   },
-  "next_step": "Wait for Owner selection among candidate oral styles before writing revised script; natural industry-sharing preference suspected not finalized.",
+  "next_step": "Selected content types: viewpoint output and experience sharing. Discuss or draft a concise opinion-led revision of 001 grounded in real experience; specific scripts still await owner approval.",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
