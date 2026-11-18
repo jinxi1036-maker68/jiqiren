@@ -33,7 +33,7 @@
     "accounts_verified": false,
     "draft_scripts": 1
   },
-  "next_step": "Owner reviews concise v0.4; not published.",
+  "next_step": "Wait for Owner selection among candidate oral styles before writing revised script; natural industry-sharing preference suspected not finalized.",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -43,9 +43,10 @@
   "latest_script": {
     "id": "IP-20261118-001",
     "path": "personal-ip/scripts/2026/11/IP-20261118-001.md",
-    "status": "DRAFT_V0_4",
+    "status": "V0_4_REJECTED_STYLE_EXPLORATION",
     "version": "0.4",
     "source": "personal-ip/history/2026-11-18_FOUNDER_ENTRY_STORY.md"
   },
-  "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md"
+  "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md",
+  "latest_style_research": "personal-ip/research/2026-11-18_ORAL_STYLE_TYPE_EXPLORATION.md"
 }
