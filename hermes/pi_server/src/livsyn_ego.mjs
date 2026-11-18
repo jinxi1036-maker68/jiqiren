@@ -10,7 +10,16 @@ export const views = Object.freeze({
   devices: { path: "/device-management", heading: "设备 ID", fields: ["设备类型", "状态", "采集员", "设备分组"] },
 });
 
-function collectPage({ heading, fields = [] }) {
+const recordFields = Object.freeze({
+  projects: ["项目ID", "项目名称", "项目状态", "任务数", "采集进度", "标注进度", "交付进度"],
+  tasks: ["任务ID", "任务名称", "所属项目", "状态", "数据集数", "采集进度", "标注进度", "交付进度"],
+  uploads: ["上传时间", "入库时间", "数据集", "设备类型", "类型", "状态"],
+  datasets: ["数据集ID", "采集任务", "状态", "操作时间"],
+  reviews: ["数据集", "标注类型", "AI 质检", "复核进度", "数据集抽检"],
+  devices: ["设备类型", "设备类别", "设备分组", "状态", "软件版本", "存储用量"],
+});
+
+function collectPage({ heading, fields = [], recordFields = [] }) {
   const visible = (element) => Boolean(element?.getClientRects().length);
   const text = (element) => element?.innerText?.replace(/\s+/g, " ").trim() ?? "";
   const label = (element) => element?.textContent?.replace(/\s+/g, " ").trim() ?? "";
@@ -45,7 +54,8 @@ function collectPage({ heading, fields = [] }) {
   if (!wrapper) return null;
   const columns = [...wrapper.querySelectorAll("thead th")].filter(visible).map(label);
   const indexes = fields.map((field) => columns.indexOf(field));
-  if (indexes.includes(-1)) return null;
+  const recordIndexes = recordFields.map((field) => columns.indexOf(field));
+  if (indexes.includes(-1) || recordIndexes.includes(-1)) return null;
   const rows = [...wrapper.querySelectorAll("tbody tr[data-row-key]")].filter(visible);
   const noDataShown = [...wrapper.querySelectorAll(".ant-empty-description")].some(visible);
   if (!rows.length && !noDataShown) return null;
@@ -64,6 +74,9 @@ function collectPage({ heading, fields = [] }) {
     columns,
     fields,
     data,
+    records: recordFields.length ? rows.map((row) => Object.fromEntries(recordFields.map((field, index) => [
+      field, text(row.cells[recordIndexes[index]]).slice(0, 120),
+    ]))) : undefined,
     keys: rows.map((row) => row.dataset.rowKey),
     page: Number(text(pager?.querySelector(".ant-pagination-item-active"))) || 1,
     pageSize: Number(text(pager?.querySelector(".ant-select-selection-item")).match(/\d+/)?.[0]) || null,
@@ -94,21 +107,84 @@ export function summarize(result) {
     emptyConfirmed: result.noDataShown,
     fields: result.fields,
     counts: Object.fromEntries([...counts].map(([field, values]) => [field, Object.fromEntries(values)])),
+    ...(result.records ? { records: result.records } : {}),
   };
 }
 
-export async function readLivsynView(page, view, requestedPage = 1) {
-  if (!Object.hasOwn(views, view) || !Number.isSafeInteger(requestedPage) || requestedPage < 1) {
+async function movePage(page, spec, from, desired) {
+  let current = from;
+  const pager = "main .ant-pagination";
+  const quick = pager + " .ant-pagination-options-quick-jumper input";
+  for (let step = 0; current.page !== desired && step < 68; step++) {
+    const control = await page.evaluate(({ pager, quick, currentPage, lastPage, desired }) => {
+      const root = document.querySelector(pager);
+      const numbered = (number) => root?.querySelector(`li.ant-pagination-item[title="${number}"]`);
+      const direct = numbered(desired);
+      const jumpInput = document.querySelector(quick);
+      const towardLast = currentPage === 1 && lastPage - desired < desired - 1;
+      const shortcut = towardLast ? numbered(lastPage) : null;
+      const backwards = desired < currentPage;
+      const jumpClass = backwards ? "li.ant-pagination-jump-prev" : "li.ant-pagination-jump-next";
+      const jump = root?.querySelector(jumpClass);
+      const jumpSize = Number(jump?.title.match(/\d+/)?.[0]);
+      let element, selector, number, typed = false;
+      if (direct || shortcut) {
+        element = direct ?? shortcut;
+        number = direct ? desired : lastPage;
+        selector = `${pager} li.ant-pagination-item[title="${number}"]`;
+      } else if (jumpInput) {
+        element = jumpInput;
+        selector = quick;
+        number = desired;
+        typed = true;
+      } else if (jump && jumpSize && Math.abs(desired - currentPage) >= jumpSize) {
+        element = jump;
+        selector = `${pager} ${jumpClass}`;
+        number = currentPage + (backwards ? -jumpSize : jumpSize);
+      }
+      if (!element) return null;
+      element.scrollIntoView({ block: "center", behavior: "instant" });
+      return { selector, number, typed };
+    }, { pager, quick, currentPage: current.page, lastPage: current.pageCount, desired });
+    if (!control) throw new Error("找不到可核验的分页控件");
+    if (control.typed) {
+      await page.fill(control.selector, String(control.number));
+      await page.press(control.selector, "Enter");
+    } else {
+      await page.click(control.selector, { label: "读取所选业务数据页" });
+    }
+    await page.waitForFunction(({ number, previous }) => {
+      const active = document.querySelector("main .ant-pagination-item-active");
+      const row = document.querySelector("main tr[data-row-key]");
+      return Number(active?.innerText.trim()) === number && row && row.dataset.rowKey !== previous &&
+        !document.querySelector("main .ant-spin-spinning");
+    }, { number: control.number, previous: current.keys[0] }, { timeout: 10000 });
+    await page.waitForFunction(collectPage, spec, { timeout: 10000 });
+    const next = await page.evaluate(collectPage, spec);
+    if (!next || next.page !== control.number || next.pageCount !== from.pageCount ||
+        next.reportedTotal !== from.reportedTotal || next.pageSize !== from.pageSize) {
+      throw new Error("分页结果不一致，无法确认当前读取范围");
+    }
+    current = next;
+  }
+  if (current.page !== desired) throw new Error("未到达请求页");
+  return current;
+}
+
+export async function readLivsynView(page, view, requestedPage = 1, requestedCount = 1, details = false) {
+  if (!Object.hasOwn(views, view) || !Number.isSafeInteger(requestedPage) || requestedPage < 1 ||
+      !Number.isSafeInteger(requestedCount) || requestedCount < 1 || requestedCount > 5) {
     throw new Error("无效的灵生查询范围");
   }
-  const spec = views[view];
+  const spec = { ...views[view], ...(details && recordFields[view] ? { recordFields: recordFields[view] } : {}) };
   const source = origin + spec.path;
   await page.goto(source, { timeout: 12000 });
   try {
     await page.waitForFunction(collectPage, spec, { timeout: 12000 });
   } catch (error) {
     const current = new URL(await page.url());
-    if (current.origin !== origin || /(?:login|sign-in|signin)/i.test(current.pathname)) {
+    const loginForm = await page.evaluate(() => Boolean(document.querySelector('input[type="password"]'))).catch(() => false);
+    if (current.origin !== origin || loginForm || /(?:login|sign-in|signin)/i.test(current.pathname)) {
       throw Object.assign(new Error("需要重新确认灵生登录"), { code: "LOGIN_REQUIRED" });
     }
     throw error;
@@ -117,40 +193,30 @@ export async function readLivsynView(page, view, requestedPage = 1) {
   const first = await page.evaluate(collectPage, spec);
   if (!first) throw new Error("未识别到要求的页面数据");
   if (view === "statistics") {
-    if (requestedPage !== 1) throw new Error("统计报告按日期显示，当前只支持读取默认日期");
+    if (requestedPage !== 1 || requestedCount !== 1) throw new Error("统计报告按日期显示，当前只支持读取默认日期");
     return { view, source, observedAt: new Date().toISOString(), ...first };
   }
-  if (requestedPage > first.pageCount) throw new Error("请求页超过平台显示的页数");
-  let result = first;
-  if (requestedPage !== first.page) {
-    const direct = `main .ant-pagination li.ant-pagination-item[title="${requestedPage}"]`;
-    const quick = "main .ant-pagination-options-quick-jumper input";
-    const control = await page.evaluate(({ direct, quick }) => {
-      const button = document.querySelector(direct);
-      const element = button ?? document.querySelector(quick);
-      if (!element) return null;
-      element.scrollIntoView({ block: "center", behavior: "instant" });
-      return button ? "direct" : "quick";
-    }, { direct, quick });
-    if (control === "direct") {
-      await page.click(direct, { label: "读取所选业务数据页" });
-    } else if (control === "quick") {
-      await page.fill(quick, String(requestedPage));
-      await page.press(quick, "Enter");
-    } else {
-      throw new Error("该页不在当前分页栏，尚未读取");
+  if (requestedPage > first.pageCount) {
+    throw Object.assign(new Error("请求页超过平台显示的页数"), { code: "PAGE_OUT_OF_RANGE" });
+  }
+  const lastPage = Math.min(requestedPage + requestedCount - 1, first.pageCount);
+  let result = await movePage(page, spec, first, requestedPage);
+  const pages = [];
+  const keys = new Set();
+  for (let number = requestedPage; number <= lastPage; number++) {
+    if (number !== result.page) result = await movePage(page, spec, result, number);
+    if ((!result.data.length && !result.noDataShown) || result.keys.some((key) => keys.has(key))) {
+      throw new Error("分页之间有重复或未确认的数据");
     }
-    await page.waitForFunction(({ number, previous }) => {
-      const current = document.querySelector("main .ant-pagination-item-active");
-      const row = document.querySelector("main tr[data-row-key]");
-      return Number(current?.innerText.trim()) === number && row && row.dataset.rowKey !== previous &&
-        !document.querySelector("main .ant-spin-spinning");
-    }, { number: requestedPage, previous: first.keys[0] }, { timeout: 12000 });
-    await page.waitForFunction(collectPage, spec, { timeout: 12000 });
-    result = await page.evaluate(collectPage, spec);
+    result.keys.forEach((key) => keys.add(key));
+    pages.push(summarize(result));
   }
-  if (!result || result.page !== requestedPage || (!result.data.length && !result.noDataShown)) {
-    throw new Error("未确认请求页的实际业务数据");
-  }
-  return { view, source, observedAt: new Date().toISOString(), ...summarize(result) };
+  return {
+    view, source, observedAt: new Date().toISOString(),
+    firstPage: requestedPage, lastPage, pageCount: first.pageCount, rowsRead: keys.size,
+    reportedTotal: first.reportedTotal || null,
+    nextPage: lastPage < first.pageCount ? lastPage + 1 : null,
+    wholeListRead: requestedPage === 1 && lastPage === first.pageCount,
+    pages,
+  };
 }

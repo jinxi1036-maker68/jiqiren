@@ -5,9 +5,13 @@
  */
 import { createLarkChannel } from "@larksuiteoapi/node-sdk";
 import { fileURLToPath } from "node:url";
+import { existsSync } from "node:fs";
 import path from "node:path";
+import { Type } from "typebox";
 import { PiAgentPool } from "./piagent.js";
 import { PeerGate } from "./pi_peer_gate.js";
+import { createLivsynTool } from "./livsyn_tool.mjs";
+import { livsynAuthorized, livsynSocket, readLivsyn } from "./livsyn_client.mjs";
 
 const log = (...a) => console.log("[feishu]", ...a);
 
@@ -21,15 +25,17 @@ if (!appId || !appId.startsWith("cli_") || !appSecret) {
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = path.join(ROOT, "data");
 const list = (v) => (v || "").split(",").map((s) => s.trim()).filter(Boolean);
+const dmAllowlist = list(process.env.ALLOWED_DM_OPEN_IDS);
+const livsynTool = dmAllowlist.length === 1 ? createLivsynTool(Type, readLivsyn) : undefined;
 
 const pool = new PiAgentPool({
   dataDir,
   cwd: process.env.PI_CWD || process.cwd(),
   idleMs: (Number(process.env.IDLE_SESSION_MINUTES) || 30) * 60_000,
   maxActive: Number(process.env.MAX_ACTIVE_SESSIONS) || 8,
+  livsynTool,
 });
 
-const dmAllowlist = list(process.env.ALLOWED_DM_OPEN_IDS);
 const groupAllowlist = list(process.env.GROUP_ALLOWLIST);
 const ackEmoji = process.env.ACK_EMOJI || "OK";
 const peerGate = new PeerGate({
@@ -102,9 +108,10 @@ async function onMessage(msg) {
   }
 
   const t = peer.kind === "peer" ? peer.task : text;
+  const allowLivsyn = Boolean(livsynTool) && peer.kind === "human" && livsynAuthorized(msg, dmAllowlist);
 
   if (t === "/new" || t === "new") {
-    await pool.newSession(msg.chatId);
+    await pool.newSession(msg.chatId, { allowLivsyn });
     await channel.send(msg.chatId, { text: "已为当前聊天开新会话（旧上下文不再延续）。" }, { replyTo: msg.messageId });
     return;
   }
@@ -118,6 +125,7 @@ async function onMessage(msg) {
       `  工作目录: ${s.cwd}`,
       `  会话文件: ${s.file ?? "(未持久化)"}`,
     ];
+    if (allowLivsyn) lines.push(existsSync(livsynSocket) ? "  灵生后台: 服务器只读取数入口在线" : "  灵生后台: 服务器取数入口暂不可用");
     await channel.send(msg.chatId, { text: lines.join("\n") }, { replyTo: msg.messageId });
     return;
   }
@@ -133,7 +141,7 @@ async function onMessage(msg) {
     const task = peer.kind === "peer"
       ? `来自凌矩正式数字员工 Hermes 的群内项目协作请求。请只处理消息中获准的内容；未核实的事实如实标明。\n${t}`
       : t;
-    const reply = await pool.prompt(msg.chatId, task);
+    const reply = await pool.prompt(msg.chatId, task, { allowLivsyn });
     if (peer.kind === "peer") {
       await channel.send(msg.chatId,
         { markdown: `【协作答复 ${peer.id} ${peer.turn}/3】\n${reply}` },

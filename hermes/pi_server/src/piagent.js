@@ -32,14 +32,16 @@ export async function promptWithStatus(session, input) {
   const unsubscribe = session.subscribe(({ type, message }) => {
     if (type !== "message_end") return;
     if (message?.role === "assistant") finalMessage = message;
-    if (message?.role === "toolResult" && message.toolName === "read_webpage") {
+    if (message?.role === "toolResult" && ["read_webpage", "read_livsyn"].includes(message.toolName)) {
       let result;
       try {
         result = JSON.parse(messageText(message));
       } catch {
         return;
       }
-      if (result?.ok && typeof result.text === "string") {
+      if (message.toolName === "read_livsyn") {
+        webpageStatus = result?.ok ? "灵生只读工具已取得后台数据。" : (result?.error ?? "本次未读到灵生数据。");
+      } else if (result?.ok && typeof result.text === "string") {
         webpageStatus = result.text.trim()
           ? "网页工具已读到文字。"
           : "网页工具收到了页面响应，但没有获取到正文。";
@@ -68,13 +70,14 @@ export async function promptWithStatus(session, input) {
 }
 
 export class PiAgentPool {
-  constructor({ dataDir, cwd, idleMs = 30 * 60_000, maxActive = 8 }) {
+  constructor({ dataDir, cwd, idleMs = 30 * 60_000, maxActive = 8, livsynTool }) {
     this.dataDir = dataDir;
     this.sessionsDir = path.join(dataDir, "sessions");
     this.mapFile = path.join(dataDir, "session-map.json");
     this.cwd = cwd;
     this.idleMs = idleMs;
     this.maxActive = maxActive;
+    this.livsynTool = livsynTool;
 
     /** chatId -> 持久会话文件路径 */
     this.map = {};
@@ -102,12 +105,16 @@ export class PiAgentPool {
   }
 
   /** 获取（必要时创建/恢复）某聊天的 pi 会话 */
-  async sessionFor(chatId, { reset = false } = {}) {
+  async sessionFor(chatId, { reset = false, allowLivsyn = false } = {}) {
     if (!reset) {
       const hit = this.sessions.get(chatId);
-      if (hit) {
+      if (hit?.allowLivsyn === allowLivsyn) {
         hit.lastUsed = Date.now();
         return hit;
+      }
+      if (hit) {
+        hit.session.dispose();
+        this.sessions.delete(chatId);
       }
     }
     if (reset) delete this.map[chatId];
@@ -125,6 +132,7 @@ export class PiAgentPool {
     const { session, modelFallbackMessage } = await createAgentSession({
       sessionManager,
       cwd: this.cwd,
+      customTools: allowLivsyn && this.livsynTool ? [this.livsynTool] : [],
     });
     if (modelFallbackMessage) log(chatId, "model fallback:", modelFallbackMessage);
 
@@ -132,17 +140,17 @@ export class PiAgentPool {
     if (fileNow) this.map[chatId] = fileNow;
     this.saveMap();
 
-    const rec = { session, file: fileNow, lastUsed: Date.now(), busy: false };
+    const rec = { session, file: fileNow, lastUsed: Date.now(), busy: false, allowLivsyn };
     this.sessions.set(chatId, rec);
     log("session ready:", chatId, fileNow ?? "(not persisted yet)");
     return rec;
   }
 
   /** 串行执行一次 prompt，返回助手最终文本 */
-  async prompt(chatId, text) {
+  async prompt(chatId, text, { allowLivsyn = false } = {}) {
     const prev = this.queues.get(chatId) ?? Promise.resolve();
     const run = prev.then(async () => {
-      const rec = await this.sessionFor(chatId);
+      const rec = await this.sessionFor(chatId, { allowLivsyn });
       rec.busy = true;
       try {
         const reply = await promptWithStatus(rec.session, text);
@@ -158,7 +166,7 @@ export class PiAgentPool {
   }
 
   /** 为某聊天开新会话 */
-  async newSession(chatId) {
+  async newSession(chatId, { allowLivsyn = false } = {}) {
     const cur = this.sessions.get(chatId);
     if (cur?.session) {
       try {
@@ -168,7 +176,7 @@ export class PiAgentPool {
       }
       this.sessions.delete(chatId);
     }
-    return this.sessionFor(chatId, { reset: true });
+    return this.sessionFor(chatId, { reset: true, allowLivsyn });
   }
 
   status(chatId) {

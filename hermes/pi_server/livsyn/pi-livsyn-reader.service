@@ -1,0 +1,24 @@
+[Unit]
+Description=Lingju LivSyn read-only browser for Pi
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi-livsyn
+Group=pi-feishu
+RuntimeDirectory=pi-livsyn
+RuntimeDirectoryMode=0750
+Environment=HOME=/var/lib/pi-livsyn
+ExecStart=/usr/bin/python3 -B /srv/pi-livsyn/app/broker.py
+Restart=on-failure
+RestartSec=5
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/pi-livsyn /run/pi-livsyn
+MemoryHigh=520M
+MemoryMax=750M
+TasksMax=160
+
+[Install]
+WantedBy=multi-user.target
