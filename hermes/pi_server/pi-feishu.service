@@ -1,0 +1,30 @@
+[Unit]
+Description=Lingju Pi Feishu bridge
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=pi-feishu
+Group=pi-feishu
+WorkingDirectory=/srv/pi-feishu/app
+Environment=HOME=/srv/pi-feishu/home
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node --env-file=/srv/pi-feishu/app/.env src/bridge.js
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=90
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/pi-feishu/app/data /srv/pi-feishu/home /srv/pi-feishu/workspace
+MemoryHigh=600M
+MemoryMax=900M
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target
