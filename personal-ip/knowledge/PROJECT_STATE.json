@@ -9,7 +9,8 @@
     "daily_experiences_to_assistant_for_copywriting": true,
     "archive_scripts_and_reviews_in_github": true,
     "hope_for_real_factory_store_scene_collaboration": true,
-    "deliverable_preference": "只提供文案，拍摄由本人负责；不自动附加拍摄或镜头指导。"
+    "deliverable_preference": "只提供文案，拍摄由本人负责；不自动附加拍摄或镜头指导。",
+    "copywriting_feedback": "避免内容过多，追求精细、精致、简练；根据素材选择具体长度。"
   },
   "ideas_not_yet_fixed": {
     "suggested_platforms": [
@@ -32,7 +33,7 @@
     "accounts_verified": false,
     "draft_scripts": 1
   },
-  "next_step": "Owner review v0.3 with strengthened genuine contrast in opening; retain older versions and do not mark published.",
+  "next_step": "Owner reviews concise v0.4; not published.",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -42,8 +43,8 @@
   "latest_script": {
     "id": "IP-20261118-001",
     "path": "personal-ip/scripts/2026/11/IP-20261118-001.md",
-    "status": "DRAFT_V0_3",
-    "version": "0.3",
+    "status": "DRAFT_V0_4",
+    "version": "0.4",
     "source": "personal-ip/history/2026-11-18_FOUNDER_ENTRY_STORY.md"
   },
   "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md"
