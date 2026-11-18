@@ -24,6 +24,10 @@ Owner 随后确定岗位兼顾资料研究、经营分析和日常运营协助�
 
 将 `/srv/pi-feishu/app/src/web_reader.ts` 加入服务器 Pi `settings.json` 的 `extensions` 后，在空闲时重载服务。测试命令为 `python hermes/pi_server/test_web_read.py`。2026-11-18 已通过 8 项零模型回归检查、3 个公开站点实读、岗位自述和原 Pi SDK 工具调用分析验证。详细部署结果见公司知识库同日岗位与网页能力决策记录。
 
+网页工具默认尝试用 Mozilla Readability 提取文章。它处理已下载的 HTML，页面表格继续走原有解析，链接、标题和来源回执始终来自原网页。正文提取失败或返回内容过少时自动使用原网页文本。调用时可指定 `text_mode: "page"` 查看正文之外的文字，仍适用原返回长度上限。
+
+随应用一起发布 `readability/`，在该子目录运行 `npm ci --ignore-scripts`。生产依赖固定在独立锁文件。运行 `python -B hermes/pi_server/test_web_read.py` 可核对正文清理、保留表格和失败回退。
+
 回退本轮岗位或网页变化时，先核对待恢复文件是否与本轮最终哈希一致。依据私有前像逐项恢复记忆、settings 和策略文件，在空闲时重载。若实际工作已更新记忆或配置，应先保留新增内容再决定恢复范围。
 
 ## 切换与恢复
