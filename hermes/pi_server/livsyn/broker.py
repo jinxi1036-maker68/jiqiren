@@ -96,7 +96,7 @@ class Server(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
 
 
 if __name__ == "__main__":
-    os.umask(0o117)
+    os.umask(0o077)
     with Server(SOCKET, Handler) as server:
         os.chmod(SOCKET, 0o660)
         server.serve_forever()

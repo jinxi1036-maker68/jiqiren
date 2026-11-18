@@ -82,7 +82,13 @@ try {
   } else if (login) {
     await page.goto(origin + "/statistics", { waitUntil: "domcontentloaded", timeout: 20000 });
     console.log("login_window_ready");
-    await new Promise((resolve) => context.once("close", resolve));
+    await page.waitForFunction(() => (
+      location.origin === "https://ldp.lingrobotics.com" && location.pathname === "/statistics"
+      && Array.from(document.querySelectorAll("main h1, main h2, main h3")).some((heading) => heading.textContent.trim() === "采集统计报告")
+      && Array.from(document.querySelectorAll("main tfoot tr")).some((row) => row.cells[0]?.textContent.trim() === "合计")
+    ), undefined, { timeout: 915000 });
+    console.log("authenticated_statistics_ready");
+    await new Promise((resolve) => setTimeout(resolve, 5000));
   } else if (diagnostic) {
     const response = await page.goto(origin + "/statistics", { waitUntil: "domcontentloaded", timeout: 15000 });
     await page.waitForFunction(() => (document.body?.innerText?.length ?? 0) > 20, undefined, { timeout: 15000 });
