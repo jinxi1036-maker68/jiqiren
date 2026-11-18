@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { livsynAuthorized } from "./src/livsyn_client.mjs";
 import { createLivsynTool } from "./src/livsyn_tool.mjs";
-import { summarize } from "./src/livsyn_ego.mjs";
+import { readLivsynView, summarize } from "./src/livsyn_ego.mjs";
 
 const type = new Proxy({}, { get: () => (value) => value });
 
@@ -39,4 +39,27 @@ test("summaries reject duplicate row identifiers and do not expose row keys", ()
   assert.deepEqual(output.counts.状态, { 进行中: 1, 已结束: 1 });
   assert.ok(!JSON.stringify(output).includes("key-a"));
   assert.throws(() => summarize({ ...fixture, keys: ["key-a", "key-a"] }), /重复/);
+});
+
+test("batch receipts distinguish a partial read from a complete list", async () => {
+  let current = 1;
+  const page = {
+    goto: async () => { current = 1; },
+    url: () => "https://ldp.lingrobotics.com/data-collection",
+    waitForFunction: async () => {},
+    evaluate: async (fn, arg) => {
+      if (arg?.desired) return { selector: String(arg.desired), number: arg.desired };
+      return {
+        page: current, pageSize: 1, pageCount: 3, reportedTotal: "共 3 条",
+        fields: ["状态"], data: [["进行中"]], keys: [`row-${current}`],
+      };
+    },
+    click: async (selector) => { current = Number(selector); },
+  };
+  const result = await readLivsynView(page, "tasks", 2, 2);
+  assert.deepEqual([result.firstPage, result.lastPage, result.rowsRead, result.nextPage], [2, 3, 2, null]);
+  assert.equal(result.wholeListRead, false);
+  const all = await readLivsynView(page, "tasks", 1, 3);
+  assert.equal(all.wholeListRead, true);
+  assert.equal(all.rowsRead, 3);
 });
