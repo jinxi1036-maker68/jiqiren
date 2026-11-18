@@ -5,13 +5,13 @@
  */
 import { createLarkChannel } from "@larksuiteoapi/node-sdk";
 import { fileURLToPath } from "node:url";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { Type } from "typebox";
 import { PiAgentPool } from "./piagent.js";
 import { PeerGate } from "./pi_peer_gate.js";
 import { createLivsynTool } from "./livsyn_tool.mjs";
-import { livsynAuthorized, livsynSocket, readLivsyn } from "./livsyn_client.mjs";
+import { isLivsynOwner, livsynAuthorized, livsynSocket, readLivsyn } from "./livsyn_client.mjs";
 
 const log = (...a) => console.log("[feishu]", ...a);
 
@@ -26,7 +26,14 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = path.join(ROOT, "data");
 const list = (v) => (v || "").split(",").map((s) => s.trim()).filter(Boolean);
 const dmAllowlist = list(process.env.ALLOWED_DM_OPEN_IDS);
-const livsynTool = dmAllowlist.length === 1 ? createLivsynTool(Type, readLivsyn) : undefined;
+let livsynOwner;
+try {
+  const binding = JSON.parse(readFileSync(path.join(ROOT, "livsyn-owner.json"), "utf8"));
+  if (isLivsynOwner(binding)) livsynOwner = binding;
+} catch (error) {
+  if (error.code !== "ENOENT") log("灵生只读权限配置无法加载");
+}
+const livsynTool = livsynOwner ? createLivsynTool(Type, readLivsyn) : undefined;
 
 const pool = new PiAgentPool({
   dataDir,
@@ -108,7 +115,7 @@ async function onMessage(msg) {
   }
 
   const t = peer.kind === "peer" ? peer.task : text;
-  const allowLivsyn = Boolean(livsynTool) && peer.kind === "human" && livsynAuthorized(msg, dmAllowlist);
+  const allowLivsyn = Boolean(livsynTool) && peer.kind === "human" && livsynAuthorized(msg, livsynOwner);
 
   if (t === "/new" || t === "new") {
     await pool.newSession(msg.chatId, { allowLivsyn });
@@ -190,3 +197,4 @@ log(`飞书通道已上线${name}，等待消息...`);
 log(`  工作目录: ${pool.cwd}`);
 log(`  私聊: ${dmAllowlist.length ? "白名单模式 (" + dmAllowlist.length + ")" : "开放"}`);
 log(`  群聊: ${groupAllowlist.length ? "白名单模式 (" + groupAllowlist.length + ")" : "开放（需 @）"}`);
+log(`  灵生只读: ${livsynOwner ? "已绑定单聊" : "尚未绑定单聊"}`);

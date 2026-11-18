@@ -7,6 +7,7 @@
 import { createAgentSession, SessionManager } from "@earendil-works/pi-coding-agent";
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import path from "node:path";
+import { livsynPrompt, prefetchLivsyn, withLivsynEvidence } from "./livsyn_context.mjs";
 
 const log = (...a) => console.log("[pi]", ...a);
 
@@ -134,6 +135,11 @@ export class PiAgentPool {
       cwd: this.cwd,
       customTools: allowLivsyn && this.livsynTool ? [this.livsynTool] : [],
     });
+    if (allowLivsyn && this.livsynTool) {
+      const names = session.getActiveToolNames();
+      if (!names.includes(this.livsynTool.name)) session.setActiveToolsByName([...names, this.livsynTool.name]);
+      log("授权会话已装载灵生只读工具");
+    }
     if (modelFallbackMessage) log(chatId, "model fallback:", modelFallbackMessage);
 
     const fileNow = session.sessionFile || null;
@@ -153,9 +159,11 @@ export class PiAgentPool {
       const rec = await this.sessionFor(chatId, { allowLivsyn });
       rec.busy = true;
       try {
-        const reply = await promptWithStatus(rec.session, text);
+        const reports = allowLivsyn && this.livsynTool ? await prefetchLivsyn(this.livsynTool, text) : [];
+        if (reports.length) log("授权单聊已读取灵生数据", reports.map(({ view, ok }) => ({ view, ok })));
+        const reply = await promptWithStatus(rec.session, reports.length ? livsynPrompt(text, reports) : text);
         rec.lastUsed = Date.now();
-        return reply;
+        return reports.length ? withLivsynEvidence(reply, reports, text) : reply;
       } finally {
         rec.busy = false;
       }

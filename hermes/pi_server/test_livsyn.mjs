@@ -3,17 +3,19 @@ import test from "node:test";
 import { livsynAuthorized } from "./src/livsyn_client.mjs";
 import { createLivsynTool } from "./src/livsyn_tool.mjs";
 import { readLivsynView, summarize } from "./src/livsyn_ego.mjs";
+import { livsynPrompt, livsynRequest, prefetchLivsyn, withLivsynEvidence } from "./src/livsyn_context.mjs";
 
 const type = new Proxy({}, { get: () => (value) => value });
 
-test("only the sole allowlisted human in direct chat can request real business data", () => {
-  const authorized = { chatType: "p2p", senderId: "owner", raw: { sender: { sender_type: "user" } } };
-  assert.ok(livsynAuthorized(authorized, ["owner"]));
-  assert.ok(!livsynAuthorized(authorized, []));
-  assert.ok(!livsynAuthorized(authorized, ["owner", "another"]));
-  assert.ok(!livsynAuthorized({ ...authorized, senderId: "another" }, ["owner"]));
-  assert.ok(!livsynAuthorized({ ...authorized, chatType: "group" }, ["owner"]));
-  assert.ok(!livsynAuthorized({ ...authorized, raw: { sender: { sender_type: "bot" } } }, ["owner"]));
+test("only the bound human in the bound direct chat can request real business data", () => {
+  const owner = { chatId: "oc_" + "a".repeat(32), senderId: "ou_" + "b".repeat(32) };
+  const authorized = { chatType: "p2p", ...owner, raw: { sender: { sender_type: "user" } } };
+  assert.ok(livsynAuthorized(authorized, owner));
+  assert.ok(!livsynAuthorized(authorized, undefined));
+  assert.ok(!livsynAuthorized({ ...authorized, senderId: "another" }, owner));
+  assert.ok(!livsynAuthorized({ ...authorized, chatId: "another" }, owner));
+  assert.ok(!livsynAuthorized({ ...authorized, chatType: "group" }, owner));
+  assert.ok(!livsynAuthorized({ ...authorized, raw: { sender: { sender_type: "bot" } } }, owner));
 });
 
 test("tool validates view and batch limits before contacting the reader", async () => {
@@ -62,4 +64,25 @@ test("batch receipts distinguish a partial read from a complete list", async () 
   const all = await readLivsynView(page, "tasks", 1, 3);
   assert.equal(all.wholeListRead, true);
   assert.equal(all.rowsRead, 3);
+});
+
+test("a named live business query receives evidence before the model replies", async () => {
+  const text = "查一下灵生统计页的采集时长和有效时长";
+  assert.deepEqual(livsynRequest(text), [{ view: "statistics", page: 1 }]);
+  assert.deepEqual(livsynRequest("在吗"), []);
+  assert.deepEqual(livsynRequest("查看灵生上传记录第12页"), [{ view: "uploads", page: 12 }]);
+  const live = {
+    ok: true, view: "statistics", dateRange: ["2026.11.16", "2026.11.16"],
+    collectionDuration: "71:38:43", validDuration: "27:22:37", source: "https://ldp.lingrobotics.com/statistics",
+    freshness: "数据截至 2026.11.16",
+  };
+  const reports = await prefetchLivsyn({ async execute(_id, query) {
+    assert.equal(query.view, "statistics");
+    return { details: live };
+  } }, text);
+  assert.match(livsynPrompt(text, reports), /27:22:37/);
+  assert.doesNotMatch(withLivsynEvidence("请复制 Token 给我", reports, text), /Token/);
+  assert.match(withLivsynEvidence("模型服务请求失败", reports, text), /71:38:43/);
+  assert.match(withLivsynEvidence("采集 71:38:43，有效 27:22:37", reports, text), /来源 https:/);
+  assert.match(withLivsynEvidence("审核进度和质量需要分别跟踪。", reports, "分析一下灵生统计页"), /分别跟踪/);
 });

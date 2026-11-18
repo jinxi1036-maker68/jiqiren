@@ -30,7 +30,12 @@ export function readLivsyn(view, page, count, details, signal) {
   });
 }
 
-export function livsynAuthorized(message, dmAllowlist) {
-  return dmAllowlist.length === 1 && message.chatType === "p2p"
-    && message.senderId === dmAllowlist[0] && message.raw?.sender?.sender_type === "user";
+export function isLivsynOwner(owner) {
+  return typeof owner?.chatId === "string" && /^oc_[a-f0-9]{16,64}$/i.test(owner.chatId)
+    && typeof owner?.senderId === "string" && /^ou_[a-f0-9]{16,64}$/i.test(owner.senderId);
+}
+
+export function livsynAuthorized(message, owner) {
+  return isLivsynOwner(owner) && message.chatType === "p2p" && message.chatId === owner.chatId
+    && message.senderId === owner.senderId && message.raw?.sender?.sender_type === "user";
 }
