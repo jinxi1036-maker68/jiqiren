@@ -1,6 +1,6 @@
 {
   "schema_version": "personal_ip_state_v1",
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "status": "knowledge_base_created_not_published",
   "owner_confirmed": {
     "founder_real_person_on_camera": true,
@@ -31,14 +31,15 @@
     ]
   },
   "actual_progress": {
-    "confirmed_full_scripts": 0,
+    "confirmed_full_scripts": 1,
     "confirmed_published_posts": 0,
     "measured_posts": 0,
     "verified_social_leads": 0,
     "accounts_verified": false,
-    "draft_scripts": 1
+    "draft_scripts": 1,
+    "recorded_posts": 1
   },
-  "next_step": "Owner review concise opinion-led v0.5; distinguish personal judgment from actual outcomes; no confirmed publication.",
+  "next_step": "Owner review 002 opinion-led real scene script; later ask whether 001 was published and collect performance only if available.",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -46,12 +47,16 @@
   },
   "data_provenance": "Owner reports goals and preference; publication and performance not verified",
   "latest_script": {
-    "id": "IP-20261118-001",
-    "path": "personal-ip/scripts/2026/11/IP-20261118-001.md",
-    "status": "DRAFT_V0_5",
-    "version": "0.5",
-    "source": "personal-ip/history/2026-11-18_FOUNDER_ENTRY_STORY.md"
+    "id": "IP-20261119-002",
+    "path": "personal-ip/scripts/2026/11/IP-20261119-002.md",
+    "status": "DRAFT_V0_1"
   },
   "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md",
-  "latest_style_research": "personal-ip/research/2026-11-18_ORAL_STYLE_TYPE_EXPLORATION.md"
+  "latest_style_research": "personal-ip/research/2026-11-18_ORAL_STYLE_TYPE_EXPLORATION.md",
+  "first_script_recorded": {
+    "id": "IP-20261118-001",
+    "version": "0.5",
+    "date_reported": "2026-11-19",
+    "status": "RECORDED_NOT_CONFIRMED_PUBLISHED"
+  }
 }
