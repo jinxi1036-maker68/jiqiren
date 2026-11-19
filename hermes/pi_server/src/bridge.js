@@ -13,6 +13,7 @@ import { PeerGate } from "./pi_peer_gate.js";
 import { createLivsynTool } from "./livsyn_tool.mjs";
 import { isLivsynOwner, livsynAuthorized, livsynSocket, readLivsyn } from "./livsyn_client.mjs";
 import { FeishuImageError, feishuImageParts, imageOnlyPrompt, loadFeishuImages } from "./feishu_images.mjs";
+import { createSharedChat } from "./shared_chat.mjs";
 
 const log = (...a) => console.log("[feishu]", ...a);
 
@@ -43,6 +44,7 @@ const pool = new PiAgentPool({
   maxActive: Number(process.env.MAX_ACTIVE_SESSIONS) || 8,
   livsynTool,
 });
+const sharedChat = createSharedChat();
 
 const groupAllowlist = list(process.env.GROUP_ALLOWLIST);
 const ackEmoji = process.env.ACK_EMOJI || "OK";
@@ -93,6 +95,7 @@ const HELP_TEXT = `可用命令：
 // ---------- 消息处理 ----------
 
 async function onMessage(msg) {
+  if (msg.chatType === "group" && !msg.mentionedBot) return;
   const { hasImages, keys, caption } = feishuImageParts(msg);
   const text = stripMentions(caption);
   const peer = peerGate.admit(msg, text);
@@ -116,20 +119,22 @@ async function onMessage(msg) {
   }
 
   const ownerDirect = peer.kind === "human" && livsynAuthorized(msg, livsynOwner);
-  const readImages = hasImages && ownerDirect;
-  if (hasImages && !ownerDirect && !text) {
-    await channel.send(msg.chatId, { text: "图片识别在已授权的单聊中可用。" }, { replyTo: msg.messageId });
-    return;
-  }
+  const shared = peer.kind === "human" && !ownerDirect;
+  const readImages = hasImages && peer.kind === "human";
   const t = peer.kind === "peer" ? peer.task : (text || imageOnlyPrompt);
   const allowLivsyn = Boolean(livsynTool) && ownerDirect;
 
   if (!hasImages && (t === "/new" || t === "new")) {
-    await pool.newSession(msg.chatId, { allowLivsyn });
+    if (shared) await sharedChat.reset(msg.chatId);
+    else await pool.newSession(msg.chatId, { allowLivsyn });
     await channel.send(msg.chatId, { text: "已为当前聊天开新会话（旧上下文不再延续）。" }, { replyTo: msg.messageId });
     return;
   }
   if (!hasImages && (t === "/status" || t === "status")) {
+    if (shared) {
+      await channel.send(msg.chatId, { text: "小派派在线，可以发文字或图片。在群里请 @小派派。" }, { replyTo: msg.messageId });
+      return;
+    }
     const s = pool.status(msg.chatId);
     const lines = [
       "pi 会话状态：",
@@ -148,13 +153,14 @@ async function onMessage(msg) {
     return;
   }
   if (!hasImages && (t === "/help" || t === "help" || t === "帮助")) {
-    await channel.send(msg.chatId, { text: HELP_TEXT }, { replyTo: msg.messageId });
+    const help = shared ? "可以发文字或图片给小派派。群里请先 @小派派。用 /new 清空当前会话的近期上下文。" : HELP_TEXT;
+    await channel.send(msg.chatId, { text: help }, { replyTo: msg.messageId });
     return;
   }
 
   // 普通消息 → 交给 pi agent
   await react(msg.messageId, ackEmoji, false);
-  log(`收到消息 chat=${msg.chatId} sender=${msg.senderId} len=${t.length}`);
+  log(`收到消息 chat=${msg.chatId} sender=${msg.senderId} len=${t.length} mode=${shared ? "shared" : "assigned"}`);
   try {
     const task = peer.kind === "peer"
       ? `来自凌矩正式数字员工 Hermes 的群内项目协作请求。请只处理消息中获准的内容；未核实的事实如实标明。\n${t}`
@@ -162,9 +168,9 @@ async function onMessage(msg) {
     const images = readImages ? await loadFeishuImages(
       (options) => channel.rawClient.im.v1.messageResource.get(options), msg.messageId, keys,
     ) : [];
-    if (images.length) log("收到授权单聊图片", { count: images.length, mimeTypes: images.map(({ mimeType }) => mimeType) });
+    if (images.length) log(shared ? "收到共享会话图片" : "收到授权单聊图片", { count: images.length, mimeTypes: images.map(({ mimeType }) => mimeType) });
     const input = hasImages && !readImages ? `当前聊天的图片未送入模型。请仅根据下列文字处理任务。\n\n${task}` : task;
-    const reply = await pool.prompt(msg.chatId, input, { allowLivsyn, images });
+    const reply = shared ? await sharedChat.reply(msg.chatId, input, images) : await pool.prompt(msg.chatId, input, { allowLivsyn, images });
     if (peer.kind === "peer") {
       await channel.send(msg.chatId,
         { markdown: `【协作答复 ${peer.id} ${peer.turn}/3】\n${reply}` },
@@ -172,6 +178,7 @@ async function onMessage(msg) {
           mentions: [{ openId: process.env.HERMES_BOT_OPEN_ID, name: "Hermes" }] });
     } else {
       await channel.send(msg.chatId, { markdown: reply }, { replyTo: msg.messageId });
+      if (shared) log("共享会话已回复", { chatType: msg.chatType });
     }
   } catch (e) {
     if (e instanceof FeishuImageError) {
@@ -219,3 +226,4 @@ log(`  工作目录: ${pool.cwd}`);
 log(`  私聊: ${dmAllowlist.length ? "白名单模式 (" + dmAllowlist.length + ")" : "开放"}`);
 log(`  群聊: ${groupAllowlist.length ? "白名单模式 (" + groupAllowlist.length + ")" : "开放（需 @）"}`);
 log(`  灵生只读: ${livsynOwner ? "已绑定单聊" : "尚未绑定单聊"}`);
+log("  共享会话: 已启用文字问答和图片识别");
