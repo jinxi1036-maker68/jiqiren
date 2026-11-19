@@ -12,6 +12,7 @@ import { PiAgentPool } from "./piagent.js";
 import { PeerGate } from "./pi_peer_gate.js";
 import { createLivsynTool } from "./livsyn_tool.mjs";
 import { isLivsynOwner, livsynAuthorized, livsynSocket, readLivsyn } from "./livsyn_client.mjs";
+import { FeishuImageError, feishuImageParts, imageOnlyPrompt, loadFeishuImages } from "./feishu_images.mjs";
 
 const log = (...a) => console.log("[feishu]", ...a);
 
@@ -92,8 +93,8 @@ const HELP_TEXT = `可用命令：
 // ---------- 消息处理 ----------
 
 async function onMessage(msg) {
-  const raw = msg.content || "";
-  const text = stripMentions(raw);
+  const { hasImages, keys, caption } = feishuImageParts(msg);
+  const text = stripMentions(caption);
   const peer = peerGate.admit(msg, text);
   if (peer.kind === "reject") {
     log("机器人协作消息被拒绝:", peer.reason,
@@ -102,27 +103,33 @@ async function onMessage(msg) {
     return;
   }
 
-  if (msg.chatType === "group" && msg.mentionedBot) {
+  if (msg.chatType === "group" && msg.mentionedBot && !hasImages) {
     if (!text) {
       // 只 @ 了一下没说话
       await channel.send(msg.chatId, { text: "有什么可以帮你？发 /help 看命令列表。" }, { replyTo: msg.messageId });
       return;
     }
   }
-  if (!text) {
+  if (!text && !hasImages) {
     log("收到非文本/空消息，跳过。type:", msg.rawContentType, "resources:", msg.resources?.length ?? 0);
     return;
   }
 
-  const t = peer.kind === "peer" ? peer.task : text;
-  const allowLivsyn = Boolean(livsynTool) && peer.kind === "human" && livsynAuthorized(msg, livsynOwner);
+  const ownerDirect = peer.kind === "human" && livsynAuthorized(msg, livsynOwner);
+  const readImages = hasImages && ownerDirect;
+  if (hasImages && !ownerDirect && !text) {
+    await channel.send(msg.chatId, { text: "图片识别在已授权的单聊中可用。" }, { replyTo: msg.messageId });
+    return;
+  }
+  const t = peer.kind === "peer" ? peer.task : (text || imageOnlyPrompt);
+  const allowLivsyn = Boolean(livsynTool) && ownerDirect;
 
-  if (t === "/new" || t === "new") {
+  if (!hasImages && (t === "/new" || t === "new")) {
     await pool.newSession(msg.chatId, { allowLivsyn });
     await channel.send(msg.chatId, { text: "已为当前聊天开新会话（旧上下文不再延续）。" }, { replyTo: msg.messageId });
     return;
   }
-  if (t === "/status" || t === "status") {
+  if (!hasImages && (t === "/status" || t === "status")) {
     const s = pool.status(msg.chatId);
     const lines = [
       "pi 会话状态：",
@@ -133,10 +140,14 @@ async function onMessage(msg) {
       `  会话文件: ${s.file ?? "(未持久化)"}`,
     ];
     if (allowLivsyn) lines.push(existsSync(livsynSocket) ? "  灵生后台: 服务器只读取数入口在线" : "  灵生后台: 服务器取数入口暂不可用");
+    if (ownerDirect) {
+      const imageStatus = s.imageInput === null ? "收到图片后检查当前模型" : s.imageInput ? "当前模型支持图片输入" : "当前模型未启用图片输入";
+      lines.push(`  图片识别: ${imageStatus}`);
+    }
     await channel.send(msg.chatId, { text: lines.join("\n") }, { replyTo: msg.messageId });
     return;
   }
-  if (t === "/help" || t === "help" || t === "帮助") {
+  if (!hasImages && (t === "/help" || t === "help" || t === "帮助")) {
     await channel.send(msg.chatId, { text: HELP_TEXT }, { replyTo: msg.messageId });
     return;
   }
@@ -148,7 +159,12 @@ async function onMessage(msg) {
     const task = peer.kind === "peer"
       ? `来自凌矩正式数字员工 Hermes 的群内项目协作请求。请只处理消息中获准的内容；未核实的事实如实标明。\n${t}`
       : t;
-    const reply = await pool.prompt(msg.chatId, task, { allowLivsyn });
+    const images = readImages ? await loadFeishuImages(
+      (options) => channel.rawClient.im.v1.messageResource.get(options), msg.messageId, keys,
+    ) : [];
+    if (images.length) log("收到授权单聊图片", { count: images.length, mimeTypes: images.map(({ mimeType }) => mimeType) });
+    const input = hasImages && !readImages ? `当前聊天的图片未送入模型。请仅根据下列文字处理任务。\n\n${task}` : task;
+    const reply = await pool.prompt(msg.chatId, input, { allowLivsyn, images });
     if (peer.kind === "peer") {
       await channel.send(msg.chatId,
         { markdown: `【协作答复 ${peer.id} ${peer.turn}/3】\n${reply}` },
@@ -158,6 +174,11 @@ async function onMessage(msg) {
       await channel.send(msg.chatId, { markdown: reply }, { replyTo: msg.messageId });
     }
   } catch (e) {
+    if (e instanceof FeishuImageError) {
+      log("图片读取未成功:", e.message);
+      await channel.send(msg.chatId, { text: e.message }, { replyTo: msg.messageId }).catch(() => {});
+      return;
+    }
     log("执行失败:", e.stack || e.message);
     await channel
       .send(msg.chatId, { text: `⚠️ 执行出错：${String(e.message || e).slice(0, 300)}` }, { replyTo: msg.messageId })

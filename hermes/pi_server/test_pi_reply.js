@@ -39,6 +39,18 @@ test("an empty webpage and a 429 are both reported without provider payload", as
   assert.ok(session.listenerRemoved);
 });
 
+test("the Pi SDK receives image blocks alongside the caption", async () => {
+  const session = sample([assistant("看见了一扇窗")]);
+  const originalPrompt = session.prompt;
+  const images = [{ type: "image", mimeType: "image/png", data: "fixture" }];
+  session.prompt = async (text, options) => {
+    assert.equal(text, "看看画面环境");
+    assert.deepEqual(options, { images, expandPromptTemplates: false });
+    await originalPrompt();
+  };
+  assert.equal(await promptWithStatus(session, "看看画面环境", images), "看见了一扇窗");
+});
+
 test("readable content and the subsequent network failure are reported separately", async () => {
   const reply = await promptWithStatus(sample([article("已读到的正文")], new Error("connection reset")), "分析网页");
   assert.match(reply, /已读到文字/);
