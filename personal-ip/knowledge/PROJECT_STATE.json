@@ -1,7 +1,7 @@
 {
   "schema_version": "personal_ip_state_v1",
-  "date": "2026-11-19",
-  "status": "knowledge_base_created_not_published",
+  "date": "2026-11-20",
+  "status": "two_owner_reported_published_posts_third_draft",
   "owner_confirmed": {
     "founder_real_person_on_camera": true,
     "personal_ip_not_corporate_account": true,
@@ -31,15 +31,15 @@
     ]
   },
   "actual_progress": {
-    "confirmed_full_scripts": 1,
-    "confirmed_published_posts": 0,
-    "measured_posts": 0,
+    "confirmed_full_scripts": 2,
+    "confirmed_published_posts": 2,
+    "measured_posts": 2,
     "verified_social_leads": 0,
     "accounts_verified": false,
     "draft_scripts": 1,
-    "recorded_posts": 1
+    "recorded_posts": 2
   },
-  "next_step": "Owner review 002 opinion-led real scene script; later ask whether 001 was published and collect performance only if available.",
+  "next_step": "Owner审第三条基于工信部2026年11月标准的文案; 根据每日政策选题与实际经历迭代; 收到可靠指标时补全反馈台账",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -47,8 +47,8 @@
   },
   "data_provenance": "Owner reports goals and preference; publication and performance not verified",
   "latest_script": {
-    "id": "IP-20261119-002",
-    "path": "personal-ip/scripts/2026/11/IP-20261119-002.md",
+    "id": "IP-20261120-003",
+    "path": "personal-ip/scripts/2026/11/IP-20261120-003.md",
     "status": "DRAFT_V0_1"
   },
   "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md",
@@ -58,5 +58,31 @@
     "version": "0.5",
     "date_reported": "2026-11-19",
     "status": "RECORDED_NOT_CONFIRMED_PUBLISHED"
+  },
+  "previous_posts_reported_performance": [
+    {
+      "id": "IP-20261118-001",
+      "views": "接近2000",
+      "likes": "有但数量未给",
+      "comments": "有但数量未给",
+      "source_date": "2026-11-20"
+    },
+    {
+      "id": "IP-20261119-002",
+      "views": "600多",
+      "likes": "还可以但数量未给",
+      "comments": "有但数量未给",
+      "source_date": "2026-11-20"
+    }
+  ],
+  "research_workflow": {
+    "owner_requested": "每日检索近期国家政策及行业动态;结合本人真实经历;输出精致的观点和经验型短口播",
+    "current_research": "personal-ip/research/2026-11-20_POLICY_SIGNAL_TRAINING_DATA_STANDARD.md",
+    "automation": {
+      "id": "6affae99eb5c819198324d51ab3adc2c",
+      "schedule": "每日约08:00 Asia/Shanghai; 初次2026-11-21",
+      "status": "created_successfully"
+    },
+    "limits": "政策事实、分析判断及本人经历分开标注; 后台定期检索不等于自动获得用户当天经历或自动发布"
   }
 }
