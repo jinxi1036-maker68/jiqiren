@@ -15,6 +15,7 @@ import { isLivsynOwner, livsynAuthorized, livsynSocket, readLivsyn } from "./liv
 import { FeishuImageError, feishuImageParts, imageOnlyPrompt, loadFeishuImages } from "./feishu_images.mjs";
 import { createSharedChat } from "./shared_chat.mjs";
 import { SharedMemoryStore, createSharedMemoryTool } from "./shared_memory.mjs";
+import { SharedSkillCatalog, createPublishSharedSkillTool } from "./shared_skills.mjs";
 
 const log = (...a) => console.log("[feishu]", ...a);
 
@@ -36,6 +37,21 @@ if (sharedMemory.status().records === 0) {
   });
 }
 const sharedMemoryTool = createSharedMemoryTool(Type, sharedMemory);
+const sharedSkillsFile = path.join(dataDir, "shared-skills.json");
+const firstSharedSkillsInit = !existsSync(sharedSkillsFile);
+const sharedSkills = new SharedSkillCatalog({
+  file: sharedSkillsFile,
+  skillRoot: path.join(process.env.HOME, ".pi", "agent", "skills"),
+});
+if (firstSharedSkillsInit && existsSync(path.join(process.env.HOME, ".pi", "agent", "skills", "ego-sop", "SKILL.md"))) {
+  try {
+    sharedSkills.publish("ego-sop");
+  } catch (error) {
+    log("首次发布 ego-sop 共享技能失败，飞书继续启动:", error.message);
+  }
+}
+const publishSharedSkillTool = createPublishSharedSkillTool(Type, sharedSkills);
+const sharedContext = () => [sharedMemory.context(), sharedSkills.context()].filter(Boolean).join("\n\n");
 const list = (v) => (v || "").split(",").map((s) => s.trim()).filter(Boolean);
 const dmAllowlist = list(process.env.ALLOWED_DM_OPEN_IDS);
 let livsynOwner;
@@ -53,10 +69,10 @@ const pool = new PiAgentPool({
   idleMs: (Number(process.env.IDLE_SESSION_MINUTES) || 30) * 60_000,
   maxActive: Number(process.env.MAX_ACTIVE_SESSIONS) || 8,
   livsynTool,
-  sharedMemoryTool,
-  sharedContext: () => sharedMemory.context(),
+  sharedMemoryTools: [sharedMemoryTool, publishSharedSkillTool],
+  sharedContext,
 });
-const sharedChat = createSharedChat({ sharedContext: () => sharedMemory.context() });
+const sharedChat = createSharedChat({ sharedContext });
 
 const groupAllowlist = list(process.env.GROUP_ALLOWLIST);
 const ackEmoji = process.env.ACK_EMOJI || "OK";
@@ -145,7 +161,8 @@ async function onMessage(msg) {
   }
   if (!hasImages && (t === "/status" || t === "status")) {
     const sharedStatus = sharedMemory.status();
-    const sharedLine = `统一岗位记忆: ${sharedStatus.records} 条，能力 ${sharedStatus.counts.capability} 条`;
+    const skillStatus = sharedSkills.status();
+    const sharedLine = `统一岗位记忆: ${sharedStatus.records} 条；共享技能: ${skillStatus.skills} 个${skillStatus.names.length ? `（${skillStatus.names.join("、")}）` : ""}`;
     if (shared) {
       await channel.send(msg.chatId, { text: `小派派在线，可以发文字或图片。在群里请 @小派派。\n${sharedLine}` }, { replyTo: msg.messageId });
       return;
