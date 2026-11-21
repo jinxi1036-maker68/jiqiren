@@ -4,6 +4,23 @@ const systemPrompt = "你是飞书助理小派派。根据当前会话发来的�
 const historyMinutes = 30;
 const historyMessages = 8;
 const maxChats = 32;
+const onlineCheck = /^(?:在吗|在线吗|在不在|你在吗|小派派在吗|小派派在线吗)[？?！!。.\s]*$/;
+
+function replyText(answer) {
+  return (answer?.content ?? [])
+    .filter((block) => block.type === "text" && typeof block.text === "string")
+    .map((block) => block.text)
+    .join("")
+    .trim();
+}
+
+function providerFailure(details) {
+  if (/used up today.s text quota.*1 request every 3 minutes/i.test(details)) {
+    return "模型今天的额度已用完，目前每 3 分钟可请求一次。请稍后再试。";
+  }
+  if (/429|rate.limit/i.test(details)) return "模型服务暂时限流了，请稍后再试。";
+  return "这次没有生成答复，请稍后再试。";
+}
 
 export function createSharedChat({ openRuntime = () => ModelRuntime.create() } = {}) {
   const histories = new Map();
@@ -11,6 +28,9 @@ export function createSharedChat({ openRuntime = () => ModelRuntime.create() } =
   let runtimePromise;
 
   async function complete(chatId, text, images) {
+    if (!images.length && onlineCheck.test(text.trim())) {
+      return "在，我在线。你可以直接说要我帮你处理什么。";
+    }
     const now = Date.now();
     const prior = histories.get(chatId);
     const history = prior && now - prior.at <= historyMinutes * 60000 ? prior.messages : [];
@@ -27,27 +47,30 @@ export function createSharedChat({ openRuntime = () => ModelRuntime.create() } =
         maxTokens: 2500,
         signal: AbortSignal.timeout(65000),
       });
-      const reply = (answer?.content ?? []).filter((block) => block.type === "text").map((block) => block.text).join("").trim();
-      if (!reply || !["stop", "length"].includes(answer.stopReason)) {
-        const details = String(answer?.errorMessage ?? "");
-        if (/used up today.s text quota.*1 request every 3 minutes/i.test(details)) {
-          return "模型今天的额度已用完，目前每 3 分钟可请求一次。请稍后再试。";
-        }
-        return /429|rate.limit/i.test(details)
-          ? "模型服务暂时限流了，请稍后再试。"
-          : "这次没有生成答复，请稍后再试。";
+      const reply = replyText(answer);
+      const stopReason = String(answer?.stopReason ?? "");
+      const details = String(answer?.errorMessage ?? "");
+      if (stopReason === "error") return providerFailure(details);
+      if (stopReason === "aborted") return "这次处理已中断，请稍后再试。";
+      if (reply && stopReason !== "toolUse") {
+        histories.delete(chatId);
+        histories.set(chatId, {
+          at: Date.now(),
+          messages: [
+            ...history,
+            { ...user, content: [{ type: "text", text: text.slice(0, 4000) }] },
+            { ...answer, content: [{ type: "text", text: reply.slice(0, 4000) }] },
+          ].slice(-historyMessages),
+        });
+        if (histories.size > maxChats) histories.delete(histories.keys().next().value);
+        return reply;
       }
-      histories.delete(chatId);
-      histories.set(chatId, {
-        at: Date.now(),
-        messages: [
-          ...history,
-          { ...user, content: [{ type: "text", text: text.slice(0, 4000) }] },
-          { ...answer, content: [{ type: "text", text: reply.slice(0, 4000) }] },
-        ].slice(-historyMessages),
+      console.warn("[shared-chat] 模型没有可发送文本", {
+        stopReason: stopReason || "unknown",
+        contentTypes: (answer?.content ?? []).map((block) => block?.type).filter(Boolean),
+        hasProviderError: Boolean(details),
       });
-      if (histories.size > maxChats) histories.delete(histories.keys().next().value);
-      return reply;
+      return providerFailure(details);
     } catch {
       return "共享会话暂时无法连接小派派的模型，请稍后再试。";
     }

@@ -41,3 +41,28 @@ test("the shared chat explains the current model quota without revealing provide
   });
   assert.equal(await chat.reply("A", "你好"), "模型今天的额度已用完，目前每 3 分钟可请求一次。请稍后再试。");
 });
+
+test("a shared presence check replies without spending a model request", async () => {
+  let opened = false;
+  const chat = createSharedChat({
+    openRuntime: async () => {
+      opened = true;
+      throw new Error("model should not be opened");
+    },
+  });
+  assert.equal(await chat.reply("A", "在线吗"), "在，我在线。你可以直接说要我帮你处理什么。");
+  assert.equal(opened, false);
+});
+
+test("a text reply is delivered when a provider uses a nonstandard completion status", async () => {
+  const chat = createSharedChat({
+    openRuntime: async () => ({
+      getModel: () => ({ input: ["text"] }),
+      completeSimple: async () => ({
+        content: [{ type: "text", text: "我已经看到了。" }],
+        stopReason: "completed",
+      }),
+    }),
+  });
+  assert.equal(await chat.reply("A", "看到了吗"), "我已经看到了。");
+});
