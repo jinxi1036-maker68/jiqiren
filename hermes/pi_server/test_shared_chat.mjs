@@ -5,6 +5,7 @@ import { createSharedChat } from "./src/shared_chat.mjs";
 test("shared replies use the current chat and current image without server tools", async () => {
   const requests = [];
   const chat = createSharedChat({
+    sharedContext: () => "【小派派统一岗位记忆】\n- capability｜图片理解\n  可以分析图片。",
     openRuntime: async () => ({
       getModel(provider, id) {
         assert.equal(provider, "agnes");
@@ -22,6 +23,7 @@ test("shared replies use the current chat and current image without server tools
   await Promise.all([chat.reply("A", "同一会话第一条", [image]), chat.reply("A", "同一会话第二条")]);
   await chat.reply("B", "另一会话");
   assert.deepEqual(requests[0].messages[0].content[1], image);
+  assert.match(requests[0].systemPrompt, /统一岗位记忆/);
   assert.equal(requests[1].messages[0].content[0].text, "同一会话第一条");
   assert.equal(requests[1].messages[0].content.length, 1);
   assert.equal(requests[2].messages.length, 1);

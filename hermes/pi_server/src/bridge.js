@@ -14,6 +14,7 @@ import { createLivsynTool } from "./livsyn_tool.mjs";
 import { isLivsynOwner, livsynAuthorized, livsynSocket, readLivsyn } from "./livsyn_client.mjs";
 import { FeishuImageError, feishuImageParts, imageOnlyPrompt, loadFeishuImages } from "./feishu_images.mjs";
 import { createSharedChat } from "./shared_chat.mjs";
+import { SharedMemoryStore, createSharedMemoryTool } from "./shared_memory.mjs";
 
 const log = (...a) => console.log("[feishu]", ...a);
 
@@ -26,6 +27,15 @@ if (!appId || !appId.startsWith("cli_") || !appSecret) {
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataDir = path.join(ROOT, "data");
+const sharedMemory = new SharedMemoryStore({ file: path.join(dataDir, "shared-memory.json") });
+if (sharedMemory.status().records === 0) {
+  sharedMemory.remember({
+    kind: "capability",
+    title: "图片理解",
+    content: "可以分析当前聊天发送的 JPG、PNG 或 WebP 图片，描述可见场景、物体、环境和文字，并说明模糊或无法确认之处。",
+  });
+}
+const sharedMemoryTool = createSharedMemoryTool(Type, sharedMemory);
 const list = (v) => (v || "").split(",").map((s) => s.trim()).filter(Boolean);
 const dmAllowlist = list(process.env.ALLOWED_DM_OPEN_IDS);
 let livsynOwner;
@@ -43,8 +53,10 @@ const pool = new PiAgentPool({
   idleMs: (Number(process.env.IDLE_SESSION_MINUTES) || 30) * 60_000,
   maxActive: Number(process.env.MAX_ACTIVE_SESSIONS) || 8,
   livsynTool,
+  sharedMemoryTool,
+  sharedContext: () => sharedMemory.context(),
 });
-const sharedChat = createSharedChat();
+const sharedChat = createSharedChat({ sharedContext: () => sharedMemory.context() });
 
 const groupAllowlist = list(process.env.GROUP_ALLOWLIST);
 const ackEmoji = process.env.ACK_EMOJI || "OK";
@@ -123,6 +135,7 @@ async function onMessage(msg) {
   const readImages = hasImages && peer.kind === "human";
   const t = peer.kind === "peer" ? peer.task : (text || imageOnlyPrompt);
   const allowLivsyn = Boolean(livsynTool) && ownerDirect;
+  const allowSharedMemory = ownerDirect;
 
   if (!hasImages && (t === "/new" || t === "new")) {
     if (shared) await sharedChat.reset(msg.chatId);
@@ -131,8 +144,10 @@ async function onMessage(msg) {
     return;
   }
   if (!hasImages && (t === "/status" || t === "status")) {
+    const sharedStatus = sharedMemory.status();
+    const sharedLine = `统一岗位记忆: ${sharedStatus.records} 条，能力 ${sharedStatus.counts.capability} 条`;
     if (shared) {
-      await channel.send(msg.chatId, { text: "小派派在线，可以发文字或图片。在群里请 @小派派。" }, { replyTo: msg.messageId });
+      await channel.send(msg.chatId, { text: `小派派在线，可以发文字或图片。在群里请 @小派派。\n${sharedLine}` }, { replyTo: msg.messageId });
       return;
     }
     const s = pool.status(msg.chatId);
@@ -149,6 +164,7 @@ async function onMessage(msg) {
       const imageStatus = s.imageInput === null ? "收到图片后检查当前模型" : s.imageInput ? "当前模型支持图片输入" : "当前模型未启用图片输入";
       lines.push(`  图片识别: ${imageStatus}`);
     }
+    lines.push(`  ${sharedLine}`);
     await channel.send(msg.chatId, { text: lines.join("\n") }, { replyTo: msg.messageId });
     return;
   }
@@ -170,7 +186,9 @@ async function onMessage(msg) {
     ) : [];
     if (images.length) log(shared ? "收到共享会话图片" : "收到授权单聊图片", { count: images.length, mimeTypes: images.map(({ mimeType }) => mimeType) });
     const input = hasImages && !readImages ? `当前聊天的图片未送入模型。请仅根据下列文字处理任务。\n\n${task}` : task;
-    const reply = shared ? await sharedChat.reply(msg.chatId, input, images) : await pool.prompt(msg.chatId, input, { allowLivsyn, images });
+    const reply = shared
+      ? await sharedChat.reply(msg.chatId, input, images)
+      : await pool.prompt(msg.chatId, input, { allowLivsyn, allowSharedMemory, images });
     if (peer.kind === "peer") {
       await channel.send(msg.chatId,
         { markdown: `【协作答复 ${peer.id} ${peer.turn}/3】\n${reply}` },

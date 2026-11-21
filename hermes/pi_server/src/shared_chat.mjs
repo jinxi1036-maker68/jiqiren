@@ -22,7 +22,7 @@ function providerFailure(details) {
   return "这次没有生成答复，请稍后再试。";
 }
 
-export function createSharedChat({ openRuntime = () => ModelRuntime.create() } = {}) {
+export function createSharedChat({ openRuntime = () => ModelRuntime.create(), sharedContext = () => "" } = {}) {
   const histories = new Map();
   const pending = new Map();
   let runtimePromise;
@@ -43,7 +43,11 @@ export function createSharedChat({ openRuntime = () => ModelRuntime.create() } =
       if (!model || (images.length && !model.input?.includes("image"))) {
         return images.length ? "目前无法处理图片，这张图尚未分析。" : "小派派的共享会话暂时不可用，请稍后重试。";
       }
-      const answer = await runtime.completeSimple(model, { systemPrompt, messages: [...history, user] }, {
+      const memory = sharedContext();
+      const answer = await runtime.completeSimple(model, {
+        systemPrompt: memory ? `${systemPrompt}\n\n${memory}` : systemPrompt,
+        messages: [...history, user],
+      }, {
         maxTokens: 2500,
         signal: AbortSignal.timeout(65000),
       });
