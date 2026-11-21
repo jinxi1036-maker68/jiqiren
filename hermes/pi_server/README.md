@@ -76,6 +76,8 @@ Owner 后续授权小派派直接从服务器查询灵生。方案以服务器�
 
 服务器上的真实技能另由 `shared-skills.json` 保存负责人发布的只读快照。原单聊通过 `publish_shared_skill` 读取指定技能的 `SKILL.md` 和 `LESSONS.md`，校验名称、大小和疑似凭据后发布；同名技能再次发布会更新快照。所有共享聊天会加载快照并承认该技能，但不会因此获得服务器文件、命令、私有后台或自修改权限。首次部署发布 `ego-sop`，因为负责人已在飞书明确要求它成为所有聊天入口的长期公共技能。
 
+部署后运行 `node verify_shared_skills_runtime.mjs` 做零模型核验：检查快照与技能源文件SHA256一致、统一上下文已装载技能、Owner会话同时注册`remember_shared`和`publish_shared_skill`；该脚本不向模型发送请求。
+
 服务已重载并重新接入飞书。运行 `node --test test_shared_chat.mjs test_feishu_images.mjs test_pi_reply.js test_livsyn.mjs`，16 项通过。共享模式用一张合成图片调用实际 Agnes 模型并获得正确读图结果。没有指定真实外部群，本轮未发送群测试消息。模型账号触发日额度限制时，按供应商返回的频率提示。服务器前像保存在原服务私有恢复目录，回退时核对哈希后恢复桥接文件并撤掉本轮的共享模块。
 
 ## 切换与恢复
