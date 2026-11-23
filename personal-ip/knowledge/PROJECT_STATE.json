@@ -1,7 +1,7 @@
 {
   "schema_version": "personal_ip_state_v1",
-  "date": "2026-11-20",
-  "status": "two_owner_reported_published_posts_third_draft",
+  "date": "2026-11-23",
+  "status": "two_owner_reported_published_posts_and_evolving_script_archive",
   "owner_confirmed": {
     "founder_real_person_on_camera": true,
     "personal_ip_not_corporate_account": true,
@@ -36,10 +36,13 @@
     "measured_posts": 2,
     "verified_social_leads": 0,
     "accounts_verified": false,
-    "draft_scripts": 1,
-    "recorded_posts": 2
+    "draft_scripts": 4,
+    "recorded_posts": 2,
+    "archived_rejected_scripts": 1,
+    "owner_positive_feedback_not_confirmed_published": 1,
+    "indexed_script_records": 8
   },
-  "next_step": "Owner审第三条基于工信部2026年11月标准的文案; 根据每日政策选题与实际经历迭代; 收到可靠指标时补全反馈台账",
+  "next_step": "Owner审008场景真实性导致数据无效稿；后续细化人员管理、返工、真实盈亏，避免重复旧稿；未确认录制发布不升级状态",
   "links": {
     "index": "personal-ip/knowledge/00_START_HERE.md",
     "script_index": "personal-ip/scripts/INDEX.csv",
@@ -47,9 +50,9 @@
   },
   "data_provenance": "Owner reports goals and preference; publication and performance not verified",
   "latest_script": {
-    "id": "IP-20261120-003",
-    "path": "personal-ip/scripts/2026/11/IP-20261120-003.md",
-    "status": "DRAFT_V0_1"
+    "id": "IP-20261123-008",
+    "path": "personal-ip/scripts/2026/11/IP-20261123-008.md",
+    "status": "DRAFT_V0_1_AWAITING_OWNER"
   },
   "latest_copywriting_research": "personal-ip/research/2026-11-18_ORAL_SCRIPT_RESEARCH_AND_FIRST_DRAFT_REVIEW.md",
   "latest_style_research": "personal-ip/research/2026-11-18_ORAL_STYLE_TYPE_EXPLORATION.md",
@@ -57,7 +60,7 @@
     "id": "IP-20261118-001",
     "version": "0.5",
     "date_reported": "2026-11-19",
-    "status": "RECORDED_NOT_CONFIRMED_PUBLISHED"
+    "status": "PUBLISHED_OWNER_REPORTED"
   },
   "previous_posts_reported_performance": [
     {
@@ -84,5 +87,14 @@
       "status": "created_successfully"
     },
     "limits": "政策事实、分析判断及本人经历分开标注; 后台定期检索不等于自动获得用户当天经历或自动发布"
+  },
+  "editorial_update_20261123": {
+    "approved_direction": "真实经营细节与踩坑系列；一期一个问题，持续核查历史选题",
+    "backlog": "personal-ip/ideas/2026-11-23_REAL_OPERATIONS_PITFALLS.md",
+    "rejected_repetition": "IP-20261123-005",
+    "positive_feedback": "IP-20261123-006",
+    "unconfirmed_draft": "IP-20261123-007",
+    "new_draft": "IP-20261123-008",
+    "no_verified_new_publish": "是"
   }
 }
