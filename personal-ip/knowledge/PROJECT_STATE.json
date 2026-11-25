@@ -60,9 +60,10 @@
   "latest_script": {
     "id": "IP-20261125-009",
     "path": "personal-ip/scripts/2026/11/IP-20261125-009.md",
-    "status": "DRAFT_V0_1_AWAITING_OWNER"
+    "status": "DRAFT_V0_2_AWAITING_OWNER"
   },
-  "latest_copywriting_research": "personal-ip/research/2026-11-25_IP_SYSTEM_DIAGNOSIS_AND_OPTIMIZATION_V0_2.md",
+  "latest_copywriting_research": "personal-ip/research/2026-11-25_DOUYIN_TRAFFIC_AND_ANTI_CHRONOLOGICAL_SCRIPT_MECHANICS.md",
+  "latest_system_diagnosis": "personal-ip/research/2026-11-25_IP_SYSTEM_DIAGNOSIS_AND_OPTIMIZATION_V0_2.md",
   "latest_style_research": "personal-ip/research/2026-11-18_ORAL_STYLE_TYPE_EXPLORATION.md",
   "first_script_recorded": {
     "id": "IP-20261118-001",
