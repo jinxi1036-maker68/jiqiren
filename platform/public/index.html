@@ -3,326 +3,155 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>凌矩具身数据资源与代理协同平台 V1.0</title>
+  <title>凌矩具身数据协同平台</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-logo">LJ</div>
-      <div>
-        <div class="brand-title">凌矩具身数据协同平台 <span class="badge">V1.0 试行版</span></div>
-        <div class="brand-sub">S2B 合规任务分包 · 全国真实场景双层池 · 首件熔断与背靠背对账</div>
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- ================= PUBLIC SHELL (登录页 / 30秒老板场景备案页) ================= -->
+  <div id="publicShell" class="public-shell hidden">
+    <header class="public-header">
+      <div class="brand-inline">
+        <div class="logo-mark">LJ</div>
+        <span class="brand-name">凌矩具身数据协同平台</span>
+        <span class="tag tag-green">V1.0 试行</span>
       </div>
-    </div>
-    <nav class="top-actions" id="topActions">
-      <button class="btn btn-ghost" data-view="public-scene">实体老板 30秒场景备案</button>
-      <button class="btn btn-primary" data-view="login" id="btnLoginNav">认证账号登录</button>
-    </nav>
-  </header>
-
-  <main class="container">
-    <div id="toast" class="toast hidden"></div>
-
-    <!-- VIEW 1: PUBLIC 30-SEC IP SCENE LEAD FORM -->
-    <section id="view-public-scene" class="view">
-      <div class="hero-card">
-        <div>
-          <h1>实体工厂 / 仓库 / 门店真实场景免费备案</h1>
-          <p class="muted">
-            平顶山凌矩信息科技有限责任公司 · 具身智能真实作业数据场景储备入口。
-            适合正常营业的<strong>工厂轻型装配车间、仓储周转区、文具店/商超零售空间</strong>等真实作业场景。
-          </p>
-        </div>
-        <div class="callout-warn">
-          <strong>零承诺备案说明（请知悉）：</strong>
-          本登记完全免费。提交后您的场地信息将脱敏进入凌矩全国储备库（绝不公开您的店名与手机号）；仅当匹配到您所在行业与城市的正式甲方任务及认证执行团队时，凌矩工作人员才会联系您核对进场细节与合作费，<strong>登记不承诺一定排单或立刻产生收益</strong>。
-        </div>
+      <div class="row-gap">
+        <button class="btn btn-ghost-dark" id="pubNavScene">实体老板场景备案</button>
+        <button class="btn btn-primary" id="pubNavLogin">认证账号登录</button>
       </div>
+    </header>
 
-      <form id="publicSceneForm" class="card form-grid">
-        <h2>30 秒填写场景信息</h2>
-        <div class="grid-3">
-          <label>所在省份 *<input name="province" placeholder="例：河南 / 江苏" required /></label>
-          <label>所在城市 *<input name="city" placeholder="例：平顶山 / 苏州" required /></label>
-          <label>区/县<input name="district" placeholder="例：新华区" /></label>
+    <!-- 公开页 A：30秒场景备案 -->
+    <main id="publicScenePage" class="public-main hidden">
+      <div class="narrow-wrap">
+        <div class="page-intro">
+          <h1>工厂 / 仓库 / 门店真实场景免费备案</h1>
+          <p class="subtext">只需 30 秒登记您的城市与日常作业。信息全程保密脱敏，匹配到同城同行业甲方任务时再联系您核对进场。</p>
         </div>
-        <div class="grid-3">
-          <label>场景大类 *
-            <select name="category" required>
-              <option value="工厂车间">工厂车间（装配/质检/包装）</option>
-              <option value="零售购物空间">零售购物空间（文具店/商超/日用品）</option>
-              <option value="仓库">仓库（入库/分拣/货位管理）</option>
-              <option value="手工组装作坊">手工组装订单场地（笔/玩具/小电器）</option>
-              <option value="生活服务空间">生活服务空间</option>
-              <option value="其他">其他真实商业场景</option>
-            </select>
+
+        <form id="publicSceneForm" class="surface-card stack-lg">
+          <div class="form-section-title">1. 场地基本信息</div>
+          <div class="grid-3">
+            <label>省份 *<input name="province" placeholder="如：河南" required /></label>
+            <label>城市 *<input name="city" placeholder="如：平顶山" required /></label>
+            <label>区/县<input name="district" placeholder="如：新华区" /></label>
+          </div>
+          <div class="grid-3">
+            <label>场景类型 *
+              <select name="category" required>
+                <option value="工厂车间">工厂车间（装配/质检/包装）</option>
+                <option value="零售购物空间">零售门店（文具店/商超）</option>
+                <option value="仓库">仓库（入库/分拣/货位）</option>
+                <option value="手工组装作坊">手工组装订单场地</option>
+                <option value="生活服务空间">生活服务空间</option>
+                <option value="其他">其他真实商业场景</option>
+              </select>
+            </label>
+            <label>可容纳采集机位<input type="number" name="estimated_device_capacity" min="1" max="50" value="2" /></label>
+            <label>可配合时段<input name="open_hours_desc" placeholder="如：每天 09:00-18:00" /></label>
+          </div>
+          <label>每天实际正在发生的作业内容 *
+            <textarea name="daily_work_desc" rows="3" required placeholder="例如：中性笔装配、文具货架补货理货、周转箱分拣入库（严禁摆拍及涉及未成年人）"></textarea>
           </label>
-          <label>预计可同时容纳采集机位<input type="number" name="estimated_device_capacity" min="1" max="50" value="2" /></label>
-          <label>平日可配合采集时段<input name="open_hours_desc" placeholder="例：周一至周六 09:00-17:30" /></label>
-        </div>
-        <label>每天实际正在发生的真实工作内容 *
-          <textarea name="daily_work_desc" rows="3" required placeholder="请真实描述店内/厂里每天日常干什么活（如：中性笔装配、文具上架排面整理、周转箱分拣入库）。严禁摆拍或涉及未成年人/隐私区域。"></textarea>
-        </label>
-        <div class="grid-3">
-          <label>门店 / 工厂名称 *（保密）<input name="real_store_name" required placeholder="仅凌矩审核可见" /></label>
-          <label>联系人称呼 *（保密）<input name="real_contact_name" required placeholder="例：王老板" /></label>
-          <label>联系电话 / 微信 *（保密）<input name="real_contact_phone" required placeholder="仅凌矩审核可见" /></label>
-        </div>
-        <label>详细经营地址 *（保密，审核锁单前绝不对代理展示）
-          <input name="real_address" required placeholder="例：XX市XX区XX路XX号" />
-        </label>
-        <label class="checkbox-row">
-          <input type="checkbox" name="zero_promise_ack" required />
-          <span>我已阅读并知晓：本次登记为免费储备备案，不收取任何费用，也不构成凌矩立刻派单或保底收益承诺；同意凌矩仅在脱敏后用于业务匹配评估。</span>
-        </label>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">提交免费场景备案</button>
-        </div>
-        <div id="publicSceneResult" class="result-banner hidden"></div>
-      </form>
-    </section>
 
-    <!-- VIEW 2: LOGIN -->
-    <section id="view-login" class="view hidden">
-      <div class="card login-card">
-        <h2>认证账号登录</h2>
-        <p class="muted">本平台<strong>不开放公开自主注册</strong>（严防 C 类二道贩子）。认证代理团队账号由凌矩总控核验资质后统一发放。</p>
-        <form id="loginForm" class="stack">
-          <label>登录账号<input name="username" required autocomplete="username" placeholder="请输入总控发放的账号" /></label>
-          <label>登录密码<input type="password" name="password" required autocomplete="current-password" placeholder="请输入密码" /></label>
-          <button type="submit" class="btn btn-primary">登录工作台</button>
+          <div class="divider"></div>
+          <div class="form-section-title">2. 保密联系信息（仅凌矩审核可见，绝不公开）</div>
+          <div class="grid-3">
+            <label>门店 / 工厂名称 *<input name="real_store_name" required placeholder="审核锁单前保密" /></label>
+            <label>联系人称呼 *<input name="real_contact_name" required placeholder="如：王老板" /></label>
+            <label>联系电话 / 微信 *<input name="real_contact_phone" required placeholder="仅凌矩联系使用" /></label>
+          </div>
+          <label>详细地址 *<input name="real_address" required placeholder="如：XX市XX区XX路XX号" /></label>
+
+          <label class="ack-box">
+            <input type="checkbox" name="zero_promise_ack" required />
+            <span>我已知晓：本次备案完全免费，凌矩不承诺立刻排单或保底收益，仅在匹配到合适甲方需求与当地认证团队时联系确认。</span>
+          </label>
+
+          <div class="row-end">
+            <button type="submit" class="btn btn-primary btn-lg">提交免费备案</button>
+          </div>
+          <div id="publicSceneResult" class="success-banner hidden"></div>
         </form>
-        <div class="login-hint">
-          <div class="muted small">如已执行本地演示数据初始化（<code>npm run seed:demo</code>），可用以下虚构演示账号测试体验：</div>
-          <ul class="small muted">
-            <li>凌矩总控管理员：<code>admin</code> / <code>Lingju@2026!</code></li>
-            <li>演示代理（企业开票已押）：<code>agent_demo_ent</code> / <code>Agent@2026!</code></li>
-            <li>演示代理（熟人特批免押·个人税点6%）：<code>agent_demo_cap</code> / <code>Agent@2026!</code></li>
-          </ul>
+      </div>
+    </main>
+
+    <!-- 公开页 B：认证登录 -->
+    <main id="publicLoginPage" class="public-main hidden">
+      <div class="login-wrap surface-card stack-lg">
+        <div>
+          <h1 style="font-size:22px;margin:0 0 6px;">认证账号登录</h1>
+          <p class="subtext" style="margin:0;">不开放公开注册，仅支持凌矩总控核验发放的团队与管理员账号。</p>
         </div>
-      </div>
-    </section>
-
-    <!-- VIEW 3: ADMIN WORKSPACE -->
-    <section id="view-admin" class="view hidden">
-      <div class="subnav" id="adminTabs">
-        <button class="tab active" data-tab="overview">经营总控</button>
-        <button class="tab" data-tab="tasks">合规任务池</button>
-        <button class="tab" data-tab="scenes">全国场景双层池 (S1/S2)</button>
-        <button class="tab" data-tab="assignments">派单审批与首件绿灯</button>
-        <button class="tab" data-tab="logs">QA回传与背靠背对账</button>
-        <button class="tab" data-tab="agents">认证代理发号库</button>
-      </div>
-
-      <!-- Admin Tab: Overview -->
-      <div class="admin-panel" data-panel="overview">
-        <div class="kpi-grid" id="adminKpis"></div>
-        <div class="card">
-          <h3>V1.0 平台运行五大铁律（系统级硬拦截已生效）</h3>
-          <ul class="rules-list">
-            <li><strong>入口防 C 类</strong>：无公开注册，仅后台核验发号；支持标注企业开票主体与个人团长代征税点。</li>
-            <li><strong>任务合规锁</strong>：标记为「仅内部草稿」的任务严禁在代理大厅可见或认领；V1.0 代理端彻底隐藏上游真实名与底价。</li>
-            <li><strong>场景双层隔离</strong>：IP 老板 30 秒留资进待初筛；<code>S1 稀缺标杆池</code> 仅总控可见（用于反推大甲方）；<code>S2 常规储备池</code> 脱敏上架，锁单审批后才解锁真实店名电话。</li>
-            <li><strong>首件熔断铁律</strong>：无论是否熟人特批免押，新单未通过 1–2 小时首件试采并点亮「批量开工绿灯」，系统直接拦截批量日报（HTTP 403）。</li>
-            <li><strong>背靠背三方对账</strong>：严格分批次推进「待甲方QA → 待甲方回款 → 甲方已回款待结 → 已打款(必填公户回单号)」，同步拆清代理净额、场景方场地费与凌矩毛利。</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Admin Tab: Tasks -->
-      <div class="admin-panel hidden" data-panel="tasks">
-        <form id="createTaskForm" class="card form-grid">
-          <h3>新建上游任务分包</h3>
-          <div class="grid-3">
-            <label>任务标题 *<input name="title" required placeholder="例：商超货架补货EGO采集" /></label>
-            <label>内部甲方名称 *(仅总控可见)<input name="upstream_name_internal" required placeholder="代理端不可见" /></label>
-            <label>甲方含税底价(元/有效h) *(仅总控可见)<input type="number" step="0.01" name="upstream_base_rate_cny" required placeholder="例：40" /></label>
-          </div>
-          <div class="grid-3">
-            <label>设备模态 *
-              <select name="modality">
-                <option value="EGO第一视角">EGO第一视角</option>
-                <option value="双目/夹爪">双目/夹爪</option>
-                <option value="夹爪">夹爪</option>
-                <option value="双目">双目</option>
-                <option value="多模态">多模态</option>
-              </select>
-            </label>
-            <label>适配场景类别 *<input name="scene_category" required placeholder="例：零售购物空间 / 工厂车间" /></label>
-            <label>地域范围<input name="city_scope" value="全国适用" /></label>
-          </div>
-          <div class="grid-3">
-            <label>合规路径锁 *（未获许可请选草稿）
-              <select name="compliance_path">
-                <option value="DRAFT_INTERNAL_ONLY">仅内部草稿（不对代理展示）</option>
-                <option value="WRITTEN_SUBCONTRACT_APPROVED">已获甲方书面分包许可</option>
-                <option value="LINGJU_UNIFIED_TEAM_ACCOUNT">纳入凌矩统一子账号项目管理</option>
-              </select>
-            </label>
-            <label>代理净价-自带场景(元/有效h) *<input type="number" step="0.01" name="agent_rate_own_scene_cny" required placeholder="例：30" /></label>
-            <label>代理净价-用平台场景(元/有效h) *<input type="number" step="0.01" name="agent_rate_platform_scene_cny" required placeholder="例：27" /></label>
-          </div>
-          <div class="grid-3">
-            <label>首件试采上限(原始h)<input type="number" step="0.5" name="first_piece_max_hours" value="2" /></label>
-            <label>甲方回款后结代理(工作日)<input type="number" name="settlement_days_after_client_pay" value="5" /></label>
-            <label>场景方场地费及税耗预留备注<input name="scene_owner_fee_note" placeholder="例：预留2-3元/h用于场地费及税耗" /></label>
-          </div>
-          <label>QA 硬红线 *（代理大厅可见）<input name="qa_red_lines" required placeholder="例：手离开镜头超3秒作废；禁止空桌摆拍与一次性胶带；避开未成年人" /></label>
-          <label>锁单前 SOP 摘要<textarea name="sop_summary" rows="2"></textarea></label>
-          <label>锁单后解锁的完整内部 SOP<textarea name="sop_full_internal" rows="3"></textarea></label>
-          <div class="form-actions"><button type="submit" class="btn btn-primary">创建任务包</button></div>
+        <form id="loginForm" class="stack-md">
+          <label>账号<input name="username" required autocomplete="username" placeholder="请输入登录账号" /></label>
+          <label>密码<input type="password" name="password" required autocomplete="current-password" placeholder="请输入登录密码" /></label>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">进入工作台</button>
         </form>
-        <div class="card">
-          <h3>全部任务包（含草稿与内部底价）</h3>
-          <div id="adminTaskList" class="table-wrap"></div>
-        </div>
-      </div>
-
-      <!-- Admin Tab: Scenes -->
-      <div class="admin-panel hidden" data-panel="scenes">
-        <div class="card">
-          <h3>全国场景双层池初筛与管理（仅总控可见真实联系方式）</h3>
-          <p class="muted small">常规匹配入 <code>S2_RESERVE</code> 并设 <code>AVAILABLE</code> 上架脱敏池；稀缺大产线/连锁门店归入 <code>S1_BENCHMARK</code>（自动对代理隐藏，供凌矩反推大甲方）。</p>
-          <div id="adminSceneList" class="stack"></div>
-        </div>
-      </div>
-
-      <!-- Admin Tab: Assignments -->
-      <div class="admin-panel hidden" data-panel="assignments">
-        <div class="card">
-          <h3>代理认领审批 ＆ 首件 1–2h 试采绿灯控制台</h3>
-          <div id="adminAssignmentList" class="stack"></div>
-        </div>
-      </div>
-
-      <!-- Admin Tab: Logs & Settlement -->
-      <div class="admin-panel hidden" data-panel="logs">
-        <div class="card">
-          <h3>QA 有效小时回传 ＆ 背靠背三方对账台</h3>
-          <div id="adminLogList" class="stack"></div>
-        </div>
-      </div>
-
-      <!-- Admin Tab: Agents -->
-      <div class="admin-panel hidden" data-panel="agents">
-        <form id="createAgentForm" class="card form-grid">
-          <h3>后台核验发放新代理账号（仅准入小团队 / 企业 / 成熟地方团长）</h3>
-          <div class="grid-3">
-            <label>登录账号 *<input name="username" required placeholder="例：agent_zz_01" /></label>
-            <label>初始密码 *(至少6位)<input name="password" required placeholder="例：Team@2026" /></label>
-            <label>团队/企业名称 *<input name="display_name" required placeholder="例：郑州XX数采团队" /></label>
-          </div>
-          <div class="grid-3">
-            <label>开票主体类型 *
-              <select name="entity_type">
-                <option value="enterprise_vat">企业主体（可开专票/普票，0额外扣税）</option>
-                <option value="sole_proprietor">个体工商户（合规普票）</option>
-                <option value="personal_captain">个人团长（自担代征/灵工税点）</option>
-              </select>
-            </label>
-            <label>代理自担税点比例（如 0 或 0.06）<input type="number" step="0.01" min="0" max="0.3" name="tax_deduction_rate" value="0" /></label>
-            <label>所在城市<input name="city" placeholder="例：平顶山 / 郑州" /></label>
-          </div>
-          <div class="grid-3">
-            <label>设备押金/担保状态 *
-              <select name="deposit_status">
-                <option value="PAID">已缴设备履约押金</option>
-                <option value="CORPORATE_GUARANTEE">企业主体协议担保</option>
-                <option value="ACQUAINTANCE_WAIVED">内部熟人试行特批免押（仍须过首件绿灯）</option>
-                <option value="UNPAID">未缴押金（限制发平台设备）</option>
-              </select>
-            </label>
-            <label>实缴押金金额(元)<input type="number" name="deposit_amount_cny" value="0" /></label>
-            <label>已验真在岗人数<input type="number" name="verified_headcount" value="5" /></label>
-          </div>
-          <label>核验备注（如：已视频验真场地与人数、押金凭证号）<input name="notes" /></label>
-          <div class="form-actions"><button type="submit" class="btn btn-primary">核验通过并生成账号</button></div>
-        </form>
-        <div class="card">
-          <h3>已发号代理档案</h3>
-          <div id="adminAgentList" class="table-wrap"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIEW 4: AGENT WORKSPACE -->
-    <section id="view-agent" class="view hidden">
-      <div class="agent-banner card" id="agentBanner"></div>
-      <div class="subnav" id="agentTabs">
-        <button class="tab active" data-tab="hall">资源承接大厅（任务 ＋ 脱敏场景）</button>
-        <button class="tab" data-tab="assignments">我的交付与首件绿灯</button>
-        <button class="tab" data-tab="bills">我的背靠背账单</button>
-      </div>
-
-      <!-- Agent Tab: Hall -->
-      <div class="agent-panel" data-panel="hall">
-        <div class="grid-2">
-          <div class="card">
-            <h3>开放合规任务包（展示代理净到手价）</h3>
-            <p class="muted small">注：严禁二次转包；按甲方最终确认有效小时背靠背结算。</p>
-            <div id="agentTaskList" class="stack"></div>
-          </div>
-          <div class="card">
-            <div class="row-between">
-              <h3>全国可用脱敏场景池（S2 储备）</h3>
-              <input id="sceneCitySearch" class="input-sm" placeholder="按城市筛选..." />
-            </div>
-            <p class="muted small">锁单前仅展示省市与日常作业类型，经凌矩审批锁单后解锁真实门店与对接人。</p>
-            <div id="agentSceneList" class="stack"></div>
+        <div class="demo-box">
+          <div class="demo-title">本地演示体验账号（点击即可一键填入）</div>
+          <div class="demo-btns">
+            <button type="button" class="chip-btn" data-fill="admin|Lingju@2026!">凌矩总控管理员</button>
+            <button type="button" class="chip-btn" data-fill="agent_demo_ent|Agent@2026!">代理：企业开票团队</button>
+            <button type="button" class="chip-btn" data-fill="agent_demo_cap|Agent@2026!">代理：熟人特批团长</button>
           </div>
         </div>
       </div>
+    </main>
+  </div>
 
-      <!-- Agent Tab: Assignments & Execution -->
-      <div class="agent-panel hidden" data-panel="assignments">
-        <div class="card">
-          <h3>我的派单工作台（SOP 解锁 · 首件熔断 · 每日填报）</h3>
-          <div id="agentAssignmentList" class="stack"></div>
+  <!-- ================= APP SHELL (左侧大模块导航 + 右侧二级工作区) ================= -->
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-mark">LJ</div>
+        <div>
+          <div class="sidebar-title">凌矩协同平台</div>
+          <div class="sidebar-role" id="sidebarRoleLabel">工作台</div>
         </div>
       </div>
 
-      <!-- Agent Tab: Bills -->
-      <div class="agent-panel hidden" data-panel="bills">
-        <div class="card">
-          <h3>我的背靠背结算台账</h3>
-          <p class="muted small">严格区分「待甲方QA」「待甲方回款」「甲方已回款待结」「已打款(附公户回单号)」。</p>
-          <div id="agentBillList" class="table-wrap"></div>
-        </div>
-      </div>
-    </section>
-  </main>
+      <nav class="side-nav" id="sideNav"></nav>
 
-  <!-- MODAL: AGENT CLAIM TASK -->
-  <div id="claimModal" class="modal hidden">
-    <div class="modal-box card">
-      <div class="row-between">
-        <h3>发起任务承接申请</h3>
-        <button class="btn btn-ghost" id="closeClaimModal">关闭</button>
-      </div>
-      <form id="claimForm" class="stack">
-        <input type="hidden" name="task_pack_id" />
-        <div id="claimTaskSummary" class="callout-info"></div>
-        <label>承接场景模式 *
-          <select name="mode" id="claimModeSelect">
-            <option value="OWN_SCENE">模式 A：自带当地自有合法场景（代理净价更高）</option>
-            <option value="PLATFORM_SCENE">模式 B：匹配同城平台脱敏场景（场地费由平台统一与老板结算）</option>
-          </select>
-        </label>
-        <label id="ownSceneField">自有场景城市、类型与作业说明 *
-          <textarea name="own_scene_desc" rows="2" placeholder="例：平顶山自有80平轻型手工组装工位，已有5名熟练人员"></textarea>
-        </label>
-        <label id="platformSceneField" class="hidden">选择平台可用脱敏场景 *
-          <select name="scene_id" id="claimSceneSelect"></select>
-        </label>
-        <label class="checkbox-row">
-          <input type="checkbox" name="agreement_signed" required />
-          <span><strong>我承诺遵守凌矩交付底线：</strong>① 绝不绕开平台私联甲方或平台提供的场景老板；② 绝不二次转包给第三方；③ 严格执行 1–2 小时首件试采过审点亮绿灯后再批量开工，未过绿灯猛采及违规废片损失自担；④ 认可按甲方最终确认有效小时及背靠背回款周期结算。</span>
-        </label>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">签署承诺并提交凌矩审批</button>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-name" id="sidebarUserName"></div>
+          <div class="user-meta" id="sidebarUserMeta"></div>
         </div>
-      </form>
+        <div class="footer-actions">
+          <button class="side-link-sm" id="btnSwitchPublic">查看老板备案页</button>
+          <button class="side-link-sm danger-text" id="btnLogout">退出登录</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="ws-header">
+        <div>
+          <h1 class="ws-title" id="wsTitle">总览</h1>
+          <div class="ws-sub" id="wsSub"></div>
+        </div>
+        <div class="ws-actions" id="wsActions"></div>
+      </header>
+
+      <!-- 二级细分小模块 Tab 栏（有小模块时自动显示） -->
+      <div class="subtabs-bar hidden" id="subtabsBar"></div>
+
+      <!-- 主内容区 -->
+      <section class="ws-content" id="wsContent"></section>
+    </div>
+  </div>
+
+  <!-- ================= 右侧滑出抽屉（所有新建表单 / 详情 / 审批操作统一放这里，列表页保持干净） ================= -->
+  <div id="drawerBackdrop" class="drawer-backdrop hidden">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2 id="drawerTitle">操作</h2>
+        <button class="icon-close" id="btnCloseDrawer" aria-label="关闭">✕</button>
+      </div>
+      <div class="drawer-body" id="drawerBody"></div>
     </div>
   </div>
 
