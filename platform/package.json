@@ -1,0 +1,16 @@
+{
+  "name": "lingju-agent-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "凌矩代理资源与场景整合平台 V1.0（极简低内存版，零第三方依赖，适配 Node.js 22.13+/24 与 Alibaba Cloud Linux 3）",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "seed:demo": "node src/seed.js --demo",
+    "seed:prod": "node src/seed.js",
+    "test": "node --test tests/api.test.js"
+  }
+}

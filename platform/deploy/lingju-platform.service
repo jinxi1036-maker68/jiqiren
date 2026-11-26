@@ -1,0 +1,23 @@
+[Unit]
+Description=Lingju Agent Resource Platform V1.0
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/srv/lingju-platform/platform
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3810
+Environment=DATA_DIR=/var/lib/lingju-platform
+Environment=COOKIE_SECURE=1
+# Set a strong random SESSION_SECRET in /etc/lingju-platform.env (chmod 600)
+EnvironmentFile=-/etc/lingju-platform.env
+ExecStart=/usr/bin/node /srv/lingju-platform/platform/src/server.js
+Restart=on-failure
+RestartSec=5
+MemoryHigh=120M
+MemoryMax=180M
+
+[Install]
+WantedBy=multi-user.target

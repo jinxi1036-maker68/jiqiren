@@ -36,3 +36,7 @@ Owner最新明确决定优先，旧方案有冲突时标注`SUPERSEDED`并保留
 - 真人口播、抖音/视频号/小红书创作、脚本去重、发布数据与内容复盘时，必须先看 [personal-ip/knowledge/00_START_HERE.md](personal-ip/knowledge/00_START_HERE.md) 和 [personal-ip/scripts/INDEX.csv](personal-ip/scripts/INDEX.csv)。项目在原仓库 personal-ip/，不是第二仓库。
 - 用户确认后把完整文案存成独立条目并更新索引；真实发布和成效有证据才入绩效台账；未获得平台数据不得补造结果。
 - 本分库总结的内容技巧是可以复盘调整的阶段方案，不把单次讨论上升为永久硬性规则。遵守原仓库的公司史、隐私和客户数据保密要求。
+
+## 凌矩 S2B 代理资源与场景协同平台专区（2026-11-26 建立）
+- `platform/` 是 S2B 代理资源与场景整合网站平台（V1.0）的**唯一正式源码专区**（区别于面向门店商家＋个人兼职采集员的 `miniapp/`）。修改代码前必须先读 [platform/AGENTS.md](platform/AGENTS.md) 与 [V1.0 定版规范与深清查报告](knowledge/strategy/2026-11-26_AGENT_PLATFORM_V1_FINAL_SPEC_AND_FIRST_PRINCIPLES_AUDIT.md)。
+- 严守五条系统红线：无公开注册、不向代理泄露甲方名/底价/S1池/未锁单联系方式、首件 1–2h 绿灯熔断不可绕过、无公户回单号不可标已打款、真实生产 `.db`/`.secret`/隐私数据严禁入库。

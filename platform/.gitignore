@@ -1,0 +1,10 @@
+# Local runtime database, secrets, and private uploads MUST NEVER be committed to GitHub
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/.secret
+.env
+.env.*
+uploads/*
+!uploads/.gitkeep
+*.log
