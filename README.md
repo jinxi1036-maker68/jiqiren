@@ -28,5 +28,5 @@
 
 ## 凌矩代理资源与场景协同平台（S2B 网站 · 2026-11-26 建立）
 
-- [平台源码与快速启动](platform/README.md) · [开发Agent约束](platform/AGENTS.md) · [六大模块定版规范与深清查报告](knowledge/strategy/2026-11-26_AGENT_PLATFORM_V1_FINAL_SPEC_AND_FIRST_PRINCIPLES_AUDIT.md)。
-- 定位为 S2B 资源集成中枢（上游合规任务分包 ＋ 个人 IP 30 秒免费场景备案双层池 `S1/S2` ＋ 认证小团队/代理承接 ＋ 首件 1–2h 绿灯熔断 ＋ 背靠背三方对账），采用零依赖 Node.js + SQLite 低内存架构；**1.0 本地源码与自动化验证已完成，公网阿里云部署及凌矩主体 ICP 备案待执行**。
+- [平台源码与快速启动](platform/README.md) · [变更记录](platform/CHANGELOG.md) · [开发Agent约束](platform/AGENTS.md) · [六大模块定版规范与深清查报告](knowledge/strategy/2026-11-26_AGENT_PLATFORM_V1_FINAL_SPEC_AND_FIRST_PRINCIPLES_AUDIT.md)。
+- 定位为 S2B 资源集成中枢（上游合规任务分包 ＋ 个人 IP 30 秒免费场景备案双层池 `S1/S2` ＋ 认证小团队/代理承接 ＋ 首件 1–2h 绿灯熔断 ＋ 背靠背三方对账），采用零依赖 Node.js + SQLite 低内存架构；**已迭代至 `v1.2.0` 专业 SaaS 控制台并在本地完成端到端测试与三端浏览器验证；按 Owner 2026-11-26 晚决议，待后续继续完善优化（飞书提醒/改密重置/对账导出等）后再推进阿里云部署、ICP 备案与真实试行。**

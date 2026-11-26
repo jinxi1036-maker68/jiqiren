@@ -400,6 +400,13 @@
     "build_budget_approved": true,
     "code_started": true,
     "production_deployed": false,
-    "icp_filing_completed": false
+    "icp_filing_completed": false,
+    "owner_launch_decision_20261126": "deferred_until_further_platform_optimization_completed",
+    "remaining_launch_prerequisites": [
+      "cloud_server_provision_or_isolation_plus_domain_https_and_lingju_icp_filing",
+      "production_seed_secrets_cookie_secure_and_daily_sqlite_backup",
+      "pending_operational_utilities_feishu_webhook_alert_password_reset_and_csv_export",
+      "real_compliant_task_packs_seed_agent_accounts_and_offline_signed_agreements"
+    ]
   }
 }
