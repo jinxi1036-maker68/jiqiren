@@ -403,7 +403,8 @@
     "icp_filing_completed": false,
     "owner_launch_decision_20261126": "deferred_until_further_platform_optimization_completed",
     "latest_architecture_evolution_doc": "knowledge/strategy/2026-11-26_PROJECT_BASED_DELIVERY_AND_AI_BRIDGE_EVOLUTION.md",
-    "pending_architecture_shift_20261126": "Upgrade from isolated task_packs to project-level quota pools (1000-10000h), device/sub-account-to-agent attribution mapping, XiaoYou upstream QA ingestion wall (agent sees valid/invalid hours, rejection reasons, and estimated fee only inside Lingju platform, never direct upstream UI), rule-version broadcasting, and AI-first + human-by-exception escalation bridge",
+    "v2_blueprint_spec_doc": "knowledge/strategy/2026-11-26_PLATFORM_V2_PROJECT_AND_XIAOYOU_SPEC.md",
+    "pending_architecture_shift_20261126": "Upgrade from isolated task_packs to project-level quota pools (1000-10000h), device/sub-account-to-agent attribution mapping, XiaoYou upstream QA ingestion wall (agent sees valid/invalid hours, rejection reasons, and estimated fee only inside Lingju platform, never direct upstream UI), rule-version broadcasting, AI-first + human-by-exception escalation bridge, plus Feishu webhook / password reset / CSV export",
     "remaining_launch_prerequisites": [
       "cloud_server_provision_or_isolation_plus_domain_https_and_lingju_icp_filing",
       "production_seed_secrets_cookie_secure_and_daily_sqlite_backup",
