@@ -389,6 +389,8 @@
       "cash_flow_isolation_between_upstream_and_agent_payouts"
     ],
     "doc": "knowledge/strategy/2026-11-26_RESOURCE_AGGREGATION_AND_AGENT_PLATFORM_CONCEPT_V0_1.md",
+    "blueprint_v1_doc": "knowledge/strategy/2026-11-26_AGENT_PLATFORM_MVP_BLUEPRINT_V1.md",
+    "mvp_scope": "3 roles (Lingju Admin / Regional Agent / IP Scene Lead Form), 5-step desensitized match-and-unlock workflow, 5 clickable demo views using fake data only",
     "build_budget_approved": false,
     "code_started": false
   }
