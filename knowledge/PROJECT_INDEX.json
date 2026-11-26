@@ -402,6 +402,8 @@
     "production_deployed": false,
     "icp_filing_completed": false,
     "owner_launch_decision_20261126": "deferred_until_further_platform_optimization_completed",
+    "latest_architecture_evolution_doc": "knowledge/strategy/2026-11-26_PROJECT_BASED_DELIVERY_AND_AI_BRIDGE_EVOLUTION.md",
+    "pending_architecture_shift_20261126": "Upgrade from isolated task_packs to project-level quota pools (1000-10000h), upstream portal isolation policies, dynamic rule-version broadcasting, and AI-first (isolated per-project XiaoYou assistant) + human-by-exception escalation bridge",
     "remaining_launch_prerequisites": [
       "cloud_server_provision_or_isolation_plus_domain_https_and_lingju_icp_filing",
       "production_seed_secrets_cookie_secure_and_daily_sqlite_backup",
