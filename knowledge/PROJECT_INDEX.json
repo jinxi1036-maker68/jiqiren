@@ -363,5 +363,28 @@
       "actual performance data",
       "verified factory-owner leads"
     ]
+  },
+  "resource_agent_platform_concept_20261126": {
+    "date": "2026-11-26",
+    "status": "owner_idea_discussion_only_not_approved_for_build",
+    "model": "S2B_resource_aggregation_and_agent_fulfillment_web_platform",
+    "core_resources_to_integrate": [
+      "upstream_orders_and_qa_rules",
+      "authorized_scene_leads",
+      "equipment_allocation",
+      "standard_sops_and_ai_qc_tools",
+      "collector_network"
+    ],
+    "intended_ultimate_outcome": "Shift Lingju from self-operated field team to S2B resource hub and standardized supply-chain delivery platform enabling scalable agent fulfillment, upstream bargaining power, and platformized asset retention",
+    "distinct_from_miniapp": "miniapp targets B2C/micro-stores (merchant + individual collector); this web platform targets S2B (Lingju platform -> regional agents/delivery teams)",
+    "prerequisite_gates": [
+      "written_upstream_subcontract_and_equipment_transfer_authorization",
+      "verified_unit_economics_qa_and_first_cash_collection_on_core_operations",
+      "anti_bypass_settlement_and_qc_control",
+      "cash_flow_isolation_between_upstream_and_agent_payouts"
+    ],
+    "doc": "knowledge/strategy/2026-11-26_RESOURCE_AGGREGATION_AND_AGENT_PLATFORM_CONCEPT_V0_1.md",
+    "build_budget_approved": false,
+    "code_started": false
   }
 }
