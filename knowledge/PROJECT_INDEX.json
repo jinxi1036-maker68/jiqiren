@@ -392,7 +392,7 @@
     "blueprint_v1_doc": "knowledge/strategy/2026-11-26_AGENT_PLATFORM_MVP_BLUEPRINT_V1.md",
     "first_principles_plan_doc": "knowledge/strategy/2026-11-26_FIRST_PRINCIPLES_PLATFORM_PREREQUISITES_AND_PHASE0_PLAN.md",
     "discovery_log_doc": "knowledge/strategy/2026-11-26_PLATFORM_REQUIREMENTS_DISCOVERY_LOG.md",
-    "current_stage_note": "2026-11-26 PM: Module 1 & Module 2 DECIDED (Phase 1 internal trial with Owner's own signed clients & existing known agents, Phase 2 expand via Douyin IP, strict anti-bypass & per-client compliance); Module 3 active (IP-acquired scene filtering, regional/category mismatch, and expectation management)",
+    "current_stage_note": "2026-11-26 PM: Modules 1-3 DECIDED (M1 small teams/captains with hard vetting; M2 self-seed trial -> Douyin IP diffusion; M3 90% S2 zero-promise reserve + 10% S1 benchmark reverse-pitch); Module 4 active (equipment deposit/ownership & two-stage First-Piece QA liability gate)",
     "recommended_phase0_approach": "Do not code website upfront; first validate core self-operated QA/payment + IP scene leads + written subcontracting permission, then run Concierge MVP via WeChat + Feishu Bitable with 1-3 seed agents and 10h first-piece QA gate before software build",
     "mvp_scope": "3 roles (Lingju Admin / Regional Agent / IP Scene Lead Form), 5-step desensitized match-and-unlock workflow, 5 clickable demo views using fake data only",
     "build_budget_approved": false,
