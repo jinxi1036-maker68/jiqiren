@@ -3,131 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>凌矩具身数据协同平台</title>
+  <title>凌矩协同平台 · 具身智能数据供应链调度台</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <div id="toast" class="toast hidden"></div>
 
-  <!-- ================= PUBLIC SHELL (登录页 / 30秒老板场景备案页) ================= -->
+  <!-- ================= PUBLIC SHELL ================= -->
   <div id="publicShell" class="public-shell hidden">
     <header class="public-header">
-      <div class="brand-inline">
-        <div class="logo-mark">LJ</div>
-        <span class="brand-name">凌矩具身数据协同平台</span>
-        <span class="tag tag-green">V1.0 试行</span>
-      </div>
-      <div class="row-gap">
-        <button class="btn btn-ghost-dark" id="pubNavScene">实体老板场景备案</button>
-        <button class="btn btn-primary" id="pubNavLogin">认证账号登录</button>
+      <div class="public-header-inner">
+        <div class="brand-inline">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="brand-title-row">
+              <span class="brand-name">凌矩数据协同平台</span>
+              <span class="env-badge">S2B 调度试行版</span>
+            </div>
+          </div>
+        </div>
+        <div class="row-gap">
+          <button class="btn btn-nav-ghost" id="pubNavScene">场景合作备案</button>
+          <button class="btn btn-primary" id="pubNavLogin">工作台登录</button>
+        </div>
       </div>
     </header>
 
-    <!-- 公开页 A：30秒场景备案 -->
+    <!-- 公开页 A：实体老板 30 秒场景备案 -->
     <main id="publicScenePage" class="public-main hidden">
-      <div class="narrow-wrap">
-        <div class="page-intro">
-          <h1>工厂 / 仓库 / 门店真实场景免费备案</h1>
-          <p class="subtext">只需 30 秒登记您的城市与日常作业。信息全程保密脱敏，匹配到同城同行业甲方任务时再联系您核对进场。</p>
+      <div class="scene-portal-wrap">
+        <div class="portal-hero">
+          <div class="portal-eyebrow">全国实体门店 · 工厂 · 仓库场景合作计划</div>
+          <h1>真实商业空间 30 秒免费备案</h1>
+          <p class="portal-lead">无需购置设备、无需提前承诺排期。您的场地信息全程保密脱敏，仅在匹配到同城同业具身智能数据采集需求时，由凌矩专员联系核对进场。</p>
+          <div class="trust-grid">
+            <div class="trust-item">
+              <span class="trust-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <div>
+                <strong>全流程信息脱敏</strong>
+                <span>未通过凌矩锁单审批前，不向任何第三方透露店名与电话</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              </span>
+              <div>
+                <strong>不拍隐私与人脸</strong>
+                <span>仅记录桌面或货架日常操作，严禁涉及顾客人脸及未成年人</span>
+              </div>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              <div>
+                <strong>零费用免费入库</strong>
+                <span>不收加盟费，按实际合作确认订单及合规凭证结算场地合作费</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <form id="publicSceneForm" class="surface-card stack-lg">
-          <div class="form-section-title">1. 场地基本信息</div>
+        <form id="publicSceneForm" class="card-elevated form-panel stack-lg">
+          <div class="step-head">
+            <span class="step-num">01</span>
+            <div>
+              <div class="form-section-title">场地所在城市与作业类型</div>
+              <div class="small muted">用于系统初步匹配全国上游订单覆盖范围</div>
+            </div>
+          </div>
+
           <div class="grid-3">
-            <label>省份 *<input name="province" placeholder="如：河南" required /></label>
-            <label>城市 *<input name="city" placeholder="如：平顶山" required /></label>
-            <label>区/县<input name="district" placeholder="如：新华区" /></label>
+            <label>省份 <span class="req">*</span><input name="province" placeholder="如：河南" required /></label>
+            <label>城市 <span class="req">*</span><input name="city" placeholder="如：平顶山" required /></label>
+            <label>区 / 县<input name="district" placeholder="如：新华区" /></label>
           </div>
           <div class="grid-3">
-            <label>场景类型 *
+            <label>场景类别 <span class="req">*</span>
               <select name="category" required>
-                <option value="工厂车间">工厂车间（装配/质检/包装）</option>
-                <option value="零售购物空间">零售门店（文具店/商超）</option>
-                <option value="仓库">仓库（入库/分拣/货位）</option>
+                <option value="工厂车间">工厂车间（装配 / 质检 / 包装）</option>
+                <option value="零售购物空间">零售门店（文具店 / 商超）</option>
+                <option value="仓库">仓库（入库 / 分拣 / 货位）</option>
                 <option value="手工组装作坊">手工组装订单场地</option>
                 <option value="生活服务空间">生活服务空间</option>
                 <option value="其他">其他真实商业场景</option>
               </select>
             </label>
-            <label>可容纳采集机位<input type="number" name="estimated_device_capacity" min="1" max="50" value="2" /></label>
-            <label>可配合时段<input name="open_hours_desc" placeholder="如：每天 09:00-18:00" /></label>
+            <label>预计可容纳机位<input type="number" name="estimated_device_capacity" min="1" max="50" value="2" /></label>
+            <label>日常可配合时段<input name="open_hours_desc" placeholder="如：每日 09:00–18:00" /></label>
           </div>
-          <label>每天实际正在发生的作业内容 *
-            <textarea name="daily_work_desc" rows="3" required placeholder="例如：中性笔装配、文具货架补货理货、周转箱分拣入库（严禁摆拍及涉及未成年人）"></textarea>
+          <label>场地日常正在发生的真实作业内容 <span class="req">*</span>
+            <textarea name="daily_work_desc" rows="3" required placeholder="请描述正常经营中可循环拍摄的动作，例如：文具货架补货理货、中性笔组装质检、周转箱分拣入库（严禁摆拍）"></textarea>
           </label>
 
           <div class="divider"></div>
-          <div class="form-section-title">2. 保密联系信息（仅凌矩审核可见，绝不公开）</div>
-          <div class="grid-3">
-            <label>门店 / 工厂名称 *<input name="real_store_name" required placeholder="审核锁单前保密" /></label>
-            <label>联系人称呼 *<input name="real_contact_name" required placeholder="如：王老板" /></label>
-            <label>联系电话 / 微信 *<input name="real_contact_phone" required placeholder="仅凌矩联系使用" /></label>
+
+          <div class="step-head">
+            <span class="step-num">02</span>
+            <div>
+              <div class="form-section-title">保密联系人与地址</div>
+              <div class="small muted">仅限凌矩内部风控审核可见，代理商大厅仅展示脱敏后的城市与行业标签</div>
+            </div>
           </div>
-          <label>详细地址 *<input name="real_address" required placeholder="如：XX市XX区XX路XX号" /></label>
+
+          <div class="grid-3">
+            <label>门店 / 工厂全称 <span class="req">*</span><input name="real_store_name" required placeholder="锁单前对外部严格保密" /></label>
+            <label>联系人称呼 <span class="req">*</span><input name="real_contact_name" required placeholder="如：王老板" /></label>
+            <label>联系电话 / 微信 <span class="req">*</span><input name="real_contact_phone" required placeholder="仅用于凌矩官方核验联系" /></label>
+          </div>
+          <label>场地详细地址 <span class="req">*</span><input name="real_address" required placeholder="省市区街道门牌号" /></label>
 
           <label class="ack-box">
             <input type="checkbox" name="zero_promise_ack" required />
-            <span>我已知晓：本次备案完全免费，凌矩不承诺立刻排单或保底收益，仅在匹配到合适甲方需求与当地认证团队时联系确认。</span>
+            <span>我已确认：本次登记完全免费，凌矩平台不承诺立即排单或保底收益，仅在匹配到合适上游项目与当地认证交付团队时联系沟通进场方案。</span>
           </label>
 
-          <div class="row-end">
-            <button type="submit" class="btn btn-primary btn-lg">提交免费备案</button>
+          <div class="row-between">
+            <span class="small muted">提交后自动生成唯一场景备案号</span>
+            <button type="submit" class="btn btn-primary btn-lg">提交免费场景备案</button>
           </div>
           <div id="publicSceneResult" class="success-banner hidden"></div>
         </form>
       </div>
     </main>
 
-    <!-- 公开页 B：认证登录 -->
-    <main id="publicLoginPage" class="public-main hidden">
-      <div class="login-wrap surface-card stack-lg">
-        <div>
-          <h1 style="font-size:22px;margin:0 0 6px;">认证账号登录</h1>
-          <p class="subtext" style="margin:0;">不开放公开注册，仅支持凌矩总控核验发放的团队与管理员账号。</p>
+    <!-- 公开页 B：分屏企业级认证登录 -->
+    <main id="publicLoginPage" class="public-main login-main hidden">
+      <div class="auth-split">
+        <div class="auth-showcase">
+          <div class="showcase-top">
+            <div class="showcase-tag">LINGJU EMBODIED DATA NETWORK</div>
+            <h2>把上游订单、真实场景与地域交付团队管在一条闭环里</h2>
+            <p>面向具身智能数据供应链的 S2B 协同调度台。不开放 C 端散户注册，全流程由凌矩总控核验把关。</p>
+          </div>
+          <div class="showcase-pillars">
+            <div class="pillar-row">
+              <div class="pillar-dot"></div>
+              <div>
+                <strong>美团式托管防跳单</strong>
+                <span>未审批锁单前，隐藏上游主体、甲方底价、内部 SOP 与门店真实联系方式</span>
+              </div>
+            </div>
+            <div class="pillar-row">
+              <div class="pillar-dot"></div>
+              <div>
+                <strong>1–2h 首件绿灯硬拦截</strong>
+                <span>无论设备是否特批免押，新单未通过首件试采绿灯前，系统禁止提交批量日报</span>
+              </div>
+            </div>
+            <div class="pillar-row">
+              <div class="pillar-dot"></div>
+              <div>
+                <strong>背靠背三方分账回单</strong>
+                <span>严格按甲方 QA 确认有效小时核算，结算打款强制校验公户回单号，拒绝垫资</span>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-foot">平顶山凌矩信息科技有限责任公司 · 内部试行控制台</div>
         </div>
-        <form id="loginForm" class="stack-md">
-          <label>账号<input name="username" required autocomplete="username" placeholder="请输入登录账号" /></label>
-          <label>密码<input type="password" name="password" required autocomplete="current-password" placeholder="请输入登录密码" /></label>
-          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">进入工作台</button>
-        </form>
-        <div class="demo-box">
-          <div class="demo-title">本地演示体验账号（点击即可一键填入）</div>
-          <div class="demo-btns">
-            <button type="button" class="chip-btn" data-fill="admin|Lingju@2026!">凌矩总控管理员</button>
-            <button type="button" class="chip-btn" data-fill="agent_demo_ent|Agent@2026!">代理：企业开票团队</button>
-            <button type="button" class="chip-btn" data-fill="agent_demo_cap|Agent@2026!">代理：熟人特批团长</button>
+
+        <div class="auth-panel">
+          <div class="auth-panel-inner">
+            <div class="auth-heading">
+              <h1>登录协同工作台</h1>
+              <p>请输入由凌矩总控核验发放的管理员或认证代理账号</p>
+            </div>
+
+            <form id="loginForm" class="stack-md">
+              <label>登录账号
+                <input name="username" required autocomplete="username" placeholder="请输入账号" />
+              </label>
+              <label>登录密码
+                <input type="password" name="password" required autocomplete="current-password" placeholder="请输入密码" />
+              </label>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">登录工作台</button>
+            </form>
+
+            <div class="demo-box">
+              <div class="demo-title">本地演示体验快捷填入（仅开发预览使用）</div>
+              <div class="demo-grid">
+                <button type="button" class="role-switch-btn" data-fill="admin|Lingju@2026!">
+                  <strong>凌矩总控管理员</strong>
+                  <span>全盘审核 · 绿灯 · 分账</span>
+                </button>
+                <button type="button" class="role-switch-btn" data-fill="agent_demo_ent|Agent@2026!">
+                  <strong>企业开票代理团队</strong>
+                  <span>已缴押金 · 0% 扣税</span>
+                </button>
+                <button type="button" class="role-switch-btn" data-fill="agent_demo_cap|Agent@2026!">
+                  <strong>熟人特批地方团长</strong>
+                  <span>免押特批 · 6% 代征税</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </main>
   </div>
 
-  <!-- ================= APP SHELL (左侧大模块导航 + 右侧二级工作区) ================= -->
+  <!-- ================= APP SHELL (左导航 + 顶部状态栏 + 右侧工作区) ================= -->
   <div id="appShell" class="app-shell hidden">
     <aside class="sidebar">
       <div class="sidebar-brand">
-        <div class="logo-mark">LJ</div>
-        <div>
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="sidebar-brand-text">
           <div class="sidebar-title">凌矩协同平台</div>
           <div class="sidebar-role" id="sidebarRoleLabel">工作台</div>
         </div>
       </div>
 
+      <div class="nav-section-label">主业务模块</div>
       <nav class="side-nav" id="sideNav"></nav>
 
       <div class="sidebar-footer">
-        <div class="user-card">
-          <div class="user-name" id="sidebarUserName"></div>
-          <div class="user-meta" id="sidebarUserMeta"></div>
+        <div class="user-profile-box">
+          <div class="user-avatar" id="sidebarAvatar">管</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebarUserName"></div>
+            <div class="user-meta" id="sidebarUserMeta"></div>
+          </div>
         </div>
         <div class="footer-actions">
-          <button class="side-link-sm" id="btnSwitchPublic">查看老板备案页</button>
+          <button class="side-link-sm" id="btnSwitchPublic">老板备案页</button>
           <button class="side-link-sm danger-text" id="btnLogout">退出登录</button>
         </div>
       </div>
     </aside>
 
     <div class="workspace">
+      <div class="topbar">
+        <div class="breadcrumb" id="topbarBreadcrumb">凌矩协同平台 / 总览</div>
+        <div class="topbar-right">
+          <span class="posture-pill"><span class="dot dot-emerald"></span><span id="postureText">防跳单遮罩与首件硬锁运行中</span></span>
+          <div class="topbar-actions" id="topbarActions"></div>
+        </div>
+      </div>
+
       <header class="ws-header">
         <div>
           <h1 class="ws-title" id="wsTitle">总览</h1>
@@ -136,20 +255,22 @@
         <div class="ws-actions" id="wsActions"></div>
       </header>
 
-      <!-- 二级细分小模块 Tab 栏（有小模块时自动显示） -->
       <div class="subtabs-bar hidden" id="subtabsBar"></div>
-
-      <!-- 主内容区 -->
-      <section class="ws-content" id="wsContent"></section>
+      <main class="ws-content" id="wsContent"></main>
     </div>
   </div>
 
-  <!-- ================= 右侧滑出抽屉（所有新建表单 / 详情 / 审批操作统一放这里，列表页保持干净） ================= -->
+  <!-- ================= 右侧滑出抽屉 ================= -->
   <div id="drawerBackdrop" class="drawer-backdrop hidden">
     <div class="drawer-panel">
       <div class="drawer-header">
-        <h2 id="drawerTitle">操作</h2>
-        <button class="icon-close" id="btnCloseDrawer" aria-label="关闭">✕</button>
+        <div>
+          <h2 id="drawerTitle">操作</h2>
+          <div class="drawer-sub" id="drawerSub"></div>
+        </div>
+        <button class="icon-close" id="btnCloseDrawer" aria-label="关闭">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
       </div>
       <div class="drawer-body" id="drawerBody"></div>
     </div>

@@ -1,26 +1,44 @@
-// ================= 100% 纯中文业务字典（消灭英文状态码） =================
+// ================= VECTOR SVG ICON SYSTEM (Zero Emojis) =================
+const SVG = {
+  dashboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
+  layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>',
+  activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+  wallet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>',
+  users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  compass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+  clipboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>',
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  unlock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>',
+  shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  alert: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+  arrowRight: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+};
+
+// ================= 100% 纯中文业务字典 =================
 const LABELS = {
   entity_type: {
     enterprise_vat: '企业主体（可开票）',
     sole_proprietor: '个体工商户',
-    personal_captain: '个人团长（扣代征税点）',
+    personal_captain: '个人团长（代征扣税）',
   },
   deposit_status: {
-    PAID: ['已缴设备押金', 'tag-green'],
-    CORPORATE_GUARANTEE: ['企业协议担保', 'tag-blue'],
-    ACQUAINTANCE_WAIVED: ['熟人特批免押', 'tag-amber'],
-    UNPAID: ['未缴押金', 'tag-red'],
+    PAID: ['已缴设备押金', 'pill-green', 'dot-emerald'],
+    CORPORATE_GUARANTEE: ['企业协议担保', 'pill-blue', 'dot-blue'],
+    ACQUAINTANCE_WAIVED: ['熟人特批免押', 'pill-amber', 'dot-amber'],
+    UNPAID: ['未缴押金', 'pill-red', 'dot-red'],
   },
   compliance_path: {
-    WRITTEN_SUBCONTRACT_APPROVED: ['已获书面分包许可', 'tag-green'],
-    LINGJU_UNIFIED_TEAM_ACCOUNT: ['凌矩统一子账号托管', 'tag-blue'],
-    DRAFT_INTERNAL_ONLY: ['内部草稿（未开放）', 'tag-gray'],
+    WRITTEN_SUBCONTRACT_APPROVED: ['已获书面分包许可', 'pill-green', 'dot-emerald'],
+    LINGJU_UNIFIED_TEAM_ACCOUNT: ['统一子账号托管', 'pill-blue', 'dot-blue'],
+    DRAFT_INTERNAL_ONLY: ['内部草稿（未开放）', 'pill-gray', 'dot-slate'],
   },
   scene_tier: {
-    PENDING_REVIEW: ['待初筛', 'tag-amber'],
-    S2_RESERVE: ['S2 常规储备', 'tag-green'],
-    S1_BENCHMARK: ['S1 稀缺标杆（仅总控）', 'tag-blue'],
-    REJECTED: ['已驳回', 'tag-red'],
+    PENDING_REVIEW: ['待初筛', 'pill-amber', 'dot-amber'],
+    S2_RESERVE: ['S2 常规储备', 'pill-green', 'dot-emerald'],
+    S1_BENCHMARK: ['S1 稀缺标杆（仅总控）', 'pill-blue', 'dot-blue'],
+    REJECTED: ['已驳回', 'pill-red', 'dot-red'],
   },
   scene_public: {
     HIDDEN: '未向代理公开',
@@ -28,12 +46,12 @@ const LABELS = {
     LOCKED: '已锁单执行中',
   },
   asg_status: {
-    PENDING_APPROVAL: ['待凌矩审批', 'tag-amber'],
-    FIRST_PIECE_TRIAL: ['首件试采期（限1–2h）', 'tag-blue'],
-    BATCH_GREEN_LIGHT: ['绿灯批量运行中', 'tag-green'],
-    REJECTED: ['审批未通过', 'tag-red'],
-    PAUSED: ['已暂停', 'tag-gray'],
-    COMPLETED: ['已结项', 'tag-gray'],
+    PENDING_APPROVAL: ['待凌矩审批', 'pill-amber', 'dot-amber'],
+    FIRST_PIECE_TRIAL: ['首件试采期（1–2h）', 'pill-blue', 'dot-blue'],
+    BATCH_GREEN_LIGHT: ['绿灯批量运行中', 'pill-green', 'dot-emerald'],
+    REJECTED: ['审批未通过', 'pill-red', 'dot-red'],
+    PAUSED: ['已暂停', 'pill-gray', 'dot-slate'],
+    COMPLETED: ['已结项', 'pill-gray', 'dot-slate'],
   },
   fp_status: {
     NOT_SUBMITTED: '待提交首件样本',
@@ -42,15 +60,15 @@ const LABELS = {
     REJECTED: '首件打回·待整改',
   },
   qa_status: {
-    PENDING_QA: ['待甲方审核', 'tag-amber'],
-    QA_CONFIRMED: ['甲方已确认有效', 'tag-green'],
-    QA_REJECTED: ['整批驳回无效', 'tag-red'],
+    PENDING_QA: ['待甲方审核', 'pill-amber', 'dot-amber'],
+    QA_CONFIRMED: ['甲方已确认有效', 'pill-green', 'dot-emerald'],
+    QA_REJECTED: ['整批驳回无效', 'pill-red', 'dot-red'],
   },
   settlement_stage: {
-    PENDING_QA: ['待甲方QA核定', 'tag-gray'],
-    PENDING_CLIENT_PAYMENT: ['待甲方回款', 'tag-amber'],
-    CLIENT_PAID_READY_TO_SETTLE: ['甲方已回款·待结代理', 'tag-blue'],
-    SETTLED_PAID: ['已打款（附回单）', 'tag-green'],
+    PENDING_QA: ['待甲方 QA 核定', 'pill-gray', 'dot-slate'],
+    PENDING_CLIENT_PAYMENT: ['待甲方回款', 'pill-amber', 'dot-amber'],
+    CLIENT_PAID_READY_TO_SETTLE: ['甲方已回款·待结代理', 'pill-blue', 'dot-blue'],
+    SETTLED_PAID: ['已打款（附回单）', 'pill-green', 'dot-emerald'],
   },
   log_type: {
     FIRST_PIECE: '首件样片',
@@ -58,19 +76,19 @@ const LABELS = {
   },
 };
 
-function tagHtml(mapObj, key) {
-  const pair = mapObj[key];
-  if (!pair) return `<span class="tag tag-gray">${esc(key)}</span>`;
-  return `<span class="tag ${pair[1]}">${pair[0]}</span>`;
+function pillHtml(mapObj, key) {
+  const item = mapObj[key];
+  if (!item) return `<span class="status-pill pill-gray"><span class="dot dot-slate"></span>${esc(key)}</span>`;
+  return `<span class="status-pill ${item[1]}"><span class="dot ${item[2]}"></span>${item[0]}</span>`;
 }
 
-// ================= STATE =================
+// ================= STATE & HELPERS =================
 const state = {
   user: null,
-  publicView: 'scene', // 'scene' | 'login'
+  publicView: 'scene',
   module: 'overview',
   subtab: '',
-  searchCity: '',
+  searchQuery: '',
   admin: { stats: {}, tasks: [], scenes: [], assignments: [], logs: [], agents: [] },
   agent: { tasks: [], scenes: [], assignments: [], logs: [] },
 };
@@ -106,8 +124,9 @@ async function api(url, opts = {}) {
 }
 
 // ================= DRAWER =================
-function openDrawer(title, html, onMount) {
+function openDrawer(title, html, onMount, subtitle = '') {
   $('#drawerTitle').textContent = title;
+  $('#drawerSub').textContent = subtitle;
   $('#drawerBody').innerHTML = html;
   $('#drawerBackdrop').classList.remove('hidden');
   if (onMount) onMount($('#drawerBody'));
@@ -128,17 +147,25 @@ function showPublic(page = 'scene') {
   $('#publicShell').classList.remove('hidden');
   $('#publicScenePage').classList.toggle('hidden', page !== 'scene');
   $('#publicLoginPage').classList.toggle('hidden', page !== 'login');
+  $('#pubNavScene').classList.toggle('btn-primary', page === 'scene');
+  $('#pubNavScene').classList.toggle('btn-nav-ghost', page !== 'scene');
+  $('#pubNavLogin').classList.toggle('btn-primary', page === 'login');
+  $('#pubNavLogin').classList.toggle('btn-nav-ghost', page !== 'login');
 }
 
 function showApp() {
   $('#publicShell').classList.add('hidden');
   $('#appShell').classList.remove('hidden');
   const u = state.user;
-  $('#sidebarRoleLabel').textContent = u.role === 'admin' ? '凌矩总控台' : '认证代理工作台';
+  $('#sidebarRoleLabel').textContent = u.role === 'admin' ? '凌矩总控后台' : '认证代理工作台';
   $('#sidebarUserName').textContent = u.display_name;
+  $('#sidebarAvatar').textContent = (u.display_name || 'L').slice(0, 1);
   $('#sidebarUserMeta').textContent = u.role === 'admin'
-    ? '内部管理权限'
-    : `${LABELS.entity_type[u.entity_type] || u.entity_type} · ${LABELS.deposit_status[u.deposit_status]?.[0] || ''}`;
+    ? '最高风控管理权限'
+    : `${LABELS.entity_type[u.entity_type] || u.entity_type}`;
+  $('#postureText').textContent = u.role === 'admin'
+    ? '防跳单脱敏 · 首件硬锁 · 背靠背账期'
+    : `${LABELS.deposit_status[u.deposit_status]?.[0] || ''} · 税点 ${(Number(u.tax_deduction_rate || 0) * 100).toFixed(0)}%`;
 }
 
 $('#pubNavScene').onclick = () => showPublic('scene');
@@ -151,7 +178,7 @@ $('#btnLogout').onclick = async () => {
   toast('已安全退出登录');
 };
 
-$$('.chip-btn[data-fill]').forEach((btn) => {
+$$('.role-switch-btn[data-fill]').forEach((btn) => {
   btn.onclick = () => {
     const [u, p] = btn.dataset.fill.split('|');
     const form = $('#loginForm');
@@ -169,10 +196,10 @@ $('#publicSceneForm').onsubmit = async (e) => {
   try {
     const res = await api('/api/public/scene-leads', { method: 'POST', body: JSON.stringify(payload) });
     const box = $('#publicSceneResult');
-    box.textContent = `备案成功（编号 ${res.code}）：${res.message}`;
+    box.textContent = `场景备案已录入（备案号 ${res.code}）：${res.message}`;
     box.classList.remove('hidden');
     e.target.reset();
-    toast('已提交免费备案');
+    toast('已成功提交免费备案');
   } catch (err) { toast(err.message, true); }
 };
 
@@ -184,6 +211,7 @@ $('#loginForm').onsubmit = async (e) => {
     state.user = res.user;
     state.module = 'overview';
     state.subtab = '';
+    state.searchQuery = '';
     showApp();
     await refreshWorkspaceData();
     renderWorkspace();
@@ -234,57 +262,56 @@ function getNavConfig() {
     const pendingAsg = (s.assignments_pending || 0) + (s.first_piece_pending || 0);
     const pendingFinance = (s.logs_pending_qa || 0) + (s.logs_ready_to_settle || 0);
     return [
-      { id: 'overview', icon: '📊', label: '总览首页', badge: 0, subtabs: [] },
+      { id: 'overview', icon: SVG.dashboard, label: '经营总览', badge: 0, subtabs: [] },
       {
-        id: 'resources', icon: '📦', label: '资源中心', badge: s.scenes_pending || 0,
+        id: 'resources', icon: SVG.layers, label: '资源中心', badge: s.scenes_pending || 0,
         subtabs: [
           { id: 'tasks', label: '上游任务分包', count: state.admin.tasks.length },
-          { id: 'scenes', label: '全国场景池 (S1/S2)', count: state.admin.scenes.length },
+          { id: 'scenes', label: '全国场景双层池', count: state.admin.scenes.length },
         ],
       },
       {
-        id: 'dispatch', icon: '🚦', label: '派单与首件', badge: pendingAsg,
+        id: 'dispatch', icon: SVG.activity, label: '派单与首件', badge: pendingAsg,
         subtabs: [
           { id: 'pending', label: '待审批认领', count: s.assignments_pending || 0 },
           { id: 'first_piece', label: '首件绿灯审核', count: s.first_piece_pending || 0 },
-          { id: 'active', label: '运行中与全部', count: state.admin.assignments.length },
+          { id: 'active', label: '全部派单流水', count: state.admin.assignments.length },
         ],
       },
       {
-        id: 'finance', icon: '💰', label: 'QA 与对账', badge: pendingFinance,
+        id: 'finance', icon: SVG.wallet, label: 'QA 与对账', badge: pendingFinance,
         subtabs: [
           { id: 'pending_qa', label: '待回填 QA', count: s.logs_pending_qa || 0 },
-          { id: 'all_logs', label: '背靠背结算台账', count: state.admin.logs.length },
+          { id: 'all_logs', label: '背靠背三方台账', count: state.admin.logs.length },
         ],
       },
       {
-        id: 'agents', icon: '🤝', label: '认证代理库', badge: 0,
-        subtabs: [{ id: 'list', label: '已发号代理档案', count: state.admin.agents.length }],
+        id: 'agents', icon: SVG.users, label: '认证代理库', badge: 0,
+        subtabs: [{ id: 'list', label: '准入代理档案', count: state.admin.agents.length }],
       },
     ];
   }
 
-  // Agent Role Nav
   const myTrial = state.agent.assignments.filter((a) => a.status === 'PENDING_APPROVAL' || a.status === 'FIRST_PIECE_TRIAL').length;
   const myBatch = state.agent.assignments.filter((a) => a.status === 'BATCH_GREEN_LIGHT').length;
   return [
-    { id: 'overview', icon: '🏠', label: '工作台首页', badge: 0, subtabs: [] },
+    { id: 'overview', icon: SVG.dashboard, label: '工作台首页', badge: 0, subtabs: [] },
     {
-      id: 'hall', icon: '🔍', label: '资源承接大厅', badge: 0,
+      id: 'hall', icon: SVG.compass, label: '资源承接大厅', badge: 0,
       subtabs: [
         { id: 'tasks', label: '开放合规任务包', count: state.agent.tasks.length },
         { id: 'scenes', label: '全国脱敏场景池', count: state.agent.scenes.length },
       ],
     },
     {
-      id: 'delivery', icon: '📋', label: '我的交付执行', badge: myTrial,
+      id: 'delivery', icon: SVG.clipboard, label: '我的交付执行', badge: myTrial,
       subtabs: [
         { id: 'trial', label: '待审与首件试采', count: myTrial },
         { id: 'batch', label: '绿灯批量运行中', count: myBatch },
       ],
     },
     {
-      id: 'bills', icon: '💳', label: '我的背靠背账单', badge: 0,
+      id: 'bills', icon: SVG.wallet, label: '我的背靠背账单', badge: 0,
       subtabs: [
         { id: 'all', label: '全部结算批次', count: state.agent.logs.length },
         { id: 'unpaid', label: '待审与待回款', count: state.agent.logs.filter((l) => l.settlement_stage !== 'SETTLED_PAID').length },
@@ -296,25 +323,31 @@ function getNavConfig() {
 function go(moduleId, subtabId = '') {
   state.module = moduleId;
   state.subtab = subtabId;
+  state.searchQuery = '';
   renderWorkspace();
 }
 
 function renderWorkspace() {
   const navConfig = getNavConfig();
-  let current = navConfig.find((n) => n.id === state.module) || navConfig[0];
+  const current = navConfig.find((n) => n.id === state.module) || navConfig[0];
   state.module = current.id;
+
+  let activeSubObj = null;
   if (current.subtabs.length > 0) {
-    if (!current.subtabs.some((st) => st.id === state.subtab)) {
-      state.subtab = current.subtabs[0].id;
-    }
+    activeSubObj = current.subtabs.find((st) => st.id === state.subtab) || current.subtabs[0];
+    state.subtab = activeSubObj.id;
   } else {
     state.subtab = '';
   }
 
-  // Render Left Sidebar
+  // Breadcrumb
+  const roleLabel = state.user.role === 'admin' ? '凌矩总控台' : '代理工作台';
+  $('#topbarBreadcrumb').innerHTML = `${roleLabel} / <strong>${esc(current.label)}</strong>${activeSubObj ? ` / ${esc(activeSubObj.label)}` : ''}`;
+
+  // Sidebar items
   $('#sideNav').innerHTML = navConfig.map((n) => `
     <button class="nav-item ${n.id === state.module ? 'active' : ''}" data-mod="${n.id}">
-      <span class="nav-left"><span>${n.icon}</span><span>${n.label}</span></span>
+      <span class="nav-left"><span class="nav-icon">${n.icon}</span><span>${n.label}</span></span>
       ${n.badge > 0 ? `<span class="nav-badge">${n.badge}</span>` : ''}
     </button>
   `).join('');
@@ -322,7 +355,12 @@ function renderWorkspace() {
     btn.onclick = () => go(btn.dataset.mod);
   });
 
-  // Render Subtabs Bar
+  // Top utility quick actions
+  $('#topbarActions').innerHTML = state.user.role === 'admin'
+    ? `<button class="btn btn-sm btn-primary" onclick="window.openCreateTaskDrawer()">${SVG.plus}新建任务包</button>`
+    : `<button class="btn btn-sm btn-secondary" onclick="window.navGo('hall','tasks')">领新任务 ${SVG.arrowRight}</button>`;
+
+  // Secondary Subtabs Bar
   const subBar = $('#subtabsBar');
   if (current.subtabs.length > 0) {
     subBar.classList.remove('hidden');
@@ -332,19 +370,15 @@ function renderWorkspace() {
       </button>
     `).join('');
     $$('#subtabsBar .subtab').forEach((btn) => {
-      btn.onclick = () => { state.subtab = btn.dataset.st; renderWorkspace(); };
+      btn.onclick = () => { state.subtab = btn.dataset.st; state.searchQuery = ''; renderWorkspace(); };
     });
   } else {
     subBar.classList.add('hidden');
     subBar.innerHTML = '';
   }
 
-  // Dispatch page renderer
-  if (state.user.role === 'admin') {
-    renderAdminPage();
-  } else {
-    renderAgentPage();
-  }
+  if (state.user.role === 'admin') renderAdminPage();
+  else renderAgentPage();
 }
 
 // ================= ADMIN PAGES =================
@@ -354,42 +388,203 @@ function renderAdminPage() {
 
   if (state.module === 'overview') {
     $('#wsTitle').textContent = '经营总览';
-    $('#wsSub').textContent = '只看今天最需要您拍板的 4 件事，点击卡片直接进入处理';
+    $('#wsSub').textContent = '全链路交付进度、待拍板事项队列与三方实时毛利核算';
+    actions.innerHTML = `
+      <button class="btn btn-secondary" onclick="window.openCreateAgentDrawer()">${SVG.plus}核验发代理号</button>
+      <button class="btn btn-primary" onclick="window.openCreateTaskDrawer()">${SVG.plus}新建上游任务</button>
+    `;
+
     const s = state.admin.stats;
+    const logs = state.admin.logs;
+    const tasks = state.admin.tasks;
+    const scenes = state.admin.scenes;
+    const asgs = state.admin.assignments;
+
+    // Build unified action queue
+    const queue = [];
+    scenes.filter((x) => x.tier === 'PENDING_REVIEW').forEach((x) => {
+      queue.push({
+        badge: '待初筛场景', pillClass: 'pill-amber', dotClass: 'dot-amber',
+        title: `${x.province}${x.city} · ${x.category}（约 ${x.estimated_device_capacity} 机位）`,
+        meta: `${x.code} · ${x.real_store_name} · ${x.daily_work_desc.slice(0, 36)}`,
+        btnText: '初筛分级', action: `window.openSceneTriageDrawer(${x.id})`,
+      });
+    });
+    asgs.filter((x) => x.status === 'PENDING_APPROVAL').forEach((x) => {
+      queue.push({
+        badge: '待审认领', pillClass: 'pill-amber', dotClass: 'dot-amber',
+        title: `${x.agent_name} 申请承接 ${x.task_title}`,
+        meta: `${x.code} · 代理净价 ¥${x.applied_agent_rate_cny}/h`,
+        btnText: '审批锁单', action: `window.openApproveAsgDrawer(${x.id})`,
+      });
+    });
+    asgs.filter((x) => x.status === 'FIRST_PIECE_TRIAL' && x.first_piece_status === 'SUBMITTED').forEach((x) => {
+      queue.push({
+        badge: '待点绿灯', pillClass: 'pill-blue', dotClass: 'dot-blue',
+        title: `${x.agent_name} · 已交 1–2h 首件样本`,
+        meta: `${x.code} · ${x.task_title}`,
+        btnText: '审核绿灯', action: `window.openReviewFPDrawer(${x.id})`,
+      });
+    });
+    logs.filter((x) => x.qa_status === 'PENDING_QA' || x.settlement_stage === 'CLIENT_PAID_READY_TO_SETTLE').forEach((x) => {
+      queue.push({
+        badge: x.qa_status === 'PENDING_QA' ? '待回填 QA' : '待打款结算',
+        pillClass: x.qa_status === 'PENDING_QA' ? 'pill-amber' : 'pill-blue',
+        dotClass: x.qa_status === 'PENDING_QA' ? 'dot-amber' : 'dot-blue',
+        title: `#${x.id} ${x.agent_name}（上传 ${x.uploaded_hours}h）`,
+        meta: `${x.log_date} · ${LABELS.log_type[x.log_type] || x.log_type} · 批次 ${x.batch_ref || '未填'}`,
+        btnText: '处理核销', action: `window.openAdminLogDrawer(${x.id})`,
+      });
+    });
+
+    // Financial rollup from confirmed logs
+    const confirmed = logs.filter((l) => l.qa_status === 'QA_CONFIRMED');
+    const sumValidH = confirmed.reduce((a, b) => a + Number(b.qa_valid_hours || 0), 0);
+    const sumUpGross = confirmed.reduce((a, b) => a + Number(b.financials.upstream_gross_cny || 0), 0);
+    const sumAgentNet = confirmed.reduce((a, b) => a + Number(b.financials.agent_net_payable_cny || 0), 0);
+    const sumVenue = confirmed.reduce((a, b) => a + Number(b.financials.venue_fee_cny || 0), 0);
+    const sumMargin = confirmed.reduce((a, b) => a + Number(b.financials.lingju_pre_overhead_margin_cny || 0), 0);
+
     $('#wsContent').innerHTML = `
-      <div class="kpi-row">
+      <div class="kpi-row-4">
         <div class="kpi-card" onclick="window.navGo('resources','scenes')">
-          <div class="kpi-label">待初筛 IP 场景</div>
-          <div class="kpi-num ${s.scenes_pending ? 'alert' : ''}">${s.scenes_pending || 0}</div>
-          <div class="kpi-hint">S2储备 ${s.scenes_s2 || 0} 个 · S1标杆 ${s.scenes_s1 || 0} 个</div>
+          <div class="kpi-top">
+            <span class="kpi-label">待初筛 IP 场景</span>
+            <span class="kpi-icon-box amber">${SVG.layers}</span>
+          </div>
+          <div class="kpi-num ${s.scenes_pending ? 'amber' : ''}">${s.scenes_pending || 0}</div>
+          <div class="kpi-foot"><span>S2 储备 ${s.scenes_s2 || 0}</span><span>S1 标杆 ${s.scenes_s1 || 0}</span></div>
         </div>
-        <div class="kpi-card" onclick="window.navGo('dispatch','pending')">
-          <div class="kpi-label">待审派单 / 首件绿灯</div>
-          <div class="kpi-num ${(s.assignments_pending + s.first_piece_pending) ? 'alert' : ''}">${(s.assignments_pending || 0) + (s.first_piece_pending || 0)}</div>
-          <div class="kpi-hint">待审认领 ${s.assignments_pending || 0} · 待点绿灯 ${s.first_piece_pending || 0}</div>
+
+        <div class="kpi-card" onclick="window.navGo('dispatch','first_piece')">
+          <div class="kpi-top">
+            <span class="kpi-label">待审派单 / 首件绿灯</span>
+            <span class="kpi-icon-box blue">${SVG.activity}</span>
+          </div>
+          <div class="kpi-num ${(s.assignments_pending + s.first_piece_pending) ? 'amber' : ''}">${(s.assignments_pending || 0) + (s.first_piece_pending || 0)}</div>
+          <div class="kpi-foot"><span>待锁单 ${s.assignments_pending || 0}</span><span>待绿灯 ${s.first_piece_pending || 0}</span></div>
         </div>
+
         <div class="kpi-card" onclick="window.navGo('finance','pending_qa')">
-          <div class="kpi-label">待回填 QA / 待结批次</div>
-          <div class="kpi-num ${(s.logs_pending_qa + s.logs_ready_to_settle) ? 'alert' : ''}">${(s.logs_pending_qa || 0) + (s.logs_ready_to_settle || 0)}</div>
-          <div class="kpi-hint">待回填QA ${s.logs_pending_qa || 0} · 已回款待结 ${s.logs_ready_to_settle || 0}</div>
+          <div class="kpi-top">
+            <span class="kpi-label">待回填 QA / 待结批次</span>
+            <span class="kpi-icon-box amber">${SVG.wallet}</span>
+          </div>
+          <div class="kpi-num ${(s.logs_pending_qa + s.logs_ready_to_settle) ? 'amber' : ''}">${(s.logs_pending_qa || 0) + (s.logs_ready_to_settle || 0)}</div>
+          <div class="kpi-foot"><span>待 QA ${s.logs_pending_qa || 0}</span><span>待付款 ${s.logs_ready_to_settle || 0}</span></div>
         </div>
+
         <div class="kpi-card" onclick="window.navGo('resources','tasks')">
-          <div class="kpi-label">在线合规任务 / 活跃代理</div>
-          <div class="kpi-num highlight">${s.open_compliant_tasks || 0} / ${s.active_agents || 0}</div>
-          <div class="kpi-hint">绿灯运行中派单 ${s.green_light_active || 0} 个</div>
+          <div class="kpi-top">
+            <span class="kpi-label">在线合规任务 / 活跃代理</span>
+            <span class="kpi-icon-box emerald">${SVG.users}</span>
+          </div>
+          <div class="kpi-num emerald">${s.open_compliant_tasks || 0} / ${s.active_agents || 0}</div>
+          <div class="kpi-foot"><span>绿灯运行中 ${s.green_light_active || 0} 单</span><span>已核销 ${sumValidH.toFixed(1)}h</span></div>
         </div>
       </div>
 
-      <div class="surface-card">
-        <div class="row-between" style="margin-bottom:14px;">
-          <h3 style="font-size:15px;">快捷操作入口</h3>
-          <span class="small muted">日常高频动作一键打开</span>
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">S2B 协同交付全链路节点</div>
+          <span class="small muted">点击任一环节进入对应管理台</span>
         </div>
-        <div class="row-gap">
-          <button class="btn btn-primary" onclick="window.openCreateTaskDrawer()">+ 新建上游任务包</button>
-          <button class="btn btn-secondary" onclick="window.openCreateAgentDrawer()">+ 核验发放新代理账号</button>
-          <button class="btn btn-secondary" onclick="window.navGo('resources','scenes')">去审核 IP 场景线索</button>
-          <button class="btn btn-secondary" onclick="window.navGo('finance','all_logs')">查看背靠背三方对账</button>
+        <div class="panel-body">
+          <div class="pipeline-strip">
+            <div class="pipe-node" onclick="window.navGo('resources','tasks')">
+              <div class="pipe-step">STAGE 01</div>
+              <div class="pipe-name">上游合规任务</div>
+              <div class="pipe-val">${s.open_compliant_tasks || 0} / ${tasks.length}</div>
+              <div class="pipe-desc">已开放合规包 / 含草稿</div>
+            </div>
+            <div class="pipe-node" onclick="window.navGo('resources','scenes')">
+              <div class="pipe-step">STAGE 02</div>
+              <div class="pipe-name">场景双层储备</div>
+              <div class="pipe-val">${(s.scenes_s2 || 0) + (s.scenes_s1 || 0)}</div>
+              <div class="pipe-desc">S2 可派发 ${s.scenes_s2 || 0} · 待筛 ${s.scenes_pending || 0}</div>
+            </div>
+            <div class="pipe-node" onclick="window.navGo('dispatch','first_piece')">
+              <div class="pipe-step">STAGE 03</div>
+              <div class="pipe-name">首件 1–2h 审核</div>
+              <div class="pipe-val">${s.first_piece_pending || 0}</div>
+              <div class="pipe-desc">等待点亮批量绿灯</div>
+            </div>
+            <div class="pipe-node" onclick="window.navGo('dispatch','active')">
+              <div class="pipe-step">STAGE 04</div>
+              <div class="pipe-name">绿灯批量运行</div>
+              <div class="pipe-val">${s.green_light_active || 0}</div>
+              <div class="pipe-desc">已过首件放量采集中</div>
+            </div>
+            <div class="pipe-node" onclick="window.navGo('finance','all_logs')">
+              <div class="pipe-step">STAGE 05</div>
+              <div class="pipe-name">背靠背已核销</div>
+              <div class="pipe-val">${confirmed.length}</div>
+              <div class="pipe-desc">累计有效 ${sumValidH.toFixed(1)} 小时</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-split">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">待您拍板事项队列 (${queue.length})</div>
+            <button class="btn btn-sm btn-ghost" onclick="window.navGo('finance','all_logs')">查看全部台账</button>
+          </div>
+          ${queue.length ? `
+            <div class="queue-list">
+              ${queue.slice(0, 6).map((q) => `
+                <div class="queue-row">
+                  <div style="min-width:0;">
+                    <div class="row-gap" style="margin-bottom:3px;">
+                      <span class="status-pill ${q.pillClass}"><span class="dot ${q.dotClass}"></span>${q.badge}</span>
+                      <span class="queue-title">${esc(q.title)}</span>
+                    </div>
+                    <div class="queue-meta">${esc(q.meta)}</div>
+                  </div>
+                  <button class="btn btn-sm btn-secondary" onclick="${q.action}">${q.btnText}</button>
+                </div>
+              `).join('')}
+            </div>
+          ` : '<div class="panel-body muted small">当前所有待初筛场景、首件审核与 QA 结算已全部清零。</div>'}
+        </div>
+
+        <div class="stack-md">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">已确认批次三方分账核算</div>
+              <span class="small muted">税前毛利口径</span>
+            </div>
+            <div class="panel-body">
+              <div class="kv-list">
+                <div class="kv-row"><span class="kv-label">上游有效含税营收</span><span class="kv-val">¥${sumUpGross.toFixed(2)}</span></div>
+                <div class="kv-row"><span class="kv-label">认证代理净应付总额</span><span class="kv-val">¥${sumAgentNet.toFixed(2)}</span></div>
+                <div class="kv-row"><span class="kv-label">第三方场景合作费</span><span class="kv-val">¥${sumVenue.toFixed(2)}</span></div>
+                <div class="kv-row"><span class="kv-label">凌矩留存（扣税与费用后）</span><span class="kv-val emerald">¥${sumMargin.toFixed(2)}</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">平台风控硬锁状态</div>
+              <span class="small muted">系统级强约束</span>
+            </div>
+            <div class="panel-body stack-sm">
+              <div class="guard-item">
+                <span>未锁单前屏蔽甲方底价与真实门店</span>
+                <span class="status-pill pill-green"><span class="dot dot-emerald"></span>已开启</span>
+              </div>
+              <div class="guard-item">
+                <span>1–2h 首件未过审拦截批量日报</span>
+                <span class="status-pill pill-green"><span class="dot dot-emerald"></span>HTTP 403 硬锁</span>
+              </div>
+              <div class="guard-item">
+                <span>结算标记已打款强校验公户回单号</span>
+                <span class="status-pill pill-green"><span class="dot dot-emerald"></span>已强制</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `;
@@ -397,39 +592,47 @@ function renderAdminPage() {
   }
 
   if (state.module === 'resources' && state.subtab === 'tasks') {
-    $('#wsTitle').textContent = '资源中心 · 上游任务分包';
-    $('#wsSub').textContent = '仅开放已确认合规路径的任务；内部甲方名称与底价对代理端绝对保密';
-    actions.innerHTML = `<button class="btn btn-primary" onclick="window.openCreateTaskDrawer()">+ 新建任务包</button>`;
+    $('#wsTitle').textContent = '上游任务分包库';
+    $('#wsSub').textContent = '仅向代理开放已确认合规路径的任务；内部甲方名称与底价对代理端绝对隔离';
+    actions.innerHTML = `<button class="btn btn-primary" onclick="window.openCreateTaskDrawer()">${SVG.plus}新建任务包</button>`;
     const tasks = state.admin.tasks;
     $('#wsContent').innerHTML = tasks.length ? `
       <div class="table-card">
         <table>
-          <thead><tr><th>任务包</th><th>内部甲方与底价（保密）</th><th>代理净价（自带 / 用平台场景）</th><th>合规状态</th><th>操作</th></tr></thead>
+          <thead>
+            <tr>
+              <th>任务编号与标题</th>
+              <th>内部甲方与底价（保密）</th>
+              <th>代理净价（自带 / 用平台）</th>
+              <th>合规路径锁</th>
+              <th style="text-align:right;">操作</th>
+            </tr>
+          </thead>
           <tbody>
             ${tasks.map((t) => `<tr>
               <td>
                 <div style="font-weight:700;">${esc(t.title)}</div>
-                <div class="small muted">${esc(t.code)} · ${esc(t.modality)} · ${esc(t.scene_category)}</div>
+                <div class="small muted"><span class="mono">${esc(t.code)}</span> · ${esc(t.modality)} · ${esc(t.scene_category)}</div>
               </td>
               <td>
                 <div style="font-weight:600;">${esc(t.upstream_name_internal)}</div>
-                <div class="small muted">底价 ¥${t.upstream_base_rate_cny}/h</div>
+                <div class="small muted num">甲方底价 ¥${t.upstream_base_rate_cny}/h</div>
               </td>
-              <td><strong>¥${t.agent_rate_own_scene_cny}</strong> / <strong>¥${t.agent_rate_platform_scene_cny}</strong> 元/h</td>
-              <td>${tagHtml(LABELS.compliance_path, t.compliance_path)}</td>
-              <td>
-                <button class="btn btn-sm btn-secondary" onclick="window.openTaskComplianceDrawer(${t.id})">调整状态</button>
+              <td class="num"><strong>¥${t.agent_rate_own_scene_cny}</strong> / <strong>¥${t.agent_rate_platform_scene_cny}</strong> <span class="small muted">/h</span></td>
+              <td>${pillHtml(LABELS.compliance_path, t.compliance_path)}</td>
+              <td style="text-align:right;">
+                <button class="btn btn-sm btn-secondary" onclick="window.openTaskComplianceDrawer(${t.id})">调整合规锁</button>
               </td>
             </tr>`).join('')}
           </tbody>
         </table>
       </div>
-    ` : '<div class="empty-box">暂无任务包，请点击右上角「+ 新建任务包」</div>';
+    ` : '<div class="empty-box">暂无上游任务包，点击右上角「新建任务包」录入</div>';
     return;
   }
 
   if (state.module === 'resources' && state.subtab === 'scenes') {
-    $('#wsTitle').textContent = '资源中心 · 全国场景双层池';
+    $('#wsTitle').textContent = '全国场景双层资源池';
     $('#wsSub').textContent = 'S2 常规储备脱敏上架供代理认领；S1 稀缺标杆仅总控可见，用于反向撬动大甲方';
     const scenes = state.admin.scenes;
     $('#wsContent').innerHTML = scenes.length ? `
@@ -438,28 +641,29 @@ function renderAdminPage() {
           <div class="entity-card">
             <div class="row-between">
               <div class="row-gap">
+                <span class="mono muted">${esc(s.code)}</span>
                 <span class="entity-title">${esc(s.province)} ${esc(s.city)} ${esc(s.district)} · ${esc(s.category)}</span>
-                ${tagHtml(LABELS.scene_tier, s.tier)}
-                <span class="tag tag-gray">${LABELS.scene_public[s.public_status] || s.public_status}</span>
+                ${pillHtml(LABELS.scene_tier, s.tier)}
+                <span class="status-pill pill-gray"><span class="dot dot-slate"></span>${LABELS.scene_public[s.public_status] || s.public_status}</span>
               </div>
-              <button class="btn btn-sm btn-primary" onclick="window.openSceneTriageDrawer(${s.id})">分级与管理</button>
+              <button class="btn btn-sm btn-primary" onclick="window.openSceneTriageDrawer(${s.id})">初筛与分层管理</button>
             </div>
-            <div class="small">${esc(s.daily_work_desc)}</div>
+            <div style="color:var(--text-secondary);font-size:13.5px;">${esc(s.daily_work_desc)}</div>
             <div class="meta-strip">
-              <span>编号：${esc(s.code)}</span>
-              <span>机位容量：约 ${s.estimated_device_capacity} 台</span>
-              <span>保密信息：${esc(s.real_store_name)}（${esc(s.real_contact_name)} ${esc(s.real_contact_phone)}）</span>
+              <span>机位容量：<strong class="num">${s.estimated_device_capacity}</strong> 台</span>
+              <span>开放时段：${esc(s.open_hours_desc || '待确认')}</span>
+              <span>保密实景：${esc(s.real_store_name)}（${esc(s.real_contact_name)} ${esc(s.real_contact_phone)}）</span>
             </div>
           </div>
         `).join('')}
       </div>
-    ` : '<div class="empty-box">暂无场景线索，可由抖音老板通过「实体老板场景备案页」提交</div>';
+    ` : '<div class="empty-box">暂无场景线索，可通过公开备案页接收实体老板登记</div>';
     return;
   }
 
   if (state.module === 'dispatch') {
     $('#wsTitle').textContent = '派单审批与首件绿灯';
-    $('#wsSub').textContent = '押金可分级，但 1–2 小时首件试采绿灯人人必过、系统硬锁';
+    $('#wsSub').textContent = '设备押金可分级审批，但 1–2 小时首件试采绿灯人人必过、系统级拦截未过审批量上报';
     let list = state.admin.assignments;
     if (state.subtab === 'pending') list = list.filter((a) => a.status === 'PENDING_APPROVAL');
     if (state.subtab === 'first_piece') list = list.filter((a) => a.status === 'FIRST_PIECE_TRIAL' && a.first_piece_status === 'SUBMITTED');
@@ -470,9 +674,10 @@ function renderAdminPage() {
           <div class="entity-card">
             <div class="row-between">
               <div class="row-gap">
+                <span class="mono muted">${esc(a.code)}</span>
                 <span class="entity-title">${esc(a.agent_name)}</span>
-                ${tagHtml(LABELS.asg_status, a.status)}
-                <span class="tag tag-gray">${LABELS.fp_status[a.first_piece_status] || a.first_piece_status}</span>
+                ${pillHtml(LABELS.asg_status, a.status)}
+                <span class="status-pill pill-gray"><span class="dot dot-slate"></span>${LABELS.fp_status[a.first_piece_status] || a.first_piece_status}</span>
               </div>
               <div class="row-gap">
                 ${a.status === 'PENDING_APPROVAL' ? `<button class="btn btn-sm btn-primary" onclick="window.openApproveAsgDrawer(${a.id})">审批锁单</button>` : ''}
@@ -480,12 +685,11 @@ function renderAdminPage() {
               </div>
             </div>
             <div class="meta-strip">
-              <span>派单号：${esc(a.code)}</span>
-              <span>任务：${esc(a.task_title)}</span>
-              <span>代理净价：¥${a.applied_agent_rate_cny}/h（内部甲方底价 ¥${a.upstream_base_rate_cny}/h）</span>
+              <span>任务：<strong>${esc(a.task_title)}</strong></span>
+              <span class="num">代理净价：<strong>¥${a.applied_agent_rate_cny}/h</strong>（内部底价 ¥${a.upstream_base_rate_cny}/h）</span>
               <span>押金：${LABELS.deposit_status[a.deposit_status]?.[0] || a.deposit_status}</span>
             </div>
-            <div class="small muted">场景：${a.mode === 'PLATFORM_SCENE' ? `平台场景 ${esc(a.scene_code)}（${esc(a.real_store_name)}）` : `代理自有场景（${esc(a.own_scene_desc)}）`}</div>
+            <div class="small muted">执行场地：${a.mode === 'PLATFORM_SCENE' ? `平台场景 ${esc(a.scene_code)}（${esc(a.real_store_name)}）` : `代理自有场地（${esc(a.own_scene_desc)}）`}</div>
           </div>
         `).join('')}
       </div>
@@ -495,61 +699,95 @@ function renderAdminPage() {
 
   if (state.module === 'finance') {
     $('#wsTitle').textContent = 'QA 回传与背靠背三方对账';
-    $('#wsSub').textContent = '按甲方确认有效小时核算；标记已打款必填公户回单号，绝不替甲方垫资';
+    $('#wsSub').textContent = '按甲方确认有效小时核算；标记已打款强制填写公户转账回单号，绝不替甲方垫资';
     let list = state.admin.logs;
     if (state.subtab === 'pending_qa') list = list.filter((l) => l.qa_status === 'PENDING_QA');
 
     $('#wsContent').innerHTML = list.length ? `
       <div class="table-card">
         <table>
-          <thead><tr><th>批次 / 代理</th><th>上传 / QA有效</th><th>QA 与账期状态</th><th>三方金额拆解</th><th>操作</th></tr></thead>
+          <thead>
+            <tr>
+              <th>批次 / 代理团队</th>
+              <th>上传 / 确认有效</th>
+              <th>QA 与账期进度</th>
+              <th>三方金额拆解</th>
+              <th style="text-align:right;">操作</th>
+            </tr>
+          </thead>
           <tbody>
             ${list.map((l) => `<tr>
               <td>
                 <div style="font-weight:700;">#${l.id} · ${esc(l.agent_name)}</div>
-                <div class="small muted">${esc(l.log_date)} · ${LABELS.log_type[l.log_type] || l.log_type} · ${esc(l.assignment_code)}</div>
+                <div class="small muted"><span class="mono">${esc(l.assignment_code)}</span> · ${esc(l.log_date)} · ${LABELS.log_type[l.log_type] || l.log_type}</div>
               </td>
-              <td>上传 ${l.uploaded_hours}h<br/><strong>有效 ${l.qa_valid_hours}h</strong></td>
-              <td>${tagHtml(LABELS.qa_status, l.qa_status)}<div style="margin-top:6px;">${tagHtml(LABELS.settlement_stage, l.settlement_stage)}</div></td>
-              <td class="small">
-                代理净付：<strong>¥${l.financials.agent_net_payable_cny}</strong>（扣税 ¥${l.financials.agent_tax_deduction_cny}）<br/>
-                场景费：¥${l.financials.venue_fee_cny} ｜ <strong>凌矩留存：¥${l.financials.lingju_pre_overhead_margin_cny}</strong>
+              <td class="num">上传 ${l.uploaded_hours}h<br/><strong>有效 ${l.qa_valid_hours}h</strong></td>
+              <td>
+                ${pillHtml(LABELS.qa_status, l.qa_status)}
+                <div style="margin-top:6px;">${pillHtml(LABELS.settlement_stage, l.settlement_stage)}</div>
+                ${l.payout_receipt_ref ? `<div class="small muted mono" style="margin-top:4px;">回单：${esc(l.payout_receipt_ref)}</div>` : ''}
               </td>
-              <td><button class="btn btn-sm btn-primary" onclick="window.openAdminLogDrawer(${l.id})">回填 QA / 结算</button></td>
+              <td class="small num">
+                代理净付：<strong>¥${l.financials.agent_net_payable_cny}</strong> <span class="muted">(代扣税 ¥${l.financials.agent_tax_deduction_cny})</span><br/>
+                场景费：¥${l.financials.venue_fee_cny} ｜ <strong style="color:var(--primary);">凌矩留存：¥${l.financials.lingju_pre_overhead_margin_cny}</strong>
+              </td>
+              <td style="text-align:right;">
+                <button class="btn btn-sm btn-secondary" onclick="window.openAdminLogDrawer(${l.id})">核销 / 结算</button>
+              </td>
             </tr>`).join('')}
           </tbody>
         </table>
       </div>
-    ` : '<div class="empty-box">暂无采集批次记录</div>';
+    ` : '<div class="empty-box">暂无采集批次对账记录</div>';
     return;
   }
 
   if (state.module === 'agents') {
     $('#wsTitle').textContent = '认证代理发号库';
-    $('#wsSub').textContent = '仅准入核验通过的小团队、企业或成熟地方团长，严禁 C 类二道贩子';
-    actions.innerHTML = `<button class="btn btn-primary" onclick="window.openCreateAgentDrawer()">+ 发放新代理账号</button>`;
+    $('#wsSub').textContent = '仅准入经视频或实地验真的小团队、企业与地方团长，严禁 C 类二道贩子';
+    actions.innerHTML = `<button class="btn btn-primary" onclick="window.openCreateAgentDrawer()">${SVG.plus}核验发代理号</button>`;
     const agents = state.admin.agents;
     $('#wsContent').innerHTML = agents.length ? `
       <div class="table-card">
         <table>
-          <thead><tr><th>代理名称 / 账号</th><th>城市与人数</th><th>开票主体与扣点</th><th>押金 / 担保</th><th>账号状态</th></tr></thead>
+          <thead>
+            <tr>
+              <th>代理团队 / 登录账号</th>
+              <th>城市与人数</th>
+              <th>开票主体与代征扣点</th>
+              <th>押金 / 担保凭证</th>
+              <th>账号状态</th>
+              <th style="text-align:right;">管理</th>
+            </tr>
+          </thead>
           <tbody>
             ${agents.map((a) => `<tr>
-              <td><strong>${esc(a.display_name)}</strong><div class="small muted">账号：${esc(a.username)}</div></td>
-              <td>${esc(a.city || '未填')} · 验真 ${a.verified_headcount} 人</td>
-              <td>${LABELS.entity_type[a.entity_type] || a.entity_type}<div class="small muted">税点扣除 ${(a.tax_deduction_rate * 100).toFixed(1)}%</div></td>
-              <td>${tagHtml(LABELS.deposit_status, a.deposit_status)} <span class="small muted">¥${a.deposit_amount_cny}</span></td>
               <td>
-                <button class="btn btn-sm ${a.status === 'ACTIVE' ? 'btn-secondary' : 'btn-primary'}"
+                <div style="font-weight:700;">${esc(a.display_name)}</div>
+                <div class="small muted mono">${esc(a.username)}</div>
+              </td>
+              <td>${esc(a.city || '未填')} · 验真 <strong class="num">${a.verified_headcount}</strong> 人</td>
+              <td>
+                <div>${LABELS.entity_type[a.entity_type] || a.entity_type}</div>
+                <div class="small muted num">扣点 ${(a.tax_deduction_rate * 100).toFixed(1)}%</div>
+              </td>
+              <td>${pillHtml(LABELS.deposit_status, a.deposit_status)} <span class="small muted num">¥${a.deposit_amount_cny}</span></td>
+              <td>
+                ${a.status === 'ACTIVE'
+                  ? '<span class="status-pill pill-green"><span class="dot dot-emerald"></span>正常启用</span>'
+                  : '<span class="status-pill pill-gray"><span class="dot dot-slate"></span>已暂停</span>'}
+              </td>
+              <td style="text-align:right;">
+                <button class="btn btn-sm ${a.status === 'ACTIVE' ? 'btn-ghost' : 'btn-primary'}"
                   onclick="window.adminToggleAgent(${a.id}, '${a.status === 'ACTIVE' ? 'SUSPENDED' : 'ACTIVE'}')">
-                  ${a.status === 'ACTIVE' ? '正常（点此暂停）' : '已暂停（点此恢复）'}
+                  ${a.status === 'ACTIVE' ? '暂停接单' : '恢复启用'}
                 </button>
               </td>
             </tr>`).join('')}
           </tbody>
         </table>
       </div>
-    ` : '<div class="empty-box">暂无认证代理，请点击右上角「+ 发放新代理账号」</div>';
+    ` : '<div class="empty-box">暂无认证代理，点击右上角「核验发代理号」录入</div>';
   }
 }
 
@@ -559,8 +797,10 @@ function renderAgentPage() {
   const u = state.user;
 
   if (state.module === 'overview') {
-    $('#wsTitle').textContent = `你好，${u.display_name}`;
-    $('#wsSub').textContent = '先看清当前最优先的一步，按首件绿灯规则稳步交付';
+    $('#wsTitle').textContent = `欢迎回来，${u.display_name}`;
+    $('#wsSub').textContent = '先领合规任务，完成 1–2 小时首件试采绿灯即可正式放量采集';
+    $('#wsActions').innerHTML = `<button class="btn btn-primary" onclick="window.navGo('hall','tasks')">前往资源大厅领单 ${SVG.arrowRight}</button>`;
+
     const asgs = state.agent.assignments;
     const logs = state.agent.logs;
     const activeBatch = asgs.filter((a) => a.status === 'BATCH_GREEN_LIGHT').length;
@@ -570,36 +810,80 @@ function renderAgentPage() {
       .reduce((sum, l) => sum + Number(l.agent_net_payable_cny || 0), 0);
 
     $('#wsContent').innerHTML = `
-      <div class="kpi-row">
+      <div class="kpi-row-3">
         <div class="kpi-card" onclick="window.navGo('hall','tasks')">
-          <div class="kpi-label">可承接开放任务</div>
-          <div class="kpi-num highlight">${state.agent.tasks.length}</div>
-          <div class="kpi-hint">同城/全国可用脱敏场景 ${state.agent.scenes.length} 个</div>
+          <div class="kpi-top">
+            <span class="kpi-label">开放可承接任务包</span>
+            <span class="kpi-icon-box emerald">${SVG.compass}</span>
+          </div>
+          <div class="kpi-num emerald">${state.agent.tasks.length}</div>
+          <div class="kpi-foot"><span>可用脱敏场景 ${state.agent.scenes.length} 个</span><span>点击选单</span></div>
         </div>
+
         <div class="kpi-card" onclick="window.navGo('delivery','trial')">
-          <div class="kpi-label">待审与首件试采单</div>
-          <div class="kpi-num ${waitingTrial ? 'alert' : ''}">${waitingTrial}</div>
-          <div class="kpi-hint">绿灯批量运行中 ${activeBatch} 单</div>
+          <div class="kpi-top">
+            <span class="kpi-label">待审与首件试采派单</span>
+            <span class="kpi-icon-box blue">${SVG.clipboard}</span>
+          </div>
+          <div class="kpi-num ${waitingTrial ? 'amber' : ''}">${waitingTrial}</div>
+          <div class="kpi-foot"><span>绿灯运行中 ${activeBatch} 单</span><span>查看进度</span></div>
         </div>
+
         <div class="kpi-card" onclick="window.navGo('bills','all')">
-          <div class="kpi-label">已确认有效净收益</div>
-          <div class="kpi-num highlight">¥${confirmedPay.toFixed(2)}</div>
-          <div class="kpi-hint">甲方回款后按背靠背周期结算</div>
+          <div class="kpi-top">
+            <span class="kpi-label">已核定有效净收益</span>
+            <span class="kpi-icon-box emerald">${SVG.wallet}</span>
+          </div>
+          <div class="kpi-num emerald">¥${confirmedPay.toFixed(2)}</div>
+          <div class="kpi-foot"><span>总计上报 ${logs.length} 批次</span><span>查看账单</span></div>
         </div>
       </div>
 
-      <div class="surface-card">
-        <div class="row-between">
-          <div>
-            <h3 style="font-size:15px;">我的准入档案</h3>
-            <div class="meta-strip" style="margin-top:8px;">
-              <span>所在城市：<strong>${esc(u.city || '未填')}</strong></span>
-              <span>主体类型：<strong>${LABELS.entity_type[u.entity_type] || u.entity_type}</strong></span>
-              <span>代征税点：<strong>${(Number(u.tax_deduction_rate || 0) * 100).toFixed(1)}%</strong></span>
-              <span>押金状态：${tagHtml(LABELS.deposit_status, u.deposit_status)}</span>
+      <div class="overview-split">
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">当前交付执行进度</div>
+            <button class="btn btn-sm btn-ghost" onclick="window.navGo('delivery','batch')">进入交付台</button>
+          </div>
+          ${asgs.length ? `
+            <div class="queue-list">
+              ${asgs.map((a) => `
+                <div class="queue-row">
+                  <div style="min-width:0;">
+                    <div class="row-gap" style="margin-bottom:4px;">
+                      <span class="queue-title">${esc(a.task_title)}</span>
+                      ${pillHtml(LABELS.asg_status, a.status)}
+                    </div>
+                    <div class="mini-steps">
+                      <span class="m-step done">1. 审批锁单</span>
+                      <span class="m-step ${a.first_piece_status === 'APPROVED' ? 'done' : 'active'}">2. 首件试采 (1–2h)</span>
+                      <span class="m-step ${a.status === 'BATCH_GREEN_LIGHT' ? 'done' : ''}">3. 绿灯批量放量</span>
+                    </div>
+                  </div>
+                  ${a.status === 'FIRST_PIECE_TRIAL'
+                    ? `<button class="btn btn-sm btn-primary" onclick="window.openSubmitLogDrawer(${a.id}, 'FIRST_PIECE')">提交首件</button>`
+                    : (a.status === 'BATCH_GREEN_LIGHT'
+                      ? `<button class="btn btn-sm btn-primary" onclick="window.openSubmitLogDrawer(${a.id}, 'BATCH')">提交日报</button>`
+                      : `<span class="small muted">待总控审核</span>`)}
+                </div>
+              `).join('')}
+            </div>
+          ` : '<div class="panel-body muted small">暂无进行中派单，点击右上角前往资源大厅认领任务包。</div>'}
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">准入档案与结算条款</div>
+            ${pillHtml(LABELS.deposit_status, u.deposit_status)}
+          </div>
+          <div class="panel-body">
+            <div class="kv-list">
+              <div class="kv-row"><span class="kv-label">所在服务城市</span><span class="kv-val">${esc(u.city || '未填')}</span></div>
+              <div class="kv-row"><span class="kv-label">主体开票性质</span><span class="kv-val">${LABELS.entity_type[u.entity_type] || u.entity_type}</span></div>
+              <div class="kv-row"><span class="kv-label">适用代征税点</span><span class="kv-val">${(Number(u.tax_deduction_rate || 0) * 100).toFixed(1)}%</span></div>
+              <div class="kv-row"><span class="kv-label">首件放量硬锁</span><span class="kv-val emerald">未过绿灯禁止报批量</span></div>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="window.navGo('hall','tasks')">前往资源大厅领单 →</button>
         </div>
       </div>
     `;
@@ -607,48 +891,64 @@ function renderAgentPage() {
   }
 
   if (state.module === 'hall' && state.subtab === 'tasks') {
-    $('#wsTitle').textContent = '资源大厅 · 开放合规任务包';
-    $('#wsSub').textContent = '以下展示您的代理净到手价；按甲方最终确认有效小时背靠背结算';
+    $('#wsTitle').textContent = '开放合规任务包';
+    $('#wsSub').textContent = '均已核验合规路径；以下展示您的净到手单价，按甲方确认有效小时背靠背结算';
     const tasks = state.agent.tasks;
     $('#wsContent').innerHTML = tasks.length ? `
       <div class="stack-md">
         ${tasks.map((t) => `
-          <div class="entity-card">
+          <div class="task-market-card">
             <div class="row-between" style="align-items:flex-start;">
-              <div>
-                <div class="row-gap" style="margin-bottom:6px;">
-                  <span class="tag tag-blue">${esc(t.modality)}</span>
-                  <span class="tag tag-gray">${esc(t.scene_category)}</span>
+              <div class="stack-sm">
+                <div class="row-gap">
+                  <span class="status-pill pill-blue"><span class="dot dot-blue"></span>${esc(t.modality)}</span>
+                  <span class="status-pill pill-gray"><span class="dot dot-slate"></span>${esc(t.scene_category)}</span>
                   <span class="small muted">${esc(t.city_scope)}</span>
                 </div>
-                <div class="entity-title">${esc(t.title)}</div>
+                <div class="task-title">${esc(t.title)}</div>
+                <div class="small muted">${esc(t.sop_summary)}</div>
               </div>
-              <div class="price-hero">
-                <div class="price-main">¥${t.agent_rate_own_scene_cny} <span style="font-size:13px;font-weight:500;">/有效h</span></div>
-                <div class="price-sub">自带场景价 ｜ 用平台场景 ¥${t.agent_rate_platform_scene_cny}/h</div>
+              <div class="price-box">
+                <div class="price-main">¥${t.agent_rate_own_scene_cny} <span style="font-size:12.5px;font-weight:500;">/有效h</span></div>
+                <div class="price-sub">自带场景净价 ｜ 用平台场景 ¥${t.agent_rate_platform_scene_cny}/h</div>
               </div>
             </div>
-            <div class="redline-bar"><strong>QA 红线：</strong>${esc(t.qa_red_lines)}</div>
+
+            <div class="spec-grid">
+              <div class="spec-cell"><div class="spec-k">采集模态</div><div class="spec-v">${esc(t.modality)}</div></div>
+              <div class="spec-cell"><div class="spec-k">首件试采上限</div><div class="spec-v num">${t.first_piece_min_hours}–${t.first_piece_max_hours} 小时</div></div>
+              <div class="spec-cell"><div class="spec-k">结算账期</div><div class="spec-v">甲方回款后 ${t.settlement_days_after_client_pay} 个工作日</div></div>
+              <div class="spec-cell"><div class="spec-k">任务编号</div><div class="spec-v mono">${esc(t.code)}</div></div>
+            </div>
+
+            <div class="redline-strip">
+              ${SVG.alert}
+              <div><strong>QA 合规红线：</strong>${esc(t.qa_red_lines)}</div>
+            </div>
+
             <div class="row-between">
-              <span class="small muted">首件试采上限 ${t.first_piece_max_hours}h · 甲方回款后 ${t.settlement_days_after_client_pay} 个工作日内结算</span>
+              <span class="small muted row-gap" style="gap:6px;">${SVG.lock} <span>审批锁单后自动解锁完整内部 V3 执行 SOP</span></span>
               <button class="btn btn-primary" onclick="window.openClaimDrawer(${t.id})">申请承接此任务</button>
             </div>
           </div>
         `).join('')}
       </div>
-    ` : '<div class="empty-box">当前暂无开放任务包</div>';
+    ` : '<div class="empty-box">当前暂无开放合规任务包</div>';
     return;
   }
 
   if (state.module === 'hall' && state.subtab === 'scenes') {
-    $('#wsTitle').textContent = '资源大厅 · 全国脱敏场景池';
-    $('#wsSub').textContent = '锁单审批通过后，系统将自动解锁该场景的真实店名、地址与对接人';
-    const q = state.searchCity.trim();
-    const list = q ? state.agent.scenes.filter((s) => `${s.province}${s.city}${s.district}${s.category}`.includes(q)) : state.agent.scenes;
+    $('#wsTitle').textContent = '全国脱敏场景池';
+    $('#wsSub').textContent = '锁单审批通过后，系统自动向该派单解锁对应门店名称、详细地址与负责人联系方式';
+    const q = state.searchQuery.trim();
+    const list = q ? state.agent.scenes.filter((s) => `${s.province}${s.city}${s.district}${s.category}${s.daily_work_desc}`.includes(q)) : state.agent.scenes;
 
     $('#wsContent').innerHTML = `
-      <div class="filter-bar">
-        <input id="citySearchInput" class="search-input" value="${esc(state.searchCity)}" placeholder="输入城市或行业筛选（如：平顶山）" />
+      <div class="filter-toolbar">
+        <div class="search-box">
+          ${SVG.search}
+          <input id="citySearchInput" value="${esc(state.searchQuery)}" placeholder="按城市、区县或行业筛选（如：平顶山）" />
+        </div>
         <span class="small muted">共 ${list.length} 个可用脱敏场景</span>
       </div>
       ${list.length ? `
@@ -657,11 +957,11 @@ function renderAgentPage() {
             <div class="entity-card">
               <div class="row-between">
                 <span class="entity-title">${esc(s.province)} ${esc(s.city)} ${esc(s.district)}</span>
-                <span class="tag tag-green">${esc(s.category)} · 约 ${s.estimated_device_capacity} 机位</span>
+                <span class="status-pill pill-green"><span class="dot dot-emerald"></span>${esc(s.category)} · ${s.estimated_device_capacity} 机位</span>
               </div>
-              <div class="small">${esc(s.daily_work_desc)}</div>
-              <div class="small muted">开放时段：${esc(s.open_hours_desc || '锁单后确认')}</div>
-              <div class="lock-bar">🔒 店名与联系方式已脱敏，请在「开放合规任务包」中组合认领解锁</div>
+              <div style="font-size:13.5px;color:var(--text-secondary);">${esc(s.daily_work_desc)}</div>
+              <div class="small muted">可配合时段：${esc(s.open_hours_desc || '锁单后确认')}</div>
+              <div class="lock-bar">${SVG.lock} 店名与联系方式已脱敏，请在「开放合规任务包」中组合认领解锁</div>
             </div>
           `).join('')}
         </div>
@@ -670,7 +970,7 @@ function renderAgentPage() {
     const inp = $('#citySearchInput');
     if (inp) {
       inp.oninput = () => {
-        state.searchCity = inp.value;
+        state.searchQuery = inp.value;
         renderAgentPage();
         const el = $('#citySearchInput');
         if (el) { el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
@@ -681,7 +981,7 @@ function renderAgentPage() {
 
   if (state.module === 'delivery') {
     $('#wsTitle').textContent = '我的交付执行';
-    $('#wsSub').textContent = '新单必须先通过 1–2 小时首件试采点亮绿灯，才解锁批量日报提交';
+    $('#wsSub').textContent = '新单必须先通过 1–2 小时首件试采点亮绿灯，才解锁批量日报提交权限';
     let list = state.agent.assignments;
     if (state.subtab === 'trial') list = list.filter((a) => a.status === 'PENDING_APPROVAL' || a.status === 'FIRST_PIECE_TRIAL');
     if (state.subtab === 'batch') list = list.filter((a) => a.status === 'BATCH_GREEN_LIGHT');
@@ -692,24 +992,25 @@ function renderAgentPage() {
           <div class="entity-card">
             <div class="row-between">
               <div class="row-gap">
+                <span class="mono muted">${esc(a.code)}</span>
                 <span class="entity-title">${esc(a.task_title)}</span>
-                ${tagHtml(LABELS.asg_status, a.status)}
-                <span class="tag tag-gray">${LABELS.fp_status[a.first_piece_status] || a.first_piece_status}</span>
+                ${pillHtml(LABELS.asg_status, a.status)}
+                <span class="status-pill pill-gray"><span class="dot dot-slate"></span>${LABELS.fp_status[a.first_piece_status] || a.first_piece_status}</span>
               </div>
-              <strong style="color:var(--primary);font-size:16px;">¥${a.applied_agent_rate_cny}/有效h</strong>
+              <strong class="num" style="color:var(--primary);font-size:17px;">¥${a.applied_agent_rate_cny}/有效h</strong>
             </div>
 
             ${a.scene_info ? (a.scene_info.unlocked
-              ? `<div class="unlock-bar"><strong>已解锁场景对接：</strong>${esc(a.scene_info.real_store_name)} ｜ ${esc(a.scene_info.real_contact_name)} ${esc(a.scene_info.real_contact_phone)} ｜ ${esc(a.scene_info.real_address)}</div>`
-              : `<div class="lock-bar">🔒 匹配场景 ${esc(a.scene_info.code)}（待凌矩审批锁单后解锁真联系）</div>`
+              ? `<div class="unlock-bar">${SVG.unlock} <div><strong>已解锁进场对接：</strong>${esc(a.scene_info.real_store_name)} ｜ ${esc(a.scene_info.real_contact_name)} ${esc(a.scene_info.real_contact_phone)} ｜ ${esc(a.scene_info.real_address)}</div></div>`
+              : `<div class="lock-bar">${SVG.lock} 匹配场景 ${esc(a.scene_info.code)}（待凌矩审批锁单后解锁真联系）</div>`
             ) : `<div class="small muted">自有场景：${esc(a.own_scene_desc)}</div>`}
 
             <div class="row-between">
-              <span class="small muted">派单号：${esc(a.code)}${a.first_piece_review_note ? ` · 审核反馈：${esc(a.first_piece_review_note)}` : ''}</span>
+              <span class="small muted">${a.first_piece_review_note ? `首件审校反馈：${esc(a.first_piece_review_note)}` : '请严格遵守 QA 红线及循环复用物料要求'}</span>
               <div class="row-gap">
                 ${a.sop_full_internal ? `<button class="btn btn-sm btn-secondary" onclick="window.openSopDrawer(${a.id})">查看完整 SOP</button>` : ''}
                 ${a.status === 'FIRST_PIECE_TRIAL' ? `<button class="btn btn-sm btn-primary" onclick="window.openSubmitLogDrawer(${a.id}, 'FIRST_PIECE')">提交首件样本 (1–2h)</button>` : ''}
-                ${a.status === 'BATCH_GREEN_LIGHT' ? `<button class="btn btn-sm btn-primary" onclick="window.openSubmitLogDrawer(${a.id}, 'BATCH')">+ 提交今日批量日报</button>` : ''}
+                ${a.status === 'BATCH_GREEN_LIGHT' ? `<button class="btn btn-sm btn-primary" onclick="window.openSubmitLogDrawer(${a.id}, 'BATCH')">${SVG.plus}提交今日批量日报</button>` : ''}
               </div>
             </div>
           </div>
@@ -721,26 +1022,43 @@ function renderAgentPage() {
 
   if (state.module === 'bills') {
     $('#wsTitle').textContent = '我的背靠背账单';
-    $('#wsSub').textContent = '清晰区分待审、待甲方回款与已打款回单号';
+    $('#wsSub').textContent = '清晰展示甲方 QA 有效小时、代征扣税与已打款银行回单号';
     let list = state.agent.logs;
     if (state.subtab === 'unpaid') list = list.filter((l) => l.settlement_stage !== 'SETTLED_PAID');
 
     $('#wsContent').innerHTML = list.length ? `
       <div class="table-card">
         <table>
-          <thead><tr><th>日期 / 类型</th><th>派单与任务</th><th>上传 / 有效小时</th><th>QA 与账期状态</th><th>净到手金额</th></tr></thead>
+          <thead>
+            <tr>
+              <th>上报日期 / 类型</th>
+              <th>派单与任务名称</th>
+              <th>上传 / 确认有效</th>
+              <th>QA 与回款进度</th>
+              <th style="text-align:right;">净到手金额</th>
+            </tr>
+          </thead>
           <tbody>
             ${list.map((l) => `<tr>
-              <td><strong>${esc(l.log_date)}</strong><div class="small muted">${LABELS.log_type[l.log_type] || l.log_type}</div></td>
-              <td>${esc(l.task_title)}<div class="small muted">${esc(l.assignment_code)}</div></td>
-              <td>上传 ${l.uploaded_hours}h<br/><strong>有效 ${l.qa_valid_hours}h</strong></td>
               <td>
-                ${tagHtml(LABELS.qa_status, l.qa_status)}
-                <div style="margin-top:6px;">${tagHtml(LABELS.settlement_stage, l.settlement_stage)}</div>
-                ${l.payout_receipt_ref ? `<div class="small muted" style="margin-top:4px;">回单：${esc(l.payout_receipt_ref)}</div>` : ''}
-                ${l.qa_reject_reason ? `<div class="small" style="color:#b91c1c;margin-top:4px;">${esc(l.qa_reject_reason)}</div>` : ''}
+                <strong>${esc(l.log_date)}</strong>
+                <div class="small muted">${LABELS.log_type[l.log_type] || l.log_type}</div>
               </td>
-              <td><strong style="font-size:16px;color:var(--primary);">¥${l.agent_net_payable_cny}</strong><div class="small muted">毛 ¥${l.agent_gross_cny} - 税 ¥${l.agent_tax_deduction_cny}</div></td>
+              <td>
+                <div style="font-weight:600;">${esc(l.task_title)}</div>
+                <div class="small muted mono">${esc(l.assignment_code)}</div>
+              </td>
+              <td class="num">上传 ${l.uploaded_hours}h<br/><strong>有效 ${l.qa_valid_hours}h</strong></td>
+              <td>
+                ${pillHtml(LABELS.qa_status, l.qa_status)}
+                <div style="margin-top:6px;">${pillHtml(LABELS.settlement_stage, l.settlement_stage)}</div>
+                ${l.payout_receipt_ref ? `<div class="small muted mono" style="margin-top:4px;">回单：${esc(l.payout_receipt_ref)}</div>` : ''}
+                ${l.qa_reject_reason ? `<div class="small" style="color:var(--danger);margin-top:4px;">${esc(l.qa_reject_reason)}</div>` : ''}
+              </td>
+              <td style="text-align:right;" class="num">
+                <strong style="font-size:16px;color:var(--primary);">¥${l.agent_net_payable_cny}</strong>
+                <div class="small muted">毛 ¥${l.agent_gross_cny} - 税 ¥${l.agent_tax_deduction_cny}</div>
+              </td>
             </tr>`).join('')}
           </tbody>
         </table>
@@ -755,13 +1073,13 @@ window.navGo = go;
 window.openCreateTaskDrawer = () => {
   openDrawer('新建上游任务分包', `
     <form id="drawerTaskForm" class="stack-md">
-      <label>任务标题 *<input name="title" required placeholder="如：文具店补货理货第一视角采集" /></label>
+      <label>任务标题 <span class="req">*</span><input name="title" required placeholder="如：文具店补货理货第一视角采集" /></label>
       <div class="grid-2">
-        <label>内部甲方名 *(保密)<input name="upstream_name_internal" required /></label>
-        <label>甲方含税底价(元/h) *(保密)<input type="number" step="0.01" name="upstream_base_rate_cny" required /></label>
+        <label>内部甲方名（保密） <span class="req">*</span><input name="upstream_name_internal" required /></label>
+        <label>甲方含税底价(元/h) <span class="req">*</span><input type="number" step="0.01" name="upstream_base_rate_cny" required /></label>
       </div>
       <div class="grid-2">
-        <label>设备模态 *
+        <label>设备模态 <span class="req">*</span>
           <select name="modality">
             <option value="EGO第一视角">EGO第一视角</option>
             <option value="双目/夹爪">双目/夹爪</option>
@@ -769,13 +1087,13 @@ window.openCreateTaskDrawer = () => {
             <option value="双目">双目</option>
           </select>
         </label>
-        <label>适配场景类别 *<input name="scene_category" required placeholder="如：零售购物空间" /></label>
+        <label>适配场景类别 <span class="req">*</span><input name="scene_category" required placeholder="如：零售购物空间" /></label>
       </div>
       <div class="grid-2">
-        <label>代理净价-自带场景(元/h) *<input type="number" step="0.01" name="agent_rate_own_scene_cny" required /></label>
-        <label>代理净价-平台场景(元/h) *<input type="number" step="0.01" name="agent_rate_platform_scene_cny" required /></label>
+        <label>代理净价-自带场景(元/h) <span class="req">*</span><input type="number" step="0.01" name="agent_rate_own_scene_cny" required /></label>
+        <label>代理净价-平台场景(元/h) <span class="req">*</span><input type="number" step="0.01" name="agent_rate_platform_scene_cny" required /></label>
       </div>
-      <label>合规路径锁 *
+      <label>合规路径锁 <span class="req">*</span>
         <select name="compliance_path">
           <option value="DRAFT_INTERNAL_ONLY">仅内部草稿（不对代理展示）</option>
           <option value="WRITTEN_SUBCONTRACT_APPROVED">已获甲方书面分包许可</option>
@@ -783,11 +1101,11 @@ window.openCreateTaskDrawer = () => {
         </select>
       </label>
       <div class="grid-2">
-        <label>地域范围<input name="city_scope" value="全国适用" /></label>
-        <label>甲方回款后结代理(工作日)<input type="number" name="settlement_days_after_client_pay" value="5" /></label>
+        <label>地域覆盖范围<input name="city_scope" value="全国适用" /></label>
+        <label>甲方回款后结算(工作日)<input type="number" name="settlement_days_after_client_pay" value="5" /></label>
       </div>
-      <label>场地费及税耗预留备注<input name="scene_owner_fee_note" placeholder="如：预留2-3元/h用于场地费及税耗" /></label>
-      <label>QA 红线 *（代理可见）<input name="qa_red_lines" required placeholder="手出画超3秒作废；严禁空桌摆拍" /></label>
+      <label>场地费及税耗预留备注<input name="scene_owner_fee_note" placeholder="如：预留 2–3 元/h 用于场地费及税耗" /></label>
+      <label>QA 合规红线（代理可见） <span class="req">*</span><input name="qa_red_lines" required placeholder="手出画超 3 秒作废；严禁空桌摆拍" /></label>
       <label>锁单后解锁的完整内部 SOP<textarea name="sop_full_internal" rows="4"></textarea></label>
       <div class="row-end"><button type="submit" class="btn btn-primary">确认创建</button></div>
     </form>
@@ -797,18 +1115,18 @@ window.openCreateTaskDrawer = () => {
       try {
         await api('/api/admin/tasks', { method: 'POST', body: JSON.stringify(Object.fromEntries(new FormData(e.target).entries())) });
         closeDrawer();
-        toast('任务包已创建');
+        toast('上游任务包已创建');
         await refreshWorkspaceData();
         renderWorkspace();
       } catch (err) { toast(err.message, true); }
     };
-  });
+  }, '内部底价与甲方名仅管理员可见');
 };
 
 window.openTaskComplianceDrawer = (id) => {
   const t = state.admin.tasks.find((x) => x.id === id);
   if (!t) return;
-  openDrawer(`调整任务合规状态 · ${t.code}`, `
+  openDrawer(`调整合规路径 · ${t.code}`, `
     <form id="drawerPatchTask" class="stack-md">
       <div class="small muted">${esc(t.title)}</div>
       <label>合规路径锁
@@ -818,7 +1136,7 @@ window.openTaskComplianceDrawer = (id) => {
           <option value="LINGJU_UNIFIED_TEAM_ACCOUNT" ${t.compliance_path==='LINGJU_UNIFIED_TEAM_ACCOUNT'?'selected':''}>凌矩统一子账号托管（开放）</option>
         </select>
       </label>
-      <div class="row-end"><button type="submit" class="btn btn-primary">保存变更</button></div>
+      <div class="row-end"><button type="submit" class="btn btn-primary">保存状态变更</button></div>
     </form>
   `, (body) => {
     body.querySelector('#drawerPatchTask').onsubmit = async (e) => {
@@ -826,41 +1144,43 @@ window.openTaskComplianceDrawer = (id) => {
       try {
         await api(`/api/admin/tasks/${id}`, { method: 'PATCH', body: JSON.stringify(Object.fromEntries(new FormData(e.target).entries())) });
         closeDrawer();
-        toast('合规状态已更新');
+        toast('任务合规状态已更新');
         await refreshWorkspaceData();
         renderWorkspace();
       } catch (err) { toast(err.message, true); }
     };
-  });
+  }, '控制任务是否对代理大厅可见');
 };
 
 window.openSceneTriageDrawer = (id) => {
   const s = state.admin.scenes.find((x) => x.id === id);
   if (!s) return;
-  openDrawer(`场景分级管理 · ${s.code}`, `
+  openDrawer(`场景分级与脱敏控制 · ${s.code}`, `
     <form id="drawerSceneForm" class="stack-md">
       <div class="unlock-bar">
-        <strong>保密联系信息：</strong><br/>
-        ${esc(s.real_store_name)} ｜ ${esc(s.real_contact_name)} ${esc(s.real_contact_phone)}<br/>
-        地址：${esc(s.real_address)}
+        <div>
+          <strong>保密实景联系人（不对外展示）：</strong><br/>
+          ${esc(s.real_store_name)} ｜ ${esc(s.real_contact_name)} ${esc(s.real_contact_phone)}<br/>
+          地址：${esc(s.real_address)}
+        </div>
       </div>
-      <label>场景分层 *
+      <label>场景分层判定 <span class="req">*</span>
         <select name="tier">
           <option value="S2_RESERVE" ${s.tier==='S2_RESERVE'?'selected':''}>S2 常规储备池（脱敏上架给代理）</option>
-          <option value="S1_BENCHMARK" ${s.tier==='S1_BENCHMARK'?'selected':''}>S1 稀缺标杆池（仅总控可见，反推大甲方）</option>
-          <option value="PENDING_REVIEW" ${s.tier==='PENDING_REVIEW'?'selected':''}>待初筛（隐藏）</option>
+          <option value="S1_BENCHMARK" ${s.tier==='S1_BENCHMARK'?'selected':''}>S1 稀缺标杆池（仅总控可见，拓大甲方）</option>
+          <option value="PENDING_REVIEW" ${s.tier==='PENDING_REVIEW'?'selected':''}>待初筛（暂不公开）</option>
           <option value="REJECTED" ${s.tier==='REJECTED'?'selected':''}>驳回不采用</option>
         </select>
       </label>
-      <label>代理池可见状态（仅 S2 可开放）
+      <label>代理大厅可见状态（仅 S2 可开放）
         <select name="public_status">
           <option value="AVAILABLE" ${s.public_status==='AVAILABLE'?'selected':''}>脱敏上架可认领</option>
           <option value="HIDDEN" ${s.public_status==='HIDDEN'?'selected':''}>暂隐藏储备</option>
         </select>
       </label>
-      <label>场地费与发票/税耗口径<input name="venue_fee_model" value="${esc(s.venue_fee_model)}" /></label>
-      <label>初筛备注<textarea name="review_note" rows="2">${esc(s.review_note)}</textarea></label>
-      <div class="row-end"><button type="submit" class="btn btn-primary">保存分级</button></div>
+      <label>场地费与凭证口径<input name="venue_fee_model" value="${esc(s.venue_fee_model)}" /></label>
+      <label>初筛核验备注<textarea name="review_note" rows="2">${esc(s.review_note)}</textarea></label>
+      <div class="row-end"><button type="submit" class="btn btn-primary">保存分层结果</button></div>
     </form>
   `, (body) => {
     body.querySelector('#drawerSceneForm').onsubmit = async (e) => {
@@ -873,33 +1193,33 @@ window.openSceneTriageDrawer = (id) => {
         renderWorkspace();
       } catch (err) { toast(err.message, true); }
     };
-  });
+  }, `${s.province}${s.city} · ${s.category}`);
 };
 
 window.openCreateAgentDrawer = () => {
   openDrawer('核验发放新代理账号', `
     <form id="drawerAgentForm" class="stack-md">
       <div class="grid-2">
-        <label>登录账号 *<input name="username" required placeholder="如：agent_zz_01" /></label>
-        <label>初始密码 *(至少6位)<input name="password" required placeholder="如：Team@2026" /></label>
+        <label>登录账号 <span class="req">*</span><input name="username" required placeholder="如：agent_zz_01" /></label>
+        <label>初始密码(>=6位) <span class="req">*</span><input name="password" required placeholder="如：Team@2026" /></label>
       </div>
-      <label>团队 / 企业名称 *<input name="display_name" required placeholder="如：郑州XX数采团队" /></label>
+      <label>团队 / 企业名称 <span class="req">*</span><input name="display_name" required placeholder="如：郑州星辰数采团队" /></label>
       <div class="grid-2">
-        <label>开票主体类型 *
+        <label>开票主体类型 <span class="req">*</span>
           <select name="entity_type">
             <option value="enterprise_vat">企业主体（可开票）</option>
             <option value="sole_proprietor">个体工商户</option>
-            <option value="personal_captain">个人团长（扣代征税点）</option>
+            <option value="personal_captain">个人团长（代征扣税）</option>
           </select>
         </label>
-        <label>代征税点（如 0 或 0.06）<input type="number" step="0.01" min="0" max="0.3" name="tax_deduction_rate" value="0" /></label>
+        <label>代征扣税比例（0 或 0.06）<input type="number" step="0.01" min="0" max="0.3" name="tax_deduction_rate" value="0" /></label>
       </div>
       <div class="grid-2">
-        <label>设备押金 / 担保状态 *
+        <label>押金 / 担保状态 <span class="req">*</span>
           <select name="deposit_status">
             <option value="PAID">已缴设备押金</option>
             <option value="CORPORATE_GUARANTEE">企业协议担保</option>
-            <option value="ACQUAINTANCE_WAIVED">熟人特批免押（仍须过首件绿灯）</option>
+            <option value="ACQUAINTANCE_WAIVED">熟人特批免押（仍过首件）</option>
             <option value="UNPAID">未缴押金</option>
           </select>
         </label>
@@ -909,7 +1229,7 @@ window.openCreateAgentDrawer = () => {
         <label>所在城市<input name="city" placeholder="如：平顶山" /></label>
         <label>验真在岗人数<input type="number" name="verified_headcount" value="5" /></label>
       </div>
-      <label>核验备注<input name="notes" placeholder="如：已视频验真场地与团队" /></label>
+      <label>核验备注<input name="notes" placeholder="如：已视频验真场地与团队成员" /></label>
       <div class="row-end"><button type="submit" class="btn btn-primary">确认发号</button></div>
     </form>
   `, (body) => {
@@ -923,7 +1243,7 @@ window.openCreateAgentDrawer = () => {
         renderWorkspace();
       } catch (err) { toast(err.message, true); }
     };
-  });
+  }, '严禁 C 类二道贩子及未验真个人散户');
 };
 
 window.adminToggleAgent = async (id, status) => {
@@ -938,10 +1258,10 @@ window.adminToggleAgent = async (id, status) => {
 window.openApproveAsgDrawer = (id) => {
   const a = state.admin.assignments.find((x) => x.id === id);
   if (!a) return;
-  openDrawer(`审批派单 · ${a.code}`, `
+  openDrawer(`审批锁单 · ${a.code}`, `
     <form id="drawerApproveAsg" class="stack-md">
-      <div class="small"><strong>代理：</strong>${esc(a.agent_name)}（押金：${LABELS.deposit_status[a.deposit_status]?.[0] || a.deposit_status}）</div>
-      <div class="small"><strong>任务：</strong>${esc(a.task_title)}</div>
+      <div class="small"><strong>申请代理：</strong>${esc(a.agent_name)}（${LABELS.deposit_status[a.deposit_status]?.[0] || a.deposit_status}）</div>
+      <div class="small"><strong>目标任务：</strong>${esc(a.task_title)}</div>
       <label>设备配置方式
         <select name="device_arrangement">
           <option value="PLATFORM_ISSUED_DEPOSIT">平台配发设备（须已缴押金/担保）</option>
@@ -949,7 +1269,7 @@ window.openApproveAsgDrawer = (id) => {
           <option value="PLATFORM_ISSUED_WAIVED">熟人特批免押发设备</option>
         </select>
       </label>
-      <label>审批备注<input name="admin_note" placeholder="可选" /></label>
+      <label>审批备注<input name="admin_note" placeholder="可选填写设备数量或注意事项" /></label>
       <div class="row-end">
         <button type="button" class="btn btn-danger" id="btnRejectAsg">拒绝申请</button>
         <button type="submit" class="btn btn-primary">批准锁单（进入首件期）</button>
@@ -964,20 +1284,22 @@ window.openApproveAsgDrawer = (id) => {
           body: JSON.stringify({ decision, ...Object.fromEntries(fd.entries()) }),
         });
         closeDrawer();
-        toast(decision === 'APPROVE' ? '已锁单解锁，进入 1–2h 首件试采期' : '已拒绝申请');
+        toast(decision === 'APPROVE' ? '已锁单并解锁 SOP，进入首件试采期' : '已拒绝申请');
         await refreshWorkspaceData();
         renderWorkspace();
       } catch (err) { toast(err.message, true); }
     };
     body.querySelector('#drawerApproveAsg').onsubmit = (e) => { e.preventDefault(); submitDecision('APPROVE'); };
     body.querySelector('#btnRejectAsg').onclick = () => submitDecision('REJECT');
-  });
+  }, '批准后自动解锁平台场景联系人与完整 SOP');
 };
 
 window.openReviewFPDrawer = (id) => {
+  const a = state.admin.assignments.find((x) => x.id === id);
   openDrawer('审核 1–2h 首件试采样本', `
     <form id="drawerReviewFP" class="stack-md">
-      <label>审核结论说明<textarea name="review_note" rows="3" placeholder="填写首件过审备注，或明确打回整改原因"></textarea></label>
+      ${a ? `<div class="small muted">${esc(a.code)} · ${esc(a.agent_name)} · ${esc(a.task_title)}</div>` : ''}
+      <label>审校结论说明<textarea name="review_note" rows="3" placeholder="填写首件过审备注，或明确打回整改原因"></textarea></label>
       <div class="row-end">
         <button type="button" class="btn btn-danger" id="btnRejectFP">打回重提首件</button>
         <button type="submit" class="btn btn-primary">首件合格 · 点亮批量绿灯</button>
@@ -998,17 +1320,17 @@ window.openReviewFPDrawer = (id) => {
     };
     body.querySelector('#drawerReviewFP').onsubmit = (e) => { e.preventDefault(); send('APPROVE_GREEN_LIGHT'); };
     body.querySelector('#btnRejectFP').onclick = () => send('REJECT_RETRY');
-  });
+  }, '点亮绿灯后系统解除批量上报拦截');
 };
 
 window.openAdminLogDrawer = (id) => {
   const l = state.admin.logs.find((x) => x.id === id);
   if (!l) return;
-  openDrawer(`QA 回传与背靠背结算 · #${l.id}`, `
+  openDrawer(`QA 核销与背靠背结算 · #${l.id}`, `
     <form id="drawerLogForm" class="stack-md">
       <div class="small muted">${esc(l.agent_name)} · 上传 ${l.uploaded_hours}h（原始 ${l.raw_hours}h）· 批次 ${esc(l.batch_ref || '无')}</div>
       <div class="grid-2">
-        <label>甲方 QA 状态
+        <label>甲方 QA 判定
           <select name="qa_status">
             <option value="PENDING_QA" ${l.qa_status==='PENDING_QA'?'selected':''}>待甲方审核</option>
             <option value="QA_CONFIRMED" ${l.qa_status==='QA_CONFIRMED'?'selected':''}>甲方已确认有效</option>
@@ -1019,7 +1341,7 @@ window.openAdminLogDrawer = (id) => {
       </div>
       <label>背靠背账期推进
         <select name="settlement_stage">
-          <option value="PENDING_QA" ${l.settlement_stage==='PENDING_QA'?'selected':''}>待甲方QA核定</option>
+          <option value="PENDING_QA" ${l.settlement_stage==='PENDING_QA'?'selected':''}>待甲方 QA 核定</option>
           <option value="PENDING_CLIENT_PAYMENT" ${l.settlement_stage==='PENDING_CLIENT_PAYMENT'?'selected':''}>待甲方回款</option>
           <option value="CLIENT_PAID_READY_TO_SETTLE" ${l.settlement_stage==='CLIENT_PAID_READY_TO_SETTLE'?'selected':''}>甲方已回款·待结代理</option>
           <option value="SETTLED_PAID" ${l.settlement_stage==='SETTLED_PAID'?'selected':''}>已打款（须填回单号）</option>
@@ -1038,12 +1360,12 @@ window.openAdminLogDrawer = (id) => {
       try {
         await api(`/api/admin/logs/${id}`, { method: 'PATCH', body: JSON.stringify(Object.fromEntries(new FormData(e.target).entries())) });
         closeDrawer();
-        toast('QA 与对账台账已保存');
+        toast('QA 与三方账期已更新');
         await refreshWorkspaceData();
         renderWorkspace();
       } catch (err) { toast(err.message, true); }
     };
-  });
+  }, '实时联动计算甲方营收、代理净付及凌矩留存');
 };
 
 window.openClaimDrawer = (taskId) => {
@@ -1056,24 +1378,26 @@ window.openClaimDrawer = (taskId) => {
   openDrawer('申请承接任务包', `
     <form id="drawerClaimForm" class="stack-md">
       <div class="unlock-bar">
-        <strong>${esc(t.title)}</strong><br/>
-        自带场景净价 ¥${t.agent_rate_own_scene_cny}/有效h ｜ 使用平台场景净价 ¥${t.agent_rate_platform_scene_cny}/有效h
+        <div>
+          <strong>${esc(t.title)}</strong><br/>
+          自带场景净价 ¥${t.agent_rate_own_scene_cny}/有效h ｜ 使用平台场景净价 ¥${t.agent_rate_platform_scene_cny}/有效h
+        </div>
       </div>
-      <label>选择承接场景模式 *
+      <label>选择承接场景模式 <span class="req">*</span>
         <select name="mode" id="dClaimMode">
           <option value="OWN_SCENE">模式 A：自带当地自有场景（¥${t.agent_rate_own_scene_cny}/h）</option>
           <option value="PLATFORM_SCENE">模式 B：匹配同城平台场景（¥${t.agent_rate_platform_scene_cny}/h）</option>
         </select>
       </label>
-      <label id="dOwnField">自有场地城市、类型与作业说明 *
-        <textarea name="own_scene_desc" rows="2" placeholder="如：平顶山自有轻型装配工位，已有5名熟练人员"></textarea>
+      <label id="dOwnField">自有场地城市、类型与人员说明 <span class="req">*</span>
+        <textarea name="own_scene_desc" rows="2" placeholder="如：平顶山自有轻型装配工位，已有 5 名熟练采集员"></textarea>
       </label>
-      <label id="dPlatField" class="hidden">选择平台可用脱敏场景 *
+      <label id="dPlatField" class="hidden">选择平台可用脱敏场景 <span class="req">*</span>
         <select name="scene_id">${sceneOptions}</select>
       </label>
       <label class="ack-box">
         <input type="checkbox" name="agreement_signed" required />
-        <span><strong>承诺底线：</strong>绝不跳单私联甲方或平台场景老板、绝不二次转包、严格先过 1–2 小时首件绿灯再放量（未过绿灯猛采及违规废片自担）、认可背靠背有效小时结算。</span>
+        <span><strong>合作铁律确认：</strong>绝不跳单私联甲方或平台场景老板、绝不二次转包、严格先过 1–2 小时首件绿灯再放量（未过绿灯猛采及违规废片自担）、认可背靠背有效小时结算。</span>
       </label>
       <div class="row-end"><button type="submit" class="btn btn-primary">签署承诺并提交审批</button></div>
     </form>
@@ -1098,7 +1422,7 @@ window.openClaimDrawer = (taskId) => {
         go('delivery', 'trial');
       } catch (err) { toast(err.message, true); }
     };
-  });
+  }, `${t.code} · 审批后解锁 SOP`);
 };
 
 window.openSopDrawer = (asgId) => {
@@ -1106,10 +1430,10 @@ window.openSopDrawer = (asgId) => {
   if (!a) return;
   openDrawer(`已解锁内部 SOP · ${a.code}`, `
     <div class="stack-md">
-      <div class="redline-bar"><strong>QA 红线：</strong>${esc(a.qa_red_lines)}</div>
+      <div class="redline-strip">${SVG.alert}<div><strong>QA 红线：</strong>${esc(a.qa_red_lines)}</div></div>
       <pre class="sop-pre">${esc(a.sop_full_internal)}</pre>
     </div>
-  `);
+  `, null, a.task_title);
 };
 
 window.openSubmitLogDrawer = (asgId, logType) => {
@@ -1119,14 +1443,14 @@ window.openSubmitLogDrawer = (asgId, logType) => {
   openDrawer(isFp ? `提交首件试采样本（上限 ${a.first_piece_max_hours}h）` : `提交今日批量日报 · ${a.code}`, `
     <form id="drawerSubmitLog" class="stack-md">
       <div class="grid-2">
-        <label>采集日期 *<input type="date" name="log_date" value="${new Date().toISOString().slice(0,10)}" required /></label>
-        <label>开工设备数 *<input type="number" min="1" name="devices_used" value="${isFp ? 1 : 3}" required /></label>
+        <label>采集日期 <span class="req">*</span><input type="date" name="log_date" value="${new Date().toISOString().slice(0,10)}" required /></label>
+        <label>开工设备数 <span class="req">*</span><input type="number" min="1" name="devices_used" value="${isFp ? 1 : 3}" required /></label>
       </div>
       <div class="grid-2">
-        <label>原始录制小时 *<input type="number" step="0.1" ${isFp ? `max="${a.first_piece_max_hours}"` : ''} name="raw_hours" value="${isFp ? 1.5 : ''}" required /></label>
-        <label>已上传小时 *<input type="number" step="0.1" name="uploaded_hours" value="${isFp ? 1.5 : ''}" required /></label>
+        <label>原始录制小时 <span class="req">*</span><input type="number" step="0.1" ${isFp ? `max="${a.first_piece_max_hours}"` : ''} name="raw_hours" value="${isFp ? 1.5 : ''}" required /></label>
+        <label>已上传小时 <span class="req">*</span><input type="number" step="0.1" name="uploaded_hours" value="${isFp ? 1.5 : ''}" required /></label>
       </div>
-      <label>上传批次号 / 外链备注<input name="batch_ref" placeholder="${isFp ? '如：FP-001' : '如：B-1126-01'}" /></label>
+      <label>上传批次号 / 凭证备注<input name="batch_ref" placeholder="${isFp ? '如：FP-001' : '如：B-1126-01'}" /></label>
       <div class="row-end"><button type="submit" class="btn btn-primary">${isFp ? '提交首件申请绿灯' : '提交今日日报'}</button></div>
     </form>
   `, (body) => {
@@ -1143,7 +1467,7 @@ window.openSubmitLogDrawer = (asgId, logType) => {
         renderWorkspace();
       } catch (err) { toast(err.message, true); }
     };
-  });
+  }, a.task_title);
 };
 
 // ================= BOOTSTRAP =================

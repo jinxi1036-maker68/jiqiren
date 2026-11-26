@@ -366,7 +366,7 @@
   },
   "resource_agent_platform_concept_20261126": {
     "date": "2026-11-26",
-    "status": "v1_1_0_local_verified_pending_cloud_deploy_and_icp",
+    "status": "v1_2_0_pro_ui_local_verified_pending_cloud_deploy",
     "model": "S2B_resource_aggregation_and_agent_fulfillment_web_platform",
     "owner_selected_first_batch_resource_pools": [
       "livsyn_and_multi_upstream_task_subcontracting",
@@ -394,7 +394,7 @@
     "discovery_log_doc": "knowledge/strategy/2026-11-26_PLATFORM_REQUIREMENTS_DISCOVERY_LOG.md",
     "final_spec_and_audit_doc": "knowledge/strategy/2026-11-26_AGENT_PLATFORM_V1_FINAL_SPEC_AND_FIRST_PRINCIPLES_AUDIT.md",
     "canonical_code_root": "platform/",
-    "current_stage_note": "2026-11-26 PM: Owner approved lean V1.0 Web build and gave UI density feedback; platform/ v1.1.0 implemented & verified locally (zero-dep Node.js + SQLite WAL, fixed left sidebar + right sub-tabs + slide-out drawer UI + 100% Chinese labels, RBAC & desensitization, first-piece green-light lock, back-to-back 3-party ledger); local automated tests & 3-role browser walkthrough passed; production cloud deploy & ICP filing pending",
+    "current_stage_note": "2026-11-26 PM: After Owner design review, upgraded platform/ to v1.2.0 pro enterprise SaaS visual system (zero emojis, crisp SVG icons, tabular financials, 5-stage delivery funnel, unified action queue, live margin rollup, split-screen auth, trust-backed scene portal, and realistic pipeline demo seed); API tests & 3-role walkthrough verified locally",
     "recommended_phase0_approach": "Do not code website upfront; first validate core self-operated QA/payment + IP scene leads + written subcontracting permission, then run Concierge MVP via WeChat + Feishu Bitable with 1-3 seed agents and 10h first-piece QA gate before software build",
     "mvp_scope": "3 roles (Lingju Admin / Regional Agent / IP Scene Lead Form), 5-step desensitized match-and-unlock workflow, lean V1.0 real Web app with 5 core DB modules",
     "build_budget_approved": true,
