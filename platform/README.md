@@ -1,15 +1,15 @@
-# 凌矩具身数据资源与代理协同平台（`platform/` · V1.0）
+# 凌矩具身数据资源与代理协同平台（`platform/` · v2.0.0）
 
-- **定位**：凌矩 S2B 代理资源集成与标准化交付平台（区别于面向门店商家＋个人兼职采集员的 `miniapp/`）。
-- **上位规范**：[六大模块定版规范与第一性原理深清查报告](../knowledge/strategy/2026-11-26_AGENT_PLATFORM_V1_FINAL_SPEC_AND_FIRST_PRINCIPLES_AUDIT.md)
-- **技术特点**：基于 **Node.js 22.13+ / 24 原生内置 `node:http` + `node:sqlite` + `node:crypto`**，**零第三方 npm 依赖**，运行时内存约 `30–50 MiB`，可直接在本机 Windows 或现有阿里云 `Alibaba Cloud Linux 3 (1.83GiB RAM)` 服务器稳定运行。
+- **定位**：凌矩 S2B 整包项目配额集成、小优上游 QA 隔离回流与标准化交付平台（区别于面向门店商家＋个人兼职采集员的 `miniapp/`）。
+- **上位规范**：[v2.0 整包项目制与小优回流设计规范](../knowledge/strategy/2026-11-26_PLATFORM_V2_PROJECT_AND_XIAOYOU_SPEC.md) · [V1.0 六大模块定版与深清查报告](../knowledge/strategy/2026-11-26_AGENT_PLATFORM_V1_FINAL_SPEC_AND_FIRST_PRINCIPLES_AUDIT.md)
+- **技术特点**：基于 **Node.js 22.13+ / 24 原生内置 `node:http` + `node:sqlite` + `node:crypto`**，**零第三方 npm 依赖**，运行时内存约 `30–50 MiB`，可直接在本机 Windows 或阿里云 `Alibaba Cloud Linux 3` 服务器稳定运行。
 
 ## 核心业务闭环（已系统级硬编码保护）
-1. **无公开自主注册**：仅凌矩总控核验资质后后台发号（彻底堵死 C 类二道贩子乱注册）。
-2. **任务合规路径锁**：仅 `WRITTEN_SUBCONTRACT_APPROVED` 或 `LINGJU_UNIFIED_TEAM_ACCOUNT` 路径任务对代理可见；`DRAFT_INTERNAL_ONLY` 系统隐藏；V1.0 代理接口严格剥离上游真实名称与底价，仅展示“自带场景 / 用平台场景”两档代理净价。
-3. **全国场景双层池 ＋ 30 秒零承诺留资页**：抖音实体老板免登录备案 → 进后台 `PENDING_REVIEW` → 总控归入 `S2_RESERVE`（脱敏上架，锁单后解锁真联系）或 `S1_BENCHMARK`（仅总控可见，用于反向撬动大甲方）。
-4. **首件 1–2h 熔断绿灯硬锁**：任何新单（即使熟人特批免押）在未提交 1–2 小时首件试采并经总控点亮 `BATCH_GREEN_LIGHT` 前，系统以 HTTP `403` 强制拦截批量日报提交。
-5. **背靠背三方对账台**：按批次推进 `PENDING_QA → PENDING_CLIENT_PAYMENT → CLIENT_PAID_READY_TO_SETTLE → SETTLED_PAID（必填公户回单号）`，自动核算代理税点扣除、场景方场地费与凌矩费前留存毛利。
+1. **无公开自主注册**：仅凌矩总控核验资质后后台发号（彻底堵死 C 类二道贩子乱注册），支持总控一键重置密码与个人自助改密。
+2. **整包项目配额池 ＋ 动态规则广播**：支持 `1,000–10,000h` 项目总池、多代理切分进度条、甲方平台权限隔离模式（受限传片子账号 vs 全屏蔽中转）、以及 `规则版本变更提炼 + 代理必读回执`（未签收新规系统拦截批量日报）。
+3. **设备/子账号绑定归因 ＋ 小优上游 QA 隔离回流墙**：审批锁单时强制绑定 `设备号清单 / 上传子账号`；小优抓回甲方评估后自动匹配代理、翻译 Bad 失格原因并算出 `QA 预估净收益（未决算）` 隔离回显给代理，代理无需也不能直登甲方后台看账看结算。
+4. **专属项目小优一线 ＋ 人工异常升级台**：逻辑上每对 `(项目 × 代理)` 隔离上下文答疑，涉改价、QA 申诉、损赔或连续异常自动生成工单升级给凌矩人工督导（支持配置 `FEISHU_WEBHOOK_URL` 推飞书提醒）。
+5. **全国场景双层池 ＋ 首件 1–2h 绿灯硬锁 ＋ 背靠背三方对账与 CSV 导出**：保留 `S1/S2` 隔离、首件试采 HTTP `403` 拦截及公户回单号校验，新增 UTF-8 BOM CSV 对账单导出。
 
 ## 本地快速启动（Windows / Linux 通用）
 ```bash

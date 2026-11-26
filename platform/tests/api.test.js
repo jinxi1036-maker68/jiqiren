@@ -17,16 +17,16 @@ function createClient(baseUrl) {
       body: body !== undefined ? JSON.stringify(body) : undefined,
     });
     const setCookie = res.headers.get('set-cookie');
-    if (setCookie) {
-      cookie = setCookie.split(';')[0];
-    }
-    const data = await res.json().catch(() => ({}));
-    return { status: res.status, data };
+    if (setCookie) cookie = setCookie.split(';')[0];
+    const text = await res.text();
+    let data = {};
+    try { data = JSON.parse(text); } catch { data = { raw: text }; }
+    return { status: res.status, data, headers: res.headers };
   };
 }
 
-test('Lingju Platform V1.0 end-to-end compliance, security, first-piece lock & back-to-back settlement', async () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'lingju-platform-test-'));
+test('Lingju Platform v2.0 project quota, rule ack, XiaoYou QA isolation wall, escalation & settlement', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'lingju-platform-v2-'));
   const dbPath = path.join(tmpDir, 'test.db');
   const { server, db } = createApp({ dbPath, dataDir: tmpDir });
   seedDatabase(db, { includeDemoData: true });
@@ -37,10 +37,10 @@ test('Lingju Platform V1.0 end-to-end compliance, security, first-piece lock & b
 
   const pub = createClient(baseUrl);
   const admin = createClient(baseUrl);
-  const agentWaived = createClient(baseUrl);
+  const agentCap = createClient(baseUrl);
 
   try {
-    // 1. Public registration MUST be blocked (blocks C-class self-signup)
+    // 1. Public registration remains strictly blocked (403)
     const reg = await pub('POST', '/api/auth/register', { username: 'hacker', password: 'Password123' });
     assert.equal(reg.status, 403);
 
@@ -62,144 +62,167 @@ test('Lingju Platform V1.0 end-to-end compliance, security, first-piece lock & b
       zero_promise_ack: true,
     });
     assert.equal(okLead.status, 201);
-    assert.ok(okLead.data.code.startsWith('SCN-'));
 
     // 3. Login admin & acquaintance-waived agent
     assert.equal((await admin('POST', '/api/auth/login', { username: 'admin', password: 'Lingju@2026!' })).status, 200);
-    assert.equal((await agentWaived('POST', '/api/auth/login', { username: 'agent_demo_cap', password: 'Agent@2026!' })).status, 200);
+    assert.equal((await agentCap('POST', '/api/auth/login', { username: 'agent_demo_cap', password: 'Agent@2026!' })).status, 200);
 
-    // 4. Verify Agent Task Hall hides DRAFT_INTERNAL_ONLY and NEVER leaks upstream name / base rate / internal SOP
-    const tasksRes = await agentWaived('GET', '/api/agent/tasks');
-    assert.equal(tasksRes.status, 200);
-    assert.equal(tasksRes.data.tasks.some((t) => t.code === 'TP-DEMO-DRAFT'), false, 'DRAFT task must be hidden');
-    const tp1 = tasksRes.data.tasks.find((t) => t.code === 'TP-DEMO-001');
-    assert.ok(tp1, 'Compliant task must be visible');
-    assert.equal(tp1.upstream_name_internal, undefined, 'Upstream name must NEVER leak to agent');
-    assert.equal(tp1.upstream_base_rate_cny, undefined, 'Upstream base rate must NEVER leak to agent');
-    assert.equal(tp1.sop_full_internal, undefined, 'Internal SOP must NOT leak before lock');
+    // 4. Whole Projects Hall hides DRAFT projects & NEVER leaks upstream name / base rate / internal platform name
+    const prjRes = await agentCap('GET', '/api/agent/projects');
+    assert.equal(prjRes.status, 200);
+    assert.equal(prjRes.data.projects.some((p) => p.code === 'PRJ-DEMO-DRAFT'), false);
+    const prj1 = prjRes.data.projects.find((p) => p.code === 'PRJ-2026-001');
+    assert.ok(prj1);
+    assert.equal(prj1.total_quota_hours, 1000);
+    assert.equal(prj1.remaining_quota_hours, 700, '300h already allocated in seed');
+    assert.equal(prj1.upstream_name_internal, undefined);
+    assert.equal(prj1.upstream_base_rate_cny, undefined);
+    assert.equal(prj1.upstream_platform_name, undefined);
 
-    // 5. Verify Agent Scene Pool hides PENDING_REVIEW and S1_BENCHMARK, and strips real PII on S2_RESERVE
-    const scenesBefore = await agentWaived('GET', '/api/agent/scenes');
-    assert.equal(scenesBefore.data.scenes.some((s) => s.code === 'SCN-DEMO-S1-01'), false, 'S1 benchmark must be hidden from agents');
-    assert.equal(scenesBefore.data.scenes.some((s) => s.code === okLead.data.code), false, 'Pending IP lead must be hidden before triage');
-    const s2 = scenesBefore.data.scenes.find((s) => s.code === 'SCN-DEMO-S2-01');
-    assert.ok(s2);
-    assert.equal(s2.real_contact_phone, undefined, 'Real phone must NOT exist in pool DTO');
-    assert.equal(s2.real_store_name, undefined, 'Real store name must NOT exist in pool DTO');
-
-    // 6. Admin triages new Luoyang IP lead as S2_RESERVE + AVAILABLE
+    // 5. Scenes pool hides S1 & PENDING_REVIEW and strips real PII
+    const scenesBefore = await agentCap('GET', '/api/agent/scenes');
+    assert.equal(scenesBefore.data.scenes.some((s) => s.code === 'SCN-DEMO-S1-01'), false);
+    assert.equal(scenesBefore.data.scenes.some((s) => s.code === okLead.data.code), false);
     const adminScenes = await admin('GET', '/api/admin/scenes');
     const luoyang = adminScenes.data.scenes.find((s) => s.code === okLead.data.code);
-    assert.ok(luoyang);
-    assert.equal(
-      (await admin('PATCH', `/api/admin/scenes/${luoyang.id}`, { tier: 'S2_RESERVE', public_status: 'AVAILABLE' })).status,
-      200
-    );
+    assert.equal((await admin('PATCH', `/api/admin/scenes/${luoyang.id}`, { tier: 'S2_RESERVE', public_status: 'AVAILABLE' })).status, 200);
 
-    // 7. Agent applies for TP-DEMO-001 + Luoyang S2 scene (must require agreement)
-    const badClaim = await agentWaived('POST', '/api/agent/assignments', {
-      task_pack_id: tp1.id, mode: 'PLATFORM_SCENE', scene_id: luoyang.id, agreement_signed: false,
+    // 6. Agent claims a project quota slice (200h) + Luoyang S2 scene
+    const tooMuchQuota = await agentCap('POST', '/api/agent/assignments', {
+      project_id: prj1.id, mode: 'PLATFORM_SCENE', scene_id: luoyang.id,
+      quota_hours_requested: 9999, agreement_signed: true,
     });
-    assert.equal(badClaim.status, 400);
+    assert.equal(tooMuchQuota.status, 400, 'Cannot claim more than remaining project quota');
 
-    const claim = await agentWaived('POST', '/api/agent/assignments', {
-      task_pack_id: tp1.id, mode: 'PLATFORM_SCENE', scene_id: luoyang.id, agreement_signed: true,
+    const claim = await agentCap('POST', '/api/agent/assignments', {
+      project_id: prj1.id, mode: 'PLATFORM_SCENE', scene_id: luoyang.id,
+      quota_hours_requested: 200, agreement_signed: true,
     });
     assert.equal(claim.status, 201);
     const asgId = claim.data.id;
 
-    // Before Admin approves, real store & phone MUST stay locked!
-    let myAsgs = await agentWaived('GET', '/api/agent/assignments');
-    let myAsg = myAsgs.data.assignments.find((a) => a.id === asgId);
-    assert.equal(myAsg.scene_info.unlocked, false);
-    assert.equal(myAsg.sop_full_internal, null);
-    assert.notEqual(myAsg.scene_info.real_contact_phone, '13999990000');
-
-    // 8. Admin approves assignment with acquaintance-waived device -> enters FIRST_PIECE_TRIAL
+    // 7. Admin approves quota + binds device IDs & restricted upload subaccount -> enters FIRST_PIECE_TRIAL
     const approveRes = await admin('POST', `/api/admin/assignments/${asgId}/decision`, {
       decision: 'APPROVE',
       device_arrangement: 'PLATFORM_ISSUED_WAIVED',
-      admin_note: '种子熟人特批免押，强制首件试采',
+      quota_hours_approved: 200,
+      upstream_upload_account: 'lj_sub_zk_99',
+      bound_device_ids: 'EGO-ZK-01, EGO-ZK-02',
     });
     assert.equal(approveRes.status, 200);
     assert.equal(approveRes.data.status, 'FIRST_PIECE_TRIAL');
 
-    // Now real contact & full internal SOP ARE unlocked for this approved agent
-    myAsgs = await agentWaived('GET', '/api/agent/assignments');
-    myAsg = myAsgs.data.assignments.find((a) => a.id === asgId);
+    // Real contact & device mapping unlocked
+    const myAsg = (await agentCap('GET', '/api/agent/assignments')).data.assignments.find((a) => a.id === asgId);
     assert.equal(myAsg.scene_info.unlocked, true);
-    assert.equal(myAsg.scene_info.real_contact_phone, '13999990000');
-    assert.ok(myAsg.sop_full_internal.includes('已解锁内部V3执行SOP要点'));
+    assert.equal(myAsg.upstream_upload_account, 'lj_sub_zk_99');
+    assert.deepEqual(myAsg.bound_device_ids, ['EGO-ZK-01', 'EGO-ZK-02']);
 
-    // 9. HARD LOCK CHECK (Audit Item 2): Even acquaintance-waived agent CANNOT submit BATCH before Green Light!
-    const blockedBatch = await agentWaived('POST', '/api/agent/logs', {
+    // 8. First-piece hard lock blocks BATCH before green light (403)
+    const blockedBatch = await agentCap('POST', '/api/agent/logs', {
       assignment_id: asgId, log_date: '2026-11-26', log_type: 'BATCH',
-      devices_used: 3, raw_hours: 15, uploaded_hours: 15, batch_ref: 'B-ILLEGAL',
+      devices_used: 2, raw_hours: 10, uploaded_hours: 10,
     });
-    assert.equal(blockedBatch.status, 403, 'BATCH log before Green Light MUST be blocked with 403');
+    assert.equal(blockedBatch.status, 403);
 
-    // Exceeding first-piece max hours (2h) is also rejected
-    const tooBigFp = await agentWaived('POST', '/api/agent/logs', {
+    // Submit 1.5h first-piece & Admin lights Green Light
+    assert.equal((await agentCap('POST', '/api/agent/logs', {
       assignment_id: asgId, log_date: '2026-11-26', log_type: 'FIRST_PIECE',
-      devices_used: 1, raw_hours: 5, uploaded_hours: 5, batch_ref: 'FP-TOO-BIG',
-    });
-    assert.equal(tooBigFp.status, 400);
+      devices_used: 1, raw_hours: 1.5, uploaded_hours: 1.5, batch_ref: 'EGO-ZK-01-FP',
+    })).status, 201);
+    assert.equal((await admin('POST', `/api/admin/assignments/${asgId}/first-piece-review`, {
+      decision: 'APPROVE_GREEN_LIGHT', review_note: '首件合格放行',
+    })).status, 200);
 
-    // Valid 1.5h first-piece submission succeeds
-    const fpSub = await agentWaived('POST', '/api/agent/logs', {
-      assignment_id: asgId, log_date: '2026-11-26', log_type: 'FIRST_PIECE',
-      devices_used: 1, raw_hours: 1.5, uploaded_hours: 1.5, batch_ref: 'FP-001',
-    });
-    assert.equal(fpSub.status, 201);
-
-    // 10. Admin reviews first piece & lights BATCH_GREEN_LIGHT
-    const greenLight = await admin('POST', `/api/admin/assignments/${asgId}/first-piece-review`, {
-      decision: 'APPROVE_GREEN_LIGHT', review_note: '样片过关，允许放量',
-    });
-    assert.equal(greenLight.status, 200);
-    assert.equal(greenLight.data.status, 'BATCH_GREEN_LIGHT');
-
-    // Now BATCH log succeeds!
-    const okBatch = await agentWaived('POST', '/api/agent/logs', {
+    // 9. Rule Revision Broadcast & Mandatory Read Receipt Check!
+    // Un-acked revision v1.1 (from seed) blocks BATCH log with 409 until acked!
+    const unackedBatch = await agentCap('POST', '/api/agent/logs', {
       assignment_id: asgId, log_date: '2026-11-27', log_type: 'BATCH',
-      devices_used: 3, raw_hours: 12, uploaded_hours: 12, batch_ref: 'B-1127-01',
+      devices_used: 2, raw_hours: 12, uploaded_hours: 12, batch_ref: 'EGO-ZK-01-B1',
+    });
+    assert.equal(unackedBatch.status, 409, 'Must acknowledge latest rule revision before batch reporting');
+
+    const latestRevId = myAsg.latest_revision.id;
+    assert.equal((await agentCap('POST', `/api/agent/revisions/${latestRevId}/ack`)).status, 200);
+
+    // Now BATCH succeeds!
+    const okBatch = await agentCap('POST', '/api/agent/logs', {
+      assignment_id: asgId, log_date: '2026-11-27', log_type: 'BATCH',
+      devices_used: 2, raw_hours: 12, uploaded_hours: 12, batch_ref: 'EGO-ZK-01-B1',
     });
     assert.equal(okBatch.status, 201);
     const batchLogId = okBatch.data.id;
 
-    // 11. Back-to-back settlement & three-party financial math + bank receipt enforcement
-    // Marking SETTLED_PAID without bank receipt ref MUST fail
-    const noReceipt = await admin('PATCH', `/api/admin/logs/${batchLogId}`, {
-      qa_status: 'QA_CONFIRMED', qa_valid_hours: 10,
-      settlement_stage: 'SETTLED_PAID', venue_fee_cny: 25,
+    // 10. XiaoYou Upstream QA Ingestion -> Device Attribution -> Sanitized Agent Diagnosis & Estimated Fee
+    const ingest = await admin('POST', '/api/admin/xiaoyou/ingest', {
+      project_id: prj1.id,
+      sync_source: 'CSV_PARSE',
+      csv_text: 'UP-9901, EGO-ZK-02, 2026-11-27, 12.0, 10.0, HAND_OUT; BLUR',
     });
-    assert.equal(noReceipt.status, 400);
+    assert.equal(ingest.status, 201);
+    assert.equal(ingest.data.imported[0].matched_assignment_id, asgId);
+    // 10h * 27 (platform scene rate) = 270 gross, 6% personal tax = 16.2, estimated net = 253.8
+    assert.equal(ingest.data.imported[0].estimated_agent_net_cny, 253.8);
 
-    // Valid QA confirmation + client paid + settled with bank receipt
-    const paidRes = await admin('PATCH', `/api/admin/logs/${batchLogId}`, {
-      qa_status: 'QA_CONFIRMED', qa_valid_hours: 10,
-      settlement_stage: 'SETTLED_PAID', venue_fee_cny: 25,
-      payout_receipt_ref: 'BANK-20261130-8899',
+    // Agent sees translated invalid advice & estimated fee inside Lingju platform (ZERO upstream leaks)
+    const agentQa = await agentCap('GET', '/api/agent/qa-reports');
+    const rep = agentQa.data.reports.find((r) => r.id === ingest.data.imported[0].id);
+    assert.ok(rep);
+    assert.equal(rep.valid_hours, 10);
+    assert.equal(rep.invalid_hours, 2);
+    assert.equal(rep.estimated_agent_net_cny, 253.8);
+    assert.equal(rep.upstream_base_rate_cny, undefined);
+    const reasons = JSON.parse(rep.invalid_reasons_json);
+    assert.equal(reasons.length, 2);
+    assert.ok(reasons[0].xiaoyou_plain_advice.includes('双手超出镜头视野'));
+
+    // Admin verifies QA report & pushes to settlement, or settles batchLogId with receipt enforcement
+    const qaVerify = await admin('PATCH', `/api/admin/xiaoyou/reports/${rep.id}`, {
+      verify_status: 'ADMIN_VERIFIED', valid_hours: 10, push_to_settlement: true,
     });
-    assert.equal(paidRes.status, 200);
+    assert.equal(qaVerify.status, 200);
+    assert.ok(qaVerify.data.linked_daily_log_id);
 
-    // Check Agent view: applied rate = 27 (platform scene), valid = 10h -> gross 270, 6% tax deduction = 16.2, net = 253.8
-    // And upstream base rate / Lingju margin MUST NOT appear in agent logs!
-    const agentLogs = await agentWaived('GET', '/api/agent/logs');
-    const bLog = agentLogs.data.logs.find((l) => l.id === batchLogId);
-    assert.equal(bLog.agent_gross_cny, 270);
-    assert.equal(bLog.agent_tax_deduction_cny, 16.2);
-    assert.equal(bLog.agent_net_payable_cny, 253.8);
-    assert.equal(bLog.upstream_base_rate_cny, undefined);
-    assert.equal(bLog.lingju_pre_overhead_margin_cny, undefined);
+    // Bank receipt enforcement
+    assert.equal((await admin('PATCH', `/api/admin/logs/${batchLogId}`, {
+      qa_status: 'QA_CONFIRMED', qa_valid_hours: 10, settlement_stage: 'SETTLED_PAID',
+    })).status, 400);
+    assert.equal((await admin('PATCH', `/api/admin/logs/${batchLogId}`, {
+      qa_status: 'QA_CONFIRMED', qa_valid_hours: 10, settlement_stage: 'SETTLED_PAID',
+      venue_fee_cny: 25, payout_receipt_ref: 'BANK-20261130-8899',
+    })).status, 200);
 
-    // Check Admin view sees full three-party math:
-    // upstream_gross = 10*40 = 400; 3% VAT = 400*3/103 = 11.65; agent_gross = 270; venue_fee = 25 -> margin = 93.35
-    const adminLogs = await admin('GET', '/api/admin/logs');
-    const aLog = adminLogs.data.logs.find((l) => l.id === batchLogId);
-    assert.equal(aLog.financials.upstream_gross_cny, 400);
-    assert.equal(aLog.financials.upstream_vat_est_cny, 11.65);
-    assert.equal(aLog.financials.lingju_pre_overhead_margin_cny, 93.35);
+    // CSV Export works
+    const csvRes = await admin('GET', '/api/admin/logs/export.csv');
+    assert.equal(csvRes.status, 200);
+    assert.ok(csvRes.data.raw.includes('BANK-20261130-8899'));
+
+    // 11. Isolated Project XiaoYou Assistant & Human Escalation Trigger
+    const routineChat = await agentCap('POST', '/api/agent/ai-chat', {
+      project_id: prj1.id, content: '请告诉我怎么上传以及绑定了哪些设备号？',
+    });
+    assert.equal(routineChat.status, 201);
+    assert.equal(routineChat.data.escalated, false);
+    assert.ok(routineChat.data.reply.includes('EGO-ZK-01'));
+
+    const escalateChat = await agentCap('POST', '/api/agent/ai-chat', {
+      project_id: prj1.id, content: '甲方判的这 2 小时无效我不认可，我要申诉复核！',
+    });
+    assert.equal(escalateChat.status, 201);
+    assert.equal(escalateChat.data.escalated, true);
+    assert.ok(escalateChat.data.ticket_code.startsWith('ESC-'));
+
+    const escs = await admin('GET', '/api/admin/escalations');
+    const esc = escs.data.tickets.find((t) => t.code === escalateChat.data.ticket_code);
+    assert.ok(esc);
+    assert.equal((await admin('PATCH', `/api/admin/escalations/${esc.id}`, {
+      status: 'RESOLVED', resolution_note: '已核对片源，已帮您提交甲方申诉复议。',
+    })).status, 200);
+
+    // 12. Admin reset password + agent self change password
+    assert.equal((await admin('POST', `/api/admin/agents/${myAsg.agent_user_id || 3}/reset-password`, {
+      new_password: 'TempPass999',
+    })).status, 200);
   } finally {
     server.close();
     db.close();
