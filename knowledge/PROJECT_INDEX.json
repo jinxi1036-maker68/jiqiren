@@ -368,6 +368,11 @@
     "date": "2026-11-26",
     "status": "owner_idea_discussion_only_not_approved_for_build",
     "model": "S2B_resource_aggregation_and_agent_fulfillment_web_platform",
+    "owner_selected_first_batch_resource_pools": [
+      "livsyn_and_multi_upstream_task_subcontracting",
+      "nationwide_factory_and_store_scenes_acquired_via_founder_personal_ip"
+    ],
+    "strategic_flywheel": "founder_personal_ip_attracts_nationwide_scenes + business_dev_secures_upstream_tasks -> platform_matches_and_protects_details -> local_agents_execute_and_deliver -> lingju_controls_qa_and_settlement",
     "core_resources_to_integrate": [
       "upstream_orders_and_qa_rules",
       "authorized_scene_leads",
