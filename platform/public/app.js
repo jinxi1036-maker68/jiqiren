@@ -26,13 +26,13 @@ const LABELS = {
   },
   deposit_status: {
     PAID: ['已缴设备押金', 'pill-green', 'dot-emerald'],
-    CORPORATE_GUARANTEE: ['企业协议担保', 'pill-gray', 'dot-emerald'],
+    CORPORATE_GUARANTEE: ['企业协议担保', 'pill-blue', 'dot-blue'],
     ACQUAINTANCE_WAIVED: ['熟人特批免押', 'pill-amber', 'dot-amber'],
     UNPAID: ['未缴押金', 'pill-red', 'dot-red'],
   },
   compliance_path: {
     WRITTEN_SUBCONTRACT_APPROVED: ['已获书面分包许可', 'pill-green', 'dot-emerald'],
-    LINGJU_UNIFIED_TEAM_ACCOUNT: ['统一子账号托管', 'pill-gray', 'dot-emerald'],
+    LINGJU_UNIFIED_TEAM_ACCOUNT: ['统一子账号托管', 'pill-blue', 'dot-blue'],
     DRAFT_INTERNAL_ONLY: ['内部草稿（未开放）', 'pill-gray', 'dot-slate'],
   },
   portal_mode: {
@@ -42,13 +42,13 @@ const LABELS = {
   scene_tier: {
     PENDING_REVIEW: ['待初筛', 'pill-amber', 'dot-amber'],
     S2_RESERVE: ['S2 常规储备', 'pill-green', 'dot-emerald'],
-    S1_BENCHMARK: ['S1 稀缺标杆（仅总控）', 'pill-gray', 'dot-slate'],
+    S1_BENCHMARK: ['S1 稀缺标杆（仅总控）', 'pill-blue', 'dot-blue'],
     REJECTED: ['已驳回', 'pill-red', 'dot-red'],
   },
   scene_public: { HIDDEN: '未向代理公开', AVAILABLE: '脱敏可认领', LOCKED: '已锁单执行中' },
   asg_status: {
     PENDING_APPROVAL: ['待凌矩审批', 'pill-amber', 'dot-amber'],
-    FIRST_PIECE_TRIAL: ['首件试采期', 'pill-gray', 'dot-amber'],
+    FIRST_PIECE_TRIAL: ['首件试采期', 'pill-blue', 'dot-blue'],
     BATCH_GREEN_LIGHT: ['绿灯运行中', 'pill-green', 'dot-emerald'],
     REJECTED: ['审批未通过', 'pill-red', 'dot-red'],
     PAUSED: ['已暂停', 'pill-gray', 'dot-slate'],
@@ -438,96 +438,101 @@ function renderAdminPage() {
 
     $('#wsContent').innerHTML = `
       <div class="kpi-row-4">
-        <div class="kpi-card" onclick="window.navGo('resources','projects')">
-          <div class="kpi-label">开放项目总池</div>
+        <div class="kpi-card top-emerald" onclick="window.navGo('resources','projects')">
+          <div class="kpi-top"><span class="kpi-label">开放项目总池</span><span class="kpi-icon-box emerald">${SVG.layers}</span></div>
           <div class="kpi-num accent">${Number(s.total_quota_pool || 0).toLocaleString()}h</div>
-          <div class="kpi-foot"><span>在跑项目 ${s.open_compliant_projects || 0} 个</span><span>代理 ${s.active_agents || 0} 家</span></div>
+          <div class="kpi-foot"><span>在跑项目 <strong>${s.open_compliant_projects || 0}</strong> 个</span><span>代理 <strong>${s.active_agents || 0}</strong> 家</span></div>
         </div>
-        <div class="kpi-card" onclick="window.navGo('dispatch','first_piece')">
-          <div class="kpi-label">待审配额与首件</div>
-          <div class="kpi-num ${(s.assignments_pending + s.first_piece_pending) ? 'amber' : ''}">${(s.assignments_pending || 0) + (s.first_piece_pending || 0)}</div>
-          <div class="kpi-foot"><span>待审 ${s.assignments_pending || 0}</span><span>待绿灯 ${s.first_piece_pending || 0}</span></div>
+        <div class="kpi-card top-blue" onclick="window.navGo('dispatch','first_piece')">
+          <div class="kpi-top"><span class="kpi-label">待审配额与首件</span><span class="kpi-icon-box blue">${SVG.activity}</span></div>
+          <div class="kpi-num ${(s.assignments_pending + s.first_piece_pending) ? 'blue' : ''}">${(s.assignments_pending || 0) + (s.first_piece_pending || 0)}</div>
+          <div class="kpi-foot"><span>待锁单 ${s.assignments_pending || 0}</span><span>待点绿灯 <strong>${s.first_piece_pending || 0}</strong></span></div>
         </div>
-        <div class="kpi-card" onclick="window.navGo('finance','xiaoyou_qa')">
-          <div class="kpi-label">小优待核与待结</div>
+        <div class="kpi-card top-amber" onclick="window.navGo('finance','xiaoyou_qa')">
+          <div class="kpi-top"><span class="kpi-label">小优待核与待结</span><span class="kpi-icon-box amber">${SVG.wallet}</span></div>
           <div class="kpi-num ${(s.xiaoyou_pending_check + s.logs_ready_to_settle) ? 'amber' : ''}">${(s.xiaoyou_pending_check || 0) + (s.logs_ready_to_settle || 0)}</div>
-          <div class="kpi-foot"><span>待核 ${s.xiaoyou_pending_check || 0}</span><span>待打款 ${s.logs_ready_to_settle || 0}</span></div>
+          <div class="kpi-foot"><span>待核 <strong>${s.xiaoyou_pending_check || 0}</strong></span><span>待打款 ${s.logs_ready_to_settle || 0}</span></div>
         </div>
-        <div class="kpi-card" onclick="window.navGo('agents','escalations')">
-          <div class="kpi-label">待处理人工工单</div>
-          <div class="kpi-num ${s.escalations_open ? 'amber' : ''}">${s.escalations_open || 0}</div>
+        <div class="kpi-card top-red" onclick="window.navGo('agents','escalations')">
+          <div class="kpi-top"><span class="kpi-label">待处理人工工单</span><span class="kpi-icon-box red">${SVG.bot}</span></div>
+          <div class="kpi-num ${s.escalations_open ? 'red' : 'accent'}">${s.escalations_open || 0}</div>
           <div class="kpi-foot"><span>待筛场景 ${s.scenes_pending || 0}</span><span>绿灯运行 ${s.green_light_active || 0} 单</span></div>
         </div>
       </div>
 
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">整包项目配额进度</div>
-          <button class="btn btn-sm btn-ghost" onclick="window.navGo('resources','projects')">查看全部</button>
-        </div>
-        <div class="panel-body stack-md">
-          ${prjs.map((p) => `
-            <div class="row-between" style="gap:24px;">
-              <div style="flex:1;min-width:260px;">
-                <div class="row-gap" style="margin-bottom:8px;">
-                  <span class="mono muted">${esc(p.code)}</span>
-                  <span style="font-size:14px;font-weight:500;">${esc(p.title)}</span>
-                  <span class="badge-quiet">规则 ${esc(p.current_rule_version)}</span>
-                </div>
-                ${quotaProgressHtml(p.total_quota_hours, p.allocated_hours, p.delivered_valid_hours)}
-              </div>
-              <button class="btn btn-sm btn-secondary" onclick="window.openRulePublishDrawer(${p.id})">发布规则变更</button>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-
       <div class="overview-split">
-        <div class="panel">
-          <div class="panel-header">
-            <div class="panel-title">待处理队列（${queue.length}）</div>
-            <span class="small muted">异常工单 · 回流核对 · 场景与首件</span>
-          </div>
-          ${queue.length ? `
-            <div class="queue-list">
-              ${queue.slice(0, 7).map((q) => `
-                <div class="queue-row">
-                  <div style="min-width:0;">
-                    <div class="row-gap">
-                      <span class="status-pill ${q.pillClass}"><span class="dot ${q.dotClass}"></span>${q.badge}</span>
-                      <span class="queue-title">${esc(q.title)}</span>
+        <div class="stack-md">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">待您拍板事项队列（${queue.length}）</div>
+              <span class="small muted">异常工单 · 回流核对 · 场景与首件</span>
+            </div>
+            ${queue.length ? `
+              <div class="queue-list">
+                ${queue.slice(0, 6).map((q) => `
+                  <div class="queue-row">
+                    <div style="min-width:0;">
+                      <div class="row-gap">
+                        <span class="status-pill ${q.pillClass}"><span class="dot ${q.dotClass}"></span>${q.badge}</span>
+                        <span class="queue-title">${esc(q.title)}</span>
+                      </div>
+                      <div class="queue-meta">${esc(q.meta)}</div>
                     </div>
-                    <div class="queue-meta">${esc(q.meta)}</div>
+                    <button class="btn btn-sm btn-secondary" onclick="${q.action}">${q.btnText}</button>
                   </div>
-                  <button class="btn btn-sm btn-secondary" onclick="${q.action}">${q.btnText}</button>
+                `).join('')}
+              </div>
+            ` : '<div class="panel-body muted small">当前无待处理事项</div>'}
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">在跑整包项目配额进度</div>
+              <button class="btn btn-sm btn-ghost" onclick="window.navGo('resources','projects')">管理全部 →</button>
+            </div>
+            <div class="panel-body stack-md">
+              ${prjs.map((p) => `
+                <div class="row-between" style="gap:16px;">
+                  <div style="flex:1;min-width:220px;">
+                    <div class="row-gap" style="margin-bottom:6px;">
+                      <span class="mono muted">${esc(p.code)}</span>
+                      <strong style="font-size:13.5px;">${esc(p.title)}</strong>
+                      <span class="status-pill pill-blue"><span class="dot dot-blue"></span>规则 ${esc(p.current_rule_version)}</span>
+                    </div>
+                    ${quotaProgressHtml(p.total_quota_hours, p.allocated_hours, p.delivered_valid_hours)}
+                  </div>
+                  <button class="btn btn-sm btn-secondary" onclick="window.openRulePublishDrawer(${p.id})">发布新规</button>
                 </div>
               `).join('')}
             </div>
-          ` : '<div class="panel-body muted small">当前无待处理事项</div>'}
+          </div>
         </div>
 
         <div class="stack-md">
           <div class="panel">
             <div class="panel-header">
               <div class="panel-title">已确认批次三方核算</div>
-              <span class="small muted num">${sumValidH.toFixed(1)} 有效小时</span>
+              <span class="badge-quiet num">${sumValidH.toFixed(1)} 有效h</span>
             </div>
             <div class="panel-body">
               <div class="kv-list">
                 <div class="kv-row"><span class="kv-label">上游有效含税营收</span><span class="kv-val">${fmtMoney(sumUpGross)}</span></div>
                 <div class="kv-row"><span class="kv-label">认证代理净应付</span><span class="kv-val">${fmtMoney(sumAgentNet)}</span></div>
                 <div class="kv-row"><span class="kv-label">第三方场景合作费</span><span class="kv-val">${fmtMoney(sumVenue)}</span></div>
-                <div class="kv-row"><span class="kv-label">凌矩税前留存</span><span class="kv-val accent">${fmtMoney(sumMargin)}</span></div>
+              </div>
+              <div class="kv-highlight">
+                <span class="kv-label">凌矩税前留存毛利</span>
+                <span class="kv-val">${fmtMoney(sumMargin)}</span>
               </div>
             </div>
           </div>
 
           <div class="panel">
-            <div class="panel-header"><div class="panel-title">系统硬锁状态</div><span class="small muted">自动校验</span></div>
+            <div class="panel-header"><div class="panel-title">系统风控硬锁状态</div><span class="status-pill pill-green"><span class="dot dot-emerald"></span>全部生效</span></div>
             <div class="panel-body stack-sm">
-              <div class="guard-item"><span>小优回流剥离甲方名与底价</span><span class="dot dot-emerald"></span></div>
-              <div class="guard-item"><span>首件绿灯与新规必读拦截</span><span class="dot dot-emerald"></span></div>
-              <div class="guard-item"><span>打款结算强校验公户回单号</span><span class="dot dot-emerald"></span></div>
+              <div class="guard-item"><span>小优回流剥离甲方名与底价</span><span class="status-pill pill-green"><span class="dot dot-emerald"></span>已隔离</span></div>
+              <div class="guard-item"><span>未过首件或未签新规禁报批量</span><span class="status-pill pill-blue"><span class="dot dot-blue"></span>HTTP 403/409</span></div>
+              <div class="guard-item"><span>打款结算强校验公户回单号</span><span class="status-pill pill-green"><span class="dot dot-emerald"></span>已强制</span></div>
             </div>
           </div>
         </div>
@@ -785,20 +790,20 @@ function renderAgentPage() {
 
     $('#wsContent').innerHTML = `
       <div class="kpi-row-3">
-        <div class="kpi-card" onclick="window.navGo('hall','projects')">
-          <div class="kpi-label">开放合规项目</div>
+        <div class="kpi-card top-emerald" onclick="window.navGo('hall','projects')">
+          <div class="kpi-top"><span class="kpi-label">开放合规项目</span><span class="kpi-icon-box emerald">${SVG.compass}</span></div>
           <div class="kpi-num accent">${state.agent.projects.length}</div>
-          <div class="kpi-foot"><span>可用脱敏场景 ${state.agent.scenes.length} 个</span><span>点击领配额</span></div>
+          <div class="kpi-foot"><span>可用脱敏场景 <strong>${state.agent.scenes.length}</strong> 个</span><span>点击领配额</span></div>
         </div>
-        <div class="kpi-card" onclick="window.navGo('delivery','batch')">
-          <div class="kpi-label">已承接项目派单</div>
-          <div class="kpi-num ${unackedCount ? 'amber' : ''}">${asgs.length}</div>
-          <div class="kpi-foot"><span>待签新规 ${unackedCount} 项</span><span>含专属项目小优</span></div>
+        <div class="kpi-card top-blue" onclick="window.navGo('delivery','batch')">
+          <div class="kpi-top"><span class="kpi-label">已承接项目派单</span><span class="kpi-icon-box blue">${SVG.clipboard}</span></div>
+          <div class="kpi-num ${unackedCount ? 'amber' : 'blue'}">${asgs.length}</div>
+          <div class="kpi-foot"><span>待签新规 <strong>${unackedCount}</strong> 项</span><span>含专属项目小优</span></div>
         </div>
-        <div class="kpi-card" onclick="window.navGo('bills','qa_eval')">
-          <div class="kpi-label">QA 预估净收益</div>
+        <div class="kpi-card top-amber" onclick="window.navGo('bills','qa_eval')">
+          <div class="kpi-top"><span class="kpi-label">QA 预估净收益</span><span class="kpi-icon-box amber">${SVG.wallet}</span></div>
           <div class="kpi-num accent">${fmtMoney(sumEstNet)}</div>
-          <div class="kpi-foot"><span>已实结到账 ${fmtMoney(sumSettled)}</span><span>查看失格诊断</span></div>
+          <div class="kpi-foot"><span>已实结到账 <strong>${fmtMoney(sumSettled)}</strong></span><span>查看失格诊断</span></div>
         </div>
       </div>
 
