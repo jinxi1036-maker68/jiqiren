@@ -1,4 +1,4 @@
-# 凌矩具身数据资源与代理协同平台（`platform/` · v2.0.0）
+# 凌矩具身数据资源与代理协同平台（`platform/` · v2.1.0）
 
 - **定位**：凌矩 S2B 整包项目配额集成、小优上游 QA 隔离回流与标准化交付平台（区别于面向门店商家＋个人兼职采集员的 `miniapp/`）。
 - **上位规范**：[v2.0 整包项目制与小优回流设计规范](../knowledge/strategy/2026-11-26_PLATFORM_V2_PROJECT_AND_XIAOYOU_SPEC.md) · [V1.0 六大模块定版与深清查报告](../knowledge/strategy/2026-11-26_AGENT_PLATFORM_V1_FINAL_SPEC_AND_FIRST_PRINCIPLES_AUDIT.md)
